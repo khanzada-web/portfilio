@@ -4,6 +4,7 @@ import { useState, useEffect } from 'react';
 import { motion } from 'framer-motion';
 import { FiCode, FiGlobe, FiAward, FiZap, FiCheckCircle, FiStar } from 'react-icons/fi';
 import Image from 'next/image';
+import { AnimatedCounter } from '../ui/AnimatedCounter';
 
 const About = () => {
   const [isVisible, setIsVisible] = useState(false);
@@ -22,10 +23,10 @@ const About = () => {
   ];
 
   const achievements = [
-    { number: '5+', label: 'Years Experience', icon: <FiAward className="w-6 h-6" /> },
-    { number: '50+', label: 'Web3 Projects', icon: <FiCheckCircle className="w-6 h-6" /> },
-    { number: '100%', label: 'Client Satisfaction', icon: <FiStar className="w-6 h-6" /> },
-    { number: '24/7', label: 'Availability', icon: <FiZap className="w-6 h-6" /> }
+    { number: 5, suffix: '+', label: 'Years Experience', icon: <FiAward className="w-6 h-6" /> },
+    { number: 100, suffix: '+', label: 'Web3 Projects', icon: <FiCheckCircle className="w-6 h-6" /> },
+    { number: 100, suffix: '%', label: 'Client Satisfaction', icon: <FiStar className="w-6 h-6" /> },
+    { number: '24/7', suffix: '', label: 'Availability', icon: <FiZap className="w-6 h-6" /> }
   ];
 
   return (
@@ -193,7 +194,16 @@ const About = () => {
               <div className="flex justify-center mb-4 text-blue-600">
                 {achievement.icon}
               </div>
-              <div className="text-3xl font-bold text-gray-900 mb-2 font-orbitron">{achievement.number}</div>
+              <div className="text-3xl font-bold text-gray-900 mb-2 font-orbitron">
+                {typeof achievement.number === 'number' ? (
+                  <>
+                    <AnimatedCounter from={0} to={achievement.number} duration={1} />
+                    <span className="text-2xl">{achievement.suffix}</span>
+                  </>
+                ) : (
+                  achievement.number
+                )}
+              </div>
               <div className="text-gray-600 font-orbitron">{achievement.label}</div>
             </motion.div>
           ))}

@@ -3,6 +3,7 @@
 import Image from 'next/image';
 import { useState, useEffect } from 'react';
 import { Web3SkillsDisplay } from './Web3SkillsDisplay';
+import { AnimatedCounter } from '../ui/AnimatedCounter';
 
 export function Hero() {
   const [isLoaded, setIsLoaded] = useState(false);
@@ -59,15 +60,24 @@ export function Hero() {
           
           <div className="grid grid-cols-1 sm:grid-cols-3 gap-4 sm:gap-6 md:gap-8 py-8 sm:py-12">
             <div className="text-center">
-              <div className="text-3xl sm:text-4xl md:text-5xl font-bold text-gray-900 font-orbitron" role="img" aria-label="5+ years of experience">5+</div>
+              <div className="text-3xl sm:text-4xl md:text-5xl font-bold text-gray-900 font-orbitron" role="img" aria-label="5+ years of experience">
+                <AnimatedCounter from={0} to={5} duration={1} />
+                <span className="text-2xl sm:text-3xl md:text-4xl">+</span>
+              </div>
               <div className="text-xs sm:text-sm text-gray-600 font-orbitron mt-1">Years Experience</div>
             </div>
             <div className="text-center">
-              <div className="text-3xl sm:text-4xl md:text-5xl font-bold text-gray-900 font-orbitron" role="img" aria-label="300+ projects delivered">400+</div>
+              <div className="text-3xl sm:text-4xl md:text-5xl font-bold text-gray-900 font-orbitron" role="img" aria-label="400+ projects delivered">
+                <AnimatedCounter from={0} to={400} duration={1} />
+                <span className="text-2xl sm:text-3xl md:text-4xl">+</span>
+              </div>
               <div className="text-xs sm:text-sm text-gray-600 font-orbitron mt-1">Projects Delivered</div>
             </div>
             <div className="text-center">
-              <div className="text-3xl sm:text-4xl md:text-5xl font-bold text-gray-900 font-orbitron" role="img" aria-label="100% client satisfaction">100%</div>
+              <div className="text-3xl sm:text-4xl md:text-5xl font-bold text-gray-900 font-orbitron" role="img" aria-label="100% client satisfaction">
+                <AnimatedCounter from={0} to={100} duration={1} />
+                <span className="text-2xl sm:text-3xl md:text-4xl">%</span>
+              </div>
               <div className="text-xs sm:text-sm text-gray-600 font-orbitron mt-1">Client Satisfaction</div>
             </div>
           </div>
