@@ -196,7 +196,7 @@ export function Testimonials() {
               transition={{ duration: 0.5, delay: 0.1 * index }}
               className="group"
             >
-              <div className="bg-white/60 backdrop-blur-sm rounded-2xl p-6 border border-white/20 hover:bg-white/80 transition-all duration-300 hover:shadow-xl">
+              <div className="bg-white/60 backdrop-blur-sm rounded-2xl p-6 border border-white/20 hover:bg-white/80 transition-all duration-300 hover:shadow-xl hover:scale-105 hover:-translate-y-2 group">
                 <div className="flex items-center mb-4">
                   {[...Array(testimonial.rating)].map((_, i) => (
                     <FiStar key={i} className="w-4 h-4 text-yellow-400 fill-current" />

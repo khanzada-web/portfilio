@@ -63,7 +63,7 @@ export function Hero() {
               <div className="text-xs sm:text-sm text-gray-600 font-orbitron mt-1">Years Experience</div>
             </div>
             <div className="text-center">
-              <div className="text-3xl sm:text-4xl md:text-5xl font-bold text-gray-900 font-orbitron" role="img" aria-label="100+ projects delivered">100+</div>
+              <div className="text-3xl sm:text-4xl md:text-5xl font-bold text-gray-900 font-orbitron" role="img" aria-label="300+ projects delivered">400+</div>
               <div className="text-xs sm:text-sm text-gray-600 font-orbitron mt-1">Projects Delivered</div>
             </div>
             <div className="text-center">

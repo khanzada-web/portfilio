@@ -95,7 +95,7 @@ export function Header() {
         </div>
         
         {/* Mobile Menu */}
-        <div className={`lg:hidden transition-all duration-500 ease-in-out overflow-hidden ${isMenuOpen ? 'max-h-96 py-4 sm:py-6' : 'max-h-0'}`}>
+        <div className={`lg:hidden transition-all duration-500 ease-in-out overflow-hidden ${isMenuOpen ? 'max-h-screen py-4 sm:py-6' : 'max-h-0'}`}>
           <nav className="flex flex-col space-y-2 sm:space-y-3 px-2 sm:px-4">
             <Link 
               href="#home" 

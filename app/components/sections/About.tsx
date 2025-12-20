@@ -68,7 +68,7 @@ const About = () => {
             animate={{ opacity: 1, x: 0 }}
             transition={{ duration: 0.8, delay: 0.2 }}
           >
-            <div className="bg-white/80 backdrop-blur-sm rounded-2xl sm:rounded-3xl p-6 sm:p-8 border border-gray-200 shadow-xl">
+            <div className="bg-white/80 backdrop-blur-sm rounded-2xl sm:rounded-3xl p-6 sm:p-8 border border-gray-200 shadow-xl hover:shadow-2xl transition-all duration-300 hover:scale-105 hover:-translate-y-2 group">
               <div className="flex flex-col items-center mb-6">
                 <div className="relative mb-6">
                   <div className="w-48 h-48 rounded-full overflow-hidden border-4 border-white shadow-2xl">
@@ -116,7 +116,7 @@ const About = () => {
             animate={{ opacity: 1, x: 0 }}
             transition={{ duration: 0.8, delay: 0.3 }}
           >
-            <div className="bg-gradient-to-br from-blue-50 to-purple-50 rounded-3xl p-8 border border-white/20">
+            <div className="bg-gradient-to-br from-blue-50 to-purple-50 rounded-3xl p-8 border border-white/20 hover:shadow-2xl transition-all duration-300 hover:scale-105 hover:-translate-y-2 group">
               <h3 className="text-2xl font-bold text-gray-900 mb-6 font-orbitron">My Journey</h3>
               <div className="space-y-4 text-gray-700 font-orbitron">
                 <p>
@@ -153,7 +153,7 @@ const About = () => {
                 initial={{ opacity: 0, y: 30 }}
                 animate={{ opacity: 1, y: 0 }}
                 transition={{ duration: 0.5, delay: 0.1 * index }}
-                className="bg-white/80 backdrop-blur-sm rounded-2xl p-6 border border-gray-200 shadow-lg hover:shadow-xl transition-all duration-300"
+                className="bg-white/80 backdrop-blur-sm rounded-2xl p-6 border border-gray-200 shadow-lg hover:shadow-2xl transition-all duration-300 hover:scale-105 hover:-translate-y-2 group"
               >
                 <div className="flex items-center justify-between mb-3">
                   <div className="flex items-center space-x-3">
@@ -188,7 +188,7 @@ const About = () => {
               initial={{ opacity: 0, scale: 0.9 }}
               animate={{ opacity: 1, scale: 1 }}
               transition={{ duration: 0.5, delay: 0.1 * index }}
-              className="bg-white/80 backdrop-blur-sm rounded-2xl p-8 border border-gray-200 shadow-xl hover:shadow-2xl transition-all duration-300 text-center"
+              className="bg-white/80 backdrop-blur-sm rounded-2xl p-8 border border-gray-200 shadow-xl hover:shadow-2xl transition-all duration-300 text-center hover:scale-105 hover:-translate-y-2 group"
             >
               <div className="flex justify-center mb-4 text-blue-600">
                 {achievement.icon}

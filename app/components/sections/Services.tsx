@@ -94,7 +94,7 @@ export function Services() {
               }}
               className="group relative"
             >
-              <div className="relative bg-white/80 backdrop-blur-sm rounded-2xl p-8 border border-gray-200 shadow-xl hover:shadow-2xl transition-all duration-300 h-full flex flex-col">
+              <div className="relative bg-white/80 backdrop-blur-sm rounded-2xl p-8 border border-gray-200 shadow-xl hover:shadow-2xl transition-all duration-300 h-full flex flex-col hover:scale-105 hover:-translate-y-2 group">
                 <div className="absolute inset-0 bg-gradient-to-r from-blue-600/20 to-purple-600/20 rounded-2xl opacity-0 group-hover:opacity-100 transition-opacity duration-300"></div>
                 
                 <div className="relative flex flex-col h-full">
@@ -106,14 +106,14 @@ export function Services() {
                     <span className="inline-block px-3 py-1 bg-gray-100 text-gray-600 text-xs font-semibold rounded-full mb-3 font-orbitron">
                       {service.category}
                     </span>
-                    <h3 className="text-xl font-bold text-gray-900 mb-3 font-orbitron">{service.title}</h3>
+                    <h3 className="text-xl font-bold text-gray-900 mb-3 font-orbitron group-hover:text-blue-600 transition-colors">{service.title}</h3>
                     <p className="text-gray-600 leading-relaxed font-orbitron">{service.description}</p>
                   </div>
                   
                   <div className="mt-auto pt-4">
                     <a 
                       href="#contact" 
-                      className="block text-center bg-gradient-to-r from-gray-900 to-gray-800 text-white px-6 py-3 rounded-xl font-semibold hover:from-gray-800 hover:to-gray-700 transition-all duration-300 transform hover:scale-105 font-orbitron"
+                      className="block text-center bg-gradient-to-r from-gray-900 to-gray-800 text-white px-6 py-3 rounded-xl font-semibold hover:from-gray-800 hover:to-gray-700 transition-all duration-300 transform hover:scale-105 font-orbitron group-hover:shadow-lg"
                     >
                       Get Started
                     </a>
