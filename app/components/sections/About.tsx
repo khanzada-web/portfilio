@@ -31,7 +31,7 @@ const About = () => {
   return (
     <section id="about" className="py-20 bg-gradient-to-br from-white via-gray-50 to-white relative overflow-hidden">
       {/* Background Decorative Elements */}
-      <div className="absolute inset-0">
+      <div className="absolute inset-0" aria-hidden="true">
         <div className="absolute top-20 left-10 w-72 h-72 bg-blue-100 rounded-full mix-blend-multiply filter blur-xl opacity-30 animate-pulse"></div>
         <div className="absolute top-40 right-10 w-72 h-72 bg-purple-100 rounded-full mix-blend-multiply filter blur-xl opacity-30 animate-pulse animation-delay-2000"></div>
         <div className="absolute bottom-20 left-1/2 w-72 h-72 bg-pink-100 rounded-full mix-blend-multiply filter blur-xl opacity-30 animate-pulse animation-delay-4000"></div>
@@ -45,17 +45,19 @@ const About = () => {
           animate={{ opacity: 1, y: 0 }}
           transition={{ duration: 0.8 }}
         >
-          <div className="inline-flex items-center space-x-2 bg-gradient-to-r from-blue-600 to-purple-600 text-white px-3 sm:px-4 py-2 rounded-full text-xs sm:text-sm font-semibold mb-4 sm:mb-6 font-orbitron">
-            <FiAward className="w-3 h-3 sm:w-4 sm:h-4" />
-            <span>About Me</span>
-          </div>
-          <h2 className="text-3xl sm:text-4xl md:text-5xl font-bold text-gray-900 mb-6 sm:mb-8 font-orbitron leading-tight">
-            <span className="block text-gray-900 mb-2">Full Stack Web3</span>
-            <span className="block bg-gradient-to-r from-blue-600 via-purple-600 to-blue-600 bg-clip-text text-transparent">Developer</span>
-          </h2>
-          <p className="text-base sm:text-lg md:text-xl text-gray-600 font-orbitron max-w-2xl mx-auto px-4">
-            Passionate about building decentralized applications and creating exceptional user experiences in the Web3 space.
-          </p>
+          <header>
+            <div className="inline-flex items-center space-x-2 bg-gradient-to-r from-blue-600 to-purple-600 text-white px-3 sm:px-4 py-2 rounded-full text-xs sm:text-sm font-semibold mb-4 sm:mb-6 font-orbitron">
+              <FiAward className="w-3 h-3 sm:w-4 sm:h-4" />
+              <span>About Me</span>
+            </div>
+            <h2 className="text-3xl sm:text-4xl md:text-5xl font-bold text-gray-900 mb-6 sm:mb-8 font-orbitron leading-tight">
+              <span className="block text-gray-900 mb-2">Full Stack Web3</span>
+              <span className="block bg-gradient-to-r from-blue-600 via-purple-600 to-blue-600 bg-clip-text text-transparent">Developer</span>
+            </h2>
+            <p className="text-base sm:text-lg md:text-xl text-gray-600 font-orbitron max-w-2xl mx-auto px-4">
+              Expert Web3 developer with 5+ years building decentralized applications, smart contracts, and blockchain solutions. Specialized in React, Next.js, TypeScript, and Solidity development.
+            </p>
+          </header>
         </motion.div>
 
         {/* Main Content */}

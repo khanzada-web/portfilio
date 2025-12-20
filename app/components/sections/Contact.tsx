@@ -75,17 +75,19 @@ export function Contact() {
           animate={{ opacity: 1, y: 0 }}
           transition={{ duration: 0.8 }}
         >
-          <div className="inline-flex items-center space-x-2 bg-gradient-to-r from-blue-600 to-purple-600 text-white px-3 sm:px-4 py-2 rounded-full text-xs sm:text-sm font-semibold mb-4 sm:mb-6 font-orbitron">
-            <FiSend className="w-3 h-3 sm:w-4 sm:h-4" />
-            <span>Get In Touch</span>
-          </div>
-          <h2 className="text-3xl sm:text-4xl md:text-5xl font-bold text-gray-900 mb-6 sm:mb-8 font-orbitron leading-tight">
-            <span className="block text-gray-900 mb-2">Let's Work</span>
-            <span className="block bg-gradient-to-r from-blue-600 via-purple-600 to-blue-600 bg-clip-text text-transparent">Together</span>
-          </h2>
-          <p className="text-base sm:text-lg md:text-xl text-gray-600 font-orbitron max-w-2xl mx-auto px-4">
-            Have a project in mind? We'd love to hear from you. Let's create something amazing together.
-          </p>
+          <header>
+            <div className="inline-flex items-center space-x-2 bg-gradient-to-r from-blue-600 to-purple-600 text-white px-3 sm:px-4 py-2 rounded-full text-xs sm:text-sm font-semibold mb-4 sm:mb-6 font-orbitron">
+              <FiSend className="w-3 h-3 sm:w-4 sm:h-4" />
+              <span>Get In Touch</span>
+            </div>
+            <h2 className="text-3xl sm:text-4xl md:text-5xl font-bold text-gray-900 mb-6 sm:mb-8 font-orbitron leading-tight">
+              <span className="block text-gray-900 mb-2">Let's Work</span>
+              <span className="block bg-gradient-to-r from-blue-600 via-purple-600 to-blue-600 bg-clip-text text-transparent">Together</span>
+            </h2>
+            <p className="text-base sm:text-lg md:text-xl text-gray-600 font-orbitron max-w-2xl mx-auto px-4">
+              Ready to build your next Web3 project? Contact me for expert blockchain development, smart contracts, and decentralized application solutions. Available for freelance and contract work.
+            </p>
+          </header>
         </motion.div>
 
           <div className="max-w-6xl mx-auto">

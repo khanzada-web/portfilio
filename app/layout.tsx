@@ -20,14 +20,25 @@ const orbitron = Orbitron({
 
 export const metadata: Metadata = {
   title: {
-    default: "Mussawar Hayat - Web3 Developer",
-    template: "%s | Mussawar Hayat"
+    default: "Mussawar Hayat - Web3 Developer | Blockchain & React Expert",
+    template: "%s | Mussawar Hayat - Web3 Developer"
   },
-  description: "Full Stack Web3 Developer building decentralized applications with 5+ years experience. Specialized in React, Next.js, TypeScript, and blockchain development.",
-  keywords: "Web3 developer, blockchain development, React, Next.js, TypeScript, smart contracts, DApp development, decentralized applications, full stack developer, Mussawar Hayat, cryptocurrency, DeFi, NFT",
+  description: "Expert Web3 Developer & Full Stack Engineer with 5+ years building decentralized applications. Specialized in React, Next.js, TypeScript, Solidity, smart contracts, and blockchain development. Available for freelance Web3 projects.",
+  keywords: "Web3 developer, blockchain developer, React developer, Next.js developer, TypeScript, Solidity, smart contracts, DApp development, decentralized applications, DeFi development, NFT development, cryptocurrency, full stack developer, Mussawar Hayat, freelance Web3 developer, blockchain engineer, Ethereum developer, Web3 expert",
   authors: [{ name: "Mussawar Hayat" }],
   creator: "Mussawar Hayat",
   publisher: "Mussawar Hayat",
+  robots: {
+    index: true,
+    follow: true,
+    googleBot: {
+      index: true,
+      follow: true,
+      'max-video-preview': -1,
+      'max-image-preview': 'large',
+      'max-snippet': -1,
+    },
+  },
   formatDetection: {
     email: false,
     address: false,
@@ -41,34 +52,23 @@ export const metadata: Metadata = {
     type: 'website',
     locale: 'en_US',
     url: 'https://mussawar-hayat.com',
-    title: 'Mussawar Hayat - Web3 Developer',
-    description: 'Full Stack Web3 Developer building decentralized applications with 5+ years experience. Specialized in React, Next.js, TypeScript, and blockchain development.',
-    siteName: 'Mussawar Hayat Portfolio',
+    title: 'Mussawar Hayat - Expert Web3 Developer | Blockchain & React Specialist',
+    description: 'Professional Web3 Developer with 5+ years experience building decentralized applications. Expert in React, Next.js, TypeScript, Solidity, and smart contracts. Available for Web3 projects.',
+    siteName: 'Mussawar Hayat - Web3 Developer Portfolio',
     images: [
       {
         url: '/logo.png',
         width: 300,
         height: 110,
-        alt: 'Mussawar Hayat Logo',
+        alt: 'Mussawar Hayat - Web3 Developer Logo',
       },
     ],
   },
   twitter: {
     card: 'summary_large_image',
-    title: 'Mussawar Hayat - Web3 Developer',
-    description: 'Full Stack Web3 Developer building decentralized applications with 5+ years experience. Specialized in React, Next.js, TypeScript, and blockchain development.',
+    title: 'Mussawar Hayat - Web3 Developer | Blockchain Expert',
+    description: 'Expert Web3 Developer building decentralized applications with React, Next.js, TypeScript, and Solidity. 5+ years experience in blockchain development.',
     images: ['/logo.png'],
-  },
-  robots: {
-    index: true,
-    follow: true,
-    googleBot: {
-      index: true,
-      follow: true,
-      'max-video-preview': -1,
-      'max-image-preview': 'large',
-      'max-snippet': -1,
-    },
   },
   verification: {
     google: 'your-google-verification-code',
@@ -91,6 +91,37 @@ export default function RootLayout({
         <link rel="shortcut icon" href="/logo.png" />
         <link rel="apple-touch-icon" href="/logo.png" />
         <link rel="manifest" href="/site.webmanifest" />
+        <script
+          type="application/ld+json"
+          dangerouslySetInnerHTML={{
+            __html: JSON.stringify({
+              "@context": "https://schema.org",
+              "@type": "Person",
+              "name": "Mussawar Hayat",
+              "jobTitle": "Web3 Developer",
+              "description": "Expert Web3 Developer with 5+ years experience building decentralized applications, smart contracts, and blockchain solutions.",
+              "url": "https://mussawar-hayat.com",
+              "image": "https://mussawar-hayat.com/logo.png",
+              "sameAs": [],
+              "knowsAbout": [
+                "Web3 Development",
+                "Blockchain",
+                "React",
+                "Next.js",
+                "TypeScript",
+                "Solidity",
+                "Smart Contracts",
+                "DeFi",
+                "NFT Development"
+              ],
+              "offers": {
+                "@type": "Service",
+                "serviceType": "Web3 Development Services",
+                "description": "Full-stack Web3 development including smart contracts, DApps, and blockchain solutions"
+              }
+            })
+          }}
+        />
       </head>
       <body
         className={`${geistSans.variable} ${geistMono.variable} ${orbitron.variable} antialiased`}

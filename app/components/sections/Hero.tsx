@@ -38,13 +38,18 @@ export function Hero() {
   }, []);
 
   return (
-    <section id="home" className="min-h-screen bg-white flex items-center pt-28 sm:pt-32">
+    <section id="home" className="min-h-screen bg-white flex items-center pt-28 sm:pt-32" role="banner">
       <div className="container mx-auto px-4 sm:px-6 max-w-4xl">
         <div className="text-center space-y-6 sm:space-y-8">
-          <h1 className="text-4xl sm:text-5xl md:text-6xl lg:text-7xl xl:text-8xl font-bold">
-            <div className="font-orbitron text-gray-900 mb-4 sm:mb-8">Mussawar Hayat</div>
-            <div className="font-orbitron bg-gradient-to-r from-blue-600 to-purple-600 bg-clip-text text-transparent text-2xl sm:text-3xl md:text-4xl lg:text-5xl xl:text-6xl">Web3.0 Developer</div>
-          </h1>
+          <header>
+            <h1 className="text-4xl sm:text-5xl md:text-6xl lg:text-7xl xl:text-8xl font-bold">
+              <div className="font-orbitron text-gray-900 mb-4 sm:mb-8">Mussawar Hayat</div>
+              <div className="font-orbitron bg-gradient-to-r from-blue-600 to-purple-600 bg-clip-text text-transparent text-2xl sm:text-3xl md:text-4xl lg:text-5xl xl:text-6xl">Web3.0 Developer</div>
+            </h1>
+            <p className="text-lg sm:text-xl text-gray-600 max-w-2xl mx-auto font-orbitron mt-6">
+              Expert Web3 Developer building decentralized applications with React, Next.js, TypeScript, and blockchain technology. Transform your ideas into innovative Web3 solutions.
+            </p>
+          </header>
           
           <div className="flex items-center justify-center space-x-3 sm:space-x-6">
             <div className="h-px w-12 sm:w-16 md:w-20 lg:w-24 bg-gradient-to-r from-blue-600 to-purple-600"></div>
@@ -54,15 +59,15 @@ export function Hero() {
           
           <div className="grid grid-cols-1 sm:grid-cols-3 gap-4 sm:gap-6 md:gap-8 py-8 sm:py-12">
             <div className="text-center">
-              <div className="text-3xl sm:text-4xl md:text-5xl font-bold text-gray-900 font-orbitron">5+</div>
+              <div className="text-3xl sm:text-4xl md:text-5xl font-bold text-gray-900 font-orbitron" role="img" aria-label="5+ years of experience">5+</div>
               <div className="text-xs sm:text-sm text-gray-600 font-orbitron mt-1">Years Experience</div>
             </div>
             <div className="text-center">
-              <div className="text-3xl sm:text-4xl md:text-5xl font-bold text-gray-900 font-orbitron">100+</div>
+              <div className="text-3xl sm:text-4xl md:text-5xl font-bold text-gray-900 font-orbitron" role="img" aria-label="100+ projects delivered">100+</div>
               <div className="text-xs sm:text-sm text-gray-600 font-orbitron mt-1">Projects Delivered</div>
             </div>
             <div className="text-center">
-              <div className="text-3xl sm:text-4xl md:text-5xl font-bold text-gray-900 font-orbitron">100%</div>
+              <div className="text-3xl sm:text-4xl md:text-5xl font-bold text-gray-900 font-orbitron" role="img" aria-label="100% client satisfaction">100%</div>
               <div className="text-xs sm:text-sm text-gray-600 font-orbitron mt-1">Client Satisfaction</div>
             </div>
           </div>
