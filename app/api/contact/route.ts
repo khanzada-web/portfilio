@@ -5,12 +5,12 @@ export async function POST(request: NextRequest) {
   try {
     const { name, email, message } = await request.json();
 
-    // Create transporter with your Gmail credentials
+    // Create transporter with environment variables
     const transporter = nodemailer.createTransport({
       service: 'gmail',
       auth: {
-        user: 'winord02@gmail.com',
-        pass: 'ahck ptwb rrso yezu'
+        user: process.env.SMTP_USER,
+        pass: process.env.SMTP_PASS,
       },
       tls: {
         rejectUnauthorized: false
@@ -19,8 +19,8 @@ export async function POST(request: NextRequest) {
 
     // Email to you (notification)
     const mailOptionsToYou = {
-      from: 'winord02@gmail.com',
-      to: 'zada38843@gmail.com',
+      from: process.env.SMTP_USER,
+      to: process.env.SMTP_TO_EMAIL,
       subject: `New Contact Form Submission from ${name}`,
       html: `
         <div style="font-family: Arial, sans-serif; max-width: 600px; margin: 0 auto;">
@@ -44,9 +44,9 @@ export async function POST(request: NextRequest) {
 
     // Confirmation email to the user
     const mailOptionsToUser = {
-      from: '"Mussawar Hayat" <winord02@gmail.com>',
+      from: `"Mussawar Hayat" <${process.env.SMTP_USER}>`,
       to: email,
-      replyTo: 'zada38843@gmail.com',
+      replyTo: process.env.SMTP_TO_EMAIL,
       subject: 'Thank you for contacting Mussawar Hayat - Web3 Developer',
       html: `
         <div style="font-family: Arial, sans-serif; max-width: 600px; margin: 0 auto;">
@@ -107,7 +107,7 @@ export async function POST(request: NextRequest) {
             </p>
             <div style="margin-top: 15px;">
               <a href="https://ordwin.fun" style="color: #4f46e5; text-decoration: none; margin: 0 10px;">Portfolio</a> |
-              <a href="mailto:zada38843@gmail.com" style="color: #4f46e5; text-decoration: none; margin: 0 10px;">Email</a>
+              <a href="mailto:${process.env.SMTP_TO_EMAIL}" style="color: #4f46e5; text-decoration: none; margin: 0 10px;">Email</a>
             </div>
           </div>
         </div>
