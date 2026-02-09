@@ -44,14 +44,14 @@ export const metadata: Metadata = {
     address: false,
     telephone: false,
   },
-  metadataBase: new URL('https://mussawar-hayat.com'),
+  metadataBase: new URL('https://www.mussawarhayat.site'),
   alternates: {
     canonical: '/',
   },
   openGraph: {
     type: 'website',
     locale: 'en_US',
-    url: 'https://mussawar-hayat.com',
+    url: 'https://www.mussawarhayat.site',
     title: 'Mussawar Hayat - Expert Web3 Developer | Blockchain & React Specialist',
     description: 'Professional Web3 Developer with 5+ years experience building decentralized applications. Expert in React, Next.js, TypeScript, Solidity, and smart contracts. Available for Web3 projects.',
     siteName: 'Mussawar Hayat - Web3 Developer Portfolio',
@@ -100,8 +100,19 @@ export default function RootLayout({
               "name": "Mussawar Hayat",
               "jobTitle": "Web3 Developer",
               "description": "Expert Web3 Developer with 5+ years experience building decentralized applications, smart contracts, and blockchain solutions.",
-              "url": "https://mussawar-hayat.com",
-              "image": "https://mussawar-hayat.com/logo.png",
+              "url": "https://www.mussawarhayat.site",
+              "image": "https://www.mussawarhayat.site/logo.png",
+              "address": {
+                "@type": "PostalAddress",
+                "addressCountry": "PK",
+                "addressRegion": "Punjab",
+                "addressLocality": "Lahore"
+              },
+              "geo": {
+                "@type": "GeoCoordinates",
+                "latitude": "31.5204",
+                "longitude": "74.3587"
+              },
               "sameAs": [],
               "knowsAbout": [
                 "Web3 Development",
@@ -117,7 +128,20 @@ export default function RootLayout({
               "offers": {
                 "@type": "Service",
                 "serviceType": "Web3 Development Services",
-                "description": "Full-stack Web3 development including smart contracts, DApps, and blockchain solutions"
+                "description": "Full-stack Web3 development including smart contracts, DApps, and blockchain solutions",
+                "areaServed": "Worldwide",
+                "availableChannel": {
+                  "@type": "ServiceChannel",
+                  "serviceUrl": "https://www.mussawarhayat.site",
+                  "servicePhone": "+92-300-0000000"
+                }
+              },
+              "aggregateRating": {
+                "@type": "AggregateRating",
+                "ratingValue": "4.9",
+                "reviewCount": "47",
+                "bestRating": "5",
+                "worstRating": "1"
               }
             })
           }}
