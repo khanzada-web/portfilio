@@ -1,109 +1,100 @@
 'use client';
 
-import Image from 'next/image';
 import { useState, useEffect } from 'react';
-import { Web3SkillsDisplay } from './Web3SkillsDisplay';
 import { AnimatedCounter } from '../ui/AnimatedCounter';
 
 export function Hero() {
   const [isLoaded, setIsLoaded] = useState(false);
-  const [projectCount, setProjectCount] = useState(0);
-  const [satisfactionRate, setSatisfactionRate] = useState(0);
-  const [isHovered, setIsHovered] = useState(false);
-  const [activeCard, setActiveCard] = useState<string | null>(null);
 
   useEffect(() => {
     setIsLoaded(true);
-    
-    // Animate counters
-    const projectTimer = setInterval(() => {
-      setProjectCount((prev) => {
-        if (prev < 500) return prev + Math.ceil((500 - prev) / 20);
-        clearInterval(projectTimer);
-        return 500;
-      });
-    }, 50);
-
-    const satisfactionTimer = setInterval(() => {
-      setSatisfactionRate((prev) => {
-        if (prev < 99) return prev + Math.ceil((99 - prev) / 20);
-        clearInterval(satisfactionTimer);
-        return 99;
-      });
-    }, 50);
-
-    return () => {
-      clearInterval(projectTimer);
-      clearInterval(satisfactionTimer);
-    };
   }, []);
 
   return (
-    <section id="home" className="min-h-screen bg-white flex items-center pt-28 sm:pt-32" role="banner">
-      <div className="container mx-auto px-4 sm:px-6 max-w-4xl">
-        <div className="text-center space-y-6 sm:space-y-8">
-          <header>
-            <h1 className="text-4xl sm:text-5xl md:text-6xl lg:text-7xl xl:text-8xl font-bold">
-              <div className="font-orbitron text-gray-900 mb-4 sm:mb-8">Mussawar Hayat</div>
-              <div className="font-orbitron bg-gradient-to-r from-blue-600 to-purple-600 bg-clip-text text-transparent text-2xl sm:text-3xl md:text-4xl lg:text-5xl xl:text-6xl">Web3.0 Developer</div>
+    <section 
+      id="home" 
+      className="min-h-screen bg-[#060B16] flex items-center pt-40 pb-20 relative overflow-hidden font-orbitron text-[#39FF14]"
+    >
+      {/* Background Depth Elements */}
+      <div className="absolute top-0 left-0 w-full h-full bg-[radial-gradient(circle_at_50%_20%,#1e293b_0%,transparent_50%)] opacity-20"></div>
+
+      <div className="container mx-auto px-6 max-w-5xl relative z-10">
+        <div className="text-center space-y-12">
+          
+          {/* New Web 3.0 Tech Stripe */}
+          <div className="flex justify-center">
+            <div className="inline-flex items-center gap-3 px-4 py-2 border border-[#39FF14]/30 bg-[#39FF14]/5 rounded-full overflow-hidden">
+              <span className="relative flex h-2 w-2">
+                <span className="animate-ping absolute inline-flex h-full w-full rounded-full bg-[#39FF14] opacity-75"></span>
+                <span className="relative inline-flex rounded-full h-2 w-2 bg-[#39FF14]"></span>
+              </span>
+              <span className="text-[10px] sm:text-xs uppercase tracking-[0.4em] font-bold">
+                Web 3.0 Full Stack Dev <span className="mx-2 opacity-30">|</span> System.Active
+              </span>
+            </div>
+          </div>
+
+          {/* Main Title Section */}
+          <header className="space-y-6">
+            <h1 className="text-5xl md:text-7xl lg:text-8xl font-bold tracking-tight">
+              <span className="block opacity-90">Mussawar Hayat</span>
+              <span className="block mt-4 text-white drop-shadow-[0_0_15px_rgba(57,255,20,0.3)]">
+                Full-Stack Developer
+              </span>
             </h1>
-            <p className="text-lg sm:text-xl text-gray-600 max-w-2xl mx-auto font-orbitron mt-6">
-              Expert Web3 Developer building decentralized applications with React, Next.js, TypeScript, and blockchain technology. Transform your ideas into innovative Web3 solutions.
+            
+            <p className="text-lg md:text-xl text-[#39FF14]/80 max-w-3xl mx-auto leading-relaxed lowercase tracking-wider">
+              Building high-performance web & mobile applications. 
+              specialized in modern frameworks with a touch of blockchain integration.
             </p>
           </header>
-          
-          <div className="flex items-center justify-center space-x-3 sm:space-x-6">
-            <div className="h-px w-12 sm:w-16 md:w-20 lg:w-24 bg-gradient-to-r from-blue-600 to-purple-600"></div>
-            <span className="text-sm sm:text-base md:text-lg lg:text-xl text-gray-600 font-semibold font-orbitron">Building Since 2021</span>
-            <div className="h-px w-12 sm:w-16 md:w-20 lg:w-24 bg-gradient-to-r from-purple-600 to-blue-600"></div>
+
+          {/* Stats Section */}
+          <div className="grid grid-cols-1 sm:grid-cols-3 gap-8 py-16 border-y border-[#39FF14]/20">
+            {[
+              { label: 'Years Experience', value: 5, suffix: '+' },
+              { label: 'Apps & Sites Built', value: 100, suffix: '+' },
+              { label: 'Client Success', value: 100, suffix: '%' },
+            ].map((stat, i) => (
+              <div key={i} className="space-y-2">
+                <div className="text-4xl md:text-5xl font-bold tabular-nums">
+                  <AnimatedCounter from={0} to={stat.value} duration={1.5} />
+                  <span>{stat.suffix}</span>
+                </div>
+                <div className="text-[10px] uppercase tracking-[0.3em] opacity-60">
+                  {stat.label}
+                </div>
+              </div>
+            ))}
           </div>
-          
-          <div className="grid grid-cols-1 sm:grid-cols-3 gap-4 sm:gap-6 md:gap-8 py-8 sm:py-12">
-            <div className="text-center">
-              <div className="text-3xl sm:text-4xl md:text-5xl font-bold text-gray-900 font-orbitron" role="img" aria-label="5+ years of experience">
-                <AnimatedCounter from={0} to={5} duration={1} />
-                <span className="text-2xl sm:text-3xl md:text-4xl">+</span>
-              </div>
-              <div className="text-xs sm:text-sm text-gray-600 font-orbitron mt-1">Years Experience</div>
-            </div>
-            <div className="text-center">
-              <div className="text-3xl sm:text-4xl md:text-5xl font-bold text-gray-900 font-orbitron" role="img" aria-label="400+ projects delivered">
-                <AnimatedCounter from={0} to={400} duration={1} />
-                <span className="text-2xl sm:text-3xl md:text-4xl">+</span>
-              </div>
-              <div className="text-xs sm:text-sm text-gray-600 font-orbitron mt-1">Projects Delivered</div>
-            </div>
-            <div className="text-center">
-              <div className="text-3xl sm:text-4xl md:text-5xl font-bold text-gray-900 font-orbitron" role="img" aria-label="100% client satisfaction">
-                <AnimatedCounter from={0} to={100} duration={1} />
-                <span className="text-2xl sm:text-3xl md:text-4xl">%</span>
-              </div>
-              <div className="text-xs sm:text-sm text-gray-600 font-orbitron mt-1">Client Satisfaction</div>
-            </div>
-          </div>
-          
-          <div className="flex flex-col sm:flex-row gap-3 sm:gap-4 justify-center pt-8 sm:pt-12">
+
+          {/* Buttons */}
+          <div className="flex flex-col sm:flex-row gap-6 justify-center items-center pt-8">
             <a 
               href="#portfolio" 
-              className="bg-gradient-to-r from-blue-600 to-purple-600 text-white px-6 sm:px-8 py-3 sm:py-4 rounded-xl text-sm sm:text-base lg:text-lg font-semibold font-orbitron transition-all duration-300 hover:shadow-xl hover:shadow-blue-600/25 flex items-center justify-center space-x-2"
+              className="group relative px-10 py-5 bg-[#39FF14] text-black rounded-sm font-bold transition-all hover:bg-white hover:scale-105 active:scale-95 shadow-[0_0_30px_rgba(57,255,20,0.2)]"
             >
-              <span>View Portfolio</span>
-              <svg className="w-4 h-4 sm:w-5 sm:h-5" fill="none" stroke="currentColor" viewBox="0 0 24 24">
-                <path strokeLinecap="round" strokeLinejoin="round" strokeWidth="2" d="M13 7l5 5m0 0l-5 5m5-5H6"></path>
-              </svg>
+              <span className="flex items-center gap-3">
+                EXPLORE PROJECTS
+                <svg className="w-5 h-5" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                  <path strokeLinecap="round" strokeLinejoin="round" strokeWidth="2.5" d="M14 5l7 7m0 0l-7 7m7-7H3" />
+                </svg>
+              </span>
             </a>
+            
             <a 
               href="#contact" 
-              className="border-2 border-gray-300 text-gray-800 px-6 sm:px-8 py-3 sm:py-4 rounded-xl text-sm sm:text-base lg:text-lg font-semibold font-orbitron transition-all duration-300 hover:border-gray-400 hover:bg-gray-50 flex items-center justify-center space-x-2"
+              className="px-10 py-5 border-2 border-[#39FF14] hover:bg-[#39FF14]/10 rounded-sm font-bold transition-colors tracking-widest"
             >
-              <span>Get In Touch</span>
-              <svg className="w-4 h-4 sm:w-5 sm:h-5" fill="none" stroke="currentColor" viewBox="0 0 24 24">
-                <path strokeLinecap="round" strokeLinejoin="round" strokeWidth="2" d="M3 8l7.89 5.26a2 2 0 002.22 0L21 8M5 19h14a2 2 0 002-2V7a2 2 0 00-2-2H5a2 2 0 00-2 2v10a2 2 0 002 2z"></path>
-              </svg>
+              GET IN TOUCH
             </a>
           </div>
+
         </div>
       </div>
+
+      {/* Optional: Subtle Bottom Decorative Stripe */}
+      <div className="absolute bottom-0 left-0 w-full h-[1px] bg-gradient-to-r from-transparent via-[#39FF14]/20 to-transparent"></div>
     </section>
   );
 }

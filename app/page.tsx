@@ -3,10 +3,14 @@ import { Hero } from './components/sections/Hero';
 import About from './components/sections/About';
 import Portfolio from './components/sections/Portfolio';
 import { Services } from './components/sections/Services';
+import { SaasProjects } from './components/sections/SaasProjects';
 import { Process } from './components/sections/Process';
 import { Testimonials } from './components/sections/Testimonials';
 import { Contact } from './components/sections/Contact';
 import { Footer } from './components/layout/Footer';
+import { TechArchitecture } from './components/sections/TechArchitecture';
+import { PerformanceLab } from './components/sections/PerformanceLab';
+import { GlobalImpact } from './components/sections/GlobalImpact';
 import { Metadata } from 'next';
 import { FAQSchema } from './components/seo/FAQSchema';
 
@@ -97,8 +101,12 @@ export default function Home() {
           <Hero />
           <About />
           <Services />
+          <GlobalImpact />
+          <TechArchitecture />
+          <SaasProjects />
           <Process />
           <Portfolio />
+          <PerformanceLab />
           <Testimonials />
           <Contact />
         </main>

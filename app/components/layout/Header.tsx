@@ -2,152 +2,102 @@
 
 import Link from 'next/link';
 import Image from 'next/image';
-import { useState } from 'react';
+import { useState, useEffect } from 'react';
 import logo from '../logo.png';
 
 export function Header() {
   const [isMenuOpen, setIsMenuOpen] = useState(false);
+  const [scrolled, setScrolled] = useState(false);
+
+  useEffect(() => {
+    const handleScroll = () => setScrolled(window.scrollY > 20);
+    window.addEventListener('scroll', handleScroll);
+    return () => window.removeEventListener('scroll', handleScroll);
+  }, []);
 
   return (
-    <header className="fixed w-full bg-gradient-to-r from-white via-white to-gray-50/95 backdrop-blur-lg shadow-md z-50 border-b border-gray-200/50">
-      <div className="w-full px-4 py-3">
+    <header className={`fixed w-full z-50 transition-all duration-500 ${
+      scrolled 
+        ? 'bg-[#060B16]/95 backdrop-blur-xl border-b border-[#39FF14]/20 py-4' 
+        : 'bg-transparent py-7'
+    }`}>
+      <div className="w-full px-4 sm:px-8"> 
         <div className="flex items-center justify-between">
+          
+          {/* Logo Section */}
           <div className="flex items-center">
-            <Link href="/" className="flex items-center group font-orbitron font-bold text-xl sm:text-2xl text-gray-900 transition-all duration-300 hover:scale-105">
-              <Image 
-                src={logo} 
-                alt="Mussawar Hayat" 
-                width={300} 
-                height={110} 
-                className="h-16 sm:h-20 w-auto transition-all duration-500 group-hover:rotate--3 group-hover:scale-110"
-                priority
-              />
-              <span className="-ml-6 bg-gradient-to-r from-gray-900 to-gray-700 bg-clip-text text-transparent transition-all duration-300 group-hover:from-blue-600 group-hover:to-blue-800 hidden sm:inline">Mussawar Hayat</span>
-              <span className="-ml-6 bg-gradient-to-r from-gray-900 to-gray-700 bg-clip-text text-transparent transition-all duration-300 group-hover:from-blue-600 group-hover:to-blue-800 sm:hidden">MH</span>
+            <Link href="/" className="flex items-center group font-orbitron font-bold transition-all duration-300">
+              <div className="relative">
+                <Image 
+                  src={logo} 
+                  alt="Mussawar Hayat" 
+                  width={200} 
+                  height={75} 
+                  className="h-12 sm:h-14 w-auto brightness-0 invert transition-all duration-300 group-hover:drop-shadow-[0_0_8px_rgba(57,255,20,0.5)]"
+                  priority
+                />
+              </div>
+              <span className="hidden sm:inline ml-3 text-white tracking-tighter text-xl group-hover:text-[#39FF14] transition-colors duration-300">Mussawar Hayat</span>
             </Link>
           </div>
           
-          <nav className="hidden lg:flex items-center space-x-6">
-            <Link 
-              href="#home" 
-              className="font-orbitron text-gray-700 hover:text-gray-900 font-medium transition-all duration-300 relative group px-2 py-1 rounded-lg hover:bg-gray-100/50"
-            >
-              Home
-              <span className="absolute bottom-0 left-2 w-0 h-0.5 bg-gradient-to-r from-gray-900 to-gray-700 transition-all duration-300 group-hover:w-full"></span>
-            </Link>
-            <Link 
-              href="#about" 
-              className="font-orbitron text-gray-700 hover:text-gray-900 font-medium transition-all duration-300 relative group px-2 py-1 rounded-lg hover:bg-gray-100/50"
-            >
-              About
-              <span className="absolute bottom-0 left-2 w-0 h-0.5 bg-gradient-to-r from-gray-900 to-gray-700 transition-all duration-300 group-hover:w-full"></span>
-            </Link>
-           
-            <Link 
-              href="#services" 
-              className="font-orbitron text-gray-700 hover:text-gray-900 font-medium transition-all duration-300 relative group px-2 py-1 rounded-lg hover:bg-gray-100/50"
-            >
-              Services
-              <span className="absolute bottom-0 left-2 w-0 h-0.5 bg-gradient-to-r from-gray-900 to-gray-700 transition-all duration-300 group-hover:w-full"></span>
-            </Link>
-            <Link 
-              href="#process" 
-              className="font-orbitron text-gray-700 hover:text-gray-900 font-medium transition-all duration-300 relative group px-2 py-1 rounded-lg hover:bg-gray-100/50"
-            >
-              Process
-              <span className="absolute bottom-0 left-2 w-0 h-0.5 bg-gradient-to-r from-gray-900 to-gray-700 transition-all duration-300 group-hover:w-full"></span>
-            </Link>
-             <Link 
-              href="#portfolio" 
-              className="font-orbitron text-gray-700 hover:text-gray-900 font-medium transition-all duration-300 relative group px-2 py-1 rounded-lg hover:bg-gray-100/50"
-            >
-              Portfolio
-              <span className="absolute bottom-0 left-2 w-0 h-0.5 bg-gradient-to-r from-gray-900 to-gray-700 transition-all duration-300 group-hover:w-full"></span>
-            </Link>
-            <Link 
-              href="#testimonials" 
-              className="font-orbitron text-gray-700 hover:text-gray-900 font-medium transition-all duration-300 relative group px-2 py-1 rounded-lg hover:bg-gray-100/50"
-            >
-              Testimonials
-              <span className="absolute bottom-0 left-2 w-0 h-0.5 bg-gradient-to-r from-gray-900 to-gray-700 transition-all duration-300 group-hover:w-full"></span>
-            </Link>
-            <div className="relative">
+          {/* Desktop Navigation */}
+          <nav className="hidden lg:flex items-center space-x-7"> 
+            {['Home', 'About', 'Services', 'Process', 'Portfolio', 'Testimonials'].map((item) => (
               <Link 
-                href="#contact" 
-                className="font-orbitron bg-gradient-to-r from-gray-900 to-gray-800 text-white px-6 py-3 rounded-[50px] font-semibold hover:from-gray-800 hover:to-gray-700 transition-all duration-300 transform hover:scale-105 hover:shadow-xl hover:shadow-gray-900/25"
+                key={item}
+                href={`#${item.toLowerCase()}`} 
+                className="font-orbitron text-[11px] uppercase tracking-widest text-white/60 hover:text-[#39FF14] transition-all duration-300 relative group py-2"
               >
-                Contact
+                {item}
+                {/* Green Highlight Line */}
+                <span className="absolute bottom-0 left-0 w-0 h-[2px] bg-[#39FF14] shadow-[0_0_8px_#39FF14] transition-all duration-300 group-hover:w-full"></span>
               </Link>
-              <div className="absolute inset-0 rounded-[50px] bg-gradient-to-r from-gray-900 to-gray-800 opacity-0 hover:opacity-100 transition-opacity duration-300 blur-md -z-10"></div>
-            </div>
+            ))}
+
+            <Link 
+              href="#contact" 
+              className="font-orbitron text-[11px] uppercase tracking-widest border border-[#39FF14] text-[#39FF14] px-6 py-3 font-bold hover:bg-[#39FF14] hover:text-black hover:shadow-[0_0_15px_rgba(57,255,20,0.4)] transition-all duration-300 ml-4"
+            >
+              Contact
+            </Link>
           </nav>
           
+          {/* Mobile Menu Toggle */}
           <button 
-            className="lg:hidden relative w-10 h-10 flex items-center justify-center text-gray-700 hover:text-gray-900 transition-all duration-300 rounded-lg hover:bg-gray-100/50"
+            className="lg:hidden text-[#39FF14] p-2"
             onClick={() => setIsMenuOpen(!isMenuOpen)}
           >
-            <div className="w-6 h-6 relative">
-              <span className={`absolute transition-all duration-300 ${isMenuOpen ? 'rotate-45 top-3' : 'top-1'}`} style={{width: '100%', height: '2px', backgroundColor: 'currentColor', transformOrigin: 'center'}}></span>
-              <span className={`absolute transition-all duration-300 ${isMenuOpen ? 'opacity-0' : 'opacity-100'} top-3`} style={{width: '100%', height: '2px', backgroundColor: 'currentColor', transformOrigin: 'center'}}></span>
-              <span className={`absolute transition-all duration-300 ${isMenuOpen ? '-rotate-45 top-3' : 'top-5'}`} style={{width: '100%', height: '2px', backgroundColor: 'currentColor', transformOrigin: 'center'}}></span>
+            <div className="w-6 h-6 flex flex-col justify-between items-end">
+              <span className={`h-[2px] bg-current transition-all ${isMenuOpen ? 'w-6 rotate-45 translate-y-2.5' : 'w-6'}`}></span>
+              <span className={`h-[2px] bg-current transition-all ${isMenuOpen ? 'opacity-0' : 'w-4'}`}></span>
+              <span className={`h-[2px] bg-current transition-all ${isMenuOpen ? 'w-6 -rotate-45 -translate-y-2.5' : 'w-5'}`}></span>
             </div>
           </button>
         </div>
         
-        {/* Mobile Menu */}
-        <div className={`lg:hidden transition-all duration-500 ease-in-out overflow-hidden ${isMenuOpen ? 'max-h-screen py-4 sm:py-6' : 'max-h-0'}`}>
-          <nav className="flex flex-col space-y-2 sm:space-y-3 px-2 sm:px-4">
-            <Link 
-              href="#home" 
-              className="font-orbitron text-gray-700 hover:text-gray-900 font-medium transition-all duration-300 py-2 sm:py-3 px-3 sm:px-4 rounded-lg hover:bg-gray-100/50 transform hover:translate-x-2 text-sm sm:text-base"
-              onClick={() => setIsMenuOpen(false)}
-            >
-              Home
-            </Link>
-            <Link 
-              href="#about" 
-              className="font-orbitron text-gray-700 hover:text-gray-900 font-medium transition-all duration-300 py-3 px-4 rounded-lg hover:bg-gray-100/50 transform hover:translate-x-2"
-              onClick={() => setIsMenuOpen(false)}
-            >
-              About
-            </Link>
-            <Link 
-              href="#portfolio" 
-              className="font-orbitron text-gray-700 hover:text-gray-900 font-medium transition-all duration-300 py-3 px-4 rounded-lg hover:bg-gray-100/50 transform hover:translate-x-2"
-              onClick={() => setIsMenuOpen(false)}
-            >
-              Portfolio
-            </Link>
-            <Link 
-              href="#services" 
-              className="font-orbitron text-gray-700 hover:text-gray-900 font-medium transition-all duration-300 py-3 px-4 rounded-lg hover:bg-gray-100/50 transform hover:translate-x-2"
-              onClick={() => setIsMenuOpen(false)}
-            >
-              Services
-            </Link>
-            <Link 
-              href="#process" 
-              className="font-orbitron text-gray-700 hover:text-gray-900 font-medium transition-all duration-300 py-3 px-4 rounded-lg hover:bg-gray-100/50 transform hover:translate-x-2"
-              onClick={() => setIsMenuOpen(false)}
-            >
-              Process
-            </Link>
-            <Link 
-              href="#testimonials" 
-              className="font-orbitron text-gray-700 hover:text-gray-900 font-medium transition-all duration-300 py-3 px-4 rounded-lg hover:bg-gray-100/50 transform hover:translate-x-2"
-              onClick={() => setIsMenuOpen(false)}
-            >
-              Testimonials
-            </Link>
-            <div className="pt-4">
+        {/* Mobile Menu Overlay */}
+        <div className={`lg:hidden transition-all duration-500 ease-in-out overflow-hidden bg-[#060B16] border-t border-[#39FF14]/10 ${
+          isMenuOpen ? 'max-h-screen py-10 opacity-100 mt-4' : 'max-h-0 opacity-0'
+        }`}>
+          <nav className="flex flex-col space-y-6 px-4 text-center">
+            {['Home', 'About', 'Services', 'Process', 'Portfolio', 'Testimonials'].map((item) => (
               <Link 
-                href="#contact" 
-                className="font-orbitron bg-gradient-to-r from-gray-900 to-gray-800 text-white px-8 py-3 rounded-[50px] font-semibold hover:from-gray-800 hover:to-gray-700 transition-all duration-300 transform hover:scale-105 hover:shadow-xl hover:shadow-gray-900/25 w-full text-center block"
+                key={item}
+                href={`#${item.toLowerCase()}`} 
+                className="font-orbitron text-[13px] uppercase tracking-[0.25em] text-white/70 hover:text-[#39FF14]"
                 onClick={() => setIsMenuOpen(false)}
               >
-                Contact
+                {item}
               </Link>
-            </div>
+            ))}
+            <Link 
+              href="#contact" 
+              className="font-orbitron text-[12px] uppercase tracking-[0.2em] border border-[#39FF14] text-[#39FF14] py-4 font-bold mt-4"
+              onClick={() => setIsMenuOpen(false)}
+            >
+              Contact
+            </Link>
           </nav>
         </div>
       </div>
