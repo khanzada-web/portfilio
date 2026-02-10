@@ -25,7 +25,7 @@ export const metadata: Metadata = {
     type: 'website',
     images: [
       {
-        url: 'https://www.mussawarhayat.site/logo.png',
+        url: 'https://www.mussawarhayat.site/logo-optimized.png',
         width: 300,
         height: 110,
         alt: 'Mussawar Hayat - Web3 Developer Logo',
@@ -36,37 +36,10 @@ export const metadata: Metadata = {
     card: 'summary_large_image',
     title: 'Mussawar Hayat - Web3 Developer | Blockchain Expert',
     description: 'Expert Web3 Developer building decentralized applications with React, Next.js, TypeScript, and Solidity. 5+ years experience in blockchain development.',
-    images: ['https://www.mussawarhayat.site/logo.png'],
+    images: ['https://www.mussawarhayat.site/logo-optimized.png'],
   },
 };
 
-// Structured Data for SEO
-const structuredData = {
-  "@context": "https://schema.org",
-  "@type": "Person",
-  "name": "Mussawar Hayat",
-  "jobTitle": "Web3 Developer",
-  "description": "Expert Web3 Developer with 5+ years experience building decentralized applications, smart contracts, and blockchain solutions.",
-  "url": "https://www.mussawarhayat.site",
-  "image": "https://www.mussawarhayat.site/my-pic.jpeg",
-  "sameAs": [],
-  "knowsAbout": [
-    "Web3 Development",
-    "Blockchain",
-    "React",
-    "Next.js",
-    "TypeScript",
-    "Solidity",
-    "Smart Contracts",
-    "DeFi",
-    "NFT Development"
-  ],
-  "offers": {
-    "@type": "Service",
-    "serviceType": "Web3 Development Services",
-    "description": "Full-stack Web3 development including smart contracts, DApps, and blockchain solutions"
-  }
-};
 
 const faqs = [
   {
@@ -90,10 +63,6 @@ const faqs = [
 export default function Home() {
   return (
     <>
-      <script
-        type="application/ld+json"
-        dangerouslySetInnerHTML={{ __html: JSON.stringify(structuredData) }}
-      />
       <FAQSchema faqs={faqs} />
       <div className="min-h-screen bg-white font-sans">
         <Header />

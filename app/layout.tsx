@@ -57,7 +57,7 @@ export const metadata: Metadata = {
     siteName: 'Mussawar Hayat - Web3 Developer Portfolio',
     images: [
       {
-        url: '/logo.png',
+        url: '/logo-optimized.png',
         width: 300,
         height: 110,
         alt: 'Mussawar Hayat - Web3 Developer Logo',
@@ -68,11 +68,7 @@ export const metadata: Metadata = {
     card: 'summary_large_image',
     title: 'Mussawar Hayat - Web3 Developer | Blockchain Expert',
     description: 'Expert Web3 Developer building decentralized applications with React, Next.js, TypeScript, and Solidity. 5+ years experience in blockchain development.',
-    images: ['/logo.png'],
-  },
-  verification: {
-    google: 'your-google-verification-code',
-    yandex: 'your-yandex-verification-code',
+    images: ['/logo-optimized.png'],
   },
 };
 
@@ -113,7 +109,11 @@ export default function RootLayout({
                 "latitude": "31.5204",
                 "longitude": "74.3587"
               },
-              "sameAs": [],
+              "sameAs": [
+                "https://github.com/mussawarhayat",
+                "https://linkedin.com/in/mussawarhayat",
+                "https://twitter.com/mussawarhayat"
+              ],
               "knowsAbout": [
                 "Web3 Development",
                 "Blockchain",
@@ -135,13 +135,6 @@ export default function RootLayout({
                   "serviceUrl": "https://www.mussawarhayat.site",
                   "servicePhone": "+92-300-0000000"
                 }
-              },
-              "aggregateRating": {
-                "@type": "AggregateRating",
-                "ratingValue": "4.9",
-                "reviewCount": "47",
-                "bestRating": "5",
-                "worstRating": "1"
               }
             })
           }}

@@ -35,7 +35,14 @@ const nextConfig: NextConfig = {
   // Image optimization
   images: {
     formats: ['image/webp', 'image/avif'],
-    domains: ['www.mussawarhayat.site'],
+    remotePatterns: [
+      {
+        protocol: 'https',
+        hostname: 'www.mussawarhayat.site',
+        port: '',
+        pathname: '/**',
+      },
+    ],
   },
   
   // Compression

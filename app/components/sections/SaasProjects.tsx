@@ -162,7 +162,7 @@ export function SaasProjects() {
               </button>
               <button 
                 onClick={scrollToContact} 
-                className="px-12 py-6 border-2 border-[#39FF14] text-[#39FF14] font-bold uppercase tracking-widest hover:bg-[#39FF14]/10 transition-all"
+                className="px-6 py-3 sm:px-8 sm:py-4 md:px-12 md:py-6 border-2 border-[#39FF14] text-[#39FF14] font-bold uppercase text-sm sm:text-base md:text-lg tracking-wide sm:tracking-widest hover:bg-[#39FF14]/10 transition-all"
               >
                 CONSULTATION_MODULE
               </button>
