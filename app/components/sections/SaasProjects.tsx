@@ -156,7 +156,7 @@ export function SaasProjects() {
             <div className="flex flex-col sm:flex-row gap-6 justify-center">
               <button 
                 onClick={scrollToContact} 
-                className="px-12 py-6 bg-[#39FF14] text-black font-bold uppercase tracking-widest hover:bg-white transition-all shadow-[0_0_30px_rgba(57,255,20,0.1)]"
+                className="px-6 py-3 sm:px-8 sm:py-4 md:px-12 md:py-6 bg-[#39FF14] text-black font-bold uppercase text-sm sm:text-base md:text-lg tracking-wide sm:tracking-widest hover:bg-white transition-all shadow-[0_0_30px_rgba(57,255,20,0.1)]"
               >
                 REQUEST CUSTOM BUILD
               </button>
