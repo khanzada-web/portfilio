@@ -52,7 +52,7 @@ export function Hero() {
           {/* Stats Section */}
           <div className="grid grid-cols-1 sm:grid-cols-3 gap-8 py-16 border-y border-[#39FF14]/20">
             {[
-              { label: 'Years Experience', value: 5, suffix: '+' },
+              { label: 'Years Experience', value: 3, suffix: '+' },
               { label: 'Apps & Sites Built', value: 100, suffix: '+' },
               { label: 'Client Success', value: 100, suffix: '%' },
             ].map((stat, i) => (

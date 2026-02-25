@@ -7,11 +7,11 @@ import { FAQSchema } from '@/app/components/seo/FAQSchema'
 
 export const metadata: Metadata = {
   title: 'Web3 Development Services | Expert Blockchain Developer | Mussawar Hayat',
-  description: 'Professional Web3 development services including DApps, smart contracts, and blockchain solutions. 5+ years experience in React, Next.js, TypeScript, and Solidity. Available for freelance projects.',
+  description: 'Professional Web3 development services including DApps, smart contracts, and blockchain solutions. 3+ years experience in React, Next.js, TypeScript, and Solidity. Available for freelance projects.',
   keywords: 'Web3 development, blockchain development, DApp development, smart contracts, Solidity developer, React Web3, Next.js Web3, TypeScript blockchain, decentralized applications, DeFi development, NFT development, Web3 freelancer, blockchain consultant, Ethereum developer, Web3 expert',
   openGraph: {
     title: 'Web3 Development Services | Expert Blockchain Developer',
-    description: 'Professional Web3 development services including DApps, smart contracts, and blockchain solutions. 5+ years experience building decentralized applications.',
+    description: 'Professional Web3 development services including DApps, smart contracts, and blockchain solutions. 3+ years experience building decentralized applications.',
     url: 'https://www.mussawarhayat.site/web3-development',
     type: 'website',
     images: [
@@ -26,7 +26,7 @@ export const metadata: Metadata = {
   twitter: {
     card: 'summary_large_image',
     title: 'Web3 Development Services | Expert Blockchain Developer',
-    description: 'Professional Web3 development services including DApps, smart contracts, and blockchain solutions. 5+ years experience.',
+    description: 'Professional Web3 development services including DApps, smart contracts, and blockchain solutions. 3+ years experience.',
     images: ['https://www.mussawarhayat.site/logo.png'],
   },
   alternates: {
@@ -91,7 +91,7 @@ export default function Web3DevelopmentPage() {
       <BreadcrumbSchema items={breadcrumbs} />
       <ServiceSchema 
         serviceName="Web3 Development Services"
-        description="Expert Web3 development services including DApps, smart contracts, and blockchain solutions. 5+ years experience building decentralized applications with React, Next.js, TypeScript, and Solidity."
+        description="Expert Web3 development services including DApps, smart contracts, and blockchain solutions. 3+ years experience building decentralized applications with React, Next.js, TypeScript, and Solidity."
         provider="Mussawar Hayat"
         areaServed="Worldwide"
         hasOfferCatalog={services}
@@ -109,7 +109,7 @@ export default function Web3DevelopmentPage() {
             <div className="prose prose-lg max-w-none">
               <p className="text-xl text-gray-600 mb-8">
                 Expert Web3 development services building the future of decentralized applications. 
-                With 5+ years of experience in blockchain development, I create scalable, secure, 
+                With 3+ years of experience in blockchain development, I create scalable, secure, 
                 and innovative Web3 solutions.
               </p>
 

@@ -39,7 +39,7 @@ export function Footer() {
               <h2 className="text-xl sm:text-2xl font-bold text-white font-orbitron tracking-tighter">Mussawar Hayat</h2>
             </div>
             <p className="text-white/50 mb-8 leading-relaxed font-orbitron text-xs sm:text-sm max-w-md">
-              Full Stack Web3 Developer building decentralized applications with 5+ years experience. Specialized in smart contract security and high-performance blockchain infrastructure.
+              Full Stack Web3 Developer building decentralized applications with 3+ years experience. Specialized in smart contract security and high-performance blockchain infrastructure.
             </p>
             
             {/* Contact Info - Professionally Aligned */}

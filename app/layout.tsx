@@ -23,7 +23,7 @@ export const metadata: Metadata = {
     default: "Mussawar Hayat - Web3 Developer | Blockchain & React Expert",
     template: "%s | Mussawar Hayat - Web3 Developer"
   },
-  description: "Expert Web3 Developer & Full Stack Engineer with 5+ years building decentralized applications. Specialized in React, Next.js, TypeScript, Solidity, smart contracts, and blockchain development. Available for freelance Web3 projects.",
+  description: "Expert Web3 Developer & Full Stack Engineer with 3+ years building decentralized applications. Specialized in React, Next.js, TypeScript, Solidity, smart contracts, and blockchain development. Available for freelance Web3 projects.",
   keywords: "Web3 developer, blockchain developer, React developer, Next.js developer, TypeScript, Solidity, smart contracts, DApp development, decentralized applications, DeFi development, NFT development, cryptocurrency, full stack developer, Mussawar Hayat, freelance Web3 developer, blockchain engineer, Ethereum developer, Web3 expert",
   authors: [{ name: "Mussawar Hayat" }],
   creator: "Mussawar Hayat",
@@ -53,7 +53,7 @@ export const metadata: Metadata = {
     locale: 'en_US',
     url: 'https://www.mussawarhayat.site',
     title: 'Mussawar Hayat - Expert Web3 Developer | Blockchain & React Specialist',
-    description: 'Professional Web3 Developer with 5+ years experience building decentralized applications. Expert in React, Next.js, TypeScript, Solidity, and smart contracts. Available for Web3 projects.',
+    description: 'Professional Web3 Developer with 3+ years experience building decentralized applications. Expert in React, Next.js, TypeScript, Solidity, and smart contracts. Available for Web3 projects.',
     siteName: 'Mussawar Hayat - Web3 Developer Portfolio',
     images: [
       {
@@ -67,7 +67,7 @@ export const metadata: Metadata = {
   twitter: {
     card: 'summary_large_image',
     title: 'Mussawar Hayat - Web3 Developer | Blockchain Expert',
-    description: 'Expert Web3 Developer building decentralized applications with React, Next.js, TypeScript, and Solidity. 5+ years experience in blockchain development.',
+    description: 'Expert Web3 Developer building decentralized applications with React, Next.js, TypeScript, and Solidity. 3+ years experience in blockchain development.',
     images: ['/logo-optimized.png'],
   },
 };
@@ -95,7 +95,7 @@ export default function RootLayout({
               "@type": "Person",
               "name": "Mussawar Hayat",
               "jobTitle": "Web3 Developer",
-              "description": "Expert Web3 Developer with 5+ years experience building decentralized applications, smart contracts, and blockchain solutions.",
+              "description": "Expert Web3 Developer with 3+ years experience building decentralized applications, smart contracts, and blockchain solutions.",
               "url": "https://www.mussawarhayat.site",
               "image": "https://www.mussawarhayat.site/logo.png",
               "address": {

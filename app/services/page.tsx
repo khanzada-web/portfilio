@@ -148,7 +148,7 @@ export default function ServicesPage() {
                 <div>
                   <h3 className="text-xl font-semibold mb-4">Technical Excellence</h3>
                   <ul className="space-y-2 text-gray-600">
-                    <li>• 5+ years of blockchain development experience</li>
+                    <li>• 3+ years of blockchain development experience</li>
                     <li>• Expert in React, Next.js, TypeScript, and Solidity</li>
                     <li>• Security-first development approach</li>
                     <li>• Clean, maintainable, and well-documented code</li>

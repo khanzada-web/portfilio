@@ -23,7 +23,7 @@ const About = () => {
   ];
 
   const achievements = [
-    { number: 5, suffix: '+', label: 'Years Experience' },
+    { number: 3, suffix: '+', label: 'Years Experience' },
     { number: 100, suffix: '+', label: 'Digital Solutions' },
     { number: 100, suffix: '%', label: 'Client Satisfaction' },
     { number: '24/7', suffix: '', label: 'Global Delivery' }

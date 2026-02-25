@@ -16,11 +16,11 @@ import { FAQSchema } from './components/seo/FAQSchema';
 
 export const metadata: Metadata = {
   title: 'Mussawar Hayat - Expert Web3 Developer | Blockchain & React Specialist',
-  description: 'Professional Web3 Developer with 5+ years experience building decentralized applications. Expert in React, Next.js, TypeScript, Solidity, and smart contracts. Available for Web3 projects.',
+  description: 'Professional Web3 Developer with 3+ years experience building decentralized applications. Expert in React, Next.js, TypeScript, Solidity, and smart contracts. Available for Web3 projects.',
   keywords: 'Web3 developer, blockchain developer, React developer, Next.js developer, TypeScript, Solidity, smart contracts, DApp development, decentralized applications, DeFi development, NFT development, cryptocurrency, full stack developer, Mussawar Hayat, freelance Web3 developer, blockchain engineer, Ethereum developer, Web3 expert',
   openGraph: {
     title: 'Mussawar Hayat - Expert Web3 Developer | Blockchain & React Specialist',
-    description: 'Professional Web3 Developer with 5+ years experience building decentralized applications. Expert in React, Next.js, TypeScript, Solidity, and smart contracts.',
+    description: 'Professional Web3 Developer with 3+ years experience building decentralized applications. Expert in React, Next.js, TypeScript, Solidity, and smart contracts.',
     url: 'https://www.mussawarhayat.site',
     type: 'website',
     images: [
@@ -35,7 +35,7 @@ export const metadata: Metadata = {
   twitter: {
     card: 'summary_large_image',
     title: 'Mussawar Hayat - Web3 Developer | Blockchain Expert',
-    description: 'Expert Web3 Developer building decentralized applications with React, Next.js, TypeScript, and Solidity. 5+ years experience in blockchain development.',
+    description: 'Expert Web3 Developer building decentralized applications with React, Next.js, TypeScript, and Solidity. 3+ years experience in blockchain development.',
     images: ['https://www.mussawarhayat.site/logo-optimized.png'],
   },
 };

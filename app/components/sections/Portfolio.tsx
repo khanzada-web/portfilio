@@ -14,6 +14,7 @@ const Portfolio = () => {
       description: 'A global AI-driven Metaverse bridging education and business across 5 continents. Features immersive 3D hubs and decentralized infrastructure.',
       category: 'metaverse',
       tech: ['React', 'Three.js', 'AI'],
+      completion: 80,
       link: 'https://dameta1.com/',
       github: '#'
     },
@@ -23,6 +24,7 @@ const Portfolio = () => {
       description: 'The native economic layer for DaMeta1. An ERC-20 smart contract system powering governance and AI-driven marketplace transactions.',
       category: 'defi',
       tech: ['Solidity', 'Web3.js', 'Ethereum'],
+      completion: 80,
       link: 'https://dmu.dameta1.com/',
       github: '#'
     },
@@ -32,6 +34,7 @@ const Portfolio = () => {
       description: 'High-performance Bitcoin NFT marketplace. Specialized in Ordinal inscriptions with a focus on speed and secure trading.',
       category: 'nft',
       tech: ['Next.js', 'TypeScript', 'Bitcoin'],
+      completion: 80,
       link: 'https://ordwin.fun',
       github: 'https://github.com/khanzada-web/ordwin'
     },
@@ -41,6 +44,7 @@ const Portfolio = () => {
       description: 'Dynamic scheduling platform for university ecosystems. Streamlining student time-management with a responsive, real-time UI.',
       category: 'utility',
       tech: ['React', 'Vercel', 'UI/UX'],
+      completion: 80,
       link: 'https://timetbl.vercel.app/',
       github: '#'
     },
@@ -50,6 +54,7 @@ const Portfolio = () => {
       description: 'A premium design-centric platform showcasing collaborative art and wildlife-themed digital experiences for global clients.',
       category: 'design',
       tech: ['Next.js', 'Framer', 'Tailwind'],
+      completion: 80,
       link: 'https://www.rippleroot.io/',
       github: '#'
     },
@@ -59,6 +64,7 @@ const Portfolio = () => {
       description: 'Mobile-first development showcase featuring advanced frontend animations and modular architecture for high-end web apps.',
       category: 'utility',
       tech: ['React', 'Netlify', 'Animations'],
+      completion: 80,
       link: 'https://codmob1.netlify.app/',
       github: '#'
     },
@@ -68,6 +74,7 @@ const Portfolio = () => {
       description: 'DeFi staking architecture with automated yield distribution and secure liquidity pool management for crypto assets.',
       category: 'defi',
       tech: ['Solidity', 'Ethers.js', 'Node.js'],
+      completion: 80,
       link: 'https://soft-stake.netlify.app',
       github: 'https://github.com/khanzada-web/soft-stake'
     },
@@ -77,6 +84,7 @@ const Portfolio = () => {
       description: 'Web3 gaming ecosystem with integrated NFT asset ownership and decentralized community governance protocols.',
       category: 'gaming',
       tech: ['Vue.js', 'IPFS', 'Smart Contracts'],
+      completion: 80,
       link: 'https://debaucherykek.com',
       github: 'https://github.com/khanzada-web/debauchery'
     },
@@ -86,6 +94,7 @@ const Portfolio = () => {
       description: 'Multi-chain DEX interface featuring advanced charting tools and high-frequency data indexing for pro traders.',
       category: 'defi',
       tech: ['React', 'GraphQL', 'PostgreSQL'],
+      completion: 80,
       link: 'https://demotrionn.netlify.app',
       github: 'https://github.com/khanzada-web/demotrionn'
     },
@@ -95,6 +104,7 @@ const Portfolio = () => {
       description: 'Blockchain-verified news aggregator utilizing tokenized incentives for content verification and community reporting.',
       category: 'media',
       tech: ['Next.js', 'Redis', 'Docker'],
+      completion: 80,
       link: 'https://newspress.netlify.app',
       github: 'https://github.com/khanzada-web/newspress'
     },
@@ -104,6 +114,7 @@ const Portfolio = () => {
       description: 'Custom-built high-performance engine for showcasing decentralized applications with a terminal-inspired aesthetic.',
       category: 'utility',
       tech: ['TypeScript', 'Framer', 'Next.js'],
+      completion: 80,
       link: '#',
       github: '#'
     },
@@ -113,6 +124,7 @@ const Portfolio = () => {
       description: 'Cross-chain utility for managing NFT whitelist signatures and secure allocation verification for launchpads.',
       category: 'utility',
       tech: ['React', 'Ethers.js', 'Express'],
+      completion: 80,
       link: 'https://whitelistcheck.netlify.app',
       github: 'https://github.com/khanzada-web/whitelistcheck'
     }
