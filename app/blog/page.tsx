@@ -1,31 +1,33 @@
 import { Metadata } from 'next'
+import Link from 'next/link'
 import { Header } from '@/app/components/layout/Header'
 import { Footer } from '@/app/components/layout/Footer'
 import { BreadcrumbSchema } from '@/app/components/seo/BreadcrumbSchema'
+import { SubscriptionModal } from '@/app/components/SubscriptionModal'
 
 export const metadata: Metadata = {
-  title: 'Web3 Development Blog | Blockchain Insights | Mussawar Hayat',
-  description: 'Expert insights on Web3 development, blockchain technology, smart contracts, DeFi, and NFT development. Stay updated with the latest trends in decentralized applications.',
-  keywords: 'Web3 blog, blockchain blog, smart contract tutorial, DeFi guide, NFT development, React Web3, Next.js blockchain, Solidity tips, Web3 development insights, blockchain technology trends, decentralized applications guide',
+  title: 'Mussawar Hayat Blog | Web3, Blockchain & Full-Stack Dev Insights',
+  description: 'Expert insights on Web3 development, blockchain, AI agents, smart contracts, DeFi, and full-stack engineering. Stay updated with the latest strategies in decentralized technology.',
+  keywords: 'Web3 blog, blockchain development, AI agents blockchain, account abstraction, RWA tokenization, modular blockchains, smart contracts, DeFi, full-stack developer blog, Next.js, React',
   openGraph: {
-    title: 'Web3 Development Blog | Blockchain Insights',
-    description: 'Expert insights on Web3 development, blockchain technology, smart contracts, and decentralized applications.',
+    title: 'Mussawar Hayat Blog | Web3, Blockchain & Full-Stack Dev Insights',
+    description: 'Expert insights on Web3 development, blockchain, AI agents, smart contracts, DeFi, and full-stack engineering.',
     url: 'https://www.mussawarhayat.site/blog',
     type: 'website',
     images: [
       {
-        url: 'https://www.mussawarhayat.site/logo.png',
-        width: 300,
-        height: 110,
-        alt: 'Web3 Development Blog - Mussawar Hayat',
+        url: 'https://www.mussawarhayat.site/_next/static/media/logo.2deab1c7.png',
+        width: 640,
+        height: 640,
+        alt: 'Mussawar Hayat Blog',
       },
     ],
   },
   twitter: {
     card: 'summary_large_image',
-    title: 'Web3 Development Blog | Blockchain Insights',
-    description: 'Expert insights on Web3 development, blockchain technology, smart contracts, and decentralized applications.',
-    images: ['https://www.mussawarhayat.site/logo.png'],
+    title: 'Mussawar Hayat Blog | Web3 & Full-Stack Dev Insights',
+    description: 'Expert insights on Web3 development, blockchain, AI agents, smart contracts, DeFi, and full-stack engineering.',
+    images: ['https://www.mussawarhayat.site/_next/static/media/logo.2deab1c7.png'],
   },
   alternates: {
     canonical: '/blog',
@@ -34,144 +36,154 @@ export const metadata: Metadata = {
 
 const breadcrumbs = [
   { name: 'Home', url: '/' },
-  { name: 'Blog', url: '/blog' }
+  { name: 'Blog', url: '/blog' },
 ]
 
 const blogPosts = [
+  // ── NEW HOT POSTS ──────────────────────────────────────────
   {
-    title: 'Building Scalable DeFi Protocols: Best Practices 2025',
-    excerpt: 'Learn the latest best practices for building secure and scalable DeFi protocols in 2025, including security considerations and optimization techniques.',
-    slug: 'building-scalable-defi-protocols-2025',
-    date: '2025-01-08',
-    readTime: '8 min read',
-    category: 'DeFi Development'
+    title: 'AI Agents on Blockchain: The Biggest Web3 Trend of 2026',
+    excerpt: 'Autonomous AI agents are executing smart contracts, managing DeFi portfolios, and governing DAOs without human input. Here\'s what every Web3 developer needs to know right now.',
+    slug: 'ai-agents-blockchain-web3-2026',
+    date: '2026-03-10',
+    readTime: '11 min read',
+    category: 'Web3 & AI',
+    isNew: true,
   },
   {
-    title: 'Smart Contract Security: Common Vulnerabilities and Solutions',
-    excerpt: 'A comprehensive guide to identifying and preventing common smart contract vulnerabilities, including reentrancy attacks and overflow bugs.',
-    slug: 'smart-contract-security-vulnerabilities',
-    date: '2025-01-05',
-    readTime: '12 min read',
-    category: 'Security'
-  },
-  {
-    title: 'Next.js 15 + Web3: Building Modern DApps',
-    excerpt: 'How to leverage Next.js 15 features for building modern decentralized applications with improved performance and developer experience.',
-    slug: 'nextjs-15-web3-modern-dapps',
-    date: '2025-01-02',
-    readTime: '6 min read',
-    category: 'Web3 Development'
-  },
-  {
-    title: 'NFT Marketplace Development: Complete Guide',
-    excerpt: 'Step-by-step guide to building a full-featured NFT marketplace with smart contracts, frontend integration, and IPFS storage.',
-    slug: 'nft-marketplace-development-guide',
-    date: '2024-12-28',
-    readTime: '15 min read',
-    category: 'NFT Development'
-  },
-  {
-    title: 'Layer 2 Solutions: Choosing the Right Scaling Solution',
-    excerpt: 'Compare different Layer 2 solutions including Optimistic Rollups, ZK-Rollups, and sidechains to choose the best for your project.',
-    slug: 'layer-2-solutions-comparison',
-    date: '2024-12-25',
+    title: 'Account Abstraction in 2026: The End of Seed Phrases',
+    excerpt: 'ERC-4337 and smart wallets are killing the biggest UX barrier in Web3. Here\'s a complete developer guide to building with Account Abstraction today.',
+    slug: 'account-abstraction-smart-wallets-guide',
+    date: '2026-03-05',
     readTime: '10 min read',
-    category: 'Blockchain'
+    category: 'Web3 Development',
+    isNew: true,
   },
   {
-    title: 'Web3.js vs Ethers.js: Which Library to Choose in 2025',
-    excerpt: 'Comprehensive comparison of Web3.js and Ethers.js libraries for blockchain interaction, including performance and feature analysis.',
-    slug: 'web3js-vs-ethersjs-comparison',
-    date: '2024-12-20',
-    readTime: '7 min read',
-    category: 'Tools & Libraries'
-  }
+    title: 'RWA Tokenization: How Blockchain Is Eating Real-World Finance',
+    excerpt: 'Real-world asset tokenization crossed $24 billion in 2025 and is accelerating fast. Here\'s the full developer and investor breakdown of the biggest infrastructure shift in Web3.',
+    slug: 'real-world-asset-tokenization-rwa-guide',
+    date: '2026-02-28',
+    readTime: '12 min read',
+    category: 'Blockchain & DeFi',
+    isNew: true,
+  },
+  {
+    title: 'Modular Blockchains & L2s: The Infrastructure Stack Every Web3 Dev Must Know',
+    excerpt: 'The monolithic blockchain era is over. Modular architecture — separating execution, consensus, and data availability — is how the next billion users get on-chain.',
+    slug: 'modular-blockchains-l2-developer-guide',
+    date: '2026-02-20',
+    readTime: '13 min read',
+    category: 'Blockchain',
+    isNew: true,
+  },
+  // ── EXISTING POSTS ─────────────────────────────────────────
+  {
+    title: 'AI Business Automation: Transform Your Operations in 2025',
+    excerpt: 'Discover how AI automation can revolutionize Canadian businesses with practical implementation strategies, cost savings, and competitive advantages.',
+    slug: 'ai-business-automation-2025',
+    date: '2024-12-15',
+    readTime: '10 min read',
+    category: 'AI & Automation',
+    isNew: false,
+  },
 ]
 
 export default function BlogPage() {
   return (
     <>
       <BreadcrumbSchema items={breadcrumbs} />
-      
-      <div className="min-h-screen bg-white font-sans">
+
+      <div className="min-h-screen bg-[#060B16] font-orbitron">
         <Header />
         <main role="main" id="main-content" className="pt-20">
           <div className="max-w-6xl mx-auto px-4 py-16">
-            <div className="text-center mb-16">
-              <h1 className="text-4xl md:text-5xl font-bold text-gray-900 mb-6">
-                Web3 Development Blog
+
+            {/* Page Header */}
+            <div className="text-center mb-12 md:mb-16">
+              <h1 className="text-3xl sm:text-4xl md:text-5xl font-bold text-white font-orbitron mb-4 md:mb-6">
+                <span className="text-[#39FF14]">Mussawar</span> Tech Blog
               </h1>
-              <p className="text-xl text-gray-600 max-w-3xl mx-auto">
-                Expert insights, tutorials, and best practices for Web3 development, 
-                blockchain technology, and decentralized applications.
+              <p className="text-lg md:text-xl text-gray-400 max-w-3xl mx-auto px-4">
+                Expert insights on Web3 development, blockchain, AI agents, smart contracts,
+                DeFi, and full-stack engineering.
               </p>
             </div>
 
-            <div className="grid md:grid-cols-2 lg:grid-cols-3 gap-8">
-              {blogPosts.map((post, index) => (
-                <article key={index} className="bg-white border border-gray-200 rounded-lg overflow-hidden hover:shadow-lg transition-shadow">
-                  <div className="p-6">
-                    <div className="flex items-center justify-between mb-4">
-                      <span className="text-sm font-medium text-blue-600 bg-blue-50 px-3 py-1 rounded-full">
-                        {post.category}
-                      </span>
-                      <span className="text-sm text-gray-500">{post.readTime}</span>
+            {/* Blog Grid */}
+            <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6 lg:gap-8">
+              {blogPosts.map((post) => (
+                <article
+                  key={post.slug}
+                  className="bg-gray-900/20 border border-white/10 rounded-lg overflow-hidden hover:shadow-lg hover:border-[#39FF14]/30 transition-all duration-300 flex flex-col group"
+                >
+                  <div className="p-4 sm:p-6 flex flex-col flex-1">
+                    {/* Category + Read Time */}
+                    <div className="flex flex-col sm:flex-row sm:items-center justify-between mb-4 gap-2">
+                      <div className="flex items-center gap-2">
+                        <span className="text-xs sm:text-sm font-medium text-[#39FF14] bg-[#39FF14]/10 px-2 sm:px-3 py-1 rounded-md">
+                          {post.category}
+                        </span>
+                      </div>
+                      <span className="text-xs sm:text-sm text-gray-400">{post.readTime}</span>
                     </div>
-                    
-                    <h2 className="text-xl font-semibold text-gray-900 mb-3 line-clamp-2">
-                      <a 
+
+                    {/* Title */}
+                    <h2 className="text-lg sm:text-xl font-semibold text-white font-orbitron mb-3 overflow-hidden" style={{ display: '-webkit-box', WebkitLineClamp: 2, WebkitBoxOrient: 'vertical' }}>
+                      <Link
                         href={`/blog/${post.slug}`}
-                        className="hover:text-blue-600 transition-colors"
+                        className="hover:text-[#39FF14] transition-colors"
                       >
                         {post.title}
-                      </a>
+                      </Link>
                     </h2>
-                    
-                    <p className="text-gray-600 mb-4 line-clamp-3">
+
+                    {/* Excerpt */}
+                    <p className="text-sm sm:text-base text-gray-400 mb-4 flex-1 overflow-hidden" style={{ display: '-webkit-box', WebkitLineClamp: 3, WebkitBoxOrient: 'vertical' }}>
                       {post.excerpt}
                     </p>
-                    
-                    <div className="flex items-center justify-between">
-                      <time dateTime={post.date} className="text-sm text-gray-500">
-                        {new Date(post.date).toLocaleDateString('en-US', { 
-                          year: 'numeric', 
-                          month: 'long', 
-                          day: 'numeric' 
+
+                    {/* Footer */}
+                    <div className="flex flex-col sm:flex-row sm:items-center justify-between mt-auto pt-4 border-t border-white/5 gap-2">
+                      <time dateTime={post.date} className="text-xs sm:text-sm text-gray-500">
+                        {new Date(post.date).toLocaleDateString('en-US', {
+                          year: 'numeric',
+                          month: 'long',
+                          day: 'numeric',
                         })}
                       </time>
-                      
-                      <a 
+
+                      <Link
                         href={`/blog/${post.slug}`}
-                        className="text-blue-600 hover:text-blue-700 font-medium text-sm flex items-center"
+                        className="text-white hover:text-[#39FF14] transition-colors text-sm flex items-center gap-1 group"
                       >
                         Read more
-                        <svg className="w-4 h-4 ml-1" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                        <svg
+                          className="w-4 h-4 group-hover:translate-x-1 transition-transform"
+                          fill="none"
+                          stroke="currentColor"
+                          viewBox="0 0 24 24"
+                        >
                           <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M9 5l7 7-7 7" />
                         </svg>
-                      </a>
+                      </Link>
                     </div>
                   </div>
                 </article>
               ))}
             </div>
 
-            <div className="mt-16 text-center">
-              <div className="bg-gray-50 rounded-lg p-8">
-                <h2 className="text-2xl font-bold text-gray-900 mb-4">
-                  Stay Updated with Web3 Trends
+            {/* Newsletter CTA */}
+            <div className="mt-12 md:mt-16 text-center">
+              <div className="bg-gray-900/20 rounded-lg p-6 md:p-8 border border-white/10">
+                <h2 className="text-xl md:text-2xl font-bold text-white font-orbitron mb-4">
+                  Stay Updated with <span className="text-[#39FF14]">Web3 Trends</span>
                 </h2>
-                <p className="text-gray-600 mb-6">
-                  Get the latest insights on Web3 development, blockchain technology, and decentralized applications delivered to your inbox.
+                <p className="text-sm md:text-base text-gray-400 mb-6 px-2">
+                  Get the latest insights on Web3 development, blockchain, AI agents, smart
+                  contracts, and full-stack engineering delivered straight to your inbox.
                 </p>
-                <a 
-                  href="/contact"
-                  className="inline-flex items-center px-6 py-3 bg-blue-600 text-white font-medium rounded-lg hover:bg-blue-700 transition-colors"
-                >
-                  Subscribe to Newsletter
-                  <svg className="w-5 h-5 ml-2" fill="none" stroke="currentColor" viewBox="0 0 24 24">
-                    <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M3 8l7.89 5.26a2 2 0 002.22 0L21 8M5 19h14a2 2 0 002-2V7a2 2 0 00-2-2H5a2 2 0 00-2 2v10a2 2 0 002 2z" />
-                  </svg>
-                </a>
+                <SubscriptionModal />
               </div>
             </div>
           </div>

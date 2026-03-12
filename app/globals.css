@@ -159,3 +159,226 @@ body {
     padding: 0 1rem;
   }
 }
+
+/* Blog page text color fix */
+body[class*="bg-[#060B16"] {
+  color: white !important;
+}
+
+/* Blog content text override */
+.prose-invert {
+  color: white !important;
+}
+
+.prose-invert p,
+.prose-invert h1,
+.prose-invert h2,
+.prose-invert h3,
+.prose-invert h4,
+.prose-invert h5,
+.prose-invert h6,
+.prose-invert li,
+.prose-invert blockquote,
+.prose-invert a,
+.prose-invert strong,
+.prose-invert em,
+.prose-invert code {
+  color: inherit !important;
+}
+
+/* Enhanced blog content styling */
+.prose-invert .intro-section {
+  margin-bottom: 3rem;
+}
+
+.prose-invert .lead-paragraph {
+  font-size: 1.25rem;
+  line-height: 1.8;
+  color: rgba(255, 255, 255, 0.9);
+  font-weight: 300;
+  margin-bottom: 2rem;
+}
+
+.prose-invert .key-highlights,
+.prose-invert .checklist-box,
+.prose-invert .strategy-grid,
+.prose-invert .canadian-focus,
+.prose-invert .link-building-tactics,
+.prose-invert .tools-focus,
+.prose-invert .final-takeaway,
+.prose-invert .cta-section {
+  background: linear-gradient(135deg, rgba(57, 255, 20, 0.05) 0%, rgba(57, 255, 20, 0.02) 100%);
+  border: 1px solid rgba(57, 255, 20, 0.2);
+  border-radius: 1rem;
+  padding: 2rem;
+  margin: 2rem 0;
+  backdrop-filter: blur(10px);
+  box-shadow: 0 8px 32px rgba(0, 0, 0, 0.1);
+  transition: all 0.3s ease;
+}
+
+.prose-invert .key-highlights:hover,
+.prose-invert .checklist-box:hover,
+.prose-invert .strategy-grid:hover,
+.prose-invert .canadian-focus:hover,
+.prose-invert .link-building-tactics:hover,
+.prose-invert .tools-focus:hover,
+.prose-invert .final-takeaway:hover,
+.prose-invert .cta-section:hover {
+  border-color: rgba(57, 255, 20, 0.4);
+  box-shadow: 0 12px 40px rgba(57, 255, 20, 0.1);
+  transform: translateY(-2px);
+}
+
+.prose-invert .key-highlights h4,
+.prose-invert .checklist-box h4,
+.prose-invert .strategy-grid h4,
+.prose-invert .canadian-focus h4,
+.prose-invert .link-building-tactics h4,
+.prose-invert .tools-focus h4,
+.prose-invert .final-takeaway h4,
+.prose-invert .cta-section h4 {
+  color: #39FF14;
+  font-size: 1.25rem;
+  font-weight: 600;
+  margin-bottom: 1rem;
+  display: flex;
+  align-items: center;
+  gap: 0.5rem;
+}
+
+.prose-invert .key-highlights ul,
+.prose-invert .checklist-box ul,
+.prose-invert .strategy-grid ul,
+.prose-invert .canadian-focus ul,
+.prose-invert .link-building-tactics ul,
+.prose-invert .tools-focus ul {
+  list-style: none;
+  padding: 0;
+  margin: 0;
+}
+
+.prose-invert .key-highlights li,
+.prose-invert .checklist-box li,
+.prose-invert .strategy-grid li,
+.prose-invert .canadian-focus li,
+.prose-invert .link-building-tactics li,
+.prose-invert .tools-focus li {
+  padding: 0.75rem 0;
+  border-bottom: 1px solid rgba(255, 255, 255, 0.1);
+  position: relative;
+  padding-left: 2rem;
+  transition: all 0.2s ease;
+}
+
+.prose-invert .key-highlights li:last-child,
+.prose-invert .checklist-box li:last-child,
+.prose-invert .strategy-grid li:last-child,
+.prose-invert .canadian-focus li:last-child,
+.prose-invert .link-building-tactics li:last-child,
+.prose-invert .tools-focus li:last-child {
+  border-bottom: none;
+}
+
+.prose-invert .key-highlights li::before,
+.prose-invert .checklist-box li::before,
+.prose-invert .strategy-grid li::before,
+.prose-invert .canadian-focus li::before,
+.prose-invert .link-building-tactics li::before,
+.prose-invert .tools-focus li::before {
+  content: "▶";
+  color: #39FF14;
+  position: absolute;
+  left: 0;
+  font-size: 0.75rem;
+  top: 1.25rem;
+  transition: all 0.2s ease;
+}
+
+.prose-invert .key-highlights li:hover::before,
+.prose-invert .checklist-box li:hover::before,
+.prose-invert .strategy-grid li:hover::before,
+.prose-invert .canadian-focus li:hover::before,
+.prose-invert .link-building-tactics li:hover::before,
+.prose-invert .tools-focus li:hover::before {
+  transform: translateX(4px);
+}
+
+.prose-invert .final-takeaway {
+  background: linear-gradient(135deg, rgba(57, 255, 20, 0.08) 0%, rgba(57, 255, 20, 0.03) 100%);
+  border-left: 4px solid #39FF14;
+}
+
+.prose-invert .final-takeaway p {
+  font-style: italic;
+  font-size: 1.1rem;
+  line-height: 1.8;
+  color: rgba(255, 255, 255, 0.9);
+}
+
+.prose-invert .cta-section {
+  background: linear-gradient(135deg, rgba(57, 255, 20, 0.1) 0%, rgba(57, 255, 20, 0.05) 100%);
+  text-align: center;
+}
+
+.prose-invert .technical-section,
+.prose-invert .onpage-section,
+.prose-invert .content-strategy-section,
+.prose-invert .local-seo-section,
+.prose-invert .linkbuilding-section,
+.prose-invert .analytics-section,
+.prose-invert .conclusion-section {
+  margin: 4rem 0;
+}
+
+.prose-invert blockquote {
+  background: linear-gradient(135deg, rgba(57, 255, 20, 0.06) 0%, rgba(57, 255, 20, 0.02) 100%);
+  border-left: 4px solid #39FF14;
+  padding: 2rem;
+  margin: 2rem 0;
+  border-radius: 0 1rem 1rem 0;
+  font-style: italic;
+  font-size: 1.1rem;
+  position: relative;
+}
+
+.prose-invert blockquote::before {
+  content: '"';
+  position: absolute;
+  top: -1rem;
+  left: 1rem;
+  font-size: 4rem;
+  color: rgba(57, 255, 20, 0.3);
+  font-family: serif;
+}
+
+.prose-invert hr {
+  border: none;
+  height: 2px;
+  background: linear-gradient(90deg, transparent, rgba(57, 255, 20, 0.3), transparent);
+  margin: 3rem 0;
+}
+
+/* Section spacing improvements */
+.prose-invert .technical-section,
+.prose-invert .onpage-section,
+.prose-invert .content-strategy-section,
+.prose-invert .local-seo-section,
+.prose-invert .linkbuilding-section,
+.prose-invert .analytics-section {
+  scroll-margin-top: 2rem;
+}
+
+/* Anchor link scroll margin */
+#intro,
+#technical,
+#onpage,
+#content-strategy,
+#local-seo,
+#linkbuilding,
+#analytics,
+#conclusion,
+#cta,
+#contact {
+  scroll-margin-top: 6rem;
+}

@@ -70,6 +70,9 @@ export const metadata: Metadata = {
     description: 'Expert Web3 Developer building decentralized applications with React, Next.js, TypeScript, and Solidity. 3+ years experience in blockchain development.',
     images: ['/logo-optimized.png'],
   },
+  verification: {
+    google: 'verification-code-here', // Add your Google verification code
+  },
 };
 
 export default function RootLayout({
