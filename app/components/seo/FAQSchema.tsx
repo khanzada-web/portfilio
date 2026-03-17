@@ -4,7 +4,7 @@ interface FAQItem {
 }
 
 interface FAQSchemaProps {
-  faqs: FAQItem[]
+  faqs: readonly FAQItem[]
 }
 
 export function FAQSchema({ faqs }: FAQSchemaProps) {
