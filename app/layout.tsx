@@ -226,6 +226,9 @@ export default function RootLayout({
         </a>
 
         {children}
+        
+        {/* Vercel Speed Insights - uncomment after installing @vercel/speed-insights */}
+        {/* <SpeedInsights /> */}
       </body>
     </html>
   );
