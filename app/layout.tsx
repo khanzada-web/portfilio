@@ -206,7 +206,7 @@ export default function RootLayout({
                   "servicePhone": "+92-300-0000000"
                 }
               }
-            })
+            }, null, 2)
           }}
         />
       </head>

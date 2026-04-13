@@ -42,6 +42,42 @@ const breadcrumbs = [
 const blogPosts = [
   // ── NEW HOT POSTS ──────────────────────────────────────────
   {
+    title: 'The Strait of Hormuz Standoff: Global Markets Braced as Naval Blockade Tightens',
+    excerpt: 'Tensions in the Middle East reached a fever pitch as U.S. naval forces established a "security perimeter" around Iranian shipping lanes. Oil prices spiked 8% as shipping giants reroute vessels around the Cape of Good Hope.',
+    slug: 'strait-of-hormuz-standoff-2026',
+    date: '2026-04-13',
+    readTime: '5 min read',
+    category: 'World News',
+    isNew: true,
+  },
+  {
+    title: 'Bieberchella: Justin\'s Surprise Set Defines a New Era for Coachella',
+    excerpt: 'Justin Bieber\'s unannounced headline set has become the single most-watched live-streamed event of the year. Moving away from high-production pop roots, the performance featured stripped-back acoustic arrangements and heavy R&B influence.',
+    slug: 'bieberchella-justin-coachella-2026',
+    date: '2026-04-13',
+    readTime: '4 min read',
+    category: 'Entertainment',
+    isNew: true,
+  },
+  {
+    title: 'Artemis II: The Crew Prepares for History in Final Simulation Phases',
+    excerpt: 'NASA has released new footage of the Artemis II crew undergoing rigorous centrifuge training as they approach the final months before their lunar flyby. This mission marks the first time humans will return to the vicinity of the Moon in over half a century.',
+    slug: 'artemis-ii-crew-final-simulation-2026',
+    date: '2026-04-13',
+    readTime: '6 min read',
+    category: 'Science & Space',
+    isNew: true,
+  },
+  {
+    title: 'Why Your For You Page is Full of the "Gaslighting" Yoga Challenge',
+    excerpt: 'If you\'ve opened TikTok or Instagram today, you\'ve likely seen someone face-planting while trying the "Gaslighting" Yoga Pose. The challenge has become the ultimate viral "fail" trend mocking unrealistic fitness influencer culture.',
+    slug: 'gaslighting-yoga-challenge-tiktok-2026',
+    date: '2026-04-13',
+    readTime: '3 min read',
+    category: 'Digital Culture',
+    isNew: true,
+  },
+  {
     title: 'AI Agents on Blockchain: The Biggest Web3 Trend of 2026',
     excerpt: 'Autonomous AI agents are executing smart contracts, managing DeFi portfolios, and governing DAOs without human input. Here\'s what every Web3 developer needs to know right now.',
     slug: 'ai-agents-blockchain-web3-2026',
@@ -104,7 +140,7 @@ export default function BlogPage() {
               <h1 className="text-3xl sm:text-4xl md:text-5xl font-bold text-white font-orbitron mb-4 md:mb-6">
                 <span className="text-[#39FF14]">Mussawar</span> Tech Blog
               </h1>
-              <p className="text-lg md:text-xl text-gray-400 max-w-3xl mx-auto px-4">
+              <p className="text-lg md:text-xl text-white/60 max-w-3xl mx-auto px-4">
                 Expert insights on Web3 development, blockchain, AI agents, smart contracts,
                 DeFi, and full-stack engineering.
               </p>
@@ -125,7 +161,7 @@ export default function BlogPage() {
                           {post.category}
                         </span>
                       </div>
-                      <span className="text-xs sm:text-sm text-gray-400">{post.readTime}</span>
+                      <span className="text-xs sm:text-sm text-white/50">{post.readTime}</span>
                     </div>
 
                     {/* Title */}
@@ -139,13 +175,13 @@ export default function BlogPage() {
                     </h2>
 
                     {/* Excerpt */}
-                    <p className="text-sm sm:text-base text-gray-400 mb-4 flex-1 overflow-hidden" style={{ display: '-webkit-box', WebkitLineClamp: 3, WebkitBoxOrient: 'vertical' }}>
+                    <p className="text-sm sm:text-base text-white/60 mb-4 flex-1 overflow-hidden" style={{ display: '-webkit-box', WebkitLineClamp: 3, WebkitBoxOrient: 'vertical' }}>
                       {post.excerpt}
                     </p>
 
                     {/* Footer */}
                     <div className="flex flex-col sm:flex-row sm:items-center justify-between mt-auto pt-4 border-t border-white/5 gap-2">
-                      <time dateTime={post.date} className="text-xs sm:text-sm text-gray-500">
+                      <time dateTime={post.date} className="text-xs sm:text-sm text-white/40">
                         {new Date(post.date).toLocaleDateString('en-US', {
                           year: 'numeric',
                           month: 'long',
@@ -179,7 +215,7 @@ export default function BlogPage() {
                 <h2 className="text-xl md:text-2xl font-bold text-white font-orbitron mb-4">
                   Stay Updated with <span className="text-[#39FF14]">Web3 Trends</span>
                 </h2>
-                <p className="text-sm md:text-base text-gray-400 mb-6 px-2">
+                <p className="text-sm md:text-base text-white/60 mb-6 px-2">
                   Get the latest insights on Web3 development, blockchain, AI agents, smart
                   contracts, and full-stack engineering delivered straight to your inbox.
                 </p>
