@@ -143,6 +143,13 @@ export default function RootLayout({
   return (
     <html lang="en" dir="ltr">
       <head>
+        {/* Google AdSense Script */}
+        <script
+          async
+          src="https://pagead2.googlesyndication.com/pagead/js/adsbygoogle.js?client=ca-pub-9383132900869188"
+          crossOrigin="anonymous"
+        />
+        
         {/* Favicons */}
         <link rel="icon"             type="image/png" href="/logo.png" />
         <link rel="shortcut icon"                     href="/logo.png" />
