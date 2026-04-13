@@ -2,94 +2,154 @@ import type { Metadata } from "next";
 import { Geist, Geist_Mono, Orbitron } from "next/font/google";
 import "./globals.css";
 
+// ─── Fonts ────────────────────────────────────────────────────────────────────
+// display:"swap" prevents invisible text while fonts load (improves CLS / LCP)
+
 const geistSans = Geist({
   variable: "--font-geist-sans",
   subsets: ["latin"],
+  display: "swap",
 });
 
 const geistMono = Geist_Mono({
   variable: "--font-geist-mono",
   subsets: ["latin"],
+  display: "swap",
 });
 
+// Only load weights you actually use — each extra weight = extra network request
 const orbitron = Orbitron({
   variable: "--font-orbitron",
   subsets: ["latin"],
-  weight: ["400", "500", "600", "700", "800", "900"],
+  weight: ["700", "900"],   // headings only; remove others unless proven needed
+  display: "swap",
 });
 
+// ─── Metadata ─────────────────────────────────────────────────────────────────
+
 export const metadata: Metadata = {
+  // ── Titles ──────────────────────────────────────────────────────────────────
   title: {
-    default: "Mussawar Hayat - Web3 Developer | Blockchain & React Expert",
-    template: "%s | Mussawar Hayat - Web3 Developer"
+    default: "Mussawar Hayat — Web3 & Blockchain Developer",
+    template: "%s | Mussawar Hayat",
   },
-  description: "Expert Web3 Developer & Full Stack Engineer with 3+ years building decentralized applications. Specialized in React, Next.js, TypeScript, Solidity, smart contracts, and blockchain development. Available for freelance Web3 projects.",
-  keywords: "Web3 developer, blockchain developer, React developer, Next.js developer, TypeScript, Solidity, smart contracts, DApp development, decentralized applications, DeFi development, NFT development, cryptocurrency, full stack developer, Mussawar Hayat, freelance Web3 developer, blockchain engineer, Ethereum developer, Web3 expert",
-  authors: [{ name: "Mussawar Hayat" }],
+
+  // ── Description (written for humans, not bots) ───────────────────────────
+  description:
+    "I build fast, secure Web3 apps — DApps, DeFi platforms, and smart contracts. " +
+    "3+ years with React, Next.js, TypeScript & Solidity. Open to freelance work worldwide.",
+
+  // ── Keywords (low Google weight, but fine to keep concise) ───────────────
+  keywords: [
+    "Web3 developer",
+    "blockchain developer",
+    "React developer",
+    "Next.js developer",
+    "Solidity",
+    "smart contracts",
+    "DApp development",
+    "DeFi",
+    "NFT development",
+    "Ethereum developer",
+    "Mussawar Hayat",
+  ],
+
+  // ── Authorship ───────────────────────────────────────────────────────────
+  authors: [{ name: "Mussawar Hayat", url: "https://www.mussawarhayat.site" }],
   creator: "Mussawar Hayat",
   publisher: "Mussawar Hayat",
+
+  // ── Canonical & base URL ─────────────────────────────────────────────────
+  metadataBase: new URL("https://www.mussawarhayat.site"),
+  alternates: {
+    canonical: "/",
+  },
+
+  // ── Robots ───────────────────────────────────────────────────────────────
   robots: {
     index: true,
     follow: true,
     googleBot: {
       index: true,
       follow: true,
-      'max-video-preview': -1,
-      'max-image-preview': 'large',
-      'max-snippet': -1,
+      "max-video-preview": -1,
+      "max-image-preview": "large",
+      "max-snippet": -1,
     },
   },
+
+  // ── Theme colour (Next.js way — removes need for manual <meta> tags) ─────
+  themeColor: [
+    { media: "(prefers-color-scheme: light)", color: "#2563eb" },
+    { media: "(prefers-color-scheme: dark)",  color: "#1d4ed8" },
+  ],
+
+  // ── Format detection ─────────────────────────────────────────────────────
   formatDetection: {
     email: false,
     address: false,
     telephone: false,
   },
-  metadataBase: new URL('https://www.mussawarhayat.site'),
-  alternates: {
-    canonical: '/',
+
+  // ── Google AdSense verification ──────────────────────────────────────────
+  verification: {
+    google: 'ca-pub-9383132900869188',
   },
+
+  // ── Open Graph ───────────────────────────────────────────────────────────
   openGraph: {
-    type: 'website',
-    locale: 'en_US',
-    url: 'https://www.mussawarhayat.site',
-    title: 'Mussawar Hayat - Expert Web3 Developer | Blockchain & React Specialist',
-    description: 'Professional Web3 Developer with 3+ years experience building decentralized applications. Expert in React, Next.js, TypeScript, Solidity, and smart contracts. Available for Web3 projects.',
-    siteName: 'Mussawar Hayat - Web3 Developer Portfolio',
+    type: "website",
+    locale: "en_US",
+    url: "https://www.mussawarhayat.site",
+    title: "Mussawar Hayat — Web3 & Blockchain Developer",
+    description:
+      "I build fast, secure Web3 apps — DApps, DeFi platforms, and smart contracts. " +
+      "3+ years with React, Next.js, TypeScript & Solidity.",
+    siteName: "Mussawar Hayat — Web3 Developer Portfolio",
     images: [
       {
-        url: '/logo-optimized.png',
-        width: 300,
-        height: 110,
-        alt: 'Mussawar Hayat - Web3 Developer Logo',
+        // ✅ Must be 1200×630 for proper social previews (Twitter, LinkedIn, Facebook)
+        url: "/og-image.png",
+        width: 1200,
+        height: 630,
+        alt: "Mussawar Hayat — Web3 Developer Portfolio",
       },
     ],
   },
+
+  // ── Twitter / X Card ─────────────────────────────────────────────────────
   twitter: {
-    card: 'summary_large_image',
-    title: 'Mussawar Hayat - Web3 Developer | Blockchain Expert',
-    description: 'Expert Web3 Developer building decentralized applications with React, Next.js, TypeScript, and Solidity. 3+ years experience in blockchain development.',
-    images: ['/logo-optimized.png'],
+    card: "summary_large_image",
+    title: "Mussawar Hayat — Web3 & Blockchain Developer",
+    description:
+      "Building DApps, DeFi platforms, and smart contracts with React, Next.js & Solidity. " +
+      "3+ years experience. Open to freelance.",
+    images: ["/og-image.png"],
+    // creator: "@your_twitter_handle", // ← add when you have a Twitter handle
   },
-  verification: {
-    google: 'verification-code-here', // Add your Google verification code
-  },
+
+  // ── Google Search Console verification ───────────────────────────────────
+  // TODO: Replace with your actual code from Search Console → Settings → Ownership
+  // verification: {
+  //   google: "your-actual-code-here",
+  // },
 };
+
+// ─── Root Layout ──────────────────────────────────────────────────────────────
 
 export default function RootLayout({
   children,
-}: Readonly<{
-  children: React.ReactNode;
-}>) {
+}: Readonly<{ children: React.ReactNode }>) {
   return (
     <html lang="en" dir="ltr">
       <head>
-        <meta name="viewport" content="width=device-width, initial-scale=1" />
-        <meta name="theme-color" content="#2563eb" />
-        <meta name="msapplication-TileColor" content="#2563eb" />
-        <link rel="icon" type="image/png" href="/logo.png" />
-        <link rel="shortcut icon" href="/logo.png" />
-        <link rel="apple-touch-icon" href="/logo.png" />
-        <link rel="manifest" href="/site.webmanifest" />
+        {/* Favicons */}
+        <link rel="icon"             type="image/png" href="/logo.png" />
+        <link rel="shortcut icon"                     href="/logo.png" />
+        <link rel="apple-touch-icon"                  href="/logo.png" />
+        <link rel="manifest"                          href="/site.webmanifest" />
+
+        {/* JSON-LD Structured Data */}
         <script
           type="application/ld+json"
           dangerouslySetInnerHTML={{
@@ -143,14 +203,28 @@ export default function RootLayout({
           }}
         />
       </head>
+
       <body
-        className={`${geistSans.variable} ${geistMono.variable} ${orbitron.variable} antialiased`}
+        className={`
+          ${geistSans.variable}
+          ${geistMono.variable}
+          ${orbitron.variable}
+          antialiased
+        `}
       >
-        <div className="skip-link">
-          <a href="#main-content" className="sr-only focus:not-sr-only focus:absolute focus:top-4 focus:left-4 bg-blue-600 text-white px-4 py-2 rounded">
-            Skip to main content
-          </a>
-        </div>
+        {/* Accessibility: lets keyboard users skip straight to page content */}
+        <a
+          href="#main-content"
+          className="
+            sr-only focus:not-sr-only focus:absolute
+            focus:top-4 focus:left-4 z-50
+            bg-blue-600 text-white px-4 py-2 rounded
+            focus:outline-none focus:ring-2 focus:ring-white
+          "
+        >
+          Skip to main content
+        </a>
+
         {children}
       </body>
     </html>
