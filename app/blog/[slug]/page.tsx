@@ -175,7 +175,6 @@ export async function createProject(formData: FormData) {
           <p>I design and build production-grade full-stack applications with this exact stack. <a href="/contact" style="color: #39FF14;">Get in touch</a> if you want to move faster.</p>
         </div>
 
-        <!-- RELATED POSTS — Professional Card Layout -->
         <div style="margin-top:4rem;padding-top:2.5rem;border-top:1px solid rgba(255,255,255,0.1);">
           <h3 style="margin-bottom:1.75rem;">Related Posts</h3>
           <div style="display:grid;grid-template-columns:repeat(auto-fit,minmax(260px,1fr));gap:1.25rem;">
@@ -189,7 +188,7 @@ export async function createProject(formData: FormData) {
 
             <a href="/blog/gdpr-compliant-web-apps-checklist" style="display:block;text-decoration:none;background:#0A1221;border:1px solid rgba(57,255,20,0.2);border-radius:12px;padding:1.5rem;transition:border-color 0.3s ease;">
               <span style="display:inline-block;font-size:11px;color:#39FF14;background:rgba(57,255,20,0.1);padding:4px 10px;border-radius:6px;margin-bottom:12px;letter-spacing:0.05em;">Full-Stack</span>
-              <div style="font-size:16px;font-weight:600;color:#ffffff;line-height:1.4;margin-bottom:8px;">Building GDPR-Compliant Web Apps: A Developer's Checklist</div>
+              <div style="font-size:16px;font-weight:600;color:#ffffff;line-height:1.4;margin-bottom:8px;">Building GDPR-Compliant Web Apps: A Developer\'s Checklist</div>
               <div style="font-size:13px;color:rgba(255,255,255,0.5);line-height:1.5;">Cookie consent, data rights, and secure storage for EU clients.</div>
               <div style="font-size:12px;color:rgba(255,255,255,0.35);margin-top:12px;">10 min read</div>
             </a>
@@ -206,150 +205,110 @@ export async function createProject(formData: FormData) {
       </div>
     `,
     date: '2026-07-26',
-    readTime: '7 min read',
+    readTime: '14 min read',
     category: 'Full-Stack',
     author: 'Mussawar Hayat',
-    keywords: ['Next.js 16', 'SaaS tutorial', 'Prisma', 'TypeScript', 'App Router', 'Server Actions', 'Tailwind CSS', 'Auth.js', 'full-stack development']
-  },
-  'strait-of-hormuz-standoff-2026': {
-    title: 'The Strait of Hormuz Standoff: Global Markets Braced as Naval Blockade Tightens',
-    excerpt: 'Tensions in the Middle East reached a fever pitch as U.S. naval forces officially established a "security perimeter" around key Iranian shipping lanes.',
-    content: `<div class="intro-section"><h2>Global Markets on Edge</h2><p class="lead-paragraph">The Strait of Hormuz has become the center of escalating geopolitical tensions.</p></div>`,
-    date: '2026-04-13',
-    readTime: '5 min read',
-    category: 'World News',
-    author: 'Global News Desk',
-    keywords: ['Strait of Hormuz', 'geopolitics']
-  },
-  'bieberchella-justin-coachella-2026': {
-    title: 'Bieberchella: Justin\'s Surprise Set Defines a New Era for Coachella',
-    excerpt: 'Justin Bieber\'s unannounced headline set has become the single most-watched live-streamed event of the year.',
-    content: `<div class="intro-section"><h2>The Musical Phenomenon</h2><p class="lead-paragraph">Justin Bieber transformed Coachella 2026 into his personal stage.</p></div>`,
-    date: '2026-04-13',
-    readTime: '4 min read',
-    category: 'Entertainment',
-    author: 'Entertainment Desk',
-    keywords: ['Justin Bieber', 'Coachella']
-  },
-  'artemis-ii-crew-final-simulation-2026': {
-    title: 'Artemis II: The Crew Prepares for History in Final Simulation Phases',
-    excerpt: 'NASA has released new footage of the Artemis II crew undergoing rigorous centrifuge training.',
-    content: `<div class="intro-section"><h2>Humanity's Return to the Moon</h2><p class="lead-paragraph">The first humans near the Moon in over half a century.</p></div>`,
-    date: '2026-04-13',
-    readTime: '6 min read',
-    category: 'Science & Space',
-    author: 'Science Desk',
-    keywords: ['NASA', 'Artemis II']
-  },
-  'gaslighting-yoga-challenge-tiktok-2026': {
-    title: 'Why Your For You Page is Full of the "Gaslighting" Yoga Pose',
-    excerpt: 'The challenge has become the ultimate viral "fail" trend.',
-    content: `<div class="intro-section"><h2>The Viral Challenge</h2><p class="lead-paragraph">A deceptively simple pose that is nearly impossible.</p></div>`,
-    date: '2026-04-13',
-    readTime: '3 min read',
-    category: 'Digital Culture',
-    author: 'Culture Desk',
-    keywords: ['TikTok', 'viral challenges']
+    keywords: ['Next.js 16', 'SaaS tutorial', 'Prisma', 'TypeScript', 'App Router', 'Server Actions', 'Tailwind CSS', 'Auth.js', 'full-stack development', 'hire Next.js developer']
   },
   'ai-agents-blockchain-web3-2026': {
     title: 'AI Agents on Blockchain: The Biggest Web3 Trend of 2026',
-    excerpt: 'Autonomous AI agents are executing smart contracts and managing DeFi portfolios.',
-    content: `<div class="intro-section"><h2>The AI Agent Revolution</h2><p class="lead-paragraph">AI and blockchain are converging into autonomous digital agents.</p></div>`,
+    excerpt: 'Autonomous AI agents are executing smart contracts, managing DeFi portfolios, and governing DAOs without human input. Here\'s what every Web3 developer needs to know right now.',
+    content: `<div class="intro-section"><h2>The AI Agent Revolution</h2><p class="lead-paragraph">AI and blockchain are converging into autonomous digital agents that can hold keys, sign transactions, and execute complex DeFi strategies. For developers this means new architecture patterns around agent wallets, permissionless execution, and on-chain verification of AI decisions.</p><h2>Core Building Blocks</h2><ul><li>Smart accounts / Account Abstraction for agent-controlled wallets</li><li>Secure key management and policy engines</li><li>Oracle and off-chain compute bridges</li><li>Audit trails and dispute resolution</li></ul><p>I build these systems end-to-end when clients need production-ready agent infrastructure.</p></div>`,
     date: '2026-03-10',
     readTime: '11 min read',
     category: 'Web3 & AI',
     author: 'Mussawar Hayat',
-    keywords: ['AI agents', 'blockchain']
+    keywords: ['AI agents', 'blockchain', 'Web3', 'DeFi agents', 'autonomous agents']
   },
   'account-abstraction-smart-wallets-guide': {
     title: 'Account Abstraction in 2026: The End of Seed Phrases',
-    excerpt: 'ERC-4337 and smart wallets are killing the biggest UX barrier in Web3.',
-    content: `<div class="intro-section"><h2>The UX Revolution</h2><p class="lead-paragraph">Account Abstraction has matured into a production-ready solution.</p></div>`,
+    excerpt: 'ERC-4337 and smart wallets are killing the biggest UX barrier in Web3. Here\'s a complete developer guide to building with Account Abstraction today.',
+    content: `<div class="intro-section"><h2>The UX Revolution</h2><p class="lead-paragraph">Account Abstraction (ERC-4337) has matured into a production-ready solution. Users no longer need to manage seed phrases. Gas sponsorship, social recovery, session keys, and batched transactions are now standard.</p><h2>What Developers Should Implement</h2><ul><li>EntryPoint and UserOperation flow</li><li>Paymasters for gasless experiences</li><li>Session keys for dApp convenience</li><li>Recovery modules</li></ul><p>I have shipped multiple production smart-wallet integrations across EVM chains.</p></div>`,
     date: '2026-03-05',
     readTime: '10 min read',
     category: 'Web3 Development',
     author: 'Mussawar Hayat',
-    keywords: ['Account Abstraction', 'ERC-4337']
+    keywords: ['Account Abstraction', 'ERC-4337', 'smart wallets', 'Web3 UX', 'gasless transactions']
   },
   'real-world-asset-tokenization-rwa-guide': {
     title: 'RWA Tokenization: How Blockchain Is Eating Real-World Finance',
-    excerpt: 'Real-world asset tokenization crossed $24 billion in 2025.',
-    content: `<div class="intro-section"><h2>The $24 Billion Revolution</h2><p class="lead-paragraph">RWA tokenization is creating new financial markets.</p></div>`,
+    excerpt: 'Real-world asset tokenization crossed $24 billion in 2025 and is accelerating fast. Here\'s the full developer and investor breakdown of the biggest infrastructure shift in Web3.',
+    content: `<div class="intro-section"><h2>The $24 Billion Revolution</h2><p class="lead-paragraph">RWA tokenization is creating new financial markets for real estate, treasuries, private credit, and more. Developers need to understand compliance layers, oracle design, and legal wrappers around on-chain assets.</p></div>`,
     date: '2026-02-28',
     readTime: '12 min read',
     category: 'Blockchain & DeFi',
     author: 'Mussawar Hayat',
-    keywords: ['RWA', 'tokenization']
+    keywords: ['RWA', 'tokenization', 'real world assets', 'DeFi', 'blockchain finance']
   },
   'modular-blockchains-l2-developer-guide': {
     title: 'Modular Blockchains & L2s: The Infrastructure Stack Every Web3 Dev Must Know',
-    excerpt: 'The monolithic blockchain era is over.',
-    content: `<div class="intro-section"><h2>The Modular Revolution</h2><p class="lead-paragraph">Modular architecture is how the next billion users get on-chain.</p></div>`,
+    excerpt: 'The monolithic blockchain era is over. Modular architecture — separating execution, consensus, and data availability — is how the next billion users get on-chain.',
+    content: `<div class="intro-section"><h2>The Modular Revolution</h2><p class="lead-paragraph">Modular architecture is how the next billion users get on-chain. Understanding Celestia, EigenLayer, OP Stack, Arbitrum Orbit, and shared sequencers is now table stakes for serious Web3 builders.</p></div>`,
     date: '2026-02-20',
     readTime: '13 min read',
     category: 'Blockchain',
     author: 'Mussawar Hayat',
-    keywords: ['modular blockchains', 'L2']
+    keywords: ['modular blockchains', 'L2', 'data availability', 'OP Stack', 'Celestia']
   },
   'deploying-multi-site-nextjs-vps-nginx': {
     title: 'Deploying a Multi-Site Next.js App on a Single VPS with Nginx',
-    excerpt: 'Running multiple Next.js apps on one VPS with Nginx reverse proxy, PM2, and SSL.',
-    content: `<div class="intro-section"><h2>One VPS, Multiple Next.js Apps</h2><p class="lead-paragraph">The exact production architecture I use.</p></div>`,
+    excerpt: 'Running multiple Next.js apps on one VPS with Nginx reverse proxy, PM2, and SSL — the exact setup I use for production deployments.',
+    content: `<div class="intro-section"><h2>One VPS, Multiple Next.js Apps</h2><p class="lead-paragraph">The exact production architecture I use for cost-efficient multi-site hosting. Nginx as reverse proxy, PM2 for process management, Certbot for SSL, and proper domain routing.</p></div>`,
     date: '2026-05-15',
     readTime: '9 min read',
     category: 'DevOps',
     author: 'Mussawar Hayat',
-    keywords: ['VPS', 'Nginx', 'PM2']
+    keywords: ['VPS', 'Nginx', 'PM2', 'Next.js deployment', 'multi-site hosting']
   },
   'building-bitcoin-ordinals-marketplace': {
     title: 'Building a Bitcoin Ordinals Marketplace: Architecture Breakdown',
-    excerpt: 'How I built Ordwin — a Bitcoin NFT marketplace for Ordinal inscriptions.',
-    content: `<div class="intro-section"><h2>Building Ordwin</h2><p class="lead-paragraph">The core challenge was indexing at chain speed.</p></div>`,
+    excerpt: 'How I built Ordwin — a Bitcoin NFT marketplace for Ordinal inscriptions. Indexing, ownership tracking, and the real performance challenges.',
+    content: `<div class="intro-section"><h2>Building Ordwin</h2><p class="lead-paragraph">The core challenge was indexing inscriptions at chain speed and keeping ownership state consistent. This post covers the architecture decisions behind a production Bitcoin Ordinals marketplace.</p></div>`,
     date: '2026-05-10',
     readTime: '11 min read',
     category: 'Web3',
     author: 'Mussawar Hayat',
-    keywords: ['Bitcoin Ordinals']
+    keywords: ['Bitcoin Ordinals', 'NFT marketplace', 'inscriptions', 'Bitcoin development']
   },
   'metamask-vs-walletconnect-dapp': {
     title: 'MetaMask vs WalletConnect: Choosing Wallet Integration for Your DApp',
-    excerpt: 'Both work. Both have edge cases.',
-    content: `<div class="intro-section"><h2>Wallet Integration</h2><p class="lead-paragraph">What I learned integrating multiple wallets.</p></div>`,
+    excerpt: 'Both work. Both have edge cases. Here\'s what I learned integrating MetaMask, WalletConnect, and Coinbase Wallet across multiple DApps.',
+    content: `<div class="intro-section"><h2>Wallet Integration</h2><p class="lead-paragraph">What I learned integrating multiple wallets in production dApps. Trade-offs around UX, mobile support, session management, and error handling.</p></div>`,
     date: '2026-05-05',
     readTime: '8 min read',
     category: 'Web3',
     author: 'Mussawar Hayat',
-    keywords: ['MetaMask', 'WalletConnect']
+    keywords: ['MetaMask', 'WalletConnect', 'dApp wallet integration', 'Web3 wallet']
   },
   'spf-dkim-dmarc-multi-domain-vps': {
     title: 'Setting Up SPF, DKIM, and DMARC for a Multi-Domain VPS',
-    excerpt: 'Email deliverability is silent until it breaks.',
-    content: `<div class="intro-section"><h2>Email Deliverability</h2><p class="lead-paragraph">The exact DNS setup I use.</p></div>`,
+    excerpt: 'Email deliverability is silent until it breaks. Here\'s the exact DNS setup I use to keep transactional email out of spam across multiple domains.',
+    content: `<div class="intro-section"><h2>Email Deliverability</h2><p class="lead-paragraph">The exact DNS and server setup I use so transactional and marketing email from multiple domains lands in the inbox instead of spam.</p></div>`,
     date: '2026-04-28',
     readTime: '7 min read',
     category: 'DevOps',
     author: 'Mussawar Hayat',
-    keywords: ['SPF', 'DKIM', 'DMARC']
+    keywords: ['SPF', 'DKIM', 'DMARC', 'email deliverability', 'VPS email']
   },
   'gdpr-compliant-web-apps-checklist': {
     title: 'Building GDPR-Compliant Web Apps: A Developer\'s Checklist',
-    excerpt: 'Cookie consent, secure data storage, data subject rights.',
-    content: `<div class="intro-section"><h2>GDPR for Developers</h2><p class="lead-paragraph">A practical engineering checklist.</p></div>`,
+    excerpt: 'Cookie consent, secure data storage, data subject rights — a practical checklist for full-stack developers building for EU clients.',
+    content: `<div class="intro-section"><h2>GDPR for Developers</h2><p class="lead-paragraph">A practical engineering checklist covering consent, data minimization, subject access requests, breach notification, and technical safeguards.</p></div>`,
     date: '2026-04-20',
     readTime: '10 min read',
     category: 'Full-Stack',
     author: 'Mussawar Hayat',
-    keywords: ['GDPR']
+    keywords: ['GDPR', 'privacy', 'cookie consent', 'EU compliance', 'full-stack']
   },
   'multi-chain-dex-interface-performance': {
     title: 'Building a Multi-Chain DEX Interface Without Killing Performance',
-    excerpt: 'Real-time price feeds, chart rendering, and websocket management.',
-    content: `<div class="intro-section"><h2>Demotrionn DEX</h2><p class="lead-paragraph">How I built a high-performance multi-chain trading interface.</p></div>`,
+    excerpt: 'Real-time price feeds, chart rendering, and websocket management — how I built Demotrionn DEX without melting the browser.',
+    content: `<div class="intro-section"><h2>Demotrionn DEX</h2><p class="lead-paragraph">How I built a high-performance multi-chain trading interface. Managing dozens of websockets, efficient chart libraries, and keeping the main thread responsive under heavy data load.</p></div>`,
     date: '2026-04-15',
     readTime: '12 min read',
     category: 'Web3',
     author: 'Mussawar Hayat',
-    keywords: ['DEX', 'performance']
+    keywords: ['DEX', 'performance', 'multi-chain', 'Web3 frontend', 'websocket']
   },
 }
 
@@ -554,7 +513,7 @@ export default async function BlogPostPage({ params }: PageProps) {
                   Ready to start your project?
                 </h3>
                 <p className="text-white/80 mb-8 max-w-2xl mx-auto">
-                  Let's discuss how we can transform your digital presence with cutting-edge solutions.
+                  Let\'s discuss how we can transform your digital presence with cutting-edge solutions.
                 </p>
                 <Link
                   href="/contact"
