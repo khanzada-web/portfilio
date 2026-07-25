@@ -18,7 +18,7 @@ interface BlogPost {
 
 const blogPosts: Record<string, BlogPost> = {
   'nextjs-16-saas-tutorial-prisma-typescript-2026': {
-    title: 'Building a Production-Ready Full-Stack SaaS with Next.js 16, TypeScript, Prisma & Tailwind (2026)',
+    title: 'Next.js 16 + Prisma SaaS Tutorial (2026) | Full-Stack Guide',
     excerpt: 'Step-by-step guide to building a scalable SaaS with Next.js 16 App Router, Prisma, Auth.js, and Tailwind CSS. Includes Server Actions, production patterns, and deployment.',
     content: `
       <div class="intro-section">
@@ -365,7 +365,7 @@ export async function generateMetadata({ params }: PageProps): Promise<Metadata>
       authors: [post.author],
       images: [
         {
-          url: '/og-image.png',
+          url: 'https://www.mussawarhayat.site/og-image.png',
           width: 1200,
           height: 630,
           alt: post.title,
@@ -376,9 +376,47 @@ export async function generateMetadata({ params }: PageProps): Promise<Metadata>
       card: 'summary_large_image',
       title: post.title,
       description: post.excerpt,
-      images: ['/og-image.png'],
+      images: ['https://www.mussawarhayat.site/og-image.png'],
     },
   }
+}
+
+function BlogPostingSchema({ post, slug }: { post: BlogPost; slug: string }) {
+  const pageUrl = `https://www.mussawarhayat.site/blog/${slug}`
+
+  const jsonLd = {
+    '@context': 'https://schema.org',
+    '@type': 'BlogPosting',
+    headline: post.title,
+    description: post.excerpt,
+    image: 'https://www.mussawarhayat.site/og-image.png',
+    datePublished: post.date,
+    dateModified: post.date,
+    author: {
+      '@type': 'Person',
+      name: post.author,
+      url: 'https://www.mussawarhayat.site',
+    },
+    publisher: {
+      '@type': 'Person',
+      name: 'Mussawar Hayat',
+      url: 'https://www.mussawarhayat.site',
+    },
+    mainEntityOfPage: {
+      '@type': 'WebPage',
+      '@id': pageUrl,
+    },
+    keywords: post.keywords.join(', '),
+    articleSection: post.category,
+    inLanguage: 'en-US',
+  }
+
+  return (
+    <script
+      type="application/ld+json"
+      dangerouslySetInnerHTML={{ __html: JSON.stringify(jsonLd) }}
+    />
+  )
 }
 
 export default async function BlogPostPage({ params }: PageProps) {
@@ -398,6 +436,7 @@ export default async function BlogPostPage({ params }: PageProps) {
   return (
     <>
       <BreadcrumbSchema items={breadcrumbs} />
+      <BlogPostingSchema post={post} slug={slug} />
 
       <div className="min-h-screen bg-[#060B16] font-orbitron">
         <Header />
