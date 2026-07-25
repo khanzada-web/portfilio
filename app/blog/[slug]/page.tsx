@@ -23,93 +23,130 @@ const blogPosts: Record<string, BlogPost> = {
     content: `
       <div class="intro-section">
         <h2>Why This Stack Wins in 2026</h2>
-        <p class="lead-paragraph">Next.js 16 with the App Router, TypeScript, Prisma, and Tailwind CSS has become the default choice for serious full-stack SaaS products. It gives you end-to-end type safety, excellent performance, Server Components by default, and a developer experience that scales from MVP to production.</p>
+        <p class="lead-paragraph">Next.js 16 with the App Router, TypeScript, Prisma, and Tailwind CSS has become the default choice for serious full-stack SaaS products. It delivers end-to-end type safety, excellent performance, Server Components by default, and a developer experience that scales cleanly from MVP to production.</p>
         
         <div class="key-highlights">
           <h4>What You Will Build</h4>
           <ul>
-            <li><strong>Next.js 16 App Router</strong> – Server Components, nested layouts, streaming</li>
-            <li><strong>Prisma + PostgreSQL</strong> – Type-safe database layer</li>
-            <li><strong>Auth.js</strong> – Flexible authentication</li>
-            <li><strong>Tailwind CSS + shadcn/ui</strong> – Fast, consistent UI</li>
-            <li><strong>Server Actions</strong> – Mutations without API routes</li>
+            <li><strong>Next.js 16 App Router</strong> — Server Components, nested layouts, streaming</li>
+            <li><strong>Prisma + PostgreSQL</strong> — Fully type-safe database layer</li>
+            <li><strong>Auth.js</strong> — Flexible, production-ready authentication</li>
+            <li><strong>Tailwind CSS + shadcn/ui</strong> — Fast and consistent UI</li>
+            <li><strong>Server Actions</strong> — Mutations without boilerplate API routes</li>
           </ul>
         </div>
       </div>
 
       <div class="technical-section">
         <h2>1. Project Setup</h2>
-        <p>Start with the official create-next-app and enable TypeScript, Tailwind, ESLint, and the App Router:</p>
+        <p>Start with the official <code>create-next-app</code> and enable TypeScript, Tailwind, ESLint, and the App Router:</p>
 
-        <pre><code>npx create-next-app@latest my-saas-app --typescript --tailwind --eslint --app --yes
+        <pre><code class="language-bash">npx create-next-app@latest my-saas-app \\
+  --typescript \\
+  --tailwind \\
+  --eslint \\
+  --app \\
+  --yes
+
 cd my-saas-app
+
 npm install @prisma/client prisma @auth/prisma-adapter next-auth@beta
 npx prisma init --db postgresql</code></pre>
 
-        <p>This gives you a clean foundation with Turbopack support and modern defaults.</p>
+        <p>This gives you a clean foundation with Turbopack support and modern defaults out of the box.</p>
       </div>
 
       <div class="onpage-section">
         <h3>2. Prisma Schema & Singleton Client</h3>
-        <p>Define your core models (User, Project, Task) and always use a singleton Prisma Client to avoid connection exhaustion in serverless environments.</p>
+        <p>Always use a singleton Prisma Client. Creating a new instance on every request is the most common cause of connection exhaustion on serverless platforms.</p>
 
-        <pre><code>// lib/prisma.ts
+        <pre><code class="language-typescript">// lib/prisma.ts
 import { PrismaClient } from '@prisma/client'
 
-const globalForPrisma = globalThis as unknown as { prisma: PrismaClient }
+const globalForPrisma = globalThis as unknown as {
+  prisma: PrismaClient | undefined
+}
 
-export const prisma = globalForPrisma.prisma || new PrismaClient()
+export const prisma =
+  globalForPrisma.prisma ??
+  new PrismaClient({
+    log: process.env.NODE_ENV === 'development' ? ['query', 'error', 'warn'] : ['error'],
+  })
 
-if (process.env.NODE_ENV !== 'production') globalForPrisma.prisma = prisma</code></pre>
+if (process.env.NODE_ENV !== 'production') {
+  globalForPrisma.prisma = prisma
+}</code></pre>
 
         <blockquote>
-          Always keep a single Prisma Client instance. Creating a new one on every request is the most common cause of "too many connections" errors on Vercel and other serverless platforms.
+          Keep a single Prisma Client instance across the entire application lifecycle. This pattern is essential for Vercel, Railway, and other serverless environments.
         </blockquote>
       </div>
 
       <div class="content-strategy-section">
         <h2>3. Authentication with Auth.js</h2>
-        <p>Auth.js (formerly NextAuth) pairs cleanly with Prisma. Use the Prisma adapter so users, sessions, and accounts live in your database. Protect routes with middleware and fetch the session in Server Components using <code>auth()</code>.</p>
+        <p>Auth.js pairs cleanly with Prisma. Use the official Prisma adapter so users, sessions, and accounts live in your database. Protect routes with middleware and fetch the session inside Server Components using the <code>auth()</code> helper.</p>
       </div>
 
       <div class="local-seo-section">
         <h3>4. Server Actions for Mutations</h3>
-        <p>Instead of creating API routes for every form, use Server Actions. They run on the server, have direct access to Prisma, and automatically revalidate paths.</p>
+        <p>Prefer Server Actions over API routes for most mutations. They run on the server, have direct access to Prisma, and can revalidate paths automatically.</p>
 
-        <pre><code>'use server'
+        <pre><code class="language-typescript">// actions/project.ts
+'use server'
+
 import { prisma } from '@/lib/prisma'
 import { revalidatePath } from 'next/cache'
+import { z } from 'zod'
+
+const createProjectSchema = z.object({
+  name: z.string().min(2).max(100),
+})
 
 export async function createProject(formData: FormData) {
-  const name = formData.get('name') as string
-  await prisma.project.create({ data: { name, ownerId: '...' } })
+  const raw = {
+    name: formData.get('name'),
+  }
+
+  const parsed = createProjectSchema.safeParse(raw)
+  if (!parsed.success) {
+    return { error: 'Invalid project name' }
+  }
+
+  const project = await prisma.project.create({
+    data: {
+      name: parsed.data.name,
+      ownerId: 'current-user-id', // replace with real session user id
+    },
+  })
+
   revalidatePath('/dashboard')
+  return { success: true, project }
 }</code></pre>
       </div>
 
       <div class="linkbuilding-section">
         <h2>5. Performance & Best Practices</h2>
         <ul>
-          <li>Default to Server Components. Add <code>"use client"</code> only when you need interactivity.</li>
-          <li>Use <code>revalidatePath</code> and <code>revalidateTag</code> after mutations.</li>
-          <li>Wrap slow sections in <code><Suspense></code> for streaming.</li>
-          <li>Validate all inputs with Zod before touching the database.</li>
-          <li>Never expose sensitive environment variables to the client.</li>
+          <li>Default to <strong>Server Components</strong>. Only add <code>"use client"</code> when you need browser APIs or interactivity.</li>
+          <li>Use <code>revalidatePath</code> and <code>revalidateTag</code> after mutations instead of full page reloads.</li>
+          <li>Wrap slow data sections in <code><Suspense></code> to enable streaming.</li>
+          <li>Validate all inputs with <strong>Zod</strong> before they touch the database.</li>
+          <li>Never expose secrets to the client. Keep <code>DATABASE_URL</code>, auth secrets, and API keys server-only.</li>
         </ul>
       </div>
 
       <div class="analytics-section">
         <h2>6. Deployment</h2>
-        <p>Push to GitHub and deploy on Vercel. Add your <code>DATABASE_URL</code> and Auth secrets in the project settings. Prisma works out of the box with Vercel’s serverless environment when you use the singleton pattern.</p>
+        <p>Push to GitHub and connect the repository to Vercel. Add your environment variables (<code>DATABASE_URL</code>, <code>AUTH_SECRET</code>, etc.) in the Vercel project settings. With the singleton Prisma pattern, the app works reliably in serverless environments.</p>
       </div>
 
       <div class="conclusion-section">
         <h2>Summary</h2>
-        <p>This stack — Next.js 16 App Router + TypeScript + Prisma + Tailwind + Auth.js — gives you a production-ready foundation that is fast to build on and easy to scale. Focus on Server Components, type safety, and clean data access, and you will avoid most of the pain that older full-stack setups create.</p>
+        <p>This stack — Next.js 16 App Router + TypeScript + Prisma + Tailwind + Auth.js — gives you a production-ready foundation that is fast to build on and easy to scale. Focus on Server Components, type safety, and clean data access patterns, and you will avoid most of the technical debt that older full-stack setups create.</p>
 
         <div class="final-takeaway">
           <h4>Key Takeaway</h4>
-          <p><em>Start with Server Components, keep Prisma as a singleton, use Server Actions for mutations, and ship. The rest is iteration.</em></p>
+          <p><em>Start with Server Components, keep Prisma as a singleton, validate with Zod, use Server Actions for mutations, and ship. Everything else is iteration.</em></p>
         </div>
 
         <hr>
@@ -191,7 +228,7 @@ export async function createProject(formData: FormData) {
     content: `
       <div class="intro-section">
         <h2>The Musical Phenomenon That Stopped the Internet</h2>
-        <p class="lead-paragraph">In a move that no one saw coming, Justin Bieber transformed Coachella 2026 into his personal stage with an unannounced headline performance now dubbed "Bieberchella" across social media platforms. The surprise set has become the most-watched live-streamed event of the year, marking a significant shift in how we experience live music in the digital age.</p>
+        <p class="lead-paragraph">In a move that no one saw coming, Justin Bieber transformed Coachella 2026 into his personal stage with an unannounced headline performance now dubbed "Bieberchella" across social media platforms.</p>
         
         <div class="key-highlights">
           <h4>What Made Bieberchella Special:</h4>
@@ -204,37 +241,13 @@ export async function createProject(formData: FormData) {
         </div>
       </div>
       
-      <div class="technical-section">
-        <h2>The Fashion Revolution Following the Performance</h2>
-        <p>Beyond the music, Bieberchella has ignited a fashion movement. From Sabrina Carpenter's vintage-inspired lace ensemble to the resurgence of "boho-tech" aesthetics, Coachella 2026 is setting the style blueprint for the upcoming summer season.</p>
-        
-        <div class="checklist-box">
-          <h4>Trending Fashion Elements:</h4>
-          <ul>
-            <li>Vintage-inspired lace and crochet details</li>
-            <li>Boho-tech fusion of bohemian and futuristic elements</li>
-            <li>Sustainable and eco-friendly fashion choices</li>
-            <li>DIY and custom festival wear modifications</li>
-          </ul>
-        </div>
-      </div>
-      
-      <div class="onpage-section">
-        <h3>The Digital Impact: Social Media Eruption</h3>
-        <p>Social platforms are currently flooded with "Get the Look" tutorials as fans scramble to replicate the desert vibe. The hashtag #Bieberchella has trended globally for days, with millions of posts and billions of impressions across TikTok, Instagram, and Twitter.</p>
-        
-        <blockquote>
-          "Bieberchella represents the perfect storm of surprise, nostalgia, and digital culture. It's not just a performance - it's a cultural moment that defines how we experience live music in 2026."
-        </blockquote>
-      </div>
-           
       <div class="conclusion-section">
         <h2>The Broader Cultural Significance</h2>
-        <p>This surprise performance signals a shift in how artists approach major festivals. The success of Bieberchella demonstrates that authenticity and artistic risk-taking can generate more cultural impact than carefully orchestrated productions.</p>
+        <p>This surprise performance signals a shift in how artists approach major festivals.</p>
         
         <div class="final-takeaway">
           <h4>Key Takeaway:</h4>
-          <p><em>Bieberchella isn't just about one artist's performance - it's about the changing landscape of live entertainment. The fusion of music, fashion, and digital culture creates moments that transcend traditional boundaries and resonate across demographics.</em></p>
+          <p><em>Bieberchella isn't just about one artist's performance - it's about the changing landscape of live entertainment.</em></p>
         </div>
       </div>
     `,
@@ -250,311 +263,109 @@ export async function createProject(formData: FormData) {
     content: `
       <div class="intro-section">
         <h2>Humanity's Return to the Moon</h2>
-        <p class="lead-paragraph">NASA has released compelling new footage showing the Artemis II crew undergoing intense centrifuge training as they approach the final months before their historic lunar flyby mission. This marks the first time in over half a century that humans will return to the vicinity of the Moon, representing a monumental leap in space exploration.</p>
-        
-        <div class="key-highlights">
-          <h4>Mission Milestones:</h4>
-          <ul>
-            <li><strong>Historic Return</strong> - First humans near Moon since Apollo era</li>
-            <li><strong>Advanced Training</strong> - Rigorous physical and mental preparation</li>
-            <li><strong>Technical Focus</strong> - Orion capsule heat shield performance</li>
-            <li><strong>Public Engagement</strong> - Record-breaking interest from new generation</li>
-          </ul>
-        </div>
-      </div>
-      
-      <div class="technical-section">
-        <h2>Advanced Training and Simulation Phases</h2>
-        <p>The Artemis II crew is currently in the final simulation phases, undergoing some of the most rigorous training ever devised for space missions. The centrifuge training simulates the intense G-forces experienced during launch and reentry, preparing astronauts for the physical demands of space travel.</p>
-        
-        <div class="checklist-box">
-          <h4>Training Components:</h4>
-          <ul>
-            <li>High-G centrifuge training for launch and reentry</li>
-            <li>Emergency scenario simulations and drills</li>
-            <li>Spacewalk preparation and equipment training</li>
-            <li>Deep-space communication systems operation</li>
-          </ul>
-        </div>
-      </div>
-      
-      <div class="onpage-section">
-        <h3>Technical Innovations in the Artemis Program</h3>
-        <p>Unlike the Apollo missions of the 1960s and 70s, Artemis II aims to establish a sustainable framework for long-term lunar exploration. The technical focus remains on the Orion capsule's heat shield performance and the integration of new deep-space communication arrays.</p>
-        
-        <blockquote>
-          "Artemis II isn't just about returning to the Moon - it's about building the foundation for humanity's permanent presence beyond Earth. This mission proves we can go back and stay there."
-        </blockquote>
+        <p class="lead-paragraph">NASA has released compelling new footage showing the Artemis II crew undergoing intense centrifuge training as they approach the final months before their historic lunar flyby mission.</p>
       </div>
       
       <div class="conclusion-section">
         <h2>The Future of Lunar Exploration</h2>
-        <p>Public interest in space exploration has surged dramatically, with NASA's interactive tracking site seeing record engagement from a new generation of space enthusiasts. The Artemis program represents not just a return to the Moon, but the beginning of humanity's expansion into the solar system.</p>
-        
-        <div class="final-takeaway">
-          <h4>Key Takeaway:</h4>
-          <p><em>The Artemis II mission marks a pivotal moment in human space exploration. As we prepare to witness the first humans return to the lunar vicinity in over 50 years, we're not just making history - we're building the future of space exploration for generations to come.</em></p>
-        </div>
+        <p>The Artemis program represents not just a return to the Moon, but the beginning of humanity's expansion into the solar system.</p>
       </div>
     `,
     date: '2026-04-13',
     readTime: '6 min read',
     category: 'Science & Space',
     author: 'Science Desk',
-    keywords: ['NASA', 'Artemis II', 'Moon mission', 'space exploration', 'astronauts', 'lunar flyby']
+    keywords: ['NASA', 'Artemis II', 'Moon mission', 'space exploration']
   },
   'gaslighting-yoga-challenge-tiktok-2026': {
     title: 'Why Your For You Page is Full of the "Gaslighting" Yoga Pose',
-    excerpt: 'If you\'ve opened TikTok or Instagram today, you\'ve likely seen someone face-planting while trying the "Gaslighting" Yoga Pose. The challenge has become the ultimate viral "fail" trend.',
+    excerpt: 'If you\'ve opened TikTok or Instagram today, you\'ve likely seen someone face-planting while trying the "Gaslighting" Yoga Pose.',
     content: `
       <div class="intro-section">
         <h2>The Viral Challenge That's Taking Over Social Media</h2>
-        <p class="lead-paragraph">If you've opened TikTok or Instagram today, you've undoubtedly seen someone face-planting while attempting the "Gaslighting" Yoga Pose. This seemingly simple yet surprisingly difficult challenge has exploded across social platforms, becoming the ultimate viral "fail" trend that's both hilarious and surprisingly insightful.</p>
-        
-        <div class="key-highlights">
-          <h4>What Makes This Challenge Special:</h4>
-          <ul>
-            <li><strong>Deceptive Simplicity</strong> - Looks easy but is mechanically nearly impossible</li>
-            <li><strong>Universal Appeal</strong> - Everyone from celebrities to athletes is joining in</li>
-            <li><strong>Relatability Factor</strong> - Mocks unrealistic fitness influencer culture</li>
-            <li><strong>Humanizing Effect</strong> - Celebrates imperfection and failure</li>
-          </ul>
-        </div>
-      </div>
-      
-      <div class="technical-section">
-        <h2>The Psychology Behind the Trend's Success</h2>
-        <p>Psychologists suggest the Gaslighting Yoga Challenge's success lies in its perfect balance of aspiration and relatability. The pose appears achievable at first glance, but the reality is that most people lack the core strength, flexibility, or body awareness to execute it properly.</p>
-        
-        <div class="checklist-box">
-          <h4>Why It Resonates:</h4>
-          <ul>
-            <li>Challenges unrealistic fitness industry standards</li>
-            <li>Provides comic relief from perfect social media feeds</li>
-            <li>Creates shared experience through collective failure</li>
-            <li>Encourages self-acceptance and humor about limitations</li>
-          </ul>
-        </div>
-      </div>
-      
-      <div class="onpage-section">
-        <h3>The Celebrity and Athlete Participation</h3>
-        <p>What makes this trend particularly special is the participation of celebrities and professional athletes. Instead of hiding their struggles, they're posting their unedited failures, making it the most humanizing trend of the season. This authenticity has helped the challenge spread exponentially across demographics.</p>
-        
-        <blockquote>
-          "The Gaslighting Yoga Pose isn't really about yoga - it's about celebrating our shared human imperfection. In a world of curated perfection, seeing people fail spectacularly is refreshingly honest."
-        </blockquote>
-      </div>
-      
-      <div class="conclusion-section">
-        <h2>Cultural Impact and Expert Advice</h2>
-        <p>Fitness experts recommend having a soft rug nearby if you plan to attempt the challenge. More importantly, they suggest using this trend as a reminder that fitness should be about personal health and enjoyment, not about achieving impossible social media standards.</p>
-        
-        <div class="final-takeaway">
-          <h4>Key Takeaway:</h4>
-          <p><em>The Gaslighting Yoga Challenge represents a delightful moment in internet culture where we collectively laugh at ourselves and the absurdity of social media trends. It's a reminder that sometimes the best content comes from embracing our limitations rather than pretending they don't exist.</em></p>
-        </div>
+        <p class="lead-paragraph">This seemingly simple yet surprisingly difficult challenge has exploded across social platforms.</p>
       </div>
     `,
     date: '2026-04-13',
     readTime: '3 min read',
     category: 'Digital Culture',
     author: 'Culture Desk',
-    keywords: ['TikTok', 'Instagram', 'viral challenges', 'fitness trends', 'social media', 'Gaslighting Yoga']
+    keywords: ['TikTok', 'Instagram', 'viral challenges']
   },
   'ai-agents-blockchain-web3-2026': {
     title: 'AI Agents on Blockchain: The Biggest Web3 Trend of 2026',
-    excerpt: 'Autonomous AI agents are executing smart contracts, managing DeFi portfolios, and governing DAOs without human input. Here\'s what every Web3 developer needs to know right now.',
+    excerpt: 'Autonomous AI agents are executing smart contracts, managing DeFi portfolios, and governing DAOs without human input.',
     content: `
       <div class="intro-section">
         <h2>The AI Agent Revolution in Web3</h2>
-        <p class="lead-paragraph">2026 marks the pivotal moment when artificial intelligence and blockchain technology converge to create autonomous digital agents. These AI agents can independently execute smart contracts, manage DeFi portfolios, and participate in DAO governance without human intervention. For Web3 developers, this represents both unprecedented opportunities and complex technical challenges.</p>
-        
-        <div class="key-highlights">
-          <h4>Key AI Agent Capabilities:</h4>
-          <ul>
-            <li><strong>Autonomous Trading</strong> - Self-managing DeFi portfolios 24/7</li>
-            <li><strong>Smart Contract Execution</strong> - Automated contract interactions</li>
-            <li><strong>DAO Governance</strong> - Intelligent voting and proposal systems</li>
-            <li><strong>Cross-Chain Operations</strong> - Multi-chain asset management</li>
-          </ul>
-        </div>
-      </div>
-      
-      <div class="technical-section">
-        <h2>Technical Architecture of Blockchain AI Agents</h2>
-        <p>Building effective AI agents for blockchain requires sophisticated architecture combining machine learning models, blockchain oracles, and secure execution environments. The technical stack typically includes reinforcement learning for decision-making, multi-party computation for security, and advanced cryptographic protocols for agent identity.</p>
-        
-        <div class="checklist-box">
-          <h4>Essential Technical Components:</h4>
-          <ul>
-            <li><strong>Decision Engine</strong> - ML models for strategic choices</li>
-            <li><strong>Oracle Integration</strong> - Real-world data feeds</li>
-            <li><strong>Wallet Management</strong> - Secure key handling systems</li>
-            <li><strong>Risk Assessment</strong> - Portfolio risk algorithms</li>
-            <li><strong>Gas Optimization</strong> - Transaction cost efficiency</li>
-          </ul>
-        </div>
-      </div>
-      
-      <div class="onpage-section">
-        <h3>Real-World Applications</h3>
-        <p>From automated market making to yield farming optimization, AI agents are already transforming DeFi protocols. Leading projects are deploying agents that can adapt to market conditions in real-time, execute complex trading strategies, and even create new financial products autonomously.</p>
-        
-        <blockquote>
-          "AI agents represent the next evolution in DeFi automation. We're moving from simple protocols to intelligent, self-governing financial ecosystems."
-        </blockquote>
-      </div>
-      
-      <div class="conclusion-section">
-        <h2>Conclusion</h2>
-        <p>AI agents on blockchain represent one of the most significant technological shifts in Web3 since the introduction of smart contracts. For developers who master this technology, the opportunities are virtually limitless.</p>
-        
-        <div class="final-takeaway">
-          <h4>Key Takeaway:</h4>
-          <p><em>The convergence of AI and blockchain is creating a new paradigm for autonomous digital systems. Start building now, experiment relentlessly, and prioritize security above all else.</em></p>
-        </div>
+        <p class="lead-paragraph">2026 marks the pivotal moment when artificial intelligence and blockchain technology converge to create autonomous digital agents.</p>
       </div>
     `,
     date: '2026-03-10',
     readTime: '11 min read',
     category: 'Web3 & AI',
     author: 'Mussawar Hayat',
-    keywords: ['AI agents', 'blockchain', 'Web3', 'DeFi', 'autonomous systems', 'smart contracts']
+    keywords: ['AI agents', 'blockchain', 'Web3']
   },
   'account-abstraction-smart-wallets-guide': {
     title: 'Account Abstraction in 2026: The End of Seed Phrases',
-    excerpt: 'ERC-4337 and smart wallets are killing the biggest UX barrier in Web3. Here\'s a complete developer guide to building with Account Abstraction today.',
+    excerpt: 'ERC-4337 and smart wallets are killing the biggest UX barrier in Web3.',
     content: `
       <div class="intro-section">
-        <h2>The UX Revolution: Killing Seed Phrases Forever</h2>
-        <p class="lead-paragraph">2026 is finally the year when Web3 users can say goodbye to terrifying seed phrases and confusing private key management. Account Abstraction (ERC-4337) has matured into a production-ready solution that's transforming how users interact with blockchain applications.</p>
-        
-        <div class="key-highlights">
-          <h4>Why Account Abstraction Changes Everything:</h4>
-          <ul>
-            <li><strong>Social Recovery</strong> - No more lost funds from forgotten phrases</li>
-            <li><strong>Email Login</strong> - Web2-style authentication for Web3</li>
-            <li><strong>Gas Sponsorship</strong> - Apps can pay for users' transactions</li>
-            <li><strong>Batch Operations</strong> - Multiple transactions in one click</li>
-          </ul>
-        </div>
-      </div>
-      
-      <div class="conclusion-section">
-        <h2>The Future is Account Abstracted</h2>
-        <p>Account Abstraction is no longer experimental - it's becoming the standard for user-friendly Web3 applications.</p>
-        
-        <div class="final-takeaway">
-          <h4>Key Takeaway:</h4>
-          <p><em>The era of complex wallet management is ending. Account Abstraction delivers the UX users expect while maintaining the security and decentralization that make Web3 powerful.</em></p>
-        </div>
+        <h2>The UX Revolution</h2>
+        <p class="lead-paragraph">Account Abstraction has matured into a production-ready solution.</p>
       </div>
     `,
     date: '2026-03-05',
     readTime: '10 min read',
     category: 'Web3 Development',
     author: 'Mussawar Hayat',
-    keywords: ['Account Abstraction', 'ERC-4337', 'smart wallets', 'Web3 UX', 'seed phrases', 'social recovery']
+    keywords: ['Account Abstraction', 'ERC-4337']
   },
   'real-world-asset-tokenization-rwa-guide': {
     title: 'RWA Tokenization: How Blockchain Is Eating Real-World Finance',
-    excerpt: 'Real-world asset tokenization crossed $24 billion in 2025 and is accelerating fast. Here\'s the full developer and investor breakdown of the biggest infrastructure shift in Web3.',
+    excerpt: 'Real-world asset tokenization crossed $24 billion in 2025 and is accelerating fast.',
     content: `
       <div class="intro-section">
         <h2>The $24 Billion Revolution</h2>
-        <p class="lead-paragraph">Real-world asset (RWA) tokenization has exploded from a niche concept to a $24 billion market in 2025, and 2026 is set to be the breakthrough year.</p>
-        
-        <div class="key-highlights">
-          <h4>Why RWA Tokenization Matters:</h4>
-          <ul>
-            <li><strong>Liquidity Creation</strong> - Illiquid assets become tradable 24/7</li>
-            <li><strong>Fractional Ownership</strong> - Anyone can own pieces of premium assets</li>
-            <li><strong>Global Access</strong> - Geographic barriers eliminated</li>
-            <li><strong>Transparency</strong> - On-chain ownership and transaction history</li>
-          </ul>
-        </div>
-      </div>
-      
-      <div class="conclusion-section">
-        <h2>The Future of Finance is Tokenized</h2>
-        <p>RWA tokenization represents the convergence of traditional finance and blockchain technology.</p>
-        
-        <div class="final-takeaway">
-          <h4>Key Takeaway:</h4>
-          <p><em>The tokenization of real-world assets is creating entirely new financial markets and opportunities.</em></p>
-        </div>
+        <p class="lead-paragraph">RWA tokenization is creating entirely new financial markets.</p>
       </div>
     `,
     date: '2026-02-28',
     readTime: '12 min read',
     category: 'Blockchain & DeFi',
     author: 'Mussawar Hayat',
-    keywords: ['RWA', 'tokenization', 'real-world assets', 'DeFi', 'blockchain finance']
+    keywords: ['RWA', 'tokenization']
   },
   'modular-blockchains-l2-developer-guide': {
     title: 'Modular Blockchains & L2s: The Infrastructure Stack Every Web3 Dev Must Know',
-    excerpt: 'The monolithic blockchain era is over. Modular architecture - separating execution, consensus, and data availability - is how the next billion users get on-chain.',
+    excerpt: 'The monolithic blockchain era is over.',
     content: `
       <div class="intro-section">
         <h2>The Modular Revolution</h2>
-        <p class="lead-paragraph">2026 marks the definitive shift from monolithic to modular blockchain architecture. By separating execution, consensus, and data availability into specialized layers, modular blockchains are achieving unprecedented scalability.</p>
-        
-        <div class="key-highlights">
-          <h4>Why Modular Architecture Wins:</h4>
-          <ul>
-            <li><strong>Massive Scalability</strong> - 100,000+ TPS now possible</li>
-            <li><strong>Specialized Optimization</strong> - Each layer optimized for its function</li>
-            <li><strong>Flexibility</strong> - Mix and match components as needed</li>
-            <li><strong>Cost Efficiency</strong> - Dramatically lower transaction fees</li>
-          </ul>
-        </div>
-      </div>
-      
-      <div class="conclusion-section">
-        <h2>The Future is Modular</h2>
-        <p>Modular blockchain architecture is not just a trend - it's the future of blockchain infrastructure.</p>
-        
-        <div class="final-takeaway">
-          <h4>Key Takeaway:</h4>
-          <p><em>Start building on modular chains today. The next billion users will come through modular infrastructure.</em></p>
-        </div>
+        <p class="lead-paragraph">Modular architecture is how the next billion users get on-chain.</p>
       </div>
     `,
     date: '2026-02-20',
     readTime: '13 min read',
     category: 'Blockchain',
     author: 'Mussawar Hayat',
-    keywords: ['modular blockchains', 'L2', 'scaling', 'rollups', 'data availability']
+    keywords: ['modular blockchains', 'L2']
   },
   'deploying-multi-site-nextjs-vps-nginx': {
     title: 'Deploying a Multi-Site Next.js App on a Single VPS with Nginx',
-    excerpt: 'Running multiple Next.js apps on one VPS with Nginx reverse proxy, PM2, and SSL — the exact setup I use for production deployments.',
+    excerpt: 'Running multiple Next.js apps on one VPS with Nginx reverse proxy, PM2, and SSL.',
     content: `
       <div class="intro-section">
-        <h2>One VPS, Multiple Next.js Apps, Zero Downtime</h2>
-        <p class="lead-paragraph">Running multiple production Next.js applications on a single VPS sounds straightforward until you do it. Here's the architecture I use.</p>
-        
-        <div class="key-highlights">
-          <h4>The Stack</h4>
-          <ul>
-            <li><strong>Nginx</strong> - Reverse proxy, SSL termination</li>
-            <li><strong>PM2</strong> - Process manager</li>
-            <li><strong>Certbot</strong> - Let's Encrypt SSL</li>
-          </ul>
-        </div>
-      </div>
-      
-      <div class="conclusion-section">
-        <h2>Key Takeaway</h2>
-        <p><em>Document your Nginx configs, keep your PM2 ecosystem file in git, and always test SSL renewals.</em></p>
+        <h2>One VPS, Multiple Next.js Apps</h2>
+        <p class="lead-paragraph">Here's the architecture I use for production multi-site deployments.</p>
       </div>
     `,
     date: '2026-05-15',
     readTime: '9 min read',
     category: 'DevOps',
     author: 'Mussawar Hayat',
-    keywords: ['multi-site VPS deployment Next.js', 'Nginx reverse proxy', 'PM2']
+    keywords: ['VPS', 'Nginx', 'PM2']
   },
   'building-bitcoin-ordinals-marketplace': {
     title: 'Building a Bitcoin Ordinals Marketplace: Architecture Breakdown',
@@ -562,39 +373,29 @@ export async function createProject(formData: FormData) {
     content: `
       <div class="intro-section">
         <h2>Building Ordwin</h2>
-        <p class="lead-paragraph">When I started building Ordwin, the Bitcoin Ordinals ecosystem was still early. Here's what I learned.</p>
-      </div>
-      
-      <div class="conclusion-section">
-        <h2>Key Takeaway</h2>
-        <p><em>Invest in your indexing layer before anything else.</em></p>
+        <p class="lead-paragraph">The core challenge was indexing inscription data at chain speed.</p>
       </div>
     `,
     date: '2026-05-10',
     readTime: '11 min read',
     category: 'Web3',
     author: 'Mussawar Hayat',
-    keywords: ['Bitcoin Ordinals', 'marketplace']
+    keywords: ['Bitcoin Ordinals']
   },
   'metamask-vs-walletconnect-dapp': {
     title: 'MetaMask vs WalletConnect: Choosing Wallet Integration for Your DApp',
-    excerpt: 'Both work. Both have edge cases. Here\'s what I learned.',
+    excerpt: 'Both work. Both have edge cases.',
     content: `
       <div class="intro-section">
         <h2>Wallet Integration</h2>
-        <p class="lead-paragraph">Every Web3 application needs wallet integration. Here's what I've learned.</p>
-      </div>
-      
-      <div class="conclusion-section">
-        <h2>Key Takeaway</h2>
-        <p><em>Don't pick one wallet. Detect all available providers and let the user choose.</em></p>
+        <p class="lead-paragraph">Here's what I learned integrating multiple wallets.</p>
       </div>
     `,
     date: '2026-05-05',
     readTime: '8 min read',
     category: 'Web3',
     author: 'Mussawar Hayat',
-    keywords: ['wallet integration', 'MetaMask', 'WalletConnect']
+    keywords: ['MetaMask', 'WalletConnect']
   },
   'spf-dkim-dmarc-multi-domain-vps': {
     title: 'Setting Up SPF, DKIM, and DMARC for a Multi-Domain VPS',
@@ -602,12 +403,7 @@ export async function createProject(formData: FormData) {
     content: `
       <div class="intro-section">
         <h2>Email Deliverability</h2>
-        <p class="lead-paragraph">Here's the DNS setup I use to keep transactional email out of spam.</p>
-      </div>
-      
-      <div class="conclusion-section">
-        <h2>Key Takeaway</h2>
-        <p><em>Set up all three records, start with p=none, monitor, then escalate.</em></p>
+        <p class="lead-paragraph">The exact DNS setup I use across multiple domains.</p>
       </div>
     `,
     date: '2026-04-28',
@@ -618,23 +414,18 @@ export async function createProject(formData: FormData) {
   },
   'gdpr-compliant-web-apps-checklist': {
     title: 'Building GDPR-Compliant Web Apps: A Developer\'s Checklist',
-    excerpt: 'Cookie consent, secure data storage, data subject rights — a practical checklist.',
+    excerpt: 'Cookie consent, secure data storage, data subject rights.',
     content: `
       <div class="intro-section">
         <h2>GDPR for Developers</h2>
-        <p class="lead-paragraph">GDPR is a set of engineering requirements. Here's the checklist I use.</p>
-      </div>
-      
-      <div class="conclusion-section">
-        <h2>Key Takeaway</h2>
-        <p><em>Build data access, deletion, and export into your architecture from day one.</em></p>
+        <p class="lead-paragraph">A practical engineering checklist.</p>
       </div>
     `,
     date: '2026-04-20',
     readTime: '10 min read',
     category: 'Full-Stack',
     author: 'Mussawar Hayat',
-    keywords: ['GDPR', 'compliance']
+    keywords: ['GDPR']
   },
   'multi-chain-dex-interface-performance': {
     title: 'Building a Multi-Chain DEX Interface Without Killing Performance',
@@ -642,19 +433,14 @@ export async function createProject(formData: FormData) {
     content: `
       <div class="intro-section">
         <h2>Demotrionn DEX</h2>
-        <p class="lead-paragraph">Building a multi-chain DEX interface is a performance problem. Here's how I solved it.</p>
-      </div>
-      
-      <div class="conclusion-section">
-        <h2>Key Takeaway</h2>
-        <p><em>Throttle state updates, use canvas for charts, and keep high-frequency data out of React's render cycle.</em></p>
+        <p class="lead-paragraph">How I built a high-performance multi-chain trading interface.</p>
       </div>
     `,
     date: '2026-04-15',
     readTime: '12 min read',
     category: 'Web3',
     author: 'Mussawar Hayat',
-    keywords: ['DEX', 'performance', 'WebSocket']
+    keywords: ['DEX', 'performance']
   },
 }
 
