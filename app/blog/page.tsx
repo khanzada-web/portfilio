@@ -191,9 +191,6 @@ export default function BlogPage() {
 
             {/* Page Header */}
             <div className="text-center mb-20">
-              <div className="inline-block border border-[#39FF14] px-4 py-1 mb-6 text-xs tracking-[0.3em] uppercase opacity-80">
-                Tech_Blog.v2
-              </div>
               <h1 className="text-4xl md:text-6xl font-bold text-white tracking-tighter uppercase leading-none mb-8">
                 <span className="text-[#39FF14]">Mussawar</span> Tech Blog
               </h1>
