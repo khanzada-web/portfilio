@@ -42,6 +42,15 @@ const breadcrumbs = [
 const blogPosts = [
   // ── NEW HOT POSTS ──────────────────────────────────────────
   {
+    title: 'Building a Production-Ready Full-Stack SaaS with Next.js 16, TypeScript, Prisma & Tailwind (2026)',
+    excerpt: 'Complete step-by-step guide to building a scalable SaaS using Next.js 16 App Router, Prisma Postgres, Auth.js, and Tailwind CSS. Production patterns, Server Actions, and deployment.',
+    slug: 'nextjs-16-saas-tutorial-prisma-typescript-2026',
+    date: '2026-07-26',
+    readTime: '14 min read',
+    category: 'Full-Stack',
+    isNew: true,
+  },
+  {
     title: 'The Strait of Hormuz Standoff: Global Markets Braced as Naval Blockade Tightens',
     excerpt: 'Tensions in the Middle East reached a fever pitch as U.S. naval forces established a "security perimeter" around Iranian shipping lanes. Oil prices spiked 8% as shipping giants reroute vessels around the Cape of Good Hope.',
     slug: 'strait-of-hormuz-standoff-2026',
