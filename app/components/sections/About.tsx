@@ -15,7 +15,7 @@ const SKILLS = [
   { name: 'App Development (RN/Flutter)', level: 100,  icon: <FiSmartphone /> },
   { name: 'TypeScript / Node.js',         level: 100, icon: <FiLayers />     },
   { name: 'UI/UX Architecture',           level: 100,  icon: <FiStar />       },
-  { name: 'Web3 & UI/UX',       level: 100,  icon: <FiGlobe />      },
+  { name: 'Web3 & Blockchain',            level: 100,  icon: <FiGlobe />      },
   { name: 'Product Engineering',          level: 100,  icon: <FiZap />        },
   { name: 'REST APIs & Databases',        level: 100,  icon: <FiDatabase />   },
   { name: 'DevOps / CI/CD / VPS',         level: 100,  icon: <FiServer />     },
@@ -52,7 +52,7 @@ const About = () => (
       {/* Section Header */}
       <div className="mb-24">
         <div className="inline-block border border-[#39FF14] px-4 py-1 mb-6 text-xs tracking-[0.3em] uppercase opacity-80">
-          System.Profile_Details
+          About
         </div>
         <h2 className="text-4xl md:text-6xl font-bold text-white mb-8">
           Digital <span className="text-[#39FF14]">Architect</span>
@@ -120,7 +120,7 @@ const About = () => (
           {/* Skills */}
           <div>
             <h3 className="text-sm tracking-[0.4em] uppercase opacity-50 mb-8 border-l-2 border-[#39FF14] pl-4">
-              Core_Competencies
+              Core Competencies
             </h3>
             <div className="grid grid-cols-1 md:grid-cols-2 gap-4">
               {SKILLS.map((skill) => (
@@ -136,7 +136,7 @@ const About = () => (
                       {skill.icon}
                     </span>
                     <span className="text-[10px] opacity-40 uppercase tracking-widest">
-                      Level_{skill.level}%
+                      {skill.level}%
                     </span>
                   </div>
                   <h4 className="text-white font-bold text-sm tracking-wide">{skill.name}</h4>
