@@ -1,9 +1,6 @@
-import type { Metadata } from "next";
+import type { Metadata, Viewport } from "next";
 import { Geist, Geist_Mono, Orbitron } from "next/font/google";
 import "./globals.css";
-
-// ─── Fonts ────────────────────────────────────────────────────────────────────
-// display:"swap" prevents invisible text while fonts load (improves CLS / LCP)
 
 const geistSans = Geist({
   variable: "--font-geist-sans",
@@ -30,27 +27,31 @@ const orbitron = Orbitron({
 export const metadata: Metadata = {
   // ── Titles ──────────────────────────────────────────────────────────────────
   title: {
-    default: "Mussawar Hayat — Web3 & Blockchain Developer",
+    default: "Mussawar Hayat | Full-Stack Developer — React, Next.js, Node.js & Web3",
     template: "%s | Mussawar Hayat",
   },
 
   // ── Description (written for humans, not bots) ───────────────────────────
   description:
-    "I build fast, secure Web3 apps — DApps, DeFi platforms, and smart contracts. " +
-    "3+ years with React, Next.js, TypeScript & Solidity. Open to freelance work worldwide.",
+    "Full-stack developer with 3+ years building high-performance web & mobile apps using " +
+    "React, Next.js, Node.js & TypeScript — plus Web3/blockchain integration (Solidity, DeFi, NFTs). " +
+    "Available for freelance work worldwide.",
 
   // ── Keywords (low Google weight, but fine to keep concise) ───────────────
   keywords: [
-    "Web3 developer",
-    "blockchain developer",
+    "full-stack developer",
     "React developer",
     "Next.js developer",
+    "Node.js developer",
+    "TypeScript developer",
+    "React Native developer",
+    "Flutter developer",
+    "Web3 developer",
+    "blockchain developer",
     "Solidity",
-    "smart contracts",
-    "DApp development",
     "DeFi",
     "NFT development",
-    "Ethereum developer",
+    "DevOps",
     "Mussawar Hayat",
   ],
 
@@ -78,12 +79,6 @@ export const metadata: Metadata = {
     },
   },
 
-  // ── Theme colour (Next.js way — removes need for manual <meta> tags) ─────
-  themeColor: [
-    { media: "(prefers-color-scheme: light)", color: "#2563eb" },
-    { media: "(prefers-color-scheme: dark)",  color: "#1d4ed8" },
-  ],
-
   // ── Format detection ─────────────────────────────────────────────────────
   formatDetection: {
     email: false,
@@ -101,18 +96,18 @@ export const metadata: Metadata = {
     type: "website",
     locale: "en_US",
     url: "https://www.mussawarhayat.site",
-    title: "Mussawar Hayat — Web3 & Blockchain Developer",
+    title: "Mussawar Hayat | Full-Stack Developer",
     description:
-      "I build fast, secure Web3 apps — DApps, DeFi platforms, and smart contracts. " +
-      "3+ years with React, Next.js, TypeScript & Solidity.",
-    siteName: "Mussawar Hayat — Web3 Developer Portfolio",
+      "Building fast, scalable web & mobile apps with React, Next.js, Node.js & TypeScript. " +
+      "Blockchain/Web3 integration available. 3+ years experience, open for freelance work worldwide.",
+    siteName: "Mussawar Hayat — Full-Stack Developer Portfolio",
     images: [
       {
         // ✅ Must be 1200×630 for proper social previews (Twitter, LinkedIn, Facebook)
         url: "/og-image.png",
         width: 1200,
         height: 630,
-        alt: "Mussawar Hayat — Web3 Developer Portfolio",
+        alt: "Mussawar Hayat — Full-Stack Developer Portfolio",
       },
     ],
   },
@@ -120,12 +115,12 @@ export const metadata: Metadata = {
   // ── Twitter / X Card ─────────────────────────────────────────────────────
   twitter: {
     card: "summary_large_image",
-    title: "Mussawar Hayat — Web3 & Blockchain Developer",
+    title: "Mussawar Hayat | Full-Stack Developer",
     description:
-      "Building DApps, DeFi platforms, and smart contracts with React, Next.js & Solidity. " +
-      "3+ years experience. Open to freelance.",
+      "Full-stack developer building web, mobile & Web3 apps with React, Next.js, Node.js & Solidity. " +
+      "Available for freelance projects worldwide.",
     images: ["/og-image.png"],
-    // creator: "@your_twitter_handle", // ← add when you have a Twitter handle
+    creator: "@Mussawar_Hayat",
   },
 
   // ── Google Search Console verification ───────────────────────────────────
@@ -133,6 +128,13 @@ export const metadata: Metadata = {
   // verification: {
   //   google: "your-actual-code-here",
   // },
+};
+
+export const viewport: Viewport = {
+  themeColor: [
+    { media: "(prefers-color-scheme: light)", color: "#2563eb" },
+    { media: "(prefers-color-scheme: dark)",  color: "#1d4ed8" },
+  ],
 };
 
 // ─── Root Layout ──────────────────────────────────────────────────────────────
@@ -159,53 +161,47 @@ export default function RootLayout({
         {/* JSON-LD Structured Data */}
         <script
           type="application/ld+json"
+          suppressHydrationWarning
           dangerouslySetInnerHTML={{
             __html: JSON.stringify({
               "@context": "https://schema.org",
               "@type": "Person",
               "name": "Mussawar Hayat",
-              "jobTitle": "Web3 Developer",
-              "description": "Expert Web3 Developer with 3+ years experience building decentralized applications, smart contracts, and blockchain solutions.",
+              "jobTitle": "Full-Stack Developer",
+              "description": "Freelance full-stack developer building web and mobile applications with React, Next.js, Node.js, and TypeScript, with additional expertise in Web3 and blockchain integration.",
               "url": "https://www.mussawarhayat.site",
-              "image": "https://www.mussawarhayat.site/logo.png",
+              "image": "https://www.mussawarhayat.site/my-pic.jpeg",
               "address": {
                 "@type": "PostalAddress",
-                "addressCountry": "PK",
-                "addressRegion": "Punjab",
-                "addressLocality": "Lahore"
-              },
-              "geo": {
-                "@type": "GeoCoordinates",
-                "latitude": "31.5204",
-                "longitude": "74.3587"
+                "addressLocality": "Attock",
+                "addressCountry": "PK"
               },
               "sameAs": [
-                "https://github.com/mussawarhayat",
-                "https://linkedin.com/in/mussawarhayat",
-                "https://twitter.com/mussawarhayat"
+                "https://twitter.com/Mussawar_Hayat",
+                "https://www.linkedin.com/in/mussawar-hayat-187768233",
+                "https://github.com/khanzada-web"
               ],
               "knowsAbout": [
-                "Web3 Development",
-                "Blockchain",
+                "Full-Stack Development",
                 "React",
                 "Next.js",
+                "Node.js",
                 "TypeScript",
+                "React Native",
+                "Flutter",
+                "Web3 Development",
+                "Blockchain",
                 "Solidity",
-                "Smart Contracts",
-                "DeFi",
-                "NFT Development"
+                "DevOps",
+                "GDPR Compliance"
               ],
-              "offers": {
-                "@type": "Service",
-                "serviceType": "Web3 Development Services",
-                "description": "Full-stack Web3 development including smart contracts, DApps, and blockchain solutions",
-                "areaServed": "Worldwide",
-                "availableChannel": {
-                  "@type": "ServiceChannel",
-                  "serviceUrl": "https://www.mussawarhayat.site",
-                  "servicePhone": "+92-300-0000000"
-                }
-              }
+              "areaServed": [
+                { "@type": "Country", "name": "United States" },
+                { "@type": "Country", "name": "Canada" },
+                { "@type": "Country", "name": "Germany" },
+                { "@type": "Country", "name": "Worldwide" }
+              ],
+              "availableLanguage": "English"
             }, null, 2)
           }}
         />

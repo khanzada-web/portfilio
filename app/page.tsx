@@ -25,21 +25,22 @@ import { FAQSchema } from "./components/seo/FAQSchema";
 // Only override what is page-specific here.
 
 export const metadata: Metadata = {
-  title: "Mussawar Hayat — Web3 & Blockchain Developer",
+  title: "Mussawar Hayat | Full-Stack Developer — React, Next.js, Node.js & Web3",
 
   description:
-    "I build fast, secure Web3 apps — DApps, DeFi platforms, and smart contracts. " +
-    "3+ years with React, Next.js, TypeScript & Solidity. Open to freelance work worldwide.",
+    "Full-stack developer with 3+ years building high-performance web & mobile apps using " +
+    "React, Next.js, Node.js & TypeScript — plus Web3/blockchain integration (Solidity, DeFi, NFTs). " +
+    "Available for freelance work worldwide.",
 
   alternates: {
     canonical: "/",
   },
 
   openGraph: {
-    title: "Mussawar Hayat — Web3 & Blockchain Developer",
+    title: "Mussawar Hayat | Full-Stack Developer",
     description:
-      "Building DApps, DeFi platforms, and smart contracts with React, Next.js & Solidity. " +
-      "3+ years experience. Available for freelance Web3 projects worldwide.",
+      "Building fast, scalable web & mobile apps with React, Next.js, Node.js & TypeScript. " +
+      "Blockchain/Web3 integration available. 3+ years experience, open for freelance work worldwide.",
     url: "https://www.mussawarhayat.site",
     type: "website",
     images: [
@@ -48,17 +49,17 @@ export const metadata: Metadata = {
         url: "/og-image.png",
         width: 1200,
         height: 630,
-        alt: "Mussawar Hayat — Web3 Developer Portfolio",
+        alt: "Mussawar Hayat — Full-Stack Developer Portfolio",
       },
     ],
   },
 
   twitter: {
     card: "summary_large_image",
-    title: "Mussawar Hayat — Web3 & Blockchain Developer",
+    title: "Mussawar Hayat | Full-Stack Developer",
     description:
-      "Building DApps, DeFi platforms, and smart contracts with React, Next.js & Solidity. " +
-      "3+ years experience. Open to freelance.",
+      "Full-stack developer building web, mobile & Web3 apps with React, Next.js, Node.js & Solidity. " +
+      "Available for freelance projects worldwide.",
     images: ["/og-image.png"],
   },
 };
@@ -68,31 +69,35 @@ export const metadata: Metadata = {
 
 const FAQ_ITEMS = [
   {
-    question: "What services do you offer as a Web3 developer?",
+    question: "Do you build both the frontend and backend?",
     answer:
-      "I offer comprehensive Web3 development services including smart contract development, " +
-      "DApp creation, DeFi platform development, NFT marketplace development, blockchain " +
-      "integration, and technical consulting.",
+      "Yes. I handle full-stack development end-to-end — React/Next.js frontends, Node.js backends, " +
+      "databases, and deployment/DevOps — so you don't need to coordinate multiple specialists.",
+  },
+  {
+    question: "Do you work with clients outside Pakistan?",
+    answer:
+      "Yes, I work remotely with clients worldwide and am set up for async communication across time zones.",
+  },
+  {
+    question: "Can you add blockchain or Web3 features to an existing app?",
+    answer:
+      "Yes. I integrate wallet connections, smart contracts, and DeFi/NFT functionality into existing " +
+      "web and mobile applications using Solidity and Ethers.js.",
   },
   {
     question: "What technologies do you specialise in?",
     answer:
-      "I specialise in React, Next.js, TypeScript, Solidity, Web3.js/Ethers.js, " +
-      "Hardhat/Truffle, and various blockchain frameworks including Ethereum, Polygon, " +
-      "and other EVM-compatible chains.",
+      "My core stack is React, Next.js, Node.js, and TypeScript. For mobile, I use React Native and Flutter. " +
+      "For Web3 projects, I work with Solidity, Ethers.js, Hardhat, Ethereum, Polygon, and other EVM-compatible chains. " +
+      "I also handle DevOps, databases, and deployment.",
   },
   {
-    question: "How can I hire you for a Web3 project?",
+    question: "How can I hire you for a project?",
     answer:
       "You can contact me through the contact form on this website or reach out via " +
       "LinkedIn. I offer flexible engagement models from short-term consulting to " +
       "full long-term project development.",
-  },
-  {
-    question: "Do you provide ongoing support after project completion?",
-    answer:
-      "Yes — I offer ongoing maintenance, smart contract audits, updates, and technical " +
-      "support for all Web3 projects to keep them secure and up-to-date.",
   },
 ] as const;
 

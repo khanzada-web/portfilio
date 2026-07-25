@@ -179,7 +179,7 @@ body {
 .prose-invert .key-highlights,
 .prose-invert .checklist-box,
 .prose-invert .strategy-grid,
-.prose-invert .canadian-focus,
+.prose-invert .callout-info,
 .prose-invert .link-building-tactics,
 .prose-invert .tools-focus,
 .prose-invert .final-takeaway,
@@ -200,7 +200,7 @@ body {
 .prose-invert .key-highlights:hover,
 .prose-invert .checklist-box:hover,
 .prose-invert .strategy-grid:hover,
-.prose-invert .canadian-focus:hover,
+.prose-invert .callout-info:hover,
 .prose-invert .link-building-tactics:hover,
 .prose-invert .tools-focus:hover,
 .prose-invert .final-takeaway:hover,
@@ -214,7 +214,7 @@ body {
 .prose-invert .key-highlights h4,
 .prose-invert .checklist-box h4,
 .prose-invert .strategy-grid h4,
-.prose-invert .canadian-focus h4,
+.prose-invert .callout-info h4,
 .prose-invert .link-building-tactics h4,
 .prose-invert .tools-focus h4,
 .prose-invert .final-takeaway h4,
@@ -232,7 +232,7 @@ body {
 .prose-invert .key-highlights ul,
 .prose-invert .checklist-box ul,
 .prose-invert .strategy-grid ul,
-.prose-invert .canadian-focus ul,
+.prose-invert .callout-info ul,
 .prose-invert .link-building-tactics ul,
 .prose-invert .tools-focus ul {
   list-style: none;
@@ -244,7 +244,7 @@ body {
 .prose-invert .key-highlights li,
 .prose-invert .checklist-box li,
 .prose-invert .strategy-grid li,
-.prose-invert .canadian-focus li,
+.prose-invert .callout-info li,
 .prose-invert .link-building-tactics li,
 .prose-invert .tools-focus li {
   padding:       0.75rem 0 0.75rem 2rem;
@@ -256,7 +256,7 @@ body {
 .prose-invert .key-highlights li:last-child,
 .prose-invert .checklist-box li:last-child,
 .prose-invert .strategy-grid li:last-child,
-.prose-invert .canadian-focus li:last-child,
+.prose-invert .callout-info li:last-child,
 .prose-invert .link-building-tactics li:last-child,
 .prose-invert .tools-focus li:last-child {
   border-bottom: none;
@@ -266,7 +266,7 @@ body {
 .prose-invert .key-highlights li::before,
 .prose-invert .checklist-box li::before,
 .prose-invert .strategy-grid li::before,
-.prose-invert .canadian-focus li::before,
+.prose-invert .callout-info li::before,
 .prose-invert .link-building-tactics li::before,
 .prose-invert .tools-focus li::before {
   content:    "▶";
@@ -281,7 +281,7 @@ body {
 .prose-invert .key-highlights li:hover::before,
 .prose-invert .checklist-box li:hover::before,
 .prose-invert .strategy-grid li:hover::before,
-.prose-invert .canadian-focus li:hover::before,
+.prose-invert .callout-info li:hover::before,
 .prose-invert .link-building-tactics li:hover::before,
 .prose-invert .tools-focus li:hover::before {
   transform: translateX(4px);

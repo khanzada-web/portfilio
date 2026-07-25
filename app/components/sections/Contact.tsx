@@ -80,7 +80,7 @@ export function Contact() {
             Contact <span className="text-[#39FF14]">Protocol</span>
           </h2>
           <p className="text-lg text-[#39FF14]/70 max-w-2xl mx-auto leading-relaxed lowercase">
-            // initialising direct communication channel for web3 architecture and smart contract development.
+            // initialising direct communication channel for full-stack development, web & mobile apps, and web3 integration projects. remote work across north america and europe, GDPR-compliant infrastructure available.
           </p>
         </div>
 

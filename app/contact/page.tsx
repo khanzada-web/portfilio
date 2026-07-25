@@ -5,11 +5,11 @@ import { Contact } from '@/app/components/sections/Contact'
 
 export const metadata: Metadata = {
   title: 'Contact Mussawar Hayat | Get in Touch',
-  description: 'Get in touch with Mussawar Hayat for Web3 development, blockchain projects, AI automation, and full-stack development services. Let\'s discuss your next project.',
-  keywords: 'contact Mussawar Hayat, Web3 development contact, blockchain developer, AI automation services, full-stack development, project consultation',
+  description: 'Get in touch with Mussawar Hayat for full-stack development, web & mobile apps, and Web3/blockchain projects. Let\'s discuss your next project.',
+  keywords: 'contact Mussawar Hayat, full-stack developer contact, React developer, Next.js developer, Web3 development, blockchain developer, project consultation',
   openGraph: {
     title: 'Contact Mussawar Hayat | Get in Touch',
-    description: 'Get in touch with Mussawar Hayat for Web3 development, blockchain projects, AI automation, and full-stack development services.',
+    description: 'Get in touch with Mussawar Hayat for full-stack development, web & mobile apps, and Web3/blockchain projects.',
     url: 'https://www.mussawarhayat.site/contact',
     type: 'website',
     images: [
@@ -24,7 +24,7 @@ export const metadata: Metadata = {
   twitter: {
     card: 'summary_large_image',
     title: 'Contact Mussawar Hayat | Get in Touch',
-    description: 'Get in touch with Mussawar Hayat for Web3 development, blockchain projects, AI automation, and full-stack development services.',
+    description: 'Get in touch with Mussawar Hayat for full-stack development, web & mobile apps, and Web3/blockchain projects.',
     images: ['https://www.mussawarhayat.site/_next/static/media/logo.2deab1c7.png'],
   },
   alternates: {

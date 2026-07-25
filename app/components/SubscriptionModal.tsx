@@ -55,8 +55,8 @@ export function SubscriptionModal() {
             </h3>
 
             <p className="text-gray-400 mb-6">
-              Get the latest insights on web development, e-commerce solutions, POS software,
-              digital marketing, and tech trends for Canadian businesses.
+              Get the latest insights on full-stack development, React, Next.js, Web3 integration,
+              performance optimisation, and emerging tech trends.
             </p>
 
             <form onSubmit={handleSubmit} className="space-y-4">

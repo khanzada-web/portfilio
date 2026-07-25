@@ -57,8 +57,7 @@ export function Footer() {
             <Link href="/" aria-label="Mussawar Hayat — go to homepage" className="flex items-center mb-6">
               <Image
                 src={logo}
-                alt=""
-                // ✅ Empty alt — adjacent text describes the link
+                alt="Mussawar Hayat logo"
                 width={200}
                 height={80}
                 className="h-10 sm:h-12 w-auto brightness-0 invert mr-4"
@@ -69,8 +68,8 @@ export function Footer() {
             </Link>
 
             <p className="text-white/50 mb-8 leading-relaxed font-orbitron text-xs sm:text-sm max-w-md">
-              Full Stack Web3 Developer building decentralized applications with 3+ years experience.
-              Specialised in smart contract security and high-performance blockchain infrastructure.
+              Full-stack developer building web & mobile applications with React, Next.js, Node.js & TypeScript —
+              with Web3/blockchain integration expertise. 3+ years experience, available for freelance work worldwide.
             </p>
 
             {/* Contact info — clickable links */}

@@ -13,11 +13,14 @@ export function AnimatedCounter({
   duration?: number;
   className?: string;
 }) {
-  const [count, setCount] = useState(from);
-  const [isVisible, setIsVisible] = useState(false);
+  // Initialize to `to` so SSR and no-JS visitors see the correct final value,
+  // not "0+". The animation runs only on the client after hydration.
+  const [count, setCount] = useState(to);
+  const [hasAnimated, setHasAnimated] = useState(false);
 
   useEffect(() => {
-    setIsVisible(true);
+    setCount(from);
+    setHasAnimated(true);
     const startTime = Date.now();
     const timer = setInterval(() => {
       const elapsed = Date.now() - startTime;
@@ -35,7 +38,7 @@ export function AnimatedCounter({
 
   return (
     <span className={className}>
-      {isVisible ? count : from}
+      {hasAnimated ? count : to}
     </span>
   );
 }

@@ -317,7 +317,7 @@ const blogPosts: Record<string, BlogPost> = {
         <h3>Security Considerations and Risks</h3>
         <p>The autonomous nature of AI agents introduces unique security challenges. Developers must consider adversarial attacks, model drift, unexpected market conditions, and the potential for cascading failures across interconnected systems.</p>
         
-        <div class="canadian-focus">
+        <div class="callout-info">
           <h4>Risk Mitigation Strategies:</h4>
           <ul>
             <li>Multi-signature wallet controls</li>
@@ -448,7 +448,7 @@ const blogPosts: Record<string, BlogPost> = {
         <h3>Security Best Practices</h3>
         <p>While Account Abstraction improves UX, it introduces new security considerations. Smart wallet code becomes critical infrastructure, and any vulnerabilities can affect thousands of users.</p>
         
-        <div class="canadian-focus">
+        <div class="callout-info">
           <h4>Security Checklist:</h4>
           <ul>
             <li>Multiple guardian requirements for recovery</li>
@@ -579,7 +579,7 @@ const blogPosts: Record<string, BlogPost> = {
         <h3>Regulatory Landscape</h3>
         <p>The regulatory environment for RWA tokenization is evolving rapidly. Different jurisdictions are taking different approaches, from supportive frameworks in Switzerland and Singapore to more cautious stances in the United States.</p>
         
-        <div class="canadian-focus">
+        <div class="callout-info">
           <h4>Key Regulatory Considerations:</h4>
           <ul>
             <li>Securities law compliance</li>
@@ -709,7 +709,7 @@ const blogPosts: Record<string, BlogPost> = {
         <h3>The Rollup Ecosystem</h3>
         <p>Rollups have emerged as the dominant execution layer in modular architecture. Optimistic Rollups like Optimism and Arbitrum lead in EVM compatibility, while ZK-Rollups like StarkNet and zkSync offer superior privacy and compression.</p>
         
-        <div class="canadian-focus">
+        <div class="callout-info">
           <h4>Choosing Your Rollup Strategy:</h4>
           <ul>
             <li><strong>Optimistic Rollups</strong> - Maximum EVM compatibility</li>
@@ -776,929 +776,675 @@ const blogPosts: Record<string, BlogPost> = {
     author: 'Mussawar Hayat',
     keywords: ['modular blockchains', 'L2', 'scaling', 'rollups', 'data availability', 'blockchain architecture']
   },
-  'ai-business-automation-2025': {
-    title: 'AI Business Automation: Transform Your Operations in 2025',
-    excerpt: 'Discover how AI automation can revolutionize Canadian businesses with practical implementation strategies, cost savings, and competitive advantages.',
+  'deploying-multi-site-nextjs-vps-nginx': {
+    title: 'Deploying a Multi-Site Next.js App on a Single VPS with Nginx',
+    excerpt: 'Running multiple Next.js apps on one VPS with Nginx reverse proxy, PM2, and SSL — the exact setup I use for production deployments.',
     content: `
       <div class="intro-section">
-        <h2>The AI Revolution in Canadian Business Operations</h2>
-        <p class="lead-paragraph">Artificial Intelligence is no longer a futuristic concept—it's a practical tool transforming Canadian businesses today. From automating repetitive tasks to providing intelligent insights, AI automation is becoming essential for maintaining competitive advantage in today's fast-paced market.</p>
-        
+        <h2>One VPS, Multiple Next.js Apps, Zero Downtime</h2>
+        <p class="lead-paragraph">Running multiple production Next.js applications on a single VPS sounds straightforward until you do it. Port conflicts, SSL renewal failures, memory exhaustion, and process management all converge into a setup that either works reliably or becomes a 3 AM debugging session. Here's the architecture I use to manage multiple sites on one Ubuntu VPS.</p>
+
         <div class="key-highlights">
-          <h4>🚀 Key Benefits of AI Automation:</h4>
+          <h4>The Stack</h4>
           <ul>
-            <li><strong>Cost Reduction</strong> - Reduce operational costs by 30-50%</li>
-            <li><strong>Efficiency Gains</strong> - Automate 80% of repetitive tasks</li>
-            <li><strong>24/7 Operations</strong> - AI systems work around the clock</li>
-            <li><strong>Data-Driven Decisions</strong> - Real-time business insights</li>
+            <li><strong>Nginx</strong> - Reverse proxy, SSL termination, static file serving</li>
+            <li><strong>PM2</strong> - Node.js process manager with auto-restart and logs</li>
+            <li><strong>Certbot</strong> - Let's Encrypt SSL certificates with auto-renewal</li>
+            <li><strong>Ubuntu VPS</strong> - 2GB RAM minimum for 3-4 Next.js apps</li>
           </ul>
         </div>
       </div>
-      
+
       <div class="technical-section">
-        <h2>🤖 Top AI Automation Tools for Canadian Businesses</h2>
-        <p>The right AI tools can transform your business operations without requiring extensive technical knowledge. These platforms are designed specifically for Canadian business needs and compliance requirements.</p>
-        
+        <h2>Nginx Reverse Proxy Configuration</h2>
+        <p>The core of the setup is Nginx acting as a reverse proxy. Each Next.js app runs on its own port (3000, 3001, 3002, etc.) and Nginx routes traffic based on the domain. Here's a working server block:</p>
+
+        <pre><code>server {
+  listen 80;
+  server_name app1.example.com;
+
+  location / {
+    proxy_pass http://localhost:3000;
+    proxy_http_version 1.1;
+    proxy_set_header Upgrade $http_upgrade;
+    proxy_set_header Connection 'upgrade';
+    proxy_set_header Host $host;
+    proxy_set_header X-Real-IP $remote_addr;
+    proxy_set_header X-Forwarded-For $proxy_add_x_forwarded_for;
+    proxy_set_header X-Forwarded-Proto $scheme;
+    proxy_cache_bypass $http_upgrade;
+  }
+}</code></pre>
+
+        <p>Repeat this block for each app, changing the <code>server_name</code> and <code>proxy_pass</code> port. The <code>Upgrade</code> and <code>Connection</code> headers are critical — without them, Next.js WebSocket connections will fail silently behind the proxy.</p>
+
         <div class="checklist-box">
-          <h4>✅ Essential AI Automation Tools:</h4>
+          <h4>Gotchas I Hit</h4>
           <ul>
-            <li><strong>Zapier AI</strong> - Workflow automation across 5,000+ apps</li>
-            <li><strong>Microsoft Power Automate</strong> - Enterprise-grade automation</li>
-            <li><strong>Make.com</strong> - Visual workflow builder with AI integration</li>
-            <li><strong>UiPath</strong> - Robotic Process Automation (RPA)</li>
-            <li><strong>IBM Watson</strong> - Advanced AI for business processes</li>
-            <li><strong>Google Cloud AI</strong> - Scalable AI solutions</li>
+            <li><strong>Port conflicts</strong> - PM2 can assign the same port if you forget to set PORT env var per app. Always specify <code>PORT=3001</code> explicitly in your ecosystem config</li>
+            <li><strong>WebSocket timeouts</strong> - Default Nginx proxy timeout is 60s. For long-lived connections, add <code>proxy_read_timeout 86400;</code></li>
+            <li><strong>Client max body size</strong> - Default is 1MB. File uploads will fail silently. Add <code>client_max_body_size 50M;</code></li>
           </ul>
         </div>
       </div>
-      
+
       <div class="onpage-section">
-        <h3>💼 Practical Automation Examples</h3>
-        <p>Canadian businesses are already using AI automation to streamline operations. From customer service to inventory management, these real-world applications demonstrate the transformative power of AI automation.</p>
-        
-        <blockquote>
-          "AI automation isn't about replacing humans—it's about augmenting their capabilities and freeing them to focus on high-value strategic work that drives business growth."
-        </blockquote>
+        <h3>PM2 Process Management</h3>
+        <p>PM2 keeps your Node.js processes alive and handles restarts. Use an ecosystem file to manage all apps from one place:</p>
+
+        <pre><code>module.exports = {
+  apps: [
+    { name: 'app1', script: 'npm', args: 'start', cwd: '/var/www/app1', env: { PORT: 3000 } },
+    { name: 'app2', script: 'npm', args: 'start', cwd: '/var/www/app2', env: { PORT: 3001 } },
+    { name: 'app3', script: 'npm', args: 'start', cwd: '/var/www/app3', env: { PORT: 3002 } },
+  ]
+}</code></pre>
+
+        <p>Run <code>pm2 start ecosystem.config.js</code> and PM2 handles the rest. <code>pm2 status</code> gives you a dashboard, <code>pm2 logs</code> streams all app logs in real-time, and <code>pm2 restart all</code> bounces everything cleanly.</p>
       </div>
-      
+
       <div class="content-strategy-section">
-        <h2>📊 Implementation Strategy for Canadian Businesses</h2>
-        <p>Successful AI automation implementation requires careful planning and execution. Start with high-impact, low-complexity automations and gradually expand to more complex processes as your team gains confidence and experience.</p>
-        
+        <h2>SSL with Certbot</h2>
+        <p>SSL is non-negotiable. Certbot with Let's Encrypt makes it free and automated. For each domain:</p>
+
+        <pre><code>sudo certbot --nginx -d app1.example.com -d www.app1.example.com</code></pre>
+
+        <p>Certbot automatically modifies your Nginx config to add the SSL certificate and sets up auto-renewal via a systemd timer. But there's a catch:</p>
+
         <div class="strategy-grid">
-          <h4>🎯 Phased Implementation Approach:</h4>
+          <h4>SSL Renewal Gotchas</h4>
           <ul>
-            <li><strong>Phase 1</strong> - Automate administrative tasks (data entry, scheduling)</li>
-            <li><strong>Phase 2</strong> - Implement customer service automation</li>
-            <li><strong>Phase 3</strong> - Deploy predictive analytics for decision making</li>
-            <li><strong>Phase 4</strong> - Integrate AI across entire business operations</li>
-            <li><strong>Phase 5</strong> - Optimize and scale automation initiatives</li>
+            <li><strong>Renewal breaks Nginx</strong> - If your Nginx config has syntax errors, renewal silently fails. Run <code>sudo nginx -t</code> before relying on auto-renewal</li>
+            <li><strong>Multiple domains</strong> - Each domain needs its own certificate unless you use a wildcard. I prefer individual certs for isolation</li>
+            <li><strong>DNS propagation</strong> - If you just pointed a new domain, wait for DNS to propagate before running Certbot or it will fail verification</li>
+            <li><strong>Rate limits</strong> - Let's Encrypt has rate limits (5 identical certificates per week). Test with <code>--staging</code> first</li>
           </ul>
         </div>
       </div>
-      
-      <div class="local-seo-section">
-        <h3>🇨🇦 Canadian Compliance and Data Privacy</h3>
-        <p>When implementing AI automation in Canada, compliance with PIPEDA and other privacy regulations is crucial. Choose AI solutions that respect Canadian data residency requirements and maintain strong security standards.</p>
-        
-        <div class="canadian-focus">
-          <h4>🍁 Canadian Compliance Considerations:</h4>
-          <ul>
-            <li>PIPEDA compliance for data handling</li>
-            <li>Canadian data residency requirements</li>
-            <li>Bilingual support for French-speaking regions</li>
-            <li>Integration with Canadian payment systems</li>
-            <li>Compliance with provincial privacy laws</li>
-          </ul>
-        </div>
-      </div>
-      
-      <div class="linkbuilding-section">
-        <h2>💰 ROI and Cost Analysis</h2>
-        <p>AI automation delivers measurable returns through reduced labor costs, improved efficiency, and increased productivity. Calculate your potential ROI by considering both direct cost savings and indirect benefits like improved customer satisfaction.</p>
-        
-        <div class="link-building-tactics">
-          <h4>📈 ROI Calculation Factors:</h4>
-          <ul>
-            <li>Labor cost reduction (30-50% typical)</li>
-            <li>Error reduction and quality improvements</li>
-            <li>Increased processing speed and throughput</li>
-            <li>Enhanced customer experience and retention</li>
-            <li>Competitive advantage and market share growth</li>
-          </ul>
-        </div>
-      </div>
-      
+
       <div class="analytics-section">
-        <h2>🔮 Future Trends in AI Automation</h2>
-        <p>The future of AI automation includes more sophisticated capabilities like autonomous decision-making, predictive maintenance, and hyper-personalization. Canadian businesses that embrace these trends early will gain significant competitive advantages.</p>
-        
+        <h2>Memory Management</h2>
+        <p>The biggest constraint on a single VPS is RAM. Each Next.js app in production mode typically uses 80-150MB. On a 2GB VPS, you can comfortably run 3-4 apps, but you need to watch for memory pressure.</p>
+
         <div class="tools-focus">
-          <h4>🚀 Emerging AI Automation Trends:</h4>
+          <h4>Memory Optimization Tips</h4>
           <ul>
-            <li><strong>Autonomous AI Agents</strong> - Self-directing AI systems</li>
-            <li><strong>Predictive Automation</strong> - Anticipatory task execution</li>
-            <li><strong>Hyper-Personalization</strong> - Individualized customer experiences</li>
-            <li><strong>Quantum AI</strong> - Next-generation processing power</li>
-            <li><strong>Edge AI</strong> - On-device AI processing</li>
+            <li><strong>Set NODE_OPTIONS=--max-old-space-size=256</strong> - Cap Node.js heap per process</li>
+            <li><strong>Enable swap</strong> - 2GB swap file as safety net for memory spikes</li>
+            <li><strong>Use Next.js standalone output</strong> - Reduces memory footprint by stripping unnecessary files</li>
+            <li><strong>Monitor with pm2 monit</strong> - Real-time CPU and memory per process</li>
+            <li><strong>Set up PM2 max_memory_restart</strong> - Auto-restart processes that exceed a memory threshold</li>
           </ul>
         </div>
       </div>
-      
+
       <div class="conclusion-section">
-        <h2>🎯 Getting Started with AI Automation</h2>
-        <p>Begin your AI automation journey by identifying repetitive, time-consuming tasks that provide clear business value when automated. Start small, measure results, and gradually expand your automation capabilities.</p>
-        
+        <h2>Zero-Downtime Deployment Workflow</h2>
+        <p>For zero-downtime updates, I use a simple git-based workflow: pull latest code, rebuild, and restart the specific PM2 process. Nginx continues serving traffic while PM2 restarts the app in under a second.</p>
+
         <div class="final-takeaway">
-          <h4>💡 Key Takeaway for Canadian Businesses:</h4>
-          <p><em>AI automation is not just a technology upgrade—it's a fundamental business transformation. Start with clear objectives, choose the right tools, ensure compliance, and focus on delivering measurable business value. The businesses that embrace AI automation today will dominate their markets tomorrow.</em></p>
+          <h4>Key Takeaway</h4>
+          <p><em>The setup that works is the one you can reproduce from memory at 2 AM. Document your Nginx configs, keep your PM2 ecosystem file in git, and always test SSL renewals with --staging before relying on them in production.</em></p>
         </div>
-        
+
         <hr>
-        
+
         <div class="cta-section">
-          <h4>🚀 Ready to Transform Your Business with AI Automation?</h4>
-          <p>Neural Code specializes in implementing AI automation solutions for Canadian businesses. Contact us today to discover how we can help you leverage AI to reduce costs, improve efficiency, and gain competitive advantage.</p>
+          <h4>Need help with VPS deployment?</h4>
+          <p>I handle full DevOps setup — Nginx, PM2, SSL, email infrastructure, and CI/CD pipelines. <a href="/#contact" style="color: #39FF14;">Get in touch</a> if you need a reliable multi-site deployment without the trial and error.</p>
         </div>
       </div>
     `,
-    date: '2024-12-15',
-    readTime: '10 min read',
-    category: 'AI & Automation',
-    author: 'Neural Code Team',
-    keywords: ['AI automation', 'business automation', 'Canadian AI solutions', 'AI tools', 'automation ROI', 'AI implementation']
-  },
-  'how-to-improve-seo-rankings-2024': {
-    title: 'How to Improve SEO Rankings: Complete Guide 2024',
-    excerpt: 'Learn proven strategies to boost your website\'s search engine rankings and drive more organic traffic for Canadian businesses.',
-    content: `
-      <div class="intro-section">
-        <h2>Understanding SEO Rankings in 2024</h2>
-        <p class="lead-paragraph">Search engine optimization (SEO) has evolved significantly, with Google emphasizing user experience, mobile-friendliness, and high-quality content. For Canadian businesses, local SEO plays a crucial role in dominating regional search results.</p>
-        
-        <div class="key-highlights">
-          <h4>🎯 Key Focus Areas for 2024:</h4>
-          <ul>
-            <li><strong>User Experience Signals</strong> - Core Web Vitals and page speed</li>
-            <li><strong>Mobile-First Indexing</strong> - Responsive design is non-negotiable</li>
-            <li><strong>Content Quality</strong> - E-E-A-T (Experience, Expertise, Authoritativeness, Trustworthiness)</li>
-            <li><strong>Local SEO Dominance</strong> - Geographic targeting for Canadian markets</li>
-          </ul>
-        </div>
-      </div>
-      
-      <div class="technical-section">
-        <h2>🛠️ Technical SEO Fundamentals</h2>
-        <p>Start with the basics: ensure your site is mobile-responsive, loads quickly, and has proper schema markup. Core Web Vitals are now ranking factors that directly impact your position in search results.</p>
-        
-        <div class="checklist-box">
-          <h4>✅ Technical SEO Checklist:</h4>
-          <ul>
-            <li>Page load speed under 3 seconds</li>
-            <li>Mobile-responsive design</li>
-            <li>SSL certificate (HTTPS)</li>
-            <li>XML sitemap submission</li>
-            <li>Schema markup implementation</li>
-            <li>Core Web Vitals optimization</li>
-          </ul>
-        </div>
-      </div>
-      
-      <div class="onpage-section">
-        <h3>📝 On-Page Optimization</h3>
-        <p>Optimize your title tags, meta descriptions, and heading structure. Use target keywords naturally in your content while maintaining readability.</p>
-        
-        <blockquote>
-          "The best SEO strategy is to create content that users actually want to read and share. Focus on value, not just keywords."
-        </blockquote>
-      </div>
-      
-      <div class="content-strategy-section">
-        <h2>📈 Content Strategy for Higher Rankings</h2>
-        <p>Create comprehensive, authoritative content that answers user queries. Focus on long-tail keywords and semantic SEO to capture more search traffic.</p>
-        
-        <div class="strategy-grid">
-          <h4>🎯 Content Pillars to Focus On:</h4>
-          <ul>
-            <li><strong>Long-form content</strong> (2,000+ words) for comprehensive coverage</li>
-            <li><strong>Video content</strong> for increased engagement</li>
-            <li><strong>Interactive elements</strong> like calculators and tools</li>
-            <li><strong>Case studies</strong> and real-world examples</li>
-            <li><strong>Industry reports</strong> and original research</li>
-          </ul>
-        </div>
-      </div>
-      
-      <div class="local-seo-section">
-        <h3>🍁 Local SEO for Canadian Businesses</h3>
-        <p>Leverage Google My Business, local citations, and geo-targeted keywords to dominate local search results across Canadian cities.</p>
-        
-        <div class="canadian-focus">
-          <h4>🇨🇦 Canadian-Specific Strategies:</h4>
-          <ul>
-            <li>Optimize for "near me" searches in major cities (Toronto, Vancouver, Montreal)</li>
-            <li>Create location-specific landing pages</li>
-            <li>Build local citations in Canadian directories</li>
-            <li>Encourage customer reviews on Google My Business</li>
-            <li>Use Canadian spelling and terminology</li>
-          </ul>
-        </div>
-      </div>
-      
-      <div class="linkbuilding-section">
-        <h2>🔗 Link Building Strategies</h2>
-        <p>Build high-quality backlinks through guest posting, partnerships, and content marketing. Focus on authoritative domains in your industry.</p>
-        
-        <div class="link-building-tactics">
-          <h4>🚀 Effective Link Building Tactics:</h4>
-          <ul>
-            <li>Guest posting on industry blogs</li>
-            <li>Creating shareable infographics</li>
-            <li>Developing original research studies</li>
-            <li>Building relationships with Canadian media</li>
-            <li>Sponsoring local events and organizations</li>
-          </ul>
-        </div>
-      </div>
-      
-      <div class="analytics-section">
-        <h2>📊 Monitoring and Analytics</h2>
-        <p>Use tools like Google Analytics and Search Console to track your progress. Regularly audit your site for issues and opportunities.</p>
-        
-        <div class="tools-focus">
-          <h4>🛠️ Essential Tools for Canadian SEO:</h4>
-          <ul>
-            <li><strong>Google Analytics 4</strong> - Track user behavior and conversions</li>
-            <li><strong>Google Search Console</strong> - Monitor search performance</li>
-            <li><strong>SEMrush/Ahrefs</strong> - Competitor analysis and keyword research</li>
-            <li><strong>Google My Business Insights</strong> - Local performance metrics</li>
-            <li><strong>PageSpeed Insights</strong> - Core Web Vitals monitoring</li>
-          </ul>
-        </div>
-      </div>
-      
-      <div class="conclusion-section">
-        <h2>🎯 Conclusion</h2>
-        <p>Improving SEO rankings requires consistent effort and staying updated with algorithm changes. Focus on user experience and valuable content to achieve sustainable ranking improvements.</p>
-        
-        <div class="final-takeaway">
-          <h4>💡 Key Takeaway for Canadian Businesses:</h4>
-          <p><em>Success in SEO isn't about gaming the system—it's about creating the best possible experience for your Canadian audience while following search engine best practices. Start with technical excellence, build authoritative content, and dominate your local market.</em></p>
-        </div>
-        
-        <hr>
-        
-        <div class="cta-section">
-          <h4>🚀 Ready to Transform Your SEO Strategy?</h4>
-          <p>Neural Code specializes in helping Canadian businesses dominate search results. Contact us today for a comprehensive SEO audit and strategy tailored to your business goals.</p>
-        </div>
-      </div>
-    `,
-    date: '2024-03-07',
-    readTime: '10 min read',
-    category: 'SEO',
-    author: 'Neural Code Team',
-    keywords: ['SEO rankings', 'search engine optimization', 'SEO strategies', 'organic traffic', 'Canadian SEO']
-  },
-  'web-development-trends-canada-2024': {
-    title: 'Top Web Development Trends in Canada 2024',
-    excerpt: 'Discover the latest web development trends shaping the Canadian tech landscape, from AI integration to mobile-first design.',
-    content: `
-      <div class="intro-section">
-        <h2>Understanding the Current Web Development Landscape in Canada</h2>
-        <p class="lead-paragraph">Canadian businesses are rapidly adopting cutting-edge web technologies to maintain competitive edges in digital markets. From AI-powered applications to progressive web apps, the Canadian web development industry is experiencing unprecedented growth and innovation.</p>
-        
-        <div class="key-highlights">
-          <h4>🚀 Key Trends Shaping Canadian Web Development:</h4>
-          <ul>
-            <li><strong>AI Integration</strong> - Machine learning in user interfaces</li>
-            <li><strong>Progressive Web Apps</strong> - Blurring web and mobile boundaries</li>
-            <li><strong>Headless Architecture</strong> - Flexible content delivery</li>
-            <li><strong>Security-First Development</strong> - PIPEDA compliance focus</li>
-          </ul>
-        </div>
-      </div>
-      
-      <div class="technical-section">
-        <h2>🤖 AI and Machine Learning Integration in Canadian Web Development</h2>
-        <p>Artificial intelligence is revolutionizing web development across Canada, enabling personalized user experiences and intelligent automation. Canadian developers are at the forefront of AI-driven solutions, creating smarter applications that adapt to user needs.</p>
-        
-        <div class="checklist-box">
-          <h4>🧠 AI Applications in Web Development:</h4>
-          <ul>
-            <li>Personalized content recommendations</li>
-            <li>Intelligent search functionality</li>
-            <li>Predictive user behavior analysis</li>
-            <li>Automated testing and debugging</li>
-            <li>Natural language processing interfaces</li>
-            <li>Computer vision integration</li>
-          </ul>
-        </div>
-      </div>
-      
-      <div class="onpage-section">
-        <h3>💬 Conversational AI and Chatbots</h3>
-        <p>AI-powered chatbots provide 24/7 customer support for Canadian businesses, significantly improving user engagement and reducing response times. These intelligent assistants are becoming essential for e-commerce and service-based companies.</p>
-        
-        <blockquote>
-          "The future of web development isn't just about building websites—it's about creating intelligent experiences that anticipate user needs before they even express them."
-        </blockquote>
-      </div>
-      
-      <div class="content-strategy-section">
-        <h2>📱 Mobile-First Design and Progressive Web Apps</h2>
-        <p>With mobile internet usage dominating in Canada, web developers prioritize mobile-first design and PWA technologies for optimal user experience. This approach ensures seamless functionality across all devices.</p>
-        
-        <div class="strategy-grid">
-          <h4>🎯 Mobile-First Development Priorities:</h4>
-          <ul>
-            <li><strong>Responsive Design</strong> - Adaptive layouts for all screen sizes</li>
-            <li><strong>Touch Optimization</strong> - Gesture-friendly interfaces</li>
-            <li><strong>Offline Functionality</strong> - Service workers and caching</li>
-            <li><strong>App-like Experience</strong> - Native app features in browsers</li>
-            <li><strong>Performance Optimization</strong> - Fast loading on mobile networks</li>
-          </ul>
-        </div>
-      </div>
-      
-      <div class="local-seo-section">
-        <h3>⚡ Performance Optimization Techniques</h3>
-        <p>Fast-loading websites are crucial for SEO rankings and user retention. Canadian developers employ modern tools and techniques like code splitting, image optimization, and CDN implementation to achieve optimal performance.</p>
-        
-        <div class="canadian-focus">
-          <h4>🇨🇦 Canadian Performance Considerations:</h4>
-          <ul>
-            <li>Content delivery networks for geographic distribution</li>
-            <li>Winter-friendly performance (slower mobile networks)</li>
-            <li>Bilingual content optimization (English/French)</li>
-            <li>Regional server placement for reduced latency</li>
-            <li>Compliance with Canadian data residency requirements</li>
-          </ul>
-        </div>
-      </div>
-      
-      <div class="linkbuilding-section">
-        <h2>🏗️ Headless Commerce and API-First Architecture</h2>
-        <p>Flexible, scalable architectures are enabling Canadian e-commerce businesses to deliver seamless omnichannel experiences. This approach allows for greater customization and faster deployment of new features.</p>
-        
-        <div class="link-building-tactics">
-          <h4>🔧 Benefits of Headless Architecture:</h4>
-          <ul>
-            <li>Improved performance through static generation</li>
-            <li>Enhanced security with reduced attack surface</li>
-            <li>Greater flexibility for frontend frameworks</li>
-            <li>Easier integration with third-party services</li>
-            <li>Better scalability for growing businesses</li>
-          </ul>
-        </div>
-      </div>
-      
-      <div class="analytics-section">
-        <h2>🔒 Security and Privacy Compliance in Canadian Web Development</h2>
-        <p>With increasing data privacy regulations like PIPEDA, Canadian web developers prioritize security and compliance in their development practices. Implementing robust security measures is now a standard requirement.</p>
-        
-        <div class="tools-focus">
-          <h4>🛡️ Essential Security Practices:</h4>
-          <ul>
-            <li><strong>PIPEDA Compliance</strong> - Canadian privacy law adherence</li>
-            <li><strong>SSL/TLS Implementation</strong> - Encrypted data transmission</li>
-            <li><strong>Regular Security Audits</strong> - Vulnerability assessments</li>
-            <li><strong>Data Residency</strong> - Canadian data storage requirements</li>
-            <li><strong>Access Control</strong> - Role-based permissions</li>
-          </ul>
-        </div>
-      </div>
-      
-      <div class="conclusion-section">
-        <h2>🔮 The Future of Web Development in Canada</h2>
-        <p>The future looks promising for web development in Canada, with emerging technologies driving innovation and improved user experiences. Canadian businesses that embrace these trends will be well-positioned for success.</p>
-        
-        <div class="final-takeaway">
-          <h4>💡 Key Takeaway for Canadian Businesses:</h4>
-          <p><em>Success in Canadian web development requires balancing cutting-edge technology with practical business needs. Focus on user experience, security compliance, and scalable architectures to build digital solutions that drive growth.</em></p>
-        </div>
-        
-        <hr>
-        
-        <div class="cta-section">
-          <h4>🚀 Ready to Transform Your Canadian Business with Modern Web Development?</h4>
-          <p><strong>Ready to transform your Canadian business with modern web development?</strong> <a href="/contact" style="color: #39FF14;">Contact Neural Code</a> today to discuss your project and discover how our expertise in AI integration, mobile-first design, and secure development can help your business thrive in the digital landscape.</p>
-        </div>
-      </div>
-    `,
-    date: '2024-03-05',
-    readTime: '8 min read',
-    category: 'Web Development',
-    author: 'Neural Code Team',
-    keywords: ['web development trends', 'Canadian web development', 'AI in web development', 'mobile-first design', 'progressive web apps']
-  },
-  'ecommerce-solutions-canadian-businesses': {
-    title: 'E-commerce Solutions for Canadian Businesses: Complete Guide',
-    excerpt: 'A comprehensive guide to choosing the right e-commerce platform for your Canadian business, including Shopify and custom solutions.',
-    content: `
-      <div class="intro-section">
-        <h2>Choosing the Right E-commerce Platform for Canadian Businesses</h2>
-        <p class="lead-paragraph">In Canada's competitive retail landscape, selecting the appropriate e-commerce solution can make or break your online success. From Shopify to custom-built platforms, understanding your options is crucial for sustainable growth.</p>
-        
-        <div class="key-highlights">
-          <h4>🛒 Key Considerations for Canadian E-commerce:</h4>
-          <ul>
-            <li><strong>Payment Processing</strong> - Interac, credit cards, and digital wallets</li>
-            <li><strong>Tax Compliance</strong> - GST/HST calculations and reporting</li>
-            <li><strong>Shipping Integration</strong> - Canada Post, Purolator, and regional carriers</li>
-            <li><strong>Bilingual Support</strong> - English and French customer experience</li>
-          </ul>
-        </div>
-      </div>
-      
-      <div class="technical-section">
-        <h2>🛍️ Shopify: The Leading Choice for Canadian Retailers</h2>
-        <p>Shopify powers thousands of Canadian businesses with its user-friendly interface, extensive app store, and robust payment processing including Interac and local banking integrations. It's particularly strong for businesses looking to scale quickly.</p>
-        
-        <div class="checklist-box">
-          <h4>✅ Why Canadian Businesses Choose Shopify:</h4>
-          <ul>
-            <li>Built-in Canadian payment gateways</li>
-            <li>Automatic tax calculations for all provinces</li>
-            <li>Multi-currency support for international sales</li>
-            <li>Extensive app ecosystem for customization</li>
-            <li>24/7 customer support in multiple languages</li>
-            <li>Seamless social media integration</li>
-          </ul>
-        </div>
-      </div>
-      
-      <div class="onpage-section">
-        <h3>🍁 Key Features for Canadian Markets</h3>
-        <p>Multi-currency support, GST/HST calculations, and Canadian shipping integrations make Shopify ideal for businesses targeting both domestic and international customers. The platform handles complex Canadian retail requirements out of the box.</p>
-        
-        <blockquote>
-          "Shopify's Canadian success comes from understanding local market needs while providing global reach. It's the perfect launchpad for Canadian e-commerce ambitions."
-        </blockquote>
-      </div>
-      
-      <div class="content-strategy-section">
-        <h2>🔧 WooCommerce: Flexible and Customizable</h2>
-        <p>For businesses needing more customization, WooCommerce on WordPress offers unparalleled flexibility while maintaining ease of use for Canadian entrepreneurs. This open-source solution provides complete control over your online store.</p>
-        
-        <div class="strategy-grid">
-          <h4>🎯 WooCommerce Advantages for Canadian Businesses:</h4>
-          <ul>
-            <li><strong>Complete Ownership</strong> - Full control over your data and platform</li>
-            <li><strong>Unlimited Customization</strong> - No restrictions on design or functionality</li>
-            <li><strong>Cost-Effective</strong> - No monthly platform fees</li>
-            <li><strong>SEO-Friendly</strong> - Built on WordPress with excellent SEO capabilities</li>
-            <li><strong>Canadian Developer Community</strong> - Local expertise and support</li>
-          </ul>
-        </div>
-      </div>
-      
-      <div class="local-seo-section">
-        <h3>⚙️ Custom E-commerce Solutions</h3>
-        <p>When off-the-shelf platforms don't meet your needs, custom development provides tailored solutions with unique features and integrations specific to your Canadian business model. This approach is ideal for enterprise-level operations.</p>
-        
-        <div class="canadian-focus">
-          <h4>🇨🇦 When to Choose Custom Development:</h4>
-          <ul>
-            <li>Complex inventory management requirements</li>
-            <li>Integration with legacy Canadian business systems</li>
-            <li>Unique customer experience needs</li>
-            <li>High-volume transaction processing</li>
-            <li>Specialized Canadian industry compliance</li>
-          </ul>
-        </div>
-      </div>
-      
-      <div class="linkbuilding-section">
-        <h2>📈 Scalability and Performance</h2>
-        <p>Custom platforms can be built to handle high traffic volumes and complex product catalogs that Canadian businesses often require. Performance optimization is crucial for maintaining customer satisfaction and search rankings.</p>
-        
-        <div class="link-building-tactics">
-          <h4>🚀 Performance Optimization Strategies:</h4>
-          <ul>
-            <li>Content delivery networks for Canadian regions</li>
-            <li>Database optimization for large product catalogs</li>
-            <li>Mobile-first responsive design</li>
-            <li>Progressive web app capabilities</li>
-            <li>Advanced caching strategies</li>
-          </ul>
-        </div>
-      </div>
-      
-      <div class="analytics-section">
-        <h2>💳 Payment Processing in Canada</h2>
-        <p>Integrate popular Canadian payment gateways like Stripe Canada, PayPal, and local processors to ensure smooth checkout experiences for your customers. Payment flexibility is crucial for conversion optimization.</p>
-        
-        <div class="tools-focus">
-          <h4>💰 Essential Canadian Payment Options:</h4>
-          <ul>
-            <li><strong>Interac Online</strong> - Canadian debit card processing</li>
-            <li><strong>Credit Cards</strong> - Visa, Mastercard, American Express</li>
-            <li><strong>Digital Wallets</strong> - Apple Pay, Google Pay</li>
-            <li><strong>Buy Now Pay Later</strong> - Afterpay, Sezzle</li>
-            <li><strong>Cryptocurrency</strong> - Bitcoin, Ethereum options</li>
-          </ul>
-        </div>
-      </div>
-      
-      <div class="conclusion-section">
-        <h2>🎯 Conclusion</h2>
-        <p>Choosing the right e-commerce solution depends on your business size, technical requirements, and growth plans. Consult with Canadian e-commerce experts to make the best decision for your unique situation.</p>
-        
-        <div class="final-takeaway">
-          <h4>💡 Key Takeaway for Canadian Businesses:</h4>
-          <p><em>The best e-commerce platform is one that grows with your business. Start with your immediate needs but choose a solution that can scale to meet future demands while maintaining Canadian compliance and customer expectations.</em></p>
-        </div>
-        
-        <hr>
-        
-        <div class="cta-section">
-          <h4>🚀 Ready to Launch Your Canadian E-commerce Store?</h4>
-          <p>Neural Code specializes in building custom e-commerce solutions for Canadian businesses. Contact us today to discuss your requirements and discover how we can create the perfect online shopping experience for your customers.</p>
-        </div>
-      </div>
-    `,
-    date: '2024-03-03',
-    readTime: '12 min read',
-    category: 'E-commerce',
-    author: 'Neural Code Team',
-    keywords: ['e-commerce solutions Canada', 'Shopify Canada', 'Canadian online stores', 'e-commerce platforms', 'custom e-commerce development']
-  },
-  'pos-software-development-canada': {
-    title: 'POS Software Development: Benefits for Retail in Canada',
-    excerpt: 'Explore how custom POS software can streamline operations for Canadian retailers, with case studies and implementation tips.',
-    content: `
-      <div class="intro-section">
-        <h2>The Importance of POS Software in Canadian Retail</h2>
-        <p class="lead-paragraph">Point of Sale (POS) systems are essential for modern Canadian retailers, enabling efficient transactions, inventory management, and customer insights in a competitive market. The right POS solution can transform your retail operations.</p>
-        
-        <div class="key-highlights">
-          <h4>🛍️ Key Benefits of Modern POS Systems:</h4>
-          <ul>
-            <li><strong>Streamlined Operations</strong> - Faster checkout and reduced errors</li>
-            <li><strong>Real-time Analytics</strong> - Data-driven decision making</li>
-            <li><strong>Inventory Management</strong> - Automated stock tracking</li>
-            <li><strong>Customer Management</strong> - Enhanced shopping experience</li>
-          </ul>
-        </div>
-      </div>
-      
-      <div class="technical-section">
-        <h2>⚙️ Key Features of Modern POS Systems</h2>
-        <p>Canadian POS solutions must handle multi-currency transactions, GST/HST calculations, and integration with local payment processors like Interac. These features are essential for compliance and customer satisfaction.</p>
-        
-        <div class="checklist-box">
-          <h4>✅ Essential POS Features for Canadian Retail:</h4>
-          <ul>
-            <li>Interac debit card processing</li>
-            <li>Automatic GST/HST tax calculations</li>
-            <li>Multi-currency support (USD/CAD)</li>
-            <li>Bilingual interface (English/French)</li>
-            <li>Canada Post shipping integration</li>
-            <li>Local payment gateway support</li>
-          </ul>
-        </div>
-      </div>
-      
-      <div class="onpage-section">
-        <h3>📦 Inventory Management</h3>
-        <p>Real-time inventory tracking helps Canadian businesses optimize stock levels, reduce shrinkage, and improve supply chain efficiency. Advanced POS systems provide predictive analytics for better inventory planning.</p>
-        
-        <blockquote>
-          "Modern POS systems are no longer just cash registers—they're comprehensive business management tools that connect every aspect of your retail operation."
-        </blockquote>
-      </div>
-      
-      <div class="content-strategy-section">
-        <h2>👥 Customer Relationship Management</h2>
-        <p>Integrated CRM features allow Canadian retailers to build customer profiles, track purchase history, and personalize marketing efforts. This creates loyalty and drives repeat business in competitive markets.</p>
-        
-        <div class="strategy-grid">
-          <h4>🎯 CRM Capabilities in Modern POS:</h4>
-          <ul>
-            <li><strong>Customer Profiles</strong> - Purchase history and preferences</li>
-            <li><strong>Loyalty Programs</strong> - Points and rewards management</li>
-            <li><strong>Targeted Marketing</strong> - Email and SMS campaigns</li>
-            <li><strong>Feedback Collection</strong> - Customer satisfaction surveys</li>
-            <li><strong>Personalized Offers</strong> - Dynamic pricing and promotions</li>
-          </ul>
-        </div>
-      </div>
-      
-      <div class="local-seo-section">
-        <h3>🎁 Loyalty Programs</h3>
-        <p>Customizable loyalty programs help retain Canadian customers and encourage repeat business in competitive markets. Digital loyalty integration with mobile apps is becoming increasingly popular.</p>
-        
-        <div class="canadian-focus">
-          <h4>🇨🇦 Canadian Loyalty Program Trends:</h4>
-          <ul>
-            <li>Mobile-first loyalty experiences</li>
-            <li>Integration with Canadian payment systems</li>
-            <li>Multi-channel rewards (online + in-store)</li>
-            <li>Seasonal promotions for Canadian holidays</li>
-            <li>Regional partnership programs</li>
-          </ul>
-        </div>
-      </div>
-      
-      <div class="linkbuilding-section">
-        <h2>📊 Analytics and Reporting</h2>
-        <p>Detailed analytics provide insights into sales trends, peak hours, and product performance, crucial for Canadian retail decision-making. Real-time dashboards help managers make informed choices quickly.</p>
-        
-        <div class="link-building-tactics">
-          <h4>📈 Advanced Analytics Features:</h4>
-          <ul>
-            <li>Sales performance by region and store</li>
-            <li>Customer behavior analysis</li>
-            <li>Inventory turnover metrics</li>
-            <li>Employee performance tracking</li>
-            <li>Seasonal trend analysis</li>
-          </ul>
-        </div>
-      </div>
-      
-      <div class="analytics-section">
-        <h2>📱 Mobile POS Solutions</h2>
-        <p>Mobile POS systems enable Canadian businesses to process payments anywhere, from pop-up shops to delivery services. This flexibility is essential for modern retail environments and events.</p>
-        
-        <div class="tools-focus">
-          <h4>🛠️ Mobile POS Benefits:</h4>
-          <ul>
-            <li><strong>Line Busting</strong> - Reduce checkout wait times</li>
-            <li><strong>Curbside Pickup</strong> - Contactless service options</li>
-            <li><strong>Pop-up Shops</strong> - Temporary retail locations</li>
-            <li><strong>Tableside Service</strong> - Restaurant and hospitality</li>
-            <li><strong>Delivery Integration</strong> - On-the-go payments</li>
-          </ul>
-        </div>
-      </div>
-      
-      <div class="conclusion-section">
-        <h2>🔗 Integration Capabilities</h2>
-        <p>POS systems should integrate seamlessly with Canadian accounting software, e-commerce platforms, and other business tools. This creates a unified ecosystem for efficient operations.</p>
-        
-        <div class="final-takeaway">
-          <h4>💡 Key Takeaway for Canadian Retailers:</h4>
-          <p><em>Investing in the right POS software is not an expense—it's a strategic investment in operational efficiency, customer satisfaction, and business growth. Choose a solution that scales with your Canadian business ambitions.</em></p>
-        </div>
-        
-        <hr>
-        
-        <div class="cta-section">
-          <h4>🚀 Ready to Transform Your Canadian Retail Operations?</h4>
-          <p>Neural Code specializes in custom POS solutions for Canadian retailers. Contact us today to discuss your requirements and discover how we can build the perfect point of sale system for your business.</p>
-        </div>
-      </div>
-    `,
-    date: '2024-03-01',
+    date: '2026-05-15',
     readTime: '9 min read',
-    category: 'POS Software',
-    author: 'Neural Code Team',
-    keywords: ['POS software Canada', 'point of sale systems', 'Canadian retail software', 'inventory management', 'POS development']
+    category: 'DevOps',
+    author: 'Mussawar Hayat',
+    keywords: ['multi-site VPS deployment Next.js', 'Nginx reverse proxy', 'PM2 process management', 'SSL Certbot', 'VPS deployment', 'zero-downtime deploy']
   },
-  'digital-marketing-canadian-startups': {
-    title: 'Digital Marketing Strategies for Canadian Startups',
-    excerpt: 'Effective digital marketing tactics tailored for Canadian startups, including social media, PPC, and content marketing.',
+  'building-bitcoin-ordinals-marketplace': {
+    title: 'Building a Bitcoin Ordinals Marketplace: Architecture Breakdown',
+    excerpt: 'How I built Ordwin — a Bitcoin NFT marketplace for Ordinal inscriptions. Indexing, ownership tracking, and the real performance challenges.',
     content: `
       <div class="intro-section">
-        <h2>Digital Marketing Challenges for Canadian Startups</h2>
-        <p class="lead-paragraph">Canadian startups face unique challenges including regional markets, bilingual requirements, and competition from established brands in a digital landscape. Success requires a tailored approach that understands the Canadian market's nuances.</p>
-        
+        <h2>Building Ordwin: A Bitcoin Ordinals Marketplace</h2>
+        <p class="lead-paragraph">When I started building Ordwin, the Bitcoin Ordinals ecosystem was still in its early days. The concept was simple — inscriptions on satoshis that function as NFTs on Bitcoin — but the infrastructure to support a marketplace was anything but. No mature indexing APIs, no standard ownership tracking, and no blueprint for how a marketplace should handle Bitcoin-native assets. Here's what I learned building it.</p>
+
         <div class="key-highlights">
-          <h4>🎯 Key Canadian Marketing Challenges:</h4>
+          <h4>Project Overview</h4>
           <ul>
-            <li><strong>Regional Diversity</strong> - Multiple markets across provinces</li>
-            <li><strong>Bilingual Requirements</strong> - English and French content</li>
-            <li><strong>Competition</strong> - Established US and local brands</li>
-            <li><strong>Resource Constraints</strong> - Limited marketing budgets</li>
+            <li><strong>Stack</strong> - Next.js, TypeScript, Bitcoin Core API, Node.js backend</li>
+            <li><strong>Live</strong> - ordwin.fun, open source on GitHub</li>
+            <li><strong>Core challenge</strong> - Indexing inscription data at chain speed</li>
+            <li><strong>Key feature</strong> - Real-time ownership tracking and listing events</li>
           </ul>
         </div>
       </div>
-      
+
       <div class="technical-section">
-        <h2>📝 Content Marketing Foundation</h2>
-        <p>Build authority through valuable content that addresses Canadian market needs, from local business tips to industry insights. Quality content establishes your startup as a trusted resource in your niche.</p>
-        
+        <h2>The Ordinals Data Problem</h2>
+        <p>Unlike Ethereum NFTs where token metadata lives in smart contracts and can be queried via standard RPC calls, Ordinals inscriptions are embedded directly in Bitcoin transaction witness data. There's no contract to call. To build a marketplace, you need to:</p>
+
+        <ol>
+          <li>Parse every Bitcoin block for inscription data</li>
+          <li>Track ownership transfers as satoshis move between addresses</li>
+          <li>Index listing events (when someone lists an inscription for sale)</li>
+          <li>Serve this data to a frontend in real-time</li>
+        </ol>
+
+        <p>This is fundamentally different from an Ethereum NFT marketplace. On Ethereum, you query the contract. On Bitcoin, you have to build the index yourself.</p>
+
         <div class="checklist-box">
-          <h4>✅ Content Marketing Essentials for Canadian Startups:</h4>
+          <h4>The Indexing Architecture</h4>
           <ul>
-            <li>Canadian-focused blog content</li>
-            <li>Bilingual content creation</li>
-            <li>Local case studies and success stories</li>
-            <li>Industry-specific thought leadership</li>
-            <li>Seasonal content for Canadian holidays</li>
-            <li>Regional market insights</li>
+            <li><strong>Block listener</strong> - Node.js service watching new Bitcoin blocks via WebSocket</li>
+            <li><strong>Inscription parser</strong> - Extracts inscription content (text, image, JSON) from witness data</li>
+            <li><strong>Ownership tracker</strong> - Follows satoshi movement across transactions to track current owner</li>
+            <li><strong>REST API</strong> - Serves indexed data to the Next.js frontend</li>
+            <li><strong>PostgreSQL</strong> - Stores inscription metadata, ownership history, and active listings</li>
           </ul>
         </div>
       </div>
-      
+
       <div class="onpage-section">
-        <h3>📖 Blog and Thought Leadership</h3>
-        <p>Regular blogging establishes your startup as an expert in your field, attracting Canadian customers and potential partners. Focus on solving specific Canadian business problems and sharing local insights.</p>
-        
+        <h3>The Hardest Part: Indexing Speed</h3>
+        <p>The biggest technical challenge wasn't the data structure — it was keeping the index in sync with the chain. Bitcoin blocks arrive every ~10 minutes, but a single block can contain hundreds of inscriptions. When the Ordinals hype was at its peak, blocks were packed with thousands of inscriptions, and our indexer had to process them all before the next block arrived.</p>
+
+        <p>The solution was a two-phase indexing approach: a fast pass that extracts just the inscription ID and owner address (enough for the marketplace to function), followed by a slower pass that fetches and stores the full content (images, metadata, JSON).</p>
+
         <blockquote>
-          "Content marketing for Canadian startups isn't just about creating content—it's about building trust and authority in a market that values authenticity and local expertise."
+          "The frontend doesn't need the full image data to display a listing. It needs the inscription ID, the owner, and the price. Optimize for that first, then backfill the rest."
         </blockquote>
       </div>
-      
+
       <div class="content-strategy-section">
-        <h2>📱 Social Media Strategies</h2>
-        <p>Leverage platforms popular in Canada like LinkedIn, Facebook, and Instagram to build community and drive engagement. Each platform requires a tailored approach for maximum impact.</p>
-        
+        <h2>Frontend Architecture</h2>
+        <p>The frontend is a Next.js app with TypeScript. The key design decisions:</p>
+
         <div class="strategy-grid">
-          <h4>🎯 Platform-Specific Tactics:</h4>
+          <h4>Frontend Decisions</h4>
           <ul>
-            <li><strong>LinkedIn</strong> - Professional networking and B2B connections</li>
-            <li><strong>Facebook</strong> - Community building and local targeting</li>
-            <li><strong>Instagram</strong> - Visual storytelling and brand building</li>
-            <li><strong>Twitter/X</strong> - Real-time updates and industry news</li>
-            <li><strong>TikTok</strong> - Creative content and younger demographics</li>
+            <li><strong>SSR for listing pages</strong> - Server-side render inscription details for SEO and fast initial load</li>
+            <li><strong>Client-side real-time updates</strong> - WebSocket connection for live price changes and new listings</li>
+            <li><strong>Image optimization</strong> - Ordinals content can be large. Lazy-load and cache at the CDN edge</li>
+            <li><strong>Wallet integration</strong> - Bitcoin wallet connectors (Unisat, Xverse) for signing transactions</li>
+            <li><strong>Pagination</strong> - Cursor-based pagination for browsing thousands of inscriptions without offset performance issues</li>
           </ul>
         </div>
       </div>
-      
-      <div class="local-seo-section">
-        <h3>🎨 Platform-Specific Tactics</h3>
-        <p>Tailor content for each platform: professional networking on LinkedIn, visual storytelling on Instagram, community building on Facebook. Understanding platform demographics is key to success.</p>
-        
-        <div class="canadian-focus">
-          <h4>🇨🇦 Canadian Social Media Insights:</h4>
-          <ul>
-            <li>Higher Facebook usage than US average</li>
-            <li>Strong LinkedIn engagement in professional sectors</li>
-            <li>Instagram popularity in urban centers</li>
-            <li>Regional content preferences vary by province</li>
-            <li>Bilingual content performs well in Quebec</li>
-          </ul>
-        </div>
-      </div>
-      
-      <div class="linkbuilding-section">
-        <h2>🎯 PPC Advertising in Canada</h2>
-        <p>Use Google Ads and Facebook Ads with Canadian targeting to reach potential customers cost-effectively. Paid advertising can provide immediate results while organic strategies develop.</p>
-        
-        <div class="link-building-tactics">
-          <h4>🚀 Effective PPC Strategies:</h4>
-          <ul>
-            <li>Geo-targeted campaigns by city/province</li>
-            <li>Bilingual ad campaigns for Quebec</li>
-            <li>Seasonal ad scheduling for Canadian events</li>
-            <li>Mobile-first ad design</li>
-            <li>Remarketing for Canadian visitors</li>
-          </ul>
-        </div>
-      </div>
-      
+
       <div class="analytics-section">
-        <h2>📍 Local Targeting</h2>
-        <p>Focus on specific Canadian cities and provinces to maximize ROI and relevance for local markets. Local targeting helps startups compete effectively in their geographic areas.</p>
-        
+        <h2>What I'd Do Differently</h2>
+        <p>Hindsight is always 20/20. If I were starting Ordwin today, I'd make a few changes:</p>
+
         <div class="tools-focus">
-          <h4>🛠️ Local SEO Essentials:</h4>
+          <h4>Lessons Learned</h4>
           <ul>
-            <li><strong>Google My Business</strong> - Complete and optimized profiles</li>
-            <li><strong>Local Citations</strong> - Canadian business directories</li>
-            <li><strong>Local Keywords</strong> - City and province-specific terms</li>
-            <li><strong>Customer Reviews</strong> - Canadian customer testimonials</li>
-            <li><strong>Local Backlinks</strong> - Canadian business partnerships</li>
+            <li><strong>Start with a managed index</strong> - Services like Ordinals.com and Hiro now offer APIs. Building your own indexer is educational but time-consuming</li>
+            <li><strong>Cache aggressively</strong> - Inscription content doesn't change. CDN caching with long TTLs would have saved significant backend load</li>
+            <li><strong>Plan for chain reorgs</strong> - Bitcoin reorgs are rare but they happen. The indexer needs to handle them gracefully</li>
+            <li><strong>Separate indexing from serving</strong> - The indexer and the API should be separate services so indexing lag doesn't affect marketplace availability</li>
           </ul>
         </div>
       </div>
-      
+
       <div class="conclusion-section">
-        <h2>📧 Email Marketing Campaigns</h2>
-        <p>Build email lists through lead magnets and nurture prospects with valuable Canadian-focused content. Email marketing remains one of the highest ROI channels for startups.</p>
-        
+        <h2>Building on Bitcoin is Different</h2>
+        <p>Building a marketplace on Bitcoin requires a fundamentally different mental model compared to Ethereum. There's no smart contract to query, no ERC-721 standard to follow, and no gas estimation for transactions. You're working with raw blockchain data, and the quality of your indexing determines the quality of your marketplace.</p>
+
         <div class="final-takeaway">
-          <h4>💡 Key Takeaway for Canadian Startups:</h4>
-          <p><em>Success in Canadian digital marketing requires balancing global best practices with local market understanding. Focus on building authentic connections, providing real value, and respecting Canadian cultural nuances in your marketing efforts.</em></p>
+          <h4>Key Takeaway</h4>
+          <p><em>The Ordinals ecosystem is still early. The tools will mature, but the core challenge — indexing Bitcoin data efficiently and serving it to a fast frontend — will remain the same. If you're building in this space, invest in your indexing layer before anything else.</em></p>
         </div>
-        
+
         <hr>
-        
+
         <div class="cta-section">
-          <h4>🚀 Ready to Grow Your Canadian Startup?</h4>
-          <p>Neural Code specializes in digital marketing strategies for Canadian startups. Contact us today to develop a customized marketing plan that drives real results in the Canadian market.</p>
+          <h4>Building a Web3 project?</h4>
+          <p>I build Web3 marketplaces, DApps, and blockchain integrations — from smart contracts to frontend. <a href="/#contact" style="color: #39FF14;">Let's talk</a> about your project.</p>
         </div>
       </div>
     `,
-    date: '2024-02-28',
+    date: '2026-05-10',
     readTime: '11 min read',
-    category: 'Digital Marketing',
-    author: 'Neural Code Team',
-    keywords: ['digital marketing Canada', 'Canadian startup marketing', 'social media strategies', 'PPC advertising Canada', 'content marketing']
+    category: 'Web3',
+    author: 'Mussawar Hayat',
+    keywords: ['Bitcoin Ordinals developer', 'Ordinal inscription marketplace', 'Bitcoin NFT development', 'Ordwin', 'Web3 marketplace architecture', 'blockchain indexing']
   },
-  'custom-software-development-guide': {
-    title: 'Custom Software Development: When to Choose It Over Off-the-Shelf',
-    excerpt: 'Learn when custom software development is the right choice for Canadian businesses, with real-world examples and ROI analysis.',
+  'metamask-vs-walletconnect-dapp': {
+    title: 'MetaMask vs WalletConnect: Choosing Wallet Integration for Your DApp',
+    excerpt: 'Both work. Both have edge cases. Here\'s what I learned integrating MetaMask, WalletConnect, and Coinbase Wallet across multiple DApps.',
     content: `
       <div class="intro-section">
-        <h2>Understanding Custom Software Development</h2>
-        <p class="lead-paragraph">Custom software development involves creating tailored solutions that meet specific business requirements, unlike off-the-shelf software designed for general use. For Canadian businesses with unique processes, custom development can provide significant competitive advantages.</p>
-        
+        <h2>Wallet Integration: The First Real Decision in Any DApp</h2>
+        <p class="lead-paragraph">Every Web3 application needs wallet integration. It's the front door — the first thing users interact with before they can do anything on-chain. And the choice between MetaMask, WalletConnect, and other providers isn't just a technical preference. It affects UX, mobile compatibility, and the types of edge cases you'll be debugging at midnight. Here's what I've learned from building wallet integration across multiple DApps.</p>
+
         <div class="key-highlights">
-          <h4>🎯 Key Benefits of Custom Solutions:</h4>
+          <h4>The Three Wallets I Integrate</h4>
           <ul>
-            <li><strong>Perfect Fit</strong> - Designed for your specific workflows</li>
-            <li><strong>Scalability</strong> - Grows with your business</li>
-            <li><strong>Competitive Edge</strong> - Unique features competitors lack</li>
-            <li><strong>Integration</strong> - Connects with existing systems</li>
+            <li><strong>MetaMask</strong> - Browser extension, direct injection via window.ethereum</li>
+            <li><strong>WalletConnect</strong> - Relay protocol, works with 200+ mobile wallets</li>
+            <li><strong>Coinbase Wallet</strong> - Both extension and mobile, SDK with its own quirks</li>
           </ul>
         </div>
       </div>
-      
+
       <div class="technical-section">
-        <h2>🎯 When to Choose Custom Development</h2>
-        <p>Opt for custom software when your business processes are unique, require specific integrations, or when existing solutions don't meet your needs. The decision should be based on strategic business value.</p>
-        
+        <h2>MetaMask: Direct Injection</h2>
+        <p>MetaMask is the simplest to integrate because it injects <code>window.ethereum</code> directly into the page. No relay servers, no QR codes, no deep links. You check for the provider, request accounts, and you're connected.</p>
+
+        <pre><code>if (window.ethereum) {
+  const accounts = await window.ethereum.request({
+    method: 'eth_requestAccounts'
+  });
+}</code></pre>
+
+        <p>But there are edge cases that will bite you:</p>
+
         <div class="checklist-box">
-          <h4>✅ Signs You Need Custom Software:</h4>
+          <h4>MetaMask Edge Cases</h4>
           <ul>
-            <li>Multiple workarounds in current systems</li>
-            <li>Manual data entry between systems</li>
-            <li>Industry-specific requirements</li>
-            <li>Growth limitations with existing tools</li>
-            <li>Security compliance needs</li>
-            <li>Unique customer experience requirements</li>
+            <li><strong>Account change events</strong> - Users switch accounts without refreshing. You must listen for <code>accountsChanged</code> and update your UI state</li>
+            <li><strong>Chain switching</strong> - <code>wallet_switchEthereumChain</code> can fail if the chain hasn't been added. Always fall back to <code>wallet_addEthereumChain</code></li>
+            <li><strong>Multiple extensions</strong> - If a user has both MetaMask and Coinbase extension, <code>window.ethereum</code> might point to the wrong one. Use EIP-6963 to detect all providers</li>
+            <li><strong>Mobile MetaMask</strong> - The MetaMask mobile browser has a different provider implementation. Test on actual mobile, not just desktop</li>
           </ul>
         </div>
       </div>
-      
+
       <div class="onpage-section">
-        <h3>🔧 Unique Business Processes</h3>
-        <p>If your Canadian business has specialized workflows that generic software can't accommodate, custom development ensures perfect fit. This is especially true for regulated industries or specialized services.</p>
-        
-        <blockquote>
-          "Custom software isn't about building something different—it's about building something that works exactly the way your Canadian business needs it to work."
-        </blockquote>
-      </div>
-      
-      <div class="content-strategy-section">
-        <h2>🚀 Competitive Advantages</h2>
-        <p>Custom software can provide features that give your business an edge over competitors using standard solutions. These unique capabilities can become key differentiators in the market.</p>
-        
+        <h3>WalletConnect: The Relay Protocol</h3>
+        <p>WalletConnect is fundamentally different. It doesn't inject anything into the page. Instead, it uses a relay server to bridge your DApp with the user's mobile wallet via a QR code or deep link. This means it works with any wallet that supports the protocol — MetaMask mobile, Trust Wallet, Rainbow, and 200+ others.</p>
+
+        <p>The trade-off is complexity. The connection flow is: generate a pairing URI, display QR code, user scans with mobile wallet, relay server brokers the connection, you get a session. If the relay server is down (which happens), the connection fails silently.</p>
+
         <div class="strategy-grid">
-          <h4>🎯 Competitive Advantages Through Custom Software:</h4>
+          <h4>WalletConnect Trade-offs</h4>
           <ul>
-            <li><strong>Propetary Algorithms</strong> - Unique business logic</li>
-            <li><strong>Customer Experience</strong> - Tailored user journeys</li>
-            <li><strong>Automation</strong> - Streamlined operations</li>
-            <li><strong>Data Insights</strong> - Custom analytics</li>
-            <li><strong>Integration</strong> - Unified ecosystem</li>
+            <li><strong>Pro</strong> - Works with any mobile wallet, not just MetaMask</li>
+            <li><strong>Pro</strong> - Better for mobile-first DApps where users don't have a desktop extension</li>
+            <li><strong>Con</strong> - Relay server dependency. If the relay is slow, transactions feel laggy</li>
+            <li><strong>Con</strong> - Session management is complex. Sessions expire, need reconnection, and can get stuck</li>
+            <li><strong>Con</strong> - QR code UX is clunky on desktop. Users have to open their phone to scan</li>
           </ul>
         </div>
       </div>
-      
-      <div class="local-seo-section">
-        <h3>💡 Innovation Opportunities</h3>
-        <p>Build innovative features that align with your business vision and create new revenue streams for Canadian markets. Custom development allows you to experiment and iterate quickly.</p>
-        
-        <div class="canadian-focus">
-          <h4>🇨🇦 Canadian Innovation Considerations:</h4>
-          <ul>
-            <li>Bilingual interface requirements</li>
-            <li>Canadian tax and compliance integration</li>
-            <li>Regional business rule variations</li>
-            <li>Canadian payment system integration</li>
-            <li>Local data residency requirements</li>
-          </ul>
-        </div>
-      </div>
-      
-      <div class="linkbuilding-section">
-        <h2>📈 Scalability Considerations</h2>
-        <p>Custom solutions can be designed to scale with your Canadian business growth, from local operations to national expansion. Planning for scalability from the start is crucial.</p>
-        
-        <div class="link-building-tactics">
-          <h4>🚀 Scalability Planning Factors:</h4>
-          <ul>
-            <li>Multi-province expansion capabilities</li>
-            <li>Bilingual support for growth</li>
-            <li>Performance optimization for traffic spikes</li>
-            <li>Database design for growth</li>
-            <li>Infrastructure scaling strategy</li>
-          </ul>
-        </div>
-      </div>
-      
-      <div class="analytics-section">
-        <h2>🔗 Integration Capabilities</h2>
-        <p>Seamlessly integrate with existing Canadian business tools, accounting software, and third-party services. Integration eliminates data silos and improves operational efficiency.</p>
-        
+
+      <div class="content-strategy-section">
+        <h2>Real Bugs I've Encountered</h2>
+        <p>Here are specific issues I've hit in production that aren't in any documentation:</p>
+
         <div class="tools-focus">
-          <h4>🛠️ Common Integration Needs:</h4>
+          <h4>Production Bugs</h4>
           <ul>
-            <li><strong>Accounting Software</strong> - QuickBooks, Sage</li>
-            <li><strong>CRM Systems</strong> - Salesforce, HubSpot</li>
-            <li><strong>Payment Processors</strong> - Stripe, Moneris</li>
-            <li><strong>Communication Tools</strong> - Email, SMS</li>
-            <li><strong>Analytics Platforms</strong> - Google Analytics</li>
+            <li><strong>Stale WalletConnect sessions</strong> - User connects, closes the tab, comes back later. The old session is technically still valid but the mobile wallet has forgotten it. Solution: always check session validity on page load and auto-reconnect</li>
+            <li><strong>MetaMask chain change during transaction</strong> - User switches network while a transaction is pending. The transaction gets stuck in limbo. Solution: disable chain switching during pending transactions</li>
+            <li><strong>Coinbase Wallet deep links on iOS</strong> - iOS Safari sometimes blocks the deep link redirect. Solution: use a manual "Open Coinbase Wallet" button as fallback</li>
+            <li><strong>EIP-1193 event inconsistency</strong> - Different wallets fire events in different orders. <code>chainChanged</code> might fire before or after <code>accountsChanged</code>. Solution: debounce event handlers</li>
+            <li><strong>Rejection handling</strong> - When a user rejects a transaction, some wallets throw error code 4001, others throw a generic error. Solution: check for both</li>
           </ul>
         </div>
       </div>
-      
+
+      <div class="analytics-section">
+        <h2>My Recommendation</h2>
+        <p>For most DApps, integrate both. Use MetaMask's direct injection for desktop users (fast, no relay dependency) and WalletConnect for mobile users (works with their existing wallet app). Coinbase Wallet SDK as a third option for users who specifically use Coinbase.</p>
+
+        <p>The cleanest approach I've found is to use a provider detection layer (like EIP-6963 or a library like wagmi) that handles the complexity of multiple providers, and then expose a simple "Connect Wallet" button that shows available options.</p>
+      </div>
+
       <div class="conclusion-section">
-        <h2>💰 Cost-Benefit Analysis</h2>
-        <p>While initial costs are higher, custom software often provides better long-term ROI through improved efficiency and competitive advantages. Consider total cost of ownership over 3-5 years.</p>
-        
+        <h2>Wallet Integration is UX, Not Just Code</h2>
+        <p>The technical integration is half the battle. The other half is making the connection flow feel seamless — handling rejections gracefully, auto-reconnecting when possible, and giving clear feedback when something goes wrong. The best wallet integration is the one users don't think about.</p>
+
         <div class="final-takeaway">
-          <h4>💡 Key Takeaway for Canadian Businesses:</h4>
-          <p><em>Custom software development is an investment in operational excellence and competitive advantage. When off-the-shelf solutions limit your growth or force compromises, custom development becomes not just an option, but a strategic necessity.</em></p>
+          <h4>Key Takeaway</h4>
+          <p><em>Don't pick one wallet. Pick a pattern: detect all available providers, let the user choose, and handle every edge case you can find. Your DApp's conversion rate depends on it.</em></p>
         </div>
-        
+
         <hr>
-        
+
         <div class="cta-section">
-          <h4>🚀 Ready to Build Your Custom Solution?</h4>
-          <p>Neural Code specializes in custom software development for Canadian businesses. Contact us today to discuss your requirements and discover how a tailored solution can transform your operations.</p>
+          <h4>Need wallet integration for your DApp?</h4>
+          <p>I build multi-chain wallet integrations supporting MetaMask, WalletConnect, and Coinbase Wallet. <a href="/#contact" style="color: #39FF14;">Get in touch</a> to discuss your project.</p>
         </div>
       </div>
     `,
-    date: '2024-02-26',
+    date: '2026-05-05',
+    readTime: '8 min read',
+    category: 'Web3',
+    author: 'Mussawar Hayat',
+    keywords: ['wallet integration DApp', 'MetaMask vs WalletConnect', 'Web3 wallet connection', 'Ethers.js wallet', 'multi-chain wallet', 'DApp development']
+  },
+  'spf-dkim-dmarc-multi-domain-vps': {
+    title: 'Setting Up SPF, DKIM, and DMARC for a Multi-Domain VPS',
+    excerpt: 'Email deliverability is silent until it breaks. Here\'s the exact DNS setup I use to keep transactional email out of spam across multiple domains.',
+    content: `
+      <div class="intro-section">
+        <h2>Email Deliverability: The Silent Killer</h2>
+        <p class="lead-paragraph">Email deliverability is one of those things that works fine until it doesn't. Your transactional emails — password resets, order confirmations, contact form notifications — silently start landing in spam. No error message, no bounce, no warning. Users just stop responding. Here's the DNS setup I use across multiple domains on a single VPS to keep email out of spam.</p>
+
+        <div class="key-highlights">
+          <h4>The Three DNS Records You Need</h4>
+          <ul>
+            <li><strong>SPF</strong> - Sender Policy Framework. Tells receivers which IPs are allowed to send email for your domain</li>
+            <li><strong>DKIM</strong> - DomainKeys Identified Mail. Cryptographic signature proving your email wasn't tampered with</li>
+            <li><strong>DMARC</strong> - Domain-based Message Authentication. Policy telling receivers what to do if SPF or DKIM fails</li>
+          </ul>
+        </div>
+      </div>
+
+      <div class="technical-section">
+        <h2>SPF: Who Can Send Your Email</h2>
+        <p>SPF is a TXT record in your DNS that lists the IP addresses authorized to send email for your domain. For a VPS sending email directly:</p>
+
+        <pre><code>example.com.  IN  TXT  "v=spf1 ip4:123.45.67.89 -all"</code></pre>
+
+        <p>The <code>-all</code> at the end is critical. It means "reject all email from any IP not listed." Use <code>~all</code> (soft fail) during testing, then switch to <code>-all</code> for production.</p>
+
+        <div class="checklist-box">
+          <h4>SPF Gotchas</h4>
+          <ul>
+            <li><strong>One SPF record per domain</strong> - Multiple SPF records are invalid. If you use both your VPS and a third-party service, combine them: <code>"v=spf1 ip4:123.45.67.89 include:mailgun.org -all"</code></li>
+            <li><strong>10 DNS lookup limit</strong> - SPF has a hard limit of 10 DNS lookups. Each <code>include:</code> counts as one. Chain too many and SPF silently fails</li>
+            <li><strong>Subdomains</strong> - SPF doesn't inherit to subdomains. If you send from <code>mail.app.example.com</code>, you need a separate SPF record</li>
+          </ul>
+        </div>
+      </div>
+
+      <div class="onpage-section">
+        <h3>DKIM: Cryptographic Signing</h3>
+        <p>DKIM adds a digital signature to every email you send. The receiving server verifies the signature using a public key published in your DNS. On a VPS running Postfix, I use OpenDKIM to sign outgoing email:</p>
+
+        <pre><code>selector._domainkey.example.com.  IN  TXT  "v=DKIM1; k=rsa; p=MIGfMA0GCSqGSIb3DQE..."</code></pre>
+
+        <p>The <code>selector</code> is a label you choose (commonly <code>default</code> or <code>mail</code>). You can have multiple selectors for different sending services.</p>
+
+        <div class="strategy-grid">
+          <h4>DKIM Setup Steps</h4>
+          <ul>
+            <li>Generate key pair: <code>opendkim-genkey -s mail -d example.com</code></li>
+            <li>Configure OpenDKIM to sign outgoing mail for your domain</li>
+            <li>Publish the public key as a TXT record in DNS</li>
+            <li>Configure Postfix to pass mail through OpenDKIM milter</li>
+            <li>Test with <code>dkimvalidator.com</code> or send a test email to <code>check-auth@verifier.port25.com</code></li>
+          </ul>
+        </div>
+      </div>
+
+      <div class="content-strategy-section">
+        <h2>DMARC: The Policy Layer</h2>
+        <p>DMARC ties SPF and DKIM together. It tells receiving servers what to do when authentication fails. Start with a monitoring policy:</p>
+
+        <pre><code>_dmarc.example.com.  IN  TXT  "v=DMARC1; p=none; rua=mailto:dmarc@example.com; fo=1"</code></pre>
+
+        <p>The <code>p=none</code> policy means "don't take action, but send reports." Monitor these for a week, then escalate:</p>
+
+        <div class="tools-focus">
+          <h4>DMARC Escalation Path</h4>
+          <ul>
+            <li><strong>p=none</strong> - Monitor only. Collect data, fix any legitimate senders that fail</li>
+            <li><strong>p=quarantine</strong> - Failed emails go to spam. Move here after 1-2 weeks of clean reports</li>
+            <li><strong>p=reject</strong> - Failed emails are rejected. Move here after another 1-2 weeks of clean quarantine reports</li>
+            <li><strong>fo=1</strong> - Generate failure reports for any authentication failure. Useful for catching misconfigurations early</li>
+          </ul>
+        </div>
+      </div>
+
+      <div class="analytics-section">
+        <h2>Multi-Domain Configuration</h2>
+        <p>On a single VPS hosting multiple domains, each domain needs its own SPF, DKIM, and DMARC records:</p>
+
+        <div class="tools-focus">
+          <h4>Multi-Domain Tips</h4>
+          <ul>
+            <li><strong>Separate DKIM selectors per domain</strong> - Don't reuse the same selector across domains</li>
+            <li><strong>Separate DMARC report addresses</strong> - Each domain should send reports to a dedicated mailbox</li>
+            <li><strong>Use a subdomain for sending</strong> - If you send from <code>mail.example.com</code>, you isolate your SPF/DKIM from your root domain</li>
+            <li><strong>Test after every DNS change</strong> - Use <code>dig TXT example.com</code> to verify records are live before assuming they're working</li>
+          </ul>
+        </div>
+      </div>
+
+      <div class="conclusion-section">
+        <h2>The Deliverability Checklist</h2>
+        <p>Email deliverability isn't a one-time setup. It's an ongoing process of monitoring, testing, and adjusting. But once SPF, DKIM, and DMARC are properly configured, your transactional email will reliably reach the inbox instead of the spam folder.</p>
+
+        <div class="final-takeaway">
+          <h4>Key Takeaway</h4>
+          <p><em>Set up all three records, start with p=none, monitor the reports, and escalate gradually. Skipping DMARC is the most common reason transactional email silently lands in spam.</em></p>
+        </div>
+
+        <hr>
+
+        <div class="cta-section">
+          <h4>Need email infrastructure setup?</h4>
+          <p>I handle full VPS email infrastructure — Postfix, OpenDKIM, DMARC, and multi-domain DNS configuration. <a href="/#contact" style="color: #39FF14;">Get in touch</a> if your transactional email is landing in spam.</p>
+        </div>
+      </div>
+    `,
+    date: '2026-04-28',
     readTime: '7 min read',
-    category: 'Software Development',
-    author: 'Neural Code Team',
-    keywords: ['custom software development', 'bespoke software Canada', 'software development ROI', 'custom business solutions', 'software integration']
+    category: 'DevOps',
+    author: 'Mussawar Hayat',
+    keywords: ['email deliverability VPS setup', 'SPF DKIM DMARC', 'Postfix OpenDKIM', 'email infrastructure', 'DNS configuration', 'transactional email']
+  },
+  'gdpr-compliant-web-apps-checklist': {
+    title: 'Building GDPR-Compliant Web Apps: A Developer\'s Checklist',
+    excerpt: 'Cookie consent, secure data storage, data subject rights — a practical checklist for full-stack developers building for EU clients.',
+    content: `
+      <div class="intro-section">
+        <h2>GDPR for Developers: The Practical Checklist</h2>
+        <p class="lead-paragraph">GDPR isn't just a legal checkbox — it's a set of engineering requirements that affect how you build your application. If you're building web apps for clients in the EU (or any user who might be in the EU), you need to handle personal data correctly from the start. Here's the checklist I use when building GDPR-compliant applications.</p>
+
+        <div class="key-highlights">
+          <h4>What GDPR Actually Requires From Your App</h4>
+          <ul>
+            <li><strong>Lawful basis</strong> - You need a reason to process personal data (consent, contract, legitimate interest)</li>
+            <li><strong>Data minimization</strong> - Only collect what you actually need</li>
+            <li><strong>Right to access</strong> - Users can request a copy of their data</li>
+            <li><strong>Right to erasure</strong> - Users can request deletion ("right to be forgotten")</li>
+            <li><strong>Data portability</strong> - Users can export their data in a machine-readable format</li>
+            <li><strong>Breach notification</strong> - Report breaches within 72 hours</li>
+          </ul>
+        </div>
+      </div>
+
+      <div class="technical-section">
+        <h2>1. Cookie Consent That Actually Works</h2>
+        <p>Cookie consent is the most visible GDPR requirement. But most implementations are wrong. A compliant cookie banner must:</p>
+
+        <div class="checklist-box">
+          <h4>Cookie Consent Requirements</h4>
+          <ul>
+            <li><strong>Equal weight for accept and reject</strong> - The "Reject All" button must be as prominent as "Accept All". No dark patterns</li>
+            <li><strong>Granular consent</strong> - Users must be able to opt into specific categories (analytics, marketing) separately</li>
+            <li><strong>No pre-ticked checkboxes</strong> - All non-essential cookies must be off by default</li>
+            <li><strong>Easy withdrawal</strong> - Users must be able to withdraw consent as easily as they gave it</li>
+            <li><strong>Store consent records</strong> - Log what the user consented to, when, and what version of your policy they saw</li>
+          </ul>
+        </div>
+
+        <p>For Next.js apps, I use a custom consent manager that stores preferences in a cookie and conditionally loads third-party scripts (Google Analytics, Meta Pixel, etc.) only after consent is given.</p>
+      </div>
+
+      <div class="onpage-section">
+        <h3>2. Secure Data Storage</h3>
+        <p>Personal data at rest must be encrypted. In practice, this means:</p>
+
+        <div class="strategy-grid">
+          <h4>Data Storage Checklist</h4>
+          <ul>
+            <li><strong>Encrypt database at rest</strong> - PostgreSQL supports transparent data encryption (TDE) or use LUKS at the disk level</li>
+            <li><strong>Hash passwords with bcrypt or argon2</strong> - Never store plaintext or use MD5/SHA1</li>
+            <li><strong>Encrypt sensitive fields at the application level</strong> - Use AES-256 for PII like email addresses if your DB doesn't support row-level encryption</li>
+            <li><strong>Use TLS 1.2+ for all connections</strong> - No exceptions. HSTS header to enforce HTTPS</li>
+            <li><strong>Separate production and development data</strong> - Never use real user data in development or staging environments</li>
+          </ul>
+        </div>
+      </div>
+
+      <div class="content-strategy-section">
+        <h2>3. Data Subject Rights Implementation</h2>
+        <p>GDPR gives users specific rights over their data. Your app needs to support these programmatically:</p>
+
+        <div class="tools-focus">
+          <h4>Technical Implementation</h4>
+          <ul>
+            <li><strong>Right to access</strong> - Build an API endpoint that returns all user data in JSON format. <code>GET /api/user/export</code></li>
+            <li><strong>Right to erasure</strong> - Build a deletion endpoint that removes all user data, including from backups within 30 days. <code>DELETE /api/user</code> — cascade delete across all tables with foreign keys</li>
+            <li><strong>Right to rectification</strong> - Standard profile editing, but ensure changes propagate to all systems (CRM, email lists, analytics)</li>
+            <li><strong>Data portability</strong> - Export endpoint must return data in a machine-readable format (JSON or CSV)</li>
+            <li><strong>Right to object</strong> - Allow users to opt out of specific processing (e.g., marketing emails) without deleting their account</li>
+          </ul>
+        </div>
+      </div>
+
+      <div class="analytics-section">
+        <h2>4. EU-Compliant Infrastructure</h2>
+        <p>Where your data lives matters. For EU clients, personal data should be stored on servers located in the EU:</p>
+
+        <div class="tools-focus">
+          <h4>Infrastructure Choices</h4>
+          <ul>
+            <li><strong>EU data centers</strong> - Use Hetzner (Falkenstein/Nuremberg), OVH (Roubaix/Gravelines), or AWS eu-west-1 (Ireland)</li>
+            <li><strong>EU-based analytics</strong> - Replace Google Analytics with Plausible or Umami (self-hosted, EU servers)</li>
+            <li><strong>EU email providers</strong> - Use providers with EU data centers if sending transactional email</li>
+            <li><strong>Backup location</strong> - Backups must also be in the EU or in a country with adequacy status</li>
+            <li><strong>Sub-processor agreements</strong> - Document every third-party service that processes user data and ensure they're GDPR-compliant</li>
+          </ul>
+        </div>
+      </div>
+
+      <div class="conclusion-section">
+        <h2>GDPR is an Engineering Problem, Not Just Legal</h2>
+        <p>Most GDPR compliance guides are written for lawyers. But the actual implementation falls on developers. Building GDPR compliance into your application from the start is far easier than retrofitting it later. The checklist above is what I implement for every EU-facing project.</p>
+
+        <div class="final-takeaway">
+          <h4>Key Takeaway</h4>
+          <p><em>GDPR compliance isn't about adding a cookie banner and calling it done. It's about building data access, deletion, and export into your application architecture from day one.</em></p>
+        </div>
+
+        <hr>
+
+        <div class="cta-section">
+          <h4>Building for EU clients?</h4>
+          <p>I build GDPR-compliant web applications with proper data handling, cookie consent, and EU infrastructure. <a href="/#contact" style="color: #39FF14;">Let's talk</a> about your project.</p>
+        </div>
+      </div>
+    `,
+    date: '2026-04-20',
+    readTime: '10 min read',
+    category: 'Full-Stack',
+    author: 'Mussawar Hayat',
+    keywords: ['GDPR compliant web developer', 'GDPR checklist', 'cookie consent implementation', 'data subject rights', 'EU data protection', 'secure data storage']
+  },
+  'multi-chain-dex-interface-performance': {
+    title: 'Building a Multi-Chain DEX Interface Without Killing Performance',
+    excerpt: 'Real-time price feeds, chart rendering, and websocket management — how I built Demotrionn DEX without melting the browser.',
+    content: `
+      <div class="intro-section">
+        <h2>Demotrionn DEX: Real-Time Data at Scale</h2>
+        <p class="lead-paragraph">Building a multi-chain DEX interface is a performance problem disguised as a UI problem. You're dealing with real-time price feeds from multiple blockchains, live order books, chart rendering at 60fps, and websocket connections that can flood your React state with hundreds of updates per second. Here's how I built Demotrionn DEX without killing browser performance.</p>
+
+        <div class="key-highlights">
+          <h4>Project Overview</h4>
+          <ul>
+            <li><strong>Stack</strong> - React, GraphQL, PostgreSQL, WebSocket feeds</li>
+            <li><strong>Live</strong> - demoltrionn.netlify.app, open source on GitHub</li>
+            <li><strong>Core challenge</strong> - Real-time multi-chain data without re-render storms</li>
+            <li><strong>Key feature</strong> - Advanced charting with high-frequency data indexing</li>
+          </ul>
+        </div>
+      </div>
+
+      <div class="technical-section">
+        <h2>The WebSocket Problem</h2>
+        <p>A DEX needs real-time data. Price changes, order book updates, trade executions — all streaming over WebSockets. When you're connected to multiple chains simultaneously, the volume of updates is enormous. A single chain can push 50-100 updates per second during volatile periods. Multiply that by 3-4 chains and you're looking at 300-400 updates per second hitting your React state.</p>
+
+        <p>The naive approach — pushing every update into React state — will freeze the browser. Here's what I did instead:</p>
+
+        <div class="checklist-box">
+          <h4>WebSocket Management Strategy</h4>
+          <ul>
+            <li><strong>Throttle state updates</strong> - Buffer websocket messages and flush to React state at most once per 100ms. The user can't perceive updates faster than that anyway</li>
+            <li><strong>Separate critical and non-critical data</strong> - Price tickers update at 100ms intervals. Order book depth updates at 500ms. Chart data at 1s intervals</li>
+            <li><strong>Use refs for high-frequency data</strong> - Store raw websocket data in useRef, not useState. Only trigger re-renders when the throttled flush happens</li>
+            <li><strong>Connection pooling</strong> - One websocket per chain, not per data stream. Multiplex multiple subscriptions over a single connection</li>
+            <li><strong>Auto-reconnect with backoff</strong> - WebSockets drop. Reconnect with exponential backoff and buffer missed updates</li>
+          </ul>
+        </div>
+      </div>
+
+      <div class="onpage-section">
+        <h3>Chart Rendering at 60fps</h3>
+        <p>Charts are the hardest part of a DEX UI. Candlestick charts need to update in real-time without janking. The key insight: don't use a charting library that re-renders the entire chart on every data point.</p>
+
+        <div class="strategy-grid">
+          <h4>Chart Performance Tips</h4>
+          <ul>
+            <li><strong>Use canvas, not SVG</strong> - Canvas rendering is orders of magnitude faster for high-frequency updates. SVG creates DOM nodes for every element</li>
+            <li><strong>Incremental rendering</strong> - Only redraw the new candle, not the entire chart. Most charting libraries support this if you use their update methods correctly</li>
+            <li><strong>Downsample historical data</strong> - Don't render 10,000 candles. Show 200 visible candles and load more on scroll</li>
+            <li><strong>Web Workers for computation</strong> - Move indicator calculations (RSI, MACD, moving averages) to a Web Worker so they don't block the main thread</li>
+            <li><strong>requestAnimationFrame, not setInterval</strong> - Sync chart updates to the browser's paint cycle</li>
+          </ul>
+        </div>
+      </div>
+
+      <div class="content-strategy-section">
+        <h2>React State Management for Real-Time Data</h2>
+        <p>The biggest performance killer in a DEX UI is unnecessary re-renders. When a price updates, you don't want your entire component tree to re-render. Here's the architecture I use:</p>
+
+        <div class="tools-focus">
+          <h4>State Architecture</h4>
+          <ul>
+            <li><strong>Zustand for global state</strong> - Lightweight, no boilerplate, and you can subscribe to specific slices. Only components that use the updated slice re-render</li>
+            <li><strong>Selector-based subscriptions</strong> - Subscribe to just the price of the token pair you're displaying, not the entire market data store</li>
+            <li><strong>Shallow equality checks</strong> - Use <code>useStore(selector, shallow)</code> to prevent re-renders when the selected slice hasn't changed</li>
+            <li><strong>Memoize expensive components</strong> - Wrap chart components, order book rows, and trade history items in React.memo</li>
+            <li><strong>Virtualize long lists</strong> - Order books and trade histories can have thousands of rows. Use react-window or @tanstack/react-virtual</li>
+          </ul>
+        </div>
+      </div>
+
+      <div class="analytics-section">
+        <h2>Backend: GraphQL + PostgreSQL</h2>
+        <p>The backend needs to serve historical trade data, liquidity pool stats, and token metadata without becoming a bottleneck. I use GraphQL with PostgreSQL:</p>
+
+        <div class="tools-focus">
+          <h4>Backend Architecture</h4>
+          <ul>
+            <li><strong>GraphQL with DataLoader</strong> - Batch and cache database queries to avoid N+1 problems when fetching token relationships</li>
+            <li><strong>PostgreSQL indexes</strong> - Composite indexes on (chain_id, token_address, timestamp) for fast historical queries</li>
+            <li><strong>Materialized views</strong> - Pre-compute aggregate data (24h volume, price change) and refresh every minute instead of calculating on every request</li>
+            <li><strong>Redis for hot data</strong> - Cache current prices and order book snapshots in Redis with 1-second TTL</li>
+            <li><strong>Subscriptions via WebSocket</strong> - GraphQL subscriptions for real-time data push to the frontend</li>
+          </ul>
+        </div>
+      </div>
+
+      <div class="conclusion-section">
+        <h2>Performance is a Feature</h2>
+        <p>In a DEX, performance isn't just about user experience — it's about trust. If your UI lags when the market is moving, traders lose money. Every millisecond of delay in a price update is a millisecond where the user is trading on stale information. Building Demotrionn taught me that real-time web performance is about architecture, not just optimization. You can't optimize your way out of a bad state management pattern — you have to design for it from the start.</p>
+
+        <div class="final-takeaway">
+          <h4>Key Takeaway</h4>
+          <p><em>The browser can handle 300+ updates per second if you architect for it. Throttle state updates, use canvas for charts, virtualize long lists, and keep high-frequency data out of React's render cycle. Performance is a feature, not an afterthought.</em></p>
+        </div>
+
+        <hr>
+
+        <div class="cta-section">
+          <h4>Building a DEX or trading interface?</h4>
+          <p>I build high-performance Web3 interfaces — DEXs, dashboards, and real-time data visualizations. <a href="/#contact" style="color: #39FF14;">Let's talk</a> about your project.</p>
+        </div>
+      </div>
+    `,
+    date: '2026-04-15',
+    readTime: '12 min read',
+    category: 'Web3',
+    author: 'Mussawar Hayat',
+    keywords: ['multi-chain DEX developer', 'real-time crypto trading UI', 'WebSocket performance', 'React chart rendering', 'DEX interface development', 'Demotrionn']
   },
 }
 
@@ -1761,15 +1507,14 @@ export default async function BlogPostPage({ params }: PageProps) {
     <>
       <BreadcrumbSchema items={breadcrumbs} />
 
-      <div className="min-h-screen bg-gradient-to-br from-[#060B16] via-[#0a0f1f] to-[#060B16]">
+      <div className="min-h-screen bg-[#060B16] font-orbitron">
+        <Header />
 
-        {/* Background Elements */}
-        <div className="fixed inset-0 overflow-hidden pointer-events-none" />
+        <main role="main" id="main-content" className="pt-20">
+          <div className="max-w-7xl mx-auto px-4 sm:px-6 py-16">
 
-        <main role="main" id="main-content" className="relative z-10">
-          {/* Hero Section */}
-          <div className="pt-24 pb-16 px-6">
-            <div className="max-w-4xl mx-auto text-center mt-20">
+            {/* Hero Section */}
+            <div className="text-center mb-16">
               <div className="inline-flex items-center gap-2 px-4 py-2 rounded-full bg-[#39FF14]/10 border border-[#39FF14]/20 mb-8">
                 <span className="w-2 h-2 bg-[#39FF14] rounded-full animate-pulse" />
                 <span className="text-xs font-orbitron text-[#39FF14] tracking-widest uppercase">
@@ -1777,10 +1522,8 @@ export default async function BlogPostPage({ params }: PageProps) {
                 </span>
               </div>
 
-              <h1 className="text-5xl md:text-7xl font-bold text-white font-orbitron mb-8 leading-tight tracking-tight">
-                <span className="bg-gradient-to-b from-white to-white/70 bg-clip-text text-transparent">
-                  {post.title}
-                </span>
+              <h1 className="text-4xl md:text-6xl font-bold text-white tracking-tighter uppercase leading-none mb-8">
+                {post.title}
               </h1>
 
               <div className="flex flex-wrap items-center justify-center gap-y-4 gap-x-8 mb-16">
@@ -1836,14 +1579,12 @@ export default async function BlogPostPage({ params }: PageProps) {
                 </div>
               </div>
             </div>
-          </div>
 
-          {/* Content Section */}
-          <div className="pb-32">
-            <div className="max-w-4xl mx-auto px-6">
+            {/* Content Section */}
+            <div>
               {/* Excerpt Card */}
-              <div className="relative mb-16 p-8 rounded-2xl border border-white/10 bg-white/[0.02] backdrop-blur-sm">
-                <div className="absolute left-0 top-0 bottom-0 w-1 bg-gradient-to-b from-[#39FF14] to-[#39FF14]/30 rounded-full" />
+              <div className="relative mb-16 p-8 bg-[#0A1221] border border-[#39FF14]/20">
+                <div className="absolute left-0 top-0 bottom-0 w-1 bg-gradient-to-b from-[#39FF14] to-[#39FF14]/30" />
                 <p className="text-xl text-white/80 font-light leading-relaxed pl-8 italic">
                   {post.excerpt}
                 </p>
@@ -1873,7 +1614,7 @@ export default async function BlogPostPage({ params }: PageProps) {
               />
 
               {/* CTA Card */}
-              <div className="mt-24 p-12 rounded-3xl bg-gradient-to-br from-[#39FF14]/5 to-[#39FF14]/2 border border-[#39FF14]/20 text-center">
+              <div className="mt-24 p-8 md:p-12 bg-[#0A1221] border border-[#39FF14]/20 text-center">
                 <h3 className="text-2xl font-bold text-white font-orbitron mb-4">
                   Ready to start your project?
                 </h3>
@@ -1891,11 +1632,9 @@ export default async function BlogPostPage({ params }: PageProps) {
                 </Link>
               </div>
             </div>
-          </div>
 
-          {/* Bottom Nav */}
-          <footer className="border-t border-white/10">
-            <div className="max-w-4xl mx-auto px-6 py-12">
+            {/* Bottom Nav */}
+            <div className="border-t border-white/10 mt-24 pt-12">
               <div className="flex flex-col md:flex-row items-center justify-between gap-8">
                 <Link
                   href="/blog"
@@ -1922,7 +1661,8 @@ export default async function BlogPostPage({ params }: PageProps) {
                 </div>
               </div>
             </div>
-          </footer>
+
+          </div>
         </main>
 
         <Footer />

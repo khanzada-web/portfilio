@@ -76,6 +76,30 @@ export async function POST(request: NextRequest) {
       transporter.sendMail(clientMail)
     ]);
 
+    // Submit lead to CRM (non-blocking — emails already sent)
+    if (process.env.CRM_API_URL && process.env.CRM_API_KEY) {
+      try {
+        await fetch(process.env.CRM_API_URL, {
+          method: 'POST',
+          headers: {
+            'Authorization': `Bearer ${process.env.CRM_API_KEY}`,
+            'Content-Type': 'application/json',
+          },
+          body: JSON.stringify({
+            name,
+            email,
+            message,
+            phone: '',
+            subject: `New Lead: ${name}`,
+            formName: 'Contact Form',
+            leadSource: 'portfolio-website',
+          }),
+        });
+      } catch (crmError) {
+        console.error('CRM submission failed:', crmError);
+      }
+    }
+
     return NextResponse.json({ success: true });
 
   } catch (error: any) {

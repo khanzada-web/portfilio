@@ -58,9 +58,19 @@ const About = () => (
           Digital <span className="text-[#39FF14]">Architect</span>
         </h2>
         <p className="max-w-3xl text-lg opacity-80 leading-relaxed font-sans">
-          Specializing in high-performance web and mobile ecosystems. I bridge the gap between
-          complex engineering and intuitive user experience — across frontend, backend, Web3,
-          and DevOps infrastructure.
+          I'm a full-stack developer based in Pakistan, working with clients worldwide for 3+ years.
+          My core focus is building fast, scalable web and mobile applications using React, Next.js,
+          Node.js, and TypeScript — from customer-facing frontends to the backend APIs and databases
+          that power them. I also handle the infrastructure side most developers outsource: CI/CD
+          pipelines, VPS deployment, SSL, and email infrastructure, so I can take a project from first
+          commit to production without handing off to a separate ops team. Alongside general full-stack
+          work, I've built DeFi platforms, NFT marketplaces, and Bitcoin Ordinals tools using Solidity
+          and Ethers.js — so if your project needs blockchain integration, that's covered too. I work
+          remotely with clients across North America and Europe, with regular overlap across EST, PST,
+          and CET business hours. I also build with GDPR and data privacy requirements in mind — cookie
+          consent handling, secure data storage, and EU-compliant infrastructure where needed. I work
+          best with startups and small teams who want one person who can own a project end-to-end
+          rather than managing multiple specialists.
         </p>
       </div>
 
@@ -75,7 +85,7 @@ const About = () => (
               <div className="relative w-full aspect-square mb-8 overflow-hidden grayscale hover:grayscale-0 transition-all duration-500 border border-[#39FF14]/20">
                 <Image
                   src="/my-pic.jpeg"
-                  alt="Mussawar Hayat — Full Stack & Web3 Developer"
+                  alt="Mussawar Hayat — Full-Stack Developer"
                   fill
                   sizes="(max-width: 1024px) 100vw, 40vw"
                   className="object-cover"
@@ -109,9 +119,9 @@ const About = () => (
 
           {/* Skills */}
           <div>
-            <h4 className="text-sm tracking-[0.4em] uppercase opacity-50 mb-8 border-l-2 border-[#39FF14] pl-4">
+            <h3 className="text-sm tracking-[0.4em] uppercase opacity-50 mb-8 border-l-2 border-[#39FF14] pl-4">
               Core_Competencies
-            </h4>
+            </h3>
             <div className="grid grid-cols-1 md:grid-cols-2 gap-4">
               {SKILLS.map((skill) => (
                 <div
@@ -129,7 +139,7 @@ const About = () => (
                       Level_{skill.level}%
                     </span>
                   </div>
-                  <h5 className="text-white font-bold text-sm tracking-wide">{skill.name}</h5>
+                  <h4 className="text-white font-bold text-sm tracking-wide">{skill.name}</h4>
                   <div
                     className="mt-4 h-[2px] w-full bg-[#39FF14]/5"
                     role="progressbar"

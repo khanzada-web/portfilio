@@ -39,7 +39,7 @@ export function Hero() {
                 <span className="relative inline-flex rounded-full h-2 w-2 bg-[#39FF14]" />
               </span>
               <span className="text-[10px] sm:text-xs uppercase tracking-[0.4em] font-bold">
-                Web 3.0 Full Stack Dev <span className="mx-2 opacity-30">|</span> System.Active
+                Full-Stack Developer <span className="mx-2 opacity-30">|</span> Web3 Specialist
               </span>
             </div>
           </div>
@@ -54,8 +54,8 @@ export function Hero() {
             </h1>
 
             <p className="text-lg md:text-xl text-[#39FF14]/80 max-w-3xl mx-auto leading-relaxed lowercase tracking-wider">
-              Building high-performance web & mobile applications.
-              Specialised in modern frameworks with a touch of blockchain integration.
+              Building high-performance web & mobile applications with React, Next.js, Node.js & TypeScript —
+              with specialised blockchain and Web3 integration when projects call for it.
             </p>
           </header>
 

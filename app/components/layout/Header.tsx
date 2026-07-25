@@ -87,7 +87,7 @@ export function Header() {
           >
             <Image
               src={logo}
-              alt=""
+              alt="Mussawar Hayat logo"
               width={200}
               height={75}
               className="h-12 sm:h-14 w-auto brightness-0 invert transition-all duration-300 group-hover:drop-shadow-[0_0_8px_rgba(57,255,20,0.5)]"

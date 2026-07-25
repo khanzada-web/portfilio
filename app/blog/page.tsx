@@ -113,14 +113,59 @@ const blogPosts = [
     category: 'Blockchain',
     isNew: true,
   },
-  // ── EXISTING POSTS ─────────────────────────────────────────
+  // ── ENGINEERING POSTS ─────────────────────────────────────
   {
-    title: 'AI Business Automation: Transform Your Operations in 2025',
-    excerpt: 'Discover how AI automation can revolutionize Canadian businesses with practical implementation strategies, cost savings, and competitive advantages.',
-    slug: 'ai-business-automation-2025',
-    date: '2024-12-15',
+    title: 'Deploying a Multi-Site Next.js App on a Single VPS with Nginx',
+    excerpt: 'Running multiple Next.js apps on one VPS with Nginx reverse proxy, PM2, and SSL — the exact setup I use for production deployments.',
+    slug: 'deploying-multi-site-nextjs-vps-nginx',
+    date: '2026-05-15',
+    readTime: '9 min read',
+    category: 'DevOps',
+    isNew: false,
+  },
+  {
+    title: 'Building a Bitcoin Ordinals Marketplace: Architecture Breakdown',
+    excerpt: 'How I built Ordwin — a Bitcoin NFT marketplace for Ordinal inscriptions. Indexing, ownership tracking, and the real performance challenges.',
+    slug: 'building-bitcoin-ordinals-marketplace',
+    date: '2026-05-10',
+    readTime: '11 min read',
+    category: 'Web3',
+    isNew: false,
+  },
+  {
+    title: 'MetaMask vs WalletConnect: Choosing Wallet Integration for Your DApp',
+    excerpt: 'Both work. Both have edge cases. Here\'s what I learned integrating MetaMask, WalletConnect, and Coinbase Wallet across multiple DApps.',
+    slug: 'metamask-vs-walletconnect-dapp',
+    date: '2026-05-05',
+    readTime: '8 min read',
+    category: 'Web3',
+    isNew: false,
+  },
+  {
+    title: 'Setting Up SPF, DKIM, and DMARC for a Multi-Domain VPS',
+    excerpt: 'Email deliverability is silent until it breaks. Here\'s the exact DNS setup I use to keep transactional email out of spam across multiple domains.',
+    slug: 'spf-dkim-dmarc-multi-domain-vps',
+    date: '2026-04-28',
+    readTime: '7 min read',
+    category: 'DevOps',
+    isNew: false,
+  },
+  {
+    title: 'Building GDPR-Compliant Web Apps: A Developer\'s Checklist',
+    excerpt: 'Cookie consent, secure data storage, data subject rights — a practical checklist for full-stack developers building for EU clients.',
+    slug: 'gdpr-compliant-web-apps-checklist',
+    date: '2026-04-20',
     readTime: '10 min read',
-    category: 'AI & Automation',
+    category: 'Full-Stack',
+    isNew: false,
+  },
+  {
+    title: 'Building a Multi-Chain DEX Interface Without Killing Performance',
+    excerpt: 'Real-time price feeds, chart rendering, and websocket management — how I built Demotrionn DEX without melting the browser.',
+    slug: 'multi-chain-dex-interface-performance',
+    date: '2026-04-15',
+    readTime: '12 min read',
+    category: 'Web3',
     isNew: false,
   },
 ]
@@ -133,28 +178,30 @@ export default function BlogPage() {
       <div className="min-h-screen bg-[#060B16] font-orbitron">
         <Header />
         <main role="main" id="main-content" className="pt-20">
-          <div className="max-w-6xl mx-auto px-4 py-16">
+          <div className="max-w-6xl mx-auto px-4 sm:px-6 py-16">
 
             {/* Page Header */}
-            <div className="text-center mb-12 md:mb-16">
-              <h1 className="text-3xl sm:text-4xl md:text-5xl font-bold text-white font-orbitron mb-4 md:mb-6">
+            <div className="text-center mb-20">
+              <div className="inline-block border border-[#39FF14] px-4 py-1 mb-6 text-xs tracking-[0.3em] uppercase opacity-80">
+                Tech_Blog.v2
+              </div>
+              <h1 className="text-4xl md:text-6xl font-bold text-white tracking-tighter uppercase leading-none mb-8">
                 <span className="text-[#39FF14]">Mussawar</span> Tech Blog
               </h1>
-              <p className="text-lg md:text-xl text-white/60 max-w-3xl mx-auto px-4">
+              <p className="text-lg text-white/60 max-w-3xl mx-auto leading-relaxed font-sans">
                 Expert insights on Web3 development, blockchain, AI agents, smart contracts,
                 DeFi, and full-stack engineering.
               </p>
             </div>
 
             {/* Blog Grid */}
-            <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6 lg:gap-8">
+            <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6 mb-24">
               {blogPosts.map((post) => (
                 <article
                   key={post.slug}
-                  className="bg-gray-900/20 border border-white/10 rounded-lg overflow-hidden hover:shadow-lg hover:border-[#39FF14]/30 transition-all duration-300 flex flex-col group"
+                  className="group bg-[#0A1221] border border-[#39FF14]/20 p-8 hover:border-[#39FF14] transition-all duration-500 flex flex-col"
                 >
-                  <div className="p-4 sm:p-6 flex flex-col flex-1">
-                    {/* Category + Read Time */}
+                  {/* Category + Read Time */}
                     <div className="flex flex-col sm:flex-row sm:items-center justify-between mb-4 gap-2">
                       <div className="flex items-center gap-2">
                         <span className="text-xs sm:text-sm font-medium text-[#39FF14] bg-[#39FF14]/10 px-2 sm:px-3 py-1 rounded-md">
@@ -204,14 +251,13 @@ export default function BlogPage() {
                         </svg>
                       </Link>
                     </div>
-                  </div>
                 </article>
               ))}
             </div>
 
             {/* Newsletter CTA */}
-            <div className="mt-12 md:mt-16 text-center">
-              <div className="bg-gray-900/20 rounded-lg p-6 md:p-8 border border-white/10">
+            <div className="text-center">
+              <div className="bg-[#0A1221] border border-[#39FF14]/20 p-8 md:p-12">
                 <h2 className="text-xl md:text-2xl font-bold text-white font-orbitron mb-4">
                   Stay Updated with <span className="text-[#39FF14]">Web3 Trends</span>
                 </h2>
