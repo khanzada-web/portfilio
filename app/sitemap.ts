@@ -33,14 +33,13 @@ function url(path: string) {
 export default function sitemap(): MetadataRoute.Sitemap {
   const now = new Date();
 
-  // ── Static pages ────────────────────────────────────────────────────────────
+  // ── Static pages (only routes that actually exist) ──────────────────────────
   const staticPages: MetadataRoute.Sitemap = [
     {
       url:             url("/"),
       lastModified:    now,
       changeFrequency: "weekly",
       priority:        1.0,
-      // hreflang for English — add more languages here if you ever localise
       alternates: {
         languages: { en: url("/") },
       },
@@ -52,21 +51,9 @@ export default function sitemap(): MetadataRoute.Sitemap {
       priority:        0.9,
     },
     {
-      url:             url("/portfolio"),
-      lastModified:    now,
-      changeFrequency: "monthly",
-      priority:        0.8,
-    },
-    {
-      url:             url("/about"),
-      lastModified:    now,
-      changeFrequency: "monthly",
-      priority:        0.8,
-    },
-    {
       url:             url("/blog"),
       lastModified:    now,
-      changeFrequency: "daily",   // index page updates whenever a new post is published
+      changeFrequency: "daily",
       priority:        0.8,
     },
     {
