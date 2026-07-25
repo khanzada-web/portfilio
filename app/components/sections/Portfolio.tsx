@@ -22,7 +22,7 @@ interface Project {
 
 const PROJECTS: Project[] = [
 
-  // ── 🎨 Frontend / Web3 UI ──────────────────────────────────────────────────
+  // ── Frontend / Web3 UI ─────────────────────────────────────────────────────
   {
     id: '01', title: 'DaMeta1 Ecosystem', category: 'metaverse',
     description: 'A global AI-driven Metaverse bridging education and business across 5 continents. Features immersive 3D hubs and decentralized infrastructure.',
@@ -120,7 +120,7 @@ const PROJECTS: Project[] = [
     link: null, github: null,
   },
 
-  // ── ⚙️ Backend ─────────────────────────────────────────────────────────────
+  // ── Backend ────────────────────────────────────────────────────────────────
   {
     id: '17', title: 'Staking & Swap Platform', category: 'backend',
     description: 'Backend engine powering a DeFi staking and swap protocol — supporting 200+ wallet connections, real-time rate feeds, and automated yield distribution.',
@@ -146,7 +146,7 @@ const PROJECTS: Project[] = [
     link: null, github: null,
   },
 
-  // ── 🚀 DevOps ──────────────────────────────────────────────────────────────
+  // ── DevOps ─────────────────────────────────────────────────────────────────
   {
     id: '21', title: 'Multi-Site VPS Management', category: 'devops',
     description: 'Full production infrastructure managing multiple live sites on a single VPS — Nginx reverse proxy, PM2 process management, and zero-downtime deploys.',
@@ -176,10 +176,10 @@ const PROJECTS: Project[] = [
 // ─── Filter Categories ────────────────────────────────────────────────────────
 
 const CATEGORIES: { id: Category; label: string }[] = [
-  { id: 'all',      label: 'All_Units'   },
-  { id: 'defi',     label: 'DeFi_Layer'  },
-  { id: 'backend',  label: 'Backend_API' },
-  { id: 'devops',   label: 'DevOps_Ops'  },
+  { id: 'all',      label: 'All Projects' },
+  { id: 'defi',     label: 'DeFi'         },
+  { id: 'backend',  label: 'Backend'      },
+  { id: 'devops',   label: 'DevOps'       },
 ];
 
 // ─── External link helper ─────────────────────────────────────────────────────
@@ -207,7 +207,7 @@ const Portfolio = () => {
           <div>
             <div className="flex items-center gap-3 text-[#39FF14] text-[10px] tracking-[0.4em] uppercase mb-4 font-bold">
               <FiTerminal className="animate-pulse" aria-hidden="true" />
-              Build_History_Checksum_Pass
+              Portfolio
             </div>
             <h2 className="text-5xl md:text-7xl font-black text-white tracking-tighter uppercase leading-none">
               The <span className="text-[#39FF14]">Arsenal</span>
@@ -253,7 +253,7 @@ const Portfolio = () => {
                   <div className="flex items-center gap-2 mb-6">
                     <div className="w-2 h-2 bg-[#39FF14] shadow-[0_0_8px_#39FF14]" aria-hidden="true" />
                     <span className="text-[10px] font-bold text-[#39FF14] uppercase tracking-tighter">
-                      LOG_UNIT_{project.id}
+                      Project {project.id}
                     </span>
                   </div>
 
@@ -288,11 +288,11 @@ const Portfolio = () => {
                       aria-label={`View live demo of ${project.title}`}
                       className="flex items-center justify-center gap-2 py-3 bg-[#39FF14] text-black text-[10px] font-black uppercase hover:bg-white transition-all shadow-[0_0_15px_rgba(57,255,20,0.2)]"
                     >
-                      <FiGlobe aria-hidden="true" /> LIVE_DEMO
+                      <FiGlobe aria-hidden="true" /> Live Demo
                     </a>
                   ) : (
                     <span className="flex items-center justify-center gap-2 py-3 bg-white/5 text-white/20 text-[10px] font-black uppercase cursor-not-allowed border border-white/10">
-                      <FiGlobe aria-hidden="true" /> PRIVATE
+                      <FiGlobe aria-hidden="true" /> Private
                     </span>
                   )}
 
@@ -303,11 +303,11 @@ const Portfolio = () => {
                       aria-label={`View source code of ${project.title} on GitHub`}
                       className="flex items-center justify-center gap-2 py-3 bg-white/10 text-white text-[10px] font-black border border-white/20 hover:bg-white/20 transition-all"
                     >
-                      <FiGithub aria-hidden="true" /> SOURCE
+                      <FiGithub aria-hidden="true" /> Source
                     </a>
                   ) : (
                     <span className="flex items-center justify-center gap-2 py-3 bg-white/5 text-white/20 text-[10px] font-black border border-white/10 cursor-not-allowed">
-                      <FiGithub aria-hidden="true" /> PRIVATE
+                      <FiGithub aria-hidden="true" /> Private
                     </span>
                   )}
                 </div>
