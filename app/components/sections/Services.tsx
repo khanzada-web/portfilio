@@ -23,7 +23,7 @@ interface Service {
 
 const SERVICES: Service[] = [
   {
-    id:          'SVC_01',
+    id:          '01',
     icon:        <FiMonitor />,
     title:       'Web Architecture',
     description: 'High-performance Next.js and React applications optimized for speed, SEO, and global scalability. SSR, ISR, and edge-network ready.',
@@ -31,7 +31,7 @@ const SERVICES: Service[] = [
     category:    'Frontend',
   },
   {
-    id:          'SVC_02',
+    id:          '02',
     icon:        <FiSmartphone />,
     title:       'Mobile Solutions',
     description: 'Cross-platform mobile applications for iOS and Android with seamless native performance using React Native and Flutter.',
@@ -39,7 +39,7 @@ const SERVICES: Service[] = [
     category:    'Apps',
   },
   {
-    id:          'SVC_03',
+    id:          '03',
     icon:        <FiLayers />,
     title:       'Full-Stack Systems',
     description: 'End-to-end product engineering — robust backend infrastructure, real-time data pipelines, and tightly integrated frontend layers.',
@@ -47,7 +47,7 @@ const SERVICES: Service[] = [
     category:    'Architecture',
   },
   {
-    id:          'SVC_04',
+    id:          '04',
     icon:        <FiActivity />,
     title:       'UI/UX Engineering',
     description: 'Immersive digital interfaces built with precision — focused on user psychology, conversion flow, and animation-driven experiences.',
@@ -55,7 +55,7 @@ const SERVICES: Service[] = [
     category:    'Design',
   },
   {
-    id:          'SVC_05',
+    id:          '05',
     icon:        <FiShield />,
     title:       'Blockchain Bridge',
     description: 'Smart contract development, DApp architecture, and Web3 wallet integration — from ERC-20 tokens to multi-chain DeFi protocols.',
@@ -63,7 +63,7 @@ const SERVICES: Service[] = [
     category:    'Web3',
   },
   {
-    id:          'SVC_06',
+    id:          '06',
     icon:        <FiZap />,
     title:       'Performance Ops',
     description: 'Deep optimisation of existing products — Core Web Vitals, bundle splitting, caching strategies, and Lighthouse 100 audits.',
@@ -71,7 +71,7 @@ const SERVICES: Service[] = [
     category:    'Optimisation',
   },
   {
-    id:          'SVC_07',
+    id:          '07',
     icon:        <FiServer />,
     title:       'Backend & API Dev',
     description: 'Scalable REST and GraphQL APIs with Node.js, Express, and PostgreSQL — including JWT auth, session handling, and protected route architecture.',
@@ -79,7 +79,7 @@ const SERVICES: Service[] = [
     category:    'Backend',
   },
   {
-    id:          'SVC_08',
+    id:          '08',
     icon:        <FiTerminal />,
     title:       'DevOps & Infrastructure',
     description: 'Multi-site VPS management, CI/CD pipelines via GitHub Actions, SSL via Certbot, and full email infrastructure with SPF, DKIM, and DMARC.',
@@ -87,7 +87,7 @@ const SERVICES: Service[] = [
     category:    'DevOps',
   },
   {
-    id:          'SVC_09',
+    id:          '09',
     icon:        <FiShoppingCart />,
     title:       'E-Commerce & SaaS',
     description: 'Production-grade e-commerce platforms and SaaS dashboards — product catalogues, payment gateways, subscription logic, and admin panels.',
@@ -117,7 +117,7 @@ export function Services() {
           <div>
             <div className="flex items-center gap-3 text-[#39FF14] text-[10px] tracking-[0.4em] uppercase mb-4 font-bold">
               <FiTerminal className="animate-pulse" aria-hidden="true" />
-              Digital_Capabilities.v2_Loaded
+              Services
             </div>
             <h2 className="text-5xl md:text-7xl font-black text-white tracking-tighter uppercase leading-none">
               The <span className="text-[#39FF14]">Stack</span>
@@ -131,12 +131,12 @@ export function Services() {
               <span className="relative inline-flex rounded-full h-2 w-2 bg-[#39FF14]" />
             </span>
             <span className="text-[10px] uppercase tracking-[0.3em] font-bold">
-              {SERVICES.length}_Services_Active
+              {SERVICES.length} Services
             </span>
           </div>
         </div>
 
-        {/* ── Services Grid — matches Portfolio card layout exactly ── */}
+        {/* ── Services Grid ── */}
         <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-px bg-white/20 border border-white/20 mb-20">
           <AnimatePresence>
             {SERVICES.map((service, index) => (
@@ -181,7 +181,7 @@ export function Services() {
                   </p>
                 </div>
 
-                {/* Tech tags — same style as Portfolio */}
+                {/* Tech tags */}
                 <ul className="flex flex-wrap gap-2 mb-8" aria-label="Technologies">
                   {service.tags.map((tag) => (
                     <li
@@ -193,14 +193,14 @@ export function Services() {
                   ))}
                 </ul>
 
-                {/* CTA — pinned to bottom */}
+                {/* CTA */}
                 <div className="pt-6 border-t border-white/10 mt-auto">
                   <Link
                     href="#contact"
                     aria-label={`Enquire about ${service.title}`}
                     className="flex items-center justify-center gap-2 py-3 bg-[#39FF14] text-black text-[10px] font-black uppercase hover:bg-white transition-all shadow-[0_0_15px_rgba(57,255,20,0.2)]"
                   >
-                    <FiZap aria-hidden="true" /> INQUIRE_NOW
+                    <FiZap aria-hidden="true" /> Inquire Now
                   </Link>
                 </div>
 
@@ -220,7 +220,7 @@ export function Services() {
             href="#contact"
             className="group relative inline-flex items-center gap-4 bg-[#39FF14] text-black px-12 py-6 font-bold tracking-widest uppercase text-sm hover:bg-white transition-all shadow-[0_0_40px_rgba(57,255,20,0.15)]"
           >
-            <span>Initiate Digital Transformation</span>
+            <span>Start a Project</span>
             <svg
               className="w-5 h-5 transition-transform group-hover:translate-x-2"
               fill="none"
