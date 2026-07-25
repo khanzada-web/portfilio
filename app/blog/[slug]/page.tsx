@@ -175,13 +175,33 @@ export async function createProject(formData: FormData) {
           <p>I design and build production-grade full-stack applications with this exact stack. <a href="/contact" style="color: #39FF14;">Get in touch</a> if you want to move faster.</p>
         </div>
 
-        <div style="margin-top:3rem;padding-top:2rem;border-top:1px solid rgba(255,255,255,0.1);">
-          <h3>Related Posts</h3>
-          <ul>
-            <li><a href="/blog/deploying-multi-site-nextjs-vps-nginx" style="color:#39FF14;">Deploying a Multi-Site Next.js App on a Single VPS with Nginx</a></li>
-            <li><a href="/blog/gdpr-compliant-web-apps-checklist" style="color:#39FF14;">Building GDPR-Compliant Web Apps: A Developer's Checklist</a></li>
-            <li><a href="/blog/account-abstraction-smart-wallets-guide" style="color:#39FF14;">Account Abstraction in 2026: The End of Seed Phrases</a></li>
-          </ul>
+        <!-- RELATED POSTS — Professional Card Layout -->
+        <div style="margin-top:4rem;padding-top:2.5rem;border-top:1px solid rgba(255,255,255,0.1);">
+          <h3 style="margin-bottom:1.75rem;">Related Posts</h3>
+          <div style="display:grid;grid-template-columns:repeat(auto-fit,minmax(260px,1fr));gap:1.25rem;">
+
+            <a href="/blog/deploying-multi-site-nextjs-vps-nginx" style="display:block;text-decoration:none;background:#0A1221;border:1px solid rgba(57,255,20,0.2);border-radius:12px;padding:1.5rem;transition:border-color 0.3s ease;">
+              <span style="display:inline-block;font-size:11px;color:#39FF14;background:rgba(57,255,20,0.1);padding:4px 10px;border-radius:6px;margin-bottom:12px;letter-spacing:0.05em;">DevOps</span>
+              <div style="font-size:16px;font-weight:600;color:#ffffff;line-height:1.4;margin-bottom:8px;">Deploying a Multi-Site Next.js App on a Single VPS with Nginx</div>
+              <div style="font-size:13px;color:rgba(255,255,255,0.5);line-height:1.5;">Nginx reverse proxy, PM2, and SSL — the exact production setup.</div>
+              <div style="font-size:12px;color:rgba(255,255,255,0.35);margin-top:12px;">9 min read</div>
+            </a>
+
+            <a href="/blog/gdpr-compliant-web-apps-checklist" style="display:block;text-decoration:none;background:#0A1221;border:1px solid rgba(57,255,20,0.2);border-radius:12px;padding:1.5rem;transition:border-color 0.3s ease;">
+              <span style="display:inline-block;font-size:11px;color:#39FF14;background:rgba(57,255,20,0.1);padding:4px 10px;border-radius:6px;margin-bottom:12px;letter-spacing:0.05em;">Full-Stack</span>
+              <div style="font-size:16px;font-weight:600;color:#ffffff;line-height:1.4;margin-bottom:8px;">Building GDPR-Compliant Web Apps: A Developer's Checklist</div>
+              <div style="font-size:13px;color:rgba(255,255,255,0.5);line-height:1.5;">Cookie consent, data rights, and secure storage for EU clients.</div>
+              <div style="font-size:12px;color:rgba(255,255,255,0.35);margin-top:12px;">10 min read</div>
+            </a>
+
+            <a href="/blog/account-abstraction-smart-wallets-guide" style="display:block;text-decoration:none;background:#0A1221;border:1px solid rgba(57,255,20,0.2);border-radius:12px;padding:1.5rem;transition:border-color 0.3s ease;">
+              <span style="display:inline-block;font-size:11px;color:#39FF14;background:rgba(57,255,20,0.1);padding:4px 10px;border-radius:6px;margin-bottom:12px;letter-spacing:0.05em;">Web3</span>
+              <div style="font-size:16px;font-weight:600;color:#ffffff;line-height:1.4;margin-bottom:8px;">Account Abstraction in 2026: The End of Seed Phrases</div>
+              <div style="font-size:13px;color:rgba(255,255,255,0.5);line-height:1.5;">ERC-4337 and smart wallets — the biggest UX upgrade in Web3.</div>
+              <div style="font-size:12px;color:rgba(255,255,255,0.35);margin-top:12px;">10 min read</div>
+            </a>
+
+          </div>
         </div>
       </div>
     `,
