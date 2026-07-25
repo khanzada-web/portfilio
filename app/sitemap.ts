@@ -9,13 +9,17 @@ const BASE_URL = "https://www.mussawarhayat.site";
 // Dates must be accurate — Google uses lastModified to decide re-crawl frequency.
 
 const BLOG_POSTS: { slug: string; date: string }[] = [
-  { slug: "ai-agents-blockchain-web3-2026",         date: "2026-03-10" },
-  { slug: "account-abstraction-smart-wallets-guide", date: "2026-03-05" },
-  { slug: "real-world-asset-tokenization-rwa-guide", date: "2026-02-28" },
-  { slug: "modular-blockchains-l2-developer-guide",  date: "2026-02-20" },
-  // ❌ Removed: blog posts with 2024 dates that belong to a different domain/topic
-  // ("how-to-improve-seo-rankings-2024", "ai-business-automation-2025")
-  // Add them back only if they are real pages on this site.
+  { slug: "nextjs-16-saas-tutorial-prisma-typescript-2026", date: "2026-07-26" },
+  { slug: "ai-agents-blockchain-web3-2026",          date: "2026-03-10" },
+  { slug: "account-abstraction-smart-wallets-guide",  date: "2026-03-05" },
+  { slug: "real-world-asset-tokenization-rwa-guide",  date: "2026-02-28" },
+  { slug: "modular-blockchains-l2-developer-guide",   date: "2026-02-20" },
+  { slug: "deploying-multi-site-nextjs-vps-nginx",    date: "2026-05-15" },
+  { slug: "building-bitcoin-ordinals-marketplace",    date: "2026-05-10" },
+  { slug: "metamask-vs-walletconnect-dapp",           date: "2026-05-05" },
+  { slug: "spf-dkim-dmarc-multi-domain-vps",          date: "2026-04-28" },
+  { slug: "gdpr-compliant-web-apps-checklist",        date: "2026-04-20" },
+  { slug: "multi-chain-dex-interface-performance",    date: "2026-04-15" },
 ];
 
 // ─── Helper ───────────────────────────────────────────────────────────────────

@@ -365,9 +365,9 @@ export async function generateMetadata({ params }: PageProps): Promise<Metadata>
       authors: [post.author],
       images: [
         {
-          url: 'https://www.mussawarhayat.site/_next/static/media/logo.2deab1c7.png',
-          width: 640,
-          height: 640,
+          url: '/og-image.png',
+          width: 1200,
+          height: 630,
           alt: post.title,
         },
       ],
@@ -376,7 +376,7 @@ export async function generateMetadata({ params }: PageProps): Promise<Metadata>
       card: 'summary_large_image',
       title: post.title,
       description: post.excerpt,
-      images: ['https://www.mussawarhayat.site/_next/static/media/logo.2deab1c7.png'],
+      images: ['/og-image.png'],
     },
   }
 }

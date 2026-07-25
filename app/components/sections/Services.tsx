@@ -1,5 +1,6 @@
 'use client';
 
+import Link from 'next/link';
 import { motion, AnimatePresence } from 'framer-motion';
 import {
   FiMonitor, FiSmartphone, FiActivity, FiShield,
@@ -194,13 +195,13 @@ export function Services() {
 
                 {/* CTA — pinned to bottom */}
                 <div className="pt-6 border-t border-white/10 mt-auto">
-                  <a
+                  <Link
                     href="#contact"
                     aria-label={`Enquire about ${service.title}`}
                     className="flex items-center justify-center gap-2 py-3 bg-[#39FF14] text-black text-[10px] font-black uppercase hover:bg-white transition-all shadow-[0_0_15px_rgba(57,255,20,0.2)]"
                   >
                     <FiZap aria-hidden="true" /> INQUIRE_NOW
-                  </a>
+                  </Link>
                 </div>
 
                 {/* Hover corner glow */}
@@ -215,7 +216,7 @@ export function Services() {
 
         {/* ── CTA ── */}
         <div className="text-center">
-          <a
+          <Link
             href="#contact"
             className="group relative inline-flex items-center gap-4 bg-[#39FF14] text-black px-12 py-6 font-bold tracking-widest uppercase text-sm hover:bg-white transition-all shadow-[0_0_40px_rgba(57,255,20,0.15)]"
           >
@@ -229,7 +230,7 @@ export function Services() {
             >
               <path strokeLinecap="round" strokeLinejoin="round" strokeWidth="3" d="M17 8l4 4m0 0l-4 4m4-4H3" />
             </svg>
-          </a>
+          </Link>
         </div>
 
       </div>

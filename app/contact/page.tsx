@@ -2,6 +2,7 @@ import { Metadata } from 'next'
 import { Header } from '@/app/components/layout/Header'
 import { Footer } from '@/app/components/layout/Footer'
 import { Contact } from '@/app/components/sections/Contact'
+import { BreadcrumbSchema } from '@/app/components/seo/BreadcrumbSchema'
 
 export const metadata: Metadata = {
   title: 'Contact Mussawar Hayat | Get in Touch',
@@ -14,9 +15,9 @@ export const metadata: Metadata = {
     type: 'website',
     images: [
       {
-        url: 'https://www.mussawarhayat.site/_next/static/media/logo.2deab1c7.png',
-        width: 640,
-        height: 640,
+        url: '/og-image.png',
+        width: 1200,
+        height: 630,
         alt: 'Contact Mussawar Hayat',
       },
     ],
@@ -25,7 +26,7 @@ export const metadata: Metadata = {
     card: 'summary_large_image',
     title: 'Contact Mussawar Hayat | Get in Touch',
     description: 'Get in touch with Mussawar Hayat for full-stack development, web & mobile apps, and Web3/blockchain projects.',
-    images: ['https://www.mussawarhayat.site/_next/static/media/logo.2deab1c7.png'],
+    images: ['/og-image.png'],
   },
   alternates: {
     canonical: '/contact',
@@ -34,8 +35,14 @@ export const metadata: Metadata = {
 
 export default function ContactPage() {
   return (
-    <div className="min-h-screen bg-gradient-to-br from-[#060B16] via-[#0a0f1f] to-[#060B16]">
-      <Header />
+    <>
+      <BreadcrumbSchema items={[
+        { name: 'Home', url: '/' },
+        { name: 'Contact', url: '/contact' },
+      ]} />
+
+      <div className="min-h-screen bg-gradient-to-br from-[#060B16] via-[#0a0f1f] to-[#060B16]">
+        <Header />
       
       <main role="main" id="main-content" className="relative z-10">
         {/* Hero Section */}
@@ -59,5 +66,6 @@ export default function ContactPage() {
 
       <Footer />
     </div>
+    </>
   )
 }

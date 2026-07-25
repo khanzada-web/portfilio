@@ -132,8 +132,8 @@ export const metadata: Metadata = {
 
 export const viewport: Viewport = {
   themeColor: [
-    { media: "(prefers-color-scheme: light)", color: "#2563eb" },
-    { media: "(prefers-color-scheme: dark)",  color: "#1d4ed8" },
+    { media: "(prefers-color-scheme: light)", color: "#39FF14" },
+    { media: "(prefers-color-scheme: dark)",  color: "#060B16" },
   ],
 };
 
@@ -151,11 +151,28 @@ export default function RootLayout({
           src="https://pagead2.googlesyndication.com/pagead/js/adsbygoogle.js?client=ca-pub-9383132900869188"
           crossOrigin="anonymous"
         />
+
+        {/* Google Analytics (GA4) */}
+        <script
+          async
+          src="https://www.googletagmanager.com/gtag/js?id=G-BV823ZQ3HX"
+        />
+        <script
+          dangerouslySetInnerHTML={{
+            __html: `
+              window.dataLayer = window.dataLayer || [];
+              function gtag(){dataLayer.push(arguments);}
+              gtag('js', new Date());
+              gtag('config', 'G-BV823ZQ3HX');
+            `,
+          }}
+        />
         
         {/* Favicons */}
+        <link rel="icon"             type="image/svg+xml" href="/favicon.svg" />
         <link rel="icon"             type="image/png" href="/logo.png" />
-        <link rel="shortcut icon"                     href="/logo.png" />
-        <link rel="apple-touch-icon"                  href="/logo.png" />
+        <link rel="shortcut icon"                     href="/favicon.svg" />
+        <link rel="apple-touch-icon"                  href="/my-pic.jpeg" />
         <link rel="manifest"                          href="/site.webmanifest" />
 
         {/* JSON-LD Structured Data */}

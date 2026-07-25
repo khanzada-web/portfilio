@@ -1,5 +1,6 @@
 'use client';
 
+import Link from 'next/link';
 import { useState } from 'react';
 import { motion, AnimatePresence } from 'framer-motion';
 import {
@@ -208,13 +209,13 @@ export function Process() {
 
         {/* CTA */}
         <div className="text-center mt-24">
-          <a
+          <Link
             href="#contact"
             className="inline-flex items-center gap-6 bg-[#39FF14] text-black px-12 py-6 font-bold uppercase tracking-widest hover:bg-white transition-all shadow-[0_0_50px_rgba(57,255,20,0.2)]"
           >
             <span>Initiate Project_Build</span>
             <FiArrowRight className="w-5 h-5" aria-hidden="true" />
-          </a>
+          </Link>
         </div>
       </div>
     </section>

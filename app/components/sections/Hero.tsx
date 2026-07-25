@@ -4,6 +4,7 @@
 //    isLoaded was set to true on mount but never read anywhere in JSX.
 //    Keeping dead state adds unnecessary re-renders and confusion.
 
+import Link from 'next/link';
 import { AnimatedCounter } from '../ui/AnimatedCounter';
 
 // ─── Data ─────────────────────────────────────────────────────────────────────
@@ -76,7 +77,7 @@ export function Hero() {
 
           {/* CTAs */}
           <div className="flex flex-col sm:flex-row gap-6 justify-center items-center pt-8">
-            <a
+            <Link
               href="#portfolio"
               className="group relative px-10 py-5 bg-[#39FF14] text-black rounded-sm font-bold transition-all hover:bg-white hover:scale-105 active:scale-95 shadow-[0_0_30px_rgba(57,255,20,0.2)]"
             >
@@ -86,14 +87,14 @@ export function Hero() {
                   <path strokeLinecap="round" strokeLinejoin="round" strokeWidth="2.5" d="M14 5l7 7m0 0l-7 7m7-7H3" />
                 </svg>
               </span>
-            </a>
+            </Link>
 
-            <a
+            <Link
               href="#contact"
               className="px-10 py-5 border-2 border-[#39FF14] hover:bg-[#39FF14]/10 rounded-sm font-bold transition-colors tracking-widest"
             >
               GET IN TOUCH
-            </a>
+            </Link>
           </div>
 
         </div>

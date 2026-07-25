@@ -1,4 +1,5 @@
 import { Metadata } from 'next'
+import Link from 'next/link'
 import { Header } from '@/app/components/layout/Header'
 import { Footer } from '@/app/components/layout/Footer'
 import { BreadcrumbSchema } from '@/app/components/seo/BreadcrumbSchema'
@@ -682,7 +683,7 @@ export default function ServicesPage() {
               <p className="text-lg text-white/60 max-w-2xl mx-auto mb-10 font-sans leading-relaxed">
                 Tell me what you're building. I'll tell you if I can help — and how.
               </p>
-              <a
+              <Link
                 href="/#contact"
                 className="inline-flex items-center gap-4 bg-[#39FF14] text-black px-10 py-5 font-bold uppercase tracking-widest hover:bg-white transition-all shadow-[0_0_40px_rgba(57,255,20,0.2)]"
               >
@@ -690,7 +691,7 @@ export default function ServicesPage() {
                 <svg className="w-5 h-5" fill="none" stroke="currentColor" viewBox="0 0 24 24" aria-hidden="true">
                   <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M17 8l4 4m0 0l-4 4m4-4H3" />
                 </svg>
-              </a>
+              </Link>
             </div>
           </div>
         </main>

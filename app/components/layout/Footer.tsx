@@ -203,21 +203,13 @@ export function Footer() {
       </div>
 
       {/* ── Scroll to top ── */}
-      <motion.a
+      <Link
         href="#home"
-        // ✅ Changed <button onClick={scrollToTop}> to <a href="#home">
-        //    Reasons:
-        //    1. Works without JS (progressive enhancement)
-        //    2. Screen readers announce it as "go to home" — much clearer than just a button
-        //    3. Respects the user's scroll preference set in globals.css (scroll-behavior: smooth)
-        //    4. No need for window.scrollTo() at all
         aria-label="Scroll back to top"
-        className="fixed bottom-8 right-8 w-12 h-12 bg-[#39FF14] text-black rounded-full flex items-center justify-center shadow-[0_0_20px_rgba(57,255,20,0.3)] hover:shadow-[0_0_30px_rgba(57,255,20,0.5)] transition-all z-50"
-        whileHover={{ scale: 1.1 }}
-        whileTap={{ scale: 0.9 }}
+        className="fixed bottom-8 right-8 w-12 h-12 bg-[#39FF14] text-black rounded-full flex items-center justify-center shadow-[0_0_20px_rgba(57,255,20,0.3)] hover:shadow-[0_0_30px_rgba(57,255,20,0.5)] hover:scale-110 active:scale-90 transition-all z-50"
       >
         <FiArrowUp className="w-5 h-5 stroke-[3]" aria-hidden="true" />
-      </motion.a>
+      </Link>
     </footer>
   );
 }

@@ -16,9 +16,9 @@ export const metadata: Metadata = {
     type: 'website',
     images: [
       {
-        url: 'https://www.mussawarhayat.site/_next/static/media/logo.2deab1c7.png',
-        width: 640,
-        height: 640,
+        url: '/og-image.png',
+        width: 1200,
+        height: 630,
         alt: 'Mussawar Hayat Blog',
       },
     ],
@@ -27,7 +27,7 @@ export const metadata: Metadata = {
     card: 'summary_large_image',
     title: 'Mussawar Hayat Blog | Web3 & Full-Stack Dev Insights',
     description: 'Expert insights on Web3 development, blockchain, AI agents, smart contracts, DeFi, and full-stack engineering.',
-    images: ['https://www.mussawarhayat.site/_next/static/media/logo.2deab1c7.png'],
+    images: ['/og-image.png'],
   },
   alternates: {
     canonical: '/blog',

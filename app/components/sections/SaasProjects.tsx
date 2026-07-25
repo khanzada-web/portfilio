@@ -1,5 +1,6 @@
 'use client';
 
+import Link from 'next/link';
 import { motion } from 'framer-motion';
 import {
   FaShoppingCart, FaBuilding, FaPills,
@@ -134,20 +135,20 @@ export function SaasProjects() {
 
                 {/* ✅ <a> tags instead of <button onClick={scrollToContact}> */}
                 <div className="flex gap-4">
-                  <a
+                  <Link
                     href="#contact"
                     className="flex-1 px-6 py-4 bg-[#39FF14] text-black text-[10px] font-bold tracking-widest hover:bg-white transition-colors text-center"
                     aria-label={`Get a quote for ${project.title}`}
                   >
                     GET_QUOTE
-                  </a>
-                  <a
+                  </Link>
+                  <Link
                     href="#contact"
                     className="flex-1 px-6 py-4 border border-[#39FF14]/30 text-white text-[10px] font-bold tracking-widest hover:bg-[#39FF14]/10 transition-colors text-center"
                     aria-label={`Request a demo of ${project.title}`}
                   >
                     DEMO.exe
-                  </a>
+                  </Link>
                 </div>
               </div>
             </motion.article>
@@ -177,18 +178,18 @@ export function SaasProjects() {
             </p>
 
             <div className="flex flex-col sm:flex-row gap-6 justify-center">
-              <a
+              <Link
                 href="#contact"
                 className="px-6 py-3 sm:px-8 sm:py-4 md:px-12 md:py-6 bg-[#39FF14] text-black font-bold uppercase text-sm tracking-widest hover:bg-white transition-all shadow-[0_0_30px_rgba(57,255,20,0.1)] text-center"
               >
                 REQUEST CUSTOM BUILD
-              </a>
-              <a
+              </Link>
+              <Link
                 href="#contact"
                 className="px-6 py-3 sm:px-8 sm:py-4 md:px-12 md:py-6 border-2 border-[#39FF14] text-[#39FF14] font-bold uppercase text-sm tracking-widest hover:bg-[#39FF14]/10 transition-all text-center"
               >
                 CONSULTATION_MODULE
-              </a>
+              </Link>
             </div>
           </div>
         </motion.div>
