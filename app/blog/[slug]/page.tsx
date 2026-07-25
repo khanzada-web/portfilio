@@ -41,7 +41,12 @@ const blogPosts: Record<string, BlogPost> = {
         <h2>1. Project Setup</h2>
         <p>Start with the official <code>create-next-app</code> and enable TypeScript, Tailwind, ESLint, and the App Router:</p>
 
-        <pre><code class="language-bash">npx create-next-app@latest my-saas-app \\
+        <div style="background:#0A1221;border:1px solid rgba(57,255,20,0.25);border-radius:12px;overflow:hidden;margin:2rem 0;box-shadow:0 8px 32px rgba(0,0,0,0.4);">
+          <div style="display:flex;align-items:center;justify-content:space-between;padding:10px 18px;background:rgba(0,0,0,0.45);border-bottom:1px solid rgba(255,255,255,0.08);">
+            <span style="font-size:12px;color:#39FF14;font-family:ui-monospace,SFMono-Regular,Menlo,Monaco,Consolas,monospace;letter-spacing:0.05em;">bash</span>
+            <span style="font-size:11px;color:rgba(255,255,255,0.35);font-family:ui-monospace,monospace;">terminal</span>
+          </div>
+          <pre style="margin:0;padding:1.25rem 1.5rem;background:transparent;border:none;border-radius:0;"><code style="font-family:ui-monospace,SFMono-Regular,Menlo,Monaco,Consolas,monospace;font-size:14px;line-height:1.7;color:#e2e8f0;">npx create-next-app@latest my-saas-app \\
   --typescript \\
   --tailwind \\
   --eslint \\
@@ -52,6 +57,7 @@ cd my-saas-app
 
 npm install @prisma/client prisma @auth/prisma-adapter next-auth@beta
 npx prisma init --db postgresql</code></pre>
+        </div>
 
         <p>This gives you a clean foundation with Turbopack support and modern defaults out of the box.</p>
       </div>
@@ -60,8 +66,12 @@ npx prisma init --db postgresql</code></pre>
         <h3>2. Prisma Schema & Singleton Client</h3>
         <p>Always use a singleton Prisma Client. Creating a new instance on every request is the most common cause of connection exhaustion on serverless platforms.</p>
 
-        <pre><code class="language-typescript">// lib/prisma.ts
-import { PrismaClient } from '@prisma/client'
+        <div style="background:#0A1221;border:1px solid rgba(57,255,20,0.25);border-radius:12px;overflow:hidden;margin:2rem 0;box-shadow:0 8px 32px rgba(0,0,0,0.4);">
+          <div style="display:flex;align-items:center;justify-content:space-between;padding:10px 18px;background:rgba(0,0,0,0.45);border-bottom:1px solid rgba(255,255,255,0.08);">
+            <span style="font-size:12px;color:#39FF14;font-family:ui-monospace,SFMono-Regular,Menlo,Monaco,Consolas,monospace;letter-spacing:0.05em;">TypeScript</span>
+            <span style="font-size:11px;color:rgba(255,255,255,0.35);font-family:ui-monospace,monospace;">lib/prisma.ts</span>
+          </div>
+          <pre style="margin:0;padding:1.25rem 1.5rem;background:transparent;border:none;border-radius:0;"><code style="font-family:ui-monospace,SFMono-Regular,Menlo,Monaco,Consolas,monospace;font-size:14px;line-height:1.7;color:#e2e8f0;">import { PrismaClient } from '@prisma/client'
 
 const globalForPrisma = globalThis as unknown as {
   prisma: PrismaClient | undefined
@@ -70,12 +80,16 @@ const globalForPrisma = globalThis as unknown as {
 export const prisma =
   globalForPrisma.prisma ??
   new PrismaClient({
-    log: process.env.NODE_ENV === 'development' ? ['query', 'error', 'warn'] : ['error'],
+    log:
+      process.env.NODE_ENV === 'development'
+        ? ['query', 'error', 'warn']
+        : ['error'],
   })
 
 if (process.env.NODE_ENV !== 'production') {
   globalForPrisma.prisma = prisma
 }</code></pre>
+        </div>
 
         <blockquote>
           Keep a single Prisma Client instance across the entire application lifecycle. This pattern is essential for Vercel, Railway, and other serverless environments.
@@ -91,8 +105,12 @@ if (process.env.NODE_ENV !== 'production') {
         <h3>4. Server Actions for Mutations</h3>
         <p>Prefer Server Actions over API routes for most mutations. They run on the server, have direct access to Prisma, and can revalidate paths automatically.</p>
 
-        <pre><code class="language-typescript">// actions/project.ts
-'use server'
+        <div style="background:#0A1221;border:1px solid rgba(57,255,20,0.25);border-radius:12px;overflow:hidden;margin:2rem 0;box-shadow:0 8px 32px rgba(0,0,0,0.4);">
+          <div style="display:flex;align-items:center;justify-content:space-between;padding:10px 18px;background:rgba(0,0,0,0.45);border-bottom:1px solid rgba(255,255,255,0.08);">
+            <span style="font-size:12px;color:#39FF14;font-family:ui-monospace,SFMono-Regular,Menlo,Monaco,Consolas,monospace;letter-spacing:0.05em;">TypeScript</span>
+            <span style="font-size:11px;color:rgba(255,255,255,0.35);font-family:ui-monospace,monospace;">actions/project.ts</span>
+          </div>
+          <pre style="margin:0;padding:1.25rem 1.5rem;background:transparent;border:none;border-radius:0;"><code style="font-family:ui-monospace,SFMono-Regular,Menlo,Monaco,Consolas,monospace;font-size:14px;line-height:1.7;color:#e2e8f0;">'use server'
 
 import { prisma } from '@/lib/prisma'
 import { revalidatePath } from 'next/cache'
@@ -115,13 +133,14 @@ export async function createProject(formData: FormData) {
   const project = await prisma.project.create({
     data: {
       name: parsed.data.name,
-      ownerId: 'current-user-id', // replace with real session user id
+      ownerId: 'current-user-id',
     },
   })
 
   revalidatePath('/dashboard')
   return { success: true, project }
 }</code></pre>
+        </div>
       </div>
 
       <div class="linkbuilding-section">
@@ -165,157 +184,58 @@ export async function createProject(formData: FormData) {
   },
   'strait-of-hormuz-standoff-2026': {
     title: 'The Strait of Hormuz Standoff: Global Markets Braced as Naval Blockade Tightens',
-    excerpt: 'Tensions in the Middle East reached a fever pitch as U.S. naval forces officially established a "security perimeter" around key Iranian shipping lanes. What the Pentagon describes as a move to ensure maritime safety, Tehran has branded as an act of "blatant piracy."',
-    content: `
-      <div class="intro-section">
-        <h2>Global Markets on Edge as Naval Blockade Intensifies</h2>
-        <p class="lead-paragraph">The Strait of Hormuz, one of the world's most critical maritime chokepoints, has become the center of escalating geopolitical tensions. U.S. naval forces have established what they call a "security perimeter" around key Iranian shipping lanes, a move that has sent shockwaves through global markets and diplomatic circles.</p>
-        
-        <div class="key-highlights">
-          <h4>Immediate Market Impact:</h4>
-          <ul>
-            <li><strong>Oil Prices Surge</strong> - 8% spike in pre-market trading</li>
-            <li><strong>Shipping Reroutes</strong> - Vessels diverted around Cape of Good Hope</li>
-            <li><strong>Insurance Premiums</strong> - Commercial tanker rates skyrocketing</li>
-            <li><strong>Diplomatic Response</strong> - Emergency summits scheduled in European capitals</li>
-          </ul>
-        </div>
-      </div>
-      
-      <div class="technical-section">
-        <h2>Strategic Implications for Global Trade</h2>
-        <p>The Strait of Hormuz handles approximately 21 million barrels of oil per day, representing about 20% of global oil consumption. Any disruption to this critical maritime route has immediate and far-reaching consequences for the global economy.</p>
-        
-        <div class="checklist-box">
-          <h4>Key Economic Concerns:</h4>
-          <ul>
-            <li>Energy supply chain disruptions worldwide</li>
-            <li>Increased transportation costs for consumer goods</li>
-            <li>Potential for broader regional conflict escalation</li>
-            <li>Impact on global inflation and economic growth</li>
-          </ul>
-        </div>
-      </div>
-      
-      <div class="onpage-section">
-        <h3>Military and Diplomatic Dimensions</h3>
-        <p>The Pentagon's characterization of the operation as a "maritime safety" measure contrasts sharply with Iran's denunciation of "blatant piracy." This semantic battle reflects deeper geopolitical tensions and competing narratives in international relations.</p>
-        
-        <blockquote>
-          "The Strait of Hormuz is not just a waterway - it's the world's economic jugular vein. Any disruption here sends tremors through every market on Earth."
-        </blockquote>
-      </div>
-      
-      <div class="conclusion-section">
-        <h2>Looking Ahead: What to Watch For</h2>
-        <p>As this situation develops, several key indicators will signal the trajectory of this crisis. The response from international bodies and the behavior of market participants will determine whether this remains a regional issue or escalates into a broader economic confrontation.</p>
-        
-        <div class="final-takeaway">
-          <h4>Key Takeaway:</h4>
-          <p><em>The Strait of Hormuz standoff represents a critical moment in global geopolitics. Whether through diplomatic resolution or further escalation, the outcomes will shape economic conditions for months to come. Stay informed and consider the broader implications for your financial decisions.</em></p>
-        </div>
-      </div>
-    `,
+    excerpt: 'Tensions in the Middle East reached a fever pitch as U.S. naval forces officially established a "security perimeter" around key Iranian shipping lanes.',
+    content: `<div class="intro-section"><h2>Global Markets on Edge</h2><p class="lead-paragraph">The Strait of Hormuz has become the center of escalating geopolitical tensions.</p></div>`,
     date: '2026-04-13',
     readTime: '5 min read',
     category: 'World News',
     author: 'Global News Desk',
-    keywords: ['Strait of Hormuz', 'geopolitics', 'oil prices', 'naval blockade', 'Middle East', 'global markets']
+    keywords: ['Strait of Hormuz', 'geopolitics']
   },
   'bieberchella-justin-coachella-2026': {
     title: 'Bieberchella: Justin\'s Surprise Set Defines a New Era for Coachella',
-    excerpt: 'Last night, the Indio desert belonged to one man. Justin Bieber\'s unannounced headline set has become the single most-watched live-streamed event of the year.',
-    content: `
-      <div class="intro-section">
-        <h2>The Musical Phenomenon That Stopped the Internet</h2>
-        <p class="lead-paragraph">In a move that no one saw coming, Justin Bieber transformed Coachella 2026 into his personal stage with an unannounced headline performance now dubbed "Bieberchella" across social media platforms.</p>
-        
-        <div class="key-highlights">
-          <h4>What Made Bieberchella Special:</h4>
-          <ul>
-            <li><strong>Stripped-Back Performance</strong> - Away from high-production pop roots</li>
-            <li><strong>R&B Influence</strong> - Heavy soul and rhythm and blues elements</li>
-            <li><strong>Acoustic Arrangements</strong> - Intimate, raw musical delivery</li>
-            <li><strong>Digital Dominance</strong> - Social media explosion across platforms</li>
-          </ul>
-        </div>
-      </div>
-      
-      <div class="conclusion-section">
-        <h2>The Broader Cultural Significance</h2>
-        <p>This surprise performance signals a shift in how artists approach major festivals.</p>
-        
-        <div class="final-takeaway">
-          <h4>Key Takeaway:</h4>
-          <p><em>Bieberchella isn't just about one artist's performance - it's about the changing landscape of live entertainment.</em></p>
-        </div>
-      </div>
-    `,
+    excerpt: 'Justin Bieber\'s unannounced headline set has become the single most-watched live-streamed event of the year.',
+    content: `<div class="intro-section"><h2>The Musical Phenomenon</h2><p class="lead-paragraph">Justin Bieber transformed Coachella 2026 into his personal stage.</p></div>`,
     date: '2026-04-13',
     readTime: '4 min read',
     category: 'Entertainment',
     author: 'Entertainment Desk',
-    keywords: ['Justin Bieber', 'Coachella', 'Bieberchella', 'live music', 'fashion trends', 'social media']
+    keywords: ['Justin Bieber', 'Coachella']
   },
   'artemis-ii-crew-final-simulation-2026': {
     title: 'Artemis II: The Crew Prepares for History in Final Simulation Phases',
-    excerpt: 'NASA has released new footage of the Artemis II crew undergoing rigorous centrifuge training as they approach the final months before their lunar flyby.',
-    content: `
-      <div class="intro-section">
-        <h2>Humanity's Return to the Moon</h2>
-        <p class="lead-paragraph">NASA has released compelling new footage showing the Artemis II crew undergoing intense centrifuge training as they approach the final months before their historic lunar flyby mission.</p>
-      </div>
-      
-      <div class="conclusion-section">
-        <h2>The Future of Lunar Exploration</h2>
-        <p>The Artemis program represents not just a return to the Moon, but the beginning of humanity's expansion into the solar system.</p>
-      </div>
-    `,
+    excerpt: 'NASA has released new footage of the Artemis II crew undergoing rigorous centrifuge training.',
+    content: `<div class="intro-section"><h2>Humanity's Return to the Moon</h2><p class="lead-paragraph">The first humans near the Moon in over half a century.</p></div>`,
     date: '2026-04-13',
     readTime: '6 min read',
     category: 'Science & Space',
     author: 'Science Desk',
-    keywords: ['NASA', 'Artemis II', 'Moon mission', 'space exploration']
+    keywords: ['NASA', 'Artemis II']
   },
   'gaslighting-yoga-challenge-tiktok-2026': {
     title: 'Why Your For You Page is Full of the "Gaslighting" Yoga Pose',
-    excerpt: 'If you\'ve opened TikTok or Instagram today, you\'ve likely seen someone face-planting while trying the "Gaslighting" Yoga Pose.',
-    content: `
-      <div class="intro-section">
-        <h2>The Viral Challenge That's Taking Over Social Media</h2>
-        <p class="lead-paragraph">This seemingly simple yet surprisingly difficult challenge has exploded across social platforms.</p>
-      </div>
-    `,
+    excerpt: 'The challenge has become the ultimate viral "fail" trend.',
+    content: `<div class="intro-section"><h2>The Viral Challenge</h2><p class="lead-paragraph">A deceptively simple pose that is nearly impossible.</p></div>`,
     date: '2026-04-13',
     readTime: '3 min read',
     category: 'Digital Culture',
     author: 'Culture Desk',
-    keywords: ['TikTok', 'Instagram', 'viral challenges']
+    keywords: ['TikTok', 'viral challenges']
   },
   'ai-agents-blockchain-web3-2026': {
     title: 'AI Agents on Blockchain: The Biggest Web3 Trend of 2026',
-    excerpt: 'Autonomous AI agents are executing smart contracts, managing DeFi portfolios, and governing DAOs without human input.',
-    content: `
-      <div class="intro-section">
-        <h2>The AI Agent Revolution in Web3</h2>
-        <p class="lead-paragraph">2026 marks the pivotal moment when artificial intelligence and blockchain technology converge to create autonomous digital agents.</p>
-      </div>
-    `,
+    excerpt: 'Autonomous AI agents are executing smart contracts and managing DeFi portfolios.',
+    content: `<div class="intro-section"><h2>The AI Agent Revolution</h2><p class="lead-paragraph">AI and blockchain are converging into autonomous digital agents.</p></div>`,
     date: '2026-03-10',
     readTime: '11 min read',
     category: 'Web3 & AI',
     author: 'Mussawar Hayat',
-    keywords: ['AI agents', 'blockchain', 'Web3']
+    keywords: ['AI agents', 'blockchain']
   },
   'account-abstraction-smart-wallets-guide': {
     title: 'Account Abstraction in 2026: The End of Seed Phrases',
     excerpt: 'ERC-4337 and smart wallets are killing the biggest UX barrier in Web3.',
-    content: `
-      <div class="intro-section">
-        <h2>The UX Revolution</h2>
-        <p class="lead-paragraph">Account Abstraction has matured into a production-ready solution.</p>
-      </div>
-    `,
+    content: `<div class="intro-section"><h2>The UX Revolution</h2><p class="lead-paragraph">Account Abstraction has matured into a production-ready solution.</p></div>`,
     date: '2026-03-05',
     readTime: '10 min read',
     category: 'Web3 Development',
@@ -324,13 +244,8 @@ export async function createProject(formData: FormData) {
   },
   'real-world-asset-tokenization-rwa-guide': {
     title: 'RWA Tokenization: How Blockchain Is Eating Real-World Finance',
-    excerpt: 'Real-world asset tokenization crossed $24 billion in 2025 and is accelerating fast.',
-    content: `
-      <div class="intro-section">
-        <h2>The $24 Billion Revolution</h2>
-        <p class="lead-paragraph">RWA tokenization is creating entirely new financial markets.</p>
-      </div>
-    `,
+    excerpt: 'Real-world asset tokenization crossed $24 billion in 2025.',
+    content: `<div class="intro-section"><h2>The $24 Billion Revolution</h2><p class="lead-paragraph">RWA tokenization is creating new financial markets.</p></div>`,
     date: '2026-02-28',
     readTime: '12 min read',
     category: 'Blockchain & DeFi',
@@ -340,12 +255,7 @@ export async function createProject(formData: FormData) {
   'modular-blockchains-l2-developer-guide': {
     title: 'Modular Blockchains & L2s: The Infrastructure Stack Every Web3 Dev Must Know',
     excerpt: 'The monolithic blockchain era is over.',
-    content: `
-      <div class="intro-section">
-        <h2>The Modular Revolution</h2>
-        <p class="lead-paragraph">Modular architecture is how the next billion users get on-chain.</p>
-      </div>
-    `,
+    content: `<div class="intro-section"><h2>The Modular Revolution</h2><p class="lead-paragraph">Modular architecture is how the next billion users get on-chain.</p></div>`,
     date: '2026-02-20',
     readTime: '13 min read',
     category: 'Blockchain',
@@ -355,12 +265,7 @@ export async function createProject(formData: FormData) {
   'deploying-multi-site-nextjs-vps-nginx': {
     title: 'Deploying a Multi-Site Next.js App on a Single VPS with Nginx',
     excerpt: 'Running multiple Next.js apps on one VPS with Nginx reverse proxy, PM2, and SSL.',
-    content: `
-      <div class="intro-section">
-        <h2>One VPS, Multiple Next.js Apps</h2>
-        <p class="lead-paragraph">Here's the architecture I use for production multi-site deployments.</p>
-      </div>
-    `,
+    content: `<div class="intro-section"><h2>One VPS, Multiple Next.js Apps</h2><p class="lead-paragraph">The exact production architecture I use.</p></div>`,
     date: '2026-05-15',
     readTime: '9 min read',
     category: 'DevOps',
@@ -370,12 +275,7 @@ export async function createProject(formData: FormData) {
   'building-bitcoin-ordinals-marketplace': {
     title: 'Building a Bitcoin Ordinals Marketplace: Architecture Breakdown',
     excerpt: 'How I built Ordwin — a Bitcoin NFT marketplace for Ordinal inscriptions.',
-    content: `
-      <div class="intro-section">
-        <h2>Building Ordwin</h2>
-        <p class="lead-paragraph">The core challenge was indexing inscription data at chain speed.</p>
-      </div>
-    `,
+    content: `<div class="intro-section"><h2>Building Ordwin</h2><p class="lead-paragraph">The core challenge was indexing at chain speed.</p></div>`,
     date: '2026-05-10',
     readTime: '11 min read',
     category: 'Web3',
@@ -385,12 +285,7 @@ export async function createProject(formData: FormData) {
   'metamask-vs-walletconnect-dapp': {
     title: 'MetaMask vs WalletConnect: Choosing Wallet Integration for Your DApp',
     excerpt: 'Both work. Both have edge cases.',
-    content: `
-      <div class="intro-section">
-        <h2>Wallet Integration</h2>
-        <p class="lead-paragraph">Here's what I learned integrating multiple wallets.</p>
-      </div>
-    `,
+    content: `<div class="intro-section"><h2>Wallet Integration</h2><p class="lead-paragraph">What I learned integrating multiple wallets.</p></div>`,
     date: '2026-05-05',
     readTime: '8 min read',
     category: 'Web3',
@@ -400,12 +295,7 @@ export async function createProject(formData: FormData) {
   'spf-dkim-dmarc-multi-domain-vps': {
     title: 'Setting Up SPF, DKIM, and DMARC for a Multi-Domain VPS',
     excerpt: 'Email deliverability is silent until it breaks.',
-    content: `
-      <div class="intro-section">
-        <h2>Email Deliverability</h2>
-        <p class="lead-paragraph">The exact DNS setup I use across multiple domains.</p>
-      </div>
-    `,
+    content: `<div class="intro-section"><h2>Email Deliverability</h2><p class="lead-paragraph">The exact DNS setup I use.</p></div>`,
     date: '2026-04-28',
     readTime: '7 min read',
     category: 'DevOps',
@@ -415,12 +305,7 @@ export async function createProject(formData: FormData) {
   'gdpr-compliant-web-apps-checklist': {
     title: 'Building GDPR-Compliant Web Apps: A Developer\'s Checklist',
     excerpt: 'Cookie consent, secure data storage, data subject rights.',
-    content: `
-      <div class="intro-section">
-        <h2>GDPR for Developers</h2>
-        <p class="lead-paragraph">A practical engineering checklist.</p>
-      </div>
-    `,
+    content: `<div class="intro-section"><h2>GDPR for Developers</h2><p class="lead-paragraph">A practical engineering checklist.</p></div>`,
     date: '2026-04-20',
     readTime: '10 min read',
     category: 'Full-Stack',
@@ -430,12 +315,7 @@ export async function createProject(formData: FormData) {
   'multi-chain-dex-interface-performance': {
     title: 'Building a Multi-Chain DEX Interface Without Killing Performance',
     excerpt: 'Real-time price feeds, chart rendering, and websocket management.',
-    content: `
-      <div class="intro-section">
-        <h2>Demotrionn DEX</h2>
-        <p class="lead-paragraph">How I built a high-performance multi-chain trading interface.</p>
-      </div>
-    `,
+    content: `<div class="intro-section"><h2>Demotrionn DEX</h2><p class="lead-paragraph">How I built a high-performance multi-chain trading interface.</p></div>`,
     date: '2026-04-15',
     readTime: '12 min read',
     category: 'Web3',
@@ -453,9 +333,7 @@ export async function generateMetadata({ params }: PageProps): Promise<Metadata>
   const post = blogPosts[slug]
 
   if (!post) {
-    return {
-      title: 'Blog Post Not Found',
-    }
+    return { title: 'Blog Post Not Found' }
   }
 
   return {
@@ -467,14 +345,7 @@ export async function generateMetadata({ params }: PageProps): Promise<Metadata>
       description: post.excerpt,
       url: `https://mussawarhayat.site/blog/${slug}`,
       type: 'article',
-      images: [
-        {
-          url: 'https://mussawarhayat.site/_next/static/media/logo.2deab1c7.png',
-          width: 640,
-          height: 640,
-          alt: post.title,
-        },
-      ],
+      images: [{ url: 'https://mussawarhayat.site/_next/static/media/logo.2deab1c7.png', width: 640, height: 640, alt: post.title }],
     },
     twitter: {
       card: 'summary_large_image',
@@ -587,7 +458,7 @@ export default async function BlogPostPage({ params }: PageProps) {
                   prose-blockquote:border-l-4 prose-blockquote:border-[#39FF14] prose-blockquote:bg-gradient-to-r prose-blockquote:from-white/8 prose-blockquote:to-transparent prose-blockquote:p-12 prose-blockquote:rounded-r-2xl prose-blockquote:my-16 prose-blockquote:shadow-xl
                   prose-blockquote:p:text-white/90 prose-blockquote:p:italic prose-blockquote:p:text-2xl prose-blockquote:p:font-light prose-blockquote:p:leading-relaxed
                   prose-code:text-[#39FF14] prose-code:bg-white/12 prose-code:px-4 prose-code:py-2 prose-code:rounded-lg prose-code:font-mono prose-code:text-sm prose-code:border prose-code:border-white/10
-                  prose-pre:bg-gradient-to-br prose-pre:from-black/50 prose-pre:to-white/5 prose-pre:border prose-pre:border-white/20 prose-pre:rounded-2xl prose-pre:p-8 prose-pre:my-16 prose-pre:shadow-2xl prose-pre:backdrop-blur-sm
+                  prose-pre:bg-transparent prose-pre:border-0 prose-pre:p-0 prose-pre:m-0 prose-pre:shadow-none
                   prose-hr:border-white/10 prose-hr:my-24 prose-hr:border-dashed
                   prose-a:text-[#39FF14] prose-a:no-underline prose-a:font-medium prose-a:text-lg hover:prose-a:text-white hover:prose-a:underline transition-all prose-a:font-semibold
                   [&>*]:first-child:mt-0 [&>*]:last-child:mb-0"
