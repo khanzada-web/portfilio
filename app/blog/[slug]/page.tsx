@@ -19,14 +19,14 @@ interface BlogPost {
 const blogPosts: Record<string, BlogPost> = {
   'nextjs-16-saas-tutorial-prisma-typescript-2026': {
     title: 'Building a Production-Ready Full-Stack SaaS with Next.js 16, TypeScript, Prisma & Tailwind (2026)',
-    excerpt: 'Complete step-by-step guide to building a scalable SaaS using Next.js 16 App Router, Prisma Postgres, Auth.js, and Tailwind CSS. Production patterns, Server Actions, and deployment.',
+    excerpt: 'Step-by-step guide to building a scalable SaaS with Next.js 16 App Router, Prisma, Auth.js, and Tailwind CSS. Includes Server Actions, production patterns, and deployment.',
     content: `
       <div class="intro-section">
         <h2>Why This Stack Wins in 2026</h2>
         <p class="lead-paragraph">Next.js 16 with the App Router, TypeScript, Prisma, and Tailwind CSS has become the default choice for serious full-stack SaaS products. It delivers end-to-end type safety, excellent performance, Server Components by default, and a developer experience that scales cleanly from MVP to production.</p>
         
         <div class="key-highlights">
-          <h4>What You Will Build</h4>
+          <h3>What You Will Build</h3>
           <ul>
             <li><strong>Next.js 16 App Router</strong> — Server Components, nested layouts, streaming</li>
             <li><strong>Prisma + PostgreSQL</strong> — Fully type-safe database layer</li>
@@ -63,7 +63,7 @@ npx prisma init --db postgresql</code></pre>
       </div>
 
       <div class="onpage-section">
-        <h3>2. Prisma Schema & Singleton Client</h3>
+        <h2>2. Prisma Schema & Singleton Client</h2>
         <p>Always use a singleton Prisma Client. Creating a new instance on every request is the most common cause of connection exhaustion on serverless platforms.</p>
 
         <div style="background:#0A1221;border:1px solid rgba(57,255,20,0.25);border-radius:12px;overflow:hidden;margin:2rem 0;box-shadow:0 8px 32px rgba(0,0,0,0.4);">
@@ -102,7 +102,7 @@ if (process.env.NODE_ENV !== 'production') {
       </div>
 
       <div class="local-seo-section">
-        <h3>4. Server Actions for Mutations</h3>
+        <h2>4. Server Actions for Mutations</h2>
         <p>Prefer Server Actions over API routes for most mutations. They run on the server, have direct access to Prisma, and can revalidate paths automatically.</p>
 
         <div style="background:#0A1221;border:1px solid rgba(57,255,20,0.25);border-radius:12px;overflow:hidden;margin:2rem 0;box-shadow:0 8px 32px rgba(0,0,0,0.4);">
@@ -164,20 +164,29 @@ export async function createProject(formData: FormData) {
         <p>This stack — Next.js 16 App Router + TypeScript + Prisma + Tailwind + Auth.js — gives you a production-ready foundation that is fast to build on and easy to scale. Focus on Server Components, type safety, and clean data access patterns, and you will avoid most of the technical debt that older full-stack setups create.</p>
 
         <div class="final-takeaway">
-          <h4>Key Takeaway</h4>
+          <h3>Key Takeaway</h3>
           <p><em>Start with Server Components, keep Prisma as a singleton, validate with Zod, use Server Actions for mutations, and ship. Everything else is iteration.</em></p>
         </div>
 
         <hr>
 
         <div class="cta-section">
-          <h4>Need help building your SaaS?</h4>
+          <h3>Need help building your SaaS?</h3>
           <p>I design and build production-grade full-stack applications with this exact stack. <a href="/contact" style="color: #39FF14;">Get in touch</a> if you want to move faster.</p>
+        </div>
+
+        <div style="margin-top:3rem;padding-top:2rem;border-top:1px solid rgba(255,255,255,0.1);">
+          <h3>Related Posts</h3>
+          <ul>
+            <li><a href="/blog/deploying-multi-site-nextjs-vps-nginx" style="color:#39FF14;">Deploying a Multi-Site Next.js App on a Single VPS with Nginx</a></li>
+            <li><a href="/blog/gdpr-compliant-web-apps-checklist" style="color:#39FF14;">Building GDPR-Compliant Web Apps: A Developer's Checklist</a></li>
+            <li><a href="/blog/account-abstraction-smart-wallets-guide" style="color:#39FF14;">Account Abstraction in 2026: The End of Seed Phrases</a></li>
+          </ul>
         </div>
       </div>
     `,
     date: '2026-07-26',
-    readTime: '14 min read',
+    readTime: '7 min read',
     category: 'Full-Stack',
     author: 'Mussawar Hayat',
     keywords: ['Next.js 16', 'SaaS tutorial', 'Prisma', 'TypeScript', 'App Router', 'Server Actions', 'Tailwind CSS', 'Auth.js', 'full-stack development']
@@ -336,22 +345,38 @@ export async function generateMetadata({ params }: PageProps): Promise<Metadata>
     return { title: 'Blog Post Not Found' }
   }
 
+  const pageUrl = `https://www.mussawarhayat.site/blog/${slug}`
+
   return {
-    title: `${post.title} | Mussawar Hayat Blog`,
+    title: post.title,
     description: post.excerpt,
     keywords: post.keywords.join(', '),
+    authors: [{ name: post.author }],
+    alternates: {
+      canonical: pageUrl,
+    },
     openGraph: {
       title: post.title,
       description: post.excerpt,
-      url: `https://mussawarhayat.site/blog/${slug}`,
+      url: pageUrl,
       type: 'article',
-      images: [{ url: 'https://mussawarhayat.site/_next/static/media/logo.2deab1c7.png', width: 640, height: 640, alt: post.title }],
+      siteName: 'Mussawar Hayat',
+      publishedTime: post.date,
+      authors: [post.author],
+      images: [
+        {
+          url: 'https://www.mussawarhayat.site/_next/static/media/logo.2deab1c7.png',
+          width: 640,
+          height: 640,
+          alt: post.title,
+        },
+      ],
     },
     twitter: {
       card: 'summary_large_image',
       title: post.title,
       description: post.excerpt,
-      images: ['https://mussawarhayat.site/_next/static/media/logo.2deab1c7.png'],
+      images: ['https://www.mussawarhayat.site/_next/static/media/logo.2deab1c7.png'],
     },
   }
 }
