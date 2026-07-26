@@ -94,6 +94,12 @@ export default function TermsPage() {
                 </p>
               </section>
             </div>
+
+            <div className="mt-12 pt-8 border-t border-white/10 text-center">
+              <a href="/privacy" className="text-[#39FF14] hover:underline text-sm font-orbitron uppercase tracking-widest">
+                View Privacy Policy →
+              </a>
+            </div>
           </div>
         </main>
         <Footer />

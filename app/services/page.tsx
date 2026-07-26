@@ -265,6 +265,14 @@ export default function ServicesPage() {
                   <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M17 8l4 4m0 0l-4 4m4-4H3" />
                 </svg>
               </Link>
+              <div className="mt-6">
+                <Link
+                  href="/blog"
+                  className="text-white/50 hover:text-[#39FF14] text-sm font-orbitron uppercase tracking-widest transition-colors"
+                >
+                  Read the Blog →
+                </Link>
+              </div>
             </div>
           </div>
         </main>
