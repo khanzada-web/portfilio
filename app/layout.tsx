@@ -154,7 +154,7 @@ export default function RootLayout({
         <link rel="apple-touch-icon"                  href="/my-pic.jpeg" />
         <link rel="manifest"                          href="/site.webmanifest" />
 
-        {/* Semantic SEO: Full Entity Graph (Person + WebSite + ProfessionalService) */}
+        {/* Semantic SEO: Entity Graph (Person + WebSite) */}
         <script
           type="application/ld+json"
           suppressHydrationWarning
@@ -239,30 +239,6 @@ export default function RootLayout({
                     { "@type": "Place", "name": "Worldwide" }
                   ],
                   "availableLanguage": ["English"]
-                },
-                {
-                  "@type": "ProfessionalService",
-                  "@id": "https://www.mussawarhayat.site/#service",
-                  "name": "Mussawar Hayat Full-Stack & Web3 Development Services",
-                  "url": "https://www.mussawarhayat.site/services",
-                  "provider": { "@id": "https://www.mussawarhayat.site/#person" },
-                  "areaServed": ["North America", "Europe", "Worldwide"],
-                  "serviceType": [
-                    "Full-Stack Web Development",
-                    "Next.js Development",
-                    "TypeScript Development",
-                    "Web3 Development",
-                    "Smart Contract Development",
-                    "Mobile App Development",
-                    "DevOps & VPS Management",
-                    "SaaS Development",
-                    "DeFi Platform Development",
-                    "NFT Marketplace Development"
-                  ],
-                  "description": "End-to-end full-stack development services including Next.js applications, TypeScript backends, React Native mobile apps, Solidity smart contracts, Bitcoin Ordinals tools, and production DevOps on VPS. Hire for freelance or contract work.",
-                  "priceRange": "$$-$$$",
-                  "currenciesAccepted": "USD",
-                  "paymentAccepted": "Bank Transfer, PayPal, Crypto"
                 }
               ]
             }, null, 2)
