@@ -200,7 +200,7 @@ export default function RootLayout({
                   },
                   "sameAs": [
                     "https://github.com/khanzada-web",
-                    "https://www.linkedin.com/in/mussawar-hayat",
+                    "https://www.linkedin.com/in/mussawar-hayat-187768233",
                     "https://twitter.com/Mussawar_Hayat",
                     "https://x.com/Mussawar_Hayat"
                   ],
