@@ -25,7 +25,7 @@ export const metadata: Metadata = {
   openGraph: {
     title: 'Mussawar Hayat Blog | Web3 & Full-Stack Developer Insights',
     description: 'Practical architecture guides and production patterns for Next.js, Web3, Solidity, and full-stack engineering.',
-    url: 'https://www.mussawarhayat.site/blog',
+    url: 'https://mussawarhayat.site/blog',
     type: 'website',
     images: [
       {

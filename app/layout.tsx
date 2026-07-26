@@ -50,11 +50,11 @@ export const metadata: Metadata = {
     "full-stack developer Pakistan",
   ],
 
-  authors: [{ name: "Mussawar Hayat", url: "https://www.mussawarhayat.site" }],
+  authors: [{ name: "Mussawar Hayat", url: "https://mussawarhayat.site" }],
   creator: "Mussawar Hayat",
   publisher: "Mussawar Hayat",
 
-  metadataBase: new URL("https://www.mussawarhayat.site"),
+  metadataBase: new URL("https://mussawarhayat.site"),
   alternates: {
     canonical: "/",
   },
@@ -85,7 +85,7 @@ export const metadata: Metadata = {
   openGraph: {
     type: "website",
     locale: "en_US",
-    url: "https://www.mussawarhayat.site",
+    url: "https://mussawarhayat.site",
     title: "Hire Mussawar Hayat | Full-Stack & Web3 Developer",
     description:
       "Full-stack developer specialising in React, Next.js, TypeScript, Node.js and Web3. 3+ years experience. Available for freelance projects worldwide.",
@@ -167,24 +167,24 @@ export default function RootLayout({
               "@graph": [
                 {
                   "@type": "WebSite",
-                  "@id": "https://www.mussawarhayat.site/#website",
-                  "url": "https://www.mussawarhayat.site",
+                  "@id": "https://mussawarhayat.site/#website",
+                  "url": "https://mussawarhayat.site",
                   "name": "Mussawar Hayat | Full-Stack & Web3 Developer",
                   "description": "Hire a full-stack developer specialising in Next.js, TypeScript, Node.js, React Native, and Web3. Production web, mobile, and blockchain applications.",
-                  "publisher": { "@id": "https://www.mussawarhayat.site/#person" },
+                  "publisher": { "@id": "https://mussawarhayat.site/#person" },
                   "inLanguage": "en",
                   "potentialAction": {
                     "@type": "SearchAction",
-                    "target": "https://www.mussawarhayat.site/blog?q={search_term_string}",
+                    "target": "https://mussawarhayat.site/blog?q={search_term_string}",
                     "query-input": "required name=search_term_string"
                   }
                 },
                 {
                   "@type": "Person",
-                  "@id": "https://www.mussawarhayat.site/#person",
+                  "@id": "https://mussawarhayat.site/#person",
                   "name": "Mussawar Hayat",
-                  "url": "https://www.mussawarhayat.site",
-                  "image": "https://www.mussawarhayat.site/my-pic.jpeg",
+                  "url": "https://mussawarhayat.site",
+                  "image": "https://mussawarhayat.site/my-pic.jpeg",
                   "hasOccupation": {
                     "@type": "Occupation",
                     "name": "Full-Stack Developer & Web3 Specialist"

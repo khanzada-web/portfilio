@@ -1,6 +1,6 @@
 import type { MetadataRoute } from "next";
 
-const BASE_URL = "https://www.mussawarhayat.site";
+const BASE_URL = "https://mussawarhayat.site";
 
 const BLOG_POSTS: { slug: string; date: string }[] = [
   { slug: "nextjs-july-2026-security-patch-server-actions", date: "2026-07-26" },

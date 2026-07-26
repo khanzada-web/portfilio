@@ -15,7 +15,7 @@ export function BreadcrumbSchema({ items }: BreadcrumbSchemaProps) {
       "@type": "ListItem",
       "position": index + 1,
       "name": item.name,
-      "item": `https://www.mussawarhayat.site${item.url}`
+      "item": `https://mussawarhayat.site${item.url}`
     }))
   }
 

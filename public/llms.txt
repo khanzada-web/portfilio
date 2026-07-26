@@ -13,25 +13,25 @@
 
 ## Blog
 
-- Next.js July 2026 Security Patch: https://www.mussawarhayat.site/blog/nextjs-july-2026-security-patch-server-actions
-- Next.js 16 + Prisma SaaS Tutorial: https://www.mussawarhayat.site/blog/nextjs-16-saas-tutorial-prisma-typescript-2026
-- AI Agents on Blockchain: https://www.mussawarhayat.site/blog/ai-agents-blockchain-web3-2026
-- Account Abstraction 2026: https://www.mussawarhayat.site/blog/account-abstraction-smart-wallets-guide
-- RWA Tokenization: https://www.mussawarhayat.site/blog/real-world-asset-tokenization-rwa-guide
-- Modular Blockchains & L2s: https://www.mussawarhayat.site/blog/modular-blockchains-l2-developer-guide
-- Multi-Site Next.js on VPS: https://www.mussawarhayat.site/blog/deploying-multi-site-nextjs-vps-nginx
-- Bitcoin Ordinals Marketplace: https://www.mussawarhayat.site/blog/building-bitcoin-ordinals-marketplace
-- MetaMask vs WalletConnect: https://www.mussawarhayat.site/blog/metamask-vs-walletconnect-dapp
-- SPF, DKIM & DMARC: https://www.mussawarhayat.site/blog/spf-dkim-dmarc-multi-domain-vps
-- GDPR-Compliant Web Apps: https://www.mussawarhayat.site/blog/gdpr-compliant-web-apps-checklist
-- Multi-Chain DEX Performance: https://www.mussawarhayat.site/blog/multi-chain-dex-interface-performance
+- Next.js July 2026 Security Patch: https://mussawarhayat.site/blog/nextjs-july-2026-security-patch-server-actions
+- Next.js 16 + Prisma SaaS Tutorial: https://mussawarhayat.site/blog/nextjs-16-saas-tutorial-prisma-typescript-2026
+- AI Agents on Blockchain: https://mussawarhayat.site/blog/ai-agents-blockchain-web3-2026
+- Account Abstraction 2026: https://mussawarhayat.site/blog/account-abstraction-smart-wallets-guide
+- RWA Tokenization: https://mussawarhayat.site/blog/real-world-asset-tokenization-rwa-guide
+- Modular Blockchains & L2s: https://mussawarhayat.site/blog/modular-blockchains-l2-developer-guide
+- Multi-Site Next.js on VPS: https://mussawarhayat.site/blog/deploying-multi-site-nextjs-vps-nginx
+- Bitcoin Ordinals Marketplace: https://mussawarhayat.site/blog/building-bitcoin-ordinals-marketplace
+- MetaMask vs WalletConnect: https://mussawarhayat.site/blog/metamask-vs-walletconnect-dapp
+- SPF, DKIM & DMARC: https://mussawarhayat.site/blog/spf-dkim-dmarc-multi-domain-vps
+- GDPR-Compliant Web Apps: https://mussawarhayat.site/blog/gdpr-compliant-web-apps-checklist
+- Multi-Chain DEX Performance: https://mussawarhayat.site/blog/multi-chain-dex-interface-performance
 
 ## Key Pages
 
-- Home: https://www.mussawarhayat.site/
-- Services: https://www.mussawarhayat.site/services
-- Blog: https://www.mussawarhayat.site/blog
-- Contact: https://www.mussawarhayat.site/contact
+- Home: https://mussawarhayat.site/
+- Services: https://mussawarhayat.site/services
+- Blog: https://mussawarhayat.site/blog
+- Contact: https://mussawarhayat.site/contact
 
 ## Contact
 

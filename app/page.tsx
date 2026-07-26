@@ -51,7 +51,7 @@ export const metadata: Metadata = {
     description:
       "Full-stack developer specialising in React, Next.js, TypeScript, Node.js and Web3. " +
       "Available for freelance projects worldwide.",
-    url: "https://www.mussawarhayat.site",
+    url: "https://mussawarhayat.site",
     type: "website",
     images: [
       {

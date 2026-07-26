@@ -146,7 +146,7 @@ const nextConfig: NextConfig = {
     serverActions: {
       bodySizeLimit: '1mb', // default; lower if you do not need large uploads
       allowedOrigins: [
-        'https://www.mussawarhayat.site',
+        'https://mussawarhayat.site',
         'https://mussawarhayat.site',
       ],
     },
@@ -543,7 +543,7 @@ export async function generateMetadata({ params }: PageProps): Promise<Metadata>
     return { title: 'Blog Post Not Found' }
   }
 
-  const pageUrl = `https://www.mussawarhayat.site/blog/${slug}`
+  const pageUrl = `https://mussawarhayat.site/blog/${slug}`
 
   return {
     title: post.title,
@@ -563,7 +563,7 @@ export async function generateMetadata({ params }: PageProps): Promise<Metadata>
       authors: [post.author],
       images: [
         {
-          url: 'https://www.mussawarhayat.site/my-pic.jpeg',
+          url: 'https://mussawarhayat.site/my-pic.jpeg',
           width: 1200,
           height: 630,
           alt: post.title,
@@ -574,33 +574,33 @@ export async function generateMetadata({ params }: PageProps): Promise<Metadata>
       card: 'summary_large_image',
       title: post.title,
       description: post.excerpt,
-      images: ['https://www.mussawarhayat.site/my-pic.jpeg'],
+      images: ['https://mussawarhayat.site/my-pic.jpeg'],
     },
   }
 }
 
 function BlogPostingSchema({ post, slug }: { post: BlogPost; slug: string }) {
-  const pageUrl = `https://www.mussawarhayat.site/blog/${slug}`
+  const pageUrl = `https://mussawarhayat.site/blog/${slug}`
 
   const jsonLd = {
     '@context': 'https://schema.org',
     '@type': 'BlogPosting',
     headline: post.title,
     description: post.excerpt,
-    image: 'https://www.mussawarhayat.site/my-pic.jpeg',
+    image: 'https://mussawarhayat.site/my-pic.jpeg',
     datePublished: post.date,
     dateModified: post.date,
     author: {
       '@type': 'Person',
       name: post.author,
-      url: 'https://www.mussawarhayat.site',
+      url: 'https://mussawarhayat.site',
     },
     publisher: {
       '@type': 'Organization',
       name: 'Mussawar Hayat',
       logo: {
         '@type': 'ImageObject',
-        url: 'https://www.mussawarhayat.site/my-pic.jpeg',
+        url: 'https://mussawarhayat.site/my-pic.jpeg',
         width: 192,
         height: 192,
       },

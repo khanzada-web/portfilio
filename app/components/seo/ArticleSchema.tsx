@@ -41,7 +41,7 @@ export function ArticleSchema({
       "name": "Mussawar Hayat",
       "logo": {
         "@type": "ImageObject",
-        "url": "https://www.mussawarhayat.site/my-pic.jpeg",
+        "url": "https://mussawarhayat.site/my-pic.jpeg",
         "width": 192,
         "height": 192
       }

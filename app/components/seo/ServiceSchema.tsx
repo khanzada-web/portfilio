@@ -28,7 +28,7 @@ export function ServiceSchema({
     "provider": {
       "@type": "Person",
       "name": provider,
-      "url": "https://www.mussawarhayat.site"
+      "url": "https://mussawarhayat.site"
     },
     "areaServed": areaServed,
     "serviceType": "Professional Services",

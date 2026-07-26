@@ -19,7 +19,7 @@ export const metadata: Metadata = {
   openGraph: {
     title: 'Contact — Hire Full-Stack Developer',
     description: 'Get in touch to hire Mussawar Hayat for full-stack development, web & mobile apps, and Web3/blockchain projects.',
-    url: 'https://www.mussawarhayat.site/contact',
+    url: 'https://mussawarhayat.site/contact',
     type: 'website',
     images: [
       {

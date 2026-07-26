@@ -27,7 +27,7 @@ export const metadata: Metadata = {
     title: 'Hire Full-Stack & Web3 Developer | Mussawar Hayat Services',
     description:
       'Full-stack development services — web apps, mobile apps, APIs, DevOps, e-commerce, and Web3/blockchain integration. Available for freelance projects worldwide.',
-    url: 'https://www.mussawarhayat.site/services',
+    url: 'https://mussawarhayat.site/services',
     type: 'website',
     images: [
       {
