@@ -4,8 +4,5 @@ Allow: /
 # Sitemap
 Sitemap: https://mussawarhayat.site/sitemap.xml
 
-# Block only truly non-content paths
+# Non-content paths
 Disallow: /api/
-
-# Crawl delay (optional, adjust as needed)
-Crawl-delay: 1
