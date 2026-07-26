@@ -31,7 +31,8 @@ export const metadata: Metadata = {
   },
 
   description:
-    "Hire Mussawar Hayat — full-stack developer with 3+ years building high-performance web & mobile apps using React, Next.js, Node.js & TypeScript. Specialised Web3/blockchain integration (Solidity, DeFi, NFTs, Bitcoin Ordinals). Available for freelance projects worldwide.",
+    "Hire Mussawar Hayat — full-stack developer with 3+ years building web & mobile apps. " +
+    "React, Next.js, Node.js, TypeScript, and Web3/Solidity. Available for freelance work worldwide.",
 
   keywords: [
     "hire full-stack developer",

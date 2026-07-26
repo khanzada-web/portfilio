@@ -25,7 +25,7 @@ export const metadata: Metadata = {
 
   description:
     "Hire a full-stack developer specialising in React, Next.js, TypeScript, Node.js and Web3. " +
-    "3+ years building production SaaS, DApps, smart contracts, Bitcoin Ordinals tools and mobile apps. Available for freelance projects worldwide.",
+    "3+ years building production SaaS, DApps, and mobile apps. Available for freelance work worldwide.",
 
   keywords: [
     "hire full-stack developer",

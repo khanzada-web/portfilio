@@ -57,20 +57,31 @@ const About = () => (
         <h2 className="text-4xl md:text-6xl font-bold text-white mb-8">
           Digital <span className="text-[#39FF14]">Architect</span>
         </h2>
-        <p className="max-w-3xl text-lg opacity-80 leading-relaxed font-sans">
+        <p className="max-w-3xl text-lg opacity-80 leading-relaxed font-sans mb-6">
           I'm a full-stack developer based in Pakistan, working with clients worldwide for 3+ years.
           My core focus is building fast, scalable web and mobile applications using React, Next.js,
-          Node.js, and TypeScript — from customer-facing frontends to the backend APIs and databases
-          that power them. I also handle the infrastructure side most developers outsource: CI/CD
-          pipelines, VPS deployment, SSL, and email infrastructure, so I can take a project from first
-          commit to production without handing off to a separate ops team. Alongside general full-stack
-          work, I've built DeFi platforms, NFT marketplaces, and Bitcoin Ordinals tools using Solidity
-          and Ethers.js — so if your project needs blockchain integration, that's covered too. I work
-          remotely with clients across North America and Europe, with regular overlap across EST, PST,
-          and CET business hours. I also build with GDPR and data privacy requirements in mind — cookie
-          consent handling, secure data storage, and EU-compliant infrastructure where needed. I work
-          best with startups and small teams who want one person who can own a project end-to-end
-          rather than managing multiple specialists.
+          Node.js, and TypeScript.
+        </p>
+
+        <p className="max-w-3xl text-lg opacity-80 leading-relaxed font-sans mb-6">
+          I handle the full stack — from customer-facing frontends to backend APIs and databases.
+          I also manage infrastructure that most developers outsource: CI/CD pipelines, VPS deployment,
+          SSL, and email infrastructure. One person, end-to-end.
+        </p>
+
+        <p className="max-w-3xl text-lg opacity-80 leading-relaxed font-sans mb-6">
+          Alongside general full-stack work, I've built DeFi platforms, NFT marketplaces, and Bitcoin
+          Ordinals tools using Solidity and Ethers.js. If your project needs blockchain, that's covered.
+        </p>
+
+        <p className="max-w-3xl text-lg opacity-80 leading-relaxed font-sans mb-6">
+          I work remotely with clients across North America and Europe, overlapping EST, PST, and CET
+          business hours. GDPR-compliant infrastructure available where needed.
+        </p>
+
+        <p className="max-w-3xl text-lg opacity-80 leading-relaxed font-sans">
+          I work best with startups and small teams who want one person to own a project end-to-end —
+          not manage multiple specialists.
         </p>
       </div>
 
