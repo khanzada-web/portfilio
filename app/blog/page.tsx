@@ -54,6 +54,14 @@ const breadcrumbs = [
 
 const blogPosts = [
   {
+    title: 'How to Patch and Secure Next.js Against the July 2026 Security Vulnerabilities',
+    excerpt: 'Complete guide to the July 2026 Next.js security release (CVE-2026-64641 and related issues). Patch steps, Server Action hardening, middleware protection, and production checklist for App Router apps.',
+    slug: 'nextjs-july-2026-security-patch-server-actions',
+    date: '2026-07-26',
+    readTime: '12 min read',
+    category: 'Security',
+  },
+  {
     title: 'Building a Production-Ready Full-Stack SaaS with Next.js 16, TypeScript, Prisma & Tailwind (2026)',
     excerpt: 'Complete step-by-step guide to building a scalable SaaS using Next.js 16 App Router, Prisma Postgres, Auth.js, and Tailwind CSS. Production patterns, Server Actions, and deployment.',
     slug: 'nextjs-16-saas-tutorial-prisma-typescript-2026',

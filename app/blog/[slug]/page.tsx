@@ -17,6 +17,225 @@ interface BlogPost {
 }
 
 const blogPosts: Record<string, BlogPost> = {
+  'nextjs-july-2026-security-patch-server-actions': {
+    title: 'How to Patch and Secure Next.js Against the July 2026 Security Vulnerabilities',
+    excerpt: 'Complete guide to the July 2026 Next.js security release (CVE-2026-64641 and related issues). Patch steps, Server Action hardening, middleware protection, and production checklist for App Router apps.',
+    content: `
+      <div class="intro-section">
+        <h2>Why This Matters Right Now</h2>
+        <p class="lead-paragraph">On 20 July 2026 Next.js published a coordinated security release that addresses multiple high-severity issues in the App Router and Server Actions. If you are running Next.js 15 or 16 with any Server Actions, you need to patch and then harden your application. This guide covers the exact patches, the root causes, and the production patterns that keep Server Actions safe long after the CVEs are fixed.</p>
+
+        <div class="key-highlights">
+          <h3>What You Will Learn</h3>
+          <ul>
+            <li>Exact upgrade commands for Active LTS (16.2.11) and Maintenance LTS (15.5.21)</li>
+            <li>Root-cause analysis of the Denial-of-Service, middleware bypass, and SSRF issues</li>
+            <li>Production-ready Server Action security checklist (auth, validation, rate limiting)</li>
+            <li>How to configure <code>serverActions.allowedOrigins</code> and body size limits</li>
+            <li>Data Access Layer pattern that survives future framework changes</li>
+          </ul>
+        </div>
+      </div>
+
+      <div class="technical-section">
+        <h2>1. Apply the Official Patches Immediately</h2>
+        <p>The fixes are available in the following versions (official Next.js security release, 20 July 2026):</p>
+
+        <div style="background:#0A1221;border:1px solid rgba(57,255,20,0.25);border-radius:12px;overflow:hidden;margin:2rem 0;box-shadow:0 8px 32px rgba(0,0,0,0.4);">
+          <div style="display:flex;align-items:center;justify-content:space-between;padding:10px 18px;background:rgba(0,0,0,0.45);border-bottom:1px solid rgba(255,255,255,0.08);">
+            <span style="font-size:12px;color:#39FF14;font-family:ui-monospace,SFMono-Regular,Menlo,Monaco,Consolas,monospace;letter-spacing:0.05em;">bash</span>
+            <span style="font-size:11px;color:rgba(255,255,255,0.35);font-family:ui-monospace,monospace;">terminal</span>
+          </div>
+          <pre style="margin:0;padding:1.25rem 1.5rem;background:transparent;border:none;border-radius:0;"><code style="font-family:ui-monospace,SFMono-Regular,Menlo,Monaco,Consolas,monospace;font-size:14px;line-height:1.7;color:#e2e8f0;"># Active LTS (Next.js 16)
+npm install next@16.2.11
+
+# Maintenance LTS (Next.js 15)
+npm install next@15.5.21
+
+# Preview / canary (already contains the fixes)
+npm install next@16.3.0-canary.92
+# or
+npm install next@16.3.0-preview.7</code></pre>
+        </div>
+
+        <p>After upgrading, run your full test suite and redeploy. The high-severity issues are closed only after the new binary is running in production.</p>
+      </div>
+
+      <div class="onpage-section">
+        <h2>2. Understanding the High-Severity Issues</h2>
+
+        <h3>CVE-2026-64641 — Denial of Service via Server Actions</h3>
+        <p>Crafted requests against any App Router application that exposes at least one Server Action can force excessive CPU usage. Because the request is processed in the same Node.js process that serves other traffic, a single attacker can starve legitimate users.</p>
+
+        <h3>CVE-2026-64642 — Middleware / Proxy Bypass</h3>
+        <p>Applications built with Turbopack that declare a single locale in <code>config.i18n.locales</code> can have their middleware or proxy completely bypassed. Authentication and security checks that live only in middleware are therefore skipped.</p>
+
+        <h3>CVE-2026-64645 &amp; CVE-2026-64649 — Server-Side Request Forgery</h3>
+        <p>Rewrites or redirects that construct an external destination hostname from request-controlled input, and certain Server Action forward/redirect paths on custom servers, can be pointed at attacker-controlled hosts.</p>
+
+        <blockquote>
+          Framework patches close the known vectors. Application-level checks are still required because every Server Action remains a public HTTP endpoint.
+        </blockquote>
+      </div>
+
+      <div class="content-strategy-section">
+        <h2>3. Production Server Action Security Checklist</h2>
+        <p>Treat every Server Action exactly like an unauthenticated API route. The framework already performs Origin/Host CSRF checks and encrypts action IDs, but those protections are not a substitute for application logic.</p>
+
+        <h3>3.1 Authenticate and Authorize Inside the Action</h3>
+        <p>Never rely on the UI or middleware alone. Re-verify the session and the user’s permission on every mutation.</p>
+
+        <div style="background:#0A1221;border:1px solid rgba(57,255,20,0.25);border-radius:12px;overflow:hidden;margin:2rem 0;box-shadow:0 8px 32px rgba(0,0,0,0.4);">
+          <div style="display:flex;align-items:center;justify-content:space-between;padding:10px 18px;background:rgba(0,0,0,0.45);border-bottom:1px solid rgba(255,255,255,0.08);">
+            <span style="font-size:12px;color:#39FF14;font-family:ui-monospace,SFMono-Regular,Menlo,Monaco,Consolas,monospace;letter-spacing:0.05em;">TypeScript</span>
+            <span style="font-size:11px;color:rgba(255,255,255,0.35);font-family:ui-monospace,monospace;">actions/delete-post.ts</span>
+          </div>
+          <pre style="margin:0;padding:1.25rem 1.5rem;background:transparent;border:none;border-radius:0;"><code style="font-family:ui-monospace,SFMono-Regular,Menlo,Monaco,Consolas,monospace;font-size:14px;line-height:1.7;color:#e2e8f0;">'use server'
+
+import { auth } from '@/lib/auth'
+import { prisma } from '@/lib/prisma'
+import { z } from 'zod'
+
+const schema = z.object({
+  postId: z.string().cuid(),
+})
+
+export async function deletePost(formData: FormData) {
+  const session = await auth()
+  if (!session?.user?.id) {
+    return { error: 'Unauthorized' }
+  }
+
+  const parsed = schema.safeParse({
+    postId: formData.get('postId'),
+  })
+  if (!parsed.success) {
+    return { error: 'Invalid input' }
+  }
+
+  const post = await prisma.post.findUnique({
+    where: { id: parsed.data.postId },
+    select: { authorId: true },
+  })
+
+  if (!post || post.authorId !== session.user.id) {
+    return { error: 'Forbidden' }
+  }
+
+  await prisma.post.delete({ where: { id: parsed.data.postId } })
+  return { success: true }
+}</code></pre>
+        </div>
+
+        <h3>3.2 Validate Every Input with Zod (or equivalent)</h3>
+        <p>TypeScript types are erased at runtime. Always parse and validate FormData, JSON, and headers before they touch the database or external services.</p>
+
+        <h3>3.3 Configure Allowed Origins and Body Size</h3>
+        <p>In <code>next.config.ts</code> (or <code>next.config.mjs</code>):</p>
+
+        <div style="background:#0A1221;border:1px solid rgba(57,255,20,0.25);border-radius:12px;overflow:hidden;margin:2rem 0;box-shadow:0 8px 32px rgba(0,0,0,0.4);">
+          <div style="display:flex;align-items:center;justify-content:space-between;padding:10px 18px;background:rgba(0,0,0,0.45);border-bottom:1px solid rgba(255,255,255,0.08);">
+            <span style="font-size:12px;color:#39FF14;font-family:ui-monospace,SFMono-Regular,Menlo,Monaco,Consolas,monospace;letter-spacing:0.05em;">TypeScript</span>
+            <span style="font-size:11px;color:rgba(255,255,255,0.35);font-family:ui-monospace,monospace;">next.config.ts</span>
+          </div>
+          <pre style="margin:0;padding:1.25rem 1.5rem;background:transparent;border:none;border-radius:0;"><code style="font-family:ui-monospace,SFMono-Regular,Menlo,Monaco,Consolas,monospace;font-size:14px;line-height:1.7;color:#e2e8f0;
+import type { NextConfig } from 'next'
+
+const nextConfig: NextConfig = {
+  experimental: {
+    serverActions: {
+      bodySizeLimit: '1mb', // default; lower if you do not need large uploads
+      allowedOrigins: [
+        'https://www.mussawarhayat.site',
+        'https://mussawarhayat.site',
+      ],
+    },
+  },
+}
+
+export default nextConfig</code></pre>
+        </div>
+
+        <h3>3.4 Prefer a Data Access Layer</h3>
+        <p>Move all reads and writes behind a single module that receives the current session and returns only the data the caller is allowed to see. This pattern survives Next.js version bumps and keeps authorization logic in one place.</p>
+      </div>
+
+      <div class="local-seo-section">
+        <h2>4. Additional Hardening Steps</h2>
+        <ul>
+          <li>Never capture secrets or privileged IDs inside Server Action closures that are defined inline in Server Components. Prefer separate <code>'use server'</code> files.</li>
+          <li>Rate-limit sensitive actions (login, password reset, form submissions) with a library such as Upstash Redis or Arcjet.</li>
+          <li>Keep middleware focused on routing and locale; perform authoritative auth checks inside the action itself.</li>
+          <li>If you self-host and use multiple instances, set a stable encryption key for Server Action closures so they remain consistent across deploys.</li>
+          <li>Disable remote image optimization for untrusted sources if you are not already using a strict allow-list (related to the medium-severity Image Optimization DoS).</li>
+        </ul>
+      </div>
+
+      <div class="linkbuilding-section">
+        <h2>5. Quick Production Checklist</h2>
+        <ul>
+          <li>☐ Upgraded to 16.2.11 or 15.5.21 (or later canary/preview that includes the fixes)</li>
+          <li>☐ Every Server Action starts with an explicit auth + authorization check</li>
+          <li>☐ All inputs validated with Zod (or equivalent schema library)</li>
+          <li>☐ <code>serverActions.allowedOrigins</code> configured for your domains</li>
+          <li>☐ Body size limit set to the minimum your product requires</li>
+          <li>☐ Sensitive mutations protected by rate limiting</li>
+          <li>☐ No secrets closed over by inline Server Actions</li>
+          <li>☐ Middleware is not the only security boundary</li>
+        </ul>
+      </div>
+
+      <div class="conclusion-section">
+        <h2>Summary</h2>
+        <p>The July 2026 security release closes several high-severity vectors in the App Router and Server Actions. Patch first, then treat every Server Action as a public, untrusted endpoint. Authentication, authorization, input validation, and origin restrictions must live inside the action itself. A clean Data Access Layer and disciplined use of <code>serverActions</code> configuration will keep your application secure through future releases.</p>
+
+        <div class="final-takeaway">
+          <h3>Key Takeaway</h3>
+          <p><em>Patch to 16.2.11 / 15.5.21 today. Then make every Server Action authenticates, authorizes, and validates before it touches the database or any external service.</em></p>
+        </div>
+
+        <hr>
+
+        <div class="cta-section">
+          <h3>Need a security review of your Next.js app?</h3>
+          <p>I audit and harden production Next.js and full-stack applications for startups and product teams. <a href="/contact" style="color: #39FF14;">Get in touch</a> if you want a focused security pass on your Server Actions and App Router setup.</p>
+        </div>
+
+        <div style="margin-top:4rem;padding-top:2.5rem;border-top:1px solid rgba(255,255,255,0.1);">
+          <h3 style="margin-bottom:1.75rem;">Related Posts</h3>
+          <div style="display:grid;grid-template-columns:repeat(auto-fit,minmax(260px,1fr));gap:1.25rem;">
+
+            <a href="/blog/nextjs-16-saas-tutorial-prisma-typescript-2026" style="display:block;text-decoration:none;background:#0A1221;border:1px solid rgba(57,255,20,0.2);border-radius:12px;padding:1.5rem;transition:border-color 0.3s ease;">
+              <span style="display:inline-block;font-size:11px;color:#39FF14;background:rgba(57,255,20,0.1);padding:4px 10px;border-radius:6px;margin-bottom:12px;letter-spacing:0.05em;">Full-Stack</span>
+              <div style="font-size:16px;font-weight:600;color:#ffffff;line-height:1.4;margin-bottom:8px;">Building a Production-Ready Full-Stack SaaS with Next.js 16</div>
+              <div style="font-size:13px;color:rgba(255,255,255,0.5);line-height:1.5;">App Router, Prisma, Auth.js, and Server Actions patterns.</div>
+              <div style="font-size:12px;color:rgba(255,255,255,0.35);margin-top:12px;">14 min read</div>
+            </a>
+
+            <a href="/blog/gdpr-compliant-web-apps-checklist" style="display:block;text-decoration:none;background:#0A1221;border:1px solid rgba(57,255,20,0.2);border-radius:12px;padding:1.5rem;transition:border-color 0.3s ease;">
+              <span style="display:inline-block;font-size:11px;color:#39FF14;background:rgba(57,255,20,0.1);padding:4px 10px;border-radius:6px;margin-bottom:12px;letter-spacing:0.05em;">Full-Stack</span>
+              <div style="font-size:16px;font-weight:600;color:#ffffff;line-height:1.4;margin-bottom:8px;">Building GDPR-Compliant Web Apps: A Developer\'s Checklist</div>
+              <div style="font-size:13px;color:rgba(255,255,255,0.5);line-height:1.5;">Cookie consent, data rights, and secure storage for EU clients.</div>
+              <div style="font-size:12px;color:rgba(255,255,255,0.35);margin-top:12px;">10 min read</div>
+            </a>
+
+            <a href="/blog/deploying-multi-site-nextjs-vps-nginx" style="display:block;text-decoration:none;background:#0A1221;border:1px solid rgba(57,255,20,0.2);border-radius:12px;padding:1.5rem;transition:border-color 0.3s ease;">
+              <span style="display:inline-block;font-size:11px;color:#39FF14;background:rgba(57,255,20,0.1);padding:4px 10px;border-radius:6px;margin-bottom:12px;letter-spacing:0.05em;">DevOps</span>
+              <div style="font-size:16px;font-weight:600;color:#ffffff;line-height:1.4;margin-bottom:8px;">Deploying a Multi-Site Next.js App on a Single VPS with Nginx</div>
+              <div style="font-size:13px;color:rgba(255,255,255,0.5);line-height:1.5;">Nginx reverse proxy, PM2, and SSL — the exact production setup.</div>
+              <div style="font-size:12px;color:rgba(255,255,255,0.35);margin-top:12px;">9 min read</div>
+            </a>
+
+          </div>
+        </div>
+      </div>
+    `,
+    date: '2026-07-26',
+    readTime: '12 min read',
+    category: 'Security',
+    author: 'Mussawar Hayat',
+    keywords: ['Next.js security', 'Next.js 2026 security release', 'Server Actions security', 'CVE-2026-64641', 'Next.js DoS', 'App Router security', 'Next.js middleware bypass', 'hire Next.js developer', 'full-stack security']
+  },
   'nextjs-16-saas-tutorial-prisma-typescript-2026': {
     title: 'Next.js 16 + Prisma SaaS Tutorial (2026) | Full-Stack Guide',
     excerpt: 'Step-by-step guide to building a scalable SaaS with Next.js 16 App Router, Prisma, Auth.js, and Tailwind CSS. Includes Server Actions, production patterns, and deployment.',
@@ -436,7 +655,7 @@ export default async function BlogPostPage({ params }: PageProps) {
               </h1>
 
               <div className="flex flex-wrap items-center justify-center gap-y-4 gap-x-8 mb-16">
-                <div className="flex flex-wrap items-center justify-center gap-x-8 gap-y-4 px-8 py-3 rounded-full border border-white/5 bg-white/[0.02] backdrop-blur-sm shadow-2xl shadow-black/20">
+                <div className="flex flex-wrap items-center justify-center gap-y-4 gap-x-8 px-8 py-3 rounded-full border border-white/5 bg-white/[0.02] backdrop-blur-sm shadow-2xl shadow-black/20">
                   <div className="flex items-center gap-3 group">
                     <div className="p-1.5 rounded-md bg-white/5 border border-white/5 group-hover:border-[#39FF14]/30 transition-colors">
                       <svg className="w-3.5 h-3.5 text-[#39FF14]/70" fill="none" stroke="currentColor" viewBox="0 0 24 24">
