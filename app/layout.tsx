@@ -26,27 +26,27 @@ const orbitron = Orbitron({
 
 export const metadata: Metadata = {
   title: {
-    default: "Mussawar Hayat | Full-Stack Developer — React, Next.js, Node.js & Web3",
+    default: "Mussawar Hayat | Hire Full-Stack & Web3 Developer — React, Next.js, Node.js, Solidity",
     template: "%s | Mussawar Hayat",
   },
 
   description:
-    "Full-stack developer with 3+ years building high-performance web & mobile apps using " +
-    "React, Next.js, Node.js & TypeScript — plus Web3/blockchain integration (Solidity, DeFi, NFTs). " +
-    "Available for freelance work worldwide.",
+    "Hire Mussawar Hayat — full-stack developer with 3+ years building high-performance web & mobile apps using React, Next.js, Node.js & TypeScript. Specialised Web3/blockchain integration (Solidity, DeFi, NFTs, Bitcoin Ordinals). Available for freelance projects worldwide.",
 
   keywords: [
-    "full-stack developer",
-    "Next.js developer",
-    "React developer",
-    "TypeScript developer",
-    "Node.js developer",
-    "Web3 developer",
-    "Solidity developer",
-    "blockchain developer",
+    "hire full-stack developer",
+    "hire Next.js developer",
+    "freelance React developer",
+    "Web3 developer for hire",
+    "Solidity developer for hire",
+    "blockchain developer freelance",
+    "Next.js freelancer",
+    "TypeScript full-stack developer",
     "React Native developer",
-    "DevOps",
+    "DevOps engineer for hire",
+    "SaaS developer",
     "Mussawar Hayat",
+    "full-stack developer Pakistan",
   ],
 
   authors: [{ name: "Mussawar Hayat", url: "https://www.mussawarhayat.site" }],
@@ -77,35 +77,34 @@ export const metadata: Metadata = {
   },
 
   verification: {
-    google: 'ca-pub-9383132900869188',
+    // Note: Replace with actual Google Search Console verification token when available
+    // google: 'your-google-site-verification-token',
   },
 
   openGraph: {
     type: "website",
     locale: "en_US",
     url: "https://www.mussawarhayat.site",
-    title: "Mussawar Hayat | Full-Stack Developer",
+    title: "Hire Mussawar Hayat | Full-Stack & Web3 Developer",
     description:
-      "Building fast, scalable web & mobile apps with React, Next.js, Node.js & TypeScript. " +
-      "Blockchain/Web3 integration available. 3+ years experience, open for freelance work worldwide.",
+      "Full-stack developer specialising in React, Next.js, TypeScript, Node.js and Web3. 3+ years experience. Available for freelance projects worldwide.",
     siteName: "Mussawar Hayat — Full-Stack Developer Portfolio",
     images: [
       {
-        url: "/og-image.png",
+        url: "/my-pic.jpeg",
         width: 1200,
         height: 630,
-        alt: "Mussawar Hayat — Full-Stack Developer Portfolio",
+        alt: "Mussawar Hayat — Full-Stack & Web3 Developer",
       },
     ],
   },
 
   twitter: {
     card: "summary_large_image",
-    title: "Mussawar Hayat | Full-Stack Developer",
+    title: "Hire Mussawar Hayat | Full-Stack & Web3 Developer",
     description:
-      "Full-stack developer building web, mobile & Web3 apps with React, Next.js, Node.js & Solidity. " +
-      "Available for freelance projects worldwide.",
-    images: ["/og-image.png"],
+      "Full-stack developer building web, mobile & Web3 apps with React, Next.js, Node.js & Solidity. Available for freelance projects worldwide.",
+    images: ["/my-pic.jpeg"],
     creator: "@Mussawar_Hayat",
   },
 };
@@ -167,10 +166,15 @@ export default function RootLayout({
                   "@type": "WebSite",
                   "@id": "https://www.mussawarhayat.site/#website",
                   "url": "https://www.mussawarhayat.site",
-                  "name": "Mussawar Hayat | Full-Stack Developer",
-                  "description": "Full-stack developer specializing in Next.js, TypeScript, Node.js, React Native, and Web3. Production web, mobile, and blockchain applications.",
+                  "name": "Mussawar Hayat | Full-Stack & Web3 Developer",
+                  "description": "Hire a full-stack developer specialising in Next.js, TypeScript, Node.js, React Native, and Web3. Production web, mobile, and blockchain applications.",
                   "publisher": { "@id": "https://www.mussawarhayat.site/#person" },
-                  "inLanguage": "en"
+                  "inLanguage": "en",
+                  "potentialAction": {
+                    "@type": "SearchAction",
+                    "target": "https://www.mussawarhayat.site/blog?q={search_term_string}",
+                    "query-input": "required name=search_term_string"
+                  }
                 },
                 {
                   "@type": "Person",
@@ -179,7 +183,7 @@ export default function RootLayout({
                   "url": "https://www.mussawarhayat.site",
                   "image": "https://www.mussawarhayat.site/my-pic.jpeg",
                   "jobTitle": "Full-Stack Developer & Web3 Specialist",
-                  "description": "Pakistan-based full-stack developer with 3+ years experience building high-performance web, mobile, and blockchain applications using React, Next.js, TypeScript, Node.js, and Solidity.",
+                  "description": "Pakistan-based full-stack developer with 3+ years experience building high-performance web, mobile, and blockchain applications using React, Next.js, TypeScript, Node.js, and Solidity. Available for freelance work worldwide.",
                   "email": "zada38843@gmail.com",
                   "telephone": "+923358328468",
                   "address": {
@@ -190,8 +194,9 @@ export default function RootLayout({
                   },
                   "sameAs": [
                     "https://github.com/khanzada-web",
-                    "https://www.linkedin.com/in/mussawar-hayat-187768233",
-                    "https://twitter.com/Mussawar_Hayat"
+                    "https://www.linkedin.com/in/mussawar-hayat",
+                    "https://twitter.com/Mussawar_Hayat",
+                    "https://x.com/Mussawar_Hayat"
                   ],
                   "knowsAbout": [
                     "Next.js",
@@ -214,11 +219,14 @@ export default function RootLayout({
                     "GDPR Compliance",
                     "Full-Stack Development",
                     "Server Components",
-                    "Server Actions"
+                    "Server Actions",
+                    "SaaS Development",
+                    "DeFi",
+                    "Smart Contracts"
                   ],
                   "worksFor": {
                     "@type": "Organization",
-                    "name": "Independent"
+                    "name": "Independent / Freelance"
                   },
                   "areaServed": [
                     { "@type": "Country", "name": "United States" },
@@ -232,7 +240,7 @@ export default function RootLayout({
                 {
                   "@type": "ProfessionalService",
                   "@id": "https://www.mussawarhayat.site/#service",
-                  "name": "Mussawar Hayat Full-Stack & Web3 Development",
+                  "name": "Mussawar Hayat Full-Stack & Web3 Development Services",
                   "url": "https://www.mussawarhayat.site/services",
                   "provider": { "@id": "https://www.mussawarhayat.site/#person" },
                   "areaServed": ["North America", "Europe", "Worldwide"],
@@ -244,9 +252,11 @@ export default function RootLayout({
                     "Smart Contract Development",
                     "Mobile App Development",
                     "DevOps & VPS Management",
-                    "SaaS Development"
+                    "SaaS Development",
+                    "DeFi Platform Development",
+                    "NFT Marketplace Development"
                   ],
-                  "description": "End-to-end full-stack development services including Next.js applications, TypeScript backends, React Native mobile apps, Solidity smart contracts, and production DevOps on VPS."
+                  "description": "End-to-end full-stack development services including Next.js applications, TypeScript backends, React Native mobile apps, Solidity smart contracts, Bitcoin Ordinals tools, and production DevOps on VPS. Hire for freelance or contract work."
                 }
               ]
             }, null, 2)

@@ -48,7 +48,7 @@ export default function sitemap(): MetadataRoute.Sitemap {
     {
       url: url("/contact"),
       lastModified: now,
-      changeFrequency: "yearly",
+      changeFrequency: "monthly",
       priority: 0.7,
     },
   ];
@@ -57,7 +57,7 @@ export default function sitemap(): MetadataRoute.Sitemap {
     url: url(`/blog/${post.slug}`),
     lastModified: new Date(post.date),
     changeFrequency: "monthly" as const,
-    priority: 0.6,
+    priority: 0.7,
   }));
 
   return [...staticPages, ...blogPages];
