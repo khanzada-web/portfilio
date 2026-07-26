@@ -3,7 +3,7 @@
 import { motion } from 'framer-motion';
 import {
   FiCode, FiGlobe, FiZap, FiStar, FiLayers,
-  FiSmartphone, FiDatabase, FiServer,
+  FiSmartphone, FiDatabase, FiServer, FiBriefcase, FiClock, FiUsers,
 } from 'react-icons/fi';
 import Image from 'next/image';
 import { AnimatedCounter } from '../ui/AnimatedCounter';
@@ -34,6 +34,34 @@ const PROFILE_TAGS = [
   'Based in Pakistan / Global Remote',
 ] as const;
 
+const ABOUT_CARDS = [
+  {
+    icon: <FiCode />,
+    title: 'Full-Stack Development',
+    text: 'I\'m a full-stack developer based in Pakistan, working with clients worldwide for 3+ years. My core focus is building fast, scalable web and mobile applications using React, Next.js, Node.js, and TypeScript.',
+  },
+  {
+    icon: <FiServer />,
+    title: 'End-to-End Infrastructure',
+    text: 'I handle the full stack — from customer-facing frontends to backend APIs and databases. I also manage infrastructure that most developers outsource: CI/CD pipelines, VPS deployment, SSL, and email infrastructure. One person, end-to-end.',
+  },
+  {
+    icon: <FiGlobe />,
+    title: 'Web3 & Blockchain',
+    text: 'Alongside general full-stack work, I\'ve built DeFi platforms, NFT marketplaces, and Bitcoin Ordinals tools using Solidity and Ethers.js. If your project needs blockchain, that\'s covered.',
+  },
+  {
+    icon: <FiClock />,
+    title: 'Remote & Global',
+    text: 'I work remotely with clients across North America and Europe, overlapping EST, PST, and CET business hours. GDPR-compliant infrastructure available where needed.',
+  },
+  {
+    icon: <FiUsers />,
+    title: 'Built for Startups',
+    text: 'I work best with startups and small teams who want one person to own a project end-to-end — not manage multiple specialists.',
+  },
+] as const;
+
 // ─── Component ────────────────────────────────────────────────────────────────
 
 const About = () => (
@@ -54,35 +82,34 @@ const About = () => (
         <div className="inline-block border border-[#39FF14] px-4 py-1 mb-6 text-xs tracking-[0.3em] uppercase opacity-80">
           About
         </div>
-        <h2 className="text-4xl md:text-6xl font-bold text-white mb-8">
+        <h2 className="text-4xl md:text-6xl font-bold text-white mb-12">
           Digital <span className="text-[#39FF14]">Architect</span>
         </h2>
-        <p className="max-w-3xl text-lg opacity-80 leading-relaxed font-sans mb-6">
-          I'm a full-stack developer based in Pakistan, working with clients worldwide for 3+ years.
-          My core focus is building fast, scalable web and mobile applications using React, Next.js,
-          Node.js, and TypeScript.
-        </p>
 
-        <p className="max-w-3xl text-lg opacity-80 leading-relaxed font-sans mb-6">
-          I handle the full stack — from customer-facing frontends to backend APIs and databases.
-          I also manage infrastructure that most developers outsource: CI/CD pipelines, VPS deployment,
-          SSL, and email infrastructure. One person, end-to-end.
-        </p>
-
-        <p className="max-w-3xl text-lg opacity-80 leading-relaxed font-sans mb-6">
-          Alongside general full-stack work, I've built DeFi platforms, NFT marketplaces, and Bitcoin
-          Ordinals tools using Solidity and Ethers.js. If your project needs blockchain, that's covered.
-        </p>
-
-        <p className="max-w-3xl text-lg opacity-80 leading-relaxed font-sans mb-6">
-          I work remotely with clients across North America and Europe, overlapping EST, PST, and CET
-          business hours. GDPR-compliant infrastructure available where needed.
-        </p>
-
-        <p className="max-w-3xl text-lg opacity-80 leading-relaxed font-sans">
-          I work best with startups and small teams who want one person to own a project end-to-end —
-          not manage multiple specialists.
-        </p>
+        <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6 mb-4">
+          {ABOUT_CARDS.map((card, i) => (
+            <motion.div
+              key={card.title}
+              initial={{ opacity: 0, y: 20 }}
+              whileInView={{ opacity: 1, y: 0 }}
+              transition={{ duration: 0.5, delay: i * 0.1 }}
+              viewport={{ once: true }}
+              className="bg-[#0A1221] border border-[#39FF14]/15 p-6 hover:border-[#39FF14]/40 transition-colors group"
+            >
+              <div className="flex items-center gap-3 mb-4">
+                <span className="text-xl text-[#39FF14] group-hover:scale-110 transition-transform" aria-hidden="true">
+                  {card.icon}
+                </span>
+                <h3 className="text-sm font-bold text-white uppercase tracking-wider">
+                  {card.title}
+                </h3>
+              </div>
+              <p className="text-sm text-white/70 leading-relaxed font-sans">
+                {card.text}
+              </p>
+            </motion.div>
+          ))}
+        </div>
       </div>
 
       <div className="grid grid-cols-1 lg:grid-cols-12 gap-16 items-start">
