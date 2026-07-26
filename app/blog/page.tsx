@@ -54,6 +54,14 @@ const breadcrumbs = [
 
 const blogPosts = [
   {
+    title: "Stop Overusing 'use client' in Next.js 16",
+    excerpt: 'The most common App Router mistake is marking entire trees with use client. Learn the production patterns for Server Components, children slots, and minimal client boundaries that keep your bundles small and your data secure.',
+    slug: 'nextjs-16-stop-overusing-use-client-server-components',
+    date: '2026-07-26',
+    readTime: '13 min read',
+    category: 'Full-Stack',
+  },
+  {
     title: 'Next.js July 2026 Security Patch',
     excerpt: 'Complete guide to the July 2026 Next.js security release (CVE-2026-64641 and related issues). Patch steps, Server Action hardening, middleware protection, and production checklist for App Router apps.',
     slug: 'nextjs-july-2026-security-patch-server-actions',

@@ -3,6 +3,7 @@ import type { MetadataRoute } from "next";
 const BASE_URL = "https://mussawarhayat.site";
 
 const BLOG_POSTS: { slug: string; date: string }[] = [
+  { slug: "nextjs-16-stop-overusing-use-client-server-components", date: "2026-07-26" },
   { slug: "nextjs-july-2026-security-patch-server-actions", date: "2026-07-26" },
   { slug: "nextjs-16-saas-tutorial-prisma-typescript-2026", date: "2026-07-26" },
   { slug: "ai-agents-blockchain-web3-2026", date: "2026-03-10" },
