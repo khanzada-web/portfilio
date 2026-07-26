@@ -208,37 +208,37 @@ export async function createProject(formData: FormData) {
     readTime: '14 min read',
     category: 'Full-Stack',
     author: 'Mussawar Hayat',
-    keywords: ['Next.js 16', 'SaaS tutorial', 'Prisma', 'TypeScript', 'App Router', 'Server Actions', 'Tailwind CSS', 'Auth.js', 'full-stack development', 'hire Next.js developer']
+    keywords: ['Next.js 16', 'SaaS tutorial', 'Prisma', 'TypeScript', 'App Router', 'Server Actions', 'Tailwind CSS', 'Auth.js', 'full-stack development', 'hire Next.js developer', 'freelance Next.js developer']
   },
   'ai-agents-blockchain-web3-2026': {
     title: 'AI Agents on Blockchain: The Biggest Web3 Trend of 2026',
     excerpt: 'Autonomous AI agents are executing smart contracts, managing DeFi portfolios, and governing DAOs without human input. Here\'s what every Web3 developer needs to know right now.',
-    content: `<div class="intro-section"><h2>The AI Agent Revolution</h2><p class="lead-paragraph">AI and blockchain are converging into autonomous digital agents that can hold keys, sign transactions, and execute complex DeFi strategies. For developers this means new architecture patterns around agent wallets, permissionless execution, and on-chain verification of AI decisions.</p><h2>Core Building Blocks</h2><ul><li>Smart accounts / Account Abstraction for agent-controlled wallets</li><li>Secure key management and policy engines</li><li>Oracle and off-chain compute bridges</li><li>Audit trails and dispute resolution</li></ul><p>I build these systems end-to-end when clients need production-ready agent infrastructure.</p></div>`,
+    content: `<div class="intro-section"><h2>The AI Agent Revolution</h2><p class="lead-paragraph">AI and blockchain are converging into autonomous digital agents that can hold keys, sign transactions, and execute complex DeFi strategies. For developers this means new architecture patterns around agent wallets, permissionless execution, and on-chain verification of AI decisions.</p><h2>Core Building Blocks</h2><ul><li>Smart accounts / Account Abstraction for agent-controlled wallets</li><li>Secure key management and policy engines</li><li>Oracle and off-chain compute bridges</li><li>Audit trails and dispute resolution</li></ul><p>I build these systems end-to-end when clients need production-ready agent infrastructure. <a href="/contact" style="color:#39FF14">Hire me</a> for AI + Web3 agent projects.</p></div>`,
     date: '2026-03-10',
     readTime: '11 min read',
     category: 'Web3 & AI',
     author: 'Mussawar Hayat',
-    keywords: ['AI agents', 'blockchain', 'Web3', 'DeFi agents', 'autonomous agents']
+    keywords: ['AI agents', 'blockchain', 'Web3', 'DeFi agents', 'autonomous agents', 'hire Web3 developer']
   },
   'account-abstraction-smart-wallets-guide': {
     title: 'Account Abstraction in 2026: The End of Seed Phrases',
     excerpt: 'ERC-4337 and smart wallets are killing the biggest UX barrier in Web3. Here\'s a complete developer guide to building with Account Abstraction today.',
-    content: `<div class="intro-section"><h2>The UX Revolution</h2><p class="lead-paragraph">Account Abstraction (ERC-4337) has matured into a production-ready solution. Users no longer need to manage seed phrases. Gas sponsorship, social recovery, session keys, and batched transactions are now standard.</p><h2>What Developers Should Implement</h2><ul><li>EntryPoint and UserOperation flow</li><li>Paymasters for gasless experiences</li><li>Session keys for dApp convenience</li><li>Recovery modules</li></ul><p>I have shipped multiple production smart-wallet integrations across EVM chains.</p></div>`,
+    content: `<div class="intro-section"><h2>The UX Revolution</h2><p class="lead-paragraph">Account Abstraction (ERC-4337) has matured into a production-ready solution. Users no longer need to manage seed phrases. Gas sponsorship, social recovery, session keys, and batched transactions are now standard.</p><h2>What Developers Should Implement</h2><ul><li>EntryPoint and UserOperation flow</li><li>Paymasters for gasless experiences</li><li>Session keys for dApp convenience</li><li>Recovery modules</li></ul><p>I have shipped multiple production smart-wallet integrations across EVM chains. <a href="/contact" style="color:#39FF14">Get in touch</a> if you need Account Abstraction on your dApp.</p></div>`,
     date: '2026-03-05',
     readTime: '10 min read',
     category: 'Web3 Development',
     author: 'Mussawar Hayat',
-    keywords: ['Account Abstraction', 'ERC-4337', 'smart wallets', 'Web3 UX', 'gasless transactions']
+    keywords: ['Account Abstraction', 'ERC-4337', 'smart wallets', 'Web3 UX', 'gasless transactions', 'hire Solidity developer']
   },
   'real-world-asset-tokenization-rwa-guide': {
     title: 'RWA Tokenization: How Blockchain Is Eating Real-World Finance',
     excerpt: 'Real-world asset tokenization crossed $24 billion in 2025 and is accelerating fast. Here\'s the full developer and investor breakdown of the biggest infrastructure shift in Web3.',
-    content: `<div class="intro-section"><h2>The $24 Billion Revolution</h2><p class="lead-paragraph">RWA tokenization is creating new financial markets for real estate, treasuries, private credit, and more. Developers need to understand compliance layers, oracle design, and legal wrappers around on-chain assets.</p></div>`,
+    content: `<div class="intro-section"><h2>The $24 Billion Revolution</h2><p class="lead-paragraph">RWA tokenization is creating new financial markets for real estate, treasuries, private credit, and more. Developers need to understand compliance layers, oracle design, and legal wrappers around on-chain assets.</p><p>I help teams design and build the on-chain infrastructure for RWA platforms. <a href="/contact" style="color:#39FF14">Contact me</a> for RWA development.</p></div>`,
     date: '2026-02-28',
     readTime: '12 min read',
     category: 'Blockchain & DeFi',
     author: 'Mussawar Hayat',
-    keywords: ['RWA', 'tokenization', 'real world assets', 'DeFi', 'blockchain finance']
+    keywords: ['RWA', 'tokenization', 'real world assets', 'DeFi', 'blockchain finance', 'hire blockchain developer']
   },
   'modular-blockchains-l2-developer-guide': {
     title: 'Modular Blockchains & L2s: The Infrastructure Stack Every Web3 Dev Must Know',
@@ -253,12 +253,12 @@ export async function createProject(formData: FormData) {
   'deploying-multi-site-nextjs-vps-nginx': {
     title: 'Deploying a Multi-Site Next.js App on a Single VPS with Nginx',
     excerpt: 'Running multiple Next.js apps on one VPS with Nginx reverse proxy, PM2, and SSL — the exact setup I use for production deployments.',
-    content: `<div class="intro-section"><h2>One VPS, Multiple Next.js Apps</h2><p class="lead-paragraph">The exact production architecture I use for cost-efficient multi-site hosting. Nginx as reverse proxy, PM2 for process management, Certbot for SSL, and proper domain routing.</p></div>`,
+    content: `<div class="intro-section"><h2>One VPS, Multiple Next.js Apps</h2><p class="lead-paragraph">The exact production architecture I use for cost-efficient multi-site hosting. Nginx as reverse proxy, PM2 for process management, Certbot for SSL, and proper domain routing.</p><p>This is the same setup I use for client projects. <a href="/contact" style="color:#39FF14">Hire me</a> for VPS and DevOps setup.</p></div>`,
     date: '2026-05-15',
     readTime: '9 min read',
     category: 'DevOps',
     author: 'Mussawar Hayat',
-    keywords: ['VPS', 'Nginx', 'PM2', 'Next.js deployment', 'multi-site hosting']
+    keywords: ['VPS', 'Nginx', 'PM2', 'Next.js deployment', 'multi-site hosting', 'DevOps for hire']
   },
   'building-bitcoin-ordinals-marketplace': {
     title: 'Building a Bitcoin Ordinals Marketplace: Architecture Breakdown',
@@ -344,7 +344,7 @@ export async function generateMetadata({ params }: PageProps): Promise<Metadata>
       authors: [post.author],
       images: [
         {
-          url: 'https://www.mussawarhayat.site/og-image.png',
+          url: 'https://www.mussawarhayat.site/my-pic.jpeg',
           width: 1200,
           height: 630,
           alt: post.title,
@@ -355,7 +355,7 @@ export async function generateMetadata({ params }: PageProps): Promise<Metadata>
       card: 'summary_large_image',
       title: post.title,
       description: post.excerpt,
-      images: ['https://www.mussawarhayat.site/og-image.png'],
+      images: ['https://www.mussawarhayat.site/my-pic.jpeg'],
     },
   }
 }
@@ -368,7 +368,7 @@ function BlogPostingSchema({ post, slug }: { post: BlogPost; slug: string }) {
     '@type': 'BlogPosting',
     headline: post.title,
     description: post.excerpt,
-    image: 'https://www.mussawarhayat.site/og-image.png',
+    image: 'https://www.mussawarhayat.site/my-pic.jpeg',
     datePublished: post.date,
     dateModified: post.date,
     author: {
