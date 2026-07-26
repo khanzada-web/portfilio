@@ -13,6 +13,7 @@
 
 ## Blog
 
+- Stop Overusing 'use client' in Next.js 16: https://mussawarhayat.site/blog/nextjs-16-stop-overusing-use-client-server-components
 - Next.js July 2026 Security Patch: https://mussawarhayat.site/blog/nextjs-july-2026-security-patch-server-actions
 - Next.js 16 + Prisma SaaS Tutorial: https://mussawarhayat.site/blog/nextjs-16-saas-tutorial-prisma-typescript-2026
 - AI Agents on Blockchain: https://mussawarhayat.site/blog/ai-agents-blockchain-web3-2026
