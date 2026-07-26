@@ -34,9 +34,9 @@ export function ServiceSchema({
     "serviceType": "Professional Services",
     "offers": {
       "@type": "Offer",
-      "availability": "https://schema.org/InStock",
       "priceCurrency": "USD",
-      "priceRange": "$$$"
+      "priceRange": "$$-$$$",
+      "availability": "https://schema.org/InStock"
     },
     ...(hasOfferCatalog && { hasOfferCatalog })
   }

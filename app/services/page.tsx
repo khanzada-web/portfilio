@@ -6,7 +6,7 @@ import { BreadcrumbSchema } from '@/app/components/seo/BreadcrumbSchema'
 import { FAQSchema } from '@/app/components/seo/FAQSchema'
 
 export const metadata: Metadata = {
-  title: 'Hire Full-Stack & Web3 Developer | React, Next.js, Solidity Services',
+  title: 'Full-Stack & Web3 Dev Services',
   description:
     'Hire Mussawar Hayat for full-stack development: React/Next.js web apps, React Native mobile, Node.js APIs, DevOps, SaaS platforms, and Web3/Solidity smart contracts. Available worldwide for freelance projects.',
   keywords: [

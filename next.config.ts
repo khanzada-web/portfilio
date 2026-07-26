@@ -1,6 +1,16 @@
 import type { NextConfig } from "next";
 
 const nextConfig: NextConfig = {
+  // 301 redirects for deleted pages
+  async redirects() {
+    return [
+      { source: '/web3-development', destination: '/services', permanent: true },
+      { source: '/defi-development', destination: '/services', permanent: true },
+      { source: '/nft-marketplace-development', destination: '/services', permanent: true },
+      { source: '/smart-contract-development', destination: '/services', permanent: true },
+    ];
+  },
+
   // Security headers
   async headers() {
     return [

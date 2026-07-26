@@ -4,11 +4,8 @@ Allow: /
 # Sitemap
 Sitemap: https://www.mussawarhayat.site/sitemap.xml
 
-# Block common non-content paths
+# Block only truly non-content paths
 Disallow: /api/
-Disallow: /_next/
-Disallow: /favicon.ico
-Disallow: /*.json$
 
 # Crawl delay (optional, adjust as needed)
 Crawl-delay: 1

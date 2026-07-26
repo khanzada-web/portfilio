@@ -5,7 +5,7 @@ import { Contact } from '@/app/components/sections/Contact'
 import { BreadcrumbSchema } from '@/app/components/seo/BreadcrumbSchema'
 
 export const metadata: Metadata = {
-  title: 'Contact Mussawar Hayat | Hire Full-Stack & Web3 Developer',
+  title: 'Contact — Hire Full-Stack Developer',
   description: 'Contact Mussawar Hayat to hire a full-stack developer for React, Next.js, Node.js, TypeScript, Web3, Solidity and DevOps projects. Available for freelance work worldwide.',
   keywords: [
     'contact Mussawar Hayat',
@@ -17,7 +17,7 @@ export const metadata: Metadata = {
     'project consultation',
   ],
   openGraph: {
-    title: 'Contact Mussawar Hayat | Hire Full-Stack & Web3 Developer',
+    title: 'Contact — Hire Full-Stack Developer',
     description: 'Get in touch to hire Mussawar Hayat for full-stack development, web & mobile apps, and Web3/blockchain projects.',
     url: 'https://www.mussawarhayat.site/contact',
     type: 'website',
@@ -32,7 +32,7 @@ export const metadata: Metadata = {
   },
   twitter: {
     card: 'summary_large_image',
-    title: 'Contact Mussawar Hayat | Hire Full-Stack & Web3 Developer',
+    title: 'Contact — Hire Full-Stack Developer',
     description: 'Get in touch to hire for full-stack development, web & mobile apps, and Web3/blockchain projects.',
     images: ['/my-pic.jpeg'],
   },

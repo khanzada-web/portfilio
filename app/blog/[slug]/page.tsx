@@ -18,7 +18,7 @@ interface BlogPost {
 
 const blogPosts: Record<string, BlogPost> = {
   'nextjs-july-2026-security-patch-server-actions': {
-    title: 'How to Patch and Secure Next.js Against the July 2026 Security Vulnerabilities',
+    title: 'Next.js July 2026 Security Patch',
     excerpt: 'Complete guide to the July 2026 Next.js security release (CVE-2026-64641 and related issues). Patch steps, Server Action hardening, middleware protection, and production checklist for App Router apps.',
     content: `
       <div class="intro-section">
@@ -237,7 +237,7 @@ export default nextConfig</code></pre>
     keywords: ['Next.js security', 'Next.js 2026 security release', 'Server Actions security', 'CVE-2026-64641', 'Next.js DoS', 'App Router security', 'Next.js middleware bypass', 'hire Next.js developer', 'full-stack security']
   },
   'nextjs-16-saas-tutorial-prisma-typescript-2026': {
-    title: 'Next.js 16 + Prisma SaaS Tutorial (2026) | Full-Stack Guide',
+    title: 'Next.js 16 + Prisma SaaS Tutorial',
     excerpt: 'Step-by-step guide to building a scalable SaaS with Next.js 16 App Router, Prisma, Auth.js, and Tailwind CSS. Includes Server Actions, production patterns, and deployment.',
     content: `
       <div class="intro-section">
@@ -430,7 +430,7 @@ export async function createProject(formData: FormData) {
     keywords: ['Next.js 16', 'SaaS tutorial', 'Prisma', 'TypeScript', 'App Router', 'Server Actions', 'Tailwind CSS', 'Auth.js', 'full-stack development', 'hire Next.js developer', 'freelance Next.js developer']
   },
   'ai-agents-blockchain-web3-2026': {
-    title: 'AI Agents on Blockchain: The Biggest Web3 Trend of 2026',
+    title: 'AI Agents on Blockchain: Web3 2026',
     excerpt: 'Autonomous AI agents are executing smart contracts, managing DeFi portfolios, and governing DAOs without human input. Here\'s what every Web3 developer needs to know right now.',
     content: `<div class="intro-section"><h2>The AI Agent Revolution</h2><p class="lead-paragraph">AI and blockchain are converging into autonomous digital agents that can hold keys, sign transactions, and execute complex DeFi strategies. For developers this means new architecture patterns around agent wallets, permissionless execution, and on-chain verification of AI decisions.</p><h2>Core Building Blocks</h2><ul><li>Smart accounts / Account Abstraction for agent-controlled wallets</li><li>Secure key management and policy engines</li><li>Oracle and off-chain compute bridges</li><li>Audit trails and dispute resolution</li></ul><p>I build these systems end-to-end when clients need production-ready agent infrastructure. <a href="/contact" style="color:#39FF14">Hire me</a> for AI + Web3 agent projects.</p></div>`,
     date: '2026-03-10',
@@ -440,7 +440,7 @@ export async function createProject(formData: FormData) {
     keywords: ['AI agents', 'blockchain', 'Web3', 'DeFi agents', 'autonomous agents', 'hire Web3 developer']
   },
   'account-abstraction-smart-wallets-guide': {
-    title: 'Account Abstraction in 2026: The End of Seed Phrases',
+    title: 'Account Abstraction 2026: No More Seeds',
     excerpt: 'ERC-4337 and smart wallets are killing the biggest UX barrier in Web3. Here\'s a complete developer guide to building with Account Abstraction today.',
     content: `<div class="intro-section"><h2>The UX Revolution</h2><p class="lead-paragraph">Account Abstraction (ERC-4337) has matured into a production-ready solution. Users no longer need to manage seed phrases. Gas sponsorship, social recovery, session keys, and batched transactions are now standard.</p><h2>What Developers Should Implement</h2><ul><li>EntryPoint and UserOperation flow</li><li>Paymasters for gasless experiences</li><li>Session keys for dApp convenience</li><li>Recovery modules</li></ul><p>I have shipped multiple production smart-wallet integrations across EVM chains. <a href="/contact" style="color:#39FF14">Get in touch</a> if you need Account Abstraction on your dApp.</p></div>`,
     date: '2026-03-05',
@@ -450,7 +450,7 @@ export async function createProject(formData: FormData) {
     keywords: ['Account Abstraction', 'ERC-4337', 'smart wallets', 'Web3 UX', 'gasless transactions', 'hire Solidity developer']
   },
   'real-world-asset-tokenization-rwa-guide': {
-    title: 'RWA Tokenization: How Blockchain Is Eating Real-World Finance',
+    title: 'RWA Tokenization: Blockchain Meets Finance',
     excerpt: 'Real-world asset tokenization crossed $24 billion in 2025 and is accelerating fast. Here\'s the full developer and investor breakdown of the biggest infrastructure shift in Web3.',
     content: `<div class="intro-section"><h2>The $24 Billion Revolution</h2><p class="lead-paragraph">RWA tokenization is creating new financial markets for real estate, treasuries, private credit, and more. Developers need to understand compliance layers, oracle design, and legal wrappers around on-chain assets.</p><p>I help teams design and build the on-chain infrastructure for RWA platforms. <a href="/contact" style="color:#39FF14">Contact me</a> for RWA development.</p></div>`,
     date: '2026-02-28',
@@ -460,7 +460,7 @@ export async function createProject(formData: FormData) {
     keywords: ['RWA', 'tokenization', 'real world assets', 'DeFi', 'blockchain finance', 'hire blockchain developer']
   },
   'modular-blockchains-l2-developer-guide': {
-    title: 'Modular Blockchains & L2s: The Infrastructure Stack Every Web3 Dev Must Know',
+    title: 'Modular Blockchains & L2s: Dev Guide',
     excerpt: 'The monolithic blockchain era is over. Modular architecture — separating execution, consensus, and data availability — is how the next billion users get on-chain.',
     content: `<div class="intro-section"><h2>The Modular Revolution</h2><p class="lead-paragraph">Modular architecture is how the next billion users get on-chain. Understanding Celestia, EigenLayer, OP Stack, Arbitrum Orbit, and shared sequencers is now table stakes for serious Web3 builders.</p></div>`,
     date: '2026-02-20',
@@ -470,7 +470,7 @@ export async function createProject(formData: FormData) {
     keywords: ['modular blockchains', 'L2', 'data availability', 'OP Stack', 'Celestia']
   },
   'deploying-multi-site-nextjs-vps-nginx': {
-    title: 'Deploying a Multi-Site Next.js App on a Single VPS with Nginx',
+    title: 'Multi-Site Next.js on VPS with Nginx',
     excerpt: 'Running multiple Next.js apps on one VPS with Nginx reverse proxy, PM2, and SSL — the exact setup I use for production deployments.',
     content: `<div class="intro-section"><h2>One VPS, Multiple Next.js Apps</h2><p class="lead-paragraph">The exact production architecture I use for cost-efficient multi-site hosting. Nginx as reverse proxy, PM2 for process management, Certbot for SSL, and proper domain routing.</p><p>This is the same setup I use for client projects. <a href="/contact" style="color:#39FF14">Hire me</a> for VPS and DevOps setup.</p></div>`,
     date: '2026-05-15',
@@ -480,7 +480,7 @@ export async function createProject(formData: FormData) {
     keywords: ['VPS', 'Nginx', 'PM2', 'Next.js deployment', 'multi-site hosting', 'DevOps for hire']
   },
   'building-bitcoin-ordinals-marketplace': {
-    title: 'Building a Bitcoin Ordinals Marketplace: Architecture Breakdown',
+    title: 'Bitcoin Ordinals Marketplace Architecture',
     excerpt: 'How I built Ordwin — a Bitcoin NFT marketplace for Ordinal inscriptions. Indexing, ownership tracking, and the real performance challenges.',
     content: `<div class="intro-section"><h2>Building Ordwin</h2><p class="lead-paragraph">The core challenge was indexing inscriptions at chain speed and keeping ownership state consistent. This post covers the architecture decisions behind a production Bitcoin Ordinals marketplace.</p></div>`,
     date: '2026-05-10',
@@ -490,7 +490,7 @@ export async function createProject(formData: FormData) {
     keywords: ['Bitcoin Ordinals', 'NFT marketplace', 'inscriptions', 'Bitcoin development']
   },
   'metamask-vs-walletconnect-dapp': {
-    title: 'MetaMask vs WalletConnect: Choosing Wallet Integration for Your DApp',
+    title: 'MetaMask vs WalletConnect for DApps',
     excerpt: 'Both work. Both have edge cases. Here\'s what I learned integrating MetaMask, WalletConnect, and Coinbase Wallet across multiple DApps.',
     content: `<div class="intro-section"><h2>Wallet Integration</h2><p class="lead-paragraph">What I learned integrating multiple wallets in production dApps. Trade-offs around UX, mobile support, session management, and error handling.</p></div>`,
     date: '2026-05-05',
@@ -500,7 +500,7 @@ export async function createProject(formData: FormData) {
     keywords: ['MetaMask', 'WalletConnect', 'dApp wallet integration', 'Web3 wallet']
   },
   'spf-dkim-dmarc-multi-domain-vps': {
-    title: 'Setting Up SPF, DKIM, and DMARC for a Multi-Domain VPS',
+    title: 'SPF, DKIM & DMARC for Multi-Domain VPS',
     excerpt: 'Email deliverability is silent until it breaks. Here\'s the exact DNS setup I use to keep transactional email out of spam across multiple domains.',
     content: `<div class="intro-section"><h2>Email Deliverability</h2><p class="lead-paragraph">The exact DNS and server setup I use so transactional and marketing email from multiple domains lands in the inbox instead of spam.</p></div>`,
     date: '2026-04-28',
@@ -510,7 +510,7 @@ export async function createProject(formData: FormData) {
     keywords: ['SPF', 'DKIM', 'DMARC', 'email deliverability', 'VPS email']
   },
   'gdpr-compliant-web-apps-checklist': {
-    title: 'Building GDPR-Compliant Web Apps: A Developer\'s Checklist',
+    title: 'GDPR-Compliant Web Apps Checklist',
     excerpt: 'Cookie consent, secure data storage, data subject rights — a practical checklist for full-stack developers building for EU clients.',
     content: `<div class="intro-section"><h2>GDPR for Developers</h2><p class="lead-paragraph">A practical engineering checklist covering consent, data minimization, subject access requests, breach notification, and technical safeguards.</p></div>`,
     date: '2026-04-20',
@@ -520,7 +520,7 @@ export async function createProject(formData: FormData) {
     keywords: ['GDPR', 'privacy', 'cookie consent', 'EU compliance', 'full-stack']
   },
   'multi-chain-dex-interface-performance': {
-    title: 'Building a Multi-Chain DEX Interface Without Killing Performance',
+    title: 'Multi-Chain DEX Interface Performance',
     excerpt: 'Real-time price feeds, chart rendering, and websocket management — how I built Demotrionn DEX without melting the browser.',
     content: `<div class="intro-section"><h2>Demotrionn DEX</h2><p class="lead-paragraph">How I built a high-performance multi-chain trading interface. Managing dozens of websockets, efficient chart libraries, and keeping the main thread responsive under heavy data load.</p></div>`,
     date: '2026-04-15',
@@ -596,9 +596,14 @@ function BlogPostingSchema({ post, slug }: { post: BlogPost; slug: string }) {
       url: 'https://www.mussawarhayat.site',
     },
     publisher: {
-      '@type': 'Person',
+      '@type': 'Organization',
       name: 'Mussawar Hayat',
-      url: 'https://www.mussawarhayat.site',
+      logo: {
+        '@type': 'ImageObject',
+        url: 'https://www.mussawarhayat.site/my-pic.jpeg',
+        width: 192,
+        height: 192,
+      },
     },
     mainEntityOfPage: {
       '@type': 'WebPage',

@@ -26,7 +26,7 @@ const orbitron = Orbitron({
 
 export const metadata: Metadata = {
   title: {
-    default: "Mussawar Hayat | Hire Full-Stack & Web3 Developer — React, Next.js, Node.js, Solidity",
+    default: "Mussawar Hayat | Full-Stack & Web3 Developer",
     template: "%s | Mussawar Hayat",
   },
 
@@ -182,7 +182,10 @@ export default function RootLayout({
                   "name": "Mussawar Hayat",
                   "url": "https://www.mussawarhayat.site",
                   "image": "https://www.mussawarhayat.site/my-pic.jpeg",
-                  "jobTitle": "Full-Stack Developer & Web3 Specialist",
+                  "hasOccupation": {
+                    "@type": "Occupation",
+                    "name": "Full-Stack Developer & Web3 Specialist"
+                  },
                   "description": "Pakistan-based full-stack developer with 3+ years experience building high-performance web, mobile, and blockchain applications using React, Next.js, TypeScript, Node.js, and Solidity. Available for freelance work worldwide.",
                   "email": "zada38843@gmail.com",
                   "telephone": "+923358328468",
@@ -256,7 +259,10 @@ export default function RootLayout({
                     "DeFi Platform Development",
                     "NFT Marketplace Development"
                   ],
-                  "description": "End-to-end full-stack development services including Next.js applications, TypeScript backends, React Native mobile apps, Solidity smart contracts, Bitcoin Ordinals tools, and production DevOps on VPS. Hire for freelance or contract work."
+                  "description": "End-to-end full-stack development services including Next.js applications, TypeScript backends, React Native mobile apps, Solidity smart contracts, Bitcoin Ordinals tools, and production DevOps on VPS. Hire for freelance or contract work.",
+                  "priceRange": "$$-$$$",
+                  "currenciesAccepted": "USD",
+                  "paymentAccepted": "Bank Transfer, PayPal, Crypto"
                 }
               ]
             }, null, 2)

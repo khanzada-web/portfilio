@@ -41,9 +41,9 @@ export function ArticleSchema({
       "name": "Mussawar Hayat",
       "logo": {
         "@type": "ImageObject",
-        "url": "https://www.mussawarhayat.site/logo-optimized.png",
-        "width": 300,
-        "height": 110
+        "url": "https://www.mussawarhayat.site/my-pic.jpeg",
+        "width": 192,
+        "height": 192
       }
     },
     "mainEntityOfPage": {

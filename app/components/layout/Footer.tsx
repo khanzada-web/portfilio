@@ -204,7 +204,7 @@ export function Footer() {
 
       {/* ── Scroll to top ── */}
       <Link
-        href="#home"
+        href="/#home"
         aria-label="Scroll back to top"
         className="fixed bottom-8 right-8 w-12 h-12 bg-[#39FF14] text-black rounded-full flex items-center justify-center shadow-[0_0_20px_rgba(57,255,20,0.3)] hover:shadow-[0_0_30px_rgba(57,255,20,0.5)] hover:scale-110 active:scale-90 transition-all z-50"
       >

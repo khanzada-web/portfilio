@@ -6,7 +6,7 @@ import { BreadcrumbSchema } from '@/app/components/seo/BreadcrumbSchema'
 import { SubscriptionModal } from '@/app/components/SubscriptionModal'
 
 export const metadata: Metadata = {
-  title: 'Mussawar Hayat Blog | Web3, Blockchain & Full-Stack Developer Insights',
+  title: 'Blog | Web3 & Full-Stack Insights',
   description: 'Practical guides and architecture deep-dives on Next.js 16, React, TypeScript, Web3, Solidity, DeFi, Bitcoin Ordinals, Account Abstraction, DevOps, and production full-stack engineering by Mussawar Hayat.',
   keywords: [
     'Web3 developer blog',
@@ -54,7 +54,7 @@ const breadcrumbs = [
 
 const blogPosts = [
   {
-    title: 'How to Patch and Secure Next.js Against the July 2026 Security Vulnerabilities',
+    title: 'Next.js July 2026 Security Patch',
     excerpt: 'Complete guide to the July 2026 Next.js security release (CVE-2026-64641 and related issues). Patch steps, Server Action hardening, middleware protection, and production checklist for App Router apps.',
     slug: 'nextjs-july-2026-security-patch-server-actions',
     date: '2026-07-26',
@@ -62,7 +62,7 @@ const blogPosts = [
     category: 'Security',
   },
   {
-    title: 'Building a Production-Ready Full-Stack SaaS with Next.js 16, TypeScript, Prisma & Tailwind (2026)',
+    title: 'Next.js 16 + Prisma SaaS Tutorial',
     excerpt: 'Complete step-by-step guide to building a scalable SaaS using Next.js 16 App Router, Prisma Postgres, Auth.js, and Tailwind CSS. Production patterns, Server Actions, and deployment.',
     slug: 'nextjs-16-saas-tutorial-prisma-typescript-2026',
     date: '2026-07-26',
@@ -70,7 +70,7 @@ const blogPosts = [
     category: 'Full-Stack',
   },
   {
-    title: 'AI Agents on Blockchain: The Biggest Web3 Trend of 2026',
+    title: 'AI Agents on Blockchain: Web3 2026',
     excerpt: 'Autonomous AI agents are executing smart contracts, managing DeFi portfolios, and governing DAOs without human input. Here\'s what every Web3 developer needs to know right now.',
     slug: 'ai-agents-blockchain-web3-2026',
     date: '2026-03-10',
@@ -78,7 +78,7 @@ const blogPosts = [
     category: 'Web3 & AI',
   },
   {
-    title: 'Account Abstraction in 2026: The End of Seed Phrases',
+    title: 'Account Abstraction 2026: No More Seeds',
     excerpt: 'ERC-4337 and smart wallets are killing the biggest UX barrier in Web3. Here\'s a complete developer guide to building with Account Abstraction today.',
     slug: 'account-abstraction-smart-wallets-guide',
     date: '2026-03-05',
@@ -86,7 +86,7 @@ const blogPosts = [
     category: 'Web3 Development',
   },
   {
-    title: 'RWA Tokenization: How Blockchain Is Eating Real-World Finance',
+    title: 'RWA Tokenization: Blockchain Meets Finance',
     excerpt: 'Real-world asset tokenization crossed $24 billion in 2025 and is accelerating fast. Here\'s the full developer and investor breakdown of the biggest infrastructure shift in Web3.',
     slug: 'real-world-asset-tokenization-rwa-guide',
     date: '2026-02-28',
@@ -94,7 +94,7 @@ const blogPosts = [
     category: 'Blockchain & DeFi',
   },
   {
-    title: 'Modular Blockchains & L2s: The Infrastructure Stack Every Web3 Dev Must Know',
+    title: 'Modular Blockchains & L2s: Dev Guide',
     excerpt: 'The monolithic blockchain era is over. Modular architecture — separating execution, consensus, and data availability — is how the next billion users get on-chain.',
     slug: 'modular-blockchains-l2-developer-guide',
     date: '2026-02-20',
@@ -102,7 +102,7 @@ const blogPosts = [
     category: 'Blockchain',
   },
   {
-    title: 'Deploying a Multi-Site Next.js App on a Single VPS with Nginx',
+    title: 'Multi-Site Next.js on VPS with Nginx',
     excerpt: 'Running multiple Next.js apps on one VPS with Nginx reverse proxy, PM2, and SSL — the exact setup I use for production deployments.',
     slug: 'deploying-multi-site-nextjs-vps-nginx',
     date: '2026-05-15',
@@ -110,7 +110,7 @@ const blogPosts = [
     category: 'DevOps',
   },
   {
-    title: 'Building a Bitcoin Ordinals Marketplace: Architecture Breakdown',
+    title: 'Bitcoin Ordinals Marketplace Architecture',
     excerpt: 'How I built Ordwin — a Bitcoin NFT marketplace for Ordinal inscriptions. Indexing, ownership tracking, and the real performance challenges.',
     slug: 'building-bitcoin-ordinals-marketplace',
     date: '2026-05-10',
@@ -118,7 +118,7 @@ const blogPosts = [
     category: 'Web3',
   },
   {
-    title: 'MetaMask vs WalletConnect: Choosing Wallet Integration for Your DApp',
+    title: 'MetaMask vs WalletConnect for DApps',
     excerpt: 'Both work. Both have edge cases. Here\'s what I learned integrating MetaMask, WalletConnect, and Coinbase Wallet across multiple DApps.',
     slug: 'metamask-vs-walletconnect-dapp',
     date: '2026-05-05',
@@ -126,7 +126,7 @@ const blogPosts = [
     category: 'Web3',
   },
   {
-    title: 'Setting Up SPF, DKIM, and DMARC for a Multi-Domain VPS',
+    title: 'SPF, DKIM & DMARC for Multi-Domain VPS',
     excerpt: 'Email deliverability is silent until it breaks. Here\'s the exact DNS setup I use to keep transactional email out of spam across multiple domains.',
     slug: 'spf-dkim-dmarc-multi-domain-vps',
     date: '2026-04-28',
@@ -134,7 +134,7 @@ const blogPosts = [
     category: 'DevOps',
   },
   {
-    title: 'Building GDPR-Compliant Web Apps: A Developer\'s Checklist',
+    title: 'GDPR-Compliant Web Apps Checklist',
     excerpt: 'Cookie consent, secure data storage, data subject rights — a practical checklist for full-stack developers building for EU clients.',
     slug: 'gdpr-compliant-web-apps-checklist',
     date: '2026-04-20',
@@ -142,7 +142,7 @@ const blogPosts = [
     category: 'Full-Stack',
   },
   {
-    title: 'Building a Multi-Chain DEX Interface Without Killing Performance',
+    title: 'Multi-Chain DEX Interface Performance',
     excerpt: 'Real-time price feeds, chart rendering, and websocket management — how I built Demotrionn DEX without melting the browser.',
     slug: 'multi-chain-dex-interface-performance',
     date: '2026-04-15',

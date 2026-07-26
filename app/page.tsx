@@ -21,7 +21,7 @@ import { Contact }         from "./components/sections/Contact";
 import { FAQSchema } from "./components/seo/FAQSchema";
 
 export const metadata: Metadata = {
-  title: "Hire Mussawar Hayat | Full-Stack & Web3 Developer — React, Next.js, Solidity",
+  title: "Hire Full-Stack & Web3 Developer",
 
   description:
     "Hire a full-stack developer specialising in React, Next.js, TypeScript, Node.js and Web3. " +

@@ -20,16 +20,16 @@ interface ReviewSchemaProps {
 export function ReviewSchema({ itemReviewed, reviews }: ReviewSchemaProps) {
   const structuredData = {
     "@context": "https://schema.org",
-    "@type": "AggregateRating",
-    "itemReviewed": {
-      "@type": itemReviewed.type,
-      "name": itemReviewed.name
+    "@type": itemReviewed.type,
+    "name": itemReviewed.name,
+    "aggregateRating": {
+      "@type": "AggregateRating",
+      "ratingValue": "4.9",
+      "reviewCount": reviews.length.toString(),
+      "bestRating": "5",
+      "worstRating": "1"
     },
-    "ratingValue": "4.9",
-    "reviewCount": reviews.length.toString(),
-    "bestRating": "5",
-    "worstRating": "1",
-    "reviews": reviews.map(review => ({
+    "review": reviews.map(review => ({
       "@type": "Review",
       "author": {
         "@type": "Person",
