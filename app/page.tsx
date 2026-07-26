@@ -20,52 +20,54 @@ import { Contact }         from "./components/sections/Contact";
 // ── SEO ──────────────────────────────────────────────────────────────────────
 import { FAQSchema } from "./components/seo/FAQSchema";
 
-// ─── Page Metadata ────────────────────────────────────────────────────────────
-// Note: base URL, robots, and themeColor are already set in layout.tsx.
-// Only override what is page-specific here.
-
 export const metadata: Metadata = {
-  title: "Mussawar Hayat | Full-Stack Developer — React, Next.js, Node.js & Web3",
+  title: "Hire Mussawar Hayat | Full-Stack & Web3 Developer — React, Next.js, Solidity",
 
   description:
-    "Full-stack developer with 3+ years building high-performance web & mobile apps using " +
-    "React, Next.js, Node.js & TypeScript — plus Web3/blockchain integration (Solidity, DeFi, NFTs). " +
-    "Available for freelance work worldwide.",
+    "Hire a full-stack developer specialising in React, Next.js, TypeScript, Node.js and Web3. " +
+    "3+ years building production SaaS, DApps, smart contracts and mobile apps. Available for freelance projects worldwide.",
+
+  keywords: [
+    "hire full-stack developer",
+    "hire Next.js developer",
+    "Web3 developer for hire",
+    "freelance React developer",
+    "Solidity developer",
+    "hire blockchain developer",
+    "Next.js freelancer",
+    "full-stack developer Pakistan",
+    "Mussawar Hayat",
+  ],
 
   alternates: {
     canonical: "/",
   },
 
   openGraph: {
-    title: "Mussawar Hayat | Full-Stack Developer",
+    title: "Hire Mussawar Hayat | Full-Stack & Web3 Developer",
     description:
-      "Building fast, scalable web & mobile apps with React, Next.js, Node.js & TypeScript. " +
-      "Blockchain/Web3 integration available. 3+ years experience, open for freelance work worldwide.",
+      "Full-stack developer specialising in React, Next.js, TypeScript, Node.js and Web3. " +
+      "Available for freelance projects worldwide.",
     url: "https://www.mussawarhayat.site",
     type: "website",
     images: [
       {
-        // ✅ 1200×630 is the required size for Twitter/LinkedIn/Facebook previews
         url: "/og-image.png",
         width: 1200,
         height: 630,
-        alt: "Mussawar Hayat — Full-Stack Developer Portfolio",
+        alt: "Mussawar Hayat — Full-Stack & Web3 Developer",
       },
     ],
   },
 
   twitter: {
     card: "summary_large_image",
-    title: "Mussawar Hayat | Full-Stack Developer",
+    title: "Hire Mussawar Hayat | Full-Stack & Web3 Developer",
     description:
-      "Full-stack developer building web, mobile & Web3 apps with React, Next.js, Node.js & Solidity. " +
-      "Available for freelance projects worldwide.",
+      "Full-stack developer building web, mobile & Web3 apps with React, Next.js, Node.js & Solidity. Available for freelance projects.",
     images: ["/og-image.png"],
   },
 };
-
-// ─── FAQ Data ─────────────────────────────────────────────────────────────────
-// Extracted as a constant so FAQSchema receives typed, stable data
 
 const FAQ_ITEMS = [
   {
@@ -101,12 +103,9 @@ const FAQ_ITEMS = [
   },
 ] as const;
 
-// ─── Page ─────────────────────────────────────────────────────────────────────
-
 export default function Home() {
   return (
     <>
-      {/* Structured data for FAQ rich results in Google Search */}
       <FAQSchema faqs={FAQ_ITEMS} />
 
       <div className="min-h-screen bg-white font-sans">
