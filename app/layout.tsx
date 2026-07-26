@@ -130,6 +130,7 @@ export default function RootLayout({
           async
           src="https://pagead2.googlesyndication.com/pagead/js/adsbygoogle.js?client=ca-pub-9383132900869188"
           crossOrigin="anonymous"
+          suppressHydrationWarning
         />
 
         {/* Google Analytics (GA4) */}
@@ -138,6 +139,7 @@ export default function RootLayout({
           src="https://www.googletagmanager.com/gtag/js?id=G-BV823ZQ3HX"
         />
         <script
+          suppressHydrationWarning
           dangerouslySetInnerHTML={{
             __html: `
               window.dataLayer = window.dataLayer || [];
