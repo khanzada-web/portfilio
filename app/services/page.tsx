@@ -8,7 +8,7 @@ import { FAQSchema } from '@/app/components/seo/FAQSchema'
 export const metadata: Metadata = {
   title: 'Hire Full-Stack & Web3 Developer | React, Next.js, Solidity Services',
   description:
-    'Hire Mussawar Hayat for full-stack development: React/Next.js web apps, React Native mobile, Node.js APIs, DevOps, SaaS platforms, and Web3/Solidity smart contracts. Available worldwide.',
+    'Hire Mussawar Hayat for full-stack development: React/Next.js web apps, React Native mobile, Node.js APIs, DevOps, SaaS platforms, and Web3/Solidity smart contracts. Available worldwide for freelance projects.',
   keywords: [
     'hire full-stack developer',
     'hire Next.js developer',
@@ -17,9 +17,10 @@ export const metadata: Metadata = {
     'freelance React developer',
     'Next.js development services',
     'smart contract development',
-    'React Native developer',
+    'React Native developer for hire',
     'DevOps services',
-    'SaaS development',
+    'SaaS development services',
+    'freelance blockchain developer',
     'Mussawar Hayat',
   ],
   openGraph: {
@@ -30,7 +31,7 @@ export const metadata: Metadata = {
     type: 'website',
     images: [
       {
-        url: '/og-image.png',
+        url: '/my-pic.jpeg',
         width: 1200,
         height: 630,
         alt: 'Mussawar Hayat — Full-Stack Developer Services',
@@ -42,7 +43,7 @@ export const metadata: Metadata = {
     title: 'Hire Full-Stack & Web3 Developer | Mussawar Hayat',
     description:
       'Full-stack development services — web apps, mobile apps, APIs, DevOps, and Web3/blockchain integration. Available worldwide.',
-    images: ['/og-image.png'],
+    images: ['/my-pic.jpeg'],
   },
   alternates: {
     canonical: '/services',
@@ -214,8 +215,6 @@ export default function ServicesPage() {
                 </a>
               ))}
             </div>
-
-            {/* Service detail sections remain the same as previous version for brevity — content already strong */}
 
             <div className="bg-[#0A1221] border border-[#39FF14]/20 p-8 md:p-12 mb-16">
               <div className="flex items-center gap-3 text-[#39FF14] text-[10px] tracking-[0.4em] uppercase mb-4 font-bold">

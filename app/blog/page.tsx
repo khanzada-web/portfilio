@@ -7,18 +7,19 @@ import { SubscriptionModal } from '@/app/components/SubscriptionModal'
 
 export const metadata: Metadata = {
   title: 'Mussawar Hayat Blog | Web3, Blockchain & Full-Stack Developer Insights',
-  description: 'Practical guides and architecture deep-dives on Next.js, React, TypeScript, Web3, Solidity, DeFi, Bitcoin Ordinals, DevOps, and production full-stack engineering by Mussawar Hayat.',
+  description: 'Practical guides and architecture deep-dives on Next.js 16, React, TypeScript, Web3, Solidity, DeFi, Bitcoin Ordinals, Account Abstraction, DevOps, and production full-stack engineering by Mussawar Hayat.',
   keywords: [
     'Web3 developer blog',
-    'Next.js tutorial',
-    'full-stack developer',
-    'blockchain development',
-    'Solidity',
-    'Account Abstraction',
+    'Next.js 16 tutorial',
+    'full-stack developer blog',
+    'blockchain development guide',
+    'Solidity tutorial',
+    'Account Abstraction guide',
     'RWA tokenization',
-    'Bitcoin Ordinals',
+    'Bitcoin Ordinals marketplace',
     'Next.js VPS deployment',
     'DevOps for developers',
+    'hire Next.js developer',
     'Mussawar Hayat',
   ],
   openGraph: {
@@ -28,7 +29,7 @@ export const metadata: Metadata = {
     type: 'website',
     images: [
       {
-        url: '/og-image.png',
+        url: '/my-pic.jpeg',
         width: 1200,
         height: 630,
         alt: 'Mussawar Hayat — Full-Stack & Web3 Developer Blog',
@@ -39,7 +40,7 @@ export const metadata: Metadata = {
     card: 'summary_large_image',
     title: 'Mussawar Hayat Blog | Web3 & Full-Stack Insights',
     description: 'Production-grade guides on Next.js, Web3, Solidity, DeFi, and full-stack systems.',
-    images: ['/og-image.png'],
+    images: ['/my-pic.jpeg'],
   },
   alternates: {
     canonical: '/blog',

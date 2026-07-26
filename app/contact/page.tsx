@@ -5,17 +5,25 @@ import { Contact } from '@/app/components/sections/Contact'
 import { BreadcrumbSchema } from '@/app/components/seo/BreadcrumbSchema'
 
 export const metadata: Metadata = {
-  title: 'Contact Mussawar Hayat | Get in Touch',
-  description: 'Get in touch with Mussawar Hayat for full-stack development, web & mobile apps, and Web3/blockchain projects. Let\'s discuss your next project.',
-  keywords: 'contact Mussawar Hayat, full-stack developer contact, React developer, Next.js developer, Web3 development, blockchain developer, project consultation',
+  title: 'Contact Mussawar Hayat | Hire Full-Stack & Web3 Developer',
+  description: 'Contact Mussawar Hayat to hire a full-stack developer for React, Next.js, Node.js, TypeScript, Web3, Solidity and DevOps projects. Available for freelance work worldwide.',
+  keywords: [
+    'contact Mussawar Hayat',
+    'hire full-stack developer',
+    'hire Next.js developer',
+    'Web3 developer contact',
+    'freelance React developer',
+    'Solidity developer hire',
+    'project consultation',
+  ],
   openGraph: {
-    title: 'Contact Mussawar Hayat | Get in Touch',
-    description: 'Get in touch with Mussawar Hayat for full-stack development, web & mobile apps, and Web3/blockchain projects.',
+    title: 'Contact Mussawar Hayat | Hire Full-Stack & Web3 Developer',
+    description: 'Get in touch to hire Mussawar Hayat for full-stack development, web & mobile apps, and Web3/blockchain projects.',
     url: 'https://www.mussawarhayat.site/contact',
     type: 'website',
     images: [
       {
-        url: '/og-image.png',
+        url: '/my-pic.jpeg',
         width: 1200,
         height: 630,
         alt: 'Contact Mussawar Hayat',
@@ -24,9 +32,9 @@ export const metadata: Metadata = {
   },
   twitter: {
     card: 'summary_large_image',
-    title: 'Contact Mussawar Hayat | Get in Touch',
-    description: 'Get in touch with Mussawar Hayat for full-stack development, web & mobile apps, and Web3/blockchain projects.',
-    images: ['/og-image.png'],
+    title: 'Contact Mussawar Hayat | Hire Full-Stack & Web3 Developer',
+    description: 'Get in touch to hire for full-stack development, web & mobile apps, and Web3/blockchain projects.',
+    images: ['/my-pic.jpeg'],
   },
   alternates: {
     canonical: '/contact',
@@ -55,7 +63,7 @@ export default function ContactPage() {
             </h1>
             <p className="text-xl md:text-2xl text-white/80 max-w-3xl mx-auto leading-relaxed">
               Ready to transform your digital presence? Let's discuss how we can bring your Web3, 
-              AI, or full-stack development project to life.
+              AI, or full-stack development project to life. Available for freelance projects worldwide.
             </p>
           </div>
         </div>
