@@ -36,7 +36,6 @@ export function ServiceSchema({
       "@type": "Offer",
       "priceCurrency": "USD",
       "priceRange": "$100-$100000",
-      "availability": "https://schema.org/InStock"
     },
     ...(hasOfferCatalog && { hasOfferCatalog })
   }
@@ -44,6 +43,7 @@ export function ServiceSchema({
   return (
     <script
       type="application/ld+json"
+      suppressHydrationWarning
       dangerouslySetInnerHTML={{ __html: JSON.stringify(structuredData) }}
     />
   )

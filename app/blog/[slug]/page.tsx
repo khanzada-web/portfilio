@@ -382,6 +382,12 @@ export async function generateMetadata({ params }: PageProps): Promise<Metadata>
     keywords: post.keywords.join(', '),
     authors: [{ name: post.author }],
     alternates: { canonical: pageUrl },
+    robots: {
+      index: true,
+      follow: true,
+      'max-image-preview': 'large',
+      'max-snippet': -1,
+    },
     openGraph: {
       title: post.title,
       description: post.excerpt,
@@ -423,7 +429,7 @@ function BlogPostingSchema({ post, slug }: { post: BlogPost; slug: string }) {
     inLanguage: 'en-US',
   }
   return (
-    <script type="application/ld+json" dangerouslySetInnerHTML={{ __html: JSON.stringify(jsonLd) }} />
+    <script type="application/ld+json" suppressHydrationWarning dangerouslySetInnerHTML={{ __html: JSON.stringify(jsonLd) }} />
   )
 }
 

@@ -137,6 +137,7 @@ export default function RootLayout({
         <script
           async
           src="https://www.googletagmanager.com/gtag/js?id=G-BV823ZQ3HX"
+          suppressHydrationWarning
         />
         <script
           suppressHydrationWarning
@@ -170,7 +171,7 @@ export default function RootLayout({
                   "@id": "https://mussawarhayat.site/#website",
                   "url": "https://mussawarhayat.site",
                   "name": "Mussawar Hayat | Full-Stack & Web3 Developer",
-                  "description": "Hire a full-stack developer specialising in Next.js, TypeScript, Node.js, React Native, and Web3. Production web, mobile, and blockchain applications.",
+                  "description": "Hire a full-stack developer in Next.js, TypeScript, Node.js, React Native, and Web3. Production web, mobile, and blockchain applications.",
                   "publisher": { "@id": "https://mussawarhayat.site/#person" },
                   "inLanguage": "en",
                   "potentialAction": {

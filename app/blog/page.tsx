@@ -256,6 +256,23 @@ export default function BlogPage() {
                 <SubscriptionModal />
               </div>
             </div>
+
+            <div className="text-center mt-12">
+              <div className="flex flex-col sm:flex-row gap-4 justify-center">
+                <Link
+                  href="/services"
+                  className="px-8 py-4 border border-white/10 hover:border-[#39FF14]/30 text-white/70 hover:text-white font-orbitron text-sm uppercase tracking-[0.2em] rounded-xl transition-all duration-300"
+                >
+                  Explore Services
+                </Link>
+                <Link
+                  href="/contact"
+                  className="px-8 py-4 border border-white/10 hover:border-[#39FF14]/30 text-white/70 hover:text-white font-orbitron text-sm uppercase tracking-[0.2em] rounded-xl transition-all duration-300"
+                >
+                  Hire Me
+                </Link>
+              </div>
+            </div>
           </div>
         </main>
         <Footer />

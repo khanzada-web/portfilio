@@ -1,6 +1,6 @@
 # Mussawar Hayat — Full-Stack & Web3 Developer
 
-> Hire a full-stack developer specialising in React, Next.js, TypeScript, Node.js, and Web3/Solidity. 3+ years building production SaaS, DApps, smart contracts, and mobile apps. Available for freelance projects worldwide.
+> Hire a full-stack developer specializing in React, Next.js, TypeScript, Node.js, and Web3/Solidity. 3+ years building production SaaS, DApps, smart contracts, and mobile apps. Available for freelance projects worldwide.
 
 ## Services
 
