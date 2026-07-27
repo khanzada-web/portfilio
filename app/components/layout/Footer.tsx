@@ -4,7 +4,6 @@ import Link from 'next/link';
 import Image from 'next/image';
 import { motion } from 'framer-motion';
 import { FiMail, FiPhone, FiMapPin, FiArrowUp, FiGithub, FiTwitter, FiLinkedin } from 'react-icons/fi';
-import logo from '../logo.png';
 
 // ─── Data ─────────────────────────────────────────────────────────────────────
 
@@ -28,7 +27,6 @@ const SOCIAL_LINKS = [
   { icon: <FiGithub />,   href: 'https://github.com/khanzada-web',                       label: 'GitHub'   },
 ] as const;
 
-// ✅ Contact info as typed data — keeps JSX clean and makes updates easy
 const CONTACT_INFO = [
   { icon: FiMail,   value: 'zada38843@gmail.com', href: 'mailto:zada38843@gmail.com' },
   { icon: FiPhone,  value: '+92 335 8328468',      href: 'tel:+923358328468'          },
@@ -38,7 +36,6 @@ const CONTACT_INFO = [
 // ─── Component ────────────────────────────────────────────────────────────────
 
 export function Footer() {
-  // ✅ currentYear computed once at module level — no re-render needed
   const currentYear = new Date().getFullYear();
 
   return (
@@ -56,7 +53,7 @@ export function Footer() {
           >
             <Link href="/" aria-label="Mussawar Hayat — go to homepage" className="flex items-center mb-6">
               <Image
-                src={logo}
+                src="/logo.webp"
                 alt="Mussawar Hayat logo"
                 width={200}
                 height={80}
@@ -72,9 +69,7 @@ export function Footer() {
               with Web3/blockchain integration expertise. 3+ years experience, available for freelance work worldwide.
             </p>
 
-            {/* Contact info — clickable links */}
             <address className="not-italic space-y-4">
-              {/* ✅ <address> is the correct HTML5 element for contact information */}
               {CONTACT_INFO.map(({ icon: Icon, value, href }) => (
                 <div key={value} className="flex items-center space-x-3 group">
                   <div className="w-8 h-8 rounded border border-white/10 flex items-center justify-center group-hover:border-[#39FF14]/50 group-hover:text-[#39FF14] transition-all shrink-0">
@@ -92,8 +87,6 @@ export function Footer() {
                   )}
                 </div>
               ))}
-              {/* ✅ Previously contact items were <div> with cursor-pointer but no href —
-                      email and phone are now real <a> links (mailto: / tel:) */}
             </address>
           </motion.div>
 
@@ -152,13 +145,10 @@ export function Footer() {
               {SOCIAL_LINKS.map(({ icon, href, label }) => (
                 <motion.a
                   key={label}
-                  // ✅ Key is the stable label string, not the array index
                   href={href}
                   target="_blank"
                   rel="noopener noreferrer"
-                  // ✅ All external links need rel="noopener noreferrer" (tabnapping prevention)
                   aria-label={`${label} profile`}
-                  // ✅ aria-label so screen readers say "GitHub profile" not just the icon
                   className="w-12 h-12 bg-white/5 border border-white/10 rounded-lg flex items-center justify-center text-white hover:border-[#39FF14] hover:text-[#39FF14] transition-all duration-300 shadow-xl"
                   whileHover={{ y: -5, backgroundColor: 'rgba(57,255,20,0.05)' }}
                 >
@@ -170,7 +160,6 @@ export function Footer() {
             <blockquote className="text-white/40 text-xs font-orbitron leading-relaxed italic border-l-2 border-[#39FF14]/30 pl-4">
               "Building the future of the decentralised web, one block at a time."
             </blockquote>
-            {/* ✅ Changed <p> to <blockquote> — correct semantic element for a quoted phrase */}
           </motion.div>
         </div>
 
@@ -183,8 +172,6 @@ export function Footer() {
             </p>
 
             <nav aria-label="Legal links" className="flex space-x-8">
-              {/* ✅ Changed <button> to <Link> — Terms and Privacy are pages, not actions.
-                      Using <button> for navigation is a semantic error. */}
               <Link
                 href="/terms"
                 className="text-white/30 hover:text-[#39FF14] text-[10px] uppercase tracking-widest transition-colors font-orbitron"

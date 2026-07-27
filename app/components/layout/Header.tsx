@@ -4,7 +4,6 @@ import Link from 'next/link';
 import Image from 'next/image';
 import { useState, useEffect, useCallback } from 'react';
 import { usePathname } from 'next/navigation';
-import logo from '../logo.png';
 
 // ─── Data ─────────────────────────────────────────────────────────────────────
 
@@ -26,18 +25,13 @@ const NAV_ITEMS: NavItem[] = [
 const CONTACT_HREF = '/#contact';
 
 // ─── Active link helper ───────────────────────────────────────────────────────
-// ✅ FIX: Hash links (/#about, /#portfolio etc.) ALL start with "/#"
-//    The old code returned `pathname === '/'` for every single one of them,
-//    making ALL tabs active at the same time on the homepage.
-//
-//    Correct approach:
-//    - Hash links → NEVER active (we can't know which section is in view
-//      from pathname alone — that needs IntersectionObserver)
-//    - Real page routes (/services, /blog) → active when pathname matches
+// Hash links (/#about, /#portfolio etc.) ALL start with "/#"
+// Hash links → NEVER active (pathname alone cannot know which section is in view)
+// Real page routes (/services, /blog) → active when pathname matches
 
 const isActive = (href: string, pathname: string): boolean => {
-  if (href.includes('#')) return false;              // hash anchors: never active
-  if (href === '/') return pathname === '/';         // exact root match only
+  if (href.includes('#')) return false;
+  if (href === '/') return pathname === '/';
   return pathname === href || pathname.startsWith(href + '/');
 };
 
@@ -48,19 +42,16 @@ export function Header() {
   const [scrolled,   setScrolled]   = useState(false);
   const pathname = usePathname();
 
-  // Scroll listener
   useEffect(() => {
     const handleScroll = () => setScrolled(window.scrollY > 20);
     window.addEventListener('scroll', handleScroll, { passive: true });
     return () => window.removeEventListener('scroll', handleScroll);
   }, []);
 
-  // Close mobile menu on route change
   useEffect(() => {
     setIsMenuOpen(false);
   }, [pathname]);
 
-  // Lock body scroll while mobile menu is open
   useEffect(() => {
     document.body.style.overflow = isMenuOpen ? 'hidden' : '';
     return () => { document.body.style.overflow = ''; };
@@ -86,7 +77,7 @@ export function Header() {
             aria-label="Mussawar Hayat — go to homepage"
           >
             <Image
-              src={logo}
+              src="/logo.webp"
               alt="Mussawar Hayat logo"
               width={200}
               height={75}
@@ -112,7 +103,6 @@ export function Header() {
                   }`}
                 >
                   {label}
-                  {/* Underline — always visible on active page routes, appears on hover for hash links */}
                   <span
                     className={`absolute bottom-0 left-0 h-[2px] bg-[#39FF14] shadow-[0_0_8px_#39FF14] transition-all duration-300 ${
                       active ? 'w-full' : 'w-0 group-hover:w-full'
