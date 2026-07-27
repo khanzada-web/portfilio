@@ -7,7 +7,7 @@ import { BreadcrumbSchema } from '@/app/components/seo/BreadcrumbSchema'
 
 export const metadata: Metadata = {
   title: 'Contact — Hire Full-Stack Developer',
-  description: 'Contact Mussawar Hayat to hire a full-stack developer for React, Next.js, Node.js, TypeScript, Web3, Solidity and DevOps projects. Available for freelance work worldwide.',
+  description: 'Contact Mussawar Hayat to hire a full-stack developer for React, Next.js, Node.js, TypeScript, Web3, Solidity and DevOps projects.',
   keywords: [
     'contact Mussawar Hayat',
     'hire full-stack developer',

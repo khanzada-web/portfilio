@@ -7,7 +7,7 @@ import { SubscriptionModal } from '@/app/components/SubscriptionModal'
 
 export const metadata: Metadata = {
   title: 'Blog | Web3 & Full-Stack Insights',
-  description: 'Practical guides and architecture deep-dives on Next.js 16, React, TypeScript, Web3, Solidity, DeFi, Bitcoin Ordinals, Account Abstraction, DevOps, and production full-stack engineering by Mussawar Hayat.',
+  description: 'Practical guides on Next.js 16, React, TypeScript, Web3, Solidity, DeFi, Bitcoin Ordinals, DevOps, and full-stack engineering by Mussawar Hayat.',
   keywords: [
     'Web3 developer blog',
     'Next.js 16 tutorial',

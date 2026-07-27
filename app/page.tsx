@@ -24,8 +24,8 @@ export const metadata: Metadata = {
   title: "Hire Full-Stack & Web3 Developer",
 
   description:
-    "Hire a full-stack developer specialising in React, Next.js, TypeScript, Node.js and Web3. " +
-    "3+ years building production SaaS, DApps, and mobile apps. Available for freelance work worldwide.",
+    "Hire a full-stack developer in React, Next.js, TypeScript, Node.js & Web3. " +
+    "3+ years building production SaaS, DApps, and mobile apps.",
 
   keywords: [
     "hire full-stack developer",
@@ -49,7 +49,7 @@ export const metadata: Metadata = {
   openGraph: {
     title: "Hire Mussawar Hayat | Full-Stack & Web3 Developer",
     description:
-      "Full-stack developer specialising in React, Next.js, TypeScript, Node.js and Web3. " +
+      "Full-stack developer in React, Next.js, TypeScript, Node.js & Web3. " +
       "Available for freelance projects worldwide.",
     url: "https://mussawarhayat.site",
     type: "website",

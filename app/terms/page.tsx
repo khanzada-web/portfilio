@@ -6,8 +6,24 @@ import { BreadcrumbSchema } from '@/app/components/seo/BreadcrumbSchema'
 export const metadata: Metadata = {
   title: 'Terms of Service',
   description: 'Terms of service for hiring Mussawar Hayat for freelance full-stack and Web3 development projects.',
+  keywords: ['terms of service', 'freelance developer terms', 'Mussawar Hayat terms', 'developer contract terms'],
   alternates: {
     canonical: '/terms',
+  },
+  openGraph: {
+    title: 'Terms of Service | Mussawar Hayat',
+    description: 'Terms of service for hiring Mussawar Hayat for freelance full-stack and Web3 development projects.',
+    url: 'https://mussawarhayat.site/terms',
+    type: 'website',
+  },
+  twitter: {
+    card: 'summary',
+    title: 'Terms of Service | Mussawar Hayat',
+    description: 'Terms of service for freelance full-stack and Web3 development projects.',
+  },
+  robots: {
+    index: true,
+    follow: true,
   },
 }
 

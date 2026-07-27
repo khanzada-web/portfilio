@@ -8,7 +8,7 @@ import { FAQSchema } from '@/app/components/seo/FAQSchema'
 export const metadata: Metadata = {
   title: 'Full-Stack & Web3 Dev Services',
   description:
-    'Hire Mussawar Hayat for full-stack development: React/Next.js web apps, React Native mobile, Node.js APIs, DevOps, SaaS platforms, and Web3/Solidity smart contracts. Available worldwide for freelance projects.',
+    'Hire Mussawar Hayat for full-stack development: React/Next.js web apps, React Native mobile, Node.js APIs, DevOps, SaaS, and Web3/Solidity smart contracts.',
   keywords: [
     'hire full-stack developer',
     'hire Next.js developer',
@@ -26,7 +26,7 @@ export const metadata: Metadata = {
   openGraph: {
     title: 'Hire Full-Stack & Web3 Developer | Mussawar Hayat Services',
     description:
-      'Full-stack development services — web apps, mobile apps, APIs, DevOps, e-commerce, and Web3/blockchain integration. Available for freelance projects worldwide.',
+      'Full-stack development services — web apps, mobile apps, APIs, DevOps, and Web3/blockchain integration.',
     url: 'https://mussawarhayat.site/services',
     type: 'website',
     images: [

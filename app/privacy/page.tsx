@@ -6,8 +6,24 @@ import { BreadcrumbSchema } from '@/app/components/seo/BreadcrumbSchema'
 export const metadata: Metadata = {
   title: 'Privacy Policy',
   description: 'Privacy policy for mussawarhayat.site — how visitor data is collected, used, and protected.',
+  keywords: ['privacy policy', 'data protection', 'GDPR', 'cookie policy', 'Mussawar Hayat privacy'],
   alternates: {
     canonical: '/privacy',
+  },
+  openGraph: {
+    title: 'Privacy Policy | Mussawar Hayat',
+    description: 'Privacy policy for mussawarhayat.site — how visitor data is collected, used, and protected.',
+    url: 'https://mussawarhayat.site/privacy',
+    type: 'website',
+  },
+  twitter: {
+    card: 'summary',
+    title: 'Privacy Policy | Mussawar Hayat',
+    description: 'How visitor data is collected, used, and protected on mussawarhayat.site.',
+  },
+  robots: {
+    index: true,
+    follow: true,
   },
 }
 

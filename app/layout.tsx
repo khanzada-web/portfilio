@@ -32,7 +32,7 @@ export const metadata: Metadata = {
 
   description:
     "Hire Mussawar Hayat — full-stack developer with 3+ years building web & mobile apps. " +
-    "React, Next.js, Node.js, TypeScript, and Web3/Solidity. Available for freelance work worldwide.",
+    "React, Next.js, Node.js, TypeScript, and Web3/Solidity.",
 
   keywords: [
     "hire full-stack developer",
@@ -88,7 +88,7 @@ export const metadata: Metadata = {
     url: "https://mussawarhayat.site",
     title: "Hire Mussawar Hayat | Full-Stack & Web3 Developer",
     description:
-      "Full-stack developer specialising in React, Next.js, TypeScript, Node.js and Web3. 3+ years experience. Available for freelance projects worldwide.",
+      "Full-stack developer in React, Next.js, TypeScript, Node.js & Web3. 3+ years experience. Available for freelance projects worldwide.",
     siteName: "Mussawar Hayat — Full-Stack Developer Portfolio",
     images: [
       {
