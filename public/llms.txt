@@ -13,6 +13,7 @@
 
 ## Blog
 
+- Secure Server Actions in Next.js 16: https://mussawarhayat.site/blog/secure-server-actions-nextjs-16-auth-validation-dal
 - Fix Prisma Connection Exhaustion in Next.js 16: https://mussawarhayat.site/blog/prisma-connection-exhaustion-nextjs-16-accelerate
 - Stop Overusing 'use client' in Next.js 16: https://mussawarhayat.site/blog/nextjs-16-stop-overusing-use-client-server-components
 - Next.js July 2026 Security Patch: https://mussawarhayat.site/blog/nextjs-july-2026-security-patch-server-actions
