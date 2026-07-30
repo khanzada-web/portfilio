@@ -1,8 +1,219 @@
 export const title = 'Secure Server Actions in Next.js 16'
-export const excerpt = 'Every Server Action is a public POST endpoint. Learn the production pattern: validate inputs, authenticate from the session, authorize ownership, keep a thin action layer on a server-only Data Access Layer, and constrain return values.'
-export const content = `<div class=\"intro-section\"><h2>Every Server Action Is a Public Endpoint</h2><p class=\"lead-paragraph\">In Next.js 16, a Server Action is a React Server Function invoked through a form action, button formAction, or client transition. The compiler replaces the function body in client bundles with an encrypted action ID and a dispatcher that POSTs back to the server. The implementation never leaves the server, but the route is reachable by anyone who can craft the same POST.</p><p>Framework-level protections (Origin/Host CSRF check, body size limit, encrypted action IDs, closure encryption) reduce risk. They do not replace application-level authentication, authorization, and input validation. Render-time gating is not a security boundary.</p><div class=\"key-highlights\"><h3>What You Will Learn</h3><ul><li>Why Server Actions must be treated as untrusted public endpoints</li><li>The three mandatory checks: validate, authenticate, authorize</li><li>Thin Server Action layer on a server-only Data Access Layer (DAL)</li><li>Ownership checks, constrained return values, and revalidation</li><li>Production checklist and common mistakes</li></ul></div></div><div class=\"technical-section\"><h2>1. What Next.js Already Protects</h2><p>Official documentation lists four framework guarantees: CSRF check (Origin vs Host), body size limit (default 1MB), encrypted action IDs with dead-code elimination, and closure variable encryption. These are baseline defenses. They do not check who the caller is or whether the caller owns the resource.</p></div><div class=\"onpage-section\"><h2>2. The Three Checks Inside Every Action</h2><p>Treat every exported Server Action as an untrusted entry point. Inside the function, in this order:</p><ol><li><strong>Validate inputs</strong> with Zod or Valibot. FormData and headers are untrusted.</li><li><strong>Authenticate</strong> from the session (cookies/headers). Never accept identity from the client.</li><li><strong>Authorize</strong> ownership or role against the specific resource.</li></ol><p>Only after those three steps perform the mutation and revalidate.</p></div><div class=\"content-strategy-section\"><h2>3. Thin Actions + Server-Only Data Access Layer</h2><p>Keep <code>use server</code> files thin. Put auth and database logic in a module marked with <code>import 'server-only'</code>.</p><pre><code>import 'server-only'\nimport { auth } from '@/lib/auth'\nimport { prisma } from '@/lib/prisma'\nimport { z } from 'zod'\n\nconst createPostSchema = z.object({\n  title: z.string().min(1).max(200),\n  body: z.string().min(1).max(50000),\n})\n\nexport async function createPost(input: unknown) {\n  const session = await auth()\n  if (!session?.user?.id) throw new Error('Unauthorized')\n  const data = createPostSchema.parse(input)\n  return prisma.post.create({\n    data: { title: data.title, body: data.body, authorId: session.user.id },\n    select: { id: true, title: true },\n  })\n}\n</code></pre></div><div class=\"local-seo-section\"><h2>4. Ownership Checks, Not Client-Supplied Rows</h2><p>Never accept a full resource from the client and write it back. Accept an ID plus the change, then re-read under the session ownership constraint.</p></div><div class=\"linkbuilding-section\"><h2>5. Constrain Return Values</h2><p>Action returns are serialized to the client. Return DTOs with explicit <code>select</code>, never raw ORM records or sensitive columns.</p></div><div class=\"analytics-section\"><h2>6. Revalidation After Mutation</h2><ul><li><code>updateTag</code> — immediate; action response waits for fresh data</li><li><code>revalidateTag</code> — stale-while-revalidate</li><li><code>revalidatePath</code> — by URL</li><li><code>refresh</code> — refetch current route RSC payload</li></ul><p>Call revalidation before <code>redirect</code>. Redirect throws; code after it does not run.</p></div><div class=\"conclusion-section\"><h2>7. Production Checklist</h2><ul><li>Validate input with a schema before business logic</li><li>Authenticate from session, never from client identity</li><li>Authorize ownership or role on the specific resource</li><li>Keep DB and auth in server-only modules; actions stay thin</li><li>Return DTOs only</li><li>Set serverActions.allowedOrigins behind proxies/CDNs</li><li>Do not parallelize Server Actions from the client with Promise.all</li></ul><h2>8. Common Mistakes</h2><ul><li>Assuming a form only rendered for logged-in users is enough</li><li>Accepting a full object from the client without ownership query</li><li>Importing Prisma into Client Components</li><li>Returning entire records or internal errors to the client</li><li>Skipping schema validation because the form constrains fields</li></ul><h2>Summary</h2><p>Server Actions are a convenient mutation surface, not a trust boundary. Production safety comes from validate, authenticate, authorize on every path, a server-only DAL, constrained return values, and deliberate revalidation.</p><div class=\"final-takeaway\"><h3>Key Takeaway</h3><p><em>Treat every Server Action as a public POST endpoint. Thin actions, a server-only DAL, and ownership-scoped queries are the production baseline.</em></p></div><hr><div class=\"cta-section\"><h3>Need a security pass on your Server Actions?</h3><p>I review Next.js App Router codebases for auth gaps, missing ownership checks, and unsafe return values. <a href=\"/contact\" style=\"color: #39FF14;\">Get in touch</a> for a focused audit.</p></div></div>`
+export const excerpt =
+  'Every Server Action is a public POST endpoint. Learn the production pattern: validate inputs, authenticate from the session, authorize ownership, keep a thin action layer on a server-only Data Access Layer, and constrain return values.'
+
+export const content = `
+<div class="intro-section">
+  <h2>Every Server Action Is a Public Endpoint</h2>
+  <p class="lead-paragraph">In Next.js 16, a Server Action is a React Server Function invoked through a form action, button formAction, or client transition. The compiler replaces the function body in client bundles with an encrypted action ID and a dispatcher that POSTs back to the server. The implementation never leaves the server, but the route is reachable by anyone who can craft the same POST.</p>
+  <p>Framework-level protections (Origin/Host CSRF check, body size limit, encrypted action IDs, closure encryption) reduce risk. They do not replace application-level authentication, authorization, and input validation. Render-time gating is not a security boundary.</p>
+  <div class="key-highlights">
+    <h3>What You Will Learn</h3>
+    <ul>
+      <li>Why Server Actions must be treated as untrusted public endpoints</li>
+      <li>The three mandatory checks: validate, authenticate, authorize</li>
+      <li>Thin Server Action layer on a server-only Data Access Layer (DAL)</li>
+      <li>Ownership checks, constrained return values, and revalidation</li>
+      <li>Production checklist and common mistakes</li>
+    </ul>
+  </div>
+</div>
+
+<div class="technical-section">
+  <h2>1. What Next.js Already Protects</h2>
+  <p>Official documentation lists four framework guarantees: CSRF check (Origin vs Host), body size limit (default 1MB), encrypted action IDs with dead-code elimination, and closure variable encryption. These are baseline defenses. They do not check who the caller is or whether the caller owns the resource.</p>
+</div>
+
+<div class="onpage-section">
+  <h2>2. The Three Checks Inside Every Action</h2>
+  <p>Treat every exported Server Action as an untrusted entry point. Inside the function, in this order:</p>
+  <ol>
+    <li><strong>Validate inputs</strong> with Zod or Valibot. FormData and headers are untrusted.</li>
+    <li><strong>Authenticate</strong> from the session (cookies/headers). Never accept identity from the client.</li>
+    <li><strong>Authorize</strong> ownership or role against the specific resource.</li>
+  </ol>
+  <p>Only after those three steps perform the mutation and revalidate.</p>
+</div>
+
+<div class="content-strategy-section">
+  <h2>3. Thin Actions + Server-Only Data Access Layer</h2>
+  <p>Keep <code>use server</code> files thin. Put auth and database logic in a module marked with <code>import 'server-only'</code>.</p>
+
+  <div class="code-card">
+    <div class="code-card-header">data/posts.ts <span class="code-card-badge">server-only</span></div>
+    <pre><code>import 'server-only'
+import { auth } from '@/lib/auth'
+import { prisma } from '@/lib/prisma'
+import { z } from 'zod'
+
+const createPostSchema = z.object({
+  title: z.string().min(1).max(200),
+  body: z.string().min(1).max(50000),
+})
+
+export async function createPost(input: unknown) {
+  const session = await auth()
+  if (!session?.user?.id) throw new Error('Unauthorized')
+
+  const data = createPostSchema.parse(input)
+
+  return prisma.post.create({
+    data: {
+      title: data.title,
+      body: data.body,
+      authorId: session.user.id,
+    },
+    select: { id: true, title: true },
+  })
+}
+
+export async function deletePost(postId: string) {
+  const session = await auth()
+  if (!session?.user?.id) throw new Error('Unauthorized')
+
+  const post = await prisma.post.findFirst({
+    where: { id: postId, authorId: session.user.id },
+    select: { id: true },
+  })
+  if (!post) throw new Error('Forbidden')
+
+  await prisma.post.delete({ where: { id: post.id } })
+}</code></pre>
+  </div>
+
+  <div class="code-card">
+    <div class="code-card-header">app/actions/posts.ts <span class="code-card-badge">use server</span></div>
+    <pre><code>'use server'
+
+import { createPost, deletePost } from '@/data/posts'
+import { revalidatePath } from 'next/cache'
+
+export async function createPostAction(formData: FormData) {
+  const post = await createPost({
+    title: formData.get('title'),
+    body: formData.get('body'),
+  })
+  revalidatePath('/posts')
+  return { id: post.id }
+}
+
+export async function deletePostAction(postId: string) {
+  await deletePost(postId)
+  revalidatePath('/posts')
+}</code></pre>
+  </div>
+</div>
+
+<div class="local-seo-section">
+  <h2>4. Ownership Checks, Not Client-Supplied Rows</h2>
+  <p>Never accept a full resource from the client and write it back. Accept an ID plus the change, then re-read under the session ownership constraint.</p>
+
+  <div class="code-card">
+    <div class="code-card-header">Unsafe vs safe ownership</div>
+    <pre><code>// Unsafe — any caller can complete any item by ID
+export async function completeItemUnsafe(item: { id: string }) {
+  await prisma.item.update({
+    where: { id: item.id },
+    data: { completed: true },
+  })
+}
+
+// Safe — auth + ownership query before mutation
+export async function completeItem(itemId: string) {
+  const session = await auth()
+  if (!session?.user?.id) throw new Error('Unauthorized')
+
+  const item = await prisma.item.findFirst({
+    where: { id: itemId, ownerId: session.user.id },
+  })
+  if (!item) throw new Error('Forbidden')
+
+  await prisma.item.update({
+    where: { id: item.id },
+    data: { completed: true },
+  })
+}</code></pre>
+  </div>
+</div>
+
+<div class="linkbuilding-section">
+  <h2>5. Constrain Return Values</h2>
+  <p>Action returns are serialized to the client. Return DTOs with explicit <code>select</code>, never raw ORM records or sensitive columns.</p>
+
+  <div class="code-card">
+    <div class="code-card-header">Constrained DTO return</div>
+    <pre><code>// Prefer explicit select — never return passwordHash, tokens, etc.
+return prisma.user.findUnique({
+  where: { id: session.user.id },
+  select: {
+    id: true,
+    name: true,
+    email: true,
+  },
+})</code></pre>
+  </div>
+</div>
+
+<div class="analytics-section">
+  <h2>6. Revalidation After Mutation</h2>
+  <ul>
+    <li><code>updateTag</code> — immediate; action response waits for fresh data</li>
+    <li><code>revalidateTag</code> — stale-while-revalidate</li>
+    <li><code>revalidatePath</code> — by URL</li>
+    <li><code>refresh</code> — refetch current route RSC payload</li>
+  </ul>
+  <p>Call revalidation before <code>redirect</code>. Redirect throws; code after it does not run.</p>
+</div>
+
+<div class="conclusion-section">
+  <h2>7. Production Checklist</h2>
+  <ul>
+    <li>Validate input with a schema before business logic</li>
+    <li>Authenticate from session, never from client identity</li>
+    <li>Authorize ownership or role on the specific resource</li>
+    <li>Keep DB and auth in server-only modules; actions stay thin</li>
+    <li>Return DTOs only</li>
+    <li>Set serverActions.allowedOrigins behind proxies/CDNs</li>
+    <li>Do not parallelize Server Actions from the client with Promise.all</li>
+  </ul>
+
+  <h2>8. Common Mistakes</h2>
+  <ul>
+    <li>Assuming a form only rendered for logged-in users is enough</li>
+    <li>Accepting a full object from the client without ownership query</li>
+    <li>Importing Prisma into Client Components</li>
+    <li>Returning entire records or internal errors to the client</li>
+    <li>Skipping schema validation because the form constrains fields</li>
+  </ul>
+
+  <h2>Summary</h2>
+  <p>Server Actions are a convenient mutation surface, not a trust boundary. Production safety comes from validate, authenticate, authorize on every path, a server-only DAL, constrained return values, and deliberate revalidation.</p>
+
+  <div class="final-takeaway">
+    <h3>Key Takeaway</h3>
+    <p><em>Treat every Server Action as a public POST endpoint. Thin actions, a server-only DAL, and ownership-scoped queries are the production baseline.</em></p>
+  </div>
+
+  <hr />
+
+  <div class="cta-section">
+    <h3>Need a security pass on your Server Actions?</h3>
+    <p>I review Next.js App Router codebases for auth gaps, missing ownership checks, and unsafe return values. <a href="/contact" style="color: #39FF14;">Get in touch</a> for a focused audit.</p>
+  </div>
+</div>
+`
+
 export const date = '2026-07-30'
 export const readTime = '14 min read'
 export const category = 'Security'
 export const author = 'Mussawar Hayat'
-export const keywords = ['Server Actions', 'Next.js 16', 'authentication', 'authorization', 'Data Access Layer', 'Zod', 'security', 'App Router']
+export const keywords = [
+  'Server Actions',
+  'Next.js 16',
+  'authentication',
+  'authorization',
+  'Data Access Layer',
+  'Zod',
+  'security',
+  'App Router',
+]
