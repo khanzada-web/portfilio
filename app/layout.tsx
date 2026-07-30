@@ -151,9 +151,9 @@ export default function RootLayout({
           }}
         />
 
-        {/* Favicons */}
+        {/* Favicons — optimized assets only (no multi-MB PNG) */}
         <link rel="icon"             type="image/webp" href="/logo.webp" />
-        <link rel="icon"             type="image/png" href="/logo.png" />
+        <link rel="icon"             type="image/png"  href="/logo-optimized.png" />
         <link rel="shortcut icon"                     href="/logo.webp" />
         <link rel="apple-touch-icon"                  href="/logo.webp" />
         <link rel="manifest"                          href="/site.webmanifest" />
