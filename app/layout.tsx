@@ -133,24 +133,11 @@ export default function RootLayout({
           suppressHydrationWarning
         />
 
-        {/* Google Tag Manager (GTM) */}
+        {/* Google Tag Manager (GTM) — manages GA4 and all other tags via container */}
         <script
           suppressHydrationWarning
           dangerouslySetInnerHTML={{
             __html: `(function(w,d,s,l,i){w[l]=w[l]||[];w[l].push({'gtm.start':new Date().getTime(),event:'gtm.js'});var f=d.getElementsByTagName(s)[0],j=d.createElement(s),dl=l!='dataLayer'?'&l='+l:'';j.async=true;j.src='https://www.googletagmanager.com/gtm.js?id='+i+dl;f.parentNode.insertBefore(j,f);})(window,document,'script','dataLayer','GTM-KK3WH3FD');`,
-          }}
-        />
-
-        {/* Google Analytics (GA4) */}
-        <script
-          async
-          src="https://www.googletagmanager.com/gtag/js?id=G-BV823ZQ3HX"
-          suppressHydrationWarning
-        />
-        <script
-          suppressHydrationWarning
-          dangerouslySetInnerHTML={{
-            __html: `window.dataLayer = window.dataLayer || [];function gtag(){dataLayer.push(arguments);}gtag('js', new Date());gtag('config', 'G-BV823ZQ3HX');`,
           }}
         />
 
