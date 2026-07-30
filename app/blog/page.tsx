@@ -22,6 +22,7 @@ export const metadata: Metadata = {
     'hire Next.js developer',
     'Mussawar Hayat',
     'Prisma connection pooling',
+    'Server Actions security',
   ],
   openGraph: {
     title: 'Mussawar Hayat Blog | Web3 & Full-Stack Developer Insights',
@@ -54,6 +55,14 @@ const breadcrumbs = [
 ]
 
 const blogPosts = [
+  {
+    title: 'Secure Server Actions in Next.js 16',
+    excerpt: 'Every Server Action is a public POST endpoint. Learn the production pattern: validate inputs, authenticate from the session, authorize ownership, keep a thin action layer on a server-only Data Access Layer, and constrain return values.',
+    slug: 'secure-server-actions-nextjs-16-auth-validation-dal',
+    date: '2026-07-30',
+    readTime: '14 min read',
+    category: 'Security',
+  },
   {
     title: 'Fix Prisma Connection Exhaustion in Next.js 16',
     excerpt: 'Serverless Next.js apps hit "too many connections" under load because every function opens its own Prisma pool. Learn the production singleton pattern, Prisma Accelerate setup, and PgBouncer alternative that keep Postgres stable.',
