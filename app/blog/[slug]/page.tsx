@@ -72,6 +72,25 @@ const blogPosts: Record<string, BlogPost> = {
   'multi-chain-dex-interface-performance': toPost(dexPerformance),
 }
 
+/** Prefer same category, then fill with other posts by recency (date desc). */
+function getRelatedPosts(currentSlug: string, limit = 3): { slug: string; post: BlogPost }[] {
+  const entries = Object.entries(blogPosts)
+  const current = blogPosts[currentSlug]
+  if (!current) return []
+
+  const sameCategory = entries
+    .filter(([slug, post]) => slug !== currentSlug && post.category === current.category)
+    .sort((a, b) => b[1].date.localeCompare(a[1].date))
+
+  const others = entries
+    .filter(([slug, post]) => slug !== currentSlug && post.category !== current.category)
+    .sort((a, b) => b[1].date.localeCompare(a[1].date))
+
+  return [...sameCategory, ...others]
+    .slice(0, limit)
+    .map(([slug, post]) => ({ slug, post }))
+}
+
 export function generateStaticParams() {
   return Object.keys(blogPosts).map((slug) => ({ slug }))
 }
@@ -141,11 +160,14 @@ export default async function BlogPostPage({ params }: PageProps) {
   const { slug } = await params
   const post = blogPosts[slug]
   if (!post) notFound()
+
+  const related = getRelatedPosts(slug, 3)
   const breadcrumbs = [
     { name: 'Home', url: '/' },
     { name: 'Blog', url: '/blog' },
     { name: post.title, url: `/blog/${slug}` },
   ]
+
   return (
     <>
       <BreadcrumbSchema items={breadcrumbs} />
@@ -175,6 +197,44 @@ export default async function BlogPostPage({ params }: PageProps) {
                 className="prose prose-xl max-w-none prose-invert prose-headings:font-orbitron prose-h2:text-[#39FF14] prose-p:text-white/80 prose-a:text-[#39FF14] prose-code:text-[#39FF14]"
                 dangerouslySetInnerHTML={{ __html: post.content }}
               />
+
+              {related.length > 0 && (
+                <nav aria-label="Related articles" className="mt-24">
+                  <h2 className="text-2xl font-bold text-white font-orbitron mb-8 tracking-tight">
+                    Related <span className="text-[#39FF14]">Articles</span>
+                  </h2>
+                  <div className="grid grid-cols-1 md:grid-cols-3 gap-6">
+                    {related.map(({ slug: relatedSlug, post: relatedPost }) => (
+                      <article
+                        key={relatedSlug}
+                        className="group bg-[#0A1221] border border-[#39FF14]/20 p-6 hover:border-[#39FF14] transition-all duration-300 flex flex-col"
+                      >
+                        <span className="text-xs font-medium text-[#39FF14] bg-[#39FF14]/10 px-2 py-1 rounded-md w-fit mb-3">
+                          {relatedPost.category}
+                        </span>
+                        <h3 className="text-lg font-semibold text-white font-orbitron mb-2 line-clamp-2">
+                          <Link
+                            href={`/blog/${relatedSlug}`}
+                            className="hover:text-[#39FF14] transition-colors"
+                          >
+                            {relatedPost.title}
+                          </Link>
+                        </h3>
+                        <p className="text-sm text-white/60 mb-4 line-clamp-2 flex-1">
+                          {relatedPost.excerpt}
+                        </p>
+                        <Link
+                          href={`/blog/${relatedSlug}`}
+                          className="text-sm text-white/70 hover:text-[#39FF14] transition-colors font-orbitron uppercase tracking-wider mt-auto"
+                        >
+                          Read more →
+                        </Link>
+                      </article>
+                    ))}
+                  </div>
+                </nav>
+              )}
+
               <div className="mt-24 p-8 md:p-12 bg-[#0A1221] border border-[#39FF14]/20 text-center">
                 <h3 className="text-2xl font-bold text-white font-orbitron mb-4">Ready to start your project?</h3>
                 <p className="text-white/80 mb-8 max-w-2xl mx-auto">Let us discuss how we can transform your digital presence with cutting-edge solutions.</p>

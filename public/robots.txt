@@ -1,8 +1,48 @@
 User-agent: *
 Allow: /
 
-# Sitemap
-Sitemap: https://mussawarhayat.site/sitemap.xml
+# AI / answer-engine crawlers (AISO / GEO)
+User-agent: GPTBot
+Allow: /
+
+User-agent: ChatGPT-User
+Allow: /
+
+User-agent: ClaudeBot
+Allow: /
+
+User-agent: Claude-Web
+Allow: /
+
+User-agent: Anthropic-AI
+Allow: /
+
+User-agent: Google-Extended
+Allow: /
+
+User-agent: Googlebot
+Allow: /
+
+User-agent: Bingbot
+Allow: /
+
+User-agent: Applebot
+Allow: /
+
+User-agent: Applebot-Extended
+Allow: /
+
+User-agent: PerplexityBot
+Allow: /
+
+User-agent: Bytespider
+Allow: /
+
+User-agent: CCBot
+Allow: /
 
 # Non-content paths
 Disallow: /api/
+
+# Sitemap
+Sitemap: https://mussawarhayat.site/sitemap.xml
