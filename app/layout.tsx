@@ -104,11 +104,6 @@ const ENTITY_GRAPH = {
         "Mussawar Hayat is a full-stack developer specializing in Next.js, React, and Web3, based in Pakistan, available for remote freelance work with clients in North America and Europe.",
       publisher: { "@id": "https://mussawarhayat.site/#person" },
       inLanguage: "en",
-      potentialAction: {
-        "@type": "SearchAction",
-        target: "https://mussawarhayat.site/blog?q={search_term_string}",
-        "query-input": "required name=search_term_string",
-      },
     },
     {
       "@type": "Person",
