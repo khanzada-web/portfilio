@@ -4,9 +4,9 @@ import Link from 'next/link';
 import { AnimatedCounter } from '../ui/AnimatedCounter';
 
 const STATS = [
-  { label: 'Years Experience', value: 3,   suffix: '+' },
+  { label: 'Years Experience', value: 3, suffix: '+' },
   { label: 'Apps & Sites Built', value: 100, suffix: '+' },
-  { label: 'Client Success',    value: 100, suffix: '%' },
+  { label: 'Client Success', value: 100, suffix: '%' },
 ] as const;
 
 export function Hero() {
@@ -22,7 +22,6 @@ export function Hero() {
 
       <div className="container mx-auto px-6 max-w-5xl relative z-10">
         <div className="text-center space-y-12">
-
           <div className="flex justify-center">
             <div className="inline-flex items-center gap-3 px-4 py-2 border border-[#39FF14]/30 bg-[#39FF14]/5 rounded-full overflow-hidden">
               <span className="relative flex h-2 w-2" aria-hidden="true">
@@ -36,16 +35,15 @@ export function Hero() {
           </div>
 
           <header className="space-y-6">
-            <h1 className="text-5xl md:text-7xl lg:text-8xl font-bold tracking-tight">
-              <span className="block opacity-90">Mussawar Hayat</span>
-              <span className="block mt-4 text-white drop-shadow-[0_0_15px_rgba(57,255,20,0.3)]">
-                Full-Stack Developer
-              </span>
+            <h1 className="text-4xl sm:text-5xl md:text-6xl lg:text-7xl font-bold tracking-tight text-white leading-tight">
+              Mussawar Hayat — Full-Stack & Web3 Developer
             </h1>
 
-            <p className="text-lg md:text-xl text-[#39FF14]/80 max-w-3xl mx-auto leading-relaxed tracking-wider">
-              Hire a full-stack developer who ships production React, Next.js, Node.js & TypeScript apps —
-              plus Solidity smart contracts and Web3 integration when your project needs blockchain.
+            <p className="text-lg md:text-xl text-[#39FF14]/90 max-w-3xl mx-auto leading-relaxed tracking-wide font-sans">
+              Mussawar Hayat is a full-stack developer specializing in Next.js, React, and Web3,
+              based in Pakistan, available for remote freelance work with clients in North America
+              and Europe. Production React, Next.js, Node.js & TypeScript apps — plus Solidity smart
+              contracts when your project needs blockchain.
             </p>
           </header>
 
@@ -56,9 +54,7 @@ export function Hero() {
                   <AnimatedCounter from={0} to={stat.value} duration={1.5} />
                   <span>{stat.suffix}</span>
                 </div>
-                <div className="text-[10px] uppercase tracking-[0.3em] opacity-60">
-                  {stat.label}
-                </div>
+                <div className="text-[10px] uppercase tracking-[0.3em] opacity-60">{stat.label}</div>
               </div>
             ))}
           </div>
@@ -77,7 +73,7 @@ export function Hero() {
             </Link>
 
             <Link
-              href="#portfolio"
+              href="/portfolio"
               className="px-10 py-5 border-2 border-[#39FF14] hover:bg-[#39FF14]/10 rounded-sm font-bold transition-colors tracking-widest"
             >
               VIEW PROJECTS
@@ -90,7 +86,6 @@ export function Hero() {
               READ BLOG
             </Link>
           </div>
-
         </div>
       </div>
 
