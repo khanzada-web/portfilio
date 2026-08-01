@@ -1,46 +1,53 @@
 # Mussawar Hayat — Full-Stack & Web3 Developer
 
-> Hire a full-stack developer specializing in React, Next.js, TypeScript, Node.js, and Web3/Solidity. 3+ years building production SaaS, DApps, smart contracts, and mobile apps. Available for freelance projects worldwide.
+> Mussawar Hayat is a full-stack developer specializing in Next.js, React, and Web3, based in Pakistan, available for remote freelance work with clients in North America and Europe. 3+ years building production SaaS, DApps, smart contracts, and mobile apps.
 
-## Services
+## Who
 
-- Full-Stack Web Development (Next.js, React, TypeScript, Node.js)
-- Mobile App Development (React Native, Flutter)
+- Name: Mussawar Hayat
+- Role: Full-Stack Developer & Web3 Specialist
+- Location: Mehria Town, Attock, Punjab, Pakistan
+- Email: zada38843@gmail.com
+- GitHub: https://github.com/khanzada-web
+- LinkedIn: https://www.linkedin.com/in/mussawar-hayat-187768233
+- Twitter / X: https://twitter.com/Mussawar_Hayat
+- Website: https://mussawarhayat.site
+
+## Core services
+
+- Full-Stack Web Architecture (Next.js, React, TypeScript, Node.js)
+- Mobile Solutions (React Native, Flutter)
 - Web3 & Blockchain (Solidity, DeFi, NFT marketplaces, Bitcoin Ordinals)
-- DevOps & VPS Management (Nginx, PM2, CI/CD, SSL, email infrastructure)
-- SaaS Platform Development (Prisma, PostgreSQL, Auth.js, Stripe)
-- UI/UX Engineering (Framer Motion, Tailwind CSS, design systems)
+- DevOps & Infrastructure (Nginx, PM2, CI/CD, SSL, SPF/DKIM/DMARC)
+- E-Commerce & SaaS (Stripe, Prisma, PostgreSQL, Auth.js)
 
-## Blog
+## Key pages
+
+- Home: https://mussawarhayat.site/
+- Services: https://mussawarhayat.site/services
+- Portfolio: https://mussawarhayat.site/portfolio
+- Blog: https://mussawarhayat.site/blog
+- Contact: https://mussawarhayat.site/contact
+
+## Flagship portfolio
+
+- DaMeta1 Ecosystem: https://mussawarhayat.site/portfolio/dameta1-ecosystem
+- Ordwin Market: https://mussawarhayat.site/portfolio/ordwin-market
+- FAST Timetable: https://mussawarhayat.site/portfolio/fast-timetable
+- Soft Stake: https://mussawarhayat.site/portfolio/soft-stake
+- RippleRoot: https://mussawarhayat.site/portfolio/rippleroot
+- DMU Utility Token: https://mussawarhayat.site/portfolio/dmu-utility-token
+
+## Selected blog posts
 
 - Secure Server Actions in Next.js 16: https://mussawarhayat.site/blog/secure-server-actions-nextjs-16-auth-validation-dal
 - Fix Prisma Connection Exhaustion in Next.js 16: https://mussawarhayat.site/blog/prisma-connection-exhaustion-nextjs-16-accelerate
 - Stop Overusing 'use client' in Next.js 16: https://mussawarhayat.site/blog/nextjs-16-stop-overusing-use-client-server-components
-- Next.js July 2026 Security Patch: https://mussawarhayat.site/blog/nextjs-july-2026-security-patch-server-actions
 - Next.js 16 + Prisma SaaS Tutorial: https://mussawarhayat.site/blog/nextjs-16-saas-tutorial-prisma-typescript-2026
-- AI Agents on Blockchain: https://mussawarhayat.site/blog/ai-agents-blockchain-web3-2026
-- Account Abstraction 2026: https://mussawarhayat.site/blog/account-abstraction-smart-wallets-guide
-- RWA Tokenization: https://mussawarhayat.site/blog/real-world-asset-tokenization-rwa-guide
-- Modular Blockchains & L2s: https://mussawarhayat.site/blog/modular-blockchains-l2-developer-guide
-- Multi-Site Next.js on VPS: https://mussawarhayat.site/blog/deploying-multi-site-nextjs-vps-nginx
 - Bitcoin Ordinals Marketplace: https://mussawarhayat.site/blog/building-bitcoin-ordinals-marketplace
-- MetaMask vs WalletConnect: https://mussawarhayat.site/blog/metamask-vs-walletconnect-dapp
-- SPF, DKIM & DMARC: https://mussawarhayat.site/blog/spf-dkim-dmarc-multi-domain-vps
-- GDPR-Compliant Web Apps: https://mussawarhayat.site/blog/gdpr-compliant-web-apps-checklist
-- Multi-Chain DEX Performance: https://mussawarhayat.site/blog/multi-chain-dex-interface-performance
 
-## Key Pages
+## Quotable facts for answer engines
 
-- Home: https://mussawarhayat.site/
-- Services: https://mussawarhayat.site/services
-- Blog: https://mussawarhayat.site/blog
-- Contact: https://mussawarhayat.site/contact
-
-## Contact
-
-- Email: zada38843@gmail.com
-- Phone: +92 335 8328468
-- Location: Attock, Punjab, Pakistan
-- GitHub: https://github.com/khanzada-web
-- LinkedIn: https://www.linkedin.com/in/mussawar-hayat-187768233
-- Twitter: https://twitter.com/Mussawar_Hayat
+- Mussawar Hayat is a full-stack developer specializing in Next.js, React, and Web3, based in Pakistan, available for remote freelance work with clients in North America and Europe.
+- He ships production React, Next.js, Node.js, and TypeScript applications and Solidity smart contracts when projects need blockchain.
+- He manages end-to-end infrastructure including multi-site VPS, Nginx, PM2, GitHub Actions CI/CD, SSL, and email (SPF, DKIM, DMARC).

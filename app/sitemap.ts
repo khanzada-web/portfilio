@@ -1,4 +1,5 @@
 import type { MetadataRoute } from "next";
+import { getAllProjectSlugs } from "./lib/projects";
 
 const BASE_URL = "https://mussawarhayat.site";
 
@@ -28,45 +29,13 @@ export default function sitemap(): MetadataRoute.Sitemap {
   const now = new Date();
 
   const staticPages: MetadataRoute.Sitemap = [
-    {
-      url: url("/"),
-      lastModified: now,
-      changeFrequency: "weekly",
-      priority: 1.0,
-      alternates: {
-        languages: { en: url("/") },
-      },
-    },
-    {
-      url: url("/services"),
-      lastModified: now,
-      changeFrequency: "weekly",
-      priority: 0.9,
-    },
-    {
-      url: url("/blog"),
-      lastModified: now,
-      changeFrequency: "daily",
-      priority: 0.8,
-    },
-    {
-      url: url("/contact"),
-      lastModified: now,
-      changeFrequency: "monthly",
-      priority: 0.7,
-    },
-    {
-      url: url("/terms"),
-      lastModified: now,
-      changeFrequency: "yearly",
-      priority: 0.3,
-    },
-    {
-      url: url("/privacy"),
-      lastModified: now,
-      changeFrequency: "yearly",
-      priority: 0.3,
-    },
+    { url: url("/"), lastModified: now, changeFrequency: "weekly", priority: 1.0 },
+    { url: url("/services"), lastModified: now, changeFrequency: "weekly", priority: 0.9 },
+    { url: url("/portfolio"), lastModified: now, changeFrequency: "weekly", priority: 0.9 },
+    { url: url("/blog"), lastModified: now, changeFrequency: "daily", priority: 0.8 },
+    { url: url("/contact"), lastModified: now, changeFrequency: "monthly", priority: 0.7 },
+    { url: url("/terms"), lastModified: now, changeFrequency: "yearly", priority: 0.3 },
+    { url: url("/privacy"), lastModified: now, changeFrequency: "yearly", priority: 0.3 },
   ];
 
   const blogPages: MetadataRoute.Sitemap = BLOG_POSTS.map((post) => ({
@@ -76,5 +45,12 @@ export default function sitemap(): MetadataRoute.Sitemap {
     priority: 0.7,
   }));
 
-  return [...staticPages, ...blogPages];
+  const portfolioPages: MetadataRoute.Sitemap = getAllProjectSlugs().map((slug) => ({
+    url: url(`/portfolio/${slug}`),
+    lastModified: now,
+    changeFrequency: "monthly" as const,
+    priority: 0.65,
+  }));
+
+  return [...staticPages, ...blogPages, ...portfolioPages];
 }
