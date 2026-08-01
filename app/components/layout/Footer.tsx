@@ -5,35 +5,36 @@ import Image from 'next/image';
 import { motion } from 'framer-motion';
 import { FiMail, FiPhone, FiMapPin, FiArrowUp, FiGithub, FiTwitter, FiLinkedin } from 'react-icons/fi';
 
-// ─── Data ─────────────────────────────────────────────────────────────────────
-
 const QUICK_LINKS_COL_1 = [
-  { label: 'Home',         href: '/#home'        },
-  { label: 'About',        href: '/#about'       },
-  { label: 'Process',      href: '/#process'     },
-  { label: 'Testimonials', href: '/#testimonials'},
+  { label: 'Home', href: '/' },
+  { label: 'About', href: '/#about' },
+  { label: 'Process', href: '/#process' },
+  { label: 'Testimonials', href: '/#testimonials' },
 ];
 
 const QUICK_LINKS_COL_2 = [
-  { label: 'Portfolio', href: '/#portfolio'                              },
-  { label: 'Services',  href: '/services'                               },
-  { label: 'Blog',      href: '/blog'                                   },
-  { label: 'Contact',   href: '/#contact'                               },
+  { label: 'Portfolio', href: '/portfolio' },
+  { label: 'Services', href: '/services' },
+  { label: 'Blog', href: '/blog' },
+  { label: 'Contact', href: '/contact' },
+  { label: 'FAQ', href: '/#faq' },
 ];
 
 const SOCIAL_LINKS = [
-  { icon: <FiTwitter />,  href: 'https://twitter.com/Mussawar_Hayat',                    label: 'Twitter'  },
-  { icon: <FiLinkedin />, href: 'https://www.linkedin.com/in/mussawar-hayat-187768233',  label: 'LinkedIn' },
-  { icon: <FiGithub />,   href: 'https://github.com/khanzada-web',                       label: 'GitHub'   },
+  { icon: <FiTwitter />, href: 'https://twitter.com/Mussawar_Hayat', label: 'Twitter' },
+  {
+    icon: <FiLinkedin />,
+    href: 'https://www.linkedin.com/in/mussawar-hayat-187768233',
+    label: 'LinkedIn',
+  },
+  { icon: <FiGithub />, href: 'https://github.com/khanzada-web', label: 'GitHub' },
 ] as const;
 
 const CONTACT_INFO = [
-  { icon: FiMail,   value: 'zada38843@gmail.com', href: 'mailto:zada38843@gmail.com' },
-  { icon: FiPhone,  value: '+92 335 8328468',      href: 'tel:+923358328468'          },
-  { icon: FiMapPin, value: 'Mehria Town, Attock, PK', href: null                     },
+  { icon: FiMail, value: 'zada38843@gmail.com', href: 'mailto:zada38843@gmail.com' },
+  { icon: FiPhone, value: '+92 335 8328468', href: 'tel:+923358328468' },
+  { icon: FiMapPin, value: 'Mehria Town, Attock, PK', href: null },
 ] as const;
-
-// ─── Component ────────────────────────────────────────────────────────────────
 
 export function Footer() {
   const currentYear = new Date().getFullYear();
@@ -42,8 +43,6 @@ export function Footer() {
     <footer className="bg-[#060B16] text-white/60 py-16 relative overflow-hidden border-t border-[#39FF14]/10">
       <div className="w-full px-4 sm:px-8 relative z-10">
         <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-12 sm:gap-16">
-
-          {/* ── Brand & Contact ── */}
           <motion.div
             initial={{ opacity: 0, y: 20 }}
             whileInView={{ opacity: 1, y: 0 }}
@@ -54,19 +53,19 @@ export function Footer() {
             <Link href="/" aria-label="Mussawar Hayat — go to homepage" className="flex items-center mb-6">
               <Image
                 src="/logo.webp"
-                alt="Mussawar Hayat logo"
+                alt="Mussawar Hayat logo — full-stack and Web3 developer"
                 width={200}
                 height={80}
                 className="h-10 sm:h-12 w-auto brightness-0 invert mr-4"
               />
-              <h2 className="text-xl sm:text-2xl font-bold text-white font-orbitron tracking-tighter">
+              <span className="text-xl sm:text-2xl font-bold text-white font-orbitron tracking-tighter">
                 Mussawar Hayat
-              </h2>
+              </span>
             </Link>
 
-            <p className="text-white/50 mb-8 leading-relaxed font-orbitron text-xs sm:text-sm max-w-md">
-              Full-stack developer building web & mobile applications with React, Next.js, Node.js & TypeScript —
-              with Web3/blockchain integration expertise. 3+ years experience, available for freelance work worldwide.
+            <p className="text-white/50 mb-8 leading-relaxed font-sans text-sm max-w-md">
+              Mussawar Hayat is a full-stack developer specializing in Next.js, React, and Web3, based
+              in Pakistan, available for remote freelance work with clients in North America and Europe.
             </p>
 
             <address className="not-italic space-y-4">
@@ -90,17 +89,16 @@ export function Footer() {
             </address>
           </motion.div>
 
-          {/* ── Quick Links ── */}
           <motion.div
             initial={{ opacity: 0, y: 20 }}
             whileInView={{ opacity: 1, y: 0 }}
             transition={{ duration: 0.6, delay: 0.1 }}
             viewport={{ once: true }}
           >
-            <h3 className="text-white text-sm font-bold mb-8 font-orbitron uppercase tracking-[0.2em] flex items-center">
+            <h2 className="text-white text-sm font-bold mb-8 font-orbitron uppercase tracking-[0.2em] flex items-center">
               <span className="w-2 h-2 bg-[#39FF14] rounded-full mr-3 shadow-[0_0_8px_#39FF14]" aria-hidden="true" />
               Quick Links
-            </h3>
+            </h2>
 
             <div className="grid grid-cols-2 gap-4">
               <ul className="space-y-4">
@@ -130,16 +128,15 @@ export function Footer() {
             </div>
           </motion.div>
 
-          {/* ── Connect ── */}
           <motion.div
             initial={{ opacity: 0, y: 20 }}
             whileInView={{ opacity: 1, y: 0 }}
             transition={{ duration: 0.6, delay: 0.2 }}
             viewport={{ once: true }}
           >
-            <h3 className="text-white text-sm font-bold mb-8 font-orbitron uppercase tracking-[0.2em]">
+            <h2 className="text-white text-sm font-bold mb-8 font-orbitron uppercase tracking-[0.2em]">
               Connect With Me
-            </h3>
+            </h2>
 
             <div className="flex space-x-4 mb-8">
               {SOCIAL_LINKS.map(({ icon, href, label }) => (
@@ -148,7 +145,7 @@ export function Footer() {
                   href={href}
                   target="_blank"
                   rel="noopener noreferrer"
-                  aria-label={`${label} profile`}
+                  aria-label={`${label} profile of Mussawar Hayat`}
                   className="w-12 h-12 bg-white/5 border border-white/10 rounded-lg flex items-center justify-center text-white hover:border-[#39FF14] hover:text-[#39FF14] transition-all duration-300 shadow-xl"
                   whileHover={{ y: -5, backgroundColor: 'rgba(57,255,20,0.05)' }}
                 >
@@ -157,18 +154,16 @@ export function Footer() {
               ))}
             </div>
 
-            <blockquote className="text-white/40 text-xs font-orbitron leading-relaxed italic border-l-2 border-[#39FF14]/30 pl-4">
-              "Building the future of the decentralised web, one block at a time."
-            </blockquote>
+            <p className="text-white/40 text-xs font-sans leading-relaxed border-l-2 border-[#39FF14]/30 pl-4">
+              Building production web, mobile, and Web3 applications for startups and teams worldwide.
+            </p>
           </motion.div>
         </div>
 
-        {/* ── Bottom bar ── */}
         <div className="border-t border-white/5 mt-16 pt-8">
           <div className="flex flex-col lg:flex-row justify-between items-center gap-6">
             <p className="text-white/30 text-[10px] uppercase tracking-widest font-orbitron">
-              © {currentYear}{' '}
-              <span className="text-white/60">Mussawar Hayat</span>. All rights reserved.
+              © {currentYear} <span className="text-white/60">Mussawar Hayat</span>. All rights reserved.
             </p>
 
             <nav aria-label="Legal links" className="flex space-x-8">
@@ -176,20 +171,19 @@ export function Footer() {
                 href="/terms"
                 className="text-white/30 hover:text-[#39FF14] text-[10px] uppercase tracking-widest transition-colors font-orbitron"
               >
-                Terms
+                Terms of Service
               </Link>
               <Link
                 href="/privacy"
                 className="text-white/30 hover:text-[#39FF14] text-[10px] uppercase tracking-widest transition-colors font-orbitron"
               >
-                Privacy
+                Privacy Policy
               </Link>
             </nav>
           </div>
         </div>
       </div>
 
-      {/* ── Scroll to top ── */}
       <Link
         href="/#home"
         aria-label="Scroll back to top"

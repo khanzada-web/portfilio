@@ -13,6 +13,7 @@ import { Process } from "./components/sections/Process";
 import Portfolio from "./components/sections/Portfolio";
 import { PerformanceLab } from "./components/sections/PerformanceLab";
 import { Testimonials } from "./components/sections/Testimonials";
+import { FAQ } from "./components/sections/FAQ";
 import { Contact } from "./components/sections/Contact";
 
 import { FAQSchema } from "./components/seo/FAQSchema";
@@ -100,6 +101,7 @@ export default function Home() {
           <Portfolio />
           <PerformanceLab />
           <Testimonials />
+          <FAQ items={FAQ_ITEMS} />
           <Contact />
         </main>
 
