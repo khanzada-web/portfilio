@@ -72,7 +72,6 @@ const blogPosts: Record<string, BlogPost> = {
   'multi-chain-dex-interface-performance': toPost(dexPerformance),
 }
 
-/** Prefer same category, then fill with other posts by recency (date desc). */
 function getRelatedPosts(currentSlug: string, limit = 3): { slug: string; post: BlogPost }[] {
   const entries = Object.entries(blogPosts)
   const current = blogPosts[currentSlug]
@@ -107,8 +106,7 @@ export async function generateMetadata({ params }: PageProps): Promise<Metadata>
   return {
     title: post.title,
     description: post.excerpt,
-    keywords: post.keywords.join(', '),
-    authors: [{ name: post.author }],
+    authors: [{ name: post.author, url: 'https://mussawarhayat.site' }],
     alternates: { canonical: pageUrl },
     robots: { index: true, follow: true, 'max-image-preview': 'large', 'max-snippet': -1 },
     openGraph: {
@@ -140,7 +138,7 @@ function BlogPostingSchema({ post, slug }: { post: BlogPost; slug: string }) {
     image: 'https://mussawarhayat.site/my-pic.jpeg',
     datePublished: post.date,
     dateModified: post.date,
-    author: { '@type': 'Person', name: post.author, url: 'https://mussawarhayat.site' },
+    author: { '@id': 'https://mussawarhayat.site/#person' },
     publisher: {
       '@type': 'Organization',
       name: 'Mussawar Hayat',
