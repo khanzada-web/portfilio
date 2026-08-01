@@ -5,29 +5,22 @@ import Image from 'next/image';
 import { useState, useEffect, useCallback } from 'react';
 import { usePathname } from 'next/navigation';
 
-// ─── Data ─────────────────────────────────────────────────────────────────────
-
 interface NavItem {
   label: string;
-  href:  string;
+  href: string;
 }
 
 const NAV_ITEMS: NavItem[] = [
-  { label: 'Home',         href: '/#home'        },
-  { label: 'About',        href: '/#about'       },
-  { label: 'Services',     href: '/services'     },
-  { label: 'Portfolio',    href: '/#portfolio'   },
-  { label: 'Process',      href: '/#process'     },
-  { label: 'Testimonials', href: '/#testimonials'},
-  { label: 'Blog',         href: '/blog'         },
+  { label: 'Home', href: '/' },
+  { label: 'About', href: '/#about' },
+  { label: 'Services', href: '/services' },
+  { label: 'Portfolio', href: '/portfolio' },
+  { label: 'Process', href: '/#process' },
+  { label: 'Testimonials', href: '/#testimonials' },
+  { label: 'Blog', href: '/blog' },
 ];
 
-const CONTACT_HREF = '/#contact';
-
-// ─── Active link helper ───────────────────────────────────────────────────────
-// Hash links (/#about, /#portfolio etc.) ALL start with "/#"
-// Hash links → NEVER active (pathname alone cannot know which section is in view)
-// Real page routes (/services, /blog) → active when pathname matches
+const CONTACT_HREF = '/contact';
 
 const isActive = (href: string, pathname: string): boolean => {
   if (href.includes('#')) return false;
@@ -35,11 +28,9 @@ const isActive = (href: string, pathname: string): boolean => {
   return pathname === href || pathname.startsWith(href + '/');
 };
 
-// ─── Component ────────────────────────────────────────────────────────────────
-
 export function Header() {
   const [isMenuOpen, setIsMenuOpen] = useState(false);
-  const [scrolled,   setScrolled]   = useState(false);
+  const [scrolled, setScrolled] = useState(false);
   const pathname = usePathname();
 
   useEffect(() => {
@@ -54,7 +45,9 @@ export function Header() {
 
   useEffect(() => {
     document.body.style.overflow = isMenuOpen ? 'hidden' : '';
-    return () => { document.body.style.overflow = ''; };
+    return () => {
+      document.body.style.overflow = '';
+    };
   }, [isMenuOpen]);
 
   const closeMenu = useCallback(() => setIsMenuOpen(false), []);
@@ -69,8 +62,6 @@ export function Header() {
     >
       <div className="w-full px-4 sm:px-8">
         <div className="flex items-center justify-between">
-
-          {/* ── Logo ── */}
           <Link
             href="/"
             className="flex items-center group font-orbitron font-bold transition-all duration-300"
@@ -78,7 +69,7 @@ export function Header() {
           >
             <Image
               src="/logo.webp"
-              alt="Mussawar Hayat logo"
+              alt="Mussawar Hayat logo — full-stack and Web3 developer"
               width={200}
               height={75}
               className="h-12 sm:h-14 w-auto brightness-0 invert transition-all duration-300 group-hover:drop-shadow-[0_0_8px_rgba(57,255,20,0.5)]"
@@ -89,7 +80,6 @@ export function Header() {
             </span>
           </Link>
 
-          {/* ── Desktop Navigation ── */}
           <nav aria-label="Main navigation" className="hidden lg:flex items-center space-x-7">
             {NAV_ITEMS.map(({ label, href }) => {
               const active = isActive(href, pathname);
@@ -121,7 +111,6 @@ export function Header() {
             </Link>
           </nav>
 
-          {/* ── Mobile Toggle ── */}
           <button
             className="lg:hidden text-[#39FF14] p-2"
             onClick={() => setIsMenuOpen((prev) => !prev)}
@@ -130,14 +119,25 @@ export function Header() {
             aria-label={isMenuOpen ? 'Close navigation menu' : 'Open navigation menu'}
           >
             <div className="w-6 h-6 flex flex-col justify-between items-end" aria-hidden="true">
-              <span className={`h-[2px] bg-current transition-all duration-300 ${isMenuOpen ? 'w-6 rotate-45 translate-y-2.5' : 'w-6'}`} />
-              <span className={`h-[2px] bg-current transition-all duration-300 ${isMenuOpen ? 'opacity-0 w-6' : 'w-4'}`} />
-              <span className={`h-[2px] bg-current transition-all duration-300 ${isMenuOpen ? 'w-6 -rotate-45 -translate-y-2.5' : 'w-5'}`} />
+              <span
+                className={`h-[2px] bg-current transition-all duration-300 ${
+                  isMenuOpen ? 'w-6 rotate-45 translate-y-2.5' : 'w-6'
+                }`}
+              />
+              <span
+                className={`h-[2px] bg-current transition-all duration-300 ${
+                  isMenuOpen ? 'opacity-0 w-6' : 'w-4'
+                }`}
+              />
+              <span
+                className={`h-[2px] bg-current transition-all duration-300 ${
+                  isMenuOpen ? 'w-6 -rotate-45 -translate-y-2.5' : 'w-5'
+                }`}
+              />
             </div>
           </button>
         </div>
 
-        {/* ── Mobile Menu ── */}
         <div
           id="mobile-menu"
           role="dialog"
