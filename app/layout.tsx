@@ -14,15 +14,12 @@ const geistMono = Geist_Mono({
   display: "swap",
 });
 
-// Only load weights you actually use — each extra weight = extra network request
 const orbitron = Orbitron({
   variable: "--font-orbitron",
   subsets: ["latin"],
   weight: ["700", "900"],
   display: "swap",
 });
-
-// ─── Metadata ─────────────────────────────────────────────────────────────────
 
 export const metadata: Metadata = {
   title: {
@@ -31,24 +28,7 @@ export const metadata: Metadata = {
   },
 
   description:
-    "Hire Mussawar Hayat — full-stack developer with 3+ years building web & mobile apps. " +
-    "React, Next.js, Node.js, TypeScript, and Web3/Solidity.",
-
-  keywords: [
-    "hire full-stack developer",
-    "hire Next.js developer",
-    "freelance React developer",
-    "Web3 developer for hire",
-    "Solidity developer for hire",
-    "blockchain developer freelance",
-    "Next.js freelancer",
-    "TypeScript full-stack developer",
-    "React Native developer",
-    "DevOps engineer for hire",
-    "SaaS developer",
-    "Mussawar Hayat",
-    "full-stack developer Pakistan",
-  ],
+    "Mussawar Hayat is a full-stack developer specializing in Next.js, React, and Web3, based in Pakistan, available for remote freelance work with clients in North America and Europe. 3+ years building production SaaS, DApps, and mobile apps.",
 
   authors: [{ name: "Mussawar Hayat", url: "https://mussawarhayat.site" }],
   creator: "Mussawar Hayat",
@@ -77,25 +57,20 @@ export const metadata: Metadata = {
     telephone: false,
   },
 
-  verification: {
-    // Note: Replace with actual Google Search Console verification token when available
-    // google: 'your-google-site-verification-token',
-  },
-
   openGraph: {
     type: "website",
     locale: "en_US",
     url: "https://mussawarhayat.site",
     title: "Hire Mussawar Hayat | Full-Stack & Web3 Developer",
     description:
-      "Full-stack developer in React, Next.js, TypeScript, Node.js & Web3. 3+ years experience. Available for freelance projects worldwide.",
+      "Mussawar Hayat is a full-stack developer specializing in Next.js, React, TypeScript, Node.js and Web3. Available for remote freelance projects worldwide.",
     siteName: "Mussawar Hayat — Full-Stack Developer Portfolio",
     images: [
       {
         url: "/my-pic.jpeg",
         width: 1200,
         height: 630,
-        alt: "Mussawar Hayat — Full-Stack & Web3 Developer",
+        alt: "Mussawar Hayat — Full-Stack & Web3 Developer portrait",
       },
     ],
   },
@@ -113,11 +88,165 @@ export const metadata: Metadata = {
 export const viewport: Viewport = {
   themeColor: [
     { media: "(prefers-color-scheme: light)", color: "#39FF14" },
-    { media: "(prefers-color-scheme: dark)",  color: "#060B16" },
+    { media: "(prefers-color-scheme: dark)", color: "#060B16" },
   ],
 };
 
-// ─── Root Layout ──────────────────────────────────────────────────────────────
+const ENTITY_GRAPH = {
+  "@context": "https://schema.org",
+  "@graph": [
+    {
+      "@type": "WebSite",
+      "@id": "https://mussawarhayat.site/#website",
+      url: "https://mussawarhayat.site",
+      name: "Mussawar Hayat | Full-Stack & Web3 Developer",
+      description:
+        "Mussawar Hayat is a full-stack developer specializing in Next.js, React, and Web3, based in Pakistan, available for remote freelance work with clients in North America and Europe.",
+      publisher: { "@id": "https://mussawarhayat.site/#person" },
+      inLanguage: "en",
+      potentialAction: {
+        "@type": "SearchAction",
+        target: "https://mussawarhayat.site/blog?q={search_term_string}",
+        "query-input": "required name=search_term_string",
+      },
+    },
+    {
+      "@type": "Person",
+      "@id": "https://mussawarhayat.site/#person",
+      name: "Mussawar Hayat",
+      jobTitle: "Full-Stack Developer & Web3 Specialist",
+      url: "https://mussawarhayat.site",
+      image: "https://mussawarhayat.site/my-pic.jpeg",
+      email: "zada38843@gmail.com",
+      telephone: "+923358328468",
+      description:
+        "Mussawar Hayat is a full-stack developer specializing in Next.js, React, and Web3, based in Pakistan, available for remote freelance work with clients in North America and Europe. 3+ years building production SaaS, DApps, smart contracts, and mobile apps.",
+      address: {
+        "@type": "PostalAddress",
+        streetAddress: "Mehria Town",
+        addressLocality: "Attock",
+        addressRegion: "Punjab",
+        addressCountry: "PK",
+      },
+      sameAs: [
+        "https://github.com/khanzada-web",
+        "https://www.linkedin.com/in/mussawar-hayat-187768233",
+        "https://twitter.com/Mussawar_Hayat",
+        "https://x.com/Mussawar_Hayat",
+      ],
+      knowsAbout: [
+        "Next.js",
+        "React",
+        "TypeScript",
+        "Node.js",
+        "Prisma",
+        "PostgreSQL",
+        "Solidity",
+        "Web3",
+        "Ethers.js",
+        "Bitcoin Ordinals",
+        "React Native",
+        "Flutter",
+        "DevOps",
+        "Nginx",
+        "PM2",
+        "GitHub Actions",
+        "Docker",
+        "SaaS Development",
+        "DeFi",
+        "Smart Contracts",
+      ],
+      worksFor: { "@id": "https://mussawarhayat.site/#business" },
+      areaServed: [
+        { "@type": "Country", name: "United States" },
+        { "@type": "Country", name: "Canada" },
+        { "@type": "Country", name: "United Kingdom" },
+        { "@type": "Country", name: "Germany" },
+        { "@type": "Place", name: "Worldwide" },
+      ],
+      availableLanguage: ["English"],
+    },
+    {
+      "@type": ["ProfessionalService", "LocalBusiness"],
+      "@id": "https://mussawarhayat.site/#business",
+      name: "Mussawar Hayat — Full-Stack & Web3 Development",
+      url: "https://mussawarhayat.site",
+      image: "https://mussawarhayat.site/my-pic.jpeg",
+      description:
+        "Freelance full-stack and Web3 development services: Next.js, React, TypeScript, Node.js, Solidity, mobile apps, DevOps, and SaaS platforms. Remote engagement for clients in North America, Europe, and worldwide.",
+      email: "zada38843@gmail.com",
+      telephone: "+923358328468",
+      priceRange: "$$",
+      address: {
+        "@type": "PostalAddress",
+        streetAddress: "Mehria Town",
+        addressLocality: "Attock",
+        addressRegion: "Punjab",
+        addressCountry: "PK",
+      },
+      areaServed: [
+        { "@type": "Place", name: "North America" },
+        { "@type": "Place", name: "Europe" },
+        { "@type": "Place", name: "Global Remote" },
+      ],
+      founder: { "@id": "https://mussawarhayat.site/#person" },
+      employee: { "@id": "https://mussawarhayat.site/#person" },
+      hasOfferCatalog: { "@id": "https://mussawarhayat.site/#services" },
+    },
+    {
+      "@type": "OfferCatalog",
+      "@id": "https://mussawarhayat.site/#services",
+      name: "Full-Stack Engineering Services",
+      itemListElement: [
+        {
+          "@type": "Offer",
+          itemOffered: {
+            "@type": "Service",
+            name: "Full-Stack Web Architecture",
+            description:
+              "High-performance Next.js and React applications with SSR, ISR, TypeScript, and SEO-ready architecture.",
+          },
+        },
+        {
+          "@type": "Offer",
+          itemOffered: {
+            "@type": "Service",
+            name: "Mobile Solutions",
+            description:
+              "Cross-platform iOS and Android apps with React Native and Flutter.",
+          },
+        },
+        {
+          "@type": "Offer",
+          itemOffered: {
+            "@type": "Service",
+            name: "Web3 & Blockchain",
+            description:
+              "Smart contracts, DApps, wallet integration, DeFi, NFTs, and Bitcoin Ordinals with Solidity and Ethers.js.",
+          },
+        },
+        {
+          "@type": "Offer",
+          itemOffered: {
+            "@type": "Service",
+            name: "DevOps & Infrastructure",
+            description:
+              "Multi-site VPS, Nginx, PM2, GitHub Actions CI/CD, SSL, and email infrastructure (SPF, DKIM, DMARC).",
+          },
+        },
+        {
+          "@type": "Offer",
+          itemOffered: {
+            "@type": "Service",
+            name: "E-Commerce & SaaS",
+            description:
+              "Production e-commerce and SaaS platforms with Stripe, catalogues, subscriptions, and admin panels.",
+          },
+        },
+      ],
+    },
+  ],
+};
 
 export default function RootLayout({
   children,
@@ -125,7 +254,6 @@ export default function RootLayout({
   return (
     <html lang="en" dir="ltr">
       <head>
-        {/* Google AdSense Script */}
         <script
           async
           src="https://pagead2.googlesyndication.com/pagead/js/adsbygoogle.js?client=ca-pub-9383132900869188"
@@ -133,7 +261,6 @@ export default function RootLayout({
           suppressHydrationWarning
         />
 
-        {/* Google Tag Manager (GTM) — manages GA4 and all other tags via container */}
         <script
           suppressHydrationWarning
           dangerouslySetInnerHTML={{
@@ -141,134 +268,37 @@ export default function RootLayout({
           }}
         />
 
-        {/* Favicons — optimized assets only (no multi-MB PNG) */}
-        <link rel="icon"             type="image/webp" href="/logo.webp" />
-        <link rel="icon"             type="image/png"  href="/logo-optimized.png" />
-        <link rel="shortcut icon"                     href="/logo.webp" />
-        <link rel="apple-touch-icon"                  href="/logo.webp" />
-        <link rel="manifest"                          href="/site.webmanifest" />
+        <link rel="icon" type="image/webp" href="/logo.webp" />
+        <link rel="icon" type="image/png" href="/logo-optimized.png" />
+        <link rel="shortcut icon" href="/logo.webp" />
+        <link rel="apple-touch-icon" href="/logo.webp" />
+        <link rel="manifest" href="/site.webmanifest" />
 
-        {/* Semantic SEO: Entity Graph (Person + WebSite) */}
         <script
           type="application/ld+json"
           suppressHydrationWarning
-          dangerouslySetInnerHTML={{
-            __html: JSON.stringify({
-              "@context": "https://schema.org",
-              "@graph": [
-                {
-                  "@type": "WebSite",
-                  "@id": "https://mussawarhayat.site/#website",
-                  "url": "https://mussawarhayat.site",
-                  "name": "Mussawar Hayat | Full-Stack & Web3 Developer",
-                  "description": "Hire a full-stack developer in Next.js, TypeScript, Node.js, React Native, and Web3. Production web, mobile, and blockchain applications.",
-                  "publisher": { "@id": "https://mussawarhayat.site/#person" },
-                  "inLanguage": "en",
-                  "potentialAction": {
-                    "@type": "SearchAction",
-                    "target": "https://mussawarhayat.site/blog?q={search_term_string}",
-                    "query-input": "required name=search_term_string"
-                  }
-                },
-                {
-                  "@type": "Person",
-                  "@id": "https://mussawarhayat.site/#person",
-                  "name": "Mussawar Hayat",
-                  "url": "https://mussawarhayat.site",
-                  "image": "https://mussawarhayat.site/my-pic.jpeg",
-                  "hasOccupation": {
-                    "@type": "Occupation",
-                    "name": "Full-Stack Developer & Web3 Specialist"
-                  },
-                  "description": "Pakistan-based full-stack developer with 3+ years experience building high-performance web, mobile, and blockchain applications using React, Next.js, TypeScript, Node.js, and Solidity. Available for freelance work worldwide.",
-                  "email": "zada38843@gmail.com",
-                  "telephone": "+923358328468",
-                  "address": {
-                    "@type": "PostalAddress",
-                    "addressLocality": "Attock",
-                    "addressRegion": "Punjab",
-                    "addressCountry": "PK"
-                  },
-                  "sameAs": [
-                    "https://github.com/khanzada-web",
-                    "https://www.linkedin.com/in/mussawar-hayat-187768233",
-                    "https://twitter.com/Mussawar_Hayat",
-                    "https://x.com/Mussawar_Hayat"
-                  ],
-                  "knowsAbout": [
-                    "Next.js",
-                    "React",
-                    "TypeScript",
-                    "Node.js",
-                    "Prisma",
-                    "PostgreSQL",
-                    "Solidity",
-                    "Web3",
-                    "Ethers.js",
-                    "Bitcoin Ordinals",
-                    "React Native",
-                    "Flutter",
-                    "DevOps",
-                    "Nginx",
-                    "PM2",
-                    "GitHub Actions",
-                    "Docker",
-                    "GDPR Compliance",
-                    "Full-Stack Development",
-                    "Server Components",
-                    "Server Actions",
-                    "SaaS Development",
-                    "DeFi",
-                    "Smart Contracts"
-                  ],
-                  "worksFor": {
-                    "@type": "Organization",
-                    "name": "Independent / Freelance"
-                  },
-                  "areaServed": [
-                    { "@type": "Country", "name": "United States" },
-                    { "@type": "Country", "name": "Canada" },
-                    { "@type": "Country", "name": "United Kingdom" },
-                    { "@type": "Country", "name": "Germany" },
-                    { "@type": "Place", "name": "Worldwide" }
-                  ],
-                  "availableLanguage": ["English"]
-                }
-              ]
-            }, null, 2)
-          }}
+          dangerouslySetInnerHTML={{ __html: JSON.stringify(ENTITY_GRAPH) }}
         />
       </head>
 
       <body
-        className={`
-          ${geistSans.variable}
-          ${geistMono.variable}
-          ${orbitron.variable}
-          antialiased
-        `}
+        className={`${geistSans.variable} ${geistMono.variable} ${orbitron.variable} antialiased`}
       >
-        {/* Google Tag Manager (noscript) */}
         <noscript>
           <iframe
             src="https://www.googletagmanager.com/ns.html?id=GTM-KK3WH3FD"
             height="0"
             width="0"
-            style={{ display: 'none', visibility: 'hidden' }}
+            style={{ display: "none", visibility: "hidden" }}
+            title="Google Tag Manager"
           />
         </noscript>
         <a
           href="#main-content"
-          className="
-            sr-only focus:not-sr-only focus:absolute
-            focus:top-4 focus:left-4 z-50
-            bg-blue-600 text-white px-4 py-2 rounded
-            focus:outline-none focus:ring-2 focus:ring-white
-          "
+          className="sr-only focus:not-sr-only focus:absolute focus:top-4 focus:left-4 z-50 bg-blue-600 text-white px-4 py-2 rounded focus:outline-none focus:ring-2 focus:ring-white"
         >
           Skip to main content
         </a>
-
         {children}
       </body>
     </html>

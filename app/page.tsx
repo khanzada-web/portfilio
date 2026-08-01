@@ -1,56 +1,33 @@
 import type { Metadata } from "next";
 
-// ── Layout ──────────────────────────────────────────────────────────────────
 import { Header } from "./components/layout/Header";
 import { Footer } from "./components/layout/Footer";
 
-// ── Sections ─────────────────────────────────────────────────────────────────
-import { Hero }            from "./components/sections/Hero";
-import About               from "./components/sections/About";
-import { Services }        from "./components/sections/Services";
-import { GlobalImpact }    from "./components/sections/GlobalImpact";
+import { Hero } from "./components/sections/Hero";
+import About from "./components/sections/About";
+import { Services } from "./components/sections/Services";
+import { GlobalImpact } from "./components/sections/GlobalImpact";
 import { TechArchitecture } from "./components/sections/TechArchitecture";
-import { SaasProjects }    from "./components/sections/SaasProjects";
-import { Process }         from "./components/sections/Process";
-import Portfolio           from "./components/sections/Portfolio";
-import { PerformanceLab }  from "./components/sections/PerformanceLab";
-import { Testimonials }    from "./components/sections/Testimonials";
-import { Contact }         from "./components/sections/Contact";
+import { SaasProjects } from "./components/sections/SaasProjects";
+import { Process } from "./components/sections/Process";
+import Portfolio from "./components/sections/Portfolio";
+import { PerformanceLab } from "./components/sections/PerformanceLab";
+import { Testimonials } from "./components/sections/Testimonials";
+import { Contact } from "./components/sections/Contact";
 
-// ── SEO ──────────────────────────────────────────────────────────────────────
 import { FAQSchema } from "./components/seo/FAQSchema";
 
 export const metadata: Metadata = {
   title: "Hire Full-Stack & Web3 Developer",
-
   description:
-    "Hire a full-stack developer in React, Next.js, TypeScript, Node.js & Web3. " +
-    "3+ years building production SaaS, DApps, and mobile apps.",
-
-  keywords: [
-    "hire full-stack developer",
-    "hire Next.js developer",
-    "Web3 developer for hire",
-    "freelance React developer",
-    "Solidity developer for hire",
-    "hire blockchain developer",
-    "Next.js freelancer",
-    "full-stack developer Pakistan",
-    "freelance SaaS developer",
-    "React Native developer for hire",
-    "DevOps developer freelance",
-    "Mussawar Hayat",
-  ],
-
+    "Mussawar Hayat is a full-stack developer specializing in Next.js, React, and Web3, based in Pakistan, available for remote freelance work with clients in North America and Europe. 3+ years building production SaaS, DApps, and mobile apps.",
   alternates: {
     canonical: "/",
   },
-
   openGraph: {
     title: "Hire Mussawar Hayat | Full-Stack & Web3 Developer",
     description:
-      "Full-stack developer in React, Next.js, TypeScript, Node.js & Web3. " +
-      "Available for freelance projects worldwide.",
+      "Mussawar Hayat is a full-stack developer specializing in Next.js, React, TypeScript, Node.js and Web3. Available for remote freelance projects worldwide.",
     url: "https://mussawarhayat.site",
     type: "website",
     images: [
@@ -58,11 +35,10 @@ export const metadata: Metadata = {
         url: "/my-pic.jpeg",
         width: 1200,
         height: 630,
-        alt: "Mussawar Hayat — Full-Stack & Web3 Developer",
+        alt: "Mussawar Hayat — Full-Stack & Web3 Developer portrait",
       },
     ],
   },
-
   twitter: {
     card: "summary_large_image",
     title: "Hire Mussawar Hayat | Full-Stack & Web3 Developer",
@@ -74,40 +50,34 @@ export const metadata: Metadata = {
 
 const FAQ_ITEMS = [
   {
-    question: "Do you build both the frontend and backend?",
+    question: "What technologies does Mussawar Hayat work with?",
     answer:
-      "Yes. I handle full-stack development end-to-end — React/Next.js frontends, Node.js backends, " +
-      "databases, and deployment/DevOps — so you don't need to coordinate multiple specialists.",
+      "Mussawar Hayat specializes in React, Next.js, Node.js, and TypeScript for full-stack web development. For mobile apps he uses React Native and Flutter. For Web3 and blockchain projects he works with Solidity, Ethers.js, Hardhat, Ethereum, Polygon, and Bitcoin Ordinals. He also handles DevOps including Nginx, PM2, GitHub Actions, Docker, and VPS deployment.",
   },
   {
-    question: "Do you work with clients outside Pakistan?",
+    question: "Does Mussawar Hayat work with international clients?",
     answer:
-      "Yes, I work remotely with clients worldwide and am set up for async communication across time zones (EST, PST, CET).",
+      "Yes. Mussawar Hayat works remotely with clients worldwide, including North America and Europe, and is set up for async communication across EST, PST, and CET time zones. GDPR-compliant infrastructure is available where needed.",
+  },
+  {
+    question: "What is Mussawar Hayat's development process?",
+    answer:
+      "Projects start with logic discovery and requirements analysis, then architecture design, iterative implementation with TypeScript and modern frameworks, testing and security review, and production deployment with CI/CD, SSL, and monitoring. One engineer owns the work end-to-end from frontend to infrastructure.",
+  },
+  {
+    question: "Do you build both the frontend and backend?",
+    answer:
+      "Yes. Mussawar Hayat handles full-stack development end-to-end — React/Next.js frontends, Node.js backends, databases, and deployment/DevOps — so clients do not need to coordinate multiple specialists.",
   },
   {
     question: "Can you add blockchain or Web3 features to an existing app?",
     answer:
-      "Yes. I integrate wallet connections, smart contracts, DeFi/NFT functionality and Bitcoin Ordinals into existing " +
-      "web and mobile applications using Solidity and Ethers.js.",
+      "Yes. He integrates wallet connections, smart contracts, DeFi and NFT functionality, and Bitcoin Ordinals into existing web and mobile applications using Solidity and Ethers.js.",
   },
   {
-    question: "What technologies do you specialise in?",
+    question: "How can I hire Mussawar Hayat for a project?",
     answer:
-      "My core stack is React, Next.js, Node.js, and TypeScript. For mobile, I use React Native and Flutter. " +
-      "For Web3 projects, I work with Solidity, Ethers.js, Hardhat, Ethereum, Polygon, and other EVM-compatible chains. " +
-      "I also handle DevOps, databases, VPS deployment, and CI/CD.",
-  },
-  {
-    question: "How can I hire you for a project?",
-    answer:
-      "You can contact me through the contact form on this website or reach out via " +
-      "LinkedIn or email. I offer flexible engagement models from short-term consulting to " +
-      "full long-term project development.",
-  },
-  {
-    question: "Do you handle deployment and DevOps as well?",
-    answer:
-      "Yes. I manage the full infrastructure: multi-site VPS setup with Nginx, PM2, GitHub Actions CI/CD, SSL, and email infrastructure (SPF, DKIM, DMARC). Most developers outsource this — I own it end-to-end.",
+      "Contact him through the contact form on https://mussawarhayat.site/contact, or via LinkedIn (https://www.linkedin.com/in/mussawar-hayat-187768233) or email (zada38843@gmail.com). Engagement models range from short-term consulting to full long-term project development.",
   },
 ] as const;
 
