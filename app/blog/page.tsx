@@ -29,6 +29,7 @@ export const metadata: Metadata = {
     'Stop overusing use client',
     'Server Components Next.js 16',
     'Secure Server Actions Next.js 16',
+    'Multi-site Next.js VPS Nginx',
   ],
   openGraph: {
     title: 'Mussawar Hayat Blog | Web3 & Full-Stack Developer Insights',
@@ -142,11 +143,11 @@ const blogPosts = [
     category: 'Blockchain',
   },
   {
-    title: 'Multi-Site Next.js on VPS with Nginx',
-    excerpt: 'Running multiple Next.js apps on one VPS with Nginx reverse proxy, PM2, and SSL — the exact setup I use for production deployments.',
+    title: 'Deploy Multi-Site Next.js on VPS with Nginx, PM2 & SSL',
+    excerpt: 'Run multiple Next.js 16 apps on one VPS with Nginx reverse proxy, PM2 process management, Let\'s Encrypt SSL, and zero-downtime symlink deploys. Production directory layout, server blocks, ecosystem config, and checklist.',
     slug: 'deploying-multi-site-nextjs-vps-nginx',
     date: '2026-05-15',
-    readTime: '9 min read',
+    readTime: '12 min read',
     category: 'DevOps',
   },
   {
