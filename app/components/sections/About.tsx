@@ -9,21 +9,21 @@ import Image from 'next/image';
 import { AnimatedCounter } from '../ui/AnimatedCounter';
 
 const SKILLS = [
-  { name: 'React / Next.js', level: 100, icon: <FiCode /> },
-  { name: 'App Development (RN/Flutter)', level: 100, icon: <FiSmartphone /> },
-  { name: 'TypeScript / Node.js', level: 100, icon: <FiLayers /> },
-  { name: 'UI/UX Architecture', level: 100, icon: <FiStar /> },
-  { name: 'Web3 & Blockchain', level: 100, icon: <FiGlobe /> },
-  { name: 'Product Engineering', level: 100, icon: <FiZap /> },
-  { name: 'REST APIs & Databases', level: 100, icon: <FiDatabase /> },
-  { name: 'DevOps / CI/CD / VPS', level: 100, icon: <FiServer /> },
+  { name: 'React / Next.js', level: 95, icon: <FiCode /> },
+  { name: 'App Development (RN/Flutter)', level: 90, icon: <FiSmartphone /> },
+  { name: 'TypeScript / Node.js', level: 95, icon: <FiLayers /> },
+  { name: 'UI/UX Architecture', level: 85, icon: <FiStar /> },
+  { name: 'Web3 & Blockchain', level: 85, icon: <FiGlobe /> },
+  { name: 'Product Engineering', level: 90, icon: <FiZap /> },
+  { name: 'REST APIs & Databases', level: 90, icon: <FiDatabase /> },
+  { name: 'DevOps / CI/CD / VPS', level: 85, icon: <FiServer /> },
 ] as const;
 
 const ACHIEVEMENTS = [
   { number: 3, suffix: '+', label: 'Years Experience' },
-  { number: 100, suffix: '+', label: 'Digital Solutions' },
-  { number: 100, suffix: '%', label: 'Client Satisfaction' },
-  { number: null, suffix: '', label: 'Global Delivery', static: '24/7' },
+  { number: 40, suffix: '+', label: 'Projects Delivered' },
+  { number: 15, suffix: '+', label: 'Remote Clients' },
+  { number: null, suffix: '', label: 'Async Coverage', static: 'EST/CET' },
 ] as const;
 
 const PROFILE_TAGS = [
