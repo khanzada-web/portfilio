@@ -22,6 +22,7 @@ import * as spfDkim from '../content/spf-dkim-dmarc-multi-domain-vps'
 import * as gdprChecklist from '../content/gdpr-compliant-web-apps-checklist'
 import * as dexPerformance from '../content/multi-chain-dex-interface-performance'
 import * as dockerMultiStage from '../content/docker-multi-stage-nextjs-16-standalone-production'
+import * as agentRouterGuide from '../content/agentrouter-free-claude-code-api-guide-2026'
 
 interface BlogPost {
   title: string
@@ -57,6 +58,7 @@ function toPost(mod: {
 }
 
 const blogPosts: Record<string, BlogPost> = {
+  'agentrouter-free-claude-code-api-guide-2026': toPost(agentRouterGuide),
   'docker-multi-stage-nextjs-16-standalone-production': toPost(dockerMultiStage),
   'secure-server-actions-nextjs-16-auth-validation-dal': toPost(secureServerActions),
   'prisma-connection-exhaustion-nextjs-16-accelerate': toPost(prismaConnection),
@@ -158,6 +160,24 @@ const postFaqs: Record<string, { question: string; answer: string }[]> = {
     {
       question: 'When should I move from PM2 to Docker?',
       answer: 'When you need reproducible images, stricter isolation, or the same deploy path across multiple servers. Multi-stage standalone builds are the next step after a stable PM2 + Nginx setup.',
+    },
+  ],
+  'agentrouter-free-claude-code-api-guide-2026': [
+    {
+      question: 'Is AgentRouter really free?',
+      answer: 'Yes. It is a public-benefit AI coding gateway that gives free credits on signup. Credits are limited, so use them for learning and prototypes rather than heavy production traffic.',
+    },
+    {
+      question: 'What is the correct base URL for Claude Code?',
+      answer: 'Use https://agentrouter.org (without /v1) together with ANTHROPIC_AUTH_TOKEN and ANTHROPIC_MODEL. Do not mix it with the OpenAI-compatible /v1 endpoint.',
+    },
+    {
+      question: 'Do I need a credit card to start?',
+      answer: 'No. Sign up, get your free API key from the console, set the three environment variables, and start using Claude Code.',
+    },
+    {
+      question: 'Will this override my official Claude Pro login?',
+      answer: 'Yes, the environment variables take priority in that terminal. To return to the official account, unset ANTHROPIC_AUTH_TOKEN, ANTHROPIC_BASE_URL and ANTHROPIC_MODEL, then restart Claude.',
     },
   ],
 }
