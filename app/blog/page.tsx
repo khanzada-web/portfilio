@@ -28,6 +28,7 @@ export const metadata: Metadata = {
     'Docker multi-stage Next.js',
     'Stop overusing use client',
     'Server Components Next.js 16',
+    'Secure Server Actions Next.js 16',
   ],
   openGraph: {
     title: 'Mussawar Hayat Blog | Web3 & Full-Stack Developer Insights',
@@ -69,11 +70,11 @@ const blogPosts = [
     category: 'DevOps',
   },
   {
-    title: 'Secure Server Actions in Next.js 16',
-    excerpt: 'Every Server Action is a public POST endpoint. Learn the production pattern: validate inputs, authenticate from the session, authorize ownership, keep a thin action layer on a server-only Data Access Layer, and constrain return values.',
+    title: 'Secure Server Actions in Next.js 16: Auth, Validation & Data Access Layer',
+    excerpt: 'Every Server Action is a public POST endpoint. Production pattern for Next.js 16: validate inputs with Zod, authenticate from session, authorize ownership, keep a thin action layer on a server-only Data Access Layer, constrain return values, and revalidate safely.',
     slug: 'secure-server-actions-nextjs-16-auth-validation-dal',
     date: '2026-07-30',
-    readTime: '14 min read',
+    readTime: '15 min read',
     category: 'Security',
   },
   {

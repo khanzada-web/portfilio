@@ -116,6 +116,28 @@ const postFaqs: Record<string, { question: string; answer: string }[]> = {
       answer: 'Only libraries that require browser APIs or hooks need a client boundary. Many UI libraries now support Server Components or provide separate server-safe entry points. Import the client parts into small islands and keep the rest of the tree server-side.',
     },
   ],
+  'secure-server-actions-nextjs-16-auth-validation-dal': [
+    {
+      question: 'Are Server Actions automatically protected because they run on the server?',
+      answer: 'No. The implementation runs on the server, but the endpoint is publicly reachable via POST. You must still validate, authenticate, and authorize on every call.',
+    },
+    {
+      question: 'Is it safe to rely on the form only being rendered for logged-in users?',
+      answer: 'No. Render-time gating is not a security boundary. Anyone can craft the same POST request. Always re-check the session inside the action.',
+    },
+    {
+      question: 'Should I put Prisma calls directly in the use server file?',
+      answer: 'Prefer a server-only Data Access Layer. Thin actions stay easy to audit; the DAL owns auth, ownership, and database access and cannot be imported into Client Components.',
+    },
+    {
+      question: 'How do Server Actions relate to use client?',
+      answer: 'Client Components call Server Actions for mutations. Keep the client boundary small (islands) and the action thin.',
+    },
+    {
+      question: 'What about rate limiting and allowedOrigins?',
+      answer: 'Configure serverActions.allowedOrigins when you sit behind proxies or CDNs. Add application-level rate limiting for sensitive mutations (login, password reset, payment-related actions).',
+    },
+  ],
 }
 
 function getRelatedPosts(currentSlug: string, limit = 3): { slug: string; post: BlogPost }[] {
