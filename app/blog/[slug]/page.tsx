@@ -94,6 +94,28 @@ const postFaqs: Record<string, { question: string; answer: string }[]> = {
       answer: 'Choose Accelerate for zero-ops managed pooling and optional cache on serverless. Choose PgBouncer when you already run a VPS or want full control over the pooler configuration.',
     },
   ],
+  'nextjs-16-stop-overusing-use-client-server-components': [
+    {
+      question: 'Does every interactive component need its own file with use client?',
+      answer: 'Yes for clarity and minimal boundaries. Group tightly related interactive pieces in one client file if they share state, but never mark a large page or layout just because one button needs a click handler.',
+    },
+    {
+      question: 'Can I pass Server Components as children to a Client Component?',
+      answer: 'Yes. That is the recommended pattern. The children remain Server Components; only the client wrapper hydrates. Do not pass non-serializable props or functions from server to client except through the children slot or supported serialization.',
+    },
+    {
+      question: 'What happens if I put use client in a layout.tsx?',
+      answer: 'Every page and nested layout under that segment becomes part of the client boundary. Prefer client islands inside the layout or pass interactive chrome as client children while keeping the layout itself a Server Component.',
+    },
+    {
+      question: 'How does this relate to Server Actions?',
+      answer: 'Server Actions run on the server and can be called from Client Components. Keep the action thin, validate and authorize on the server, and let the client island only handle UI state.',
+    },
+    {
+      question: 'Will removing use client break my third-party libraries?',
+      answer: 'Only libraries that require browser APIs or hooks need a client boundary. Many UI libraries now support Server Components or provide separate server-safe entry points. Import the client parts into small islands and keep the rest of the tree server-side.',
+    },
+  ],
 }
 
 function getRelatedPosts(currentSlug: string, limit = 3): { slug: string; post: BlogPost }[] {

@@ -26,6 +26,8 @@ export const metadata: Metadata = {
     'Prisma Accelerate Next.js',
     'Server Actions security',
     'Docker multi-stage Next.js',
+    'Stop overusing use client',
+    'Server Components Next.js 16',
   ],
   openGraph: {
     title: 'Mussawar Hayat Blog | Web3 & Full-Stack Developer Insights',
@@ -83,11 +85,11 @@ const blogPosts = [
     category: 'Full-Stack',
   },
   {
-    title: "Stop Overusing 'use client' in Next.js 16",
-    excerpt: 'The most common App Router mistake is marking entire trees with use client. Learn the production patterns for Server Components, children slots, and minimal client boundaries that keep your bundles small and your data secure.',
+    title: "Stop Overusing 'use client' in Next.js 16: Server Components by Default",
+    excerpt: 'The most common App Router mistake is marking entire trees with use client. Production patterns for Server Components, children slots, and minimal client islands that shrink bundles, protect server data, and improve Core Web Vitals in Next.js 16.',
     slug: 'nextjs-16-stop-overusing-use-client-server-components',
     date: '2026-07-26',
-    readTime: '13 min read',
+    readTime: '14 min read',
     category: 'Full-Stack',
   },
   {
