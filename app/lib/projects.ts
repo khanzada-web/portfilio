@@ -39,7 +39,7 @@ export const PROJECTS: Project[] = [
     architecture:
       'React frontends with Three.js for 3D hubs, Web3 wallet and identity layers, and modular services for education and marketplace features across regions.',
     results:
-      '[PLACEHOLDER: add quantified outcome — e.g. continents live, concurrent users, or uptime target once client permits public metrics.]',
+      'Delivered a unified multi-region metaverse platform with immersive 3D hubs, on-chain identity, and modular education and marketplace services under a single engineering ownership model.',
   },
   {
     slug: 'ordwin-market',
@@ -56,7 +56,7 @@ export const PROJECTS: Project[] = [
     architecture:
       'Next.js and TypeScript marketplace UI with a dedicated sync API for inscriptions, ownership transfers, and listings; Bitcoin-native data paths rather than EVM assumptions.',
     results:
-      '[PLACEHOLDER: add volume, listings, or latency metrics when available for public case study.]',
+      'Shipped a production Ordinals marketplace with dedicated inscription indexing, ownership tracking, and listing flows built for Bitcoin-native performance rather than EVM assumptions.',
   },
   {
     slug: 'fast-timetable',
@@ -73,7 +73,7 @@ export const PROJECTS: Project[] = [
     architecture:
       'React SPA deployed on Vercel with responsive layouts and real-time-oriented UI patterns for timetable browsing.',
     results:
-      '[PLACEHOLDER: add adoption or satisfaction metrics if the institution allows.]',
+      'Replaced static PDF schedules with a responsive, mobile-first timetable interface that students can browse and plan around in real time.',
   },
   {
     slug: 'soft-stake',
@@ -90,7 +90,7 @@ export const PROJECTS: Project[] = [
     architecture:
       'Solidity contracts for staking and yield, Ethers.js integration, and a Node-assisted backend for operational workflows around the pools.',
     results:
-      '[PLACEHOLDER: TVL, stakers, or audit status if public.]',
+      'Launched staking and yield contracts with a clear on-chain distribution model and a usable web interface for pool interaction and monitoring.',
   },
   {
     slug: 'rippleroot',
@@ -107,7 +107,7 @@ export const PROJECTS: Project[] = [
     architecture:
       'Next.js with Tailwind and Framer Motion for motion-rich, design-led pages and responsive marketing layouts.',
     results:
-      '[PLACEHOLDER: engagement or conversion metrics if available.]',
+      'Delivered a design-led marketing site with motion-rich layouts that reflect the brand’s collaborative art and wildlife narrative across devices.',
   },
   {
     slug: 'dmu-utility-token',
@@ -124,7 +124,7 @@ export const PROJECTS: Project[] = [
     architecture:
       'ERC-20 Solidity contracts on Ethereum with Web3.js integration for governance and marketplace transaction flows.',
     results:
-      '[PLACEHOLDER: supply, holders, or marketplace volume if public.]',
+      'Implemented the ERC-20 economic layer that powers DaMeta1 governance and marketplace settlement, integrated with the broader ecosystem frontends.',
   },
   {
     slug: 'codmob-hub',
