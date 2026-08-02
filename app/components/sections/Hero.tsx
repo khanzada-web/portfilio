@@ -5,8 +5,8 @@ import { AnimatedCounter } from '../ui/AnimatedCounter';
 
 const STATS = [
   { label: 'Years Experience', value: 3, suffix: '+' },
-  { label: 'Apps & Sites Built', value: 100, suffix: '+' },
-  { label: 'Client Success', value: 100, suffix: '%' },
+  { label: 'Projects Delivered', value: 40, suffix: '+' },
+  { label: 'Remote Clients', value: 15, suffix: '+' },
 ] as const;
 
 export function Hero() {
@@ -40,10 +40,9 @@ export function Hero() {
             </h1>
 
             <p className="text-lg md:text-xl text-[#39FF14]/90 max-w-3xl mx-auto leading-relaxed tracking-wide font-sans">
-              Mussawar Hayat is a full-stack developer specializing in Next.js, React, and Web3,
-              based in Pakistan, available for remote freelance work with clients in North America
-              and Europe. Production React, Next.js, Node.js & TypeScript apps — plus Solidity smart
-              contracts when your project needs blockchain.
+              Full-stack developer specializing in Next.js, React, Node.js and TypeScript.
+              Based in Pakistan, working remotely with clients in North America and Europe.
+              Production web & mobile apps — plus Solidity smart contracts when your project needs blockchain.
             </p>
           </header>
 
@@ -65,7 +64,7 @@ export function Hero() {
               className="group relative px-10 py-5 bg-[#39FF14] text-black rounded-sm font-bold transition-all hover:bg-white hover:scale-105 active:scale-95 shadow-[0_0_30px_rgba(57,255,20,0.2)]"
             >
               <span className="flex items-center gap-3">
-                HIRE ME
+                Start a Project
                 <svg className="w-5 h-5" fill="none" stroke="currentColor" viewBox="0 0 24 24" aria-hidden="true">
                   <path strokeLinecap="round" strokeLinejoin="round" strokeWidth="2.5" d="M14 5l7 7m0 0l-7 7m7-7H3" />
                 </svg>
@@ -76,14 +75,14 @@ export function Hero() {
               href="/portfolio"
               className="px-10 py-5 border-2 border-[#39FF14] hover:bg-[#39FF14]/10 rounded-sm font-bold transition-colors tracking-widest"
             >
-              VIEW PROJECTS
+              View Projects
             </Link>
 
             <Link
               href="/blog"
               className="px-10 py-5 border border-white/20 hover:border-[#39FF14]/50 hover:bg-[#39FF14]/5 rounded-sm font-bold transition-colors tracking-widest text-white/80"
             >
-              READ BLOG
+              Read Blog
             </Link>
           </div>
         </div>
