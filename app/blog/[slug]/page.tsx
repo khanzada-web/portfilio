@@ -138,6 +138,28 @@ const postFaqs: Record<string, { question: string; answer: string }[]> = {
       answer: 'Configure serverActions.allowedOrigins when you sit behind proxies or CDNs. Add application-level rate limiting for sensitive mutations (login, password reset, payment-related actions).',
     },
   ],
+  'deploying-multi-site-nextjs-vps-nginx': [
+    {
+      question: 'How many Next.js apps can one VPS run?',
+      answer: 'It depends on traffic and memory. Each Node process needs RAM for the app and peak concurrency. Start with one or two apps on a 2–4 GB VPS, monitor RSS and CPU, then scale vertically or split hosts.',
+    },
+    {
+      question: 'Should I use PM2 cluster mode with Next.js?',
+      answer: 'For most sites, a single fork instance per app behind Nginx is simpler and sufficient. Next.js already handles concurrent requests inside one process. Use multiple instances only when you have measured CPU-bound load.',
+    },
+    {
+      question: 'Is Nginx required or can I expose Next.js directly?',
+      answer: 'Do not expose Node publicly. Nginx (or another reverse proxy) should terminate TLS, handle HTTP→HTTPS redirects, and forward only to localhost ports.',
+    },
+    {
+      question: 'How does this relate to Prisma and connection pooling?',
+      answer: 'On a long-lived VPS process you can use a higher Prisma connection_limit than pure serverless. Still prefer a pooler (PgBouncer or Prisma Accelerate) under concurrent load.',
+    },
+    {
+      question: 'When should I move from PM2 to Docker?',
+      answer: 'When you need reproducible images, stricter isolation, or the same deploy path across multiple servers. Multi-stage standalone builds are the next step after a stable PM2 + Nginx setup.',
+    },
+  ],
 }
 
 function getRelatedPosts(currentSlug: string, limit = 3): { slug: string; post: BlogPost }[] {
