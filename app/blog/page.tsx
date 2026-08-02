@@ -30,6 +30,8 @@ export const metadata: Metadata = {
     'Server Components Next.js 16',
     'Secure Server Actions Next.js 16',
     'Multi-site Next.js VPS Nginx',
+    'GDPR compliance checklist for web developers',
+    'cookie consent GDPR implementation',
   ],
   openGraph: {
     title: 'Mussawar Hayat Blog | Web3 & Full-Stack Developer Insights',
@@ -175,11 +177,11 @@ const blogPosts = [
     category: 'DevOps',
   },
   {
-    title: 'GDPR-Compliant Web Apps Checklist',
-    excerpt: 'Cookie consent, secure data storage, data subject rights — a practical checklist for full-stack developers building for EU clients.',
+    title: 'GDPR Compliance Checklist for Web Developers 2026',
+    excerpt: 'Complete GDPR compliance checklist for web developers: cookie consent implementation, data subject rights APIs, privacy by design, retention jobs, and production controls for Next.js and full-stack apps serving EU clients.',
     slug: 'gdpr-compliant-web-apps-checklist',
     date: '2026-04-20',
-    readTime: '10 min read',
+    readTime: '12 min read',
     category: 'Full-Stack',
   },
   {
