@@ -2,34 +2,22 @@
 
 import { useState } from 'react';
 import { motion } from 'framer-motion';
-import { FiMail, FiPhone, FiMapPin, FiSend, FiCheckCircle, FiShield, FiLock, FiAlertCircle } from 'react-icons/fi';
-
-// ─── Types ────────────────────────────────────────────────────────────────────
+import { FiMail, FiPhone, FiMapPin, FiSend, FiCheckCircle, FiShield, FiClock, FiAlertCircle } from 'react-icons/fi';
 
 type FormData = { name: string; email: string; message: string };
 type SubmitStatus = 'idle' | 'submitting' | 'success' | 'error';
 
-// ─── Constants ────────────────────────────────────────────────────────────────
-// ✅ Contact details moved to constants — not hardcoded inside JSX.
-//    For extra privacy, move these to environment variables and read via
-//    a server route rather than shipping in client JS.
-
 const CONTACT_INFO = [
-  { icon: FiMail,   label: 'Email_Uplink', value: 'zada38843@gmail.com',     href: 'mailto:zada38843@gmail.com'  },
-  { icon: FiPhone,  label: 'Direct_Line',  value: '+92 335 8328468',          href: 'tel:+923358328468'            },
-  { icon: FiMapPin, label: 'Base_Ops',     value: 'Mehria Town, Attock, PK',  href: null                          },
+  { icon: FiMail,   label: 'Email', value: 'zada38843@gmail.com',     href: 'mailto:zada38843@gmail.com'  },
+  { icon: FiPhone,  label: 'Phone / WhatsApp',  value: '+92 335 8328468',          href: 'tel:+923358328468'            },
+  { icon: FiMapPin, label: 'Location',     value: 'Attock, Pakistan (Remote worldwide)',  href: null                          },
 ] as const;
 
 const INITIAL_FORM: FormData = { name: '', email: '', message: '' };
 
-// ─── Component ────────────────────────────────────────────────────────────────
-
 export function Contact() {
   const [formData,    setFormData]    = useState<FormData>(INITIAL_FORM);
   const [submitStatus, setSubmitStatus] = useState<SubmitStatus>('idle');
-  // ✅ Replaced: isSubmitting + isSubmitted booleans + alert() calls
-  //    → single SubmitStatus union ("idle" | "submitting" | "success" | "error")
-  //    → proper error UI instead of browser alert() which blocks the thread
 
   const handleChange = (e: React.ChangeEvent<HTMLInputElement | HTMLTextAreaElement>) => {
     const { name, value } = e.target;
@@ -56,7 +44,6 @@ export function Contact() {
         setSubmitStatus('error');
       }
     } catch {
-      // Network failure — no console.error needed; the UI handles it
       setSubmitStatus('error');
     }
   };
@@ -70,30 +57,28 @@ export function Contact() {
     >
       <div className="container mx-auto px-4 sm:px-6 relative z-10">
 
-        {/* Section Header */}
         <div className="text-center max-w-4xl mx-auto mb-20 space-y-6">
           <div className="inline-flex items-center gap-2 px-4 py-1 border border-[#39FF14]/30 bg-[#39FF14]/5 text-[10px] tracking-[0.4em] uppercase font-bold">
-            <FiLock className="animate-pulse" aria-hidden="true" />
-            Secure_Uplink_Established
+            <FiClock className="animate-pulse" aria-hidden="true" />
+            Usually replies within 24 hours
           </div>
           <h2 className="text-5xl md:text-7xl font-bold text-white tracking-tight uppercase">
-            Contact <span className="text-[#39FF14]">Protocol</span>
+            Let's Talk About <span className="text-[#39FF14]">Your Project</span>
           </h2>
-          <p className="text-lg text-[#39FF14]/70 max-w-2xl mx-auto leading-relaxed lowercase">
-            // initialising direct communication channel for full-stack development,<br />
-            web & mobile apps, and web3 integration projects.<br />
-            remote work across north america and europe. GDPR-compliant infrastructure available.
+          <p className="text-lg text-white/70 max-w-2xl mx-auto leading-relaxed font-sans">
+            Tell me what you are building. I will confirm fit, timeline, and the best engagement model
+            (fixed-price, hourly, or retainer). Remote work for North America & Europe clients.
+            GDPR-compliant infrastructure available when needed.
           </p>
         </div>
 
         <div className="max-w-6xl mx-auto">
           <div className="grid grid-cols-1 lg:grid-cols-2 gap-px bg-[#39FF14]/20 border border-[#39FF14]/20">
 
-            {/* ── Left: Node Metadata ── */}
             <div className="bg-[#0A1221] p-8 md:p-12 space-y-10">
               <h3 className="text-2xl font-bold text-white uppercase flex items-center gap-3">
                 <FiShield className="text-[#39FF14]" aria-hidden="true" />
-                Node_Metadata
+                Contact Details
               </h3>
 
               <ul className="space-y-8">
@@ -107,12 +92,12 @@ export function Contact() {
                       {href ? (
                         <a
                           href={href}
-                          className="text-white font-bold text-lg mt-1 group-hover:text-[#39FF14] transition-colors lowercase block"
+                          className="text-white font-bold text-lg mt-1 group-hover:text-[#39FF14] transition-colors block"
                         >
                           {value}
                         </a>
                       ) : (
-                        <p className="text-white font-bold text-lg mt-1 group-hover:text-[#39FF14] transition-colors lowercase">
+                        <p className="text-white font-bold text-lg mt-1 group-hover:text-[#39FF14] transition-colors">
                           {value}
                         </p>
                       )}
@@ -121,18 +106,19 @@ export function Contact() {
                 ))}
               </ul>
 
-              <div className="pt-10 border-t border-white/5">
+              <div className="pt-10 border-t border-white/5 space-y-4">
+                <p className="text-white/50 text-sm font-sans leading-relaxed">
+                  Prefer a quick chat? Mention your preferred time zone and I will schedule a short call.
+                </p>
                 <div className="flex items-center gap-4 text-white/30 text-[9px] uppercase font-bold tracking-[0.3em]">
                   <div className="w-2 h-2 rounded-full bg-[#39FF14] animate-ping" aria-hidden="true" />
-                  Encryption_Active: AES-256
+                  Response target: under 24 hours on business days
                 </div>
               </div>
             </div>
 
-            {/* ── Right: Secure Form ── */}
             <div className="bg-[#0A1221] p-8 md:p-12 relative">
 
-              {/* ── Success state ── */}
               {submitStatus === 'success' && (
                 <motion.div
                   initial={{ opacity: 0, scale: 0.9 }}
@@ -142,14 +128,13 @@ export function Contact() {
                   aria-live="polite"
                 >
                   <FiCheckCircle className="text-[#39FF14] w-20 h-20 mb-6" aria-hidden="true" />
-                  <h3 className="text-2xl font-bold text-white uppercase">Data_Received</h3>
-                  <p className="text-white/60 mt-4 max-w-[280px] lowercase text-sm">
-                    Transmission successful. Uplink response scheduled within 24 hours.
+                  <h3 className="text-2xl font-bold text-white uppercase">Message Received</h3>
+                  <p className="text-white/60 mt-4 max-w-[300px] text-sm font-sans">
+                    Thanks for reaching out. I will reply within 24 hours with next steps.
                   </p>
                 </motion.div>
               )}
 
-              {/* ── Error banner ── */}
               {submitStatus === 'error' && (
                 <motion.div
                   initial={{ opacity: 0, y: -8 }}
@@ -159,7 +144,7 @@ export function Contact() {
                   aria-live="assertive"
                 >
                   <FiAlertCircle aria-hidden="true" />
-                  Transmission failed — please retry or contact directly via email.
+                  Something went wrong — please try again or email me directly.
                   <button
                     onClick={() => setSubmitStatus('idle')}
                     className="ml-auto text-red-300 hover:text-white transition-colors"
@@ -170,12 +155,11 @@ export function Contact() {
                 </motion.div>
               )}
 
-              {/* ── Form (hidden after success) ── */}
               {submitStatus !== 'success' && (
                 <form onSubmit={handleSubmit} className="space-y-6" noValidate>
                   <div>
                     <label htmlFor="contact-name" className="text-[10px] font-bold text-[#39FF14] uppercase mb-2 block tracking-widest">
-                      Identity_Tag
+                      Your Name
                     </label>
                     <input
                       id="contact-name"
@@ -183,32 +167,32 @@ export function Contact() {
                       type="text"
                       required
                       minLength={2}
-                      placeholder="NAME"
+                      placeholder="Jane Doe"
                       value={formData.name}
                       onChange={handleChange}
-                      className="w-full bg-white/5 border border-white/10 p-4 text-white focus:border-[#39FF14] outline-none transition-all placeholder:text-white/10"
+                      className="w-full bg-white/5 border border-white/10 p-4 text-white focus:border-[#39FF14] outline-none transition-all placeholder:text-white/20 font-sans"
                     />
                   </div>
 
                   <div>
                     <label htmlFor="contact-email" className="text-[10px] font-bold text-[#39FF14] uppercase mb-2 block tracking-widest">
-                      Uplink_Address
+                      Email Address
                     </label>
                     <input
                       id="contact-email"
                       name="email"
                       type="email"
                       required
-                      placeholder="EMAIL@PROTOCOL.COM"
+                      placeholder="you@company.com"
                       value={formData.email}
                       onChange={handleChange}
-                      className="w-full bg-white/5 border border-white/10 p-4 text-white focus:border-[#39FF14] outline-none transition-all placeholder:text-white/10"
+                      className="w-full bg-white/5 border border-white/10 p-4 text-white focus:border-[#39FF14] outline-none transition-all placeholder:text-white/20 font-sans"
                     />
                   </div>
 
                   <div>
                     <label htmlFor="contact-message" className="text-[10px] font-bold text-[#39FF14] uppercase mb-2 block tracking-widest">
-                      Message_Payload
+                      Project Details
                     </label>
                     <textarea
                       id="contact-message"
@@ -216,10 +200,10 @@ export function Contact() {
                       required
                       minLength={10}
                       rows={5}
-                      placeholder="PROJECT SPECIFICATIONS..."
+                      placeholder="Briefly describe the project, timeline, and any tech preferences..."
                       value={formData.message}
                       onChange={handleChange}
-                      className="w-full bg-white/5 border border-white/10 p-4 text-white focus:border-[#39FF14] outline-none resize-none transition-all placeholder:text-white/10"
+                      className="w-full bg-white/5 border border-white/10 p-4 text-white focus:border-[#39FF14] outline-none resize-none transition-all placeholder:text-white/20 font-sans"
                     />
                   </div>
 
@@ -227,9 +211,9 @@ export function Contact() {
                     type="submit"
                     disabled={isSubmitting}
                     aria-busy={isSubmitting}
-                    className="w-full bg-[#39FF14] text-black py-5 font-bold uppercase tracking-[0.4em] flex items-center justify-center gap-3 hover:bg-white transition-all shadow-[0_0_20px_rgba(57,255,20,0.2)] disabled:opacity-60 disabled:cursor-not-allowed"
+                    className="w-full bg-[#39FF14] text-black py-5 font-bold uppercase tracking-[0.3em] flex items-center justify-center gap-3 hover:bg-white transition-all shadow-[0_0_20px_rgba(57,255,20,0.2)] disabled:opacity-60 disabled:cursor-not-allowed"
                   >
-                    {isSubmitting ? 'TRANSMITTING...' : 'INITIALIZE_SEND'}
+                    {isSubmitting ? 'Sending...' : 'Send Message'}
                     <FiSend aria-hidden="true" />
                   </button>
                 </form>
