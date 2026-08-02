@@ -8,11 +8,11 @@ import { FAQSchema } from '@/app/components/seo/FAQSchema'
 export const metadata: Metadata = {
   title: 'Full-Stack & Web3 Development Services',
   description:
-    'Mussawar Hayat offers full-stack development services: React/Next.js web apps, React Native mobile, Node.js APIs, DevOps, SaaS, and Web3/Solidity smart contracts. Remote for North America and Europe.',
+    'Mussawar Hayat offers full-stack development services: React/Next.js web apps, React Native mobile, Node.js APIs, DevOps, SaaS, and Web3/Solidity smart contracts. Fixed-price, hourly, or retainer. Remote for North America and Europe.',
   openGraph: {
     title: 'Hire Full-Stack & Web3 Developer | Mussawar Hayat Services',
     description:
-      'Full-stack development services — web apps, mobile apps, APIs, DevOps, and Web3/blockchain integration.',
+      'Full-stack development services — web apps, mobile apps, APIs, DevOps, and Web3/blockchain integration. Clear engagement models.',
     url: 'https://mussawarhayat.site/services',
     type: 'website',
     images: [
@@ -67,6 +67,11 @@ const faqs = [
     answer:
       'Yes. Wallet connections, smart contracts, DeFi/NFT features, and Bitcoin Ordinals using Solidity and Ethers.js.',
   },
+  {
+    question: 'How do engagement and pricing work?',
+    answer:
+      'Typical options are fixed-price for scoped projects, hourly for ongoing or evolving work, and monthly retainers for continuous product development. Exact ranges depend on scope — share your project and you will get a clear proposal.',
+  },
 ]
 
 const services = [
@@ -109,7 +114,7 @@ const services = [
     id: 'performance-ops',
     title: 'Performance Ops',
     description:
-      'Deep optimisation of existing products — Core Web Vitals, bundle splitting, caching strategies, and Lighthouse 100 audits.',
+      'Deep optimisation of existing products — Core Web Vitals, bundle splitting, caching strategies, and Lighthouse audits.',
     features: ['Core Web Vitals', 'Lighthouse Audits', 'Bundle Splitting', 'CDN & Caching'],
   },
   {
@@ -191,6 +196,46 @@ export default function ServicesPage() {
               ))}
             </div>
 
+            {/* Engagement models */}
+            <div className="bg-[#0A1221] border border-[#39FF14]/20 p-8 md:p-12 mb-16">
+              <h2 className="text-3xl md:text-4xl font-bold text-white tracking-tight mb-4">
+                Engagement Models
+              </h2>
+              <p className="text-white/60 font-sans mb-10 max-w-2xl">
+                Clear options so you know how we work together. Exact numbers depend on scope —
+                share your project for a concrete proposal.
+              </p>
+              <div className="grid md:grid-cols-3 gap-8">
+                <div className="border border-[#39FF14]/15 p-6">
+                  <h3 className="text-sm font-bold text-[#39FF14] uppercase tracking-[0.2em] mb-3">
+                    Fixed-Price Projects
+                  </h3>
+                  <p className="text-white/70 font-sans text-sm leading-relaxed">
+                    Best for well-defined scope: a marketing site, a specific feature, or a
+                    bounded MVP. You get a fixed quote and timeline up front.
+                  </p>
+                </div>
+                <div className="border border-[#39FF14]/15 p-6">
+                  <h3 className="text-sm font-bold text-[#39FF14] uppercase tracking-[0.2em] mb-3">
+                    Hourly / Time & Materials
+                  </h3>
+                  <p className="text-white/70 font-sans text-sm leading-relaxed">
+                    Ideal when requirements may evolve. Transparent logging and regular
+                    check-ins. Suitable for ongoing product work and consulting.
+                  </p>
+                </div>
+                <div className="border border-[#39FF14]/15 p-6">
+                  <h3 className="text-sm font-bold text-[#39FF14] uppercase tracking-[0.2em] mb-3">
+                    Monthly Retainer
+                  </h3>
+                  <p className="text-white/70 font-sans text-sm leading-relaxed">
+                    Reserved capacity each month for continuous development, maintenance,
+                    and iteration. Predictable cost for product teams that need steady progress.
+                  </p>
+                </div>
+              </div>
+            </div>
+
             <div className="bg-[#0A1221] border border-[#39FF14]/20 p-8 md:p-12 mb-16">
               <h2 className="text-3xl md:text-4xl font-bold text-white tracking-tight mb-8">
                 Why Hire Mussawar Hayat
@@ -221,12 +266,12 @@ export default function ServicesPage() {
                   </h3>
                   <ul className="space-y-3 text-white/60 font-sans">
                     <li className="flex items-start gap-3">
-                      <span className="w-1.5 h-1.5 bg-[#39FF14] rounded-full mt-2 shrink-0" /> 100+
-                      apps and sites live in production
+                      <span className="w-1.5 h-1.5 bg-[#39FF14] rounded-full mt-2 shrink-0" /> 40+
+                      projects delivered across web, mobile, and Web3
                     </li>
                     <li className="flex items-start gap-3">
                       <span className="w-1.5 h-1.5 bg-[#39FF14] rounded-full mt-2 shrink-0" /> Clients
-                      in 20+ countries worldwide
+                      across North America, Europe, and beyond
                     </li>
                     <li className="flex items-start gap-3">
                       <span className="w-1.5 h-1.5 bg-[#39FF14] rounded-full mt-2 shrink-0" /> Web3
@@ -239,17 +284,26 @@ export default function ServicesPage() {
 
             <div className="text-center">
               <h2 className="text-3xl md:text-5xl font-bold text-white tracking-tight mb-6">
-                Ready to Hire?
+                Ready to Start?
               </h2>
               <p className="text-lg text-white/60 max-w-2xl mx-auto mb-10 font-sans leading-relaxed">
-                Describe what you are building. Mussawar Hayat will confirm fit and timeline.
+                Describe what you are building. You will get a clear reply on fit, timeline, and
+                engagement model — usually within 24 hours.
               </p>
-              <Link
-                href="/contact"
-                className="inline-flex items-center gap-4 bg-[#39FF14] text-black px-10 py-5 font-bold uppercase tracking-widest hover:bg-white transition-all"
-              >
-                Start a Project
-              </Link>
+              <div className="flex flex-col sm:flex-row gap-4 justify-center">
+                <Link
+                  href="/contact"
+                  className="inline-flex items-center gap-4 bg-[#39FF14] text-black px-10 py-5 font-bold uppercase tracking-widest hover:bg-white transition-all"
+                >
+                  Start a Project
+                </Link>
+                <Link
+                  href="/portfolio"
+                  className="inline-flex items-center gap-4 border border-[#39FF14]/40 text-white px-10 py-5 font-bold uppercase tracking-widest hover:border-[#39FF14] transition-all"
+                >
+                  View Portfolio
+                </Link>
+              </div>
             </div>
           </div>
         </main>
