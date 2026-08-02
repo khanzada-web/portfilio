@@ -19,9 +19,9 @@ import { Contact } from "./components/sections/Contact";
 import { FAQSchema } from "./components/seo/FAQSchema";
 
 export const metadata: Metadata = {
-  title: "Hire Next.js 16 Full-Stack & Web3 Developer | Mussawar Hayat",
+  title: "Hire Next.js Full-Stack & Web3 Developer | Mussawar Hayat",
   description:
-    "Hire Mussawar Hayat — expert Next.js 16 full-stack developer and Web3 specialist. Production SaaS platforms, DApps, Solidity smart contracts, React Native mobile apps. Remote freelance for North America & Europe clients. 3+ years shipping production systems.",
+    "Hire Mussawar Hayat — Next.js full-stack developer and Web3 specialist. Production SaaS platforms, DApps, Solidity smart contracts, React Native mobile apps. Remote freelance for North America & Europe. Fixed-price, hourly, or retainer.",
   alternates: {
     canonical: "/",
   },
@@ -74,6 +74,11 @@ const FAQ_ITEMS = [
     question: "Can you add blockchain or Web3 features to an existing app?",
     answer:
       "Yes. He integrates wallet connections, smart contracts, DeFi and NFT functionality, and Bitcoin Ordinals into existing web and mobile applications using Solidity and Ethers.js.",
+  },
+  {
+    question: "How do pricing and engagement models work?",
+    answer:
+      "Typical options are fixed-price for clearly scoped projects, hourly for evolving or consulting work, and monthly retainers for continuous product development. Exact ranges depend on scope — share your project details and you will get a clear proposal. Response is usually within 24 hours.",
   },
   {
     question: "How can I hire Mussawar Hayat for a project?",
