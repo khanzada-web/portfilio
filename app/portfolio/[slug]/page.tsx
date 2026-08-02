@@ -125,7 +125,7 @@ export default async function PortfolioProjectPage({ params }: PageProps) {
               </p>
             )}
 
-            <div className="flex flex-wrap gap-4 pt-8 border-t border-white/10">
+            <div className="flex flex-wrap gap-4 pt-8 border-t border-white/10 mb-12">
               {project.link && (
                 <a
                   href={project.link}
@@ -153,6 +153,34 @@ export default async function PortfolioProjectPage({ params }: PageProps) {
                 ← All projects
               </Link>
             </div>
+
+            <aside className="bg-[#0A1221] border border-[#39FF14]/20 p-8 space-y-4">
+              <h2 className="text-lg font-bold text-white">Need similar work?</h2>
+              <p className="text-white/70 font-sans text-sm leading-relaxed">
+                Mussawar Hayat builds full-stack web, mobile, and Web3 products end-to-end.
+                Fixed-price, hourly, or retainer — remote for North America and Europe.
+              </p>
+              <div className="flex flex-wrap gap-3 pt-2">
+                <Link
+                  href="/contact"
+                  className="px-5 py-2.5 bg-[#39FF14] text-black text-xs font-bold uppercase tracking-wider"
+                >
+                  Start a Project
+                </Link>
+                <Link
+                  href="/services"
+                  className="px-5 py-2.5 border border-[#39FF14]/40 text-white text-xs font-bold uppercase tracking-wider hover:border-[#39FF14]"
+                >
+                  View Services
+                </Link>
+                <Link
+                  href="/blog"
+                  className="px-5 py-2.5 text-white/50 text-xs uppercase tracking-wider hover:text-white"
+                >
+                  Read Blog
+                </Link>
+              </div>
+            </aside>
           </article>
         </main>
         <Footer />
