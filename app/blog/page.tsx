@@ -23,6 +23,7 @@ export const metadata: Metadata = {
     'Mussawar Hayat',
     'Prisma connection pooling',
     'Server Actions security',
+    'Docker multi-stage Next.js',
   ],
   openGraph: {
     title: 'Mussawar Hayat Blog | Web3 & Full-Stack Developer Insights',
@@ -55,6 +56,14 @@ const breadcrumbs = [
 ]
 
 const blogPosts = [
+  {
+    title: 'Docker Multi-Stage Builds for Next.js 16 Production',
+    excerpt: 'Ship a minimal, secure Next.js 16 App Router image with output: "standalone", multi-stage builds, non-root user, and only the files the runtime needs. Production Dockerfile, .dockerignore, and checklist.',
+    slug: 'docker-multi-stage-nextjs-16-standalone-production',
+    date: '2026-08-02',
+    readTime: '11 min read',
+    category: 'DevOps',
+  },
   {
     title: 'Secure Server Actions in Next.js 16',
     excerpt: 'Every Server Action is a public POST endpoint. Learn the production pattern: validate inputs, authenticate from the session, authorize ownership, keep a thin action layer on a server-only Data Access Layer, and constrain return values.',
