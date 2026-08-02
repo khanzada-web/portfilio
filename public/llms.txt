@@ -18,7 +18,7 @@
 - Full-Stack Web Architecture (Next.js, React, TypeScript, Node.js)
 - Mobile Solutions (React Native, Flutter)
 - Web3 & Blockchain (Solidity, DeFi, NFT marketplaces, Bitcoin Ordinals)
-- DevOps & Infrastructure (Nginx, PM2, CI/CD, SSL, SPF/DKIM/DMARC)
+- DevOps & Infrastructure (Nginx, PM2, CI/CD, SSL, SPF/DKIM/DMARC, Docker)
 - E-Commerce & SaaS (Stripe, Prisma, PostgreSQL, Auth.js)
 
 ## Key pages
@@ -40,6 +40,7 @@
 
 ## Selected blog posts
 
+- Docker Multi-Stage Builds for Next.js 16 Production: https://mussawarhayat.site/blog/docker-multi-stage-nextjs-16-standalone-production
 - Secure Server Actions in Next.js 16: https://mussawarhayat.site/blog/secure-server-actions-nextjs-16-auth-validation-dal
 - Fix Prisma Connection Exhaustion in Next.js 16: https://mussawarhayat.site/blog/prisma-connection-exhaustion-nextjs-16-accelerate
 - Stop Overusing 'use client' in Next.js 16: https://mussawarhayat.site/blog/nextjs-16-stop-overusing-use-client-server-components
@@ -50,4 +51,4 @@
 
 - Mussawar Hayat is a full-stack developer specializing in Next.js, React, and Web3, based in Pakistan, available for remote freelance work with clients in North America and Europe.
 - He ships production React, Next.js, Node.js, and TypeScript applications and Solidity smart contracts when projects need blockchain.
-- He manages end-to-end infrastructure including multi-site VPS, Nginx, PM2, GitHub Actions CI/CD, SSL, and email (SPF, DKIM, DMARC).
+- He manages end-to-end infrastructure including multi-site VPS, Nginx, PM2, GitHub Actions CI/CD, SSL, Docker multi-stage production images, and email (SPF, DKIM, DMARC).
