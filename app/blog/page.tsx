@@ -7,7 +7,7 @@ import { SubscriptionModal } from '@/app/components/SubscriptionModal'
 
 export const metadata: Metadata = {
   title: 'Blog | Web3 & Full-Stack Insights',
-  description: 'Practical guides on Next.js 16, React, TypeScript, Web3, Solidity, DeFi, Bitcoin Ordinals, DevOps, and full-stack engineering by Mussawar Hayat.',
+  description: 'Practical guides on Next.js 16, React, TypeScript, Web3, Solidity, DeFi, Bitcoin Ordinals, DevOps, AI coding tools, and full-stack engineering by Mussawar Hayat.',
   keywords: [
     'Web3 developer blog',
     'Next.js 16 tutorial',
@@ -32,6 +32,10 @@ export const metadata: Metadata = {
     'Multi-site Next.js VPS Nginx',
     'GDPR compliance checklist for web developers',
     'cookie consent GDPR implementation',
+    'AgentRouter',
+    'free Claude Code',
+    'free AI coding API',
+    'Claude Code free alternative',
   ],
   openGraph: {
     title: 'Mussawar Hayat Blog | Web3 & Full-Stack Developer Insights',
@@ -64,6 +68,14 @@ const breadcrumbs = [
 ]
 
 const blogPosts = [
+  {
+    title: 'AgentRouter Free AI Coding API: Use Claude Code Without Paying (2026 Guide)',
+    excerpt: 'Need Claude Code, Codex, or other AI coding tools but do not want to pay subscriptions? AgentRouter gives developers free credits and a simple API gateway. Here is the complete beginner-friendly setup guide.',
+    slug: 'agentrouter-free-claude-code-api-guide-2026',
+    date: '2026-08-03',
+    readTime: '9 min read',
+    category: 'AI & Full-Stack',
+  },
   {
     title: 'Docker Multi-Stage Builds for Next.js 16 Production',
     excerpt: 'Ship a minimal, secure Next.js 16 App Router image with output: "standalone", multi-stage builds, non-root user, and only the files the runtime needs. Production Dockerfile, .dockerignore, and checklist.',

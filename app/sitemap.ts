@@ -4,6 +4,7 @@ import { getAllProjectSlugs } from "./lib/projects";
 const BASE_URL = "https://mussawarhayat.site";
 
 const BLOG_POSTS: { slug: string; date: string }[] = [
+  { slug: "agentrouter-free-claude-code-api-guide-2026", date: "2026-08-03" },
   { slug: "docker-multi-stage-nextjs-16-standalone-production", date: "2026-08-02" },
   { slug: "secure-server-actions-nextjs-16-auth-validation-dal", date: "2026-07-30" },
   { slug: "prisma-connection-exhaustion-nextjs-16-accelerate", date: "2026-07-27" },
