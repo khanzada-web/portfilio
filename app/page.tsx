@@ -19,9 +19,9 @@ import { Contact } from "./components/sections/Contact";
 import { FAQSchema } from "./components/seo/FAQSchema";
 
 export const metadata: Metadata = {
-  title: "Hire Full-Stack & Web3 Developer",
+  title: "Hire Next.js 16 Full-Stack & Web3 Developer | Mussawar Hayat",
   description:
-    "Mussawar Hayat is a full-stack developer specializing in Next.js, React, and Web3, based in Pakistan, available for remote freelance work with clients in North America and Europe. 3+ years building production SaaS, DApps, and mobile apps.",
+    "Hire Mussawar Hayat — expert Next.js 16 full-stack developer and Web3 specialist. Production SaaS platforms, DApps, Solidity smart contracts, React Native mobile apps. Remote freelance for North America & Europe clients. 3+ years shipping production systems.",
   alternates: {
     canonical: "/",
   },
