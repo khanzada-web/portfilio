@@ -20,6 +20,7 @@ import * as metamaskWc from '../content/metamask-vs-walletconnect-dapp'
 import * as spfDkim from '../content/spf-dkim-dmarc-multi-domain-vps'
 import * as gdprChecklist from '../content/gdpr-compliant-web-apps-checklist'
 import * as dexPerformance from '../content/multi-chain-dex-interface-performance'
+import * as dockerMultiStage from '../content/docker-multi-stage-nextjs-16-standalone-production'
 
 interface BlogPost {
   title: string
@@ -55,6 +56,7 @@ function toPost(mod: {
 }
 
 const blogPosts: Record<string, BlogPost> = {
+  'docker-multi-stage-nextjs-16-standalone-production': toPost(dockerMultiStage),
   'secure-server-actions-nextjs-16-auth-validation-dal': toPost(secureServerActions),
   'prisma-connection-exhaustion-nextjs-16-accelerate': toPost(prismaConnection),
   'nextjs-16-stop-overusing-use-client-server-components': toPost(stopUseClient),
