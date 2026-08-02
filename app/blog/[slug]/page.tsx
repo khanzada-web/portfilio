@@ -3,6 +3,7 @@ import Link from 'next/link'
 import { Header } from '@/app/components/layout/Header'
 import { Footer } from '@/app/components/layout/Footer'
 import { BreadcrumbSchema } from '@/app/components/seo/BreadcrumbSchema'
+import { FAQSchema } from '@/app/components/seo/FAQSchema'
 import { notFound } from 'next/navigation'
 
 import * as secureServerActions from '../content/secure-server-actions-nextjs-16-auth-validation-dal'
@@ -74,6 +75,27 @@ const blogPosts: Record<string, BlogPost> = {
   'multi-chain-dex-interface-performance': toPost(dexPerformance),
 }
 
+const postFaqs: Record<string, { question: string; answer: string }[]> = {
+  'prisma-connection-exhaustion-nextjs-16-accelerate': [
+    {
+      question: 'Why does Prisma open so many connections on Vercel?',
+      answer: 'Each serverless invocation can create its own PrismaClient if you do not use a singleton. Concurrent requests multiply pools until Postgres hits max_connections.',
+    },
+    {
+      question: 'Should I use connection_limit=1 with Prisma Accelerate?',
+      answer: 'Yes for pure serverless. Accelerate (or PgBouncer) handles the real pooling; the app-side limit should stay low so each isolate does not open a large private pool.',
+    },
+    {
+      question: 'Does the singleton work with Next.js 16 Server Actions?',
+      answer: 'Yes. Import the shared prisma instance from your server-only module inside Server Actions and Route Handlers. Never instantiate a new client per action.',
+    },
+    {
+      question: 'Prisma Accelerate vs PgBouncer — which should I choose?',
+      answer: 'Choose Accelerate for zero-ops managed pooling and optional cache on serverless. Choose PgBouncer when you already run a VPS or want full control over the pooler configuration.',
+    },
+  ],
+}
+
 function getRelatedPosts(currentSlug: string, limit = 3): { slug: string; post: BlogPost }[] {
   const entries = Object.entries(blogPosts)
   const current = blogPosts[currentSlug]
@@ -108,6 +130,7 @@ export async function generateMetadata({ params }: PageProps): Promise<Metadata>
   return {
     title: post.title,
     description: post.excerpt,
+    keywords: post.keywords,
     authors: [{ name: post.author, url: 'https://mussawarhayat.site' }],
     alternates: { canonical: pageUrl },
     robots: { index: true, follow: true, 'max-image-preview': 'large', 'max-snippet': -1 },
@@ -162,6 +185,7 @@ export default async function BlogPostPage({ params }: PageProps) {
   if (!post) notFound()
 
   const related = getRelatedPosts(slug, 3)
+  const faqs = postFaqs[slug]
   const breadcrumbs = [
     { name: 'Home', url: '/' },
     { name: 'Blog', url: '/blog' },
@@ -172,6 +196,7 @@ export default async function BlogPostPage({ params }: PageProps) {
     <>
       <BreadcrumbSchema items={breadcrumbs} />
       <BlogPostingSchema post={post} slug={slug} />
+      {faqs && faqs.length > 0 && <FAQSchema faqs={faqs} />}
       <div className="min-h-screen bg-[#060B16] font-orbitron">
         <Header />
         <main role="main" id="main-content" className="pt-20">

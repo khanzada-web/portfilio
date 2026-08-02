@@ -22,6 +22,8 @@ export const metadata: Metadata = {
     'hire Next.js developer',
     'Mussawar Hayat',
     'Prisma connection pooling',
+    'Prisma too many connections',
+    'Prisma Accelerate Next.js',
     'Server Actions security',
     'Docker multi-stage Next.js',
   ],
@@ -73,11 +75,11 @@ const blogPosts = [
     category: 'Security',
   },
   {
-    title: 'Fix Prisma Connection Exhaustion in Next.js 16',
-    excerpt: 'Serverless Next.js apps hit "too many connections" under load because every function opens its own Prisma pool. Learn the production singleton pattern, Prisma Accelerate setup, and PgBouncer alternative that keep Postgres stable.',
+    title: 'Prisma Connection Exhaustion in Next.js 16: Fix Too Many Connections with Accelerate',
+    excerpt: 'Prisma "too many connections" errors crash serverless Next.js 16 apps under load. Production fix: global PrismaClient singleton, connection_limit=1, Prisma Accelerate pooling, or PgBouncer. Complete guide with code and checklist.',
     slug: 'prisma-connection-exhaustion-nextjs-16-accelerate',
     date: '2026-07-27',
-    readTime: '12 min read',
+    readTime: '14 min read',
     category: 'Full-Stack',
   },
   {
