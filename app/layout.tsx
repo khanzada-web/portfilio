@@ -1,5 +1,6 @@
 import type { Metadata, Viewport } from "next";
 import { Geist, Geist_Mono, Orbitron } from "next/font/google";
+import Script from "next/script";
 import "./globals.css";
 
 const geistSans = Geist({
@@ -272,6 +273,13 @@ export default function RootLayout({
       <body
         className={`${geistSans.variable} ${geistMono.variable} ${orbitron.variable} antialiased`}
       >
+        <Script
+          async
+          src="https://pagead2.googlesyndication.com/pagead/js/adsbygoogle.js?client=ca-pub-9383132900869188"
+          crossOrigin="anonymous"
+          strategy="afterInteractive"
+        />
+
         <noscript>
           <iframe
             src="https://www.googletagmanager.com/ns.html?id=GTM-P3GKJN4G"
