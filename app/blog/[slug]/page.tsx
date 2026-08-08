@@ -4,6 +4,7 @@ import { Header } from '@/app/components/layout/Header'
 import { Footer } from '@/app/components/layout/Footer'
 import { BreadcrumbSchema } from '@/app/components/seo/BreadcrumbSchema'
 import { FAQSchema } from '@/app/components/seo/FAQSchema'
+import { AdSense } from '@/app/components/AdSense'
 import { notFound } from 'next/navigation'
 
 import * as secureServerActions from '../content/secure-server-actions-nextjs-16-auth-validation-dal'
@@ -258,11 +259,17 @@ export default async function BlogPostPage({
               </p>
             </header>
 
+            {/* Ad: after intro */}
+            <AdSense slot="2140608408" />
+
             {/* Body — each section is a card via CSS */}
             <div
               className="prose prose-invert prose-headings:font-orbitron prose-a:text-[#39FF14] max-w-none blog-content blog-content-stack"
               dangerouslySetInnerHTML={{ __html: post.content }}
             />
+
+            {/* Ad: after article body */}
+            <AdSense slot="2140608408" />
 
             {/* FAQ cards */}
             {faqs.length > 0 && (
