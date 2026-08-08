@@ -8,7 +8,7 @@ import { FAQSchema } from '@/app/components/seo/FAQSchema'
 export const metadata: Metadata = {
   title: 'Full-Stack & Web3 Development Services',
   description:
-    'Mussawar Hayat offers full-stack development services: React/Next.js web apps, React Native mobile, Node.js APIs, DevOps, SaaS, and Web3/Solidity smart contracts. Fixed-price, hourly, or retainer. Remote for North America and Europe.',
+    'Full-stack development services: React/Next.js, React Native, APIs, DevOps, and Web3/blockchain. Hire Mussawar Hayat for remote projects.',
   openGraph: {
     title: 'Hire Full-Stack & Web3 Developer | Mussawar Hayat Services',
     description:
@@ -196,7 +196,6 @@ export default function ServicesPage() {
               ))}
             </div>
 
-            {/* Engagement models */}
             <div className="bg-[#0A1221] border border-[#39FF14]/20 p-8 md:p-12 mb-16">
               <h2 className="text-3xl md:text-4xl font-bold text-white tracking-tight mb-4">
                 Engagement Models
