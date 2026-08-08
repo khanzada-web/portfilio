@@ -28,7 +28,7 @@ export const metadata: Metadata = {
   },
 
   description:
-    "Mussawar Hayat is a full-stack developer specializing in Next.js, React, and Web3, based in Pakistan, available for remote freelance work with clients in North America and Europe. 3+ years building production SaaS, DApps, and mobile apps.",
+    "Mussawar Hayat — full-stack & Web3 developer. Next.js, React, TypeScript, Solidity. Remote freelance for North America & Europe.",
 
   authors: [{ name: "Mussawar Hayat", url: "https://mussawarhayat.site" }],
   creator: "Mussawar Hayat",
@@ -101,7 +101,7 @@ const ENTITY_GRAPH = {
       url: "https://mussawarhayat.site",
       name: "Mussawar Hayat | Full-Stack & Web3 Developer",
       description:
-        "Mussawar Hayat is a full-stack developer specializing in Next.js, React, and Web3, based in Pakistan, available for remote freelance work with clients in North America and Europe.",
+        "Full-stack developer specializing in Next.js, React, and Web3. Remote freelance for clients in North America and Europe.",
       publisher: { "@id": "https://mussawarhayat.site/#person" },
       inLanguage: "en",
     },
@@ -115,7 +115,7 @@ const ENTITY_GRAPH = {
       email: "zada38843@gmail.com",
       telephone: "+923358328468",
       description:
-        "Mussawar Hayat is a full-stack developer specializing in Next.js, React, and Web3, based in Pakistan, available for remote freelance work with clients in North America and Europe. 3+ years building production SaaS, DApps, smart contracts, and mobile apps.",
+        "Full-stack & Web3 developer: Next.js, React, TypeScript, Solidity. Remote freelance for North America and Europe.",
       address: {
         "@type": "PostalAddress",
         streetAddress: "Mehria Town",
@@ -168,7 +168,7 @@ const ENTITY_GRAPH = {
       url: "https://mussawarhayat.site",
       image: "https://mussawarhayat.site/my-pic.jpeg",
       description:
-        "Freelance full-stack and Web3 development services: Next.js, React, TypeScript, Node.js, Solidity, mobile apps, DevOps, and SaaS platforms. Remote engagement for clients in North America, Europe, and worldwide.",
+        "Freelance full-stack & Web3 services: Next.js, React, TypeScript, Node.js, Solidity, mobile, DevOps, and SaaS. Remote worldwide.",
       email: "zada38843@gmail.com",
       telephone: "+923358328468",
       priceRange: "$$",
