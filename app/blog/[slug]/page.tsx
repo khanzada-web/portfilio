@@ -230,7 +230,7 @@ export default async function BlogPostPage({
         <Header />
 
         <main id="main-content" className="pt-32 sm:pt-36 md:pt-40 pb-24">
-          <article className="max-w-3xl mx-auto px-4 sm:px-6">
+          <article className="max-w-7xl mx-auto px-4 sm:px-6">
             {/* Header card */}
             <header className="mb-6 sm:mb-8 bg-[#0A1221] border border-[#39FF14]/20 rounded-2xl p-6 sm:p-8 shadow-[0_8px_32px_rgba(0,0,0,0.25)]">
               <div className="flex flex-wrap items-center gap-3 text-sm text-white/50 mb-5">
