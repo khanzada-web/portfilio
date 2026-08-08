@@ -36,6 +36,11 @@ export const metadata: Metadata = {
     'free Claude Code',
     'free AI coding API',
     'Claude Code free alternative',
+    'how to get 500k views on X',
+    'how to get 500000 impressions on X',
+    'X algorithm 2026',
+    'go viral on X 2026',
+    'X monetization 500k impressions',
   ],
   openGraph: {
     title: 'Mussawar Hayat Blog | Web3 & Full-Stack Developer Insights',
@@ -68,6 +73,14 @@ const breadcrumbs = [
 ]
 
 const blogPosts = [
+  {
+    title: 'How to Get 500K Views on X in 2026: Complete Algorithm & Monetization Guide',
+    excerpt: 'X lowered the monetization bar to 500K verified Home Timeline impressions. Here is the exact 2026 playbook: early engagement velocity, original content, native video, Premium signals, and the daily system that turns small accounts into high-reach creators.',
+    slug: 'how-to-get-500k-views-on-x-2026',
+    date: '2026-08-09',
+    readTime: '14 min read',
+    category: 'Growth & X Strategy',
+  },
   {
     title: 'AgentRouter Free AI Coding API: Use Claude Code Without Paying (2026 Guide)',
     excerpt: 'Need Claude Code, Codex, or other AI coding tools but do not want to pay subscriptions? AgentRouter gives developers free credits and a simple API gateway. Here is the complete beginner-friendly setup guide.',
@@ -174,7 +187,7 @@ const blogPosts = [
   },
   {
     title: 'MetaMask vs WalletConnect for DApps',
-    excerpt: 'Both work. Both have edge cases. Here\'s what I learned integrating MetaMask, WalletConnect, and Coinbase Wallet across multiple DApps.',
+    excerpt: 'Both work. Both have edge cases. Here is what I learned integrating MetaMask, WalletConnect, and Coinbase Wallet across multiple DApps.',
     slug: 'metamask-vs-walletconnect-dapp',
     date: '2026-05-05',
     readTime: '8 min read',
@@ -182,26 +195,26 @@ const blogPosts = [
   },
   {
     title: 'SPF, DKIM & DMARC for Multi-Domain VPS',
-    excerpt: 'Email deliverability is silent until it breaks. Here\'s the exact DNS setup I use to keep transactional email out of spam across multiple domains.',
+    excerpt: 'Email from your own domains on a VPS: SPF, DKIM, DMARC records, common failure modes, and a production checklist for deliverability.',
     slug: 'spf-dkim-dmarc-multi-domain-vps',
     date: '2026-04-28',
-    readTime: '7 min read',
+    readTime: '9 min read',
     category: 'DevOps',
   },
   {
-    title: 'GDPR Compliance Checklist for Web Developers 2026',
-    excerpt: 'Complete GDPR compliance checklist for web developers: cookie consent implementation, data subject rights APIs, privacy by design, retention jobs, and production controls for Next.js and full-stack apps serving EU clients.',
+    title: 'GDPR-Compliant Web Apps Checklist',
+    excerpt: 'Practical GDPR checklist for developers: lawful basis, consent, cookies, data access requests, and what to implement in a Next.js or SaaS product.',
     slug: 'gdpr-compliant-web-apps-checklist',
     date: '2026-04-20',
     readTime: '12 min read',
-    category: 'Full-Stack',
+    category: 'Compliance',
   },
   {
     title: 'Multi-Chain DEX Interface Performance',
-    excerpt: 'Real-time price feeds, chart rendering, and websocket management — how I built Demotrionn DEX without melting the browser.',
+    excerpt: 'Making multi-chain DEX UIs fast: RPC strategy, quote caching, wallet state, and the patterns that keep the interface responsive under load.',
     slug: 'multi-chain-dex-interface-performance',
     date: '2026-04-15',
-    readTime: '12 min read',
+    readTime: '10 min read',
     category: 'Web3',
   },
 ]
@@ -210,38 +223,32 @@ export default function BlogPage() {
   return (
     <>
       <BreadcrumbSchema items={breadcrumbs} />
-
-      <div className="min-h-screen bg-[#060B16] font-orbitron">
+      <div className="min-h-screen bg-white font-sans">
         <Header />
-        <main role="main" id="main-content" className="pt-20">
-          <div className="max-w-6xl mx-auto px-4 sm:px-6 py-16">
-
-            <div className="text-center mb-20">
-              <h1 className="text-4xl md:text-6xl font-bold text-white tracking-tighter uppercase leading-none mb-8">
-                <span className="text-[#39FF14]">Mussawar</span> Tech Blog
+        <main id="main-content" className="pt-28 pb-20">
+          <div className="container mx-auto px-6 max-w-5xl">
+            <header className="mb-16 text-center">
+              <h1 className="text-4xl md:text-5xl font-bold tracking-tight text-gray-900 mb-4">
+                Blog
               </h1>
-              <p className="text-lg text-white/60 max-w-3xl mx-auto leading-relaxed font-sans">
-                Practical architecture guides and production patterns for Next.js, React, TypeScript,
-                Web3, Solidity, DeFi, Bitcoin Ordinals, and full-stack engineering.
+              <p className="text-lg text-gray-600 max-w-2xl mx-auto">
+                Practical guides on Next.js, Web3, full-stack architecture, DevOps, and production engineering.
               </p>
-            </div>
-
-            <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6 mb-24">
+            </header>
+            <div className="grid gap-8">
               {blogPosts.map((post) => (
                 <article
                   key={post.slug}
-                  className="group bg-[#0A1221] border border-[#39FF14]/20 p-8 hover:border-[#39FF14] transition-all duration-500 flex flex-col"
+                  className="border border-gray-200 rounded-xl p-6 md:p-8 hover:border-[#39FF14]/50 hover:shadow-lg transition-all"
                 >
-                  <div className="flex flex-col sm:flex-row sm:items-center justify-between mb-4 gap-2">
-                    <div className="flex items-center gap-2">
-                      <span className="text-xs sm:text-sm font-medium text-[#39FF14] bg-[#39FF14]/10 px-2 sm:px-3 py-1 rounded-md">
-                        {post.category}
-                      </span>
-                    </div>
-                    <span className="text-xs sm:text-sm text-white/50">{post.readTime}</span>
+                  <div className="flex flex-wrap items-center gap-3 text-sm text-gray-500 mb-3">
+                    <span className="px-2 py-0.5 bg-gray-100 rounded text-gray-700 font-medium">
+                      {post.category}
+                    </span>
+                    <time dateTime={post.date}>{post.date}</time>
+                    <span>{post.readTime}</span>
                   </div>
-
-                  <h2 className="text-lg sm:text-xl font-semibold text-white font-orbitron mb-3 overflow-hidden" style={{ display: '-webkit-box', WebkitLineClamp: 2, WebkitBoxOrient: 'vertical' }}>
+                  <h2 className="text-2xl font-bold text-gray-900 mb-3">
                     <Link
                       href={`/blog/${post.slug}`}
                       className="hover:text-[#39FF14] transition-colors"
@@ -249,71 +256,23 @@ export default function BlogPage() {
                       {post.title}
                     </Link>
                   </h2>
-
-                  <p className="text-sm sm:text-base text-white/60 mb-4 flex-1 overflow-hidden" style={{ display: '-webkit-box', WebkitLineClamp: 3, WebkitBoxOrient: 'vertical' }}>
-                    {post.excerpt}
-                  </p>
-
-                  <div className="flex flex-col sm:flex-row sm:items-center justify-between mt-auto pt-4 border-t border-white/5 gap-2">
-                    <time dateTime={post.date} className="text-xs sm:text-sm text-white/40">
-                      {new Date(post.date).toLocaleDateString('en-US', {
-                        year: 'numeric',
-                        month: 'long',
-                        day: 'numeric',
-                      })}
-                    </time>
-
-                    <Link
-                      href={`/blog/${post.slug}`}
-                      className="text-white hover:text-[#39FF14] transition-colors text-sm flex items-center gap-1 group"
-                    >
-                      Read more
-                      <svg
-                        className="w-4 h-4 group-hover:translate-x-1 transition-transform"
-                        fill="none"
-                        stroke="currentColor"
-                        viewBox="0 0 24 24"
-                      >
-                        <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M9 5l7 7-7 7" />
-                      </svg>
-                    </Link>
-                  </div>
+                  <p className="text-gray-600 mb-4 leading-relaxed">{post.excerpt}</p>
+                  <Link
+                    href={`/blog/${post.slug}`}
+                    className="inline-flex items-center gap-2 text-sm font-semibold text-[#39FF14] hover:underline"
+                  >
+                    Read guide
+                    <svg className="w-4 h-4" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                      <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M9 5l7 7-7 7" />
+                    </svg>
+                  </Link>
                 </article>
               ))}
-            </div>
-
-            <div className="text-center">
-              <div className="bg-[#0A1221] border border-[#39FF14]/20 p-8 md:p-12">
-                <h2 className="text-xl md:text-2xl font-bold text-white font-orbitron mb-4">
-                  Stay Updated with <span className="text-[#39FF14]">Web3 & Full-Stack</span> Insights
-                </h2>
-                <p className="text-sm md:text-base text-white/60 mb-6 px-2">
-                  Get practical architecture guides on Next.js, Web3, Solidity, DeFi, and production
-                  full-stack systems delivered to your inbox.
-                </p>
-                <SubscriptionModal />
-              </div>
-            </div>
-
-            <div className="text-center mt-12">
-              <div className="flex flex-col sm:flex-row gap-4 justify-center">
-                <Link
-                  href="/services"
-                  className="px-8 py-4 border border-white/10 hover:border-[#39FF14]/30 text-white/70 hover:text-white font-orbitron text-sm uppercase tracking-[0.2em] rounded-xl transition-all duration-300"
-                >
-                  Explore Services
-                </Link>
-                <Link
-                  href="/contact"
-                  className="px-8 py-4 border border-white/10 hover:border-[#39FF14]/30 text-white/70 hover:text-white font-orbitron text-sm uppercase tracking-[0.2em] rounded-xl transition-all duration-300"
-                >
-                  Hire Me
-                </Link>
-              </div>
             </div>
           </div>
         </main>
         <Footer />
+        <SubscriptionModal />
       </div>
     </>
   )
