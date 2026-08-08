@@ -229,63 +229,98 @@ export default async function BlogPostPage({
       <div className="min-h-screen bg-[#060B16] font-sans">
         <Header />
 
-        <main id="main-content" className="pt-28 pb-20">
-          <article className="container mx-auto px-6 max-w-3xl">
-            <header className="mb-10">
-              <div className="flex flex-wrap items-center gap-3 text-sm text-white/50 mb-4">
-                <span className="px-2.5 py-1 bg-[#39FF14]/10 text-[#39FF14] text-xs font-medium rounded-full border border-[#39FF14]/20">
+        <main id="main-content" className="pt-32 sm:pt-36 md:pt-40 pb-24">
+          <article className="max-w-3xl mx-auto px-4 sm:px-6">
+            {/* Header card */}
+            <header className="mb-6 sm:mb-8 bg-[#0A1221] border border-[#39FF14]/20 rounded-2xl p-6 sm:p-8 shadow-[0_8px_32px_rgba(0,0,0,0.25)]">
+              <div className="flex flex-wrap items-center gap-3 text-sm text-white/50 mb-5">
+                <span className="px-3 py-1 bg-[#39FF14]/10 text-[#39FF14] text-xs font-semibold rounded-md border border-[#39FF14]/25 tracking-wide uppercase">
                   {post.category}
                 </span>
-                <time dateTime={post.date}>{post.date}</time>
-                <span>{post.readTime}</span>
+                <time dateTime={post.date} className="text-white/45">
+                  {new Date(post.date).toLocaleDateString('en-US', {
+                    year: 'numeric',
+                    month: 'long',
+                    day: 'numeric',
+                  })}
+                </time>
+                <span className="text-white/35">·</span>
+                <span className="text-white/45">{post.readTime}</span>
               </div>
-              <h1 className="text-3xl md:text-4xl font-bold text-white font-orbitron leading-tight mb-4">
+              <h1 className="text-2xl sm:text-3xl md:text-4xl font-bold text-white font-orbitron leading-tight mb-4 tracking-tight">
                 {post.title}
               </h1>
-              <p className="text-lg text-white/70 leading-relaxed">{post.excerpt}</p>
+              <p className="text-base sm:text-lg text-white/65 leading-relaxed font-sans border-t border-white/5 pt-4">
+                {post.excerpt}
+              </p>
+              <p className="mt-4 text-sm text-white/40 font-sans">
+                By <span className="text-white/70">{post.author}</span>
+              </p>
             </header>
 
+            {/* Body — each section is a card via CSS */}
             <div
-              className="prose prose-invert prose-headings:font-orbitron prose-a:text-[#39FF14] max-w-none blog-content"
+              className="prose prose-invert prose-headings:font-orbitron prose-a:text-[#39FF14] max-w-none blog-content blog-content-stack"
               dangerouslySetInnerHTML={{ __html: post.content }}
             />
 
+            {/* FAQ cards */}
             {faqs.length > 0 && (
-              <section className="mt-16 border-t border-white/10 pt-10">
-                <h2 className="text-2xl font-bold text-white font-orbitron mb-6">FAQ</h2>
-                <div className="space-y-6">
-                  {faqs.map((faq) => (
-                    <div key={faq.question}>
-                      <h3 className="text-lg font-semibold text-white mb-2">{faq.question}</h3>
-                      <p className="text-white/70">{faq.answer}</p>
-                    </div>
-                  ))}
+              <section className="mt-2 mb-6 sm:mb-8">
+                <div className="bg-[#0A1221] border border-[#39FF14]/20 rounded-2xl p-6 sm:p-8 shadow-[0_8px_32px_rgba(0,0,0,0.25)]">
+                  <h2 className="text-xl sm:text-2xl font-bold text-white font-orbitron mb-6">
+                    Frequently Asked Questions
+                  </h2>
+                  <div className="space-y-4">
+                    {faqs.map((faq) => (
+                      <div
+                        key={faq.question}
+                        className="bg-[#060B16] border border-white/10 rounded-xl p-4 sm:p-5 hover:border-[#39FF14]/30 transition-colors"
+                      >
+                        <h3 className="text-base sm:text-lg font-semibold text-[#39FF14] mb-2 font-orbitron">
+                          {faq.question}
+                        </h3>
+                        <p className="text-sm sm:text-base text-white/70 leading-relaxed font-sans">
+                          {faq.answer}
+                        </p>
+                      </div>
+                    ))}
+                  </div>
                 </div>
               </section>
             )}
 
+            {/* Related guides cards */}
             {related.length > 0 && (
-              <section className="mt-16 border-t border-white/10 pt-10">
-                <h2 className="text-xl font-bold text-white font-orbitron mb-6">Related guides</h2>
-                <div className="grid gap-4">
-                  {related.map(({ slug: rslug, post: rpost }) => (
-                    <Link
-                      key={rslug}
-                      href={`/blog/${rslug}`}
-                      className="block p-4 border border-white/10 rounded-lg hover:border-[#39FF14]/40 transition-colors"
-                    >
-                      <span className="text-white font-medium hover:text-[#39FF14]">{rpost.title}</span>
-                      <p className="text-sm text-white/50 mt-1 line-clamp-2">{rpost.excerpt}</p>
-                    </Link>
-                  ))}
+              <section className="mb-8">
+                <div className="bg-[#0A1221] border border-[#39FF14]/20 rounded-2xl p-6 sm:p-8 shadow-[0_8px_32px_rgba(0,0,0,0.25)]">
+                  <h2 className="text-xl font-bold text-white font-orbitron mb-5">
+                    Related guides
+                  </h2>
+                  <div className="grid gap-3 sm:gap-4">
+                    {related.map(({ slug: rslug, post: rpost }) => (
+                      <Link
+                        key={rslug}
+                        href={`/blog/${rslug}`}
+                        className="block bg-[#060B16] border border-white/10 rounded-xl p-4 sm:p-5 hover:border-[#39FF14]/40 transition-all group"
+                      >
+                        <span className="text-white font-medium group-hover:text-[#39FF14] transition-colors font-orbitron text-sm sm:text-base">
+                          {rpost.title}
+                        </span>
+                        <p className="text-sm text-white/50 mt-2 line-clamp-2 font-sans leading-relaxed">
+                          {rpost.excerpt}
+                        </p>
+                      </Link>
+                    ))}
+                  </div>
                 </div>
               </section>
             )}
 
-            <div className="mt-16 text-center">
+            <div className="text-center pt-2">
               <Link
                 href="/blog"
-                className="text-[#39FF14] hover:underline text-sm font-medium"
+                className="inline-flex items-center gap-2 px-6 py-3 bg-[#0A1221] border border-[#39FF14]/25 rounded-xl text-[#39FF14] hover:border-[#39FF14] hover:bg-[#39FF14]/5 transition-all text-sm font-orbitron tracking-wide"
               >
                 ← Back to all posts
               </Link>
