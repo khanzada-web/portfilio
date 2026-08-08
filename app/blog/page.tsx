@@ -7,7 +7,7 @@ import { SubscriptionModal } from '@/app/components/SubscriptionModal'
 
 export const metadata: Metadata = {
   title: 'Blog | Web3 & Full-Stack Insights',
-  description: 'Practical guides on Next.js 16, React, TypeScript, Web3, Solidity, DeFi, Bitcoin Ordinals, DevOps, AI coding tools, X growth strategy, and full-stack engineering by Mussawar Hayat.',
+  description: 'Practical guides on Next.js 16, React, TypeScript, Web3, Solidity, DeFi, Bitcoin Ordinals, DevOps, AI coding tools, and full-stack engineering by Mussawar Hayat.',
   keywords: [
     'Web3 developer blog',
     'Next.js 16 tutorial',
@@ -195,26 +195,26 @@ const blogPosts = [
   },
   {
     title: 'SPF, DKIM & DMARC for Multi-Domain VPS',
-    excerpt: 'Email from your own domains on a VPS: SPF, DKIM, DMARC records, common failure modes, and a production checklist for deliverability.',
+    excerpt: 'Email deliverability for multiple domains on one VPS: SPF, DKIM, DMARC records, common mistakes, and a production checklist.',
     slug: 'spf-dkim-dmarc-multi-domain-vps',
     date: '2026-04-28',
-    readTime: '9 min read',
+    readTime: '7 min read',
     category: 'DevOps',
   },
   {
-    title: 'GDPR-Compliant Web Apps Checklist',
-    excerpt: 'Practical GDPR checklist for developers: lawful basis, consent, cookies, data access requests, and what to implement in a Next.js or SaaS product.',
+    title: 'GDPR Compliance Checklist for Web Developers 2026',
+    excerpt: 'Complete GDPR compliance checklist for web developers: cookie consent implementation, data subject rights APIs, privacy by design, retention jobs, and production controls for Next.js and full-stack apps serving EU clients.',
     slug: 'gdpr-compliant-web-apps-checklist',
     date: '2026-04-20',
     readTime: '12 min read',
-    category: 'Compliance',
+    category: 'Full-Stack',
   },
   {
     title: 'Multi-Chain DEX Interface Performance',
-    excerpt: 'Making multi-chain DEX UIs fast: RPC strategy, quote caching, wallet state, and the patterns that keep the interface responsive under load.',
+    excerpt: 'Real-time price feeds, chart rendering, and websocket management — how I built Demotrionn DEX without melting the browser.',
     slug: 'multi-chain-dex-interface-performance',
     date: '2026-04-15',
-    readTime: '10 min read',
+    readTime: '12 min read',
     category: 'Web3',
   },
 ]
@@ -224,30 +224,33 @@ export default function BlogPage() {
     <>
       <BreadcrumbSchema items={breadcrumbs} />
 
-      <div className="min-h-screen bg-[#060B16] font-sans">
+      <div className="min-h-screen bg-[#060B16] font-orbitron">
         <Header />
+        <main role="main" id="main-content" className="pt-20">
+          <div className="max-w-6xl mx-auto px-4 sm:px-6 py-16">
 
-        <main id="main-content" className="pt-28 pb-20">
-          <div className="container mx-auto px-6 max-w-5xl">
-            <header className="mb-12 md:mb-16 text-center">
-              <h1 className="text-3xl sm:text-4xl md:text-5xl font-bold tracking-tight text-white font-orbitron mb-4">
-                Blog
+            <div className="text-center mb-20">
+              <h1 className="text-4xl md:text-6xl font-bold text-white tracking-tighter uppercase leading-none mb-8">
+                <span className="text-[#39FF14]">Mussawar</span> Tech Blog
               </h1>
-              <p className="text-base sm:text-lg text-white/60 max-w-2xl mx-auto">
-                Practical guides on Next.js, Web3, full-stack architecture, DevOps, growth, and production engineering.
+              <p className="text-lg text-white/60 max-w-3xl mx-auto leading-relaxed font-sans">
+                Practical architecture guides and production patterns for Next.js, React, TypeScript,
+                Web3, Solidity, DeFi, Bitcoin Ordinals, and full-stack engineering.
               </p>
-            </header>
+            </div>
 
-            <div className="grid gap-6 md:gap-8 mb-16">
+            <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6 mb-24">
               {blogPosts.map((post) => (
                 <article
                   key={post.slug}
-                  className="flex flex-col bg-[#0A1221] border border-white/5 rounded-xl p-5 sm:p-6 md:p-8 hover:border-[#39FF14]/30 transition-all duration-300"
+                  className="group bg-[#0A1221] border border-[#39FF14]/20 p-8 hover:border-[#39FF14] transition-all duration-500 flex flex-col"
                 >
-                  <div className="flex flex-wrap items-center gap-2 sm:gap-3 mb-3">
-                    <span className="px-2.5 py-1 bg-[#39FF14]/10 text-[#39FF14] text-xs font-medium rounded-full border border-[#39FF14]/20">
-                      {post.category}
-                    </span>
+                  <div className="flex flex-col sm:flex-row sm:items-center justify-between mb-4 gap-2">
+                    <div className="flex items-center gap-2">
+                      <span className="text-xs sm:text-sm font-medium text-[#39FF14] bg-[#39FF14]/10 px-2 sm:px-3 py-1 rounded-md">
+                        {post.category}
+                      </span>
+                    </div>
                     <span className="text-xs sm:text-sm text-white/50">{post.readTime}</span>
                   </div>
 
