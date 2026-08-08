@@ -4,7 +4,7 @@ import { Header } from '@/app/components/layout/Header'
 import { Footer } from '@/app/components/layout/Footer'
 import { BreadcrumbSchema } from '@/app/components/seo/BreadcrumbSchema'
 import { FAQSchema } from '@/app/components/seo/FAQSchema'
-import { AdSense } from '@/app/components/AdSense'
+// import { AdSense } from '@/app/components/AdSense' // enable when Google starts serving ads
 import { notFound } from 'next/navigation'
 
 import * as secureServerActions from '../content/secure-server-actions-nextjs-16-auth-validation-dal'
@@ -259,8 +259,9 @@ export default async function BlogPostPage({
               </p>
             </header>
 
-            {/* Ad: after intro */}
+            {/* Ad: after intro — enable when Google starts serving ads
             <AdSense slot="2140608408" />
+            */}
 
             {/* Body — each section is a card via CSS */}
             <div
@@ -268,8 +269,9 @@ export default async function BlogPostPage({
               dangerouslySetInnerHTML={{ __html: post.content }}
             />
 
-            {/* Ad: after article body */}
+            {/* Ad: after article body — enable when Google starts serving ads
             <AdSense slot="2140608408" />
+            */}
 
             {/* FAQ cards */}
             {faqs.length > 0 && (
