@@ -41,6 +41,9 @@ export const metadata: Metadata = {
     'X algorithm 2026',
     'go viral on X 2026',
     'X monetization 500k impressions',
+    'Next.js 16.3 Instant Navigations',
+    'cacheComponents',
+    'partialPrefetching',
   ],
   openGraph: {
     title: 'Mussawar Hayat Blog | Web3 & Full-Stack Developer Insights',
@@ -73,6 +76,14 @@ const breadcrumbs = [
 ]
 
 const blogPosts = [
+  {
+    title: 'Next.js 16.3 Instant Navigations: Production Guide for SPA-Like Server Components',
+    excerpt: 'Next.js 16.3 Instant Navigations make Server Components feel as responsive as SPAs. Enable cacheComponents + partialPrefetching, use Suspense streaming or use cache, inspect shells, and ship instant first-click navigations without giving up the server model.',
+    slug: 'nextjs-16-3-instant-navigations-production-guide',
+    date: '2026-08-09',
+    readTime: '13 min read',
+    category: 'Full-Stack',
+  },
   {
     title: 'How to Get 500K Views on X in 2026: Complete Algorithm & Monetization Guide',
     excerpt: 'X lowered the monetization bar to 500K verified Home Timeline impressions. Here is the exact 2026 playbook: early engagement velocity, original content, native video, Premium signals, and the daily system that turns small accounts into high-reach creators.',
