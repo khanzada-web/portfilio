@@ -323,7 +323,7 @@ export default async function BlogPostPage({
               </section>
             )}
 
-            {/* Related guides cards */
+            {/* Related guides cards */}
             {related.length > 0 && (
               <section className="mb-8">
                 <div className="bg-[#0A1221] border border-[#39FF14]/20 rounded-2xl p-6 sm:p-8 shadow-[0_8px_32px_rgba(0,0,0,0.25)]">
