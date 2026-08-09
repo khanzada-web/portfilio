@@ -25,6 +25,7 @@ import * as dexPerformance from '../content/multi-chain-dex-interface-performanc
 import * as dockerMultiStage from '../content/docker-multi-stage-nextjs-16-standalone-production'
 import * as agentRouterGuide from '../content/agentrouter-free-claude-code-api-guide-2026'
 import * as howToGet500kViews from '../content/how-to-get-500k-views-on-x-2026'
+import * as instantNavigations from '../content/nextjs-16-3-instant-navigations-production-guide'
 
 interface BlogPost {
   title: string
@@ -60,6 +61,7 @@ function toPost(mod: {
 }
 
 const blogPosts: Record<string, BlogPost> = {
+  'nextjs-16-3-instant-navigations-production-guide': toPost(instantNavigations),
   'how-to-get-500k-views-on-x-2026': toPost(howToGet500kViews),
   'agentrouter-free-claude-code-api-guide-2026': toPost(agentRouterGuide),
   'docker-multi-stage-nextjs-16-standalone-production': toPost(dockerMultiStage),
@@ -81,6 +83,28 @@ const blogPosts: Record<string, BlogPost> = {
 }
 
 const postFaqs: Record<string, { question: string; answer: string }[]> = {
+  'nextjs-16-3-instant-navigations-production-guide': [
+    {
+      question: 'Do I need both cacheComponents and partialPrefetching?',
+      answer: 'Yes. cacheComponents enables the new caching model, Instant Insights, and related behaviors. partialPrefetching switches prefetching to reusable shells per route. Both are required for the full Instant Navigations experience.',
+    },
+    {
+      question: 'Will Instant Navigations become the default?',
+      answer: 'Yes. The Next.js team has stated that the behaviors behind Instant Navigations are expected to become the default in a future major version as the framework moves toward dynamic-by-default with explicit caching.',
+    },
+    {
+      question: 'Can I still intentionally block a navigation?',
+      answer: 'Yes. Export export const instant = false on the page or layout. Instant Insights will stop treating that route as required to be instant.',
+    },
+    {
+      question: 'Does this work with Server Actions and the existing Data Access Layer patterns?',
+      answer: 'Yes. Instant Navigations focus on the first paint of a navigation. Server Actions remain the recommended mutation path; keep them thin, validated, and authorized on the server as before.',
+    },
+    {
+      question: 'Is the Edge runtime supported with cacheComponents?',
+      answer: 'No. Cache Components requires the Node.js runtime. Migrate routes that still set runtime = "edge" before enabling the flag.',
+    },
+  ],
   'how-to-get-500k-views-on-x-2026': [
     {
       question: 'Is 500K views the same as 500K verified Home Timeline impressions?',
@@ -299,7 +323,7 @@ export default async function BlogPostPage({
               </section>
             )}
 
-            {/* Related guides cards */}
+            {/* Related guides cards */
             {related.length > 0 && (
               <section className="mb-8">
                 <div className="bg-[#0A1221] border border-[#39FF14]/20 rounded-2xl p-6 sm:p-8 shadow-[0_8px_32px_rgba(0,0,0,0.25)]">
