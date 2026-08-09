@@ -1,11 +1,14 @@
 User-agent: *
 Allow: /
 
-# AI / answer-engine crawlers (AISO / GEO)
+# AI / answer-engine crawlers (AISO / GEO / AEO)
 User-agent: GPTBot
 Allow: /
 
 User-agent: ChatGPT-User
+Allow: /
+
+User-agent: OAI-SearchBot
 Allow: /
 
 User-agent: ClaudeBot
@@ -39,6 +42,21 @@ User-agent: Bytespider
 Allow: /
 
 User-agent: CCBot
+Allow: /
+
+User-agent: cohere-ai
+Allow: /
+
+User-agent: Diffbot
+Allow: /
+
+User-agent: FacebookBot
+Allow: /
+
+User-agent: meta-externalagent
+Allow: /
+
+User-agent: YouBot
 Allow: /
 
 # Non-content paths
