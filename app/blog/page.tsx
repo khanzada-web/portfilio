@@ -44,6 +44,10 @@ export const metadata: Metadata = {
     'Next.js 16.3 Instant Navigations',
     'cacheComponents',
     'partialPrefetching',
+    'Meta Muse Code',
+    'Muse Code setup',
+    'Muse Spark 1.2',
+    'AI coding agent TypeScript',
   ],
   openGraph: {
     title: 'Mussawar Hayat Blog | Web3 & Full-Stack Developer Insights',
@@ -76,6 +80,14 @@ const breadcrumbs = [
 ]
 
 const blogPosts = [
+  {
+    title: 'Meta Muse Code for TypeScript & Next.js Developers: Setup and Production Workflows (2026)',
+    excerpt: 'Practical guide to installing Meta Muse Code, using its async background agents and worktrees on large Next.js/TypeScript repos, security, approvals, and production tips after the August 2026 launch.',
+    slug: 'meta-muse-code-typescript-nextjs-guide-2026',
+    date: '2026-08-11',
+    readTime: '11 min read',
+    category: 'AI & Full-Stack',
+  },
   {
     title: 'Next.js 16.3 Instant Navigations: Production Guide for SPA-Like Server Components',
     excerpt: 'Next.js 16.3 Instant Navigations make Server Components feel as responsive as SPAs. Enable cacheComponents + partialPrefetching, use Suspense streaming or use cache, inspect shells, and ship instant first-click navigations without giving up the server model.',

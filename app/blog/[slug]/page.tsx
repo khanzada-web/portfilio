@@ -26,6 +26,7 @@ import * as dockerMultiStage from '../content/docker-multi-stage-nextjs-16-stand
 import * as agentRouterGuide from '../content/agentrouter-free-claude-code-api-guide-2026'
 import * as howToGet500kViews from '../content/how-to-get-500k-views-on-x-2026'
 import * as instantNavigations from '../content/nextjs-16-3-instant-navigations-production-guide'
+import * as museCodeGuide from '../content/meta-muse-code-typescript-nextjs-guide-2026'
 
 interface BlogPost {
   title: string
@@ -61,6 +62,7 @@ function toPost(mod: {
 }
 
 const blogPosts: Record<string, BlogPost> = {
+  'meta-muse-code-typescript-nextjs-guide-2026': toPost(museCodeGuide),
   'nextjs-16-3-instant-navigations-production-guide': toPost(instantNavigations),
   'how-to-get-500k-views-on-x-2026': toPost(howToGet500kViews),
   'agentrouter-free-claude-code-api-guide-2026': toPost(agentRouterGuide),
@@ -83,6 +85,28 @@ const blogPosts: Record<string, BlogPost> = {
 }
 
 const postFaqs: Record<string, { question: string; answer: string }[]> = {
+  'meta-muse-code-typescript-nextjs-guide-2026': [
+    {
+      question: 'Is Muse Code free?',
+      answer: 'No. It is a paid token-based service. Meta offers different tiers; one may allow training on your code in exchange for lower rates. Check the current Meta Model API pricing.',
+    },
+    {
+      question: 'Does it work on Windows?',
+      answer: 'Native Windows is not supported. Use WSL2.',
+    },
+    {
+      question: 'How does it compare to Claude Code?',
+      answer: 'Both are terminal agents aimed at long-horizon repository work. Muse Code emphasizes persistent background agents and worktree isolation; Claude Code has a larger existing ecosystem of skills and community tools. Choose based on model quality on your codebase, pricing, and team familiarity.',
+    },
+    {
+      question: 'Can I use it with MCP?',
+      answer: 'MCP (Model Context Protocol) is the open standard for connecting agents to tools and data. Muse Code can be used alongside MCP servers if you expose the tools through the supported interface, but the core Muse Code harness is Meta\'s proprietary stack. For pure MCP-first workflows see the 2026-07-28 MCP specification and TypeScript SDK.',
+    },
+    {
+      question: 'Should I let it write to main?',
+      answer: 'No. Always work on a branch or in isolated worktrees and require human review before merge.',
+    },
+  ],
   'nextjs-16-3-instant-navigations-production-guide': [
     {
       question: 'Do I need both cacheComponents and partialPrefetching?',
