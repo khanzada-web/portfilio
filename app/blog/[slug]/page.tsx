@@ -14,6 +14,33 @@ import {
 // Optional per-post FAQs. Add an entry when a post needs structured FAQ schema.
 // Key = slug (filename without .ts)
 const postFaqs: Record<string, { question: string; answer: string }[]> = {
+  'agent-skills-typescript-nextjs-2026': [
+    {
+      question: 'Do Agent Skills work only with Claude?',
+      answer:
+        'No. The format is an open standard published at agentskills.io. The same SKILL.md is discovered by Claude Code, Cursor, Codex CLI, Gemini CLI, and other tools that implement the specification.',
+    },
+    {
+      question: 'Where should I put skills — personal or project?',
+      answer:
+        'Project skills under .agents/skills/ or .claude/skills/ inside the repo travel with the codebase and are ideal for team conventions. Personal skills under ~/.claude/skills/ (or equivalent) suit your own cross-project workflows.',
+    },
+    {
+      question: 'How is a skill different from CLAUDE.md or AGENTS.md?',
+      answer:
+        'CLAUDE.md / AGENTS.md is always loaded and should stay short. Skills use progressive disclosure: only name and description load at session start; full instructions load only when the task matches the description.',
+    },
+    {
+      question: 'What if the agent ignores my skill?',
+      answer:
+        'Almost always a description problem. Expand the description with the exact phrases users type when the skill should fire, then restart the agent.',
+    },
+    {
+      question: 'Are third-party skills safe to install?',
+      answer:
+        'Treat them like npm packages. Review SKILL.md and any scripts before install. Prefer known authors (Anthropic, Matt Pocock, Addy Osmani, your own team) and avoid untrusted marketplaces on machines that hold secrets.',
+    },
+  ],
   'meta-muse-code-typescript-nextjs-guide-2026': [
     {
       question: 'Is Muse Code free?',
