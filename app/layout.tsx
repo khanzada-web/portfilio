@@ -84,6 +84,11 @@ export const metadata: Metadata = {
     images: ["/my-pic.jpeg"],
     creator: "@Mussawar_Hayat",
   },
+
+  // Helps AdSense site verification on Next.js
+  other: {
+    "google-adsense-account": "ca-pub-9383132900869188",
+  },
 };
 
 export const viewport: Viewport = {
@@ -250,6 +255,13 @@ export default function RootLayout({
   return (
     <html lang="en" dir="ltr">
       <head>
+        {/* Google AdSense – must be in <head> for crawler verification */}
+        <script
+          async
+          src="https://pagead2.googlesyndication.com/pagead/js/adsbygoogle.js?client=ca-pub-9383132900869188"
+          crossOrigin="anonymous"
+        />
+
         <script
           suppressHydrationWarning
           dangerouslySetInnerHTML={{
@@ -273,13 +285,6 @@ export default function RootLayout({
       <body
         className={`${geistSans.variable} ${geistMono.variable} ${orbitron.variable} antialiased`}
       >
-        <Script
-          async
-          src="https://pagead2.googlesyndication.com/pagead/js/adsbygoogle.js?client=ca-pub-9383132900869188"
-          crossOrigin="anonymous"
-          strategy="afterInteractive"
-        />
-
         <noscript>
           <iframe
             src="https://www.googletagmanager.com/ns.html?id=GTM-P3GKJN4G"
