@@ -3,9 +3,14 @@ import nodemailer from 'nodemailer';
 
 export async function POST(request: NextRequest) {
   try {
-    const { name, email, message } = await request.json();
+    const rawBody = await request.json().catch(() => null);
+    const { name, email, message, phone, company, subject, formName, leadSource, ...extraFields } = rawBody ?? {};
 
-    if (!name || !email || !message) {
+    const safeName = typeof name === 'string' ? name.trim() : '';
+    const safeEmail = typeof email === 'string' ? email.trim().toLowerCase() : '';
+    const safeMessage = typeof message === 'string' ? message.trim() : '';
+
+    if (!safeName || !safeEmail || !safeMessage) {
       return NextResponse.json({ error: "Missing required fields" }, { status: 400 });
     }
 
@@ -79,22 +84,34 @@ export async function POST(request: NextRequest) {
     // Submit lead to CRM (non-blocking — emails already sent)
     if (process.env.CRM_API_URL && process.env.CRM_API_KEY) {
       try {
-        await fetch(process.env.CRM_API_URL, {
+        const crmPayload = {
+          name: safeName,
+          email: safeEmail,
+          phone: typeof phone === 'string' ? phone.trim() : '',
+          company: typeof company === 'string' ? company.trim() : '',
+          message: safeMessage,
+          subject: typeof subject === 'string' && subject.trim() ? subject.trim() : `New Lead: ${safeName}`,
+          formName: typeof formName === 'string' && formName.trim() ? formName.trim() : 'Contact Form',
+          leadSource: typeof leadSource === 'string' && leadSource.trim() ? leadSource.trim() : 'portfolio-website',
+          conversionPage: request.headers.get('referer') || new URL(request.url).origin + '/contact',
+          customFields: Object.fromEntries(
+            Object.entries(extraFields).filter(([, value]) => value !== undefined && value !== null && value !== '')
+          ),
+        };
+
+        const crmResponse = await fetch(process.env.CRM_API_URL || 'https://crm.merakicommunications.com/api/v1/leads', {
           method: 'POST',
           headers: {
             'Authorization': `Bearer ${process.env.CRM_API_KEY}`,
             'Content-Type': 'application/json',
           },
-          body: JSON.stringify({
-            name,
-            email,
-            message,
-            phone: '',
-            subject: `New Lead: ${name}`,
-            formName: 'Contact Form',
-            leadSource: 'portfolio-website',
-          }),
+          body: JSON.stringify(crmPayload),
         });
+
+        if (!crmResponse.ok) {
+          const errorText = await crmResponse.text();
+          console.error('CRM submission failed:', crmResponse.status, errorText);
+        }
       } catch (crmError) {
         console.error('CRM submission failed:', crmError);
       }

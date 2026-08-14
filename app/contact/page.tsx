@@ -54,21 +54,6 @@ export default function ContactPage() {
         <Header />
       
       <main role="main" id="main-content" className="relative z-10">
-        {/* Hero Section */}
-        <div className="pt-32 pb-16 px-6">
-          <div className="max-w-4xl mx-auto text-center">
-            <h1 className="text-5xl md:text-7xl font-bold text-white font-orbitron mb-8 leading-tight tracking-tight">
-              <span className="bg-gradient-to-b from-white to-white/70 bg-clip-text text-transparent">
-                Get in Touch
-              </span>
-            </h1>
-            <p className="text-xl md:text-2xl text-white/80 max-w-3xl mx-auto leading-relaxed">
-              Ready to transform your digital presence? Let's discuss how we can bring your Web3, 
-              AI, or full-stack development project to life. Available for freelance projects worldwide.
-            </p>
-          </div>
-        </div>
-
         {/* Contact Section */}
         <Contact />
 
