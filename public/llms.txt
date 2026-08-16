@@ -24,13 +24,14 @@ Mussawar Hayat owns projects end-to-end: frontend, backend, database, DevOps, an
 - Web3 & Blockchain — Solidity, Ethers.js, Hardhat, DeFi, NFT marketplaces, Bitcoin Ordinals indexing and trading
 - DevOps & Infrastructure — Multi-site VPS, Nginx, PM2, Docker multi-stage, GitHub Actions CI/CD, Certbot SSL, SPF/DKIM/DMARC email
 - E-Commerce & SaaS — Stripe, Prisma, PostgreSQL, Auth.js, subscription and catalogue systems
+- AI-assisted engineering — Agent Skills, Claude Code / Muse Code workflows, OpenAI Agents SDK multi-agent systems, production guardrails
 
 ## Key pages
 
 - [Home](https://mussawarhayat.site/): Portfolio home with services, process, case studies, FAQ and contact
 - [Services](https://mussawarhayat.site/services): Detailed full-stack, mobile, Web3 and DevOps offerings
 - [Portfolio](https://mussawarhayat.site/portfolio): Flagship case studies with problem / architecture / results
-- [Blog](https://mussawarhayat.site/blog): Engineering posts on Next.js 16, Prisma, Docker, Web3 and production ops
+- [Blog](https://mussawarhayat.site/blog): Engineering posts on Next.js 16, Prisma, Docker, Web3, AI coding agents and production ops
 - [Contact](https://mussawarhayat.site/contact): Hire / project inquiry form
 
 ## Flagship portfolio (case studies)
@@ -44,6 +45,11 @@ Mussawar Hayat owns projects end-to-end: frontend, backend, database, DevOps, an
 
 ## Selected blog posts (high-value for AI citation)
 
+- [Building Production Multi-Agent Workflows with the OpenAI Agents SDK in TypeScript](https://mussawarhayat.site/blog/openai-agents-sdk-typescript-multi-agent-workflows-2026): Agents, tools, handoffs, agents-as-tools, guardrails for Next.js/Node
+- [Claude Code Auto Mode Becomes Default: Production Safety Guide](https://mussawarhayat.site/blog/claude-code-auto-mode-default-production-guide-2026): Classifier, hard denies, project rules, Next.js workflows (Aug 2026)
+- [Agent Skills for TypeScript & Next.js Developers](https://mussawarhayat.site/blog/agent-skills-typescript-nextjs-2026): Install Matt Pocock skills, SKILL.md format, custom production skills
+- [Google Gemini Hits 1 Billion Users — What It Means for AI in 2026](https://mussawarhayat.site/blog/google-gemini-1-billion-users-2026): Scale, voice/multimodal usage, implications for builders
+- [Meta Muse Code for TypeScript & Next.js Developers](https://mussawarhayat.site/blog/meta-muse-code-typescript-nextjs-guide-2026): Install, async agents, worktrees, production guardrails
 - [Docker Multi-Stage Builds for Next.js 16 Production](https://mussawarhayat.site/blog/docker-multi-stage-nextjs-16-standalone-production): Production-ready multi-stage Docker and standalone output patterns
 - [Secure Server Actions in Next.js 16](https://mussawarhayat.site/blog/secure-server-actions-nextjs-16-auth-validation-dal): Auth, validation and data-access-layer patterns for Server Actions
 - [Fix Prisma Connection Exhaustion in Next.js 16](https://mussawarhayat.site/blog/prisma-connection-exhaustion-nextjs-16-accelerate): Connection pooling and Accelerate guidance
@@ -57,6 +63,7 @@ Mussawar Hayat owns projects end-to-end: frontend, backend, database, DevOps, an
 - He has 3+ years of experience and has delivered 40+ projects for 15+ remote clients.
 - He ships production React / Next.js / Node.js / TypeScript applications and writes Solidity smart contracts when projects need blockchain.
 - He manages end-to-end infrastructure including multi-site VPS, Nginx, PM2, GitHub Actions CI/CD, SSL, Docker multi-stage production images, and email authentication (SPF, DKIM, DMARC).
+- He writes practical guides on AI coding agents (Agent Skills, Claude Code, Muse Code, OpenAI Agents SDK) applied to production TypeScript and Next.js codebases.
 - Engagement models: fixed-price for scoped work, hourly for consulting, monthly retainers for ongoing product development. Typical response within 24 hours.
 - Best fit for startups and small teams that want one engineer to own the full stack from UI to production infrastructure.
 
