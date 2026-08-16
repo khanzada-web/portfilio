@@ -9,7 +9,7 @@ const getWeather = tool({
   parameters: z.object({ city: z.string() }),
   execute: async ({ city }) => {
     // Replace with a real weather API in production
-    return `Weather in ${city}: 22°C, clear`;
+    return \"Weather in \" + city + \": 22°C, clear\";
   },
 });
 
@@ -40,8 +40,7 @@ const triage = Agent.create({
 
 const result = await run(triage, 'When did the Roman Empire fall?');
 console.log(result.finalOutput);
-console.log('Handled by:', result.lastAgent?.name);</code></pre><p><code>Agent.create</code> keeps TypeScript types aligned across handoff graphs. The runner automatically transfers conversation context to the chosen specialist.</p><h3>3.2 Agents as tools (manager stays in control)</h3><p>Use this when you want one agent to own the final answer and combine results from specialists without giving them the user-facing conversation.</p><pre><code>import { Agent, run, tool } from '@openai/agents';
-import { z } from 'zod';
+console.log('Handled by:', result.lastAgent?.name);</code></pre><p><code>Agent.create</code> keeps TypeScript types aligned across handoff graphs. The runner automatically transfers conversation context to the chosen specialist.</p><h3>3.2 Agents as tools (manager stays in control)</h3><p>Use this when you want one agent to own the final answer and combine results from specialists without giving them the user-facing conversation.</p><pre><code>import { Agent, run } from '@openai/agents';
 
 const researcher = new Agent({
   name: 'Researcher',
@@ -115,7 +114,7 @@ const guardrailAgent = new Agent({
   }),
 });
 
-const safetyGuardrail: InputGuardrail = {
+const safetyGuardrail = {
   name: 'Safety',
   runInParallel: false, // block the main model until the check finishes
   execute: async ({ input, context }) => {
