@@ -24,12 +24,15 @@ npm run lint     # ESLint
 - `app/` — routes, layout, blog content modules, portfolio pages
 - `app/lib/projects.ts` — portfolio data and case-study fields
 - `app/blog/content/` — blog post modules (title, excerpt, HTML content, metadata)
+- `app/blog/lib/posts.ts` — dynamic slug discovery and post loaders
 - `app/components/` — layout, sections, SEO schema components
 - `public/` — static assets, `robots.txt`, `llms.txt`, icons
 
 ## Content & SEO notes
 
-- Blog posts are TypeScript modules under `app/blog/content/` and registered in `app/blog/page.tsx`, `app/blog/[slug]/page.tsx`, and `app/sitemap.ts`.
+- Blog posts are TypeScript modules under `app/blog/content/`.
+- `getAllSlugs()` / `getAllPosts()` in `app/blog/lib/posts.ts` discover every `.ts` module at build/runtime.
+- `app/sitemap.ts` uses `getAllPosts()` so new posts appear in the XML sitemap automatically — no hardcoded slug list.
 - Portfolio flagship case studies live in `app/lib/projects.ts` (`problem`, `architecture`, `results`).
 - Keep entity and person descriptions consistent across metadata, schema, and `llms.txt` for EEAT and answer-engine clarity.
 
