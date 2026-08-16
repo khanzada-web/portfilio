@@ -22,7 +22,7 @@ export async function POST(request: NextRequest) {
       },
     });
 
-    // 1. Notification Email (To You)
+    // Notification Email (To You)
     const adminMail = {
       from: `Portfolio System <${process.env.SMTP_USER}>`,
       to: process.env.SMTP_TO_EMAIL,
@@ -39,47 +39,7 @@ export async function POST(request: NextRequest) {
       `
     };
 
-    // 2. Auto-Response (To Client)
-    const clientMail = {
-      from: `"Mussawar Hayat" <${process.env.SMTP_USER}>`,
-      to: email,
-      subject: 'Establishing Connection: Mussawar Hayat | Full Stack Web3',
-      html: `
-        <div style="background-color: #060b16; color: #ffffff; padding: 40px; font-family: sans-serif; max-width: 600px; margin: auto; border: 1px solid #1e293b;">
-          <div style="text-align: center; margin-bottom: 30px;">
-             <h1 style="color: #39FF14; font-size: 24px; letter-spacing: 2px;">CONNECTION ESTABLISHED</h1>
-          </div>
-          
-          <p>Hello ${name},</p>
-          
-          <p>Your message has successfully reached my secure server. I appreciate you reaching out regarding your project.</p>
-          
-          <div style="background: #0f172a; border: 1px solid #39FF14; padding: 20px; border-radius: 4px; margin: 25px 0;">
-            <h4 style="color: #39FF14; margin-top: 0;">Next Block in the Chain:</h4>
-            <ul style="padding-left: 20px; color: #cbd5e1;">
-              <li>Manual review of your project requirements.</li>
-              <li>Detailed feedback & technical feasibility check.</li>
-              <li>Schedule a 15-min sync if required.</li>
-            </ul>
-          </div>
-
-          <p>I typically respond within 12-24 hours. In the meantime, feel free to explore my latest repositories on 
-          <a href="https://github.com/khanzada-web" style="color: #39FF14; text-decoration: none;">GitHub</a>.</p>
-
-          <p style="margin-top: 40px; border-top: 1px solid #1e293b; pt: 20px;">
-            Best Regards,<br/>
-            <strong>Mussawar Hayat</strong><br/>
-            <span style="color: #64748b; font-size: 12px;">Full Stack Blockchain Developer</span>
-          </p>
-        </div>
-      `
-    };
-
-    // Parallel execution for speed
-    await Promise.all([
-      transporter.sendMail(adminMail),
-      transporter.sendMail(clientMail)
-    ]);
+    await transporter.sendMail(adminMail);
 
     // Submit lead to CRM (non-blocking — emails already sent)
     if (process.env.CRM_API_URL && process.env.CRM_API_KEY) {
