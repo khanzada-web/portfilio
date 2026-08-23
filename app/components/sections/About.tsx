@@ -60,6 +60,8 @@ const ABOUT_CARDS = [
   },
 ] as const;
 
+const VIEWPORT = { once: true, amount: 0.2 as const, margin: '0px 0px -40px 0px' };
+
 const About = () => (
   <section
     id="about"
@@ -83,10 +85,10 @@ const About = () => (
           {ABOUT_CARDS.map((card, i) => (
             <motion.div
               key={card.title}
-              initial={{ opacity: 0, y: 20 }}
+              initial={{ opacity: 0, y: 12 }}
               whileInView={{ opacity: 1, y: 0 }}
-              transition={{ duration: 0.5, delay: i * 0.1 }}
-              viewport={{ once: true }}
+              transition={{ duration: 0.35, delay: Math.min(i * 0.06, 0.24), ease: 'easeOut' }}
+              viewport={VIEWPORT}
               className="bg-[#0A1221] border border-[#39FF14]/15 p-6 hover:border-[#39FF14]/40 transition-colors group"
             >
               <div className="flex items-center gap-3 mb-4">
@@ -168,8 +170,8 @@ const About = () => (
                     <motion.div
                       initial={{ width: 0 }}
                       whileInView={{ width: `${skill.level}%` }}
-                      transition={{ duration: 1, delay: 0.2 }}
-                      viewport={{ once: true }}
+                      transition={{ duration: 0.8, delay: 0.1, ease: 'easeOut' }}
+                      viewport={VIEWPORT}
                       className="h-full bg-[#39FF14] shadow-[0_0_10px_#39FF14]"
                     />
                   </div>
