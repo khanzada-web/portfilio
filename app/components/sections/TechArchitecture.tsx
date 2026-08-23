@@ -49,6 +49,8 @@ const LAYERS: Layer[] = [
   },
 ];
 
+const VIEWPORT = { once: true, amount: 0.2 as const, margin: '0px 0px -40px 0px' };
+
 export function TechArchitecture() {
   return (
     <section
@@ -76,11 +78,15 @@ export function TechArchitecture() {
           {LAYERS.map((layer, index) => (
             <motion.div
               key={layer.title}
-              initial={{ opacity: 0, y: 20 }}
+              initial={{ opacity: 0, y: 12 }}
               whileInView={{ opacity: 1, y: 0 }}
-              transition={{ delay: index * 0.1 }}
-              viewport={{ once: true }}
-              className={`group relative p-8 bg-white/5 border border-[#39FF14]/20 rounded-sm hover:border-[#39FF14] transition-all duration-500 ${
+              transition={{
+                duration: 0.35,
+                delay: Math.min(index * 0.06, 0.24),
+                ease: 'easeOut',
+              }}
+              viewport={VIEWPORT}
+              className={`group relative p-8 bg-white/5 border border-[#39FF14]/20 rounded-sm hover:border-[#39FF14] transition-colors duration-300 ${
                 index === 4 ? 'md:col-span-2' : ''
               }`}
             >
