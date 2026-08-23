@@ -9,8 +9,6 @@ import {
 } from 'react-icons/fa';
 import type { ComponentType } from 'react';
 
-// ─── Types ────────────────────────────────────────────────────────────────────
-
 interface SaasProject {
   id:          string;
   title:       string;
@@ -18,8 +16,6 @@ interface SaasProject {
   icon:        ComponentType<{ className?: string }>;
   features:    readonly string[];
 }
-
-// ─── Data ─────────────────────────────────────────────────────────────────────
 
 const SAAS_PROJECTS: SaasProject[] = [
   {
@@ -60,26 +56,19 @@ const SAAS_PROJECTS: SaasProject[] = [
   },
 ] as const;
 
-// ─── Component ────────────────────────────────────────────────────────────────
+const VIEWPORT = { once: true, amount: 0.2 as const, margin: '0px 0px -40px 0px' };
 
 export function SaasProjects() {
-  // ✅ Removed: scrollToContact() with document.getElementById + .scrollIntoView()
-  //    Using a plain <a href="#contact"> is better for:
-  //    - accessibility (keyboard nav, screen readers announce it as a link)
-  //    - SEO (crawlable anchor)
-  //    - performance (no JS needed)
-  //    - respects the user's scroll behaviour preference (smooth scroll set in globals.css)
-
   return (
     <section id="products" className="py-32 bg-[#060B16] font-orbitron text-[#39FF14]">
       <div className="max-w-7xl mx-auto px-6 relative">
 
-        {/* Header */}
         <motion.div
           className="text-center mb-24"
-          initial={{ opacity: 0, y: 20 }}
+          initial={{ opacity: 0, y: 12 }}
           whileInView={{ opacity: 1, y: 0 }}
-          viewport={{ once: true }}
+          viewport={VIEWPORT}
+          transition={{ duration: 0.4, ease: 'easeOut' }}
         >
           <div className="inline-block border border-[#39FF14] px-4 py-1.5 mb-6 text-[10px] tracking-[0.4em] uppercase opacity-70">
             Enterprise_Solutions.sys
@@ -93,20 +82,21 @@ export function SaasProjects() {
           </p>
         </motion.div>
 
-        {/* Products Grid */}
         <div className="grid md:grid-cols-2 lg:grid-cols-3 gap-6 mb-24">
           {SAAS_PROJECTS.map((project, index) => (
             <motion.article
               key={project.id}
-              // ✅ <article> for self-contained product cards (semantic HTML)
-              // ✅ Key is the stable unique id, not the array index
-              initial={{ opacity: 0, y: 30 }}
+              initial={{ opacity: 0, y: 12 }}
               whileInView={{ opacity: 1, y: 0 }}
-              viewport={{ once: true }}
-              transition={{ duration: 0.5, delay: index * 0.1 }}
+              viewport={VIEWPORT}
+              transition={{
+                duration: 0.35,
+                delay: Math.min(index * 0.06, 0.3),
+                ease: 'easeOut',
+              }}
               className="group"
             >
-              <div className="h-full bg-[#0A1221] border border-[#39FF14]/20 p-8 hover:border-[#39FF14] transition-all duration-500 flex flex-col">
+              <div className="h-full bg-[#0A1221] border border-[#39FF14]/20 p-8 hover:border-[#39FF14] transition-colors duration-300 flex flex-col">
 
                 <div className="flex items-center gap-4 mb-6">
                   <div className="w-12 h-12 bg-[#39FF14]/10 rounded-sm flex items-center justify-center text-[#39FF14] border border-[#39FF14]/30">
@@ -133,7 +123,6 @@ export function SaasProjects() {
                   ))}
                 </ul>
 
-                {/* ✅ <a> tags instead of <button onClick={scrollToContact}> */}
                 <div className="flex gap-4">
                   <Link
                     href="#contact"
@@ -155,11 +144,11 @@ export function SaasProjects() {
           ))}
         </div>
 
-        {/* Custom Solution CTA */}
         <motion.div
-          initial={{ opacity: 0, scale: 0.95 }}
-          whileInView={{ opacity: 1, scale: 1 }}
-          viewport={{ once: true }}
+          initial={{ opacity: 0, y: 12 }}
+          whileInView={{ opacity: 1, y: 0 }}
+          viewport={VIEWPORT}
+          transition={{ duration: 0.4, ease: 'easeOut' }}
           className="relative overflow-hidden bg-[#0A1221] border border-[#39FF14]/30 p-12 text-center"
         >
           <div
