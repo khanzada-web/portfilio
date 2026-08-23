@@ -13,6 +13,18 @@ interface PageProps {
   params: Promise<{ slug: string }>;
 }
 
+function Paragraphs({ text }: { text: string }) {
+  return (
+    <div className="space-y-4">
+      {text.split(/\n\n+/).map((block, i) => (
+        <p key={i} className="text-white/75 font-sans leading-relaxed">
+          {block.trim()}
+        </p>
+      ))}
+    </div>
+  );
+}
+
 export function generateStaticParams() {
   return getAllProjectSlugs().map((slug) => ({ slug }));
 }
@@ -100,21 +112,21 @@ export default async function PortfolioProjectPage({ params }: PageProps) {
             {project.problem && (
               <section className="mb-10">
                 <h2 className="text-xl font-bold text-[#39FF14] mb-3">The Problem</h2>
-                <p className="text-white/75 font-sans leading-relaxed">{project.problem}</p>
+                <Paragraphs text={project.problem} />
               </section>
             )}
 
             {project.architecture && (
               <section className="mb-10">
                 <h2 className="text-xl font-bold text-[#39FF14] mb-3">Tech Stack & Architecture</h2>
-                <p className="text-white/75 font-sans leading-relaxed">{project.architecture}</p>
+                <Paragraphs text={project.architecture} />
               </section>
             )}
 
             {project.results && (
               <section className="mb-10">
                 <h2 className="text-xl font-bold text-[#39FF14] mb-3">Key Results / Business Outcome</h2>
-                <p className="text-white/75 font-sans leading-relaxed">{project.results}</p>
+                <Paragraphs text={project.results} />
               </section>
             )}
 
@@ -158,7 +170,11 @@ export default async function PortfolioProjectPage({ params }: PageProps) {
               <h2 className="text-lg font-bold text-white">Need similar work?</h2>
               <p className="text-white/70 font-sans text-sm leading-relaxed">
                 Mussawar Hayat builds full-stack web, mobile, and Web3 products end-to-end.
-                Fixed-price, hourly, or retainer — remote for North America and Europe.
+                Fixed-price, hourly, or retainer — remote for North America and Europe. Read more{' '}
+                <Link href="/about" className="text-[#39FF14] hover:underline">
+                  about the engineer
+                </Link>
+                .
               </p>
               <div className="flex flex-wrap gap-3 pt-2">
                 <Link
