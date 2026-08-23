@@ -1,7 +1,7 @@
 'use client';
 
 import Link from 'next/link';
-import { motion, AnimatePresence } from 'framer-motion';
+import { motion } from 'framer-motion';
 import {
   FiMonitor, FiSmartphone, FiActivity, FiShield,
   FiZap, FiLayers, FiServer, FiTerminal, FiShoppingCart,
@@ -101,6 +101,9 @@ const SERVICES: Service[] = [
   },
 ] as const;
 
+/** Avoid re-trigger flicker: once + modest amount; no AnimatePresence on static grid */
+const VIEWPORT = { once: true, amount: 0.2 as const, margin: '0px 0px -40px 0px' };
+
 export function Services() {
   return (
     <section
@@ -136,73 +139,75 @@ export function Services() {
         </div>
 
         <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-px bg-white/20 border border-white/20 mb-20">
-          <AnimatePresence>
-            {SERVICES.map((service, index) => (
-              <motion.article
-                key={service.id}
-                initial={{ opacity: 0 }}
-                whileInView={{ opacity: 1 }}
-                transition={{ duration: 0.4, delay: index * 0.07 }}
-                viewport={{ once: true }}
-                className="bg-[#0A1221] group relative p-8 md:p-10 flex flex-col min-h-[420px] hover:bg-[#39FF14]/[0.05] transition-all duration-500 overflow-hidden"
-              >
-                <div className="flex items-center justify-between mb-6">
-                  <div className="flex items-center gap-2">
-                    <div className="w-2 h-2 bg-[#39FF14] shadow-[0_0_8px_#39FF14]" aria-hidden="true" />
-                    <span className="text-[10px] font-bold text-[#39FF14] uppercase tracking-tighter">
-                      {service.id}
-                    </span>
-                  </div>
-                  <span className="text-[9px] uppercase tracking-[0.3em] opacity-30 border border-[#39FF14]/20 px-2 py-0.5">
-                    {service.category}
+          {SERVICES.map((service, index) => (
+            <motion.article
+              key={service.id}
+              initial={{ opacity: 0, y: 12 }}
+              whileInView={{ opacity: 1, y: 0 }}
+              transition={{
+                duration: 0.35,
+                delay: Math.min(index * 0.05, 0.25),
+                ease: 'easeOut',
+              }}
+              viewport={VIEWPORT}
+              className="bg-[#0A1221] group relative p-8 md:p-10 flex flex-col min-h-[420px] hover:bg-[#39FF14]/[0.05] transition-colors duration-300 overflow-hidden"
+            >
+              <div className="flex items-center justify-between mb-6">
+                <div className="flex items-center gap-2">
+                  <div className="w-2 h-2 bg-[#39FF14] shadow-[0_0_8px_#39FF14]" aria-hidden="true" />
+                  <span className="text-[10px] font-bold text-[#39FF14] uppercase tracking-tighter">
+                    {service.id}
                   </span>
                 </div>
+                <span className="text-[9px] uppercase tracking-[0.3em] opacity-30 border border-[#39FF14]/20 px-2 py-0.5">
+                  {service.category}
+                </span>
+              </div>
 
-                <div
-                  className="text-3xl text-white/30 mb-6 group-hover:text-[#39FF14] group-hover:scale-110 transition-all duration-300"
-                  aria-hidden="true"
-                >
-                  {service.icon}
-                </div>
+              <div
+                className="text-3xl text-white/30 mb-6 group-hover:text-[#39FF14] group-hover:scale-110 transition-all duration-300"
+                aria-hidden="true"
+              >
+                {service.icon}
+              </div>
 
-                <h3 className="text-2xl font-black text-white mb-4 uppercase leading-tight group-hover:text-[#39FF14] transition-colors">
-                  {service.title}
-                </h3>
+              <h3 className="text-2xl font-black text-white mb-4 uppercase leading-tight group-hover:text-[#39FF14] transition-colors">
+                {service.title}
+              </h3>
 
-                <div className="flex-grow mb-6">
-                  <p className="text-white/60 text-sm font-sans leading-relaxed group-hover:text-white/80 transition-colors">
-                    {service.description}
-                  </p>
-                </div>
+              <div className="flex-grow mb-6">
+                <p className="text-white/60 text-sm font-sans leading-relaxed group-hover:text-white/80 transition-colors">
+                  {service.description}
+                </p>
+              </div>
 
-                <ul className="flex flex-wrap gap-2 mb-8" aria-label="Technologies">
-                  {service.tags.map((tag) => (
-                    <li
-                      key={tag}
-                      className="text-[9px] text-[#39FF14] border border-[#39FF14]/40 bg-[#39FF14]/5 px-2 py-1 uppercase font-bold tracking-tighter"
-                    >
-                      {tag}
-                    </li>
-                  ))}
-                </ul>
-
-                <div className="pt-6 border-t border-white/10 mt-auto">
-                  <Link
-                    href="#contact"
-                    aria-label={`Enquire about ${service.title}`}
-                    className="flex items-center justify-center gap-2 py-3 bg-[#39FF14] text-black text-[10px] font-black uppercase hover:bg-white transition-all shadow-[0_0_15px_rgba(57,255,20,0.2)]"
+              <ul className="flex flex-wrap gap-2 mb-8" aria-label="Technologies">
+                {service.tags.map((tag) => (
+                  <li
+                    key={tag}
+                    className="text-[9px] text-[#39FF14] border border-[#39FF14]/40 bg-[#39FF14]/5 px-2 py-1 uppercase font-bold tracking-tighter"
                   >
-                    <FiZap aria-hidden="true" /> Inquire Now
-                  </Link>
-                </div>
+                    {tag}
+                  </li>
+                ))}
+              </ul>
 
-                <div
-                  className="absolute top-0 right-0 w-16 h-16 border-t-2 border-r-2 border-transparent group-hover:border-[#39FF14] group-hover:drop-shadow-[0_0_6px_#39FF14] transition-all duration-500"
-                  aria-hidden="true"
-                />
-              </motion.article>
-            ))}
-          </AnimatePresence>
+              <div className="pt-6 border-t border-white/10 mt-auto">
+                <Link
+                  href="#contact"
+                  aria-label={`Enquire about ${service.title}`}
+                  className="flex items-center justify-center gap-2 py-3 bg-[#39FF14] text-black text-[10px] font-black uppercase hover:bg-white transition-all shadow-[0_0_15px_rgba(57,255,20,0.2)]"
+                >
+                  <FiZap aria-hidden="true" /> Inquire Now
+                </Link>
+              </div>
+
+              <div
+                className="absolute top-0 right-0 w-16 h-16 border-t-2 border-r-2 border-transparent group-hover:border-[#39FF14] group-hover:drop-shadow-[0_0_6px_#39FF14] transition-all duration-500"
+                aria-hidden="true"
+              />
+            </motion.article>
+          ))}
         </div>
 
         <div className="text-center">
