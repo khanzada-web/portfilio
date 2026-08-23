@@ -6,8 +6,8 @@ import { FiGlobe, FiDatabase, FiCpu, FiLock } from 'react-icons/fi';
 // ─── Data ─────────────────────────────────────────────────────────────────────
 
 const STATS = [
-  { value: '100+', label: 'Projects Live'   },
-  { value: '20+',  label: 'Countries Reached' },
+  { value: '40+', label: 'Projects Delivered' },
+  { value: '15+', label: 'Remote Clients' },
 ] as const;
 
 const NODES = [
@@ -67,8 +67,8 @@ export function GlobalImpact() {
               viewport={{ once: true }}
               className="text-white/50 text-base leading-relaxed lowercase tracking-wider max-w-md"
             >
-              From decentralized protocols to enterprise SaaS, I've deployed 100+ systems across
-              global edge networks — ensuring low-latency access and 99.9% uptime for users worldwide.
+              From decentralized protocols to enterprise SaaS, production systems are deployed
+              across global edge networks — low-latency access and high uptime for users worldwide.
             </motion.p>
 
             {/* Stats */}
@@ -78,7 +78,6 @@ export function GlobalImpact() {
                   <dt className="text-[10px] uppercase tracking-widest text-[#39FF14]/60 font-bold order-last">
                     {label}
                   </dt>
-                  {/* ✅ <dl>/<dt>/<dd> used — semantically correct for labelled stats */}
                   <dd className="text-3xl font-bold text-white font-mono group-hover:text-[#39FF14] transition-colors">
                     {value}
                   </dd>
@@ -145,7 +144,6 @@ export function GlobalImpact() {
                   className={`flex items-center justify-between gap-8 ${i > 0 ? 'border-t border-white/5 pt-2' : ''}`}
                 >
                   {i === 0 ? (
-                    // First row has a live indicator dot
                     <>
                       <span className="flex items-center gap-2">
                         <span className="w-1.5 h-1.5 rounded-full bg-[#39FF14] animate-pulse shadow-[0_0_5px_#39FF14]" aria-hidden="true" />
