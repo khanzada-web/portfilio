@@ -7,7 +7,7 @@ import { FiMail, FiPhone, FiMapPin, FiArrowUp, FiGithub, FiTwitter, FiLinkedin }
 
 const QUICK_LINKS_COL_1 = [
   { label: 'Home', href: '/' },
-  { label: 'About', href: '/#about' },
+  { label: 'About', href: '/about' },
   { label: 'Process', href: '/#process' },
   { label: 'Testimonials', href: '/#testimonials' },
 ];
