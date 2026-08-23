@@ -8,7 +8,7 @@ npm install -D typescript tsx @types/node
 
 # Optional: Express/Hono adapters for HTTP later
 # npm install @modelcontextprotocol/express express</code></pre><p>Minimal <code>tsconfig.json</code>:</p><pre><code>{
-  \"compilerOptions\"": {
+  \"compilerOptions\": {
     \"target\": \"ES2022\",
     \"module\": \"NodeNext\",
     \"moduleResolution\": \"NodeNext\",
