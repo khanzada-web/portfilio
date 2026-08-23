@@ -11,6 +11,11 @@ const EXTERNAL_LINK_PROPS = {
   rel: 'noopener noreferrer',
 } as const;
 
+/** Single-line preview for cards (case studies may use \\n\\n paragraphs). */
+function previewText(text: string) {
+  return text.replace(/\s+/g, ' ').trim();
+}
+
 function ProjectCard({
   project,
   showCaseStudyLink = false,
@@ -19,7 +24,7 @@ function ProjectCard({
   showCaseStudyLink?: boolean;
 }) {
   return (
-    <article className="bg-[#0A1221] group relative p-8 md:p-10 flex flex-col min-h-[420px] hover:bg-[#39FF14]/[0.05] transition-all duration-500 overflow-hidden border border-white/10">
+    <article className="bg-[#0A1221] group relative p-8 md:p-10 flex flex-col min-h-[420px] hover:bg-[#39FF14]/[0.05] transition-colors duration-300 overflow-hidden border border-white/10">
       <div className="flex-grow">
         <div className="flex items-center gap-2 mb-6">
           <div className="w-2 h-2 bg-[#39FF14] shadow-[0_0_8px_#39FF14]" aria-hidden="true" />
@@ -46,20 +51,20 @@ function ProjectCard({
           <div className="space-y-3 mb-6 text-sm font-sans">
             <div>
               <h4 className="text-[#39FF14] text-xs uppercase tracking-widest mb-1">The Problem</h4>
-              <p className="text-white/70 line-clamp-2">{project.problem}</p>
+              <p className="text-white/70 line-clamp-2">{previewText(project.problem)}</p>
             </div>
             {project.architecture && (
               <div>
                 <h4 className="text-[#39FF14] text-xs uppercase tracking-widest mb-1">
                   Tech Stack & Architecture
                 </h4>
-                <p className="text-white/70 line-clamp-2">{project.architecture}</p>
+                <p className="text-white/70 line-clamp-2">{previewText(project.architecture)}</p>
               </div>
             )}
             {project.results && (
               <div>
                 <h4 className="text-[#39FF14] text-xs uppercase tracking-widest mb-1">Key Results</h4>
-                <p className="text-white/70 line-clamp-2">{project.results}</p>
+                <p className="text-white/70 line-clamp-2">{previewText(project.results)}</p>
               </div>
             )}
           </div>
@@ -171,12 +176,14 @@ const Portfolio = () => {
             />
           </button>
 
-          <AnimatePresence>
+          <AnimatePresence initial={false}>
             {showArchive && (
               <motion.div
+                key="archive-panel"
                 initial={{ height: 0, opacity: 0 }}
                 animate={{ height: 'auto', opacity: 1 }}
                 exit={{ height: 0, opacity: 0 }}
+                transition={{ duration: 0.3, ease: 'easeInOut' }}
                 className="overflow-hidden"
               >
                 <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6 p-6 border-t border-white/10">
