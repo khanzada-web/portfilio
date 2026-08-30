@@ -43,9 +43,10 @@ const nextConfig: NextConfig = {
     ];
   },
 
-  // Image optimization
+  // Image optimization: WebP only until Next.js re-enables AVIF after the
+  // August 2026 libheif / sharp advisory (patched Next disables AVIF decode).
   images: {
-    formats: ["image/webp", "image/avif"],
+    formats: ["image/webp"],
     remotePatterns: [
       {
         protocol: "https",
