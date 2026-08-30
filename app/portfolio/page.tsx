@@ -6,9 +6,17 @@ import { BreadcrumbSchema } from '@/app/components/seo/BreadcrumbSchema';
 import { PROJECTS } from '@/app/lib/projects';
 
 export const metadata: Metadata = {
-  title: 'Portfolio — Featured Full-Stack & Web3 Projects',
+  title: 'Next.js & Web3 Portfolio — Case Studies by Mussawar Hayat',
   description:
-    'Portfolio of Mussawar Hayat: full-stack & Web3 projects including DaMeta1, Ordwin Market, DEX interfaces, and production SaaS apps.',
+    'Next.js, React, Solidity, and Bitcoin Ordinals case studies by Mussawar Hayat: DaMeta1, Ordwin Market, DeFi staking, DEX interfaces, and production SaaS.',
+  keywords: [
+    'Next.js portfolio',
+    'Web3 developer portfolio',
+    'Bitcoin Ordinals marketplace',
+    'DeFi developer case study',
+    'full-stack project portfolio',
+    'Mussawar Hayat',
+  ],
   alternates: { canonical: '/portfolio' },
   openGraph: {
     title: 'Portfolio | Mussawar Hayat — Full-Stack & Web3 Developer',
@@ -43,16 +51,16 @@ export default function PortfolioPage() {
         <main id="main-content" role="main" className="pt-28 pb-20">
           <div className="max-w-6xl mx-auto px-4 sm:px-6">
             <h1 className="text-4xl md:text-6xl font-bold text-white tracking-tight mb-4">
-              Portfolio
+              Next.js & Web3 Portfolio
             </h1>
             <p className="text-white/70 font-sans text-lg max-w-3xl mb-16">
-              Mussawar Hayat is a full-stack developer specializing in Next.js, React, and Web3.
-              This portfolio lists flagship case studies and additional archive projects — all
-              indexable with dedicated pages where available.
+              Hire-ready case studies from Mussawar Hayat, a Next.js full-stack and Web3 developer.
+              Flagship work covers SaaS, DeFi staking, Bitcoin Ordinals marketplaces, and metaverse
+              products — each with problem, architecture, and results.
             </p>
 
             <h2 className="text-2xl font-bold text-[#39FF14] mb-8 uppercase tracking-wider">
-              Flagship Projects
+              Flagship Next.js and Web3 Projects
             </h2>
             <ul className="grid grid-cols-1 md:grid-cols-2 gap-6 mb-20">
               {flagship.map((p) => (

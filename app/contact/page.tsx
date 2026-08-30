@@ -6,8 +6,9 @@ import { Contact } from '@/app/components/sections/Contact'
 import { BreadcrumbSchema } from '@/app/components/seo/BreadcrumbSchema'
 
 export const metadata: Metadata = {
-  title: 'Contact — Hire Full-Stack Developer',
-  description: 'Contact Mussawar Hayat to hire a full-stack developer for React, Next.js, Node.js, TypeScript, Web3, Solidity and DevOps projects.',
+  title: 'Contact — Hire a Next.js Full-Stack & Web3 Developer',
+  description:
+    'Contact Mussawar Hayat to hire a Next.js full-stack developer for React, TypeScript, Node.js, SaaS, Solidity smart contracts, Web3 DApps, and DevOps. Usually replies within 24 hours.',
   keywords: [
     'contact Mussawar Hayat',
     'hire full-stack developer',
@@ -54,10 +55,8 @@ export default function ContactPage() {
         <Header />
       
       <main role="main" id="main-content" className="relative z-10">
-        {/* Contact Section */}
         <Contact />
 
-        {/* Cross-links */}
         <div className="pb-16 px-6">
           <div className="max-w-4xl mx-auto text-center">
             <p className="text-white/40 text-sm font-orbitron uppercase tracking-widest mb-6">

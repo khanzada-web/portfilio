@@ -21,7 +21,18 @@ import { FAQSchema } from "./components/seo/FAQSchema";
 export const metadata: Metadata = {
   title: "Hire Next.js Full-Stack & Web3 Developer | Mussawar Hayat",
   description:
-    "Hire Mussawar Hayat — Next.js full-stack & Web3 developer. SaaS, DApps, smart contracts, React Native. Remote for North America & Europe.",
+    "Hire a Next.js full-stack developer for SaaS, React apps, Node.js APIs, Solidity smart contracts, and Web3 DApps. Mussawar Hayat ships production products remotely for North America and Europe.",
+  keywords: [
+    "hire Next.js developer",
+    "full-stack developer for hire",
+    "Web3 developer",
+    "Solidity developer",
+    "React developer freelance",
+    "Next.js SaaS developer",
+    "TypeScript full-stack developer",
+    "hire Web3 developer",
+    "Mussawar Hayat",
+  ],
   alternates: {
     canonical: "/",
   },
@@ -84,6 +95,16 @@ const FAQ_ITEMS = [
     question: "How can I hire Mussawar Hayat for a project?",
     answer:
       "Contact him through the contact form on https://mussawarhayat.site/contact, or via LinkedIn (https://www.linkedin.com/in/mussawar-hayat-187768233) or email (zada38843@gmail.com). Engagement models range from short-term consulting to full long-term project development.",
+  },
+  {
+    question: "Can you build a production Next.js SaaS from scratch?",
+    answer:
+      "Yes. Typical SaaS work includes Next.js App Router, TypeScript, Prisma and PostgreSQL, authentication, Stripe billing, admin dashboards, and CI/CD to a VPS or managed host. One engineer owns frontend, API, data, and deployment.",
+  },
+  {
+    question: "Do you audit or harden existing Next.js and Web3 codebases?",
+    answer:
+      "Yes. Common reviews cover Server Actions auth, Prisma connection pooling, wallet connection flows, smart-contract integration safety, Core Web Vitals, and production Docker or Nginx deployments.",
   },
 ] as const;
 
