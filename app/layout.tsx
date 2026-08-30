@@ -24,12 +24,12 @@ const orbitron = Orbitron({
 
 export const metadata: Metadata = {
   title: {
-    default: "Mussawar Hayat | Full-Stack & Web3 Developer",
+    default: "Hire Next.js Full-Stack & Web3 Developer | Mussawar Hayat",
     template: "%s | Mussawar Hayat",
   },
 
   description:
-    "Mussawar Hayat — full-stack & Web3 developer. Next.js, React, TypeScript, Solidity. Remote freelance for North America & Europe.",
+    "Hire Mussawar Hayat — Next.js full-stack developer and Web3 specialist. React, TypeScript, Node.js, Solidity smart contracts, SaaS, and DevOps. Remote freelance for North America and Europe.",
 
   authors: [{ name: "Mussawar Hayat", url: "https://mussawarhayat.site" }],
   creator: "Mussawar Hayat",
@@ -62,10 +62,10 @@ export const metadata: Metadata = {
     type: "website",
     locale: "en_US",
     url: "https://mussawarhayat.site",
-    title: "Hire Mussawar Hayat | Full-Stack & Web3 Developer",
+    title: "Hire Next.js Full-Stack & Web3 Developer | Mussawar Hayat",
     description:
-      "Mussawar Hayat is a full-stack developer specializing in Next.js, React, TypeScript, Node.js and Web3. Available for remote freelance projects worldwide.",
-    siteName: "Mussawar Hayat — Full-Stack Developer Portfolio",
+      "Next.js full-stack and Web3 developer for hire. React, TypeScript, Node.js, Solidity, SaaS platforms, DApps, and production DevOps. Remote for North America and Europe.",
+    siteName: "Mussawar Hayat — Next.js Full-Stack & Web3 Developer",
     images: [
       {
         url: "/my-pic.jpeg",
@@ -85,7 +85,6 @@ export const metadata: Metadata = {
     creator: "@Mussawar_Hayat",
   },
 
-  // Helps AdSense site verification on Next.js
   other: {
     "google-adsense-account": "ca-pub-9383132900869188",
   },
@@ -105,9 +104,9 @@ const ENTITY_GRAPH = {
       "@type": "WebSite",
       "@id": "https://mussawarhayat.site/#website",
       url: "https://mussawarhayat.site",
-      name: "Mussawar Hayat | Full-Stack & Web3 Developer",
+      name: "Hire Next.js Full-Stack & Web3 Developer | Mussawar Hayat",
       description:
-        "Full-stack developer specializing in Next.js, React, and Web3. Remote freelance for clients in North America and Europe.",
+        "Next.js full-stack and Web3 developer for hire. Remote freelance for clients in North America and Europe.",
       publisher: { "@id": "https://mussawarhayat.site/#person" },
       inLanguage: "en",
     },
@@ -121,7 +120,7 @@ const ENTITY_GRAPH = {
       email: "zada38843@gmail.com",
       telephone: "+923358328468",
       description:
-        "Full-stack & Web3 developer: Next.js, React, TypeScript, Solidity. Remote freelance for North America and Europe.",
+        "Next.js full-stack and Web3 developer: React, TypeScript, Node.js, Solidity. Remote freelance for North America and Europe.",
       address: {
         "@type": "PostalAddress",
         streetAddress: "Mehria Town",
@@ -174,7 +173,7 @@ const ENTITY_GRAPH = {
       url: "https://mussawarhayat.site",
       image: "https://mussawarhayat.site/my-pic.jpeg",
       description:
-        "Freelance full-stack & Web3 services: Next.js, React, TypeScript, Node.js, Solidity, mobile, DevOps, and SaaS. Remote worldwide.",
+        "Freelance Next.js full-stack and Web3 services: React, TypeScript, Node.js, Solidity, mobile, DevOps, and SaaS. Remote worldwide.",
       email: "zada38843@gmail.com",
       telephone: "+923358328468",
       priceRange: "$$",
@@ -255,7 +254,6 @@ export default function RootLayout({
   return (
     <html lang="en" dir="ltr">
       <head>
-        {/* Google AdSense – must be in <head> for crawler verification */}
         <script
           async
           src="https://pagead2.googlesyndication.com/pagead/js/adsbygoogle.js?client=ca-pub-9383132900869188"
