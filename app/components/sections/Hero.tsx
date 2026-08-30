@@ -36,13 +36,13 @@ export function Hero() {
 
           <header className="space-y-6">
             <h1 className="text-4xl sm:text-5xl md:text-6xl lg:text-7xl font-bold tracking-tight text-white leading-tight">
-              Mussawar Hayat — Full-Stack & Web3 Developer
+              Hire a Next.js Full-Stack & Web3 Developer
             </h1>
 
             <p className="text-lg md:text-xl text-[#39FF14]/90 max-w-3xl mx-auto leading-relaxed tracking-wide font-sans">
-              Full-stack developer specializing in Next.js, React, Node.js and TypeScript.
-              Based in Pakistan, working remotely with clients in North America and Europe.
-              Production web & mobile apps — plus Solidity smart contracts when your project needs blockchain.
+              Mussawar Hayat is a Next.js full-stack developer and Web3 specialist.
+              React, TypeScript, Node.js, and Solidity for production SaaS, DApps, and mobile apps.
+              Remote freelance for startups in North America and Europe — one engineer from UI to DevOps.
             </p>
           </header>
 
