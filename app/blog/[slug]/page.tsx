@@ -41,6 +41,33 @@ const postFaqs: Record<string, { question: string; answer: string }[]> = {
         'Treat them like npm packages. Review SKILL.md and any scripts before install. Prefer known authors (Anthropic, Matt Pocock, Addy Osmani, your own team) and avoid untrusted marketplaces on machines that hold secrets.',
     },
   ],
+  'secure-agent-skills-skill-md-ai-install-commands-2026': [
+    {
+      question: 'Is a Markdown skill really executable?',
+      answer:
+        'The file is text. The agent is the interpreter. Once the skill body is in context, the agent follows it with whatever tools you enabled — including a terminal. Bundled scripts in scripts/ are ordinary executables.',
+    },
+    {
+      question: 'Are official Matt Pocock or Anthropic skills safe by default?',
+      answer:
+        'They are a better starting point than anonymous zips, and they should still be pinned and reviewed when they change. Trust the commit you read, not the brand in the abstract.',
+    },
+    {
+      question: 'Does sandboxing make skills safe?',
+      answer:
+        'Sandboxing shrinks blast radius. It does not stop a skill from leaking whatever the sandbox can still read, or from asking you to disable the sandbox.',
+    },
+    {
+      question: 'Should skills live in the repo or in the home directory?',
+      answer:
+        'Team conventions belong in the repo so they go through pull request. Personal cross-project skills can live in the home directory, but inspect them first after any incident.',
+    },
+    {
+      question: 'What should I do after a bad install command?',
+      answer:
+        'Disconnect the machine from secrets first. Rotate tokens that lived on it. Do not restore agent config until every skill, hook, and MCP entry is read.',
+    },
+  ],
   'meta-muse-code-typescript-nextjs-guide-2026': [
     {
       question: 'Is Muse Code free?',
@@ -86,7 +113,7 @@ const postFaqs: Record<string, { question: string; answer: string }[]> = {
     {
       question: 'Is the Edge runtime supported with cacheComponents?',
       answer:
-        'No. Cache Components requires the Node.js runtime. Migrate routes that still set runtime = "edge" before enabling the flag.',
+        'No. Cache Components requires the Node.js runtime. Migrate routes that still set runtime = \"edge\" before enabling the flag.',
     },
   ],
   'how-to-get-500k-views-on-x-2026': [
@@ -206,58 +233,58 @@ export default async function BlogPostPage({
       <BreadcrumbSchema items={breadcrumbs} />
       {faqs.length > 0 && <FAQSchema faqs={faqs} />}
 
-      <div className="min-h-screen bg-[#060B16] font-sans">
+      <div className=\"min-h-screen bg-[#060B16] font-sans\">
         <Header />
 
-        <main id="main-content" className="pt-32 sm:pt-36 md:pt-40 pb-24">
-          <article className="max-w-7xl mx-auto px-4 sm:px-6">
-            <header className="mb-6 sm:mb-8 bg-[#0A1221] border border-[#39FF14]/20 rounded-2xl p-6 sm:p-8 shadow-[0_8px_32px_rgba(0,0,0,0.25)]">
-              <div className="flex flex-wrap items-center gap-3 text-sm text-white/50 mb-5">
-                <span className="px-3 py-1 bg-[#39FF14]/10 text-[#39FF14] text-xs font-semibold rounded-md border border-[#39FF14]/25 tracking-wide uppercase">
+        <main id=\"main-content\" className=\"pt-32 sm:pt-36 md:pt-40 pb-24\">
+          <article className=\"max-w-7xl mx-auto px-4 sm:px-6\">
+            <header className=\"mb-6 sm:mb-8 bg-[#0A1221] border border-[#39FF14]/20 rounded-2xl p-6 sm:p-8 shadow-[0_8px_32px_rgba(0,0,0,0.25)]\">
+              <div className=\"flex flex-wrap items-center gap-3 text-sm text-white/50 mb-5\">
+                <span className=\"px-3 py-1 bg-[#39FF14]/10 text-[#39FF14] text-xs font-semibold rounded-md border border-[#39FF14]/25 tracking-wide uppercase\">
                   {post.category}
                 </span>
-                <time dateTime={post.date} className="text-white/45">
+                <time dateTime={post.date} className=\"text-white/45\">
                   {new Date(post.date).toLocaleDateString('en-US', {
                     year: 'numeric',
                     month: 'long',
                     day: 'numeric',
                   })}
                 </time>
-                <span className="text-white/35">·</span>
-                <span className="text-white/45">{post.readTime}</span>
+                <span className=\"text-white/35\">·</span>
+                <span className=\"text-white/45\">{post.readTime}</span>
               </div>
-              <h1 className="text-2xl sm:text-3xl md:text-4xl font-bold text-white font-orbitron leading-tight mb-4 tracking-tight">
+              <h1 className=\"text-2xl sm:text-3xl md:text-4xl font-bold text-white font-orbitron leading-tight mb-4 tracking-tight\">
                 {post.title}
               </h1>
-              <p className="text-base sm:text-lg text-white/65 leading-relaxed font-sans border-t border-white/5 pt-4">
+              <p className=\"text-base sm:text-lg text-white/65 leading-relaxed font-sans border-t border-white/5 pt-4\">
                 {post.excerpt}
               </p>
-              <p className="mt-4 text-sm text-white/40 font-sans">
-                By <span className="text-white/70">{post.author}</span>
+              <p className=\"mt-4 text-sm text-white/40 font-sans\">
+                By <span className=\"text-white/70\">{post.author}</span>
               </p>
             </header>
 
             <div
-              className="prose prose-invert prose-headings:font-orbitron prose-a:text-[#39FF14] max-w-none blog-content blog-content-stack"
+              className=\"prose prose-invert prose-headings:font-orbitron prose-a:text-[#39FF14] max-w-none blog-content blog-content-stack\"
               dangerouslySetInnerHTML={{ __html: post.content }}
             />
 
             {faqs.length > 0 && (
-              <section className="mt-2 mb-6 sm:mb-8">
-                <div className="bg-[#0A1221] border border-[#39FF14]/20 rounded-2xl p-6 sm:p-8 shadow-[0_8px_32px_rgba(0,0,0,0.25)]">
-                  <h2 className="text-xl sm:text-2xl font-bold text-white font-orbitron mb-6">
+              <section className=\"mt-2 mb-6 sm:mb-8\">
+                <div className=\"bg-[#0A1221] border border-[#39FF14]/20 rounded-2xl p-6 sm:p-8 shadow-[0_8px_32px_rgba(0,0,0,0.25)]\">
+                  <h2 className=\"text-xl sm:text-2xl font-bold text-white font-orbitron mb-6\">
                     Frequently Asked Questions
                   </h2>
-                  <div className="space-y-4">
+                  <div className=\"space-y-4\">
                     {faqs.map((faq) => (
                       <div
                         key={faq.question}
-                        className="bg-[#060B16] border border-white/10 rounded-xl p-4 sm:p-5 hover:border-[#39FF14]/30 transition-colors"
+                        className=\"bg-[#060B16] border border-white/10 rounded-xl p-4 sm:p-5 hover:border-[#39FF14]/30 transition-colors\"
                       >
-                        <h3 className="text-base sm:text-lg font-semibold text-[#39FF14] mb-2 font-orbitron">
+                        <h3 className=\"text-base sm:text-lg font-semibold text-[#39FF14] mb-2 font-orbitron\">
                           {faq.question}
                         </h3>
-                        <p className="text-sm sm:text-base text-white/70 leading-relaxed font-sans">
+                        <p className=\"text-sm sm:text-base text-white/70 leading-relaxed font-sans\">
                           {faq.answer}
                         </p>
                       </div>
@@ -268,22 +295,22 @@ export default async function BlogPostPage({
             )}
 
             {related.length > 0 && (
-              <section className="mb-8">
-                <div className="bg-[#0A1221] border border-[#39FF14]/20 rounded-2xl p-6 sm:p-8 shadow-[0_8px_32px_rgba(0,0,0,0.25)]">
-                  <h2 className="text-xl font-bold text-white font-orbitron mb-5">
+              <section className=\"mb-8\">
+                <div className=\"bg-[#0A1221] border border-[#39FF14]/20 rounded-2xl p-6 sm:p-8 shadow-[0_8px_32px_rgba(0,0,0,0.25)]\">
+                  <h2 className=\"text-xl font-bold text-white font-orbitron mb-5\">
                     Related guides
                   </h2>
-                  <div className="grid gap-3 sm:gap-4">
+                  <div className=\"grid gap-3 sm:gap-4\">
                     {related.map((rpost) => (
                       <Link
                         key={rpost.slug}
                         href={`/blog/${rpost.slug}`}
-                        className="block bg-[#060B16] border border-white/10 rounded-xl p-4 sm:p-5 hover:border-[#39FF14]/40 transition-all group"
+                        className=\"block bg-[#060B16] border border-white/10 rounded-xl p-4 sm:p-5 hover:border-[#39FF14]/40 transition-all group\"
                       >
-                        <span className="text-white font-medium group-hover:text-[#39FF14] transition-colors font-orbitron text-sm sm:text-base">
+                        <span className=\"text-white font-medium group-hover:text-[#39FF14] transition-colors font-orbitron text-sm sm:text-base\">
                           {rpost.title}
                         </span>
-                        <p className="text-sm text-white/50 mt-2 line-clamp-2 font-sans leading-relaxed">
+                        <p className=\"text-sm text-white/50 mt-2 line-clamp-2 font-sans leading-relaxed\">
                           {rpost.excerpt}
                         </p>
                       </Link>
@@ -293,10 +320,10 @@ export default async function BlogPostPage({
               </section>
             )}
 
-            <div className="text-center pt-2">
+            <div className=\"text-center pt-2\">
               <Link
-                href="/blog"
-                className="inline-flex items-center gap-2 px-6 py-3 bg-[#0A1221] border border-[#39FF14]/25 rounded-xl text-[#39FF14] hover:border-[#39FF14] hover:bg-[#39FF14]/5 transition-all text-sm font-orbitron tracking-wide"
+                href=\"/blog\"
+                className=\"inline-flex items-center gap-2 px-6 py-3 bg-[#0A1221] border border-[#39FF14]/25 rounded-xl text-[#39FF14] hover:border-[#39FF14] hover:bg-[#39FF14]/5 transition-all text-sm font-orbitron tracking-wide\"
               >
                 ← Back to all posts
               </Link>
