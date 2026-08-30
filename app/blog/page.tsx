@@ -7,9 +7,9 @@ import { SubscriptionModal } from '@/app/components/SubscriptionModal'
 import { getAllPosts } from './lib/posts'
 
 export const metadata: Metadata = {
-  title: 'Blog | Web3 & Full-Stack Insights',
+  title: 'Next.js 16, Web3 & Full-Stack Engineering Blog',
   description:
-    'Practical guides on Next.js 16, React, TypeScript, Web3, Solidity, DeFi, Bitcoin Ordinals, DevOps, AI coding tools, and full-stack engineering by Mussawar Hayat.',
+    'Production guides on Next.js 16, React, TypeScript, Web3, Solidity, DeFi, Bitcoin Ordinals, Docker, Prisma, and AI coding agents by Next.js full-stack developer Mussawar Hayat.',
   keywords: [
     'Web3 developer blog',
     'Next.js 16 tutorial',
@@ -82,9 +82,9 @@ export default async function BlogPage() {
                 <span className="text-[#39FF14]">Mussawar</span> Tech Blog
               </h1>
               <p className="text-lg text-white/60 max-w-3xl mx-auto leading-relaxed font-sans">
-                Practical architecture guides and production patterns for Next.js,
-                React, TypeScript, Web3, Solidity, DeFi, Bitcoin Ordinals, and
-                full-stack engineering.
+                Production Next.js 16, React, TypeScript, Web3, Solidity, DeFi,
+                Bitcoin Ordinals, Docker, and AI-agent engineering guides from
+                full-stack developer Mussawar Hayat.
               </p>
             </div>
 
