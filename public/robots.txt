@@ -59,6 +59,15 @@ Allow: /
 User-agent: YouBot
 Allow: /
 
+User-agent: Grok
+Allow: /
+
+User-agent: Grokbots
+Allow: /
+
+User-agent: xAI
+Allow: /
+
 # Non-content paths
 Disallow: /api/
 
