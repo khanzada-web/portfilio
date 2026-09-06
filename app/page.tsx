@@ -24,13 +24,15 @@ export const metadata: Metadata = {
     "Hire a Next.js full-stack developer for SaaS, React apps, Node.js APIs, Solidity smart contracts, and Web3 DApps. Mussawar Hayat ships production products remotely for North America and Europe.",
   keywords: [
     "hire Next.js developer",
-    "full-stack developer for hire",
-    "Web3 developer",
-    "Solidity developer",
-    "React developer freelance",
+    "hire full-stack developer",
+    "Web3 developer for hire",
+    "Solidity smart contract developer",
+    "freelance React developer",
     "Next.js SaaS developer",
     "TypeScript full-stack developer",
     "hire Web3 developer",
+    "Next.js 16 developer",
+    "remote full-stack developer",
     "Mussawar Hayat",
   ],
   alternates: {
@@ -47,7 +49,7 @@ export const metadata: Metadata = {
         url: "/my-pic.jpeg",
         width: 1200,
         height: 630,
-        alt: "Mussawar Hayat — Full-Stack & Web3 Developer portrait",
+        alt: "Mussawar Hayat \u2014 Full-Stack & Web3 Developer portrait",
       },
     ],
   },
@@ -79,7 +81,7 @@ const FAQ_ITEMS = [
   {
     question: "Do you build both the frontend and backend?",
     answer:
-      "Yes. Mussawar Hayat handles full-stack development end-to-end — React/Next.js frontends, Node.js backends, databases, and deployment/DevOps — so clients do not need to coordinate multiple specialists.",
+      "Yes. Mussawar Hayat handles full-stack development end-to-end \u2014 React/Next.js frontends, Node.js backends, databases, and deployment/DevOps \u2014 so clients do not need to coordinate multiple specialists.",
   },
   {
     question: "Can you add blockchain or Web3 features to an existing app?",
@@ -89,7 +91,7 @@ const FAQ_ITEMS = [
   {
     question: "How do pricing and engagement models work?",
     answer:
-      "Typical options are fixed-price for clearly scoped projects, hourly for evolving or consulting work, and monthly retainers for continuous product development. Exact ranges depend on scope — share your project details and you will get a clear proposal. Response is usually within 24 hours.",
+      "Typical options are fixed-price for clearly scoped projects, hourly for evolving or consulting work, and monthly retainers for continuous product development. Exact ranges depend on scope \u2014 share your project details and you will get a clear proposal. Response is usually within 24 hours.",
   },
   {
     question: "How can I hire Mussawar Hayat for a project?",
@@ -113,10 +115,10 @@ export default function Home() {
     <>
       <FAQSchema faqs={FAQ_ITEMS} />
 
-      <div className="min-h-screen bg-white font-sans">
+      <div className=\"min-h-screen bg-white font-sans\">
         <Header />
 
-        <main id="main-content" role="main">
+        <main id=\"main-content\" role=\"main\">
           <Hero />
           <About />
           <Services />
