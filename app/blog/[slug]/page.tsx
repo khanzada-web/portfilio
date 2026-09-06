@@ -11,8 +11,6 @@ import {
   getRelatedPosts,
 } from '../lib/posts'
 
-// Optional per-post FAQs. Add an entry when a post needs structured FAQ schema.
-// Key = slug (filename without .ts)
 const postFaqs: Record<string, { question: string; answer: string }[]> = {
   'agent-skills-typescript-nextjs-2026': [
     {
@@ -161,6 +159,45 @@ const postFaqs: Record<string, { question: string; answer: string }[]> = {
       question: 'Should I use connection_limit=1 with Prisma Accelerate?',
       answer:
         'Yes for pure serverless. Accelerate (or PgBouncer) handles the real pooling; the app-side limit should stay low.',
+    },
+  ],
+  'ai-agent-postgres-write-guardrails-nextjs-2026': [
+    {
+      question: 'Can I give the agent a read-write Prisma client and just be careful?',
+      answer:
+        'No. Care is not an access-control mechanism. Split Postgres roles and allowlisted tools so the model never sees DATABASE_URL or chooses a tenant id.',
+    },
+    {
+      question: 'Should every agent write wait for a human?',
+      answer:
+        'No. Low-risk, reversible, tenant-scoped creates can persist immediately. Irreversible or cross-account writes should require approval.',
+    },
+    {
+      question: 'Is MCP required for a write gateway?',
+      answer:
+        'No. MCP is one way to expose tools. The same Next.js Route Handler works behind an HTTP tool call from any host.',
+    },
+  ],
+  'nextjs-16-api-rate-limiting-upstash-redis-production-2026': [
+    {
+      question: 'Is Next.js middleware enough for rate limiting?',
+      answer:
+        'Middleware is a good first filter for anonymous routes. Authenticated and agent routes should still check inside the Route Handler or Server Action where the session exists.',
+    },
+    {
+      question: 'Should I use Redis or an in-memory Map?',
+      answer:
+        'Use an in-memory Map only on a single Node process. Use Redis (local or hosted) as soon as you have multiple instances, serverless isolates, or an agent gateway.',
+    },
+    {
+      question: 'What status should agents receive when limited?',
+      answer:
+        'HTTP 429 with a Retry-After header and a small JSON body. Document that contract in the tool description so the model backs off instead of retrying immediately.',
+    },
+    {
+      question: 'Do Server Actions need the same limiter?',
+      answer:
+        'Yes. A Server Action is still an HTTP endpoint. Apply the same identity key and budget after you resolve the session.',
     },
   ],
 }
