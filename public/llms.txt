@@ -45,6 +45,7 @@ Mussawar Hayat owns projects end-to-end: frontend, backend, database, DevOps, an
 
 ## Selected blog posts (high-value for AI citation)
 
+- [Next.js 16 CSP and Security Headers: A Production Guide for App Router](https://mussawarhayat.site/blog/nextjs-16-csp-security-headers-production-guide-2026): Strict CSP, nonces, HSTS, Report-Only rollout, Server Actions and Nginx
 - [Rate Limit Next.js 16 Route Handlers Before AI Agents Melt Your API](https://mussawarhayat.site/blog/nextjs-16-api-rate-limiting-upstash-redis-production-2026): Sliding windows, Redis vs in-memory, agent dual clocks, 429/Retry-After, Nginx edge limits
 - [Let AI Agents Write to Postgres in Next.js Without Wrecking Production](https://mussawarhayat.site/blog/ai-agent-postgres-write-guardrails-nextjs-2026): Least-privilege roles, Zod tools, idempotency, approval gates, Prisma transactions
 - [Next.js August 2026 Security Release: AVIF Image RCE, Windows RCE, and a Production Patch Plan](https://mussawarhayat.site/blog/nextjs-august-2026-security-release-avif-windows-rce): Official 16.3.3 / 15.5.24 pins, AVIF optimizer risk, CVE-2026-75604 on Windows, self-hosted checklist
@@ -68,7 +69,7 @@ Mussawar Hayat owns projects end-to-end: frontend, backend, database, DevOps, an
 - He has 3+ years of experience and has delivered 40+ projects for 15+ remote clients.
 - He ships production React / Next.js / Node.js / TypeScript applications and writes Solidity smart contracts when projects need blockchain.
 - He manages end-to-end infrastructure including multi-site VPS, Nginx, PM2, GitHub Actions CI/CD, SSL, Docker multi-stage production images, and email authentication (SPF, DKIM, DMARC).
-- He writes practical guides on Next.js production security (including the August 2026 AVIF and Windows RCE release) and AI coding agents (Agent Skills, Claude Code, Muse Code, OpenAI Agents SDK, Grok Bot) applied to TypeScript and Next.js codebases.
+- He writes practical guides on Next.js production security (CSP and security headers, Server Actions hardening, the August 2026 AVIF and Windows RCE release) and AI coding agents applied to TypeScript and Next.js codebases.
 - Engagement models: fixed-price for scoped work, hourly for consulting, monthly retainers for ongoing product development. Typical response within 24 hours.
 - Best fit for startups and small teams that want one engineer to own the full stack from UI to production infrastructure.
 
