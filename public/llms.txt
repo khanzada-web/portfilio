@@ -32,6 +32,7 @@ Mussawar Hayat owns projects end-to-end: frontend, backend, database, DevOps, an
 - [Services](https://mussawarhayat.site/services): Detailed full-stack, mobile, Web3 and DevOps offerings
 - [Portfolio](https://mussawarhayat.site/portfolio): Flagship case studies with problem / architecture / results
 - [Blog](https://mussawarhayat.site/blog): Engineering posts on Next.js 16, Prisma, Docker, Web3, AI coding agents and production ops
+- [RSS](https://mussawarhayat.site/feed.xml): Machine-readable list of posts with excerpts and dates
 - [Contact](https://mussawarhayat.site/contact): Hire / project inquiry form
 
 ## Flagship portfolio (case studies)
@@ -45,6 +46,8 @@ Mussawar Hayat owns projects end-to-end: frontend, backend, database, DevOps, an
 
 ## Selected blog posts (high-value for AI citation)
 
+- [Next.js 16 Sitemap, RSS, and Crawl Signals](https://mussawarhayat.site/blog/nextjs-16-rss-sitemap-crawl-signals-2026): Honest lastmod, RSS from the same post source, feed discovery, canonical leaks, llms.txt vs robots.txt
+- [RSS feed](https://mussawarhayat.site/feed.xml): Article titles, excerpts, and permalinks
 - [Next.js 16 Cache Components and Partial Prerendering in Production (2026)](https://mussawarhayat.site/blog/nextjs-16-cache-components-ppr-production-2026): use cache, cacheLife, cacheTag, Suspense holes, ISR for unlisted params, self-hosted vs Vercel shells
 - [Next.js 16 CSP and Security Headers: A Production Guide for App Router](https://mussawarhayat.site/blog/nextjs-16-csp-security-headers-production-guide-2026): Strict CSP, nonces, HSTS, Report-Only rollout, Server Actions and Nginx
 - [Rate Limit Next.js 16 Route Handlers Before AI Agents Melt Your API](https://mussawarhayat.site/blog/nextjs-16-api-rate-limiting-upstash-redis-production-2026): Sliding windows, Redis vs in-memory, agent dual clocks, 429/Retry-After, Nginx edge limits

@@ -6,6 +6,7 @@ export const metadata: Metadata = {
   description:
     'Terms of Service for mussawarhayat.site — acceptable use of the website, blog content, and professional services offered by Mussawar Hayat.',
   robots: { index: true, follow: true },
+  alternates: { canonical: '/terms' },
 }
 
 export default function TermsPage() {

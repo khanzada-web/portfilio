@@ -58,6 +58,9 @@ export const metadata: Metadata = {
   },
   alternates: {
     canonical: '/blog',
+    types: {
+      'application/rss+xml': 'https://mussawarhayat.site/feed.xml',
+    },
   },
 }
 
@@ -85,6 +88,11 @@ export default async function BlogPage() {
                 Production Next.js 16, React, TypeScript, Web3, Solidity, DeFi,
                 Bitcoin Ordinals, Docker, and AI-agent engineering guides from
                 full-stack developer Mussawar Hayat.
+              </p>
+              <p className="mt-6 font-sans text-sm">
+                <a href="/feed.xml" className="text-[#39FF14] hover:underline">
+                  Subscribe via RSS
+                </a>
               </p>
             </div>
 

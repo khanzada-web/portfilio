@@ -38,6 +38,9 @@ export const metadata: Metadata = {
   metadataBase: new URL("https://mussawarhayat.site"),
   alternates: {
     canonical: "/",
+    types: {
+      "application/rss+xml": "https://mussawarhayat.site/feed.xml",
+    },
   },
 
   robots: {

@@ -6,6 +6,7 @@ export const metadata: Metadata = {
   description:
     'Privacy Policy for mussawarhayat.site — how we collect, use, and protect personal data, cookies, analytics, and Google AdSense advertising.',
   robots: { index: true, follow: true },
+  alternates: { canonical: '/privacy' },
 }
 
 export default function PrivacyPage() {

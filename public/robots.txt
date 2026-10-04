@@ -73,3 +73,8 @@ Disallow: /api/
 
 # Sitemap
 Sitemap: https://mussawarhayat.site/sitemap.xml
+
+# RSS
+# https://mussawarhayat.site/feed.xml
+# LLM citation map (not a Google standard)
+# https://mussawarhayat.site/llms.txt
