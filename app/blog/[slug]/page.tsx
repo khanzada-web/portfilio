@@ -12,6 +12,33 @@ import {
 } from '../lib/posts'
 
 const postFaqs: Record<string, { question: string; answer: string }[]> = {
+  'claude-code-mods-typescript-production-guardrails-2026': [
+    {
+      question: 'Do I need Claude Code 2.1.287?',
+      answer:
+        'Yes. Mods load on v2.1.287 or later, in the CLI and the desktop app. Check with claude --version. They are on by default; --safe-mode, --bare, and disableAllHooks stop them.',
+    },
+    {
+      question: 'Is a mod the same as a settings hook?',
+      answer:
+        'No. Settings hooks can observe and block. Mods can also rewrite the event, replace the result, draw UI, and register commands. Managed settings hooks still run before a mod tool hook, and their block is final.',
+    },
+    {
+      question: 'Can I write the mod in TypeScript?',
+      answer:
+        'Yes. Claude Code loads .ts and .tsx modules directly. The official tutorial uses JavaScript; the same register export works in TypeScript. You do not bundle it.',
+    },
+    {
+      question: 'Will this stop every dangerous command?',
+      answer:
+        'No. Matchers and regexes miss wrapped shells, aliases, and tools you did not list. Use the mod with branch protection, a sandbox, and human review of the diff.',
+    },
+    {
+      question: 'Where should the plugin live?',
+      answer:
+        'In the repo, loaded with claude --plugin-dir, or installed from a marketplace you trust. Session mods under ~/.claude/dev-mods are temporary.',
+    },
+  ],
   'agent-skills-typescript-nextjs-2026': [
     {
       question: 'Do Agent Skills work only with Claude?',
