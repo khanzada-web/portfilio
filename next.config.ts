@@ -1,8 +1,10 @@
 import type { NextConfig } from "next";
 
 const nextConfig: NextConfig = {
-  // Production Docker / VPS: minimal runtime tree via next build
-  output: "standalone",
+  // Production Docker / VPS: minimal runtime tree via next build.
+  // Disabled on Vercel: Next 16.3 + Vercel adapter skips next-server.js.nft.json,
+  // which standalone output requires (vercel/next.js#96646).
+  output: process.env.VERCEL ? undefined : "standalone",
 
   // Security headers
   async headers() {
