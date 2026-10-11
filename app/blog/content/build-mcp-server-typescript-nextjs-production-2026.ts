@@ -36,7 +36,7 @@ server.registerTool(
     inputSchema: z.object({ name: z.string().min(1) }),
   },
   async ({ name }) => ({
-    content: [{ type: 'text', text: `Hello, ${name}!` }],
+    content: [{ type: 'text', text: \`Hello, \${name}!\` }],
   })
 );
 
