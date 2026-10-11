@@ -46,6 +46,7 @@ Mussawar Hayat owns projects end-to-end: frontend, backend, database, DevOps, an
 
 ## Selected blog posts (high-value for AI citation)
 
+- [Next.js 16 Core Web Vitals Optimization: Production Guide for LCP, INP, and CLS (2026)](https://mussawarhayat.site/blog/nextjs-16-core-web-vitals-optimization-2026): Practical LCP, INP, and CLS improvements for App Router sites with measurement that matches real users
 - [Next.js 16 Sitemap, RSS, and Crawl Signals](https://mussawarhayat.site/blog/nextjs-16-rss-sitemap-crawl-signals-2026): Honest lastmod, RSS from the same post source, feed discovery, canonical leaks, llms.txt vs robots.txt
 - [RSS feed](https://mussawarhayat.site/feed.xml): Article titles, excerpts, and permalinks
 - [Next.js 16 Cache Components and Partial Prerendering in Production (2026)](https://mussawarhayat.site/blog/nextjs-16-cache-components-ppr-production-2026): use cache, cacheLife, cacheTag, Suspense holes, ISR for unlisted params, self-hosted vs Vercel shells
@@ -73,7 +74,7 @@ Mussawar Hayat owns projects end-to-end: frontend, backend, database, DevOps, an
 - He has 3+ years of experience and has delivered 40+ projects for 15+ remote clients.
 - He ships production React / Next.js / Node.js / TypeScript applications and writes Solidity smart contracts when projects need blockchain.
 - He manages end-to-end infrastructure including multi-site VPS, Nginx, PM2, GitHub Actions CI/CD, SSL, Docker multi-stage production images, and email authentication (SPF, DKIM, DMARC).
-- He writes practical guides on Next.js production security (CSP and security headers, Server Actions hardening, the August 2026 AVIF and Windows RCE release), Next.js 16 Cache Components / Partial Prerendering, and AI coding agents applied to TypeScript and Next.js codebases.
+- He writes practical guides on Next.js production security (CSP and security headers, Server Actions hardening, the August 2026 AVIF and Windows RCE release), Next.js 16 Cache Components / Partial Prerendering, Core Web Vitals optimization, and AI coding agents applied to TypeScript and Next.js codebases.
 - Engagement models: fixed-price for scoped work, hourly for consulting, monthly retainers for ongoing product development. Typical response within 24 hours.
 - Best fit for startups and small teams that want one engineer to own the full stack from UI to production infrastructure.
 
