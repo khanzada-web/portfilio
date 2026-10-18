@@ -138,7 +138,7 @@ export default function AboutPage() {
                   <li>Full-stack product engineering (web and API)</li>
                   <li>Web3 / DeFi / Ordinals frontends and supporting services</li>
                   <li>DevOps: VPS, Nginx, PM2, GitHub Actions, email (SPF/DKIM/DMARC)</li>
-                  <li>Technical writing for engineers (this site's blog)</li>
+                  <li>Technical writing for engineers (this site&apos;s blog)</li>
                 </ul>
               </div>
             </section>

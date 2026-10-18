@@ -63,7 +63,7 @@ export function Contact() {
             Usually replies within 24 hours
           </div>
           <h2 className="text-5xl md:text-7xl font-bold text-white tracking-tight uppercase">
-            Let's Talk About <span className="text-[#39FF14]">Your Project</span>
+            Let&apos;s Talk About <span className="text-[#39FF14]">Your Project</span>
           </h2>
           <p className="text-lg text-white/70 max-w-2xl mx-auto leading-relaxed font-sans">
             Tell me what you are building. I will confirm fit, timeline, and the best engagement model

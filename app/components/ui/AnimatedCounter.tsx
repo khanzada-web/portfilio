@@ -19,6 +19,7 @@ export function AnimatedCounter({
   const [hasAnimated, setHasAnimated] = useState(false);
 
   useEffect(() => {
+    // eslint-disable-next-line react-hooks/set-state-in-effect -- animation initialization after mount
     setCount(from);
     setHasAnimated(true);
     const startTime = Date.now();

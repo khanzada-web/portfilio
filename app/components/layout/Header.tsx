@@ -40,6 +40,7 @@ export function Header() {
   }, []);
 
   useEffect(() => {
+    // eslint-disable-next-line react-hooks/set-state-in-effect -- intentional close on route change
     setIsMenuOpen(false);
   }, [pathname]);
 
