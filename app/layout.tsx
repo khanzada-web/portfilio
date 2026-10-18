@@ -24,12 +24,12 @@ const orbitron = Orbitron({
 
 export const metadata: Metadata = {
   title: {
-    default: "Hire Next.js Full-Stack & Web3 Developer | Mussawar Hayat",
+    default: "Hire Best Next.js 16 Full-Stack Web3 Developer 2026 | Mussawar Hayat",
     template: "%s | Mussawar Hayat",
   },
 
   description:
-    "Hire Mussawar Hayat — Next.js full-stack developer and Web3 specialist. React, TypeScript, Node.js, Solidity smart contracts, SaaS, and DevOps. Remote freelance for North America and Europe.",
+    "Hire the best Next.js 16 full-stack Web3 developer in 2026. Expert in React, TypeScript, Node.js, Solidity smart contracts, SaaS platforms, DApps, and production DevOps. Remote freelance available for North America and Europe startups.",
 
   authors: [{ name: "Mussawar Hayat", url: "https://mussawarhayat.site" }],
   creator: "Mussawar Hayat",
@@ -65,10 +65,10 @@ export const metadata: Metadata = {
     type: "website",
     locale: "en_US",
     url: "https://mussawarhayat.site",
-    title: "Hire Next.js Full-Stack & Web3 Developer | Mussawar Hayat",
+    title: "Hire Best Next.js 16 Full-Stack Web3 Developer 2026 | Mussawar Hayat",
     description:
-      "Next.js full-stack and Web3 developer for hire. React, TypeScript, Node.js, Solidity, SaaS platforms, DApps, and production DevOps. Remote for North America and Europe.",
-    siteName: "Mussawar Hayat — Next.js Full-Stack & Web3 Developer",
+      "Top Next.js 16 full-stack and Web3 developer for hire. React, TypeScript, Node.js, Solidity, high-performance SaaS, DApps, and DevOps. Remote for North America and Europe.",
+    siteName: "Mussawar Hayat — Best Next.js 16 Full-Stack & Web3 Developer",
     images: [
       {
         url: "/my-pic.jpeg",
@@ -81,9 +81,9 @@ export const metadata: Metadata = {
 
   twitter: {
     card: "summary_large_image",
-    title: "Hire Mussawar Hayat | Full-Stack & Web3 Developer",
+    title: "Hire Best Next.js 16 Web3 Developer 2026 | Mussawar Hayat",
     description:
-      "Full-stack developer building web, mobile & Web3 apps with React, Next.js, Node.js & Solidity. Available for freelance projects worldwide.",
+      "Expert Next.js full-stack and Web3 developer building high-performance web, mobile & blockchain apps. Available for remote freelance projects.",
     images: ["/my-pic.jpeg"],
     creator: "@Mussawar_Hayat",
   },
@@ -107,9 +107,9 @@ const ENTITY_GRAPH = {
       "@type": "WebSite",
       "@id": "https://mussawarhayat.site/#website",
       url: "https://mussawarhayat.site",
-      name: "Hire Next.js Full-Stack & Web3 Developer | Mussawar Hayat",
+      name: "Hire Best Next.js 16 Full-Stack Web3 Developer 2026 | Mussawar Hayat",
       description:
-        "Next.js full-stack and Web3 developer for hire. Remote freelance for clients in North America and Europe.",
+        "Best Next.js 16 full-stack and Web3 developer for hire in 2026. Remote freelance for clients in North America and Europe.",
       publisher: { "@id": "https://mussawarhayat.site/#person" },
       inLanguage: "en",
     },
@@ -117,13 +117,13 @@ const ENTITY_GRAPH = {
       "@type": "Person",
       "@id": "https://mussawarhayat.site/#person",
       name: "Mussawar Hayat",
-      jobTitle: "Full-Stack Developer & Web3 Specialist",
+      jobTitle: "Best Next.js 16 Full-Stack Developer & Web3 Specialist",
       url: "https://mussawarhayat.site",
       image: "https://mussawarhayat.site/my-pic.jpeg",
       email: "zada38843@gmail.com",
       telephone: "+923358328468",
       description:
-        "Next.js full-stack and Web3 developer: React, TypeScript, Node.js, Solidity. Remote freelance for North America and Europe.",
+        "Expert Next.js 16 full-stack and Web3 developer specializing in React, TypeScript, Node.js, Solidity smart contracts. Remote freelance for North America and Europe.",
       address: {
         "@type": "PostalAddress",
         streetAddress: "Mehria Town",
@@ -138,7 +138,7 @@ const ENTITY_GRAPH = {
         "https://x.com/Mussawar_Hayat",
       ],
       knowsAbout: [
-        "Next.js",
+        "Next.js 16",
         "React",
         "TypeScript",
         "Node.js",
@@ -158,6 +158,7 @@ const ENTITY_GRAPH = {
         "SaaS Development",
         "DeFi",
         "Smart Contracts",
+        "Core Web Vitals",
       ],
       worksFor: { "@id": "https://mussawarhayat.site/#business" },
       areaServed: [
@@ -172,11 +173,11 @@ const ENTITY_GRAPH = {
     {
       "@type": ["ProfessionalService", "LocalBusiness"],
       "@id": "https://mussawarhayat.site/#business",
-      name: "Mussawar Hayat — Full-Stack & Web3 Development",
+      name: "Mussawar Hayat — Best Next.js 16 Full-Stack & Web3 Development",
       url: "https://mussawarhayat.site",
       image: "https://mussawarhayat.site/my-pic.jpeg",
       description:
-        "Freelance Next.js full-stack and Web3 services: React, TypeScript, Node.js, Solidity, mobile, DevOps, and SaaS. Remote worldwide.",
+        "Freelance expert Next.js 16 full-stack and Web3 services: React, TypeScript, Node.js, Solidity, mobile, DevOps, and high-performance SaaS. Remote worldwide.",
       email: "zada38843@gmail.com",
       telephone: "+923358328468",
       priceRange: "$$",
@@ -205,9 +206,9 @@ const ENTITY_GRAPH = {
           "@type": "Offer",
           itemOffered: {
             "@type": "Service",
-            name: "Full-Stack Web Architecture",
+            name: "Next.js 16 Full-Stack Web Architecture",
             description:
-              "High-performance Next.js and React applications with SSR, ISR, TypeScript, and SEO-ready architecture.",
+              "High-performance Next.js 16 and React applications with SSR, ISR, TypeScript, Core Web Vitals optimization, and SEO-ready architecture.",
           },
         },
         {
@@ -223,7 +224,7 @@ const ENTITY_GRAPH = {
           "@type": "Offer",
           itemOffered: {
             "@type": "Service",
-            name: "Web3 & Blockchain",
+            name: "Web3 & Blockchain Development",
             description:
               "Smart contracts, DApps, wallet integration, DeFi, NFTs, and Bitcoin Ordinals with Solidity and Ethers.js.",
           },
