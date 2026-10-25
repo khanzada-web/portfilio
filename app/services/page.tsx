@@ -6,17 +6,18 @@ import { BreadcrumbSchema } from '@/app/components/seo/BreadcrumbSchema'
 import { FAQSchema } from '@/app/components/seo/FAQSchema'
 
 export const metadata: Metadata = {
-  title: 'Hire Next.js Full-Stack & Web3 Developer Services',
+  title: 'Hire Best Next.js 16 Full-Stack Web3 Developer Services 2026 | SaaS & DApps',
   description:
-    'Hire a Next.js full-stack and Web3 developer for React, TypeScript, SaaS, Solidity smart contracts, DApps, React Native, and DevOps. Remote services for North America and Europe.',
+    'Hire the best Next.js 16 full-stack Web3 developer for high-performance SaaS platforms, React apps, Solidity smart contracts, DApps, and production DevOps. Expert TypeScript full-stack services available remotely for North America and Europe.',
   keywords: [
-    'hire Next.js developer',
-    'full-stack development services',
-    'Web3 development services',
+    'hire Next.js 16 developer',
+    'Next.js full-stack developer for hire',
+    'Web3 developer for hire 2026',
     'Solidity smart contract developer',
-    'React SaaS developer',
+    'Next.js SaaS developer',
     'freelance Next.js developer',
     'hire Web3 developer',
+    'best Next.js developer for hire',
   ],
   openGraph: {
     title: 'Hire Next.js Full-Stack & Web3 Developer | Services',

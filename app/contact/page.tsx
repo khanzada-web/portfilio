@@ -6,9 +6,9 @@ import { Contact } from '@/app/components/sections/Contact'
 import { BreadcrumbSchema } from '@/app/components/seo/BreadcrumbSchema'
 
 export const metadata: Metadata = {
-  title: 'Contact Mussawar Hayat | Hire Next.js Full-Stack & Web3 Developer',
+  title: 'Contact to Hire Best Next.js 16 Full-Stack Web3 Developer 2026 | Mussawar Hayat',
   description:
-    'Contact Mussawar Hayat to hire a Next.js full-stack developer for React, TypeScript, Node.js, SaaS, Solidity smart contracts, Web3 DApps, and DevOps. Replies within 24 hours.',
+    'Contact Mussawar Hayat to hire the best Next.js 16 full-stack Web3 developer for high-performance SaaS, React apps, Solidity smart contracts, and DApps. Fast replies for North America and Europe remote projects.',
   keywords: [
     'contact Mussawar Hayat',
     'hire full-stack developer',
