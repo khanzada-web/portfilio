@@ -1,10 +1,10 @@
-export const title = 'Next.js 16 Cache Components and Partial Prerendering in Production (2026)'
+export const title = 'Next.js 16 Cache Components and PPR Production Guide 2026: Instant Navigations & High Performance'
 export const excerpt = 'Next.js 16 folded Partial Prerendering into Cache Components. Data is dynamic by default; you opt into a static shell with use cache, cacheLife, and cacheTag. This production guide covers enabling cacheComponents without breaking the build, wrapping cookies and auth in Suspense, ISR for unlisted params, and how self-hosted VPS deploys differ from Vercel CDN shells.'
 export const date = '2026-09-27'
 export const readTime = '15 min read'
 export const category = 'Next.js'
 export const author = 'Mussawar Hayat'
-export const keywords = [
+export const keywords = ['Next.js 16 Cache Components', 'Partial Prerendering Next.js', 'PPR production guide', 'Next.js 16 performance', 
   'Next.js 16 Cache Components',
   'Partial Prerendering Next.js 16 production',
   'use cache directive Next.js',
