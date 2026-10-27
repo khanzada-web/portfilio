@@ -88,6 +88,10 @@ export const metadata: Metadata = {
     creator: "@Mussawar_Hayat",
   },
 
+  verification: {
+    google: "sbASvcj9B1fGob3o9CIA4dV9OHwje27VXmnM23IaWJ8",
+  },
+
   other: {
     "google-adsense-account": "ca-pub-9383132900869188",
   },
