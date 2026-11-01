@@ -24,12 +24,12 @@ const orbitron = Orbitron({
 
 export const metadata: Metadata = {
   title: {
-    default: "Hire Best Next.js 16 Full-Stack Web3 Developer for SaaS & DApps 2026 | Mussawar Hayat",
+    default: "Hire the Best Next.js 16 Full-Stack Web3 Developer for High-Performance SaaS Hire the Best Next.js 16 Full-Stack Web3 Developer for High-Performance SaaS Hire Best Next.js 16 Full-Stack Web3 Developer for SaaS & DApps 2026 | Mussawar Hayat DApps 2026 | Mussawar Hayat DApps 2026 | Mussawar Hayat",
     template: "%s | Mussawar Hayat",
   },
 
   description:
-    "Hire the best Next.js 16 full-stack Web3 developer in 2026 for high-performance SaaS, React apps, Solidity smart contracts, and DApps. Expert TypeScript, Node.js, Prisma, Core Web Vitals optimization, and production DevOps. Remote freelance Next.js developer available for North America and Europe startups.",
+    "Hire the top-rated Next.js 16 full-stack Web3 developer in 2026 specializing in high-performance SaaS platforms, React and TypeScript apps, Solidity smart contracts, DApps, Core Web Vitals optimization, Prisma, Node.js backends, and production DevOps. Available for remote freelance work with startups in North America and Europe.",
 
   authors: [{ name: "Mussawar Hayat", url: "https://mussawarhayat.site" }],
   creator: "Mussawar Hayat",
@@ -65,9 +65,9 @@ export const metadata: Metadata = {
     type: "website",
     locale: "en_US",
     url: "https://mussawarhayat.site",
-    title: "Hire Best Next.js 16 Full-Stack Web3 Developer for SaaS & DApps 2026 | Mussawar Hayat",
+    title: "Hire the Best Next.js 16 Full-Stack Web3 Developer for High-Performance SaaS Hire the Best Next.js 16 Full-Stack Web3 Developer for High-Performance SaaS Hire Best Next.js 16 Full-Stack Web3 Developer for SaaS & DApps 2026 | Mussawar Hayat DApps 2026 | Mussawar Hayat DApps 2026 | Mussawar Hayat",
     description:
-      "Top Next.js 16 full-stack Web3 developer for hire specializing in high-performance SaaS, React, TypeScript, Solidity smart contracts, DApps, and Core Web Vitals. Remote for North America and Europe.",
+      "Top-rated Next.js 16 full-stack Web3 developer for hire, expert in high-performance SaaS, React, TypeScript, Solidity, DApps, and Core Web Vitals optimization. Remote freelance for North America and Europe startups.",
     siteName: "Mussawar Hayat — Best Next.js 16 Full-Stack & Web3 Developer",
     images: [
       {
@@ -81,9 +81,9 @@ export const metadata: Metadata = {
 
   twitter: {
     card: "summary_large_image",
-    title: "Hire Best Next.js 16 Web3 Developer 2026 | Mussawar Hayat",
+    title: "Hire Top Next.js 16 Full-Stack Web3 Developer 2026 | Mussawar Hayat",
     description:
-      "Expert Next.js full-stack and Web3 developer building high-performance web, mobile & blockchain apps. Available for remote freelance projects.",
+      "Expert Next.js 16 full-stack and Web3 developer building high-performance SaaS, web, mobile, and blockchain apps. Available for remote freelance projects worldwide.",
     images: ["/my-pic.jpeg"],
     creator: "@Mussawar_Hayat",
   },

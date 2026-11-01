@@ -6,9 +6,9 @@ import { BreadcrumbSchema } from '@/app/components/seo/BreadcrumbSchema'
 import { FAQSchema } from '@/app/components/seo/FAQSchema'
 
 export const metadata: Metadata = {
-  title: 'Hire Best Next.js 16 Full-Stack Web3 Developer Services 2026 | SaaS & DApps',
+  title: 'Hire Top Next.js 16 Full-Stack Web3 Developer Services for SaaS title: 'Hire Best Next.js 16 Full-Stack Web3 Developer Services 2026 | SaaS & DApps' DApps 2026 | Mussawar Hayat',
   description:
-    'Hire the best Next.js 16 full-stack Web3 developer for high-performance SaaS platforms, React apps, Solidity smart contracts, DApps, and production DevOps. Expert TypeScript full-stack services available remotely for North America and Europe.',
+    'Hire the top Next.js 16 full-stack Web3 developer for high-performance SaaS platforms, React and TypeScript apps, Solidity smart contracts, DApps, Core Web Vitals optimization, and production DevOps. Expert full-stack services available remotely for North America and Europe startups.',
   keywords: [
     'hire Next.js 16 developer',
     'Next.js full-stack developer for hire',
