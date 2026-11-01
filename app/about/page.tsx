@@ -6,7 +6,7 @@ import { Footer } from '@/app/components/layout/Footer'
 import { BreadcrumbSchema } from '@/app/components/seo/BreadcrumbSchema'
 
 export const metadata: Metadata = {
-  title: 'About Mussawar Hayat — Full-Stack & Web3 Developer',
+  title: 'About Mussawar Hayat — Top Next.js 16 Full-Stack Web3 Developer for Hire 2026',
   description:
     'About Mussawar Hayat: full-stack developer specializing in Next.js, React, TypeScript, Node.js, and Web3. Experience, editorial standards for the tech blog, and how he works with remote clients.',
   keywords: [
@@ -21,7 +21,7 @@ export const metadata: Metadata = {
     canonical: '/about',
   },
   openGraph: {
-    title: 'About Mussawar Hayat — Full-Stack & Web3 Developer',
+    title: 'About Mussawar Hayat — Top Next.js 16 Full-Stack Web3 Developer for Hire 2026',
     description:
       'Full-stack and Web3 developer: experience, skills, and editorial standards behind mussawarhayat.site.',
     url: 'https://mussawarhayat.site/about',

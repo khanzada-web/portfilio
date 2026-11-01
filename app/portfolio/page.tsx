@@ -6,7 +6,7 @@ import { BreadcrumbSchema } from '@/app/components/seo/BreadcrumbSchema';
 import { PROJECTS } from '@/app/lib/projects';
 
 export const metadata: Metadata = {
-  title: 'Next.js & Web3 Portfolio — Case Studies by Mussawar Hayat',
+  title: 'Next.js 16 title: 'Next.js & Web3 Portfolio — Case Studies by Mussawar Hayat' Web3 Portfolio Case Studies by Top Full-Stack Developer | Mussawar Hayat',
   description:
     'Next.js, React, Solidity, and Bitcoin Ordinals case studies by Mussawar Hayat: DaMeta1, Ordwin Market, DeFi staking, DEX interfaces, and production SaaS.',
   keywords: [
