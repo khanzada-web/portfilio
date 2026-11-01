@@ -2,7 +2,7 @@ import type { Metadata } from 'next'
 import Link from 'next/link'
 
 export const metadata: Metadata = {
-  title: 'Privacy Policy | Mussawar Hayat',
+  title: 'Privacy Policy for Next.js Web3 Developer Services | Mussawar Hayat',
   description:
     'Privacy Policy for mussawarhayat.site — how we collect, use, and protect personal data, cookies, analytics, and Google AdSense advertising.',
   robots: { index: true, follow: true },

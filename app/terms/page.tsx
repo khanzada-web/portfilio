@@ -2,7 +2,7 @@ import type { Metadata } from 'next'
 import Link from 'next/link'
 
 export const metadata: Metadata = {
-  title: 'Terms of Service | Mussawar Hayat',
+  title: 'Terms of Service for Full-Stack Web3 Development | Mussawar Hayat',
   description:
     'Terms of Service for mussawarhayat.site — acceptable use of the website, blog content, and professional services offered by Mussawar Hayat.',
   robots: { index: true, follow: true },
