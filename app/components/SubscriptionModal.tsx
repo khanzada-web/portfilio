@@ -9,20 +9,39 @@ export function SubscriptionModal() {
   const [isSubmitting, setIsSubmitting] = useState(false);
   const [message, setMessage] = useState('');
 
+  const [isError, setIsError] = useState(false);
+
   const handleSubmit = async (e: React.FormEvent) => {
     e.preventDefault();
     setIsSubmitting(true);
+    setIsError(false);
 
-    // Simulate API call
-    setTimeout(() => {
+    try {
+      const response = await fetch('/api/subscribe', {
+        method: 'POST',
+        headers: { 'Content-Type': 'application/json' },
+        body: JSON.stringify({ email }),
+      });
+
+      if (!response.ok) {
+        const data = await response.json().catch(() => null);
+        setMessage(data?.error || 'Subscription failed, please try again.');
+        setIsError(true);
+        return;
+      }
+
       setMessage('Thank you for subscribing! Check your email for confirmation.');
       setEmail('');
-      setIsSubmitting(false);
       setTimeout(() => {
         setIsOpen(false);
         setMessage('');
       }, 3000);
-    }, 1000);
+    } catch {
+      setMessage('Subscription failed, please try again.');
+      setIsError(true);
+    } finally {
+      setIsSubmitting(false);
+    }
   };
 
   return (
@@ -79,7 +98,13 @@ export function SubscriptionModal() {
             </form>
 
             {message && (
-              <div className="mt-4 p-3 bg-[#39FF14]/10 border border-[#39FF14]/30 rounded-lg text-[#39FF14]">
+              <div
+                className={`mt-4 p-3 rounded-lg border ${
+                  isError
+                    ? 'bg-red-500/10 border-red-500/30 text-red-400'
+                    : 'bg-[#39FF14]/10 border-[#39FF14]/30 text-[#39FF14]'
+                }`}
+              >
                 {message}
               </div>
             )}

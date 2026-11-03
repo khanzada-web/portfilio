@@ -270,6 +270,14 @@ export default function RootLayout({
 
         <GoogleTagManager gtmId="GTM-P3GKJN4G" />
 
+        {process.env.NEXT_PUBLIC_CRM_TRACKING_SRC && (
+          <script
+            async
+            src={process.env.NEXT_PUBLIC_CRM_TRACKING_SRC}
+            data-key={process.env.NEXT_PUBLIC_CRM_TRACKING_KEY}
+          />
+        )}
+
         <link rel="icon" type="image/webp" href="/logo.webp" />
         <link rel="icon" type="image/png" href="/logo-optimized.png" />
         <link rel="shortcut icon" href="/logo.webp" />
