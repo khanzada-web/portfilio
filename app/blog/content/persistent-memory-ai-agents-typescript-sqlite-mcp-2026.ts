@@ -5,10 +5,10 @@ npm install -D @types/better-sqlite3 typescript</code></pre><h3>Database schema 
 import { drizzle } from 'drizzle-orm/better-sqlite3'
 
 const sqlite = new Database(process.env.MEMORY_DB_PATH ?? './agent-memory.db')
-sqlite.pragma('journal_mode = WAL')
-sqlite.pragma('foreign_keys = ON')
+sqlite.pragma(\`journal_mode = WAL\`)
+sqlite.pragma(\`foreign_keys = ON\`)
 
-sqlite.exec(`
+sqlite.exec(\`
   CREATE TABLE IF NOT EXISTS memories (
     id TEXT PRIMARY KEY,
     title TEXT NOT NULL,
@@ -21,7 +21,7 @@ sqlite.exec(`
   CREATE VIRTUAL TABLE IF NOT EXISTS memories_fts USING fts5(
     title, content, content='memories', content_rowid='rowid'
   );
-`)
+\`)
 
 export const db = sqlite</code></pre><h3>Core memory tools (MCP)</h3><pre><code>import { McpServer } from '@modelcontextprotocol/sdk/server/mcp.js'
 import { StdioServerTransport } from '@modelcontextprotocol/sdk/server/stdio.js'
@@ -43,9 +43,9 @@ server.tool(
   async ({ title, content, type, project }) => {
     const id = randomUUID()
     db.prepare(
-      'INSERT INTO memories (id, title, content, type, project) VALUES (?, ?, ?, ?, ?)'
+      \`INSERT INTO memories (id, title, content, type, project) VALUES (?, ?, ?, ?, ?)\`
     ).run(id, title, content, type, project ?? null)
-    return { content: [{ type: 'text', text: `Stored memory ${id}` }] }
+    return { content: [{ type: 'text', text: \`Stored memory \${id}\` }] }
   }
 )
 
@@ -58,9 +58,9 @@ server.tool(
   },
   async ({ query, limit }) => {
     const rows = db.prepare(
-      `SELECT m.id, m.title, snippet(memories_fts, 1, '<b>', '</b>', '...', 20) as snippet
+      \`SELECT m.id, m.title, snippet(memories_fts, 1, '<b>', '</b>', '...', 20) as snippet
        FROM memories_fts f JOIN memories m ON f.rowid = m.rowid
-       WHERE memories_fts MATCH ? ORDER BY rank LIMIT ?`
+       WHERE memories_fts MATCH ? ORDER BY rank LIMIT ?\`
     ).all(query, limit)
     return { content: [{ type: 'text', text: JSON.stringify(rows, null, 2) }] }
   }
