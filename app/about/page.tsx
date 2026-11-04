@@ -8,7 +8,7 @@ import { BreadcrumbSchema } from '@/app/components/seo/BreadcrumbSchema'
 export const metadata: Metadata = {
   title: 'About Mussawar Hayat — Top Next.js 16 Full-Stack Web3 Developer for Hire 2026',
   description:
-    'About Mussawar Hayat: full-stack developer specializing in Next.js, React, TypeScript, Node.js, and Web3. Experience, editorial standards for the tech blog, and how he works with remote clients.',
+    'About Mussawar Hayat: full-stack developer specializing in Next.js, React, TypeScript, Node.js, and Web3. Experience, stack, process, and how he works with remote clients in North America and Europe.',
   keywords: [
     'Mussawar Hayat',
     'about Mussawar Hayat',
@@ -23,7 +23,7 @@ export const metadata: Metadata = {
   openGraph: {
     title: 'About Mussawar Hayat — Top Next.js 16 Full-Stack Web3 Developer for Hire 2026',
     description:
-      'Full-stack and Web3 developer: experience, skills, and editorial standards behind mussawarhayat.site.',
+      'Full-stack and Web3 developer: experience, skills, and how he delivers production systems for startups.',
     url: 'https://mussawarhayat.site/about',
     type: 'profile',
     images: [
@@ -65,6 +65,74 @@ const aboutPersonLd = {
   },
 }
 
+const STATS = [
+  { value: '3+', label: 'Years Experience' },
+  { value: '40+', label: 'Projects Delivered' },
+  { value: '15+', label: 'Remote Clients' },
+  { value: 'EST/CET', label: 'Time Zone Overlap' },
+] as const
+
+const FOCUS_AREAS = [
+  {
+    title: 'Full-Stack Product Engineering',
+    description:
+      'Next.js App Router, Server Components, Server Actions, TypeScript, Prisma, PostgreSQL, and clean API design.',
+  },
+  {
+    title: 'Web3 & Blockchain',
+    description:
+      'Solidity, Ethers.js, Hardhat, wallet integrations, DeFi frontends, and Bitcoin Ordinals tooling with native indexing.',
+  },
+  {
+    title: 'DevOps & Infrastructure',
+    description:
+      'VPS management, Nginx, PM2, Docker, GitHub Actions CI/CD, SSL, and production email (SPF / DKIM / DMARC).',
+  },
+  {
+    title: 'Performance & Security',
+    description:
+      'Core Web Vitals, Lighthouse audits, rate limiting, CSP, ownership checks, and production-grade failure modes.',
+  },
+] as const
+
+const HOW_I_WORK = [
+  {
+    step: '01',
+    title: 'Discovery',
+    text: 'Clarify goals, constraints, users, and technical feasibility before writing a line of code.',
+  },
+  {
+    step: '02',
+    title: 'Architecture',
+    text: 'Define data models, API boundaries, auth model, and deployment strategy with clear ownership.',
+  },
+  {
+    step: '03',
+    title: 'Build & Iterate',
+    text: 'Ship in focused increments with TypeScript, tests where they matter, and continuous feedback.',
+  },
+  {
+    step: '04',
+    title: 'Deploy & Support',
+    text: 'Production deploys with CI/CD, monitoring, and clear hand-off or ongoing retainer support.',
+  },
+] as const
+
+const STACK = [
+  'Next.js 16',
+  'React',
+  'TypeScript',
+  'Node.js',
+  'Prisma',
+  'PostgreSQL',
+  'Solidity',
+  'Ethers.js',
+  'Hardhat',
+  'Docker',
+  'Nginx',
+  'GitHub Actions',
+] as const
+
 export default function AboutPage() {
   return (
     <>
@@ -76,199 +144,235 @@ export default function AboutPage() {
       />
       <div className="min-h-screen bg-[#060B16] font-orbitron">
         <Header />
-        <main id="main-content" role="main" className="pt-28 pb-20">
-          <article className="max-w-3xl mx-auto px-4 sm:px-6">
-            <p className="text-[10px] uppercase tracking-[0.3em] text-[#39FF14] mb-4">
-              About the author
+        <main id="main-content" role="main" className="pt-28 pb-24">
+          {/* Hero */}
+          <section className="max-w-6xl mx-auto px-4 sm:px-6 mb-20">
+            <p className="text-[10px] uppercase tracking-[0.35em] text-[#39FF14] mb-4">
+              About
             </p>
-            <h1 className="text-4xl md:text-5xl font-bold text-white tracking-tight mb-8">
+            <h1 className="text-4xl md:text-5xl lg:text-6xl font-bold text-white tracking-tight mb-6">
               Mussawar Hayat
             </h1>
+            <p className="max-w-2xl text-lg md:text-xl text-white/70 font-sans leading-relaxed mb-10">
+              Full-stack & Web3 developer who owns the entire stack — from UI architecture
+              through APIs, data, auth, and production infrastructure.
+            </p>
 
-            <div className="flex flex-col sm:flex-row gap-8 items-start mb-12">
-              <div className="shrink-0 w-40 h-40 sm:w-48 sm:h-48 relative rounded-lg overflow-hidden border border-[#39FF14]/30">
-                <Image
-                  src="/my-pic.jpeg"
-                  alt="Portrait of Mussawar Hayat, full-stack and Web3 developer"
-                  fill
-                  className="object-cover"
-                  sizes="192px"
-                  priority
-                />
+            <div className="flex flex-col lg:flex-row gap-10 lg:gap-16 items-start">
+              {/* Photo + identity card */}
+              <div className="shrink-0 w-full max-w-xs">
+                <div className="relative aspect-square rounded-sm overflow-hidden border border-[#39FF14]/25 bg-[#0A1221]">
+                  <Image
+                    src="/my-pic.jpeg"
+                    alt="Mussawar Hayat, full-stack and Web3 developer"
+                    fill
+                    className="object-cover"
+                    sizes="320px"
+                    priority
+                  />
+                  <div className="absolute inset-0 bg-gradient-to-t from-[#060B16]/80 via-transparent to-transparent" />
+                </div>
+                <div className="mt-5 space-y-1">
+                  <p className="text-white font-bold text-lg">Mussawar Hayat</p>
+                  <p className="text-[11px] uppercase tracking-[0.2em] text-[#39FF14]/80">
+                    Lead Software Engineer
+                  </p>
+                  <p className="text-sm text-white/50 font-sans">
+                    Attock, Pakistan · Remote worldwide
+                  </p>
+                </div>
               </div>
-              <div className="font-sans text-white/80 leading-relaxed space-y-4">
-                <p>
-                  I am a full-stack and Web3 developer based in Attock, Pakistan, working remotely
-                  with startups and product teams in North America, Europe, and other regions. My
-                  day-to-day work is shipping production applications with React, Next.js, TypeScript,
-                  Node.js, PostgreSQL, and—when the product needs it—Solidity, Ethers.js, and
-                  Bitcoin-native tooling.
-                </p>
-                <p>
-                  Clients hire me when they want one engineer to own the stack end-to-end: UI,
-                  APIs, data, auth, deployment, and the operational details that usually get
-                  outsourced (CI/CD, VPS, SSL, email authentication).
-                </p>
+
+              {/* Intro + stats */}
+              <div className="flex-1 space-y-8">
+                <div className="font-sans text-white/75 leading-relaxed space-y-4 text-[15px] md:text-base">
+                  <p>
+                    I work with startups and product teams in North America and Europe who want
+                    one engineer to own delivery end-to-end instead of coordinating multiple
+                    specialists. Day-to-day work is shipping production applications with React,
+                    Next.js, TypeScript, Node.js, PostgreSQL, and — when the product needs it —
+                    Solidity, Ethers.js, and Bitcoin-native tooling.
+                  </p>
+                  <p>
+                    Beyond the application layer I also handle the operational pieces most freelancers
+                    outsource: CI/CD, VPS setup, SSL, email authentication, and production hardening.
+                    The goal is a single point of ownership from first commit to a stable live system.
+                  </p>
+                </div>
+
+                {/* Stats row */}
+                <div className="grid grid-cols-2 sm:grid-cols-4 gap-4 pt-2">
+                  {STATS.map((stat) => (
+                    <div
+                      key={stat.label}
+                      className="bg-[#0A1221] border border-[#39FF14]/15 px-4 py-5 text-center sm:text-left"
+                    >
+                      <div className="text-2xl md:text-3xl font-bold text-white mb-1">
+                        {stat.value}
+                      </div>
+                      <div className="text-[10px] uppercase tracking-[0.18em] text-white/45">
+                        {stat.label}
+                      </div>
+                    </div>
+                  ))}
+                </div>
               </div>
             </div>
+          </section>
 
-            <section className="mb-12">
-              <h2 className="text-xl font-bold text-[#39FF14] mb-4 uppercase tracking-wider">
-                Experience & focus
+          {/* Focus areas */}
+          <section className="max-w-6xl mx-auto px-4 sm:px-6 mb-24">
+            <div className="flex items-center gap-3 mb-8">
+              <span className="w-2 h-2 bg-[#39FF14] rounded-full shadow-[0_0_8px_#39FF14]" />
+              <h2 className="text-sm uppercase tracking-[0.3em] text-white/60">
+                Focus Areas
               </h2>
-              <div className="font-sans text-white/75 leading-relaxed space-y-4">
-                <p>
-                  Over several years of freelance and product work I have delivered web apps,
-                  mobile-oriented interfaces, DeFi and NFT frontends, Bitcoin Ordinals tooling,
-                  SaaS backends, and multi-site production infrastructure. Representative work is
-                  documented in the{' '}
-                  <Link href="/portfolio" className="text-[#39FF14] hover:underline">
-                    portfolio
-                  </Link>{' '}
-                  with problem, architecture, and outcome for each case study.
+            </div>
+            <div className="grid grid-cols-1 md:grid-cols-2 gap-5">
+              {FOCUS_AREAS.map((area) => (
+                <div
+                  key={area.title}
+                  className="bg-[#0A1221] border border-[#39FF14]/12 p-6 hover:border-[#39FF14]/35 transition-colors"
+                >
+                  <h3 className="text-white font-bold text-sm uppercase tracking-wider mb-3">
+                    {area.title}
+                  </h3>
+                  <p className="text-sm text-white/65 font-sans leading-relaxed">
+                    {area.description}
+                  </p>
+                </div>
+              ))}
+            </div>
+          </section>
+
+          {/* How I work */}
+          <section className="max-w-6xl mx-auto px-4 sm:px-6 mb-24">
+            <div className="flex items-center gap-3 mb-8">
+              <span className="w-2 h-2 bg-[#39FF14] rounded-full shadow-[0_0_8px_#39FF14]" />
+              <h2 className="text-sm uppercase tracking-[0.3em] text-white/60">
+                How I Work
+              </h2>
+            </div>
+            <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 gap-5">
+              {HOW_I_WORK.map((item) => (
+                <div
+                  key={item.step}
+                  className="bg-[#0A1221] border border-[#39FF14]/12 p-6 relative"
+                >
+                  <span className="text-[11px] font-bold text-[#39FF14]/70 tracking-widest">
+                    {item.step}
+                  </span>
+                  <h3 className="text-white font-bold text-base mt-2 mb-3 uppercase tracking-wide">
+                    {item.title}
+                  </h3>
+                  <p className="text-sm text-white/60 font-sans leading-relaxed">
+                    {item.text}
+                  </p>
+                </div>
+              ))}
+            </div>
+          </section>
+
+          {/* Stack */}
+          <section className="max-w-6xl mx-auto px-4 sm:px-6 mb-24">
+            <div className="flex items-center gap-3 mb-8">
+              <span className="w-2 h-2 bg-[#39FF14] rounded-full shadow-[0_0_8px_#39FF14]" />
+              <h2 className="text-sm uppercase tracking-[0.3em] text-white/60">
+                Core Stack
+              </h2>
+            </div>
+            <div className="flex flex-wrap gap-3">
+              {STACK.map((tech) => (
+                <span
+                  key={tech}
+                  className="px-4 py-2 bg-[#0A1221] border border-[#39FF14]/15 text-sm text-white/80 font-sans tracking-wide"
+                >
+                  {tech}
+                </span>
+              ))}
+            </div>
+          </section>
+
+          {/* Engagement + CTA */}
+          <section className="max-w-6xl mx-auto px-4 sm:px-6">
+            <div className="bg-[#0A1221] border border-[#39FF14]/20 p-8 md:p-12">
+              <h2 className="text-2xl md:text-3xl font-bold text-white mb-4 tracking-tight">
+                Ready to work together?
+              </h2>
+              <p className="text-white/65 font-sans leading-relaxed max-w-2xl mb-8">
+                Engagements are remote-first with overlap for EST, PST, and CET hours.
+                Typical formats: fixed-scope builds, monthly retainers, or focused
+                architecture and security reviews. GDPR-conscious infrastructure is
+                available for EU-facing products.
+              </p>
+              <div className="flex flex-wrap gap-4">
+                <Link
+                  href="/contact"
+                  className="inline-flex items-center px-8 py-4 bg-[#39FF14] text-black text-sm font-bold uppercase tracking-wider hover:bg-white transition-colors"
+                >
+                  Start a Conversation
+                </Link>
+                <Link
+                  href="/portfolio"
+                  className="inline-flex items-center px-8 py-4 border border-white/20 text-white text-sm font-bold uppercase tracking-wider hover:border-[#39FF14] hover:text-[#39FF14] transition-colors"
+                >
+                  View Portfolio
+                </Link>
+                <Link
+                  href="/services"
+                  className="inline-flex items-center px-6 py-4 text-white/50 text-sm uppercase tracking-wider hover:text-white transition-colors"
+                >
+                  Services
+                </Link>
+              </div>
+
+              <div className="mt-10 pt-8 border-t border-white/10">
+                <p className="text-[11px] uppercase tracking-[0.25em] text-white/40 mb-4">
+                  Direct channels
                 </p>
-                <p>
-                  Core stack strengths include Next.js App Router, Server Components and Server
-                  Actions, Prisma and PostgreSQL, JWT and session auth, Docker and Nginx/PM2
-                  deploys, and Web3 wallet and smart-contract integration. I care about ownership
-                  checks, connection pooling, Core Web Vitals, and clear failure modes—not only
-                  happy-path demos.
-                </p>
-                <ul className="list-disc pl-6 space-y-2 text-sm">
-                  <li>Full-stack product engineering (web and API)</li>
-                  <li>Web3 / DeFi / Ordinals frontends and supporting services</li>
-                  <li>DevOps: VPS, Nginx, PM2, GitHub Actions, email (SPF/DKIM/DMARC)</li>
-                  <li>Technical writing for engineers (this site&apos;s blog)</li>
+                <ul className="flex flex-col sm:flex-row sm:flex-wrap gap-x-8 gap-y-2 font-sans text-sm text-white/70">
+                  <li>
+                    <a
+                      href="mailto:zada38843@gmail.com"
+                      className="hover:text-[#39FF14] transition-colors"
+                    >
+                      zada38843@gmail.com
+                    </a>
+                  </li>
+                  <li>
+                    <a
+                      href="https://github.com/khanzada-web"
+                      target="_blank"
+                      rel="noopener noreferrer"
+                      className="hover:text-[#39FF14] transition-colors"
+                    >
+                      github.com/khanzada-web
+                    </a>
+                  </li>
+                  <li>
+                    <a
+                      href="https://www.linkedin.com/in/mussawar-hayat-187768233"
+                      target="_blank"
+                      rel="noopener noreferrer"
+                      className="hover:text-[#39FF14] transition-colors"
+                    >
+                      LinkedIn
+                    </a>
+                  </li>
+                  <li>
+                    <a
+                      href="https://x.com/Mussawar_Hayat"
+                      target="_blank"
+                      rel="noopener noreferrer"
+                      className="hover:text-[#39FF14] transition-colors"
+                    >
+                      @Mussawar_Hayat
+                    </a>
+                  </li>
                 </ul>
               </div>
-            </section>
-
-            <section className="mb-12">
-              <h2 className="text-xl font-bold text-[#39FF14] mb-4 uppercase tracking-wider">
-                Editorial standards (this blog)
-              </h2>
-              <div className="font-sans text-white/75 leading-relaxed space-y-4">
-                <p>
-                  The blog at{' '}
-                  <Link href="/blog" className="text-[#39FF14] hover:underline">
-                    mussawarhayat.site/blog
-                  </Link>{' '}
-                  is written for software engineers. Posts are meant to be practical: production
-                  patterns, security and performance notes, common mistakes, and code that matches
-                  current stable APIs. I prioritize official documentation and primary sources over
-                  recycled listicles.
-                </p>
-                <p>
-                  Topics stay inside full-stack web development, TypeScript/Node ecosystems, DevOps,
-                  and Web3. I do not publish medical, legal, or financial advice. Where a post
-                  mentions versions, CVEs, or protocol details, the intent is to point readers at
-                  verifiable official material and concrete engineering steps—not hype.
-                </p>
-                <p>
-                  Every article is attributed to Mussawar Hayat. Corrections and technical feedback
-                  are welcome via the{' '}
-                  <Link href="/contact" className="text-[#39FF14] hover:underline">
-                    contact form
-                  </Link>{' '}
-                  or email.
-                </p>
-              </div>
-            </section>
-
-            <section className="mb-12">
-              <h2 className="text-xl font-bold text-[#39FF14] mb-4 uppercase tracking-wider">
-                How I work with clients
-              </h2>
-              <div className="font-sans text-white/75 leading-relaxed space-y-4">
-                <p>
-                  Engagements are remote-first, with overlap for EST, PST, and CET business hours
-                  where needed. Typical formats are fixed-scope builds, ongoing retainers, or
-                  focused architecture and security reviews. GDPR-conscious infrastructure is
-                  available for EU-facing products.
-                </p>
-                <p>
-                  If you need a clear owner for a Next.js SaaS, a Web3 interface, or production
-                  infrastructure—not a hand-off between five specialists—reach out with the problem,
-                  timeline, and constraints. I will respond with whether I am a fit and a concrete
-                  next step.
-                </p>
-              </div>
-            </section>
-
-            <section className="mb-12">
-              <h2 className="text-xl font-bold text-[#39FF14] mb-4 uppercase tracking-wider">
-                Contact & profiles
-              </h2>
-              <ul className="font-sans text-white/75 text-sm space-y-2">
-                <li>
-                  Email:{' '}
-                  <a href="mailto:zada38843@gmail.com" className="text-[#39FF14] hover:underline">
-                    zada38843@gmail.com
-                  </a>
-                </li>
-                <li>
-                  GitHub:{' '}
-                  <a
-                    href="https://github.com/khanzada-web"
-                    target="_blank"
-                    rel="noopener noreferrer"
-                    className="text-[#39FF14] hover:underline"
-                  >
-                    github.com/khanzada-web
-                  </a>
-                </li>
-                <li>
-                  LinkedIn:{' '}
-                  <a
-                    href="https://www.linkedin.com/in/mussawar-hayat-187768233"
-                    target="_blank"
-                    rel="noopener noreferrer"
-                    className="text-[#39FF14] hover:underline"
-                  >
-                    linkedin.com/in/mussawar-hayat-187768233
-                  </a>
-                </li>
-                <li>
-                  X (Twitter):{' '}
-                  <a
-                    href="https://x.com/Mussawar_Hayat"
-                    target="_blank"
-                    rel="noopener noreferrer"
-                    className="text-[#39FF14] hover:underline"
-                  >
-                    @Mussawar_Hayat
-                  </a>
-                </li>
-              </ul>
-            </section>
-
-            <div className="flex flex-wrap gap-4 pt-8 border-t border-white/10">
-              <Link
-                href="/contact"
-                className="px-6 py-3 bg-[#39FF14] text-black text-sm font-bold uppercase tracking-wider"
-              >
-                Contact
-              </Link>
-              <Link
-                href="/portfolio"
-                className="px-6 py-3 border border-white/20 text-white text-sm font-bold uppercase tracking-wider hover:border-[#39FF14]"
-              >
-                Portfolio
-              </Link>
-              <Link
-                href="/blog"
-                className="px-6 py-3 border border-white/20 text-white text-sm font-bold uppercase tracking-wider hover:border-[#39FF14]"
-              >
-                Blog
-              </Link>
-              <Link
-                href="/services"
-                className="px-6 py-3 text-white/60 text-sm uppercase tracking-wider hover:text-white"
-              >
-                Services
-              </Link>
             </div>
-          </article>
+          </section>
         </main>
         <Footer />
       </div>
