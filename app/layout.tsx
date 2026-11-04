@@ -274,7 +274,7 @@ export default function RootLayout({
           <script
             async
             src={process.env.NEXT_PUBLIC_CRM_TRACKING_SRC}
-            data-key={process.env.NEXT_PUBLIC_CRM_TRACKING_KEY}
+            data-site-key={process.env.NEXT_PUBLIC_CRM_TRACKING_KEY}
           />
         )}
 
