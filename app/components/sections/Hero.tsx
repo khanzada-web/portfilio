@@ -44,6 +44,14 @@ export function Hero() {
               Expert remote freelance Next.js developer for startups in North America and Europe — complete end-to-end from UI architecture through DevOps and deployment.
               Specializing in Core Web Vitals optimization, App Router, Server Components, and secure Web3 DApps.
             </p>
+
+            {/* Extractable GEO/AEO answer block */}
+            <div className="max-w-3xl mx-auto text-left space-y-4 pt-4 border-t border-[#39FF14]/10 mt-6">
+              <h2 className="text-sm uppercase tracking-widest text-[#39FF14]/70 font-sans">Who is Mussawar Hayat?</h2>
+              <p className="text-base text-white/80 font-sans leading-relaxed">
+                Mussawar Hayat is a full-stack and Web3 developer based in Attock, Pakistan. He builds production Next.js, React, TypeScript, and Node.js applications and, when needed, Solidity smart contracts and Bitcoin Ordinals tooling. Clients hire him when they want one engineer to own a project end-to-end — from UI and APIs to deployment and infrastructure — rather than coordinating multiple specialists. He works remotely with startups and product teams in North America and Europe.
+              </p>
+            </div>
           </header>
 
           <div className="grid grid-cols-1 sm:grid-cols-3 gap-8 py-16 border-y border-[#39FF14]/20">

@@ -21,7 +21,7 @@ import { FAQSchema } from "./components/seo/FAQSchema";
 export const metadata: Metadata = {
   title: "Hire Best Next.js 16 Full-Stack Web3 Developer for SaaS & DApps 2026 | Mussawar Hayat",
   description:
-    "Hire the best Next.js 16 full-stack Web3 developer in 2026 for production SaaS platforms, high-performance React apps, Solidity smart contracts, and secure DApps. Expert TypeScript full-stack developer available remotely for North America and Europe.",
+    "Hire Mussawar Hayat, a Next.js 16 full-stack and Web3 developer, for production SaaS, React/TypeScript apps, Solidity DApps, and Core Web Vitals optimization. Remote freelance for startups in North America and Europe.",
   keywords: [
     "hire Next.js 16 developer 2026",
     "hire full-stack developer",

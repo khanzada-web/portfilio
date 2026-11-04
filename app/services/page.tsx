@@ -172,6 +172,12 @@ export default function ServicesPage() {
                 TypeScript, SaaS products, Solidity smart contracts, and production DevOps. Remote
                 freelance delivery for North America and Europe — one engineer from UI to VPS.
               </p>
+              <div className="max-w-3xl mx-auto text-left mt-8 space-y-3 border-t border-[#39FF14]/10 pt-6">
+                <h2 className="text-sm uppercase tracking-widest text-[#39FF14]/70 font-sans">What services are available?</h2>
+                <p className="text-base text-white/70 font-sans leading-relaxed">
+                  Mussawar Hayat provides end-to-end full-stack and Web3 development: Next.js and React applications, Node.js APIs, mobile apps (React Native / Flutter), Solidity smart contracts and DApps, Core Web Vitals optimization, and production DevOps (Nginx, PM2, GitHub Actions, VPS). Engagements are available as fixed-price projects, hourly, or monthly retainers for startups and product teams in North America and Europe.
+                </p>
+              </div>
             </div>
 
             <div className="grid md:grid-cols-2 lg:grid-cols-3 gap-6 mb-24">
