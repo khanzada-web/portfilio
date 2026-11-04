@@ -5,7 +5,6 @@ import Link from 'next/link';
 import { motion, useInView, useReducedMotion } from 'framer-motion';
 import { AnimatedCounter } from '../ui/AnimatedCounter';
 
-/* One typeface for the whole hero. To change it, edit this single class. */
 const FONT = 'font-orbitron';
 
 const STATS = [
@@ -14,7 +13,6 @@ const STATS = [
   { label: 'Remote clients', value: 15, suffix: '+' },
 ] as const;
 
-/** Ordered top to bottom, the way a product is layered. */
 const LAYERS = [
   {
     name: 'Interface',
@@ -43,18 +41,17 @@ const LAYERS = [
   },
 ] as const;
 
-/* Isometric slab geometry (SVG units) */
 const CX = 220;
-const HW = 170; // half width of a slab's top face
-const HH = 85; // half height (2:1 isometric)
-const T = 22; // slab thickness
-const GAP = 62; // vertical distance between slabs
-const TOP = 96; // centre y of the highest slab
-const SPLIT = 26; // slabs above the active one move up by this much (exploded view)
-const LIFT = 10; // the active slab rises slightly on its own
-const VIEW_TOP = -(SPLIT + LIFT + 6); // headroom so the exploded stack is never clipped
+const HW = 170;
+const HH = 85;
+const T = 22;
+const GAP = 62;
+const TOP = 96;
+const SPLIT = 26;
+const LIFT = 10;
+const VIEW_TOP = -(SPLIT + LIFT + 6);
 const VIEW_BOTTOM = 484;
-const STEP_MS = 2000; // time each layer stays highlighted
+const STEP_MS = 2000;
 
 const GREEN = '#39FF14';
 
@@ -85,21 +82,19 @@ function Slab({
       transition={{ duration: 0.7, delay: reduce ? 0 : (LAYERS.length - 1 - index) * 0.12, ease: 'easeOut' }}
     >
       <g
-        /* Mouse hover previews a layer. Touch and pen select on tap only,
-           so a tap never leaves the stack stuck in a "hovered" state. */
         onPointerEnter={(e) => e.pointerType === 'mouse' && onSelect(index)}
         onClick={() => onSelect(index)}
         style={{
           transform: `translateY(${offset}px)`,
-          filter: active ? 'drop-shadow(0 0 14px rgba(57,255,20,0.35))' : 'none',
+          filter: active ? 'drop-shadow(0 0 18px rgba(57,255,20,0.45))' : 'drop-shadow(0 4px 6px rgba(0,0,0,0.3))',
           transition: reduce ? 'none' : 'transform 0.55s cubic-bezier(0.22,1,0.36,1), filter 0.45s',
           cursor: 'pointer',
         }}
       >
-        <polygon points={left} fill={active ? 'rgba(57,255,20,0.10)' : '#08101D'} stroke={active ? GREEN : 'rgba(255,255,255,0.16)'} strokeWidth="1" strokeLinejoin="round" />
-        <polygon points={right} fill={active ? 'rgba(57,255,20,0.06)' : '#050A14'} stroke={active ? GREEN : 'rgba(255,255,255,0.16)'} strokeWidth="1" strokeLinejoin="round" />
-        <polygon points={top} fill={active ? '#0B1A1A' : '#0A1221'} stroke={active ? GREEN : 'rgba(255,255,255,0.22)'} strokeWidth="1" strokeLinejoin="round" />
-        <polygon points={inner} fill="none" stroke={active ? 'rgba(57,255,20,0.55)' : 'rgba(255,255,255,0.08)'} strokeWidth="1" strokeLinejoin="round" />
+        <polygon points={left} fill={active ? 'rgba(57,255,20,0.12)' : '#070E1B'} stroke={active ? GREEN : 'rgba(255,255,255,0.14)'} strokeWidth="1" strokeLinejoin="round" />
+        <polygon points={right} fill={active ? 'rgba(57,255,20,0.08)' : '#040812'} stroke={active ? GREEN : 'rgba(255,255,255,0.14)'} strokeWidth="1" strokeLinejoin="round" />
+        <polygon points={top} fill={active ? '#0D2222' : '#080F1E'} stroke={active ? GREEN : 'rgba(255,255,255,0.2)'} strokeWidth="1.25" strokeLinejoin="round" />
+        <polygon points={inner} fill="none" stroke={active ? 'rgba(57,255,20,0.65)' : 'rgba(255,255,255,0.06)'} strokeWidth="1" strokeLinejoin="round" />
       </g>
     </motion.g>
   );
@@ -113,10 +108,8 @@ export function Hero() {
 
   const [active, setActive] = useState(0);
   const [paused, setPaused] = useState(false);
-  /* Bumped on every manual pick so the 2-second timer restarts from zero. */
   const [tick, setTick] = useState(0);
 
-  /* Autoplay runs only while the hero is on screen and the visitor isn't interacting. */
   const running = !reduce && !paused && onScreen;
 
   useEffect(() => {
@@ -132,7 +125,6 @@ export function Hero() {
     setTick((t) => t + 1);
   };
 
-  /* Arrow keys move between layers (standard tab-list behaviour). */
   const onTabKeyDown = (e: KeyboardEvent<HTMLDivElement>) => {
     const last = LAYERS.length - 1;
     let next: number | null = null;
@@ -147,72 +139,70 @@ export function Hero() {
   };
 
   return (
-    /* Desktop: exactly one screen tall. Mobile: stacks and scrolls. */
     <section
       ref={sectionRef}
       id="home"
-      className={`${FONT} relative flex items-center overflow-hidden bg-[#060B16] pt-24 pb-10 min-h-[100svh] lg:h-[100svh] lg:min-h-[700px] lg:pt-20 lg:pb-8`}
+      className={`${FONT} relative flex items-center overflow-hidden bg-[#060B16] pt-28 pb-12 min-h-[100svh] lg:h-[100svh] lg:min-h-[720px] lg:pt-20 lg:pb-8`}
     >
-      {/* Background: faint grid, one light source behind the stack */}
+      {/* Enhanced Ambient Background Glows */}
       <div className="absolute inset-0 pointer-events-none" aria-hidden="true">
         <div
-          className="absolute inset-0 opacity-[0.06]"
+          className="absolute inset-0 opacity-[0.05]"
           style={{
             backgroundImage:
               'linear-gradient(to right, #fff 1px, transparent 1px), linear-gradient(to bottom, #fff 1px, transparent 1px)',
-            backgroundSize: '64px 64px',
-            maskImage: 'radial-gradient(ellipse at 75% 45%, black 0%, transparent 65%)',
-            WebkitMaskImage: 'radial-gradient(ellipse at 75% 45%, black 0%, transparent 65%)',
+            backgroundSize: '48px 48px',
+            maskImage: 'radial-gradient(ellipse at 70% 45%, black 0%, transparent 70%)',
+            WebkitMaskImage: 'radial-gradient(ellipse at 70% 45%, black 0%, transparent 70%)',
           }}
         />
-        <div className="absolute top-1/4 right-[4%] w-[520px] h-[520px] rounded-full bg-[#39FF14]/[0.06] blur-3xl" />
+        <div className="absolute top-1/3 left-[-10%] w-[450px] h-[450px] rounded-full bg-[#39FF14]/[0.03] blur-[120px]" />
+        <div className="absolute top-1/4 right-[2%] w-[580px] h-[580px] rounded-full bg-[#39FF14]/[0.07] blur-[140px]" />
       </div>
 
       <div className="container mx-auto px-6 max-w-7xl relative z-10">
         <div className="grid lg:grid-cols-[1.05fr_0.95fr] gap-10 lg:gap-14 items-center">
-          {/* Left: identity */}
+          
+          {/* Left Column: Identity & Bio */}
           <div>
-            {/* One h1 carries both the name and the role. Visitors see a big name with a
-                smaller role line; crawlers and AI assistants read the full sentence. */}
             <h1>
-              {/* Capped so the name stays on one line in the left column and clears the navbar */}
-              <span className="block font-bold text-white tracking-tight leading-[1.1] text-[clamp(2rem,3.6vw,3.5rem)]">
+              <span className="block font-extrabold text-transparent bg-clip-text bg-gradient-to-r from-white via-white to-white/80 tracking-tight leading-[1.05] text-[clamp(2.2rem,3.8vw,3.6rem)]">
                 Mussawar Hayat
               </span>
               <span className="sr-only"> — </span>
-              <span className="mt-3 block text-2xl md:text-3xl font-semibold tracking-wide text-[#39FF14]">
+              <span className="mt-3 block text-xl md:text-2xl font-semibold tracking-wide text-[#39FF14] drop-shadow-[0_0_12px_rgba(57,255,20,0.25)]">
                 React, React Native &amp; Web3 Full-Stack Developer
               </span>
             </h1>
 
-            <p className="mt-5 max-w-2xl text-xl md:text-2xl font-semibold text-white leading-snug">
-              Hire a full-stack engineer who builds websites and mobile apps: React, React Native, Next.js, TypeScript, Solidity, and production infrastructure.
+            <p className="mt-5 max-w-2xl text-lg md:text-xl font-medium text-white/90 leading-snug">
+              Hire a remote full-stack and Web3 engineer specializing in React, React Native, Next.js, Solidity, and production infrastructure for web and mobile applications
             </p>
 
-            <p className="mt-3 max-w-2xl text-base font-normal text-white/70 leading-relaxed">
-              Remote freelance developer for startups in North America and Europe. I deliver complete products — from React/React Native interfaces to Node.js APIs to Solidity smart contracts to VPS deployment.
+            <p className="mt-3 max-w-2xl text-sm md:text-base font-normal text-white/60 leading-relaxed">
+              Remote full-stack developer building scalable web and mobile apps—from React and Node.js to Solidity and VPS deployment
             </p>
 
-            <div className="mt-7 flex flex-col sm:flex-row gap-3">
+            <div className="mt-8 flex flex-col sm:flex-row gap-3.5">
               <Link
                 href="#contact"
-                className="inline-flex h-[3.25rem] items-center justify-center rounded-md bg-[#39FF14] px-8 text-[15px] font-semibold tracking-wide text-black transition-all hover:bg-white hover:shadow-[0_0_24px_rgba(57,255,20,0.35)] focus-visible:outline focus-visible:outline-2 focus-visible:outline-offset-4 focus-visible:outline-[#39FF14]"
+                className="inline-flex h-[3.25rem] items-center justify-center rounded-lg bg-[#39FF14] px-8 text-[15px] font-bold tracking-wide text-black transition-all hover:bg-white hover:shadow-[0_0_25px_rgba(57,255,20,0.45)] focus-visible:outline focus-visible:outline-2 focus-visible:outline-offset-4 focus-visible:outline-[#39FF14]"
               >
                 Start a project
               </Link>
               <Link
                 href="/portfolio"
-                className="inline-flex h-[3.25rem] items-center justify-center rounded-md border border-white/20 px-8 text-[15px] font-semibold tracking-wide text-white transition-colors hover:border-[#39FF14] hover:text-[#39FF14] focus-visible:outline focus-visible:outline-2 focus-visible:outline-offset-4 focus-visible:outline-[#39FF14]"
+                className="inline-flex h-[3.25rem] items-center justify-center rounded-lg border border-white/15 bg-white/[0.02] px-8 text-[15px] font-semibold tracking-wide text-white transition-all hover:border-[#39FF14]/60 hover:bg-[#39FF14]/[0.04] hover:text-[#39FF14] focus-visible:outline focus-visible:outline-2 focus-visible:outline-offset-4 focus-visible:outline-[#39FF14]"
               >
                 View portfolio
               </Link>
             </div>
 
-            {/* Stats as one bordered strip, so they read as a single unit */}
-            <dl className="mt-8 grid max-w-2xl grid-cols-3 divide-x divide-white/10 rounded-lg border border-white/10 bg-white/[0.03]">
+            {/* Polished Stats Card */}
+            <dl className="mt-9 grid max-w-2xl grid-cols-3 divide-x divide-white/10 rounded-xl border border-white/10 bg-gradient-to-b from-white/[0.04] to-white/[0.01] backdrop-blur-sm shadow-xl">
               {STATS.map((stat) => (
                 <div key={stat.label} className="flex flex-col-reverse px-5 py-4">
-                  <dt className="mt-1.5 text-xs font-normal leading-snug text-white/60">{stat.label}</dt>
+                  <dt className="mt-1 text-xs font-medium leading-snug text-white/50">{stat.label}</dt>
                   <dd className="text-2xl font-bold tabular-nums text-white sm:text-3xl">
                     <AnimatedCounter from={0} to={stat.value} duration={1.5} />
                     <span className="text-[#39FF14]">{stat.suffix}</span>
@@ -222,38 +212,32 @@ export function Hero() {
             </dl>
           </div>
 
-          {/* Right: the five layers */}
+          {/* Right Column: Isometric Stack & Info Panel */}
           <div
             role="group"
             aria-label="The layers of a product I build"
             className="mx-auto w-full max-w-[480px]"
-            /* Only a real mouse pauses on hover. Focus inside the group also pauses. */
             onPointerEnter={(e) => e.pointerType === 'mouse' && setPaused(true)}
             onPointerLeave={(e) => e.pointerType === 'mouse' && setPaused(false)}
             onFocus={() => setPaused(true)}
             onBlur={() => setPaused(false)}
           >
-            {/* Height follows the screen, so the stack never pushes the hero past one screen */}
             <svg
               viewBox={`0 ${VIEW_TOP} 440 ${VIEW_BOTTOM - VIEW_TOP}`}
               className="mx-auto block w-auto max-w-full overflow-visible"
-              style={{ height: 'min(44svh, 420px)' }}
+              style={{ height: 'min(42svh, 400px)' }}
               aria-hidden="true"
             >
               <defs>
                 <radialGradient id="hero-ground" cx="50%" cy="50%" r="50%">
-                  <stop offset="0%" stopColor={GREEN} stopOpacity="0.16" />
+                  <stop offset="0%" stopColor={GREEN} stopOpacity="0.22" />
                   <stop offset="100%" stopColor={GREEN} stopOpacity="0" />
                 </radialGradient>
               </defs>
 
-              {/* Light pooling under the stack grounds it */}
-              <ellipse cx={CX} cy={TOP + (LAYERS.length - 1) * GAP + HH + T + 8} rx="190" ry="22" fill="url(#hero-ground)" />
+              <ellipse cx={CX} cy={TOP + (LAYERS.length - 1) * GAP + HH + T + 10} rx="190" ry="24" fill="url(#hero-ground)" />
+              <line x1={CX} y1={VIEW_TOP} x2={CX} y2={VIEW_BOTTOM} stroke="rgba(255,255,255,0.08)" strokeDasharray="3 6" />
 
-              <line x1={CX} y1={VIEW_TOP} x2={CX} y2={VIEW_BOTTOM} stroke="rgba(255,255,255,0.10)" strokeDasharray="3 6" />
-
-              {/* Painted bottom to top so upper slabs overlap lower ones.
-                  Slabs above the active one lift away, so its front face opens up. */}
               {LAYERS.map((_, n) => {
                 const i = LAYERS.length - 1 - n;
                 const offset = i < active ? -SPLIT : i === active ? -LIFT : 0;
@@ -261,13 +245,10 @@ export function Hero() {
               })}
             </svg>
 
-            {/* Fixed-height panel with an accent edge, so nothing jumps when the layer changes.
-                Announced to screen readers only once the visitor takes control.
-                All five layers stay in the HTML; only the active one is shown, so every
-                technology remains readable by search engines and AI crawlers. */}
+            {/* Refactored Glassmorphism Panel */}
             <div
               aria-live={paused ? 'polite' : 'off'}
-              className="relative mt-4 min-h-[10.5rem] overflow-hidden rounded-lg border border-white/10 border-l-2 border-l-[#39FF14] bg-white/[0.03] p-5"
+              className="relative mt-4 min-h-[11rem] overflow-hidden rounded-xl border border-white/10 border-l-[3px] border-l-[#39FF14] bg-gradient-to-r from-white/[0.04] to-white/[0.01] backdrop-blur-md p-5 shadow-2xl"
             >
               {LAYERS.map((l, i) => {
                 const isActive = active === i;
@@ -285,11 +266,14 @@ export function Hero() {
                       animate={{ opacity: 1, y: 0 }}
                       transition={{ duration: 0.4, ease: 'easeOut' }}
                     >
-                      <p className="text-base font-semibold text-[#39FF14]">{l.name}</p>
+                      <div className="flex items-center justify-between">
+                        <p className="text-base font-bold text-[#39FF14] tracking-wide">{l.name}</p>
+                        <span className="text-xs font-mono text-white/40">0{i + 1} / 0{LAYERS.length}</span>
+                      </div>
                       <p className="mt-2 text-sm font-normal text-white/80 leading-relaxed">{l.summary}</p>
-                      <ul className="mt-3 flex flex-wrap gap-1.5">
+                      <ul className="mt-3.5 flex flex-wrap gap-1.5">
                         {l.stack.map((tech) => (
-                          <li key={tech} className="rounded border border-white/10 px-2.5 py-1 text-xs font-normal text-white/70">
+                          <li key={tech} className="rounded-md border border-white/10 bg-white/[0.02] px-2.5 py-1 text-xs font-medium text-white/75 transition-colors hover:border-[#39FF14]/40 hover:text-white">
                             {tech}
                           </li>
                         ))}
@@ -300,12 +284,12 @@ export function Hero() {
               })}
             </div>
 
-            {/* Layer tabs. The underline of the active tab is also the 2-second countdown. */}
+            {/* Layer Tabs */}
             <div
               role="tablist"
               aria-label="Product layers"
               onKeyDown={onTabKeyDown}
-              className="mt-3 flex flex-wrap gap-x-4 gap-y-1.5"
+              className="mt-3.5 flex flex-wrap gap-x-4 gap-y-2"
             >
               {LAYERS.map((l, i) => {
                 const isActive = active === i;
@@ -322,8 +306,8 @@ export function Hero() {
                     aria-controls={`layer-panel-${i}`}
                     tabIndex={isActive ? 0 : -1}
                     onClick={() => select(i)}
-                    className={`relative pb-1 text-[13px] transition-colors focus-visible:outline focus-visible:outline-2 focus-visible:outline-offset-4 focus-visible:outline-[#39FF14] ${
-                      isActive ? 'text-[#39FF14]' : 'text-white/60 hover:text-white'
+                    className={`relative pb-1.5 text-[13px] font-medium transition-colors focus-visible:outline focus-visible:outline-2 focus-visible:outline-offset-4 focus-visible:outline-[#39FF14] ${
+                      isActive ? 'text-[#39FF14]' : 'text-white/50 hover:text-white/90'
                     }`}
                   >
                     {l.name}
@@ -333,19 +317,20 @@ export function Hero() {
                         <motion.span
                           key={`bar-${active}-${tick}`}
                           aria-hidden="true"
-                          className="absolute bottom-0 left-0 h-px bg-[#39FF14]"
+                          className="absolute bottom-0 left-0 h-[2px] bg-[#39FF14]"
                           initial={{ width: '0%' }}
                           animate={{ width: '100%' }}
                           transition={{ duration: STEP_MS / 1000, ease: 'linear' }}
                         />
                       ) : (
-                        <span aria-hidden="true" className="absolute inset-x-0 bottom-0 h-px bg-[#39FF14]" />
+                        <span aria-hidden="true" className="absolute inset-x-0 bottom-0 h-[2px] bg-[#39FF14]" />
                       ))}
                   </button>
                 );
               })}
             </div>
           </div>
+
         </div>
       </div>
     </section>
