@@ -175,21 +175,22 @@ export function Hero() {
             {/* One h1 carries both the name and the role. Visitors see a big name with a
                 smaller role line; crawlers and AI assistants read the full sentence. */}
             <h1>
-              <span className="block font-bold text-white tracking-tight leading-[1.1] text-[clamp(2.25rem,4.8vw,4.25rem)]">
+              {/* Capped so the name stays on one line in the left column and clears the navbar */}
+              <span className="block font-bold text-white tracking-tight leading-[1.1] text-[clamp(2rem,3.6vw,3.5rem)]">
                 Mussawar Hayat
               </span>
               <span className="sr-only"> — </span>
-              <span className="mt-3 block text-lg md:text-xl font-semibold tracking-wide text-[#39FF14]">
-                Next.js Full-Stack & Web3 Developer
+              <span className="mt-3 block text-2xl md:text-3xl font-semibold tracking-wide text-[#39FF14]">
+                React, React Native &amp; Web3 Full-Stack Developer
               </span>
             </h1>
 
             <p className="mt-5 max-w-2xl text-xl md:text-2xl font-semibold text-white leading-snug">
-              Hire a full-stack engineer who builds everything: React, Next.js, TypeScript, Solidity, and production infrastructure.
+              Hire a full-stack engineer who builds websites and mobile apps: React, React Native, Next.js, TypeScript, Solidity, and production infrastructure.
             </p>
 
             <p className="mt-3 max-w-2xl text-base font-normal text-white/70 leading-relaxed">
-              Remote freelance developer for startups in North America and Europe. I deliver complete products — from React interfaces to Node.js APIs to Solidity smart contracts to VPS deployment.
+              Remote freelance developer for startups in North America and Europe. I deliver complete products — from React/React Native interfaces to Node.js APIs to Solidity smart contracts to VPS deployment.
             </p>
 
             <div className="mt-7 flex flex-col sm:flex-row gap-3">
@@ -261,9 +262,9 @@ export function Hero() {
             </svg>
 
             {/* Fixed-height panel with an accent edge, so nothing jumps when the layer changes.
-                Only announced to screen readers once the visitor takes control. */}
-            {/* All five layers are in the HTML at all times; only the active one is shown.
-                That keeps every technology readable by search engines and AI crawlers. */}
+                Announced to screen readers only once the visitor takes control.
+                All five layers stay in the HTML; only the active one is shown, so every
+                technology remains readable by search engines and AI crawlers. */}
             <div
               aria-live={paused ? 'polite' : 'off'}
               className="relative mt-4 min-h-[10.5rem] overflow-hidden rounded-lg border border-white/10 border-l-2 border-l-[#39FF14] bg-white/[0.03] p-5"
