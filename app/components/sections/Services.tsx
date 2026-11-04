@@ -1,7 +1,6 @@
 'use client';
 
 import Link from 'next/link';
-import Image from 'next/image';
 import { motion } from 'framer-motion';
 import {
   FiMonitor, FiSmartphone, FiActivity, FiShield,
@@ -16,7 +15,6 @@ interface Service {
   description: string;
   tags: readonly string[];
   category: string;
-  image: string;
 }
 
 const SERVICES: Service[] = [
@@ -28,7 +26,6 @@ const SERVICES: Service[] = [
       'High-performance Next.js and React applications optimized for speed, SEO, and global scalability. SSR, ISR, and edge-network ready.',
     tags: ['Next.js', 'React', 'TypeScript', 'Tailwind'],
     category: 'Frontend',
-    image: 'https://images.unsplash.com/photo-1555066931-4365d14bab8c?auto=format&fit=crop&w=800&q=80',
   },
   {
     id: '02',
@@ -38,7 +35,6 @@ const SERVICES: Service[] = [
       'Cross-platform mobile applications for iOS and Android with seamless native performance using React Native and Flutter.',
     tags: ['React Native', 'Flutter', 'iOS', 'Android'],
     category: 'Apps',
-    image: 'https://images.unsplash.com/photo-1512941937669-90a1b58e7e9c?auto=format&fit=crop&w=800&q=80',
   },
   {
     id: '03',
@@ -48,7 +44,6 @@ const SERVICES: Service[] = [
       'End-to-end product engineering — robust backend infrastructure, real-time data pipelines, and tightly integrated frontend layers.',
     tags: ['Node.js', 'TypeScript', 'GraphQL', 'PostgreSQL'],
     category: 'Architecture',
-    image: 'https://images.unsplash.com/photo-1451187580459-43490279c0fa?auto=format&fit=crop&w=800&q=80',
   },
   {
     id: '04',
@@ -58,7 +53,6 @@ const SERVICES: Service[] = [
       'Immersive digital interfaces built with precision — focused on user psychology, conversion flow, and animation-driven experiences.',
     tags: ['Figma', 'Framer Motion', 'UI/UX', 'Design Systems'],
     category: 'Design',
-    image: 'https://images.unsplash.com/photo-1507238691740-187a5b1d37b8?auto=format&fit=crop&w=800&q=80',
   },
   {
     id: '05',
@@ -68,7 +62,6 @@ const SERVICES: Service[] = [
       'Smart contract development, DApp architecture, and Web3 wallet integration — from ERC-20 tokens to multi-chain DeFi protocols.',
     tags: ['Solidity', 'Ethers.js', 'Hardhat', 'IPFS'],
     category: 'Web3',
-    image: 'https://images.unsplash.com/photo-1639762681485-074b7f938ba0?auto=format&fit=crop&w=800&q=80',
   },
   {
     id: '06',
@@ -78,7 +71,6 @@ const SERVICES: Service[] = [
       'Deep optimisation of existing products — Core Web Vitals, bundle splitting, caching strategies, and Lighthouse 100 audits.',
     tags: ['Lighthouse', 'Web Vitals', 'CDN', 'Caching'],
     category: 'Optimisation',
-    image: 'https://images.unsplash.com/photo-1460925895917-afdab827c52f?auto=format&fit=crop&w=800&q=80',
   },
   {
     id: '07',
@@ -88,7 +80,6 @@ const SERVICES: Service[] = [
       'Scalable REST and GraphQL APIs with Node.js, Express, and PostgreSQL — including JWT auth, session handling, and protected route architecture.',
     tags: ['Node.js', 'Express', 'MongoDB', 'JWT'],
     category: 'Backend',
-    image: 'https://images.unsplash.com/photo-1544197150-b99a580bb7a8?auto=format&fit=crop&w=800&q=80',
   },
   {
     id: '08',
@@ -98,7 +89,6 @@ const SERVICES: Service[] = [
       'Multi-site VPS management, CI/CD pipelines via GitHub Actions, SSL via Certbot, and full email infrastructure with SPF, DKIM, and DMARC.',
     tags: ['Nginx', 'PM2', 'GitHub Actions', 'Docker'],
     category: 'DevOps',
-    image: 'https://images.unsplash.com/photo-1618401471353-b98afee0b2eb?auto=format&fit=crop&w=800&q=80',
   },
   {
     id: '09',
@@ -108,7 +98,6 @@ const SERVICES: Service[] = [
       'Production-grade e-commerce platforms and SaaS dashboards — product catalogues, payment gateways, subscription logic, and admin panels.',
     tags: ['Next.js', 'Stripe', 'Tailwind', 'SaaS'],
     category: 'Commerce',
-    image: 'https://images.unsplash.com/photo-1556742049-0a67568a0d70?auto=format&fit=crop&w=800&q=80',
   },
 ] as const;
 
@@ -156,45 +145,33 @@ export function Services() {
                 ease: 'easeOut',
               }}
               viewport={VIEWPORT}
-              className="relative overflow-hidden border border-white/10 rounded-xl p-8 flex flex-col justify-between hover:border-[#39FF14]/50 transition-all duration-300 group shadow-xl min-h-[420px]"
+              className="bg-[#0B132B]/60 backdrop-blur-md border border-white/10 rounded-xl p-8 flex flex-col justify-between hover:border-[#39FF14]/50 transition-all duration-300 group shadow-xl min-h-[400px]"
             >
-              {/* Background Image with Dark Overlay */}
-              <div className="absolute inset-0 -z-10 overflow-hidden">
-                <Image
-                  src={service.image}
-                  alt={service.title}
-                  fill
-                  sizes="(max-width: 768px) 100vw, (max-width: 1200px) 50vw, 33vw"
-                  className="object-cover object-center scale-100 group-hover:scale-105 transition-transform duration-700 opacity-20"
-                />
-                <div className="absolute inset-0 bg-gradient-to-t from-[#0B132B] via-[#0B132B]/90 to-[#0B132B]/80" />
-              </div>
-
               {/* Card Content */}
               <div>
                 {/* Header: ID & Category Badge */}
                 <div className="flex items-center justify-between mb-6">
                   <div className="flex items-center gap-2">
-                    <span className="w-1.5 h-1.5 rounded-full bg-[#39FF14]" aria-hidden="true" />
+                    <span className="w-1.5 h-1.5 rounded-full bg-[#39FF14] shadow-[0_0_6px_#39FF14]" aria-hidden="true" />
                     <span className="text-xs font-mono font-bold text-[#39FF14]">
                       {service.id}
                     </span>
                   </div>
-                  <span className="text-[10px] uppercase tracking-[0.2em] font-medium text-white/50 border border-white/10 bg-black/40 backdrop-blur-sm px-2.5 py-1 rounded-md">
+                  <span className="text-[10px] uppercase tracking-[0.2em] font-mono font-bold text-white/50 border border-white/10 bg-white/[0.03] px-2.5 py-1 rounded-md">
                     {service.category}
                   </span>
                 </div>
 
                 {/* Icon */}
                 <div
-                  className="w-12 h-12 rounded-lg bg-[#39FF14]/10 border border-[#39FF14]/20 flex items-center justify-center text-2xl text-[#39FF14] mb-6 group-hover:scale-105 transition-transform"
+                  className="w-12 h-12 rounded-lg bg-[#39FF14]/10 border border-[#39FF14]/20 flex items-center justify-center text-2xl text-[#39FF14] mb-6 group-hover:scale-105 transition-transform shadow-md"
                   aria-hidden="true"
                 >
                   {service.icon}
                 </div>
 
                 {/* Title */}
-                <h3 className="text-xl font-bold text-white mb-3 tracking-wide">
+                <h3 className="text-xl font-bold text-white mb-3 tracking-wide uppercase">
                   {service.title}
                 </h3>
 
@@ -210,7 +187,7 @@ export function Services() {
                   {service.tags.map((tag) => (
                     <li
                       key={tag}
-                      className="text-[10px] text-white/80 bg-black/40 border border-white/10 px-2.5 py-1 rounded-md font-sans backdrop-blur-sm"
+                      className="text-[10px] font-mono text-white/80 bg-white/[0.03] border border-white/10 px-2.5 py-1 rounded-md"
                     >
                       {tag}
                     </li>
@@ -222,7 +199,7 @@ export function Services() {
                   <Link
                     href="#contact"
                     aria-label={`Enquire about ${service.title}`}
-                    className="inline-flex items-center gap-2 text-xs font-bold uppercase text-[#39FF14] tracking-wider hover:text-white transition-colors group/link"
+                    className="inline-flex items-center gap-2 text-xs font-mono font-bold uppercase text-[#39FF14] tracking-wider hover:text-white transition-colors group/link"
                   >
                     <span>Inquire Project</span>
                     <FiArrowRight className="transition-transform group-hover/link:translate-x-1" aria-hidden="true" />

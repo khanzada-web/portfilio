@@ -4,6 +4,7 @@ import { Header } from '@/app/components/layout/Header'
 import { Footer } from '@/app/components/layout/Footer'
 import { BreadcrumbSchema } from '@/app/components/seo/BreadcrumbSchema'
 import { FAQSchema } from '@/app/components/seo/FAQSchema'
+import { FiTerminal } from 'react-icons/fi'
 
 export const metadata: Metadata = {
   title: 'Hire Best Next.js 16 Full-Stack Web3 Developer Services 2026 | SaaS & DApps',
@@ -156,53 +157,67 @@ export default function ServicesPage() {
       <BreadcrumbSchema items={breadcrumbs} />
       <FAQSchema faqs={faqs} />
 
-      <div className="min-h-screen bg-[#060B16] font-orbitron text-[#39FF14]">
+      <div className="min-h-screen bg-[#030712] font-orbitron text-white relative overflow-hidden">
+        {/* Subtle Ambient Glow */}
+        <div className="absolute inset-0 opacity-20 pointer-events-none" aria-hidden="true">
+          <div className="absolute top-1/4 left-1/2 -translate-x-1/2 w-[700px] h-[500px] bg-[#39FF14]/10 blur-[160px] rounded-full" />
+        </div>
+
         <Header />
-        <main role="main" id="main-content" className="pt-20">
+        <main role="main" id="main-content" className="pt-24 pb-28 relative z-10">
           <div className="max-w-7xl mx-auto px-4 sm:px-8 py-16">
+            
+            {/* Header / Hero */}
             <div className="text-center mb-20">
-              <div className="inline-block border border-[#39FF14] px-4 py-1 mb-6 text-xs tracking-[0.3em] uppercase opacity-80">
-                Hire a Next.js Developer
+              <div className="inline-flex items-center gap-2 border border-[#39FF14]/40 bg-[#39FF14]/5 px-3.5 py-1.5 rounded-md text-xs tracking-[0.25em] text-[#39FF14] uppercase mb-6">
+                <FiTerminal className="animate-pulse" aria-hidden="true" />
+                <span>Services.sys</span>
               </div>
-              <h1 className="text-4xl md:text-6xl font-bold text-white tracking-tight leading-none mb-8">
-                Hire Next.js Full-Stack and Web3 Developer Services
+              
+              <h1 className="text-3xl md:text-5xl lg:text-6xl font-extrabold text-white tracking-tight leading-tight mb-8">
+                Hire Next.js Full-Stack & Web3 Services
               </h1>
-              <p className="text-lg text-white/70 max-w-3xl mx-auto leading-relaxed font-sans">
+              <p className="text-sm md:text-base text-white/70 max-w-3xl mx-auto leading-relaxed font-sans">
                 Hire Mussawar Hayat as a Next.js full-stack developer and Web3 specialist for React,
                 TypeScript, SaaS products, Solidity smart contracts, and production DevOps. Remote
                 freelance delivery for North America and Europe — one engineer from UI to VPS.
               </p>
-              <div className="max-w-3xl mx-auto text-left mt-8 space-y-3 border-t border-[#39FF14]/10 pt-6">
-                <h2 className="text-sm uppercase tracking-widest text-[#39FF14]/70 font-sans">What services are available?</h2>
-                <p className="text-base text-white/70 font-sans leading-relaxed">
+
+              <div className="max-w-3xl mx-auto text-left mt-10 bg-[#0B132B]/60 backdrop-blur-md border border-white/10 rounded-xl p-6 md:p-8 shadow-xl">
+                <h2 className="text-xs font-mono uppercase tracking-widest text-[#39FF14] mb-2">What services are available?</h2>
+                <p className="text-xs md:text-sm text-white/70 font-sans leading-relaxed">
                   Mussawar Hayat provides end-to-end full-stack and Web3 development: Next.js and React applications, Node.js APIs, mobile apps (React Native / Flutter), Solidity smart contracts and DApps, Core Web Vitals optimization, and production DevOps (Nginx, PM2, GitHub Actions, VPS). Engagements are available as fixed-price projects, hourly, or monthly retainers for startups and product teams in North America and Europe.
                 </p>
               </div>
             </div>
 
+            {/* Services Grid */}
             <div className="grid md:grid-cols-2 lg:grid-cols-3 gap-6 mb-24">
               {services.map((service, index) => (
                 <article
                   key={service.id}
                   id={service.id}
-                  className="group bg-[#0A1221] border border-[#39FF14]/20 p-8 hover:border-[#39FF14] transition-all duration-500"
+                  className="group bg-[#0B132B]/60 backdrop-blur-md border border-white/10 rounded-xl p-8 hover:border-[#39FF14]/40 transition-all duration-300 shadow-xl flex flex-col justify-between"
                 >
-                  <div className="text-[10px] text-white/30 tracking-[0.2em] mb-4" aria-hidden="true">
-                    SERVICE_{String(index + 1).padStart(2, '0')}
+                  <div>
+                    <div className="text-[10px] font-mono font-bold text-[#39FF14] tracking-widest mb-4 uppercase" aria-hidden="true">
+                      SERVICE_{String(index + 1).padStart(2, '0')}
+                    </div>
+                    <h2 className="text-lg md:text-xl font-bold text-white uppercase tracking-tight mb-3 group-hover:text-[#39FF14] transition-colors">
+                      {service.title}
+                    </h2>
+                    <p className="text-xs md:text-sm text-white/70 font-sans leading-relaxed mb-6">
+                      {service.description}
+                    </p>
                   </div>
-                  <h2 className="text-xl font-bold text-white uppercase tracking-wider mb-3 group-hover:text-[#39FF14] transition-colors">
-                    {service.title}
-                  </h2>
-                  <p className="text-sm text-white/50 font-sans leading-relaxed mb-6">
-                    {service.description}
-                  </p>
-                  <ul className="space-y-2">
+
+                  <ul className="space-y-2 border-t border-white/10 pt-4">
                     {service.features.map((feature) => (
                       <li
                         key={feature}
-                        className="flex items-center text-[10px] tracking-widest uppercase text-white/60"
+                        className="flex items-center text-[10px] font-mono tracking-wider uppercase text-white/80"
                       >
-                        <span className="w-1.5 h-1.5 bg-[#39FF14] rounded-full mr-3 shrink-0" />
+                        <span className="w-1.5 h-1.5 bg-[#39FF14] rounded-full mr-3 shrink-0 shadow-[0_0_6px_#39FF14]" />
                         {feature}
                       </li>
                     ))}
@@ -211,38 +226,39 @@ export default function ServicesPage() {
               ))}
             </div>
 
-            <div className="bg-[#0A1221] border border-[#39FF14]/20 p-8 md:p-12 mb-16">
-              <h2 className="text-3xl md:text-4xl font-bold text-white tracking-tight mb-4">
+            {/* Engagement Models */}
+            <div className="bg-[#0B132B]/60 backdrop-blur-md border border-white/10 rounded-xl p-8 md:p-12 mb-16 shadow-xl">
+              <h2 className="text-2xl md:text-4xl font-extrabold text-white tracking-tight mb-4 uppercase">
                 Full-Stack Developer Engagement Models
               </h2>
-              <p className="text-white/60 font-sans mb-10 max-w-2xl">
+              <p className="text-white/70 font-sans text-xs md:text-sm mb-8 max-w-2xl leading-relaxed">
                 Clear options so you know how we work together. Exact numbers depend on scope —
                 share your project for a concrete proposal.
               </p>
-              <div className="grid md:grid-cols-3 gap-8">
-                <div className="border border-[#39FF14]/15 p-6">
-                  <h3 className="text-sm font-bold text-[#39FF14] uppercase tracking-[0.2em] mb-3">
+              <div className="grid md:grid-cols-3 gap-6">
+                <div className="bg-white/[0.02] border border-white/10 rounded-xl p-6">
+                  <h3 className="text-xs font-mono font-bold text-[#39FF14] uppercase tracking-widest mb-3">
                     Fixed-Price Projects
                   </h3>
-                  <p className="text-white/70 font-sans text-sm leading-relaxed">
+                  <p className="text-white/70 font-sans text-xs md:text-sm leading-relaxed">
                     Best for well-defined scope: a marketing site, a specific feature, or a
                     bounded MVP. You get a fixed quote and timeline up front.
                   </p>
                 </div>
-                <div className="border border-[#39FF14]/15 p-6">
-                  <h3 className="text-sm font-bold text-[#39FF14] uppercase tracking-[0.2em] mb-3">
-                    Hourly / Time and Materials
+                <div className="bg-white/[0.02] border border-white/10 rounded-xl p-6">
+                  <h3 className="text-xs font-mono font-bold text-[#39FF14] uppercase tracking-widest mb-3">
+                    Hourly / Time & Materials
                   </h3>
-                  <p className="text-white/70 font-sans text-sm leading-relaxed">
+                  <p className="text-white/70 font-sans text-xs md:text-sm leading-relaxed">
                     Ideal when requirements may evolve. Transparent logging and regular
                     check-ins. Suitable for ongoing product work and consulting.
                   </p>
                 </div>
-                <div className="border border-[#39FF14]/15 p-6">
-                  <h3 className="text-sm font-bold text-[#39FF14] uppercase tracking-[0.2em] mb-3">
+                <div className="bg-white/[0.02] border border-white/10 rounded-xl p-6">
+                  <h3 className="text-xs font-mono font-bold text-[#39FF14] uppercase tracking-widest mb-3">
                     Monthly Retainer
                   </h3>
-                  <p className="text-white/70 font-sans text-sm leading-relaxed">
+                  <p className="text-white/70 font-sans text-xs md:text-sm leading-relaxed">
                     Reserved capacity each month for continuous development, maintenance,
                     and iteration. Predictable cost for product teams that need steady progress.
                   </p>
@@ -250,45 +266,46 @@ export default function ServicesPage() {
               </div>
             </div>
 
-            <div className="bg-[#0A1221] border border-[#39FF14]/20 p-8 md:p-12 mb-16">
-              <h2 className="text-3xl md:text-4xl font-bold text-white tracking-tight mb-8">
+            {/* Why Hire Section */}
+            <div className="bg-[#0B132B]/60 backdrop-blur-md border border-white/10 rounded-xl p-8 md:p-12 mb-20 shadow-xl">
+              <h2 className="text-2xl md:text-4xl font-extrabold text-white tracking-tight mb-8 uppercase">
                 Why Hire Mussawar Hayat as Your Next.js Developer
               </h2>
               <div className="grid md:grid-cols-2 gap-8">
                 <div>
-                  <h3 className="text-sm font-bold text-[#39FF14] uppercase tracking-[0.2em] mb-4">
+                  <h3 className="text-xs font-mono font-bold text-[#39FF14] uppercase tracking-widest mb-4">
                     One Developer, End-to-End
                   </h3>
-                  <ul className="space-y-3 text-white/60 font-sans">
+                  <ul className="space-y-3 text-white/70 font-sans text-xs md:text-sm">
                     <li className="flex items-start gap-3">
-                      <span className="w-1.5 h-1.5 bg-[#39FF14] rounded-full mt-2 shrink-0" /> No
+                      <span className="w-1.5 h-1.5 bg-[#39FF14] rounded-full mt-2 shrink-0 shadow-[0_0_6px_#39FF14]" /> No
                       handoffs between frontend, backend, and ops teams
                     </li>
                     <li className="flex items-start gap-3">
-                      <span className="w-1.5 h-1.5 bg-[#39FF14] rounded-full mt-2 shrink-0" /> 3+
+                      <span className="w-1.5 h-1.5 bg-[#39FF14] rounded-full mt-2 shrink-0 shadow-[0_0_6px_#39FF14]" /> 3+
                       years building production web and mobile apps
                     </li>
                     <li className="flex items-start gap-3">
-                      <span className="w-1.5 h-1.5 bg-[#39FF14] rounded-full mt-2 shrink-0" /> From
+                      <span className="w-1.5 h-1.5 bg-[#39FF14] rounded-full mt-2 shrink-0 shadow-[0_0_6px_#39FF14]" /> From
                       first commit to VPS deployment — owned end-to-end
                     </li>
                   </ul>
                 </div>
                 <div>
-                  <h3 className="text-sm font-bold text-[#39FF14] uppercase tracking-[0.2em] mb-4">
+                  <h3 className="text-xs font-mono font-bold text-[#39FF14] uppercase tracking-widest mb-4">
                     Built for Real Clients
                   </h3>
-                  <ul className="space-y-3 text-white/60 font-sans">
+                  <ul className="space-y-3 text-white/70 font-sans text-xs md:text-sm">
                     <li className="flex items-start gap-3">
-                      <span className="w-1.5 h-1.5 bg-[#39FF14] rounded-full mt-2 shrink-0" /> 40+
+                      <span className="w-1.5 h-1.5 bg-[#39FF14] rounded-full mt-2 shrink-0 shadow-[0_0_6px_#39FF14]" /> 40+
                       projects delivered across web, mobile, and Web3
                     </li>
                     <li className="flex items-start gap-3">
-                      <span className="w-1.5 h-1.5 bg-[#39FF14] rounded-full mt-2 shrink-0" /> Clients
+                      <span className="w-1.5 h-1.5 bg-[#39FF14] rounded-full mt-2 shrink-0 shadow-[0_0_6px_#39FF14]" /> Clients
                       across North America, Europe, and beyond
                     </li>
                     <li className="flex items-start gap-3">
-                      <span className="w-1.5 h-1.5 bg-[#39FF14] rounded-full mt-2 shrink-0" /> Web3
+                      <span className="w-1.5 h-1.5 bg-[#39FF14] rounded-full mt-2 shrink-0 shadow-[0_0_6px_#39FF14]" /> Web3
                       capability without a Web3-only constraint
                     </li>
                   </ul>
@@ -296,29 +313,35 @@ export default function ServicesPage() {
               </div>
             </div>
 
-            <div className="text-center">
-              <h2 className="text-3xl md:text-5xl font-bold text-white tracking-tight mb-6">
-                Hire a Full-Stack Developer Today
-              </h2>
-              <p className="text-lg text-white/60 max-w-2xl mx-auto mb-10 font-sans leading-relaxed">
-                Describe what you are building. You will get a clear reply on fit, timeline, and
-                engagement model — usually within 24 hours.
-              </p>
-              <div className="flex flex-col sm:flex-row gap-4 justify-center">
-                <Link
-                  href="/contact"
-                  className="inline-flex items-center gap-4 bg-[#39FF14] text-black px-10 py-5 font-bold uppercase tracking-widest hover:bg-white transition-all"
-                >
-                  Start a Project
-                </Link>
-                <Link
-                  href="/portfolio"
-                  className="inline-flex items-center gap-4 border border-[#39FF14]/40 text-white px-10 py-5 font-bold uppercase tracking-widest hover:border-[#39FF14] transition-all"
-                >
-                  View Portfolio
-                </Link>
+            {/* Bottom CTA */}
+            <div className="text-center bg-[#0B132B]/60 backdrop-blur-md border border-white/10 rounded-xl p-10 md:p-14 shadow-2xl relative overflow-hidden">
+              <div className="absolute top-0 left-1/2 -translate-x-1/2 w-full h-full bg-[#39FF14]/5 blur-[100px] pointer-events-none" aria-hidden="true" />
+              
+              <div className="relative z-10">
+                <h2 className="text-2xl md:text-4xl font-extrabold text-white tracking-tight mb-4 uppercase">
+                  Hire a Full-Stack Developer Today
+                </h2>
+                <p className="text-sm md:text-base text-white/70 max-w-2xl mx-auto mb-8 font-sans leading-relaxed">
+                  Describe what you are building. You will get a clear reply on fit, timeline, and
+                  engagement model — usually within 24 hours.
+                </p>
+                <div className="flex flex-col sm:flex-row gap-4 justify-center">
+                  <Link
+                    href="/contact"
+                    className="px-8 py-4 bg-[#39FF14] text-black rounded-lg text-xs font-bold uppercase tracking-widest hover:bg-white hover:shadow-[0_0_25px_rgba(57,255,20,0.4)] transition-all text-center"
+                  >
+                    Start a Project
+                  </Link>
+                  <Link
+                    href="/portfolio"
+                    className="px-8 py-4 border border-white/15 bg-white/[0.02] text-white rounded-lg text-xs font-bold uppercase tracking-widest hover:border-[#39FF14]/50 hover:text-[#39FF14] transition-all text-center"
+                  >
+                    View Portfolio
+                  </Link>
+                </div>
               </div>
             </div>
+
           </div>
         </main>
         <Footer />

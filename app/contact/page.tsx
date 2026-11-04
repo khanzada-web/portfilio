@@ -57,27 +57,7 @@ export default function ContactPage() {
       <main role="main" id="main-content" className="relative z-10">
         <Contact />
 
-        <div className="pb-16 px-6">
-          <div className="max-w-4xl mx-auto text-center">
-            <p className="text-white/40 text-sm font-orbitron uppercase tracking-widest mb-6">
-              Not sure what you need yet?
-            </p>
-            <div className="flex flex-col sm:flex-row gap-4 justify-center">
-              <Link
-                href="/services"
-                className="px-8 py-4 border border-white/10 hover:border-[#39FF14]/30 text-white/70 hover:text-white font-orbitron text-sm uppercase tracking-[0.2em] rounded-xl transition-all duration-300"
-              >
-                Explore Services
-              </Link>
-              <Link
-                href="/blog"
-                className="px-8 py-4 border border-white/10 hover:border-[#39FF14]/30 text-white/70 hover:text-white font-orbitron text-sm uppercase tracking-[0.2em] rounded-xl transition-all duration-300"
-              >
-                Read the Blog
-              </Link>
-            </div>
-          </div>
-        </div>
+      
       </main>
 
       <Footer />

@@ -2,7 +2,7 @@
 
 import { useState, useEffect, useCallback } from 'react';
 import { motion, AnimatePresence } from 'framer-motion';
-import { FiStar, FiChevronLeft, FiChevronRight, FiShield } from 'react-icons/fi';
+import { FiStar, FiChevronLeft, FiChevronRight, FiShield, FiTerminal } from 'react-icons/fi';
 
 // ─── Types ────────────────────────────────────────────────────────────────────
 
@@ -15,9 +15,6 @@ interface Testimonial {
 }
 
 // ─── Data ─────────────────────────────────────────────────────────────────────
-// ✅ Extracted outside the component — was inside the component before, which
-//    caused the useEffect dependency array to need testimonials.length.
-//    Now TESTIMONIALS.length is a stable constant — no stale closure risk.
 
 const TESTIMONIALS: Testimonial[] = [
   {
@@ -53,9 +50,6 @@ export function Testimonials() {
   const goNext = useCallback(
     () => setCurrentIndex((prev) => (prev + 1) % TOTAL),
     [],
-    // ✅ Empty dep array — TOTAL is a module-level constant, not a closure variable.
-    //    Previously: [testimonials.length] — worked but was needlessly complex
-    //    because the array was defined inside the component on every render.
   );
 
   const goPrev = useCallback(
@@ -74,113 +68,118 @@ export function Testimonials() {
   return (
     <section
       id="testimonials"
-      className="py-32 bg-[#060B16] relative overflow-hidden font-orbitron text-[#39FF14]"
+      className="py-28 bg-[#030712] relative overflow-hidden font-orbitron text-white"
     >
+      {/* Subtle Ambient Glow */}
+      <div className="absolute inset-0 opacity-20 pointer-events-none" aria-hidden="true">
+        <div className="absolute top-1/2 left-1/2 -translate-x-1/2 -translate-y-1/2 w-[600px] h-[500px] bg-[#39FF14]/10 blur-[160px] rounded-full" />
+      </div>
+
       <div className="container mx-auto px-6 max-w-5xl relative z-10">
 
         {/* Section Header */}
         <div className="text-center mb-20 space-y-4">
-          <div className="inline-flex items-center gap-2 px-4 py-1 border border-[#39FF14]/30 bg-[#39FF14]/5 text-[10px] tracking-[0.4em] uppercase font-bold">
-            <FiShield className="animate-pulse" aria-hidden="true" />
-            Social_Proof_Protocol
+          <div className="inline-flex items-center gap-2 border border-[#39FF14]/40 bg-[#39FF14]/5 px-3.5 py-1.5 rounded-md text-xs tracking-[0.25em] text-[#39FF14] uppercase">
+            <FiTerminal className="animate-pulse" aria-hidden="true" />
+            <span>Social_Proof_Protocol</span>
           </div>
-          <h2 className="text-5xl md:text-7xl font-bold text-white tracking-tight uppercase">
+          <h2 className="text-3xl md:text-5xl font-extrabold text-white tracking-tight uppercase">
             Client <span className="text-[#39FF14]">Reviews</span>
           </h2>
         </div>
 
-        {/* Testimonial display */}
-        <div
-          className="relative bg-[#0A1221]/50 border border-[#39FF14]/20 backdrop-blur-sm p-10 md:p-20"
-          aria-live="polite"
-          aria-atomic="true"
-          // ✅ aria-live="polite" + aria-atomic="true" tells screen readers to
-          //    announce the full updated testimonial when it changes
-        >
-          {/* Corner decoration */}
+        {/* Testimonial display container */}
+        <div className="relative">
           <div
-            className="absolute top-0 right-0 w-16 h-16 bg-[#39FF14]/5 flex items-center justify-center border-b border-l border-[#39FF14]/20"
-            aria-hidden="true"
+            className="relative bg-[#0B132B]/60 backdrop-blur-md border border-white/10 rounded-xl p-10 md:p-16 shadow-2xl overflow-hidden z-10"
+            aria-live="polite"
+            aria-atomic="true"
           >
-            <FiStar className="text-[#39FF14] animate-spin-slow" />
+            {/* Corner decoration badge */}
+            <div
+              className="absolute top-0 right-0 w-14 h-14 bg-[#39FF14]/10 flex items-center justify-center rounded-bl-xl border-b border-l border-[#39FF14]/20"
+              aria-hidden="true"
+            >
+              <FiShield className="text-[#39FF14] text-lg animate-pulse" />
+            </div>
+
+            <AnimatePresence mode="wait">
+              <motion.div
+                key={currentIndex}
+                initial={{ opacity: 0, y: 12 }}
+                animate={{ opacity: 1, y: 0 }}
+                exit={{ opacity: 0, y: -12 }}
+                transition={{ duration: 0.3 }}
+                className="text-center space-y-6 max-w-3xl mx-auto"
+              >
+                <div className="inline-block text-[10px] font-mono font-bold bg-[#39FF14]/10 text-[#39FF14] border border-[#39FF14]/30 px-3 py-1 rounded-md tracking-[0.2em] uppercase">
+                  {current.status}
+                </div>
+
+                <blockquote className="text-xl md:text-3xl text-white font-bold leading-relaxed tracking-tight">
+                  &quot;{current.quote}&quot;
+                </blockquote>
+
+                {/* Star rating */}
+                <div className="flex justify-center gap-1.5 pt-2" aria-label={`${current.rating} out of 5 stars`}>
+                  {Array.from({ length: current.rating }).map((_, i) => (
+                    <FiStar
+                      key={i}
+                      className="text-[#39FF14] fill-[#39FF14] w-4 h-4"
+                      aria-hidden="true"
+                    />
+                  ))}
+                </div>
+
+                <footer className="pt-4 border-t border-white/10 mt-6">
+                  <cite className="not-italic">
+                    <p className="text-lg font-bold text-white uppercase tracking-wider font-mono">
+                      {current.author}
+                    </p>
+                    <p className="text-white/50 text-[10px] uppercase tracking-[0.25em] mt-1 font-mono">
+                      {current.role}
+                    </p>
+                  </cite>
+                </footer>
+              </motion.div>
+            </AnimatePresence>
           </div>
 
-          <AnimatePresence mode="wait">
-            <motion.div
-              key={currentIndex}
-              initial={{ opacity: 0, y: 20 }}
-              animate={{ opacity: 1, y: 0 }}
-              exit={{ opacity: 0, y: -20 }}
-              className="text-center space-y-8"
-            >
-              <div className="inline-block text-[9px] font-bold bg-[#39FF14] text-black px-3 py-1 tracking-[0.2em] uppercase">
-                {current.status}
-              </div>
-
-              <blockquote className="text-2xl md:text-4xl text-white font-bold leading-tight italic drop-shadow-[0_0_10px_rgba(255,255,255,0.1)]">
-                &quot;{current.quote}&quot;
-              </blockquote>
-
-              {/* Star rating */}
-              <div className="flex justify-center gap-1" aria-label={`${current.rating} out of 5 stars`}>
-                {Array.from({ length: current.rating }).map((_, i) => (
-                  <FiStar
-                    key={i}
-                    className="text-[#39FF14] fill-[#39FF14] w-4 h-4"
-                    aria-hidden="true"
-                  />
-                ))}
-              </div>
-
-              <footer className="pt-6">
-                <cite className="not-italic">
-                  <p className="text-xl font-bold text-[#39FF14] uppercase tracking-tighter">
-                    {current.author}
-                  </p>
-                  <p className="text-white/60 text-[10px] uppercase tracking-[0.3em] mt-2">
-                    {current.role}
-                  </p>
-                </cite>
-                {/* ✅ <cite> is the correct HTML element for attribution inside <blockquote> */}
-              </footer>
-            </motion.div>
-          </AnimatePresence>
-
-          {/* Navigation arrows */}
-          <div className="flex justify-between absolute top-1/2 -translate-y-1/2 left-4 right-4 md:-left-8 md:-right-8">
+          {/* Navigation arrows with higher z-index (z-25) and pulled slightly outward */}
+          <div className="flex justify-between absolute top-1/2 -translate-y-1/2 -left-4 -right-4 md:-left-8 md:-right-8 pointer-events-none z-25">
             <button
               onClick={goPrev}
               aria-label="Previous testimonial"
-              className="p-3 border border-[#39FF14]/30 bg-[#060B16] text-[#39FF14] hover:bg-[#39FF14] hover:text-black transition-all"
+              className="pointer-events-auto p-3.5 rounded-xl border border-white/15 bg-[#030712]/90 backdrop-blur-md text-white hover:border-[#39FF14]/50 hover:text-[#39FF14] transition-all shadow-2xl"
             >
-              <FiChevronLeft size={24} aria-hidden="true" />
+              <FiChevronLeft size={20} aria-hidden="true" />
             </button>
             <button
               onClick={goNext}
               aria-label="Next testimonial"
-              className="p-3 border border-[#39FF14]/30 bg-[#060B16] text-[#39FF14] hover:bg-[#39FF14] hover:text-black transition-all"
+              className="pointer-events-auto p-3.5 rounded-xl border border-white/15 bg-[#030712]/90 backdrop-blur-md text-white hover:border-[#39FF14]/50 hover:text-[#39FF14] transition-all shadow-2xl"
             >
-              <FiChevronRight size={24} aria-hidden="true" />
+              <FiChevronRight size={20} aria-hidden="true" />
             </button>
           </div>
         </div>
 
-        {/* Progress dots */}
-        <div className="mt-12 flex justify-center gap-3" role="tablist" aria-label="Testimonial navigation">
+        {/* Progress indicator bars */}
+        <div className="mt-10 flex justify-center gap-2" role="tablist" aria-label="Testimonial navigation">
           {TESTIMONIALS.map((t, i) => (
             <button
               key={t.author}
-              // ✅ Key is the stable author name, not the array index
               role="tab"
               aria-selected={i === currentIndex}
               aria-label={`View testimonial from ${t.author}`}
               onClick={() => setCurrentIndex(i)}
-              className={`h-1 transition-all duration-500 ${
-                i === currentIndex ? 'w-16 bg-[#39FF14]' : 'w-4 bg-[#39FF14]/20'
+              className={`h-1.5 rounded-full transition-all duration-300 ${
+                i === currentIndex ? 'w-12 bg-[#39FF14] shadow-[0_0_8px_#39FF14]' : 'w-3 bg-white/20'
               }`}
             />
           ))}
         </div>
+
       </div>
     </section>
   );

@@ -1,15 +1,13 @@
 'use client';
 
 import Link from 'next/link';
-import { useState } from 'react';
+import { useState, useEffect } from 'react';
 import { motion, AnimatePresence } from 'framer-motion';
 import {
   FiTarget, FiMap, FiPenTool, FiCode,
-  FiCheckCircle, FiArrowRight, FiActivity,
+  FiCheckCircle, FiArrowRight, FiActivity, FiTerminal,
 } from 'react-icons/fi';
 import type { ReactElement } from 'react';
-
-// ─── Types ────────────────────────────────────────────────────────────────────
 
 interface Step {
   number:      string;
@@ -17,10 +15,6 @@ interface Step {
   title:       string;
   description: string;
 }
-
-// ─── Data ─────────────────────────────────────────────────────────────────────
-// ✅ Extracted outside the component — previously this array was re-created on
-//    every render, which also broke React's ability to cache it for AnimatePresence.
 
 const STEPS: Step[] = [
   {
@@ -55,12 +49,22 @@ const STEPS: Step[] = [
   },
 ];
 
-// ─── Component ────────────────────────────────────────────────────────────────
-
 export function Process() {
   const [activeStep, setActiveStep] = useState(0);
+  const [isPaused, setIsPaused] = useState(false);
 
-  const goTo    = (i: number) => setActiveStep(i);
+  // Auto-play effect: moves to the next step every 3 seconds unless hovered
+  useEffect(() => {
+    if (isPaused) return;
+
+    const interval = setInterval(() => {
+      setActiveStep((prev) => (prev + 1) % STEPS.length);
+    }, 3000);
+
+    return () => clearInterval(interval);
+  }, [isPaused]);
+
+  const goTo   = (i: number) => setActiveStep(i);
   const goPrev  = () => setActiveStep((p) => Math.max(0, p - 1));
   const goNext  = () => setActiveStep((p) => Math.min(STEPS.length - 1, p + 1));
 
@@ -69,108 +73,114 @@ export function Process() {
   return (
     <section
       id="process"
-      className="py-32 bg-[#060B16] font-orbitron text-[#39FF14] overflow-hidden"
+      className="py-28 bg-[#030712] font-orbitron text-white relative overflow-hidden"
+      onMouseEnter={() => setIsPaused(true)}
+      onMouseLeave={() => setIsPaused(false)}
     >
-      <div className="container mx-auto px-6">
+      {/* Subtle Ambient Glow */}
+      <div className="absolute inset-0 opacity-20 pointer-events-none" aria-hidden="true">
+        <div className="absolute bottom-1/4 left-1/3 w-[600px] h-[500px] bg-[#39FF14]/10 blur-[160px] rounded-full" />
+      </div>
+
+      <div className="container mx-auto px-6 max-w-7xl relative z-10">
 
         {/* Section Header */}
-        <div className="text-center max-w-4xl mx-auto mb-20">
-          <div className="inline-block border border-[#39FF14] px-4 py-1.5 mb-6 text-[10px] tracking-[0.4em] uppercase opacity-70">
-            Execution_Protocol.v2
+        <div className="text-center max-w-3xl mx-auto mb-20">
+          <div className="inline-flex items-center gap-2 border border-[#39FF14]/40 bg-[#39FF14]/5 px-3.5 py-1.5 mb-4 rounded-md text-xs tracking-[0.25em] text-[#39FF14] uppercase">
+            <FiTerminal className="animate-pulse" aria-hidden="true" />
+            <span>Execution_Protocol.v2</span>
           </div>
-          <h2 className="text-4xl md:text-6xl font-bold text-white mb-8 tracking-tighter">
+          <h2 className="text-3xl md:text-5xl font-extrabold text-white mb-4 tracking-tight">
             Development <span className="text-[#39FF14]">Pipeline</span>
           </h2>
-          <p className="text-lg opacity-60 max-w-2xl mx-auto font-sans">
+          <p className="text-sm md:text-base text-white/70 max-w-2xl mx-auto font-sans leading-relaxed">
             A systematic engineering approach to transforming complex business logic into
             high-performance digital products.
           </p>
         </div>
 
-        <div className="max-w-7xl mx-auto grid grid-cols-1 lg:grid-cols-12 gap-12 items-start">
+        <div className="grid grid-cols-1 lg:grid-cols-12 gap-8 items-start">
 
-          {/* ── Step selector — Left ── */}
+          {/* ── Step Selector (Left) ── */}
           <nav
-            className="lg:col-span-4 space-y-4"
+            className="lg:col-span-4 space-y-3"
             aria-label="Process steps"
           >
             {STEPS.map((step, index) => (
               <button
                 key={step.number}
-                // ✅ Key is the stable step number, not the array index
                 onClick={() => goTo(index)}
                 aria-current={activeStep === index ? 'step' : undefined}
-                // ✅ aria-current="step" is the correct ARIA attribute for wizard-style navigation
-                className={`w-full text-left p-6 transition-all duration-500 border-l-2 flex items-center justify-between group ${
+                className={`w-full text-left px-4 py-4 rounded-xl transition-all duration-300 border flex items-center justify-between group ${
                   activeStep === index
-                    ? 'bg-[#39FF14]/10 border-[#39FF14] translate-x-4'
-                    : 'bg-transparent border-white/10 hover:border-[#39FF14]/50'
+                    ? 'bg-[#0B132B] border-[#39FF14]/50 shadow-lg translate-x-1'
+                    : 'bg-[#0B132B]/40 backdrop-blur-sm border-white/10 hover:border-white/25 hover:bg-[#0B132B]/60'
                 }`}
               >
-                <div className="flex items-center gap-4">
-                  <span className={`text-[10px] font-bold ${activeStep === index ? 'text-[#39FF14]' : 'text-white/40'}`}>
+                {/* Added pl-4 here to shift numbers toward the center */}
+                <div className="flex items-center gap-5 pl-4">
+                  <span className={`text-xs font-mono font-bold tracking-wider shrink-0 ${activeStep === index ? 'text-[#39FF14]' : 'text-white/40'}`}>
                     {step.number}
                   </span>
-                  <span className={`font-bold tracking-widest text-sm uppercase ${activeStep === index ? 'text-white' : 'text-white/60 group-hover:text-white'}`}>
+                  <span className={`font-bold tracking-wider text-xs uppercase ${activeStep === index ? 'text-white' : 'text-white/60 group-hover:text-white'}`}>
                     {step.title}
                   </span>
                 </div>
                 {activeStep === index && (
-                  <FiArrowRight className="animate-pulse" aria-hidden="true" />
+                  <FiArrowRight className="text-[#39FF14] animate-pulse shrink-0 mr-2" aria-hidden="true" />
                 )}
               </button>
             ))}
           </nav>
 
-          {/* ── Detail panel — Right ── */}
+          {/* ── Detail Panel (Right) ── */}
           <div className="lg:col-span-8 relative">
             <AnimatePresence mode="wait">
               <motion.div
                 key={activeStep}
-                initial={{ opacity: 0, x: 20 }}
-                animate={{ opacity: 1, x: 0 }}
-                exit={{ opacity: 0, x: -20 }}
-                transition={{ duration: 0.4 }}
-                className="bg-[#0A1221] border border-[#39FF14]/20 p-12 md:p-16 relative"
+                initial={{ opacity: 0, y: 12 }}
+                animate={{ opacity: 1, y: 0 }}
+                exit={{ opacity: 0, y: -12 }}
+                transition={{ duration: 0.3 }}
+                className="bg-[#0B132B]/60 backdrop-blur-md border border-white/10 p-8 md:p-12 rounded-xl relative shadow-xl overflow-hidden min-h-[380px] flex flex-col justify-between"
               >
-                {/* Watermark number */}
+                {/* Watermark Number */}
                 <div
-                  className="absolute top-0 right-0 p-8 text-[#39FF14]/5 select-none pointer-events-none"
+                  className="absolute -bottom-6 -right-4 text-[#39FF14]/5 select-none pointer-events-none"
                   aria-hidden="true"
                 >
-                  <span className="text-9xl font-black">{current.number}</span>
+                  <span className="text-[14rem] font-black font-mono">{current.number}</span>
                 </div>
 
                 <div className="relative z-10">
-                  <div className="w-16 h-16 bg-[#39FF14] text-black flex items-center justify-center mb-8 shadow-[0_0_30px_rgba(57,255,20,0.3)]" aria-hidden="true">
+                  <div className="w-12 h-12 rounded-lg bg-[#39FF14]/10 border border-[#39FF14]/20 text-[#39FF14] flex items-center justify-center mb-6 shadow-md" aria-hidden="true">
                     {current.icon}
                   </div>
 
-                  <h3 className="text-3xl md:text-4xl font-black text-white mb-6 uppercase tracking-tight">
+                  <h3 className="text-2xl md:text-3xl font-extrabold text-white mb-4 uppercase tracking-tight">
                     {current.title}
                   </h3>
 
-                  <p className="text-xl text-white/60 font-sans leading-relaxed mb-10 max-w-xl">
+                  <p className="text-sm md:text-base text-white/70 font-sans leading-relaxed mb-8 max-w-xl">
                     {current.description}
                   </p>
+                </div>
 
-                  <dl className="flex flex-wrap gap-8 pt-8 border-t border-white/10">
-                    <div>
-                      <dt className="text-[10px] uppercase tracking-widest text-[#39FF14] mb-2">Status</dt>
-                      <dd className="text-white font-bold text-sm uppercase">Optimized_Core</dd>
-                    </div>
-                    <div>
-                      <dt className="text-[10px] uppercase tracking-widest text-[#39FF14] mb-2">Priority</dt>
-                      <dd className="text-white font-bold text-sm uppercase">Critical_System</dd>
-                    </div>
-                  </dl>
-                  {/* ✅ <dl>/<dt>/<dd> is correct semantic markup for labelled value pairs */}
+                <div className="relative z-10 pt-6 border-t border-white/10 flex flex-wrap gap-8">
+                  <div>
+                    <span className="block text-[10px] uppercase tracking-widest text-white/40 mb-1 font-mono">Status</span>
+                    <span className="text-white font-bold text-xs uppercase font-mono">Optimized_Core</span>
+                  </div>
+                  <div>
+                    <span className="block text-[10px] uppercase tracking-widest text-white/40 mb-1 font-mono">Priority</span>
+                    <span className="text-[#39FF14] font-bold text-xs uppercase font-mono">Critical_System</span>
+                  </div>
                 </div>
               </motion.div>
             </AnimatePresence>
 
-            {/* Progress dots + prev/next */}
-            <div className="mt-8 flex justify-between items-center px-4">
+            {/* Progress Indicators & Navigation Controls */}
+            <div className="mt-6 flex justify-between items-center px-2">
               <div className="flex gap-2" role="tablist" aria-label="Step progress">
                 {STEPS.map((_, i) => (
                   <button
@@ -179,44 +189,44 @@ export function Process() {
                     role="tab"
                     aria-selected={activeStep === i}
                     aria-label={`Go to step ${i + 1}`}
-                    className={`h-1 transition-all duration-500 ${activeStep === i ? 'w-8 bg-[#39FF14]' : 'w-2 bg-white/20'}`}
+                    className={`h-1.5 rounded-full transition-all duration-300 ${activeStep === i ? 'w-8 bg-[#39FF14]' : 'w-2 bg-white/20'}`}
                   />
                 ))}
               </div>
 
-              <div className="flex gap-4">
+              <div className="flex gap-3">
                 <button
                   onClick={goPrev}
                   disabled={activeStep === 0}
                   aria-label="Previous step"
-                  className="p-4 border border-[#39FF14]/20 hover:bg-[#39FF14] hover:text-black transition-all disabled:opacity-30 disabled:cursor-not-allowed"
-                  // ✅ Added disabled state — previously the button had no feedback at step 0
+                  className="p-3 rounded-lg border border-white/15 bg-white/[0.02] text-white hover:border-[#39FF14]/50 hover:text-[#39FF14] transition-all disabled:opacity-30 disabled:cursor-not-allowed"
                 >
-                  <FiArrowRight className="rotate-180" aria-hidden="true" />
+                  <FiArrowRight className="rotate-180 w-4 h-4" aria-hidden="true" />
                 </button>
                 <button
                   onClick={goNext}
                   disabled={activeStep === STEPS.length - 1}
                   aria-label="Next step"
-                  className="p-4 border border-[#39FF14]/20 hover:bg-[#39FF14] hover:text-black transition-all disabled:opacity-30 disabled:cursor-not-allowed"
+                  className="p-3 rounded-lg border border-white/15 bg-white/[0.02] text-white hover:border-[#39FF14]/50 hover:text-[#39FF14] transition-all disabled:opacity-30 disabled:cursor-not-allowed"
                 >
-                  <FiArrowRight aria-hidden="true" />
+                  <FiArrowRight className="w-4 h-4" aria-hidden="true" />
                 </button>
               </div>
             </div>
           </div>
         </div>
 
-        {/* CTA */}
-        <div className="text-center mt-24">
+        {/* Global CTA */}
+        <div className="text-center mt-20">
           <Link
             href="#contact"
-            className="inline-flex items-center gap-6 bg-[#39FF14] text-black px-12 py-6 font-bold uppercase tracking-widest hover:bg-white transition-all shadow-[0_0_50px_rgba(57,255,20,0.2)]"
+            className="inline-flex items-center gap-3 bg-[#39FF14] text-black px-10 py-4 rounded-lg font-bold tracking-wider uppercase text-sm hover:bg-white hover:shadow-[0_0_25px_rgba(57,255,20,0.4)] transition-all"
           >
             <span>Initiate Project_Build</span>
-            <FiArrowRight className="w-5 h-5" aria-hidden="true" />
+            <FiArrowRight className="w-4 h-4" aria-hidden="true" />
           </Link>
         </div>
+
       </div>
     </section>
   );

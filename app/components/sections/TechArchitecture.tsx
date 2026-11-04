@@ -1,13 +1,13 @@
 'use client';
 
 import { motion } from 'framer-motion';
-import { FiCpu, FiLayers, FiShield, FiGlobe, FiServer } from 'react-icons/fi';
+import { FiCpu, FiLayers, FiShield, FiGlobe, FiServer, FiTerminal } from 'react-icons/fi';
 import type { ReactElement } from 'react';
 
 interface Layer {
   title: string;
   icon: ReactElement;
-  tech: string;
+  tech: readonly string[];
   description: string;
 }
 
@@ -15,37 +15,37 @@ const LAYERS: Layer[] = [
   {
     title: 'Frontend Layer',
     icon: <FiGlobe />,
-    tech: 'Next.js, Tailwind CSS, Framer Motion',
+    tech: ['Next.js', 'React', 'TypeScript', 'Tailwind CSS', 'Framer Motion'],
     description:
-      'Building high-performance, responsive interfaces with a focus on Web3 user experience.',
+      'Building high-performance, responsive interfaces with a focus on seamless Web3 user experience, SSR/ISR optimization, and speed.',
   },
   {
     title: 'Logic & API Layer',
     icon: <FiCpu />,
-    tech: 'Node.js, Express, GraphQL, PostgreSQL, MongoDB',
+    tech: ['Node.js', 'Express', 'GraphQL', 'PostgreSQL', 'MongoDB'],
     description:
-      'Robust server-side logic, REST & GraphQL APIs, JWT auth, and scalable database architectures.',
+      'Robust server-side logic, REST & GraphQL APIs, secure JWT auth, and scalable database architectures designed for longevity.',
   },
   {
     title: 'Blockchain Layer',
     icon: <FiLayers />,
-    tech: 'Solidity, Ethers.js, Hardhat, IPFS, Web3.js',
+    tech: ['Solidity', 'Ethers.js', 'Hardhat', 'IPFS', 'Web3.js'],
     description:
-      'Smart contract development and decentralised storage integration for trustless apps.',
+      'Smart contract development, EVM protocols, and decentralized storage integration for trustless, transparent applications.',
   },
   {
     title: 'Security & QA',
     icon: <FiShield />,
-    tech: 'Slither, Mythril, OpenZeppelin, JWT, SSL',
+    tech: ['Slither', 'Mythril', 'OpenZeppelin', 'JWT', 'SSL/TLS'],
     description:
-      'Rigorous testing and auditing of contracts and APIs to ensure zero-vulnerability deployments.',
+      'Rigorous testing and auditing of smart contracts and APIs to ensure zero-vulnerability deployments and enterprise compliance.',
   },
   {
     title: 'DevOps Layer',
     icon: <FiServer />,
-    tech: 'Nginx, PM2, GitHub Actions, Certbot, WHM, Docker',
+    tech: ['Nginx', 'PM2', 'GitHub Actions', 'Certbot', 'Docker', 'VPS'],
     description:
-      'Production-grade CI/CD pipelines, multi-site VPS management, email infrastructure (SPF, DKIM, DMARC), SSL setup, and domain/DNS configuration.',
+      'Production-grade CI/CD pipelines, multi-site VPS management, custom email infrastructure (SPF, DKIM, DMARC), and automated deployment workflows.',
   },
 ];
 
@@ -55,79 +55,100 @@ export function TechArchitecture() {
   return (
     <section
       id="architecture"
-      className="bg-[#060B16] py-24 relative overflow-hidden font-orbitron text-[#39FF14]"
+      className="bg-[#030712] py-28 relative overflow-hidden font-orbitron text-white"
     >
-      <div className="container mx-auto px-6 max-w-5xl relative z-10">
-        <div className="mb-16 text-center md:text-left space-y-4">
-          <div className="flex items-center justify-center md:justify-start gap-3">
-            <span className="h-[1px] w-12 bg-[#39FF14]/40" aria-hidden="true" />
-            <span className="text-[#39FF14]/60 text-xs tracking-[0.4em] uppercase" aria-hidden="true">
-              System architecture
-            </span>
+      {/* Subtle Ambient Glow */}
+      <div className="absolute inset-0 opacity-20 pointer-events-none" aria-hidden="true">
+        <div className="absolute top-1/3 right-1/3 w-[600px] h-[500px] bg-[#39FF14]/10 blur-[160px] rounded-full" />
+      </div>
+
+      <div className="container mx-auto px-6 max-w-6xl relative z-10">
+        
+        {/* Section Header */}
+        <div className="mb-20 text-center md:text-left space-y-4">
+          <div className="inline-flex items-center gap-2 border border-[#39FF14]/40 bg-[#39FF14]/5 px-3.5 py-1.5 rounded-md text-xs tracking-[0.25em] text-[#39FF14] uppercase">
+            <FiTerminal className="animate-pulse" aria-hidden="true" />
+            <span>System Architecture</span>
           </div>
-          <h2 className="text-4xl md:text-6xl font-bold tracking-tight text-white drop-shadow-[0_0_15px_rgba(57,255,20,0.2)]">
+
+          <h2 className="text-3xl md:text-5xl font-extrabold tracking-tight text-white leading-tight">
             Full-Stack Development Workflow
           </h2>
-          <p className="text-[#39FF14]/80 text-sm md:text-base tracking-wider max-w-2xl font-sans">
-            Integrated environments — from frontend and backend through to blockchain and
-            production-grade DevOps infrastructure.
+
+          <p className="text-white/70 text-sm md:text-base font-sans leading-relaxed max-w-2xl">
+            Integrated engineering layers—from frontend interfaces and server APIs through to blockchain protocols and production DevOps infrastructure.
           </p>
         </div>
 
-        <div className="grid grid-cols-1 md:grid-cols-2 gap-8">
+        {/* Layer Cards Grid */}
+        <div className="grid grid-cols-1 md:grid-cols-2 gap-6">
           {LAYERS.map((layer, index) => (
             <motion.div
               key={layer.title}
-              initial={{ opacity: 0, y: 12 }}
+              initial={{ opacity: 0, y: 16 }}
               whileInView={{ opacity: 1, y: 0 }}
               transition={{
-                duration: 0.35,
-                delay: Math.min(index * 0.06, 0.24),
+                duration: 0.4,
+                delay: Math.min(index * 0.05, 0.2),
                 ease: 'easeOut',
               }}
               viewport={VIEWPORT}
-              className={`group relative p-8 bg-white/5 border border-[#39FF14]/20 rounded-sm hover:border-[#39FF14] transition-colors duration-300 ${
+              className={`group relative p-8 bg-[#0B132B]/60 backdrop-blur-md border border-white/10 rounded-xl hover:border-[#39FF14]/40 transition-all duration-300 shadow-xl flex flex-col justify-between ${
                 index === 4 ? 'md:col-span-2' : ''
               }`}
             >
-              <div
-                className="absolute top-0 right-0 w-8 h-8 border-t border-r border-transparent group-hover:border-[#39FF14] group-hover:drop-shadow-[0_0_5px_#39FF14] transition-all duration-500"
-                aria-hidden="true"
-              />
+              <div>
+                {/* Header: Icon & Layer Badge */}
+                <div className="flex items-center justify-between mb-6">
+                  <div className="w-12 h-12 rounded-lg bg-[#39FF14]/10 border border-[#39FF14]/20 flex items-center justify-center text-2xl text-[#39FF14] group-hover:scale-105 transition-transform" aria-hidden="true">
+                    {layer.icon}
+                  </div>
+                  <div className="text-right" aria-hidden="true">
+                    <span className="block text-[9px] text-white/40 uppercase tracking-[0.2em] font-semibold">LAYER</span>
+                    <span className="text-sm font-bold font-mono text-[#39FF14]">{String(index + 1).padStart(2, '0')}</span>
+                  </div>
+                </div>
 
-              <div className="flex items-start justify-between mb-8">
-                <div
-                  className="text-[#39FF14] text-4xl group-hover:scale-110 transition-transform duration-300"
-                  aria-hidden="true"
-                >
-                  {layer.icon}
-                </div>
-                <div className="text-right" aria-hidden="true">
-                  <span className="block text-[10px] text-white/30 tracking-[0.2em]">LAYER</span>
-                  <span className="text-sm font-bold">{String(index + 1).padStart(2, '0')}</span>
-                </div>
+                {/* Layer Title */}
+                <h3 className="text-xl font-bold text-white mb-3 tracking-wide">{layer.title}</h3>
+
+                {/* Layer Description */}
+                <p className="text-white/70 text-sm font-sans leading-relaxed mb-6">
+                  {layer.description}
+                </p>
               </div>
 
-              <h3 className="text-white text-2xl font-bold mb-3 tracking-tight">{layer.title}</h3>
-
-              <p className="text-[#39FF14] text-[11px] mb-5 uppercase tracking-[0.2em] font-bold">
-                {layer.tech}
-              </p>
-
-              <p className="text-white/60 text-sm leading-relaxed mb-8 tracking-wide font-sans">
-                {layer.description}
-              </p>
-
-              <div className="pt-5 border-t border-[#39FF14]/10 flex items-center justify-between" aria-hidden="true">
-                <div className="flex items-center gap-2">
-                  <span className="w-2 h-2 rounded-full bg-[#39FF14] shadow-[0_0_8px_#39FF14]" />
-                  <span className="text-[10px] uppercase tracking-widest text-[#39FF14]/60">Stable.Build</span>
+              <div>
+                {/* Tech Badges */}
+                <div className="mb-6">
+                  <p className="text-[10px] text-white/40 uppercase tracking-[0.2em] font-semibold mb-2 font-mono">
+                    Tech Stack
+                  </p>
+                  <ul className="flex flex-wrap gap-1.5" aria-label={`${layer.title} Technologies`}>
+                    {layer.tech.map((item) => (
+                      <li
+                        key={item}
+                        className="text-[10px] text-white/80 bg-white/[0.03] border border-white/10 px-2.5 py-1 rounded-md font-sans"
+                      >
+                        {item}
+                      </li>
+                    ))}
+                  </ul>
                 </div>
-                <span className="text-[10px] text-white/20 tabular-nums uppercase">Checksum_OK</span>
+
+                {/* Footer Status Indicator */}
+                <div className="pt-4 border-t border-white/10 flex items-center justify-between font-mono" aria-hidden="true">
+                  <div className="flex items-center gap-2">
+                    <span className="w-1.5 h-1.5 rounded-full bg-[#39FF14] shadow-[0_0_8px_#39FF14]" />
+                    <span className="text-[10px] uppercase tracking-widest text-[#39FF14]/80 font-bold">Stable.Build</span>
+                  </div>
+                  <span className="text-[10px] text-white/30 uppercase">Checksum_Verified</span>
+                </div>
               </div>
             </motion.div>
           ))}
         </div>
+
       </div>
     </section>
   );
