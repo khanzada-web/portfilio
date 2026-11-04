@@ -10,7 +10,7 @@ import { AnimatedCounter } from '../ui/AnimatedCounter';
 
 const SKILLS = [
   { name: 'React / Next.js', level: 95, icon: <FiCode /> },
-  { name: 'App Development (RN/Flutter)', level: 90, icon: <FiSmartphone /> },
+  { name: 'App Dev (React Native / Flutter)', level: 90, icon: <FiSmartphone /> },
   { name: 'TypeScript / Node.js', level: 95, icon: <FiLayers /> },
   { name: 'UI/UX Architecture', level: 85, icon: <FiStar /> },
   { name: 'Web3 & Blockchain', level: 85, icon: <FiGlobe /> },
@@ -22,41 +22,41 @@ const SKILLS = [
 const ACHIEVEMENTS = [
   { number: 3, suffix: '+', label: 'Years Experience' },
   { number: 40, suffix: '+', label: 'Projects Delivered' },
-  { number: 15, suffix: '+', label: 'Remote Clients' },
-  { number: null, suffix: '', label: 'Async Coverage', static: 'EST/CET' },
+  { number: 15, suffix: '+', label: 'Global Clients' },
+  { number: null, suffix: '', label: 'Timezone Coverage', static: 'EST / CET' },
 ] as const;
 
 const PROFILE_TAGS = [
-  'Full-Stack & App Specialist',
+  'Full-Stack & Mobile Specialist',
   'Scalable Systems Architect',
-  'Based in Pakistan / Global Remote',
+  'Global Remote / Pakistan',
 ] as const;
 
 const ABOUT_CARDS = [
   {
     icon: <FiCode />,
-    title: 'Full-Stack Development',
-    text: 'Mussawar Hayat is a full-stack developer based in Pakistan, working with clients worldwide for 3+ years. Core focus is building fast, scalable web and mobile applications using React, Next.js, Node.js, and TypeScript.',
+    title: 'Full-Stack Engineering',
+    text: 'Building high-performance, responsive web and mobile applications using modern frameworks like React, Next.js, Node.js, and TypeScript with an emphasis on maintainable architecture.',
   },
   {
     icon: <FiServer />,
     title: 'End-to-End Infrastructure',
-    text: 'He handles the full stack — from customer-facing frontends to backend APIs and databases — plus infrastructure most developers outsource: CI/CD pipelines, VPS deployment, SSL, and email infrastructure.',
+    text: 'Managing the entire product lifecycle—from user interface down to backend databases, automated CI/CD pipelines, secure VPS deployment, and cloud infrastructure.',
   },
   {
     icon: <FiGlobe />,
-    title: 'Web3 & Blockchain',
-    text: 'Alongside general full-stack work, he has built DeFi platforms, NFT marketplaces, and Bitcoin Ordinals tools using Solidity and Ethers.js.',
+    title: 'Web3 & Smart Contracts',
+    text: 'Developing decentralized solutions including DeFi platforms, NFT marketplaces, and protocol integrations leveraging Solidity, Ethers.js, and secure EVM standards.',
   },
   {
     icon: <FiClock />,
-    title: 'Remote & Global',
-    text: 'He works remotely with clients across North America and Europe, overlapping EST, PST, and CET business hours. GDPR-compliant infrastructure is available where needed.',
+    title: 'Seamless Global Collaboration',
+    text: 'Operating smoothly across North American and European business hours with robust asynchronous communication, clear milestone tracking, and dependable delivery.',
   },
   {
     icon: <FiUsers />,
-    title: 'Built for Startups',
-    text: 'Best fit for startups and small teams who want one person to own a project end-to-end — not manage multiple specialists.',
+    title: 'Startup-Focused Partner',
+    text: 'Ideal for early-stage teams and growing startups seeking a dedicated owner who can drive a product from concept to production independently.',
   },
 ] as const;
 
@@ -65,102 +65,109 @@ const VIEWPORT = { once: true, amount: 0.2 as const, margin: '0px 0px -40px 0px'
 const About = () => (
   <section
     id="about"
-    className="py-32 bg-[#060B16] relative overflow-hidden font-orbitron text-[#39FF14]"
+    className="py-28 bg-[#030712] relative overflow-hidden font-orbitron text-white"
   >
-    <div className="absolute inset-0 opacity-10 pointer-events-none" aria-hidden="true">
-      <div className="absolute top-0 right-0 w-[500px] h-[500px] bg-[#39FF14]/10 rounded-full blur-[120px]" />
-      <div className="absolute bottom-0 left-0 w-[500px] h-[500px] bg-blue-600/10 rounded-full blur-[120px]" />
+    {/* Subtle Ambient Background Gradients */}
+    <div className="absolute inset-0 opacity-20 pointer-events-none" aria-hidden="true">
+      <div className="absolute top-1/4 left-1/2 -translate-x-1/2 w-[800px] h-[400px] bg-gradient-to-r from-[#39FF14]/10 to-blue-600/10 blur-[150px] rounded-full" />
     </div>
 
-    <div className="container mx-auto px-6 relative z-10">
-      <div className="mb-24">
-        <div className="inline-block border border-[#39FF14] px-4 py-1 mb-6 text-xs tracking-[0.3em] uppercase opacity-80">
-          About
+    <div className="container mx-auto px-6 relative z-10 max-w-7xl">
+      
+      {/* Section Header */}
+      <div className="mb-20">
+        <div className="inline-flex items-center gap-2 border border-[#39FF14]/40 bg-[#39FF14]/5 px-3.5 py-1.5 mb-4 rounded-md text-xs tracking-[0.25em] text-[#39FF14] uppercase">
+          <span className="w-1.5 h-1.5 rounded-full bg-[#39FF14] animate-pulse" />
+          Professional Profile
         </div>
-        <h2 className="text-4xl md:text-6xl font-bold text-white mb-12">
-          About Mussawar Hayat
+        <h2 className="text-3xl md:text-5xl font-extrabold tracking-tight text-white mb-6">
+          Architecting Scalable Digital Products
         </h2>
-
-        <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6 mb-4">
-          {ABOUT_CARDS.map((card, i) => (
-            <motion.div
-              key={card.title}
-              initial={{ opacity: 0, y: 12 }}
-              whileInView={{ opacity: 1, y: 0 }}
-              transition={{ duration: 0.35, delay: Math.min(i * 0.06, 0.24), ease: 'easeOut' }}
-              viewport={VIEWPORT}
-              className="bg-[#0A1221] border border-[#39FF14]/15 p-6 hover:border-[#39FF14]/40 transition-colors group"
-            >
-              <div className="flex items-center gap-3 mb-4">
-                <span className="text-xl text-[#39FF14] group-hover:scale-110 transition-transform" aria-hidden="true">
-                  {card.icon}
-                </span>
-                <h3 className="text-sm font-bold text-white uppercase tracking-wider">{card.title}</h3>
-              </div>
-              <p className="text-sm text-white/70 leading-relaxed font-sans">{card.text}</p>
-            </motion.div>
-          ))}
-        </div>
+        <p className="max-w-3xl text-sm md:text-base text-white/70 font-sans leading-relaxed">
+          Mussawar Hayat is a versatile Full-Stack and Web3 Software Engineer with a track record of delivering robust web, mobile, and decentralized applications for international startups.
+        </p>
       </div>
 
-      <div className="grid grid-cols-1 lg:grid-cols-12 gap-16 items-start">
-        <div className="lg:col-span-5">
-          <div className="relative group">
-            <div className="absolute -inset-1 bg-[#39FF14]/20 blur opacity-25 group-hover:opacity-50 transition duration-1000" />
-            <div className="relative bg-[#0A1221] border border-[#39FF14]/30 p-8 rounded-sm">
-              <div className="relative w-full aspect-square mb-8 overflow-hidden grayscale hover:grayscale-0 transition-all duration-500 border border-[#39FF14]/20">
-                <Image
-                  src="/my-pic.jpeg"
-                  alt="Mussawar Hayat, full-stack and Web3 developer based in Attock, Pakistan"
-                  fill
-                  sizes="(max-width: 1024px) 100vw, 40vw"
-                  className="object-cover"
-                  priority={false}
-                />
-                <div className="absolute inset-0 bg-gradient-to-t from-[#0A1221] via-transparent to-transparent" />
-              </div>
-
-              <h3 className="text-2xl font-bold text-white mb-2">Mussawar Hayat</h3>
-              <p className="text-sm tracking-widest uppercase opacity-70 mb-6">Lead Software Engineer</p>
-
-              <ul className="space-y-4 text-sm">
-                {PROFILE_TAGS.map((tag) => (
-                  <li
-                    key={tag}
-                    className="flex items-center gap-3 border-b border-[#39FF14]/10 pb-3 last:border-0"
-                  >
-                    <span className="w-1.5 h-1.5 bg-[#39FF14] rotate-45 shrink-0" aria-hidden="true" />
-                    <span>{tag}</span>
-                  </li>
-                ))}
-              </ul>
+      {/* Narrative Cards Grid */}
+      <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6 mb-24">
+        {ABOUT_CARDS.map((card, i) => (
+          <motion.div
+            key={card.title}
+            initial={{ opacity: 0, y: 16 }}
+            whileInView={{ opacity: 1, y: 0 }}
+            transition={{ duration: 0.4, delay: Math.min(i * 0.05, 0.2), ease: 'easeOut' }}
+            viewport={VIEWPORT}
+            className="bg-[#0B132B]/60 backdrop-blur-md border border-white/10 p-7 rounded-xl hover:border-[#39FF14]/40 transition-all duration-300 group shadow-lg"
+          >
+            <div className="w-10 h-10 rounded-lg bg-[#39FF14]/10 border border-[#39FF14]/20 flex items-center justify-center text-[#39FF14] text-lg mb-5 group-hover:scale-105 transition-transform" aria-hidden="true">
+              {card.icon}
             </div>
+            <h3 className="text-base font-bold text-white mb-3 tracking-wide">{card.title}</h3>
+            <p className="text-sm text-white/60 leading-relaxed font-sans">{card.text}</p>
+          </motion.div>
+        ))}
+      </div>
+
+      {/* Detailed Layout: Profile Column & Core Competencies */}
+      <div className="grid grid-cols-1 lg:grid-cols-12 gap-12 items-start">
+        
+        {/* Left Column: Photo & Credentials Card */}
+        <div className="lg:col-span-4">
+          <div className="relative bg-[#0B132B]/60 backdrop-blur-md border border-white/10 p-6 rounded-xl shadow-xl">
+            <div className="relative w-full aspect-square mb-6 overflow-hidden rounded-lg border border-white/10">
+              <Image
+                src="/my-pic.jpeg"
+                alt="Mussawar Hayat, Full-Stack and Web3 Software Engineer"
+                fill
+                sizes="(max-width: 1024px) 100vw, 30vw"
+                className="object-cover object-center grayscale hover:grayscale-0 transition-all duration-500"
+                priority={false}
+              />
+              <div className="absolute inset-0 bg-gradient-to-t from-[#0B132B] via-transparent to-transparent opacity-80" />
+            </div>
+
+            <h3 className="text-xl font-bold text-white mb-1">Mussawar Hayat</h3>
+            <p className="text-xs tracking-wider text-[#39FF14] uppercase font-semibold mb-6">Full-Stack & Web3 Engineer</p>
+
+            <ul className="space-y-3.5 text-xs text-white/80 font-sans border-t border-white/10 pt-5">
+              {PROFILE_TAGS.map((tag) => (
+                <li key={tag} className="flex items-center gap-3">
+                  <span className="w-1.5 h-1.5 rounded-full bg-[#39FF14] shrink-0" aria-hidden="true" />
+                  <span>{tag}</span>
+                </li>
+              ))}
+            </ul>
           </div>
         </div>
 
-        <div className="lg:col-span-7 space-y-16">
-          <div>
-            <h3 className="text-sm tracking-[0.4em] uppercase opacity-50 mb-8 border-l-2 border-[#39FF14] pl-4">
-              Core Competencies
+        {/* Right Column: Skills & Key Metrics */}
+        <div className="lg:col-span-8 space-y-12">
+          
+          {/* Core Competencies */}
+          <div className="bg-[#0B132B]/40 backdrop-blur-md border border-white/10 p-8 rounded-xl shadow-xl">
+            <h3 className="text-xs tracking-[0.3em] uppercase text-white/40 mb-8 font-semibold flex items-center gap-3">
+              <span className="w-8 h-px bg-[#39FF14]" />
+              Technical Competencies
             </h3>
-            <div className="grid grid-cols-1 md:grid-cols-2 gap-4">
+            
+            <div className="grid grid-cols-1 md:grid-cols-2 gap-5">
               {SKILLS.map((skill) => (
                 <div
                   key={skill.name}
-                  className="bg-[#0A1221] border border-[#39FF14]/10 p-5 hover:border-[#39FF14]/50 transition-colors group"
+                  className="bg-black/30 border border-white/5 p-4 rounded-lg hover:border-[#39FF14]/30 transition-colors group"
                 >
-                  <div className="flex items-center justify-between mb-4">
-                    <span
-                      className="text-xl opacity-80 group-hover:text-white group-hover:scale-110 transition-all"
-                      aria-hidden="true"
-                    >
-                      {skill.icon}
-                    </span>
-                    <span className="text-[10px] opacity-40 uppercase tracking-widest">{skill.level}%</span>
+                  <div className="flex items-center justify-between mb-3">
+                    <div className="flex items-center gap-2.5">
+                      <span className="text-base text-[#39FF14] group-hover:scale-110 transition-transform" aria-hidden="true">
+                        {skill.icon}
+                      </span>
+                      <h4 className="text-white font-semibold text-xs tracking-wide">{skill.name}</h4>
+                    </div>
+                    <span className="text-[11px] text-white/40 font-mono">{skill.level}%</span>
                   </div>
-                  <h4 className="text-white font-bold text-sm tracking-wide">{skill.name}</h4>
+                  
                   <div
-                    className="mt-4 h-[2px] w-full bg-[#39FF14]/5"
+                    className="h-1.5 w-full bg-white/5 rounded-full overflow-hidden"
                     role="progressbar"
                     aria-valuenow={skill.level}
                     aria-valuemin={0}
@@ -172,7 +179,7 @@ const About = () => (
                       whileInView={{ width: `${skill.level}%` }}
                       transition={{ duration: 0.8, delay: 0.1, ease: 'easeOut' }}
                       viewport={VIEWPORT}
-                      className="h-full bg-[#39FF14] shadow-[0_0_10px_#39FF14]"
+                      className="h-full bg-gradient-to-r from-[#39FF14]/60 to-[#39FF14] rounded-full shadow-[0_0_10px_rgba(57,255,20,0.3)]"
                     />
                   </div>
                 </div>
@@ -180,23 +187,28 @@ const About = () => (
             </div>
           </div>
 
-          <div className="grid grid-cols-2 md:grid-cols-4 gap-8 pt-8 border-t border-[#39FF14]/10">
+          {/* Achievement Metrics Strip */}
+          <div className="grid grid-cols-2 md:grid-cols-4 gap-6 bg-[#0B132B]/60 backdrop-blur-md border border-white/10 p-6 rounded-xl shadow-xl">
             {ACHIEVEMENTS.map((item) => (
-              <div key={item.label} className="text-center md:text-left">
-                <div className="text-3xl font-bold text-white mb-1">
+              <div key={item.label} className="text-center md:text-left px-2">
+                <div className="text-2xl md:text-3xl font-extrabold text-white mb-1 tracking-tight">
                   {'static' in item && item.static ? (
-                    item.static
+                    <span className="text-[#39FF14]">{item.static}</span>
                   ) : (
-                    <AnimatedCounter from={0} to={item.number as number} duration={1} />
+                    <>
+                      <AnimatedCounter from={0} to={item.number as number} duration={1.2} />
+                      <span className="text-[#39FF14]">{item.suffix}</span>
+                    </>
                   )}
-                  <span className="text-[#39FF14]">{item.suffix}</span>
                 </div>
-                <div className="text-[9px] uppercase tracking-[0.2em] opacity-50">{item.label}</div>
+                <div className="text-[10px] uppercase tracking-[0.2em] text-white/50">{item.label}</div>
               </div>
             ))}
           </div>
+
         </div>
       </div>
+
     </div>
   </section>
 );

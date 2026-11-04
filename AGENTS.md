@@ -15,3 +15,13 @@
 - Stop `npm run dev` before running `npm install` / `npm i`. Installing while the dev server runs leaves `node_modules` half-updated (e.g. `Cannot find module '../lib/verify-typescript-setup'`, wrong Next version in the banner).
 - `experimental.optimizeCss` in `next.config.ts` requires the `critters` dev dependency.
 - Blog posts in `app/blog/content/*.ts` export `content` as a template literal. Inside it, escape backticks as `` \` ``, `${` as `\${`, and a literal backslash as `\\` (e.g. shell line continuations in code samples). One malformed post breaks `/blog`, `/feed.xml` and the whole build.
+
+<!-- BEGIN:nextjs-agent-rules -->
+
+# This is NOT the Next.js you know
+
+This version has breaking changes — APIs, conventions, and file structure may all differ from your training data. Read the relevant guide in `node_modules/next/dist/docs/` (resolved from this file's directory; in monorepos the `next` package may not be visible from the repo root) before writing any code. Heed deprecation notices.
+
+This block is written and re-added by `next dev` — verify at `node_modules/next/dist/server/lib/generate-agent-files.js`. Removing it from a diff only re-creates the uncommitted change; committing it with your work keeps the tree clean.
+
+<!-- END:nextjs-agent-rules -->

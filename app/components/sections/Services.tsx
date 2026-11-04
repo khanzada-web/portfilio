@@ -1,10 +1,11 @@
 'use client';
 
 import Link from 'next/link';
+import Image from 'next/image';
 import { motion } from 'framer-motion';
 import {
   FiMonitor, FiSmartphone, FiActivity, FiShield,
-  FiZap, FiLayers, FiServer, FiTerminal, FiShoppingCart,
+  FiZap, FiLayers, FiServer, FiTerminal, FiShoppingCart, FiArrowRight,
 } from 'react-icons/fi';
 import type { ReactElement } from 'react';
 
@@ -15,6 +16,7 @@ interface Service {
   description: string;
   tags: readonly string[];
   category: string;
+  image: string;
 }
 
 const SERVICES: Service[] = [
@@ -26,6 +28,7 @@ const SERVICES: Service[] = [
       'High-performance Next.js and React applications optimized for speed, SEO, and global scalability. SSR, ISR, and edge-network ready.',
     tags: ['Next.js', 'React', 'TypeScript', 'Tailwind'],
     category: 'Frontend',
+    image: 'https://images.unsplash.com/photo-1555066931-4365d14bab8c?auto=format&fit=crop&w=800&q=80',
   },
   {
     id: '02',
@@ -35,6 +38,7 @@ const SERVICES: Service[] = [
       'Cross-platform mobile applications for iOS and Android with seamless native performance using React Native and Flutter.',
     tags: ['React Native', 'Flutter', 'iOS', 'Android'],
     category: 'Apps',
+    image: 'https://images.unsplash.com/photo-1512941937669-90a1b58e7e9c?auto=format&fit=crop&w=800&q=80',
   },
   {
     id: '03',
@@ -44,6 +48,7 @@ const SERVICES: Service[] = [
       'End-to-end product engineering — robust backend infrastructure, real-time data pipelines, and tightly integrated frontend layers.',
     tags: ['Node.js', 'TypeScript', 'GraphQL', 'PostgreSQL'],
     category: 'Architecture',
+    image: 'https://images.unsplash.com/photo-1451187580459-43490279c0fa?auto=format&fit=crop&w=800&q=80',
   },
   {
     id: '04',
@@ -53,6 +58,7 @@ const SERVICES: Service[] = [
       'Immersive digital interfaces built with precision — focused on user psychology, conversion flow, and animation-driven experiences.',
     tags: ['Figma', 'Framer Motion', 'UI/UX', 'Design Systems'],
     category: 'Design',
+    image: 'https://images.unsplash.com/photo-1507238691740-187a5b1d37b8?auto=format&fit=crop&w=800&q=80',
   },
   {
     id: '05',
@@ -62,6 +68,7 @@ const SERVICES: Service[] = [
       'Smart contract development, DApp architecture, and Web3 wallet integration — from ERC-20 tokens to multi-chain DeFi protocols.',
     tags: ['Solidity', 'Ethers.js', 'Hardhat', 'IPFS'],
     category: 'Web3',
+    image: 'https://images.unsplash.com/photo-1639762681485-074b7f938ba0?auto=format&fit=crop&w=800&q=80',
   },
   {
     id: '06',
@@ -71,6 +78,7 @@ const SERVICES: Service[] = [
       'Deep optimisation of existing products — Core Web Vitals, bundle splitting, caching strategies, and Lighthouse 100 audits.',
     tags: ['Lighthouse', 'Web Vitals', 'CDN', 'Caching'],
     category: 'Optimisation',
+    image: 'https://images.unsplash.com/photo-1460925895917-afdab827c52f?auto=format&fit=crop&w=800&q=80',
   },
   {
     id: '07',
@@ -80,6 +88,7 @@ const SERVICES: Service[] = [
       'Scalable REST and GraphQL APIs with Node.js, Express, and PostgreSQL — including JWT auth, session handling, and protected route architecture.',
     tags: ['Node.js', 'Express', 'MongoDB', 'JWT'],
     category: 'Backend',
+    image: 'https://images.unsplash.com/photo-1544197150-b99a580bb7a8?auto=format&fit=crop&w=800&q=80',
   },
   {
     id: '08',
@@ -89,6 +98,7 @@ const SERVICES: Service[] = [
       'Multi-site VPS management, CI/CD pipelines via GitHub Actions, SSL via Certbot, and full email infrastructure with SPF, DKIM, and DMARC.',
     tags: ['Nginx', 'PM2', 'GitHub Actions', 'Docker'],
     category: 'DevOps',
+    image: 'https://images.unsplash.com/photo-1618401471353-b98afee0b2eb?auto=format&fit=crop&w=800&q=80',
   },
   {
     id: '09',
@@ -98,135 +108,142 @@ const SERVICES: Service[] = [
       'Production-grade e-commerce platforms and SaaS dashboards — product catalogues, payment gateways, subscription logic, and admin panels.',
     tags: ['Next.js', 'Stripe', 'Tailwind', 'SaaS'],
     category: 'Commerce',
+    image: 'https://images.unsplash.com/photo-1556742049-0a67568a0d70?auto=format&fit=crop&w=800&q=80',
   },
 ] as const;
 
-/** Avoid re-trigger flicker: once + modest amount; no AnimatePresence on static grid */
 const VIEWPORT = { once: true, amount: 0.2 as const, margin: '0px 0px -40px 0px' };
 
 export function Services() {
   return (
     <section
       id="services"
-      className="py-32 bg-[#060B16] relative overflow-hidden font-orbitron text-[#39FF14]"
+      className="py-28 bg-[#030712] relative overflow-hidden font-orbitron text-white"
     >
-      <div
-        className="absolute inset-0 pointer-events-none bg-[linear-gradient(rgba(18,16,16,0)_50%,rgba(0,0,0,0.25)_50%),linear-gradient(90deg,rgba(255,0,0,0.06),rgba(0,255,0,0.02),rgba(0,0,255,0.06))] z-10 bg-[length:100%_2px,3px_100%] opacity-20"
-        aria-hidden="true"
-      />
+      {/* Subtle Ambient Background Gradients */}
+      <div className="absolute inset-0 opacity-20 pointer-events-none" aria-hidden="true">
+        <div className="absolute bottom-1/3 right-1/4 w-[600px] h-[400px] bg-[#39FF14]/10 blur-[150px] rounded-full" />
+      </div>
 
-      <div className="container mx-auto px-6 relative z-20">
-        <div className="flex flex-col lg:flex-row justify-between items-start lg:items-end mb-20 gap-8">
-          <div>
-            <div className="flex items-center gap-3 text-[#39FF14] text-[10px] tracking-[0.4em] uppercase mb-4 font-bold">
-              <FiTerminal className="animate-pulse" aria-hidden="true" />
-              <span>Services</span>
-            </div>
-            <h2 className="text-4xl md:text-6xl font-black text-white tracking-tight leading-none">
-              Full-Stack Engineering Services
-            </h2>
+      <div className="container mx-auto px-6 relative z-10 max-w-7xl">
+        
+        {/* Section Header with Paragraph Subtitle */}
+        <div className="mb-16">
+          <div className="inline-flex items-center gap-2 border border-[#39FF14]/40 bg-[#39FF14]/5 px-3.5 py-1.5 mb-4 rounded-md text-xs tracking-[0.25em] text-[#39FF14] uppercase">
+            <FiTerminal className="animate-pulse" aria-hidden="true" />
+            <span>Capabilities &amp; Expertise</span>
           </div>
+          
+          <h2 className="text-3xl md:text-5xl font-extrabold text-white tracking-tight leading-tight mb-4">
+            Full-Stack Engineering Services
+          </h2>
 
-          <div className="flex items-center gap-3 border border-[#39FF14]/30 bg-[#39FF14]/5 px-5 py-3">
-            <span className="relative flex h-2 w-2" aria-hidden="true">
-              <span className="animate-ping absolute inline-flex h-full w-full rounded-full bg-[#39FF14] opacity-75" />
-              <span className="relative inline-flex rounded-full h-2 w-2 bg-[#39FF14]" />
-            </span>
-            <span className="text-[10px] uppercase tracking-[0.3em] font-bold">
-              {SERVICES.length} Services
-            </span>
-          </div>
+          <p className="max-w-3xl text-sm md:text-base text-white/70 font-sans leading-relaxed">
+            From initial product architecture to cloud deployments and smart contracts, I deliver scalable, production-grade applications engineered for performance, security, and growth.
+          </p>
         </div>
 
-        <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-px bg-white/20 border border-white/20 mb-20">
+        {/* Services Cards Grid */}
+        <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6 mb-16">
           {SERVICES.map((service, index) => (
             <motion.article
               key={service.id}
-              initial={{ opacity: 0, y: 12 }}
+              initial={{ opacity: 0, y: 16 }}
               whileInView={{ opacity: 1, y: 0 }}
               transition={{
-                duration: 0.35,
-                delay: Math.min(index * 0.05, 0.25),
+                duration: 0.4,
+                delay: Math.min(index * 0.04, 0.2),
                 ease: 'easeOut',
               }}
               viewport={VIEWPORT}
-              className="bg-[#0A1221] group relative p-8 md:p-10 flex flex-col min-h-[420px] hover:bg-[#39FF14]/[0.05] transition-colors duration-300 overflow-hidden"
+              className="relative overflow-hidden border border-white/10 rounded-xl p-8 flex flex-col justify-between hover:border-[#39FF14]/50 transition-all duration-300 group shadow-xl min-h-[420px]"
             >
-              <div className="flex items-center justify-between mb-6">
-                <div className="flex items-center gap-2">
-                  <div className="w-2 h-2 bg-[#39FF14] shadow-[0_0_8px_#39FF14]" aria-hidden="true" />
-                  <span className="text-[10px] font-bold text-[#39FF14] uppercase tracking-tighter">
-                    {service.id}
+              {/* Background Image with Dark Overlay */}
+              <div className="absolute inset-0 -z-10 overflow-hidden">
+                <Image
+                  src={service.image}
+                  alt={service.title}
+                  fill
+                  sizes="(max-width: 768px) 100vw, (max-width: 1200px) 50vw, 33vw"
+                  className="object-cover object-center scale-100 group-hover:scale-105 transition-transform duration-700 opacity-20"
+                />
+                <div className="absolute inset-0 bg-gradient-to-t from-[#0B132B] via-[#0B132B]/90 to-[#0B132B]/80" />
+              </div>
+
+              {/* Card Content */}
+              <div>
+                {/* Header: ID & Category Badge */}
+                <div className="flex items-center justify-between mb-6">
+                  <div className="flex items-center gap-2">
+                    <span className="w-1.5 h-1.5 rounded-full bg-[#39FF14]" aria-hidden="true" />
+                    <span className="text-xs font-mono font-bold text-[#39FF14]">
+                      {service.id}
+                    </span>
+                  </div>
+                  <span className="text-[10px] uppercase tracking-[0.2em] font-medium text-white/50 border border-white/10 bg-black/40 backdrop-blur-sm px-2.5 py-1 rounded-md">
+                    {service.category}
                   </span>
                 </div>
-                <span className="text-[9px] uppercase tracking-[0.3em] opacity-30 border border-[#39FF14]/20 px-2 py-0.5">
-                  {service.category}
-                </span>
-              </div>
 
-              <div
-                className="text-3xl text-white/30 mb-6 group-hover:text-[#39FF14] group-hover:scale-110 transition-all duration-300"
-                aria-hidden="true"
-              >
-                {service.icon}
-              </div>
+                {/* Icon */}
+                <div
+                  className="w-12 h-12 rounded-lg bg-[#39FF14]/10 border border-[#39FF14]/20 flex items-center justify-center text-2xl text-[#39FF14] mb-6 group-hover:scale-105 transition-transform"
+                  aria-hidden="true"
+                >
+                  {service.icon}
+                </div>
 
-              <h3 className="text-2xl font-black text-white mb-4 uppercase leading-tight group-hover:text-[#39FF14] transition-colors">
-                {service.title}
-              </h3>
+                {/* Title */}
+                <h3 className="text-xl font-bold text-white mb-3 tracking-wide">
+                  {service.title}
+                </h3>
 
-              <div className="flex-grow mb-6">
-                <p className="text-white/60 text-sm font-sans leading-relaxed group-hover:text-white/80 transition-colors">
+                {/* Description */}
+                <p className="text-white/70 text-sm font-sans leading-relaxed mb-6">
                   {service.description}
                 </p>
               </div>
 
-              <ul className="flex flex-wrap gap-2 mb-8" aria-label="Technologies">
-                {service.tags.map((tag) => (
-                  <li
-                    key={tag}
-                    className="text-[9px] text-[#39FF14] border border-[#39FF14]/40 bg-[#39FF14]/5 px-2 py-1 uppercase font-bold tracking-tighter"
+              <div>
+                {/* Tags */}
+                <ul className="flex flex-wrap gap-1.5 mb-6" aria-label="Technologies">
+                  {service.tags.map((tag) => (
+                    <li
+                      key={tag}
+                      className="text-[10px] text-white/80 bg-black/40 border border-white/10 px-2.5 py-1 rounded-md font-sans backdrop-blur-sm"
+                    >
+                      {tag}
+                    </li>
+                  ))}
+                </ul>
+
+                {/* Card Action Link */}
+                <div className="pt-4 border-t border-white/10">
+                  <Link
+                    href="#contact"
+                    aria-label={`Enquire about ${service.title}`}
+                    className="inline-flex items-center gap-2 text-xs font-bold uppercase text-[#39FF14] tracking-wider hover:text-white transition-colors group/link"
                   >
-                    {tag}
-                  </li>
-                ))}
-              </ul>
-
-              <div className="pt-6 border-t border-white/10 mt-auto">
-                <Link
-                  href="#contact"
-                  aria-label={`Enquire about ${service.title}`}
-                  className="flex items-center justify-center gap-2 py-3 bg-[#39FF14] text-black text-[10px] font-black uppercase hover:bg-white transition-all shadow-[0_0_15px_rgba(57,255,20,0.2)]"
-                >
-                  <FiZap aria-hidden="true" /> Inquire Now
-                </Link>
+                    <span>Inquire Project</span>
+                    <FiArrowRight className="transition-transform group-hover/link:translate-x-1" aria-hidden="true" />
+                  </Link>
+                </div>
               </div>
-
-              <div
-                className="absolute top-0 right-0 w-16 h-16 border-t-2 border-r-2 border-transparent group-hover:border-[#39FF14] group-hover:drop-shadow-[0_0_6px_#39FF14] transition-all duration-500"
-                aria-hidden="true"
-              />
             </motion.article>
           ))}
         </div>
 
+        {/* Global CTA */}
         <div className="text-center">
           <Link
             href="/services"
-            className="group relative inline-flex items-center gap-4 bg-[#39FF14] text-black px-12 py-6 font-bold tracking-widest uppercase text-sm hover:bg-white transition-all shadow-[0_0_40px_rgba(57,255,20,0.15)]"
+            className="inline-flex items-center gap-3 bg-[#39FF14] text-black px-10 py-4 rounded-lg font-bold tracking-wider uppercase text-sm hover:bg-white hover:shadow-[0_0_25px_rgba(57,255,20,0.4)] transition-all"
           >
-            <span>View All Services</span>
-            <svg
-              className="w-5 h-5 transition-transform group-hover:translate-x-2"
-              fill="none"
-              stroke="currentColor"
-              viewBox="0 0 24 24"
-              aria-hidden="true"
-            >
-              <path strokeLinecap="round" strokeLinejoin="round" strokeWidth="3" d="M17 8l4 4m0 0l-4 4m4-4H3" />
-            </svg>
+            <span>Explore Custom Requirements</span>
+            <FiArrowRight className="w-4 h-4" aria-hidden="true" />
           </Link>
         </div>
+
       </div>
     </section>
   );
