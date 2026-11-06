@@ -108,11 +108,11 @@ const About = () => (
         ))}
       </div>
 
-      {/* Detailed Layout: Profile Column & Core Competencies */}
-      <div className="grid grid-cols-1 lg:grid-cols-12 gap-12 items-start">
+      {/* Detailed Layout: Profile & Skills Stack */}
+      <div className="grid grid-cols-1 lg:grid-cols-12 gap-8 items-start">
         
         {/* Left Column: Photo & Credentials Card */}
-        <div className="lg:col-span-4">
+        <div className="lg:col-span-4 order-2 lg:order-1">
           <div className="relative bg-[#0B132B]/60 backdrop-blur-md border border-white/10 p-6 rounded-xl shadow-xl">
             <div className="relative w-full aspect-square mb-6 overflow-hidden rounded-lg border border-white/10">
               <Image
@@ -141,23 +141,42 @@ const About = () => (
         </div>
 
         {/* Right Column: Skills & Key Metrics */}
-        <div className="lg:col-span-8 space-y-12">
+        <div className="lg:col-span-8 space-y-8 order-1 lg:order-2">
           
+          {/* Achievement Metrics Strip - move to top on mobile */}
+          <div className="grid grid-cols-2 md:grid-cols-4 gap-4 bg-[#0B132B]/60 backdrop-blur-md border border-white/10 p-5 rounded-xl shadow-xl">
+            {ACHIEVEMENTS.map((item) => (
+              <div key={item.label} className="text-center px-2">
+                <div className="text-2xl md:text-3xl font-extrabold text-white mb-1 tracking-tight">
+                  {'static' in item && item.static ? (
+                    <span className="text-[#39FF14]">{item.static}</span>
+                  ) : (
+                    <>
+                      <AnimatedCounter from={0} to={item.number as number} duration={1.2} />
+                      <span className="text-[#39FF14]">{item.suffix}</span>
+                    </>
+                  )}
+                </div>
+                <div className="text-[10px] uppercase tracking-[0.2em] text-white/50">{item.label}</div>
+              </div>
+            ))}
+          </div>
+
           {/* Core Competencies */}
-          <div className="bg-[#0B132B]/40 backdrop-blur-md border border-white/10 p-8 rounded-xl shadow-xl">
-            <h3 className="text-xs tracking-[0.3em] uppercase text-white/40 mb-8 font-semibold flex items-center gap-3">
+          <div className="bg-[#0B132B]/40 backdrop-blur-md border border-white/10 p-6 md:p-8 rounded-xl shadow-xl">
+            <h3 className="text-xs tracking-[0.3em] uppercase text-white/40 mb-6 md:mb-8 font-semibold flex items-center gap-3">
               <span className="w-8 h-px bg-[#39FF14]" />
               Technical Competencies
             </h3>
             
-            <div className="grid grid-cols-1 md:grid-cols-2 gap-5">
+            <div className="grid grid-cols-1 md:grid-cols-2 gap-4 md:gap-5">
               {SKILLS.map((skill) => (
                 <div
                   key={skill.name}
-                  className="bg-black/30 border border-white/5 p-4 rounded-lg hover:border-[#39FF14]/30 transition-colors group"
+                  className="bg-black/30 border border-white/5 p-3 md:p-4 rounded-lg hover:border-[#39FF14]/30 transition-colors group"
                 >
-                  <div className="flex items-center justify-between mb-3">
-                    <div className="flex items-center gap-2.5">
+                  <div className="flex items-center justify-between mb-2 md:mb-3">
+                    <div className="flex items-center gap-2 md:gap-2.5">
                       <span className="text-base text-[#39FF14] group-hover:scale-110 transition-transform" aria-hidden="true">
                         {skill.icon}
                       </span>
@@ -185,25 +204,6 @@ const About = () => (
                 </div>
               ))}
             </div>
-          </div>
-
-          {/* Achievement Metrics Strip */}
-          <div className="grid grid-cols-2 md:grid-cols-4 gap-6 bg-[#0B132B]/60 backdrop-blur-md border border-white/10 p-6 rounded-xl shadow-xl">
-            {ACHIEVEMENTS.map((item) => (
-              <div key={item.label} className="text-center md:text-left px-2">
-                <div className="text-2xl md:text-3xl font-extrabold text-white mb-1 tracking-tight">
-                  {'static' in item && item.static ? (
-                    <span className="text-[#39FF14]">{item.static}</span>
-                  ) : (
-                    <>
-                      <AnimatedCounter from={0} to={item.number as number} duration={1.2} />
-                      <span className="text-[#39FF14]">{item.suffix}</span>
-                    </>
-                  )}
-                </div>
-                <div className="text-[10px] uppercase tracking-[0.2em] text-white/50">{item.label}</div>
-              </div>
-            ))}
           </div>
 
         </div>
