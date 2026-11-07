@@ -101,21 +101,25 @@ export default function RootLayout({
   return (
     <html lang="en" dir="ltr">
       <head>
-        <Script id="deferred-third-party" strategy="lazyOnload">
+        <Script id="gtm-on-interaction" strategy="lazyOnload">
           {`
             (function() {
-              function loadThirdParty() {
+              var loaded = false;
+              function loadGTM() {
+                if (loaded) return;
+                loaded = true;
                 (function(w,d,s,l,i){w[l]=w[l]||[];w[l].push({'gtm.start':
                 new Date().getTime(),event:'gtm.js'});var f=d.getElementsByTagName(s)[0],
                 j=d.createElement(s),dl=l!='dataLayer'?'&l='+l:'';j.async=true;j.src=
                 'https://www.googletagmanager.com/gtm.js?id='+i+dl;f.parentNode.insertBefore(j,f);
                 })(window,document,'script','dataLayer','GTM-P3GKJN4G');
+                ['click','scroll','keydown','touchstart'].forEach(function(ev) {
+                  document.removeEventListener(ev, loadGTM, true);
+                });
               }
-              if ('requestIdleCallback' in window) {
-                requestIdleCallback(loadThirdParty, { timeout: 4000 });
-              } else {
-                setTimeout(loadThirdParty, 3000);
-              }
+              ['click','scroll','keydown','touchstart'].forEach(function(ev) {
+                document.addEventListener(ev, loadGTM, { capture: true, passive: true, once: true });
+              });
             })();
           `}
         </Script>
