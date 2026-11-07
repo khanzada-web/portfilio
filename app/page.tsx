@@ -1,22 +1,23 @@
 import type { Metadata } from "next";
+import dynamic from "next/dynamic";
 
 import { Header } from "./components/layout/Header";
 import { Footer } from "./components/layout/Footer";
 
 import { Hero } from "./components/sections/Hero";
-import About from "./components/sections/About";
-import { Services } from "./components/sections/Services";
-import { GlobalImpact } from "./components/sections/GlobalImpact";
-import { TechArchitecture } from "./components/sections/TechArchitecture";
-import { SaasProjects } from "./components/sections/SaasProjects";
-import { Process } from "./components/sections/Process";
-import Portfolio from "./components/sections/Portfolio";
-import { PerformanceLab } from "./components/sections/PerformanceLab";
-import { Testimonials } from "./components/sections/Testimonials";
-import { FAQ } from "./components/sections/FAQ";
-import { Contact } from "./components/sections/Contact";
-
 import { FAQSchema } from "./components/seo/FAQSchema";
+
+const About = dynamic(() => import("./components/sections/About"), { ssr: true });
+const Services = dynamic(() => import("./components/sections/Services").then(m => ({ default: m.Services })), { ssr: true });
+const GlobalImpact = dynamic(() => import("./components/sections/GlobalImpact").then(m => ({ default: m.GlobalImpact })), { ssr: true });
+const TechArchitecture = dynamic(() => import("./components/sections/TechArchitecture").then(m => ({ default: m.TechArchitecture })), { ssr: true });
+const SaasProjects = dynamic(() => import("./components/sections/SaasProjects").then(m => ({ default: m.SaasProjects })), { ssr: true });
+const Process = dynamic(() => import("./components/sections/Process").then(m => ({ default: m.Process })), { ssr: true });
+const Portfolio = dynamic(() => import("./components/sections/Portfolio"), { ssr: true });
+const PerformanceLab = dynamic(() => import("./components/sections/PerformanceLab").then(m => ({ default: m.PerformanceLab })), { ssr: true });
+const Testimonials = dynamic(() => import("./components/sections/Testimonials").then(m => ({ default: m.Testimonials })), { ssr: true });
+const FAQ = dynamic(() => import("./components/sections/FAQ").then(m => ({ default: m.FAQ })), { ssr: true });
+const Contact = dynamic(() => import("./components/sections/Contact").then(m => ({ default: m.Contact })), { ssr: true });
 
 export const metadata: Metadata = {
   title: "Hire Best Next.js 16 Full-Stack Web3 Developer for SaaS & DApps 2026 | Mussawar Hayat",
@@ -35,23 +36,14 @@ export const metadata: Metadata = {
     "remote full-stack developer",
     "Mussawar Hayat",
   ],
-  alternates: {
-    canonical: "/",
-  },
+  alternates: { canonical: "/" },
   openGraph: {
     title: "Hire Mussawar Hayat | Full-Stack & Web3 Developer",
     description:
       "Mussawar Hayat is a full-stack developer specializing in Next.js, React, TypeScript, Node.js and Web3. Available for remote freelance projects worldwide.",
     url: "https://mussawarhayat.site",
     type: "website",
-    images: [
-      {
-        url: "/my-pic.jpeg",
-        width: 1200,
-        height: 630,
-        alt: "Mussawar Hayat — Full-Stack & Web3 Developer portrait",
-      },
-    ],
+    images: [{ url: "/my-pic.jpeg", width: 1200, height: 630, alt: "Mussawar Hayat — Full-Stack & Web3 Developer portrait" }],
   },
   twitter: {
     card: "summary_large_image",
@@ -63,61 +55,23 @@ export const metadata: Metadata = {
 };
 
 const FAQ_ITEMS = [
-  {
-    question: "What technologies does Mussawar Hayat work with?",
-    answer:
-      "Mussawar Hayat specializes in React, Next.js, Node.js, and TypeScript for full-stack web development. For mobile apps he uses React Native and Flutter. For Web3 and blockchain projects he works with Solidity, Ethers.js, Hardhat, Ethereum, Polygon, and Bitcoin Ordinals. He also handles DevOps including Nginx, PM2, GitHub Actions, Docker, and VPS deployment.",
-  },
-  {
-    question: "Does Mussawar Hayat work with international clients?",
-    answer:
-      "Yes. Mussawar Hayat works remotely with clients worldwide, including North America and Europe, and is set up for async communication across EST, PST, and CET time zones. GDPR-compliant infrastructure is available where needed.",
-  },
-  {
-    question: "What is Mussawar Hayat's development process?",
-    answer:
-      "Projects start with logic discovery and requirements analysis, then architecture design, iterative implementation with TypeScript and modern frameworks, testing and security review, and production deployment with CI/CD, SSL, and monitoring. One engineer owns the work end-to-end from frontend to infrastructure.",
-  },
-  {
-    question: "Do you build both the frontend and backend?",
-    answer:
-      "Yes. Mussawar Hayat handles full-stack development end-to-end — React/Next.js frontends, Node.js backends, databases, and deployment/DevOps — so clients do not need to coordinate multiple specialists.",
-  },
-  {
-    question: "Can you add blockchain or Web3 features to an existing app?",
-    answer:
-      "Yes. He integrates wallet connections, smart contracts, DeFi and NFT functionality, and Bitcoin Ordinals into existing web and mobile applications using Solidity and Ethers.js.",
-  },
-  {
-    question: "How do pricing and engagement models work?",
-    answer:
-      "Typical options are fixed-price for clearly scoped projects, hourly for evolving or consulting work, and monthly retainers for continuous product development. Exact ranges depend on scope — share your project details and you will get a clear proposal. Response is usually within 24 hours.",
-  },
-  {
-    question: "How can I hire Mussawar Hayat for a project?",
-    answer:
-      "Contact him through the contact form on https://mussawarhayat.site/contact, or via LinkedIn (https://www.linkedin.com/in/mussawar-hayat-187768233) or email (zada38843@gmail.com). Engagement models range from short-term consulting to full long-term project development.",
-  },
-  {
-    question: "Can you build a production Next.js SaaS from scratch?",
-    answer:
-      "Yes. Typical SaaS work includes Next.js App Router, TypeScript, Prisma and PostgreSQL, authentication, Stripe billing, admin dashboards, and CI/CD to a VPS or managed host. One engineer owns frontend, API, data, and deployment.",
-  },
-  {
-    question: "Do you audit or harden existing Next.js and Web3 codebases?",
-    answer:
-      "Yes. Common reviews cover Server Actions auth, Prisma connection pooling, wallet connection flows, smart-contract integration safety, Core Web Vitals, and production Docker or Nginx deployments.",
-  },
+  { question: "What technologies does Mussawar Hayat work with?", answer: "Mussawar Hayat specializes in React, Next.js, Node.js, and TypeScript for full-stack web development. For mobile apps he uses React Native and Flutter. For Web3 and blockchain projects he works with Solidity, Ethers.js, Hardhat, Ethereum, Polygon, and Bitcoin Ordinals. He also handles DevOps including Nginx, PM2, GitHub Actions, Docker, and VPS deployment." },
+  { question: "Does Mussawar Hayat work with international clients?", answer: "Yes. Mussawar Hayat works remotely with clients worldwide, including North America and Europe, and is set up for async communication across EST, PST, and CET time zones. GDPR-compliant infrastructure is available where needed." },
+  { question: "What is Mussawar Hayat's development process?", answer: "Projects start with logic discovery and requirements analysis, then architecture design, iterative implementation with TypeScript and modern frameworks, testing and security review, and production deployment with CI/CD, SSL, and monitoring. One engineer owns the work end-to-end from frontend to infrastructure." },
+  { question: "Do you build both the frontend and backend?", answer: "Yes. Mussawar Hayat handles full-stack development end-to-end — React/Next.js frontends, Node.js backends, databases, and deployment/DevOps — so clients do not need to coordinate multiple specialists." },
+  { question: "Can you add blockchain or Web3 features to an existing app?", answer: "Yes. He integrates wallet connections, smart contracts, DeFi and NFT functionality, and Bitcoin Ordinals into existing web and mobile applications using Solidity and Ethers.js." },
+  { question: "How do pricing and engagement models work?", answer: "Typical options are fixed-price for clearly scoped projects, hourly for evolving or consulting work, and monthly retainers for continuous product development. Exact ranges depend on scope — share your project details and you will get a clear proposal. Response is usually within 24 hours." },
+  { question: "How can I hire Mussawar Hayat for a project?", answer: "Contact him through the contact form on https://mussawarhayat.site/contact, or via LinkedIn (https://www.linkedin.com/in/mussawar-hayat-187768233) or email (zada38843@gmail.com). Engagement models range from short-term consulting to full long-term project development." },
+  { question: "Can you build a production Next.js SaaS from scratch?", answer: "Yes. Typical SaaS work includes Next.js App Router, TypeScript, Prisma and PostgreSQL, authentication, Stripe billing, admin dashboards, and CI/CD to a VPS or managed host. One engineer owns frontend, API, data, and deployment." },
+  { question: "Do you audit or harden existing Next.js and Web3 codebases?", answer: "Yes. Common reviews cover Server Actions auth, Prisma connection pooling, wallet connection flows, smart-contract integration safety, Core Web Vitals, and production Docker or Nginx deployments." },
 ] as const;
 
 export default function Home() {
   return (
     <>
       <FAQSchema faqs={FAQ_ITEMS} />
-
       <div className="min-h-screen bg-white font-sans">
         <Header />
-
         <main id="main-content" role="main">
           <Hero />
           <About />
@@ -132,7 +86,6 @@ export default function Home() {
           <FAQ items={FAQ_ITEMS} />
           <Contact />
         </main>
-
         <Footer />
       </div>
     </>
