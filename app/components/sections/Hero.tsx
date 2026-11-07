@@ -2,7 +2,7 @@ import dynamic from 'next/dynamic';
 import { HeroStatic } from './HeroStatic';
 
 const HeroStack = dynamic(() => import('./HeroStack').then((m) => m.HeroStack), {
-  ssr: true,
+  ssr: false,
   loading: () => (
     <div
       className="mx-auto w-full max-w-[480px] rounded-xl border border-white/10 bg-white/[0.02]"

@@ -1,7 +1,6 @@
 'use client';
 
 import { useEffect, useRef, useState, type KeyboardEvent } from 'react';
-import { useReducedMotion } from 'framer-motion';
 
 const LAYERS = [
   { name: 'Interface', summary: 'Fast, accessible front ends that rank well and turn visitors into customers.', stack: ['Next.js', 'React', 'TypeScript', 'Tailwind CSS'] },
@@ -45,7 +44,7 @@ function Slab({ index, active, offset, onSelect }: { index: number; active: bool
 }
 
 export function HeroStack() {
-  const reduce = !!useReducedMotion();
+  const reduce = typeof window !== 'undefined' && window.matchMedia('(prefers-reduced-motion: reduce)').matches;
   const tabRefs = useRef<(HTMLButtonElement | null)[]>([]);
   const [active, setActive] = useState(0);
   const [paused, setPaused] = useState(false);
