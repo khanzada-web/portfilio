@@ -8,6 +8,12 @@
     "start": "next start",
     "lint": "eslint"
   },
+  "browserslist": [
+    "last 2 Chrome versions",
+    "last 2 Firefox versions",
+    "last 2 Safari versions",
+    "last 2 Edge versions"
+  ],
   "dependencies": {
     "@fontsource/manrope": "^5.3.0",
     "@fontsource/roboto": "^5.3.0",
