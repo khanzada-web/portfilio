@@ -1,7 +1,6 @@
 import type { Metadata, Viewport } from "next";
 import { Geist, Geist_Mono, Orbitron } from "next/font/google";
 import "./globals.css";
-import { GoogleTagManager } from "@next/third-parties/google";
 import Script from "next/script";
 
 const geistSans = Geist({
@@ -102,19 +101,24 @@ export default function RootLayout({
   return (
     <html lang="en" dir="ltr">
       <head>
-        <Script
-          src="https://pagead2.googlesyndication.com/pagead/js/adsbygoogle.js?client=ca-pub-9383132900869188"
-          strategy="lazyOnload"
-          crossOrigin="anonymous"
-        />
-        <GoogleTagManager gtmId="GTM-P3GKJN4G" />
-        {process.env.NEXT_PUBLIC_CRM_TRACKING_SRC && (
-          <script
-            async
-            src={process.env.NEXT_PUBLIC_CRM_TRACKING_SRC}
-            data-site-key={process.env.NEXT_PUBLIC_CRM_TRACKING_KEY}
-          />
-        )}
+        <Script id="deferred-third-party" strategy="lazyOnload">
+          {`
+            (function() {
+              function loadThirdParty() {
+                (function(w,d,s,l,i){w[l]=w[l]||[];w[l].push({'gtm.start':
+                new Date().getTime(),event:'gtm.js'});var f=d.getElementsByTagName(s)[0],
+                j=d.createElement(s),dl=l!='dataLayer'?'&l='+l:'';j.async=true;j.src=
+                'https://www.googletagmanager.com/gtm.js?id='+i+dl;f.parentNode.insertBefore(j,f);
+                })(window,document,'script','dataLayer','GTM-P3GKJN4G');
+              }
+              if ('requestIdleCallback' in window) {
+                requestIdleCallback(loadThirdParty, { timeout: 4000 });
+              } else {
+                setTimeout(loadThirdParty, 3000);
+              }
+            })();
+          `}
+        </Script>
         <link rel="icon" type="image/webp" href="/logo.webp" />
         <link rel="icon" type="image/png" href="/logo-optimized.png" />
         <link rel="shortcut icon" href="/logo.webp" />
