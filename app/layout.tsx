@@ -2,6 +2,7 @@ import type { Metadata, Viewport } from "next";
 import { Geist, Geist_Mono, Orbitron } from "next/font/google";
 import "./globals.css";
 import { GoogleTagManager } from "@next/third-parties/google";
+import Script from "next/script";
 
 const geistSans = Geist({
   variable: "--font-geist-sans",
@@ -27,14 +28,11 @@ export const metadata: Metadata = {
     default: "Hire Next.js 16 Full-Stack & Web3 Developer | Mussawar Hayat",
     template: "%s | Mussawar Hayat",
   },
-
   description:
     "Hire Mussawar Hayat, Next.js 16 full-stack & Web3 developer for production SaaS, React/TypeScript apps, Solidity DApps, and Core Web Vitals optimization. Remote freelance for North America & Europe.",
-
   authors: [{ name: "Mussawar Hayat", url: "https://mussawarhayat.site" }],
   creator: "Mussawar Hayat",
   publisher: "Mussawar Hayat",
-
   metadataBase: new URL("https://mussawarhayat.site"),
   alternates: {
     canonical: "/",
@@ -42,7 +40,6 @@ export const metadata: Metadata = {
       "application/rss+xml": "https://mussawarhayat.site/feed.xml",
     },
   },
-
   robots: {
     index: true,
     follow: true,
@@ -54,13 +51,11 @@ export const metadata: Metadata = {
       "max-snippet": -1,
     },
   },
-
   formatDetection: {
     email: false,
     address: false,
     telephone: false,
   },
-
   openGraph: {
     type: "website",
     locale: "en_US",
@@ -78,7 +73,6 @@ export const metadata: Metadata = {
       },
     ],
   },
-
   twitter: {
     card: "summary_large_image",
     title: "Hire Top Next.js 16 Full-Stack Web3 Developer 2026 | Mussawar Hayat",
@@ -87,11 +81,9 @@ export const metadata: Metadata = {
     images: ["/my-pic.jpeg"],
     creator: "@Mussawar_Hayat",
   },
-
   verification: {
     google: "sbASvcj9B1fGob3o9CIA4dV9OHwje27VXmnM23IaWJ8",
   },
-
   other: {
     "google-adsense-account": "ca-pub-9383132900869188",
   },
@@ -104,172 +96,18 @@ export const viewport: Viewport = {
   ],
 };
 
-const ENTITY_GRAPH = {
-  "@context": "https://schema.org",
-  "@graph": [
-    {
-      "@type": "WebSite",
-      "@id": "https://mussawarhayat.site/#website",
-      url: "https://mussawarhayat.site",
-      name: "Hire Best Next.js 16 Full-Stack Web3 Developer 2026 | Mussawar Hayat",
-      description:
-        "Best Next.js 16 full-stack and Web3 developer for hire in 2026. Remote freelance for clients in North America and Europe.",
-      publisher: { "@id": "https://mussawarhayat.site/#person" },
-      inLanguage: "en",
-    },
-    {
-      "@type": "Person",
-      "@id": "https://mussawarhayat.site/#person",
-      name: "Mussawar Hayat",
-      jobTitle: "Best Next.js 16 Full-Stack Developer & Web3 Specialist",
-      url: "https://mussawarhayat.site",
-      image: "https://mussawarhayat.site/my-pic.jpeg",
-      email: "zada38843@gmail.com",
-      telephone: "+923358328468",
-      description:
-        "Expert Next.js 16 full-stack and Web3 developer specializing in React, TypeScript, Node.js, Solidity smart contracts. Remote freelance for North America and Europe.",
-      address: {
-        "@type": "PostalAddress",
-        streetAddress: "Mehria Town",
-        addressLocality: "Attock",
-        addressRegion: "Punjab",
-        addressCountry: "PK",
-      },
-      sameAs: [
-        "https://github.com/khanzada-web",
-        "https://www.linkedin.com/in/mussawar-hayat-187768233",
-        "https://twitter.com/Mussawar_Hayat",
-        "https://x.com/Mussawar_Hayat",
-      ],
-      knowsAbout: [
-        "Next.js 16",
-        "React",
-        "TypeScript",
-        "Node.js",
-        "Prisma",
-        "PostgreSQL",
-        "Solidity",
-        "Web3",
-        "Ethers.js",
-        "Bitcoin Ordinals",
-        "React Native",
-        "Flutter",
-        "DevOps",
-        "Nginx",
-        "PM2",
-        "GitHub Actions",
-        "Docker",
-        "SaaS Development",
-        "DeFi",
-        "Smart Contracts",
-        "Core Web Vitals",
-      ],
-      worksFor: { "@id": "https://mussawarhayat.site/#business" },
-      areaServed: [
-        { "@type": "Country", name: "United States" },
-        { "@type": "Country", name: "Canada" },
-        { "@type": "Country", name: "United Kingdom" },
-        { "@type": "Country", name: "Germany" },
-        { "@type": "Place", name: "Worldwide" },
-      ],
-      availableLanguage: ["English"],
-    },
-    {
-      "@type": ["ProfessionalService", "LocalBusiness"],
-      "@id": "https://mussawarhayat.site/#business",
-      name: "Mussawar Hayat — Best Next.js 16 Full-Stack & Web3 Development",
-      url: "https://mussawarhayat.site",
-      image: "https://mussawarhayat.site/my-pic.jpeg",
-      description:
-        "Freelance expert Next.js 16 full-stack and Web3 services: React, TypeScript, Node.js, Solidity, mobile, DevOps, and high-performance SaaS. Remote worldwide.",
-      email: "zada38843@gmail.com",
-      telephone: "+923358328468",
-      priceRange: "$$",
-      address: {
-        "@type": "PostalAddress",
-        streetAddress: "Mehria Town",
-        addressLocality: "Attock",
-        addressRegion: "Punjab",
-        addressCountry: "PK",
-      },
-      areaServed: [
-        { "@type": "Place", name: "North America" },
-        { "@type": "Place", name: "Europe" },
-        { "@type": "Place", name: "Global Remote" },
-      ],
-      founder: { "@id": "https://mussawarhayat.site/#person" },
-      employee: { "@id": "https://mussawarhayat.site/#person" },
-      hasOfferCatalog: { "@id": "https://mussawarhayat.site/#services" },
-    },
-    {
-      "@type": "OfferCatalog",
-      "@id": "https://mussawarhayat.site/#services",
-      name: "Full-Stack Engineering Services",
-      itemListElement: [
-        {
-          "@type": "Offer",
-          itemOffered: {
-            "@type": "Service",
-            name: "Next.js 16 Full-Stack Web Architecture",
-            description:
-              "High-performance Next.js 16 and React applications with SSR, ISR, TypeScript, Core Web Vitals optimization, and SEO-ready architecture.",
-          },
-        },
-        {
-          "@type": "Offer",
-          itemOffered: {
-            "@type": "Service",
-            name: "Mobile Solutions",
-            description:
-              "Cross-platform iOS and Android apps with React Native and Flutter.",
-          },
-        },
-        {
-          "@type": "Offer",
-          itemOffered: {
-            "@type": "Service",
-            name: "Web3 & Blockchain Development",
-            description:
-              "Smart contracts, DApps, wallet integration, DeFi, NFTs, and Bitcoin Ordinals with Solidity and Ethers.js.",
-          },
-        },
-        {
-          "@type": "Offer",
-          itemOffered: {
-            "@type": "Service",
-            name: "DevOps & Infrastructure",
-            description:
-              "Multi-site VPS, Nginx, PM2, GitHub Actions CI/CD, SSL, and email infrastructure (SPF, DKIM, DMARC).",
-          },
-        },
-        {
-          "@type": "Offer",
-          itemOffered: {
-            "@type": "Service",
-            name: "E-Commerce & SaaS",
-            description:
-              "Production e-commerce and SaaS platforms with Stripe, catalogues, subscriptions, and admin panels.",
-          },
-        },
-      ],
-    },
-  ],
-};
-
 export default function RootLayout({
   children,
 }: Readonly<{ children: React.ReactNode }>) {
   return (
     <html lang="en" dir="ltr">
       <head>
-        <script
-          async
+        <Script
           src="https://pagead2.googlesyndication.com/pagead/js/adsbygoogle.js?client=ca-pub-9383132900869188"
+          strategy="lazyOnload"
           crossOrigin="anonymous"
         />
-
         <GoogleTagManager gtmId="GTM-P3GKJN4G" />
-
         {process.env.NEXT_PUBLIC_CRM_TRACKING_SRC && (
           <script
             async
@@ -277,20 +115,12 @@ export default function RootLayout({
             data-site-key={process.env.NEXT_PUBLIC_CRM_TRACKING_KEY}
           />
         )}
-
         <link rel="icon" type="image/webp" href="/logo.webp" />
         <link rel="icon" type="image/png" href="/logo-optimized.png" />
         <link rel="shortcut icon" href="/logo.webp" />
         <link rel="apple-touch-icon" href="/logo.webp" />
         <link rel="manifest" href="/site.webmanifest" />
-
-        <script
-          type="application/ld+json"
-          suppressHydrationWarning
-          dangerouslySetInnerHTML={{ __html: JSON.stringify(ENTITY_GRAPH) }}
-        />
       </head>
-
       <body
         className={`${geistSans.variable} ${geistMono.variable} ${orbitron.variable} antialiased`}
       >
