@@ -4,6 +4,7 @@ import { Header } from '@/app/components/layout/Header'
 import { Footer } from '@/app/components/layout/Footer'
 import { BreadcrumbSchema } from '@/app/components/seo/BreadcrumbSchema'
 import { FAQSchema } from '@/app/components/seo/FAQSchema'
+import { ArticleSchema } from '@/app/components/seo/ArticleSchema'
 import { notFound } from 'next/navigation'
 import {
   getAllSlugs,
@@ -138,7 +139,7 @@ const postFaqs: Record<string, { question: string; answer: string }[]> = {
     {
       question: 'Is the Edge runtime supported with cacheComponents?',
       answer:
-        'No. Cache Components requires the Node.js runtime. Migrate routes that still set runtime = "edge" before enabling the flag.',
+        'No. Cache Components requires the Node.js runtime. Migrate routes that still set runtime = \"edge\" before enabling the flag.',
     },
   ],
   'how-to-get-500k-views-on-x-2026': [
@@ -227,6 +228,16 @@ const postFaqs: Record<string, { question: string; answer: string }[]> = {
         'Yes. A Server Action is still an HTTP endpoint. Apply the same identity key and budget after you resolve the session.',
     },
   ],
+  'cursor-live-apps-postgres-internal-tools-production-guide-2026': [
+    {
+      question: 'Can Cursor safely modify production Postgres?',
+      answer: 'No. Cursor (or any coding agent) should only operate against local or staging databases with non-production credentials. Production changes go through reviewed migrations and code.',
+    },
+    {
+      question: 'Do I still need a human for internal tools?',
+      answer: 'Yes. The agent accelerates writing, but architecture, security review, and ownership remain with the engineer. Internal tools still handle real business data.',
+    },
+  ],
 }
 
 export function generateStaticParams() {
@@ -296,6 +307,17 @@ export default async function BlogPostPage({
     <>
       <BreadcrumbSchema items={breadcrumbs} />
       {faqs.length > 0 && <FAQSchema faqs={faqs} />}
+      <ArticleSchema
+        title={post.title}
+        description={post.excerpt}
+        url={`https://mussawarhayat.site/blog/${slug}`}
+        datePublished={post.date}
+        author={post.author}
+        authorUrl="https://mussawarhayat.site"
+        category={post.category}
+        keywords={post.keywords}
+        featuredImage="https://mussawarhayat.site/my-pic.jpeg"
+      />
 
       <div className="min-h-screen bg-[#060B16] font-sans">
         <Header />
