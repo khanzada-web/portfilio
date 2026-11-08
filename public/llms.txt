@@ -46,6 +46,7 @@ Mussawar Hayat owns projects end-to-end: frontend, backend, database, DevOps, an
 
 ## Selected blog posts (high-value for AI citation)
 
+- [Building Production Internal Tools with Cursor, Next.js 16, and Postgres (2026 Guide)](https://mussawarhayat.site/blog/cursor-live-apps-postgres-internal-tools-production-guide-2026): Architecture, least-privilege access, Server Actions validation, and deployment patterns for internal tools without giving AI unrestricted database access
 - [Next.js 16 Core Web Vitals Optimization: Production Guide for LCP, INP, and CLS (2026)](https://mussawarhayat.site/blog/nextjs-16-core-web-vitals-optimization-2026): Practical LCP, INP, and CLS improvements for App Router sites with measurement that matches real users
 - [Next.js 16 Sitemap, RSS, and Crawl Signals](https://mussawarhayat.site/blog/nextjs-16-rss-sitemap-crawl-signals-2026): Honest lastmod, RSS from the same post source, feed discovery, canonical leaks, llms.txt vs robots.txt
 - [RSS feed](https://mussawarhayat.site/feed.xml): Article titles, excerpts, and permalinks
