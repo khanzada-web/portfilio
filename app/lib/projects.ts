@@ -1,4 +1,4 @@
-export type ProjectCategory =
+type ProjectCategory =
   | 'metaverse'
   | 'defi'
   | 'nft'

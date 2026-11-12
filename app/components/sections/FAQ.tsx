@@ -1,6 +1,7 @@
-'use client';
-
 import { FiTerminal } from 'react-icons/fi';
+import { Stagger, StaggerItem } from '../motion/Stagger';
+import { SectionGlow } from '../ui/SectionGlow';
+import { SectionHeading } from '../ui/SectionHeading';
 
 interface FAQItem {
   question: string;
@@ -20,57 +21,41 @@ export function FAQ({ items }: FAQProps) {
   return (
     <section
       id="faq"
-      className="py-28 bg-[#030712] text-white font-orbitron relative overflow-hidden border-t border-white/10"
+      className="font-orbitron relative overflow-hidden border-t border-white/10 bg-ink py-28 text-white"
       aria-labelledby="faq-heading"
     >
-      {/* Subtle Ambient Glow */}
-      <div className="absolute inset-0 opacity-20 pointer-events-none" aria-hidden="true">
-        <div className="absolute top-1/3 left-1/2 -translate-x-1/2 w-[600px] h-[500px] bg-[#39FF14]/10 blur-[160px] rounded-full" />
-      </div>
+      <SectionGlow className="left-1/2 top-1/3 h-[500px] w-[600px] -translate-x-1/2" />
 
-      <div className="container mx-auto px-6 max-w-3xl relative z-10">
-        
-        {/* Section Header */}
-        <div className="text-center md:text-left mb-16 space-y-4">
-          <div className="inline-flex items-center gap-2 border border-[#39FF14]/40 bg-[#39FF14]/5 px-3.5 py-1.5 rounded-md text-xs tracking-[0.25em] text-[#39FF14] uppercase">
-            <FiTerminal className="animate-pulse" aria-hidden="true" />
-            <span>FAQ.sys</span>
-          </div>
+      <div className="container relative z-10 mx-auto max-w-3xl px-6">
+        <SectionHeading
+          id="faq-heading"
+          align="responsive"
+          eyebrow="FAQ.sys"
+          icon={<FiTerminal aria-hidden="true" />}
+          title={[{ text: 'Frequently Asked Questions' }]}
+          description="Common questions about working with Mussawar Hayat as a full-stack and Web3 developer."
+        />
 
-          <h2 id="faq-heading" className="text-3xl md:text-5xl font-extrabold text-white tracking-tight leading-tight">
-            Frequently Asked Questions
-          </h2>
-
-          <p className="text-white/70 font-sans text-sm md:text-base max-w-2xl leading-relaxed">
-            Common questions about working with Mussawar Hayat as a full-stack and Web3 developer.
-          </p>
-        </div>
-
-        {/* FAQ Accordion List */}
-        <div className="space-y-4">
+        <Stagger step={0.06} className="space-y-4">
           {items.map((item) => (
-            <details
-              key={item.question}
-              className="group bg-[#0B132B]/60 backdrop-blur-md border border-white/10 rounded-xl overflow-hidden open:border-[#39FF14]/40 transition-all duration-300 shadow-xl"
-            >
-              <summary className="cursor-pointer list-none px-6 py-5 flex items-center justify-between gap-4 text-left hover:bg-white/[0.02] transition-colors">
-                <h3 className="text-sm md:text-base font-bold text-white tracking-wide pr-4">
-                  {item.question}
-                </h3>
-                <span
-                  className="w-8 h-8 rounded-lg bg-[#39FF14]/10 border border-[#39FF14]/20 text-[#39FF14] flex items-center justify-center text-lg shrink-0 group-open:rotate-45 transition-transform duration-300 font-mono"
-                  aria-hidden="true"
-                >
-                  +
-                </span>
-              </summary>
-              <div className="px-6 pb-6 pt-2 border-t border-white/10 bg-black/20">
-                <p className="text-white/75 font-sans text-sm md:text-base leading-relaxed">{item.answer}</p>
-              </div>
-            </details>
+            <StaggerItem key={item.question}>
+              <details className="card group overflow-hidden open:border-neon/40">
+                <summary className="flex cursor-pointer list-none items-center justify-between gap-4 px-6 py-5 text-left transition-colors hover:bg-white/[0.02] focus-visible:outline focus-visible:outline-2 focus-visible:-outline-offset-2 focus-visible:outline-neon">
+                  <h3 className="pr-4 text-sm font-bold tracking-wide text-white md:text-base">{item.question}</h3>
+                  <span
+                    className="flex h-8 w-8 shrink-0 items-center justify-center rounded-lg border border-neon/20 bg-neon/10 font-mono text-lg text-neon transition-transform duration-300 group-open:rotate-45"
+                    aria-hidden="true"
+                  >
+                    +
+                  </span>
+                </summary>
+                <div className="border-t border-white/10 bg-black/20 px-6 pb-6 pt-2">
+                  <p className="animate-fade-up font-sans text-sm leading-relaxed text-white/80 md:text-base">{item.answer}</p>
+                </div>
+              </details>
+            </StaggerItem>
           ))}
-        </div>
-
+        </Stagger>
       </div>
     </section>
   );

@@ -35,16 +35,7 @@ const nextConfig: NextConfig = {
   poweredByHeader: false,
 
   experimental: {
-    optimizePackageImports: [
-      "framer-motion",
-      "react-icons",
-      "react-icons/fa",
-      "react-icons/si",
-      "react-icons/md",
-      "@react-three/fiber",
-      "@react-three/drei",
-      "three",
-    ],
+    optimizePackageImports: ["framer-motion", "react-icons/fi"],
   },
 };
 

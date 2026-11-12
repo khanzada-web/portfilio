@@ -4,7 +4,7 @@ import { Header } from '@/app/components/layout/Header';
 import { Footer } from '@/app/components/layout/Footer';
 import { BreadcrumbSchema } from '@/app/components/seo/BreadcrumbSchema';
 import { PROJECTS } from '@/app/lib/projects';
-import { FiTerminal, FiArrowRight, FiGlobe, FiGithub } from 'react-icons/fi';
+import { FiArrowRight, FiGlobe, FiGithub } from 'react-icons/fi';
 
 export const metadata: Metadata = {
   title: 'Next.js & Web3 Portfolio — Case Studies by Mussawar Hayat',
@@ -47,10 +47,10 @@ export default function PortfolioPage() {
   return (
     <>
       <BreadcrumbSchema items={breadcrumbs} />
-      <div className="min-h-screen bg-[#030712] font-orbitron text-white relative overflow-hidden">
+      <div className="min-h-screen bg-ink font-orbitron text-white relative overflow-hidden">
         {/* Subtle Ambient Glow */}
         <div className="absolute inset-0 opacity-20 pointer-events-none" aria-hidden="true">
-          <div className="absolute top-1/4 left-1/2 -translate-x-1/2 w-[700px] h-[500px] bg-[#39FF14]/10 blur-[160px] rounded-full" />
+          <div className="absolute top-1/4 left-1/2 -translate-x-1/2 w-[700px] h-[500px] bg-neon/10 blur-[160px] rounded-full" />
         </div>
 
         <Header />
@@ -73,8 +73,8 @@ export default function PortfolioPage() {
             {/* Flagship Projects Section */}
             <div className="mb-24">
               <div className="flex items-center gap-3 mb-8">
-                <span className="w-2 h-2 bg-[#39FF14] rounded-full shadow-[0_0_8px_#39FF14]" />
-                <h2 className="text-xs font-mono uppercase tracking-[0.3em] text-[#39FF14]">
+                <span className="w-2 h-2 bg-neon rounded-full shadow-[0_0_8px_#39FF14]" />
+                <h2 className="text-xs font-mono uppercase tracking-[0.3em] text-neon">
                   Flagship Next.js & Web3 Builds
                 </h2>
               </div>
@@ -83,17 +83,17 @@ export default function PortfolioPage() {
                 {flagship.map((p) => (
                   <article
                     key={p.slug}
-                    className="group bg-[#0B132B]/60 backdrop-blur-md border border-white/10 rounded-xl p-8 md:p-10 hover:border-[#39FF14]/40 transition-all duration-300 shadow-xl flex flex-col justify-between"
+                    className="group bg-panel/60 backdrop-blur-md border border-white/10 rounded-xl p-8 md:p-10 hover:border-neon/40 transition-all duration-300 shadow-xl flex flex-col justify-between"
                   >
                     <div>
                       <div className="flex items-center justify-between mb-4">
-                        <span className="text-[10px] font-mono font-bold text-[#39FF14] uppercase tracking-wider">
+                        <span className="text-[10px] font-mono font-bold text-neon uppercase tracking-wider">
                           Flagship_Build
                         </span>
-                        <FiArrowRight className="text-white/30 group-hover:text-[#39FF14] group-hover:translate-x-1 transition-all" />
+                        <FiArrowRight className="text-white/30 group-hover:text-neon group-hover:translate-x-1 transition-all" />
                       </div>
 
-                      <h3 className="text-xl md:text-2xl font-bold text-white mb-3 uppercase tracking-tight group-hover:text-[#39FF14] transition-colors">
+                      <h3 className="text-xl md:text-2xl font-bold text-white mb-3 uppercase tracking-tight group-hover:text-neon transition-colors">
                         <Link href={`/portfolio/${p.slug}`} className="hover:underline">
                           {p.title}
                         </Link>
@@ -118,7 +118,7 @@ export default function PortfolioPage() {
                     <div className="pt-6 border-t border-white/10 flex items-center justify-between gap-4">
                       <Link
                         href={`/portfolio/${p.slug}`}
-                        className="text-xs font-mono font-bold uppercase tracking-widest text-[#39FF14] hover:text-white transition-colors inline-flex items-center gap-2"
+                        className="text-xs font-mono font-bold uppercase tracking-widest text-neon hover:text-white transition-colors inline-flex items-center gap-2"
                       >
                         <span>View Case Study</span>
                         <FiArrowRight />
@@ -130,7 +130,7 @@ export default function PortfolioPage() {
                             href={p.link}
                             target="_blank"
                             rel="noopener noreferrer"
-                            className="p-2.5 rounded-lg border border-white/10 bg-white/[0.02] text-white/70 hover:text-[#39FF14] hover:border-[#39FF14]/40 transition-all"
+                            className="p-2.5 rounded-lg border border-white/10 bg-white/[0.02] text-white/70 hover:text-neon hover:border-neon/40 transition-all"
                             aria-label={`Live demo for ${p.title}`}
                           >
                             <FiGlobe className="w-4 h-4" />
@@ -141,7 +141,7 @@ export default function PortfolioPage() {
                             href={p.github}
                             target="_blank"
                             rel="noopener noreferrer"
-                            className="p-2.5 rounded-lg border border-white/10 bg-white/[0.02] text-white/70 hover:text-[#39FF14] hover:border-[#39FF14]/40 transition-all"
+                            className="p-2.5 rounded-lg border border-white/10 bg-white/[0.02] text-white/70 hover:text-neon hover:border-neon/40 transition-all"
                             aria-label={`Source code for ${p.title}`}
                           >
                             <FiGithub className="w-4 h-4" />
@@ -167,13 +167,13 @@ export default function PortfolioPage() {
                 {archive.map((p) => (
                   <article
                     key={p.slug}
-                    className="group bg-[#0B132B]/40 backdrop-blur-sm border border-white/10 rounded-xl p-6 hover:border-white/25 hover:bg-[#0B132B]/60 transition-all duration-300 flex flex-col justify-between"
+                    className="group bg-panel/40 backdrop-blur-sm border border-white/10 rounded-xl p-6 hover:border-white/25 hover:bg-panel/60 transition-all duration-300 flex flex-col justify-between"
                   >
                     <div>
                       <div className="text-[9px] font-mono font-bold text-white/40 uppercase tracking-wider mb-2">
                         Archive_Module
                       </div>
-                      <h3 className="text-base font-bold text-white mb-2 uppercase tracking-tight group-hover:text-[#39FF14] transition-colors">
+                      <h3 className="text-base font-bold text-white mb-2 uppercase tracking-tight group-hover:text-neon transition-colors">
                         <Link href={`/portfolio/${p.slug}`}>
                           {p.title}
                         </Link>
@@ -189,7 +189,7 @@ export default function PortfolioPage() {
                       </span>
                       <Link
                         href={`/portfolio/${p.slug}`}
-                        className="text-[10px] font-mono font-bold uppercase text-[#39FF14] hover:underline"
+                        className="text-[10px] font-mono font-bold uppercase text-neon hover:underline"
                       >
                         Read →
                       </Link>

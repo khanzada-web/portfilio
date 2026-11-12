@@ -1,12 +1,14 @@
-'use client';
-
 import Link from 'next/link';
-import { motion } from 'framer-motion';
+import type { ReactElement } from 'react';
 import {
   FiMonitor, FiSmartphone, FiActivity, FiShield,
   FiZap, FiLayers, FiServer, FiTerminal, FiShoppingCart, FiArrowRight,
 } from 'react-icons/fi';
-import type { ReactElement } from 'react';
+import { Magnetic } from '../motion/Magnetic';
+import { Reveal } from '../motion/Reveal';
+import { Stagger, StaggerItem } from '../motion/Stagger';
+import { SectionGlow } from '../ui/SectionGlow';
+import { SectionHeading } from '../ui/SectionHeading';
 
 interface Service {
   id: string;
@@ -101,126 +103,80 @@ const SERVICES: Service[] = [
   },
 ] as const;
 
-const VIEWPORT = { once: true, amount: 0.2 as const, margin: '0px 0px -40px 0px' };
-
 export function Services() {
   return (
-    <section
-      id="services"
-      className="py-28 bg-[#030712] relative overflow-hidden font-orbitron text-white"
-    >
-      {/* Subtle Ambient Background Gradients */}
-      <div className="absolute inset-0 opacity-20 pointer-events-none" aria-hidden="true">
-        <div className="absolute bottom-1/3 right-1/4 w-[600px] h-[400px] bg-[#39FF14]/10 blur-[150px] rounded-full" />
-      </div>
+    <section id="services" className="font-orbitron relative overflow-hidden bg-ink py-28 text-white">
+      <SectionGlow className="bottom-1/3 right-1/4 h-[400px] w-[600px]" />
 
-      <div className="container mx-auto px-6 relative z-10 max-w-7xl">
-        
-        {/* Section Header with Paragraph Subtitle */}
-        <div className="mb-16">
-          <div className="inline-flex items-center gap-2 border border-[#39FF14]/40 bg-[#39FF14]/5 px-3.5 py-1.5 mb-4 rounded-md text-xs tracking-[0.25em] text-[#39FF14] uppercase">
-            <FiTerminal className="animate-pulse" aria-hidden="true" />
-            <span>Capabilities &amp; Expertise</span>
-          </div>
-          
-          <h2 className="text-3xl md:text-5xl font-extrabold text-white tracking-tight leading-tight mb-4">
-            Full-Stack Engineering Services
-          </h2>
+      <div className="container relative z-10 mx-auto max-w-7xl px-6">
+        <SectionHeading
+          eyebrow="Capabilities & Expertise"
+          icon={<FiTerminal aria-hidden="true" />}
+          title={[{ text: 'Full-Stack Engineering Services' }]}
+          description="From initial product architecture to cloud deployments and smart contracts, I deliver scalable, production-grade applications engineered for performance, security, and growth."
+        />
 
-          <p className="max-w-3xl text-sm md:text-base text-white/70 font-sans leading-relaxed">
-            From initial product architecture to cloud deployments and smart contracts, I deliver scalable, production-grade applications engineered for performance, security, and growth.
-          </p>
-        </div>
-
-        {/* Services Cards Grid */}
-        <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6 mb-16">
-          {SERVICES.map((service, index) => (
-            <motion.article
+        {/* Cards rise in sequence; hover lifts the card and follows the cursor with a glow */}
+        <Stagger className="mb-16 grid grid-cols-1 gap-6 md:grid-cols-2 lg:grid-cols-3">
+          {SERVICES.map((service) => (
+            <StaggerItem
+              as="article"
               key={service.id}
-              initial={{ opacity: 0, y: 16 }}
-              whileInView={{ opacity: 1, y: 0 }}
-              transition={{
-                duration: 0.4,
-                delay: Math.min(index * 0.04, 0.2),
-                ease: 'easeOut',
-              }}
-              viewport={VIEWPORT}
-              className="bg-[#0B132B]/60 backdrop-blur-md border border-white/10 rounded-xl p-8 flex flex-col justify-between hover:border-[#39FF14]/50 transition-all duration-300 group shadow-xl min-h-[400px]"
+              spotlight
+              className="card spotlight group flex min-h-[400px] flex-col justify-between p-8 hover:-translate-y-1"
             >
-              {/* Card Content */}
               <div>
-                {/* Header: ID & Category Badge */}
-                <div className="flex items-center justify-between mb-6">
+                <div className="mb-6 flex items-center justify-between">
                   <div className="flex items-center gap-2">
-                    <span className="w-1.5 h-1.5 rounded-full bg-[#39FF14] shadow-[0_0_6px_#39FF14]" aria-hidden="true" />
-                    <span className="text-xs font-mono font-bold text-[#39FF14]">
-                      {service.id}
-                    </span>
+                    <span className="h-1.5 w-1.5 rounded-full bg-neon shadow-[0_0_6px_#39FF14]" aria-hidden="true" />
+                    <span className="font-mono text-xs font-bold text-neon">{service.id}</span>
                   </div>
-                  <span className="text-[10px] uppercase tracking-[0.2em] font-mono font-bold text-white/50 border border-white/10 bg-white/[0.03] px-2.5 py-1 rounded-md">
+                  <span className="rounded-md border border-white/10 bg-white/[0.03] px-2.5 py-1 font-mono text-[10px] font-bold uppercase tracking-[0.2em] text-white/70">
                     {service.category}
                   </span>
                 </div>
 
-                {/* Icon */}
                 <div
-                  className="w-12 h-12 rounded-lg bg-[#39FF14]/10 border border-[#39FF14]/20 flex items-center justify-center text-2xl text-[#39FF14] mb-6 group-hover:scale-105 transition-transform shadow-md"
+                  className="mb-6 flex h-12 w-12 items-center justify-center rounded-lg border border-neon/20 bg-neon/10 text-2xl text-neon shadow-md transition-transform duration-300 group-hover:-rotate-6 group-hover:scale-110"
                   aria-hidden="true"
                 >
                   {service.icon}
                 </div>
 
-                {/* Title */}
-                <h3 className="text-xl font-bold text-white mb-3 tracking-wide uppercase">
-                  {service.title}
-                </h3>
-
-                {/* Description */}
-                <p className="text-white/70 text-sm font-sans leading-relaxed mb-6">
-                  {service.description}
-                </p>
+                <h3 className="mb-3 text-xl font-bold uppercase tracking-wide text-white">{service.title}</h3>
+                <p className="mb-6 font-sans text-sm leading-relaxed text-white/75">{service.description}</p>
               </div>
 
               <div>
-                {/* Tags */}
-                <ul className="flex flex-wrap gap-1.5 mb-6" aria-label="Technologies">
+                <ul className="mb-6 flex flex-wrap gap-1.5" aria-label="Technologies">
                   {service.tags.map((tag) => (
-                    <li
-                      key={tag}
-                      className="text-[10px] font-mono text-white/80 bg-white/[0.03] border border-white/10 px-2.5 py-1 rounded-md"
-                    >
-                      {tag}
-                    </li>
+                    <li key={tag} className="tag font-mono">{tag}</li>
                   ))}
                 </ul>
 
-                {/* Card Action Link */}
-                <div className="pt-4 border-t border-white/10">
+                <div className="border-t border-white/10 pt-4">
                   <Link
                     href="#contact"
                     aria-label={`Enquire about ${service.title}`}
-                    className="inline-flex items-center gap-2 text-xs font-mono font-bold uppercase text-[#39FF14] tracking-wider hover:text-white transition-colors group/link"
+                    className="group/link inline-flex items-center gap-2 font-mono text-xs font-bold uppercase tracking-wider text-neon transition-colors hover:text-white"
                   >
-                    <span>Inquire Project</span>
-                    <FiArrowRight className="transition-transform group-hover/link:translate-x-1" aria-hidden="true" />
+                    <span className="link-underline">Inquire Project</span>
+                    <FiArrowRight className="transition-transform duration-300 group-hover/link:translate-x-1" aria-hidden="true" />
                   </Link>
                 </div>
               </div>
-            </motion.article>
+            </StaggerItem>
           ))}
-        </div>
+        </Stagger>
 
-        {/* Global CTA */}
-        <div className="text-center">
-          <Link
-            href="/services"
-            className="inline-flex items-center gap-3 bg-[#39FF14] text-black px-10 py-4 rounded-lg font-bold tracking-wider uppercase text-sm hover:bg-white hover:shadow-[0_0_25px_rgba(57,255,20,0.4)] transition-all"
-          >
-            <span>Explore Custom Requirements</span>
-            <FiArrowRight className="w-4 h-4" aria-hidden="true" />
-          </Link>
-        </div>
-
+        <Reveal className="text-center">
+          <Magnetic>
+            <Link href="/services" className="btn-neon px-10 py-4 text-sm">
+              <span>Explore Custom Requirements</span>
+              <FiArrowRight className="h-4 w-4" aria-hidden="true" />
+            </Link>
+          </Magnetic>
+        </Reveal>
       </div>
     </section>
   );

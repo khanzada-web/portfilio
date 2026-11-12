@@ -84,11 +84,11 @@ export default async function PortfolioProjectPage({ params }: PageProps) {
         suppressHydrationWarning
         dangerouslySetInnerHTML={{ __html: JSON.stringify(creativeWorkLd) }}
       />
-      <div className="min-h-screen bg-[#060B16] font-orbitron">
+      <div className="min-h-screen bg-night font-orbitron">
         <Header />
         <main id="main-content" role="main" className="pt-28 pb-20">
           <article className="max-w-3xl mx-auto px-4 sm:px-6">
-            <p className="text-[10px] uppercase tracking-[0.3em] text-[#39FF14] mb-4">
+            <p className="text-[10px] uppercase tracking-[0.3em] text-neon mb-4">
               {project.flagship ? 'Flagship project' : 'Archive project'} · {project.category}
             </p>
             <h1 className="text-4xl md:text-5xl font-bold text-white tracking-tight mb-6">
@@ -102,7 +102,7 @@ export default async function PortfolioProjectPage({ params }: PageProps) {
               {project.tech.map((t) => (
                 <li
                   key={t}
-                  className="text-xs text-[#39FF14] border border-[#39FF14]/40 px-3 py-1 uppercase tracking-wider"
+                  className="text-xs text-neon border border-neon/40 px-3 py-1 uppercase tracking-wider"
                 >
                   {t}
                 </li>
@@ -111,21 +111,21 @@ export default async function PortfolioProjectPage({ params }: PageProps) {
 
             {project.problem && (
               <section className="mb-10">
-                <h2 className="text-xl font-bold text-[#39FF14] mb-3">The Problem</h2>
+                <h2 className="text-xl font-bold text-neon mb-3">The Problem</h2>
                 <Paragraphs text={project.problem} />
               </section>
             )}
 
             {project.architecture && (
               <section className="mb-10">
-                <h2 className="text-xl font-bold text-[#39FF14] mb-3">Tech Stack & Architecture</h2>
+                <h2 className="text-xl font-bold text-neon mb-3">Tech Stack & Architecture</h2>
                 <Paragraphs text={project.architecture} />
               </section>
             )}
 
             {project.results && (
               <section className="mb-10">
-                <h2 className="text-xl font-bold text-[#39FF14] mb-3">Key Results / Business Outcome</h2>
+                <h2 className="text-xl font-bold text-neon mb-3">Key Results / Business Outcome</h2>
                 <Paragraphs text={project.results} />
               </section>
             )}
@@ -143,7 +143,7 @@ export default async function PortfolioProjectPage({ params }: PageProps) {
                   href={project.link}
                   target="_blank"
                   rel="noopener noreferrer"
-                  className="px-6 py-3 bg-[#39FF14] text-black text-sm font-bold uppercase tracking-wider"
+                  className="px-6 py-3 bg-neon text-black text-sm font-bold uppercase tracking-wider"
                 >
                   Live Demo
                 </a>
@@ -166,12 +166,12 @@ export default async function PortfolioProjectPage({ params }: PageProps) {
               </Link>
             </div>
 
-            <aside className="bg-[#0A1221] border border-[#39FF14]/20 p-8 space-y-4">
+            <aside className="bg-[#0A1221] border border-neon/20 p-8 space-y-4">
               <h2 className="text-lg font-bold text-white">Need similar work?</h2>
               <p className="text-white/70 font-sans text-sm leading-relaxed">
                 Mussawar Hayat builds full-stack web, mobile, and Web3 products end-to-end.
                 Fixed-price, hourly, or retainer — remote for North America and Europe. Read more{' '}
-                <Link href="/about" className="text-[#39FF14] hover:underline">
+                <Link href="/about" className="text-neon hover:underline">
                   about the engineer
                 </Link>
                 .
@@ -179,13 +179,13 @@ export default async function PortfolioProjectPage({ params }: PageProps) {
               <div className="flex flex-wrap gap-3 pt-2">
                 <Link
                   href="/contact"
-                  className="px-5 py-2.5 bg-[#39FF14] text-black text-xs font-bold uppercase tracking-wider"
+                  className="px-5 py-2.5 bg-neon text-black text-xs font-bold uppercase tracking-wider"
                 >
                   Start a Project
                 </Link>
                 <Link
                   href="/services"
-                  className="px-5 py-2.5 border border-[#39FF14]/40 text-white text-xs font-bold uppercase tracking-wider hover:border-[#39FF14]"
+                  className="px-5 py-2.5 border border-neon/40 text-white text-xs font-bold uppercase tracking-wider hover:border-neon"
                 >
                   View Services
                 </Link>

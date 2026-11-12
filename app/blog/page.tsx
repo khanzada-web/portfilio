@@ -76,13 +76,13 @@ export default async function BlogPage() {
     <>
       <BreadcrumbSchema items={breadcrumbs} />
 
-      <div className="min-h-screen bg-[#060B16] font-orbitron">
+      <div className="min-h-screen bg-night font-orbitron">
         <Header />
         <main role="main" id="main-content" className="pt-20">
           <div className="max-w-6xl mx-auto px-4 sm:px-6 py-16">
             <div className="text-center mb-20">
               <h1 className="text-4xl md:text-6xl font-bold text-white tracking-tighter uppercase leading-none mb-8">
-                <span className="text-[#39FF14]">Mussawar</span> Tech Blog
+                <span className="text-neon">Mussawar</span> Tech Blog
               </h1>
               <p className="text-lg text-white/60 max-w-3xl mx-auto leading-relaxed font-sans">
                 Production Next.js 16, React, TypeScript, Web3, Solidity, DeFi,
@@ -90,7 +90,7 @@ export default async function BlogPage() {
                 full-stack developer Mussawar Hayat.
               </p>
               <p className="mt-6 font-sans text-sm">
-                <a href="/feed.xml" className="text-[#39FF14] hover:underline">
+                <a href="/feed.xml" className="text-neon hover:underline">
                   Subscribe via RSS
                 </a>
               </p>
@@ -100,11 +100,11 @@ export default async function BlogPage() {
               {blogPosts.map((post) => (
                 <article
                   key={post.slug}
-                  className="group bg-[#0A1221] border border-[#39FF14]/20 p-8 hover:border-[#39FF14] transition-all duration-500 flex flex-col"
+                  className="group bg-[#0A1221] border border-neon/20 p-8 hover:border-neon transition-all duration-500 flex flex-col"
                 >
                   <div className="flex flex-col sm:flex-row sm:items-center justify-between mb-4 gap-2">
                     <div className="flex items-center gap-2">
-                      <span className="text-xs sm:text-sm font-medium text-[#39FF14] bg-[#39FF14]/10 px-2 sm:px-3 py-1 rounded-md">
+                      <span className="text-xs sm:text-sm font-medium text-neon bg-neon/10 px-2 sm:px-3 py-1 rounded-md">
                         {post.category}
                       </span>
                     </div>
@@ -123,7 +123,7 @@ export default async function BlogPage() {
                   >
                     <Link
                       href={`/blog/${post.slug}`}
-                      className="hover:text-[#39FF14] transition-colors"
+                      className="hover:text-neon transition-colors"
                     >
                       {post.title}
                     </Link>
@@ -154,7 +154,7 @@ export default async function BlogPage() {
 
                     <Link
                       href={`/blog/${post.slug}`}
-                      className="text-white hover:text-[#39FF14] transition-colors text-sm flex items-center gap-1 group"
+                      className="text-white hover:text-neon transition-colors text-sm flex items-center gap-1 group"
                     >
                       Read more
                       <svg
@@ -177,10 +177,10 @@ export default async function BlogPage() {
             </div>
 
             <div className="text-center">
-              <div className="bg-[#0A1221] border border-[#39FF14]/20 p-8 md:p-12">
+              <div className="bg-[#0A1221] border border-neon/20 p-8 md:p-12">
                 <h2 className="text-xl md:text-2xl font-bold text-white font-orbitron mb-4">
                   Stay Updated with{' '}
-                  <span className="text-[#39FF14]">Web3 & Full-Stack</span>{' '}
+                  <span className="text-neon">Web3 & Full-Stack</span>{' '}
                   Insights
                 </h2>
                 <p className="text-sm md:text-base text-white/60 mb-6 px-2">
@@ -196,13 +196,13 @@ export default async function BlogPage() {
               <div className="flex flex-col sm:flex-row gap-4 justify-center">
                 <Link
                   href="/services"
-                  className="px-8 py-4 border border-white/10 hover:border-[#39FF14]/30 text-white/70 hover:text-white font-orbitron text-sm uppercase tracking-[0.2em] rounded-xl transition-all duration-300"
+                  className="px-8 py-4 border border-white/10 hover:border-neon/30 text-white/70 hover:text-white font-orbitron text-sm uppercase tracking-[0.2em] rounded-xl transition-all duration-300"
                 >
                   Explore Services
                 </Link>
                 <Link
                   href="/contact"
-                  className="px-8 py-4 border border-white/10 hover:border-[#39FF14]/30 text-white/70 hover:text-white font-orbitron text-sm uppercase tracking-[0.2em] rounded-xl transition-all duration-300"
+                  className="px-8 py-4 border border-white/10 hover:border-neon/30 text-white/70 hover:text-white font-orbitron text-sm uppercase tracking-[0.2em] rounded-xl transition-all duration-300"
                 >
                   Hire Me
                 </Link>

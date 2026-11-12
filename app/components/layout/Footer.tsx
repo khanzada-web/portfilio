@@ -1,32 +1,28 @@
-'use client';
-
-import Link from 'next/link';
 import Image from 'next/image';
-import { motion } from 'framer-motion';
-import { FiMail, FiPhone, FiMapPin, FiArrowUp, FiGithub, FiTwitter, FiLinkedin } from 'react-icons/fi';
+import Link from 'next/link';
+import { FiMail, FiPhone, FiMapPin, FiGithub, FiTwitter, FiLinkedin } from 'react-icons/fi';
+import { BackToTop } from '../motion/BackToTop';
+import { Stagger, StaggerItem } from '../motion/Stagger';
 
-const QUICK_LINKS_COL_1 = [
-  { label: 'Home', href: '/' },
-  { label: 'About', href: '/about' },
-  { label: 'Process', href: '/#process' },
-  { label: 'Testimonials', href: '/#testimonials' },
-];
-
-const QUICK_LINKS_COL_2 = [
-  { label: 'Portfolio', href: '/portfolio' },
-  { label: 'Services', href: '/services' },
-  { label: 'Blog', href: '/blog' },
-  { label: 'Contact', href: '/contact' },
-  { label: 'FAQ', href: '/#faq' },
-];
+const QUICK_LINKS = [
+  [
+    { label: 'Home', href: '/' },
+    { label: 'About', href: '/about' },
+    { label: 'Process', href: '/#process' },
+    { label: 'Testimonials', href: '/#testimonials' },
+  ],
+  [
+    { label: 'Portfolio', href: '/portfolio' },
+    { label: 'Services', href: '/services' },
+    { label: 'Blog', href: '/blog' },
+    { label: 'Contact', href: '/contact' },
+    { label: 'FAQ', href: '/#faq' },
+  ],
+] as const;
 
 const SOCIAL_LINKS = [
   { icon: <FiTwitter />, href: 'https://twitter.com/Mussawar_Hayat', label: 'Twitter' },
-  {
-    icon: <FiLinkedin />,
-    href: 'https://www.linkedin.com/in/mussawar-hayat-187768233',
-    label: 'LinkedIn',
-  },
+  { icon: <FiLinkedin />, href: 'https://www.linkedin.com/in/mussawar-hayat-187768233', label: 'LinkedIn' },
   { icon: <FiGithub />, href: 'https://github.com/khanzada-web', label: 'GitHub' },
 ] as const;
 
@@ -36,147 +32,109 @@ const CONTACT_INFO = [
   { icon: FiMapPin, value: 'Mehria Town, Attock, PK', href: null },
 ] as const;
 
+const LEGAL_LINK = 'link-underline font-orbitron text-[10px] uppercase tracking-widest text-white/60 transition-colors hover:text-neon';
+
 export function Footer() {
   const currentYear = new Date().getFullYear();
 
   return (
-    <footer className="bg-[#060B16] text-white/60 py-16 relative overflow-hidden border-t border-[#39FF14]/10">
-      <div className="w-full px-4 sm:px-8 relative z-10">
-        <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-12 sm:gap-16">
-          <motion.div
-            initial={{ opacity: 0, y: 20 }}
-            whileInView={{ opacity: 1, y: 0 }}
-            transition={{ duration: 0.6 }}
-            viewport={{ once: true }}
-            className="md:col-span-2 lg:col-span-1"
-          >
-            <Link href="/" aria-label="Mussawar Hayat — go to homepage" className="flex items-center mb-6">
+    <footer className="relative overflow-hidden border-t border-neon/10 bg-night py-16 text-white/65">
+      <div className="relative z-10 w-full px-4 sm:px-8">
+        <Stagger step={0.1} className="grid grid-cols-1 gap-12 sm:gap-16 md:grid-cols-2 lg:grid-cols-3">
+          <StaggerItem className="md:col-span-2 lg:col-span-1">
+            <Link href="/" aria-label="Mussawar Hayat — go to homepage" className="mb-6 flex items-center">
               <Image
                 src="/logo.webp"
                 alt="Mussawar Hayat logo — full-stack and Web3 developer"
                 width={200}
                 height={80}
-                className="h-10 sm:h-12 w-auto brightness-0 invert mr-4"
+                className="mr-4 h-10 w-auto brightness-0 invert sm:h-12"
               />
-              <span className="text-xl sm:text-2xl font-bold text-white font-orbitron tracking-tighter">
-                Mussawar Hayat
-              </span>
+              <span className="font-orbitron text-xl font-bold tracking-tighter text-white sm:text-2xl">Mussawar Hayat</span>
             </Link>
 
-            <p className="text-white/50 mb-8 leading-relaxed font-sans text-sm max-w-md">
-              Mussawar Hayat is a full-stack developer specializing in Next.js, React, and Web3, based
-              in Pakistan, available for remote freelance work with clients in North America and Europe.
+            <p className="mb-8 max-w-md font-sans text-sm leading-relaxed text-white/65">
+              Mussawar Hayat is a full-stack developer specializing in Next.js, React, and Web3, based in Pakistan, available for
+              remote freelance work with clients in North America and Europe.
             </p>
 
-            <address className="not-italic space-y-4">
+            <address className="space-y-4 not-italic">
               {CONTACT_INFO.map(({ icon: Icon, value, href }) => (
-                <div key={value} className="flex items-center space-x-3 group">
-                  <div className="w-8 h-8 rounded border border-white/10 flex items-center justify-center group-hover:border-[#39FF14]/50 group-hover:text-[#39FF14] transition-all shrink-0">
-                    <Icon className="w-4 h-4" aria-hidden="true" />
+                <div key={value} className="group flex items-center space-x-3">
+                  <div className="flex h-8 w-8 shrink-0 items-center justify-center rounded border border-white/10 transition-colors group-hover:border-neon/50 group-hover:text-neon">
+                    <Icon className="h-4 w-4" aria-hidden="true" />
                   </div>
                   {href ? (
-                    <a
-                      href={href}
-                      className="text-xs sm:text-sm font-orbitron tracking-wide group-hover:text-white transition-colors"
-                    >
+                    <a href={href} className="link-underline font-orbitron text-xs tracking-wide transition-colors group-hover:text-white sm:text-sm">
                       {value}
                     </a>
                   ) : (
-                    <span className="text-xs sm:text-sm font-orbitron tracking-wide">{value}</span>
+                    <span className="font-orbitron text-xs tracking-wide sm:text-sm">{value}</span>
                   )}
                 </div>
               ))}
             </address>
-          </motion.div>
+          </StaggerItem>
 
-          <motion.div
-            initial={{ opacity: 0, y: 20 }}
-            whileInView={{ opacity: 1, y: 0 }}
-            transition={{ duration: 0.6, delay: 0.1 }}
-            viewport={{ once: true }}
-          >
-            <h2 className="text-white text-sm font-bold mb-8 font-orbitron uppercase tracking-[0.2em] flex items-center">
-              <span className="w-2 h-2 bg-[#39FF14] rounded-full mr-3 shadow-[0_0_8px_#39FF14]" aria-hidden="true" />
+          <StaggerItem>
+            <h2 className="mb-8 flex items-center font-orbitron text-sm font-bold uppercase tracking-[0.2em] text-white">
+              <span className="mr-3 h-2 w-2 rounded-full bg-neon shadow-[0_0_8px_#39FF14]" aria-hidden="true" />
               Quick Links
             </h2>
 
             <div className="grid grid-cols-2 gap-4">
-              <ul className="space-y-4">
-                {QUICK_LINKS_COL_1.map(({ label, href }) => (
-                  <li key={label}>
-                    <Link
-                      href={href}
-                      className="text-white/40 hover:text-[#39FF14] transition-colors text-xs uppercase tracking-widest font-orbitron"
-                    >
-                      {label}
-                    </Link>
-                  </li>
-                ))}
-              </ul>
-              <ul className="space-y-4">
-                {QUICK_LINKS_COL_2.map(({ label, href }) => (
-                  <li key={label}>
-                    <Link
-                      href={href}
-                      className="text-white/40 hover:text-[#39FF14] transition-colors text-xs uppercase tracking-widest font-orbitron"
-                    >
-                      {label}
-                    </Link>
-                  </li>
-                ))}
-              </ul>
+              {QUICK_LINKS.map((column, i) => (
+                <ul key={i} className="space-y-4">
+                  {column.map(({ label, href }) => (
+                    <li key={label}>
+                      <Link
+                        href={href}
+                        className="link-underline font-orbitron text-xs uppercase tracking-widest text-white/65 transition-colors hover:text-neon"
+                      >
+                        {label}
+                      </Link>
+                    </li>
+                  ))}
+                </ul>
+              ))}
             </div>
-          </motion.div>
+          </StaggerItem>
 
-          <motion.div
-            initial={{ opacity: 0, y: 20 }}
-            whileInView={{ opacity: 1, y: 0 }}
-            transition={{ duration: 0.6, delay: 0.2 }}
-            viewport={{ once: true }}
-          >
-            <h2 className="text-white text-sm font-bold mb-8 font-orbitron uppercase tracking-[0.2em]">
-              Connect With Me
-            </h2>
+          <StaggerItem>
+            <h2 className="mb-8 font-orbitron text-sm font-bold uppercase tracking-[0.2em] text-white">Connect With Me</h2>
 
-            <div className="flex space-x-4 mb-8">
+            <div className="mb-8 flex space-x-4">
               {SOCIAL_LINKS.map(({ icon, href, label }) => (
-                <motion.a
+                <a
                   key={label}
                   href={href}
                   target="_blank"
                   rel="noopener noreferrer"
                   aria-label={`${label} profile of Mussawar Hayat`}
-                  className="w-12 h-12 bg-white/5 border border-white/10 rounded-lg flex items-center justify-center text-white hover:border-[#39FF14] hover:text-[#39FF14] transition-all duration-300 shadow-xl"
-                  whileHover={{ y: -5, backgroundColor: 'rgba(57,255,20,0.05)' }}
+                  className="flex h-12 w-12 items-center justify-center rounded-lg border border-white/10 bg-white/5 text-white shadow-xl transition-[translate,border-color,color,background-color] duration-300 hover:-translate-y-1 hover:border-neon hover:bg-neon/5 hover:text-neon"
                 >
                   <span aria-hidden="true">{icon}</span>
-                </motion.a>
+                </a>
               ))}
             </div>
 
-            <p className="text-white/40 text-xs font-sans leading-relaxed border-l-2 border-[#39FF14]/30 pl-4">
+            <p className="border-l-2 border-neon/30 pl-4 font-sans text-xs leading-relaxed text-white/60">
               Building production web, mobile, and Web3 applications for startups and teams worldwide.
             </p>
-          </motion.div>
-        </div>
+          </StaggerItem>
+        </Stagger>
 
-        <div className="border-t border-white/5 mt-16 pt-8">
-          <div className="flex flex-col lg:flex-row justify-between items-center gap-6">
-            <p className="text-white/30 text-[10px] uppercase tracking-widest font-orbitron">
-              © {currentYear} <span className="text-white/60">Mussawar Hayat</span>. All rights reserved.
+        <div className="mt-16 border-t border-white/5 pt-8">
+          <div className="flex flex-col items-center justify-between gap-6 lg:flex-row">
+            <p className="font-orbitron text-[10px] uppercase tracking-widest text-white/60">
+              © {currentYear} <span className="text-white/80">Mussawar Hayat</span>. All rights reserved.
             </p>
 
             <nav aria-label="Legal links" className="flex space-x-8">
-              <Link
-                href="/terms"
-                className="text-white/30 hover:text-[#39FF14] text-[10px] uppercase tracking-widest transition-colors font-orbitron"
-              >
+              <Link href="/terms" className={LEGAL_LINK}>
                 Terms of Service
               </Link>
-              <Link
-                href="/privacy"
-                className="text-white/30 hover:text-[#39FF14] text-[10px] uppercase tracking-widest transition-colors font-orbitron"
-              >
+              <Link href="/privacy" className={LEGAL_LINK}>
                 Privacy Policy
               </Link>
             </nav>
@@ -184,13 +142,7 @@ export function Footer() {
         </div>
       </div>
 
-      <Link
-        href="/#home"
-        aria-label="Scroll back to top"
-        className="fixed bottom-8 right-8 w-12 h-12 bg-[#39FF14] text-black rounded-full flex items-center justify-center shadow-[0_0_20px_rgba(57,255,20,0.3)] hover:shadow-[0_0_30px_rgba(57,255,20,0.5)] hover:scale-110 active:scale-90 transition-all z-50"
-      >
-        <FiArrowUp className="w-5 h-5 stroke-[3]" aria-hidden="true" />
-      </Link>
+      <BackToTop />
     </footer>
   );
 }

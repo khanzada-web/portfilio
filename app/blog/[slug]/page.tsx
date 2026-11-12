@@ -11,6 +11,7 @@ import {
   getPostBySlug,
   getRelatedPosts,
 } from '../lib/posts'
+import './article.css'
 
 const postFaqs: Record<string, { question: string; answer: string }[]> = {
   'claude-code-mods-typescript-production-guardrails-2026': [
@@ -319,14 +320,14 @@ export default async function BlogPostPage({
         featuredImage="https://mussawarhayat.site/my-pic.jpeg"
       />
 
-      <div className="min-h-screen bg-[#060B16] font-sans">
+      <div className="min-h-screen bg-night font-sans">
         <Header />
 
         <main id="main-content" className="pt-32 sm:pt-36 md:pt-40 pb-24">
           <article className="max-w-7xl mx-auto px-4 sm:px-6">
-            <header className="mb-6 sm:mb-8 bg-[#0A1221] border border-[#39FF14]/20 rounded-2xl p-6 sm:p-8 shadow-[0_8px_32px_rgba(0,0,0,0.25)]">
+            <header className="mb-6 sm:mb-8 bg-[#0A1221] border border-neon/20 rounded-2xl p-6 sm:p-8 shadow-[0_8px_32px_rgba(0,0,0,0.25)]">
               <div className="flex flex-wrap items-center gap-3 text-sm text-white/50 mb-5">
-                <span className="px-3 py-1 bg-[#39FF14]/10 text-[#39FF14] text-xs font-semibold rounded-md border border-[#39FF14]/25 tracking-wide uppercase">
+                <span className="px-3 py-1 bg-neon/10 text-neon text-xs font-semibold rounded-md border border-neon/25 tracking-wide uppercase">
                   {post.category}
                 </span>
                 <time dateTime={post.date} className="text-white/45">
@@ -351,13 +352,13 @@ export default async function BlogPostPage({
             </header>
 
             <div
-              className="prose prose-invert prose-headings:font-orbitron prose-a:text-[#39FF14] max-w-none blog-content blog-content-stack"
+              className="prose prose-invert prose-headings:font-orbitron prose-a:text-neon max-w-none blog-content blog-content-stack"
               dangerouslySetInnerHTML={{ __html: post.content }}
             />
 
             {faqs.length > 0 && (
               <section className="mt-2 mb-6 sm:mb-8">
-                <div className="bg-[#0A1221] border border-[#39FF14]/20 rounded-2xl p-6 sm:p-8 shadow-[0_8px_32px_rgba(0,0,0,0.25)]">
+                <div className="bg-[#0A1221] border border-neon/20 rounded-2xl p-6 sm:p-8 shadow-[0_8px_32px_rgba(0,0,0,0.25)]">
                   <h2 className="text-xl sm:text-2xl font-bold text-white font-orbitron mb-6">
                     Frequently Asked Questions
                   </h2>
@@ -365,9 +366,9 @@ export default async function BlogPostPage({
                     {faqs.map((faq) => (
                       <div
                         key={faq.question}
-                        className="bg-[#060B16] border border-white/10 rounded-xl p-4 sm:p-5 hover:border-[#39FF14]/30 transition-colors"
+                        className="bg-night border border-white/10 rounded-xl p-4 sm:p-5 hover:border-neon/30 transition-colors"
                       >
-                        <h3 className="text-base sm:text-lg font-semibold text-[#39FF14] mb-2 font-orbitron">
+                        <h3 className="text-base sm:text-lg font-semibold text-neon mb-2 font-orbitron">
                           {faq.question}
                         </h3>
                         <p className="text-sm sm:text-base text-white/70 leading-relaxed font-sans">
@@ -382,7 +383,7 @@ export default async function BlogPostPage({
 
             {related.length > 0 && (
               <section className="mb-8">
-                <div className="bg-[#0A1221] border border-[#39FF14]/20 rounded-2xl p-6 sm:p-8 shadow-[0_8px_32px_rgba(0,0,0,0.25)]">
+                <div className="bg-[#0A1221] border border-neon/20 rounded-2xl p-6 sm:p-8 shadow-[0_8px_32px_rgba(0,0,0,0.25)]">
                   <h2 className="text-xl font-bold text-white font-orbitron mb-5">
                     Related guides
                   </h2>
@@ -391,9 +392,9 @@ export default async function BlogPostPage({
                       <Link
                         key={rpost.slug}
                         href={`/blog/${rpost.slug}`}
-                        className="block bg-[#060B16] border border-white/10 rounded-xl p-4 sm:p-5 hover:border-[#39FF14]/40 transition-all group"
+                        className="block bg-night border border-white/10 rounded-xl p-4 sm:p-5 hover:border-neon/40 transition-all group"
                       >
-                        <span className="text-white font-medium group-hover:text-[#39FF14] transition-colors font-orbitron text-sm sm:text-base">
+                        <span className="text-white font-medium group-hover:text-neon transition-colors font-orbitron text-sm sm:text-base">
                           {rpost.title}
                         </span>
                         <p className="text-sm text-white/50 mt-2 line-clamp-2 font-sans leading-relaxed">
@@ -409,7 +410,7 @@ export default async function BlogPostPage({
             <div className="text-center pt-2">
               <Link
                 href="/blog"
-                className="inline-flex items-center gap-2 px-6 py-3 bg-[#0A1221] border border-[#39FF14]/25 rounded-xl text-[#39FF14] hover:border-[#39FF14] hover:bg-[#39FF14]/5 transition-all text-sm font-orbitron tracking-wide"
+                className="inline-flex items-center gap-2 px-6 py-3 bg-[#0A1221] border border-neon/25 rounded-xl text-neon hover:border-neon hover:bg-neon/5 transition-all text-sm font-orbitron tracking-wide"
               >
                 ← Back to all posts
               </Link>

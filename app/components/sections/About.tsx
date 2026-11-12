@@ -1,12 +1,13 @@
-'use client';
-
-import { motion } from 'framer-motion';
+import Image from 'next/image';
 import {
   FiCode, FiGlobe, FiZap, FiStar, FiLayers,
   FiSmartphone, FiDatabase, FiServer, FiClock, FiUsers,
 } from 'react-icons/fi';
-import Image from 'next/image';
-import { AnimatedCounter } from '../ui/AnimatedCounter';
+import { CountUp } from '../motion/CountUp';
+import { Reveal } from '../motion/Reveal';
+import { Stagger, StaggerItem } from '../motion/Stagger';
+import { SectionGlow } from '../ui/SectionGlow';
+import { SectionHeading } from '../ui/SectionHeading';
 
 const SKILLS = [
   { name: 'React / Next.js', level: 95, icon: <FiCode /> },
@@ -23,7 +24,7 @@ const ACHIEVEMENTS = [
   { number: 3, suffix: '+', label: 'Years Experience' },
   { number: 40, suffix: '+', label: 'Projects Delivered' },
   { number: 15, suffix: '+', label: 'Global Clients' },
-  { number: null, suffix: '', label: 'Timezone Coverage', static: 'EST / CET' },
+  { number: null, suffix: '', label: 'Timezone Coverage', text: 'EST / CET' },
 ] as const;
 
 const PROFILE_TAGS = [
@@ -60,157 +61,132 @@ const ABOUT_CARDS = [
   },
 ] as const;
 
-const VIEWPORT = { once: true, amount: 0.2 as const, margin: '0px 0px -40px 0px' };
+export default function About() {
+  return (
+    <section id="about" className="font-orbitron relative overflow-hidden bg-ink py-28 text-white">
+      <SectionGlow className="left-1/2 top-1/4 h-[400px] w-[800px] -translate-x-1/2" />
 
-const About = () => (
-  <section
-    id="about"
-    className="py-28 bg-[#030712] relative overflow-hidden font-orbitron text-white"
-  >
-    {/* Subtle Ambient Background Gradients */}
-    <div className="absolute inset-0 opacity-20 pointer-events-none" aria-hidden="true">
-      <div className="absolute top-1/4 left-1/2 -translate-x-1/2 w-[800px] h-[400px] bg-gradient-to-r from-[#39FF14]/10 to-blue-600/10 blur-[150px] rounded-full" />
-    </div>
+      <div className="container relative z-10 mx-auto max-w-7xl px-6">
+        <SectionHeading
+          eyebrow="Professional Profile"
+          title={[{ text: 'Architecting Scalable Digital Products' }]}
+          description="Mussawar Hayat is a versatile Full-Stack and Web3 Software Engineer with a track record of delivering robust web, mobile, and decentralized applications for international startups."
+        />
 
-    <div className="container mx-auto px-6 relative z-10 max-w-7xl">
-      
-      {/* Section Header */}
-      <div className="mb-20">
-        <div className="inline-flex items-center gap-2 border border-[#39FF14]/40 bg-[#39FF14]/5 px-3.5 py-1.5 mb-4 rounded-md text-xs tracking-[0.25em] text-[#39FF14] uppercase">
-          <span className="w-1.5 h-1.5 rounded-full bg-[#39FF14] animate-pulse" />
-          Professional Profile
-        </div>
-        <h2 className="text-3xl md:text-5xl font-extrabold tracking-tight text-white mb-6">
-          Architecting Scalable Digital Products
-        </h2>
-        <p className="max-w-3xl text-sm md:text-base text-white/70 font-sans leading-relaxed">
-          Mussawar Hayat is a versatile Full-Stack and Web3 Software Engineer with a track record of delivering robust web, mobile, and decentralized applications for international startups.
-        </p>
-      </div>
-
-      {/* Narrative Cards Grid */}
-      <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6 mb-24">
-        {ABOUT_CARDS.map((card, i) => (
-          <motion.div
-            key={card.title}
-            initial={{ opacity: 0, y: 16 }}
-            whileInView={{ opacity: 1, y: 0 }}
-            transition={{ duration: 0.4, delay: Math.min(i * 0.05, 0.2), ease: 'easeOut' }}
-            viewport={VIEWPORT}
-            className="bg-[#0B132B]/60 backdrop-blur-md border border-white/10 p-7 rounded-xl hover:border-[#39FF14]/40 transition-all duration-300 group shadow-lg"
-          >
-            <div className="w-10 h-10 rounded-lg bg-[#39FF14]/10 border border-[#39FF14]/20 flex items-center justify-center text-[#39FF14] text-lg mb-5 group-hover:scale-105 transition-transform" aria-hidden="true">
-              {card.icon}
-            </div>
-            <h3 className="text-base font-bold text-white mb-3 tracking-wide">{card.title}</h3>
-            <p className="text-sm text-white/60 leading-relaxed font-sans">{card.text}</p>
-          </motion.div>
-        ))}
-      </div>
-
-      {/* Detailed Layout: Profile & Skills Stack */}
-      <div className="grid grid-cols-1 lg:grid-cols-12 gap-8 items-start">
-        
-        {/* Left Column: Photo & Credentials Card */}
-        <div className="lg:col-span-4 order-2 lg:order-1">
-          <div className="relative bg-[#0B132B]/60 backdrop-blur-md border border-white/10 p-6 rounded-xl shadow-xl">
-            <div className="relative w-full aspect-square mb-6 overflow-hidden rounded-lg border border-white/10">
-              <Image
-                src="/my-pic.jpeg"
-                alt="Mussawar Hayat, Full-Stack and Web3 Software Engineer"
-                fill
-                sizes="(max-width: 1024px) 100vw, 30vw"
-                className="object-cover object-center grayscale hover:grayscale-0 transition-all duration-500"
-                priority={false}
-              />
-              <div className="absolute inset-0 bg-gradient-to-t from-[#0B132B] via-transparent to-transparent opacity-80" />
-            </div>
-
-            <h3 className="text-xl font-bold text-white mb-1">Mussawar Hayat</h3>
-            <p className="text-xs tracking-wider text-[#39FF14] uppercase font-semibold mb-6">Full-Stack & Web3 Engineer</p>
-
-            <ul className="space-y-3.5 text-xs text-white/80 font-sans border-t border-white/10 pt-5">
-              {PROFILE_TAGS.map((tag) => (
-                <li key={tag} className="flex items-center gap-3">
-                  <span className="w-1.5 h-1.5 rounded-full bg-[#39FF14] shrink-0" aria-hidden="true" />
-                  <span>{tag}</span>
-                </li>
-              ))}
-            </ul>
-          </div>
-        </div>
-
-        {/* Right Column: Skills & Key Metrics */}
-        <div className="lg:col-span-8 space-y-8 order-1 lg:order-2">
-          
-          {/* Achievement Metrics Strip - move to top on mobile */}
-          <div className="grid grid-cols-2 md:grid-cols-4 gap-4 bg-[#0B132B]/60 backdrop-blur-md border border-white/10 p-5 rounded-xl shadow-xl">
-            {ACHIEVEMENTS.map((item) => (
-              <div key={item.label} className="text-center px-2">
-                <div className="text-2xl md:text-3xl font-extrabold text-white mb-1 tracking-tight">
-                  {'static' in item && item.static ? (
-                    <span className="text-[#39FF14]">{item.static}</span>
-                  ) : (
-                    <>
-                      <AnimatedCounter from={0} to={item.number as number} duration={1.2} />
-                      <span className="text-[#39FF14]">{item.suffix}</span>
-                    </>
-                  )}
-                </div>
-                <div className="text-[10px] uppercase tracking-[0.2em] text-white/50">{item.label}</div>
+        {/* Narrative cards: staggered rise, cursor spotlight on hover */}
+        <Stagger className="mb-24 grid grid-cols-1 gap-6 md:grid-cols-2 lg:grid-cols-3">
+          {ABOUT_CARDS.map((card) => (
+            <StaggerItem key={card.title} spotlight className="card spotlight group p-7">
+              <div
+                className="mb-5 flex h-10 w-10 items-center justify-center rounded-lg border border-neon/20 bg-neon/10 text-lg text-neon transition-transform duration-300 group-hover:scale-110"
+                aria-hidden="true"
+              >
+                {card.icon}
               </div>
-            ))}
-          </div>
+              <h3 className="mb-3 text-base font-bold tracking-wide text-white">{card.title}</h3>
+              <p className="font-sans text-sm leading-relaxed text-white/70">{card.text}</p>
+            </StaggerItem>
+          ))}
+        </Stagger>
 
-          {/* Core Competencies */}
-          <div className="bg-[#0B132B]/40 backdrop-blur-md border border-white/10 p-6 md:p-8 rounded-xl shadow-xl">
-            <h3 className="text-xs tracking-[0.3em] uppercase text-white/40 mb-6 md:mb-8 font-semibold flex items-center gap-3">
-              <span className="w-8 h-px bg-[#39FF14]" />
-              Technical Competencies
-            </h3>
-            
-            <div className="grid grid-cols-1 md:grid-cols-2 gap-4 md:gap-5">
-              {SKILLS.map((skill) => (
-                <div
-                  key={skill.name}
-                  className="bg-black/30 border border-white/5 p-3 md:p-4 rounded-lg hover:border-[#39FF14]/30 transition-colors group"
-                >
-                  <div className="flex items-center justify-between mb-2 md:mb-3">
-                    <div className="flex items-center gap-2 md:gap-2.5">
-                      <span className="text-base text-[#39FF14] group-hover:scale-110 transition-transform" aria-hidden="true">
-                        {skill.icon}
-                      </span>
-                      <h4 className="text-white font-semibold text-xs tracking-wide">{skill.name}</h4>
-                    </div>
-                    <span className="text-[11px] text-white/40 font-mono">{skill.level}%</span>
-                  </div>
-                  
-                  <div
-                    className="h-1.5 w-full bg-white/5 rounded-full overflow-hidden"
-                    role="progressbar"
-                    aria-valuenow={skill.level}
-                    aria-valuemin={0}
-                    aria-valuemax={100}
-                    aria-label={skill.name}
-                  >
-                    <motion.div
-                      initial={{ width: 0 }}
-                      whileInView={{ width: `${skill.level}%` }}
-                      transition={{ duration: 0.8, delay: 0.1, ease: 'easeOut' }}
-                      viewport={VIEWPORT}
-                      className="h-full bg-gradient-to-r from-[#39FF14]/60 to-[#39FF14] rounded-full shadow-[0_0_10px_rgba(57,255,20,0.3)]"
-                    />
-                  </div>
-                </div>
-              ))}
+        <div className="grid grid-cols-1 items-start gap-8 lg:grid-cols-12">
+          {/* Photo and credentials: the portrait wipes in from the bottom */}
+          <div className="order-2 lg:order-1 lg:col-span-4">
+            <div className="card relative p-6">
+              <Reveal variant="clipUp" className="relative mb-6 aspect-square w-full overflow-hidden rounded-lg border border-white/10">
+                <Image
+                  src="/my-pic.jpeg"
+                  alt="Mussawar Hayat, Full-Stack and Web3 Software Engineer"
+                  fill
+                  sizes="(max-width: 1024px) 100vw, 30vw"
+                  className="object-cover object-center grayscale transition-[filter] duration-500 hover:grayscale-0"
+                />
+                <div className="absolute inset-0 bg-gradient-to-t from-panel via-transparent to-transparent opacity-80" />
+              </Reveal>
+
+              <h3 className="mb-1 text-xl font-bold text-white">Mussawar Hayat</h3>
+              <p className="mb-6 text-xs font-semibold uppercase tracking-wider text-neon">Full-Stack &amp; Web3 Engineer</p>
+
+              <ul className="space-y-3.5 border-t border-white/10 pt-5 font-sans text-xs text-white/80">
+                {PROFILE_TAGS.map((tag) => (
+                  <li key={tag} className="flex items-center gap-3">
+                    <span className="h-1.5 w-1.5 shrink-0 rounded-full bg-neon" aria-hidden="true" />
+                    <span>{tag}</span>
+                  </li>
+                ))}
+              </ul>
             </div>
           </div>
 
+          <div className="order-1 space-y-8 lg:order-2 lg:col-span-8">
+            {/* Metrics count up once */}
+            <Reveal className="card grid grid-cols-2 gap-4 p-5 md:grid-cols-4">
+              {ACHIEVEMENTS.map((item) => (
+                <div key={item.label} className="px-2 text-center">
+                  <div className="mb-1 text-2xl font-extrabold tracking-tight text-white md:text-3xl">
+                    {item.number === null ? (
+                      <span className="text-neon">{item.text}</span>
+                    ) : (
+                      <>
+                        <CountUp to={item.number} />
+                        <span className="text-neon">{item.suffix}</span>
+                      </>
+                    )}
+                  </div>
+                  <div className="text-[10px] uppercase tracking-[0.2em] text-white/65">{item.label}</div>
+                </div>
+              ))}
+            </Reveal>
+
+            {/* Competencies: rows stagger in, bars grow with scaleX (no width animation) */}
+            <div className="card p-6 md:p-8">
+              <h3 className="mb-6 flex items-center gap-3 text-xs font-semibold uppercase tracking-[0.3em] text-white/60 md:mb-8">
+                <span className="h-px w-8 bg-neon" aria-hidden="true" />
+                Technical Competencies
+              </h3>
+
+              <Stagger as="ul" className="grid grid-cols-1 gap-4 md:grid-cols-2 md:gap-5">
+                {SKILLS.map((skill) => (
+                  <StaggerItem
+                    as="li"
+                    key={skill.name}
+                    className="group rounded-lg border border-white/5 bg-black/30 p-3 transition-colors duration-300 hover:border-neon/30 md:p-4"
+                  >
+                    <div className="mb-2 flex items-center justify-between md:mb-3">
+                      <div className="flex items-center gap-2 md:gap-2.5">
+                        <span className="text-base text-neon transition-transform duration-300 group-hover:scale-110" aria-hidden="true">
+                          {skill.icon}
+                        </span>
+                        <h4 className="text-xs font-semibold tracking-wide text-white">{skill.name}</h4>
+                      </div>
+                      <span className="font-mono text-[11px] text-white/60">{skill.level}%</span>
+                    </div>
+
+                    <div
+                      className="h-1.5 w-full overflow-hidden rounded-full bg-white/5"
+                      role="progressbar"
+                      aria-valuenow={skill.level}
+                      aria-valuemin={0}
+                      aria-valuemax={100}
+                      aria-label={skill.name}
+                    >
+                      <div className="h-full" style={{ width: `${skill.level}%` }}>
+                        <Reveal
+                          variant="growX"
+                          trigger={false}
+                          className="h-full origin-left rounded-full bg-gradient-to-r from-neon/60 to-neon shadow-[0_0_10px_rgba(57,255,20,0.3)]"
+                        >
+                          {null}
+                        </Reveal>
+                      </div>
+                    </div>
+                  </StaggerItem>
+                ))}
+              </Stagger>
+            </div>
+          </div>
         </div>
       </div>
-
-    </div>
-  </section>
-);
-
-export default About;
+    </section>
+  );
+}

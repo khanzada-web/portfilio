@@ -11,9 +11,9 @@ export const metadata: Metadata = {
 
 export default function PrivacyPage() {
   return (
-    <main className="min-h-screen bg-[#060B16] text-white/80">
+    <main className="min-h-screen bg-night text-white/80">
       <div className="max-w-3xl mx-auto px-4 sm:px-8 py-16 sm:py-24">
-        <p className="text-[#39FF14] text-xs font-orbitron uppercase tracking-widest mb-4">Legal</p>
+        <p className="text-neon text-xs font-orbitron uppercase tracking-widest mb-4">Legal</p>
         <h1 className="text-3xl sm:text-4xl font-bold text-white font-orbitron mb-4">Privacy Policy</h1>
         <p className="text-white/50 text-sm mb-10">Last updated: 5 September 2026</p>
 
@@ -23,9 +23,9 @@ export default function PrivacyPage() {
             <p>
               This website is operated by Mussawar Hayat (&quot;we&quot;, &quot;us&quot;), a full-stack and Web3 developer based in
               Pakistan, serving clients worldwide. Site: {' '}
-              <Link href="/" className="text-[#39FF14] hover:underline">https://mussawarhayat.site</Link>.
+              <Link href="/" className="text-neon hover:underline">https://mussawarhayat.site</Link>.
               Contact: {' '}
-              <a href="mailto:zada38843@gmail.com" className="text-[#39FF14] hover:underline">zada38843@gmail.com</a>.
+              <a href="mailto:zada38843@gmail.com" className="text-neon hover:underline">zada38843@gmail.com</a>.
             </p>
           </section>
 
@@ -97,7 +97,7 @@ export default function PrivacyPage() {
                 href="https://adssettings.google.com"
                 target="_blank"
                 rel="noopener noreferrer"
-                className="text-[#39FF14] hover:underline"
+                className="text-neon hover:underline"
               >
                 Google Ads Settings
               </a>
@@ -106,7 +106,7 @@ export default function PrivacyPage() {
                 href="https://policies.google.com/technologies/ads"
                 target="_blank"
                 rel="noopener noreferrer"
-                className="text-[#39FF14] hover:underline"
+                className="text-neon hover:underline"
               >
                 How Google uses data when you use partner sites
               </a>
@@ -119,7 +119,7 @@ export default function PrivacyPage() {
                 href="https://www.aboutads.info/choices/"
                 target="_blank"
                 rel="noopener noreferrer"
-                className="text-[#39FF14] hover:underline"
+                className="text-neon hover:underline"
               >
                 aboutads.info/choices
               </a>
@@ -158,7 +158,7 @@ export default function PrivacyPage() {
             <p className="mb-3">
               Depending on your location, you may have rights to access, correct, delete, or restrict processing of
               your personal data, and to object or withdraw consent. To exercise these rights, email{' '}
-              <a href="mailto:zada38843@gmail.com" className="text-[#39FF14] hover:underline">zada38843@gmail.com</a>.
+              <a href="mailto:zada38843@gmail.com" className="text-neon hover:underline">zada38843@gmail.com</a>.
             </p>
             <p>
               If you are in the EEA/UK, you may also lodge a complaint with your local supervisory authority.
@@ -185,9 +185,9 @@ export default function PrivacyPage() {
             <h2 className="text-white text-lg font-semibold mb-3">13. Contact</h2>
             <p>
               Privacy questions: {' '}
-              <a href="mailto:zada38843@gmail.com" className="text-[#39FF14] hover:underline">zada38843@gmail.com</a>
+              <a href="mailto:zada38843@gmail.com" className="text-neon hover:underline">zada38843@gmail.com</a>
               {' '}· {' '}
-              <Link href="/contact" className="text-[#39FF14] hover:underline">Contact page</Link>
+              <Link href="/contact" className="text-neon hover:underline">Contact page</Link>
             </p>
           </section>
         </div>

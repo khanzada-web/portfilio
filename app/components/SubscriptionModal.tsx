@@ -49,7 +49,7 @@ export function SubscriptionModal() {
       {/* Trigger Button */}
       <button
         onClick={() => setIsOpen(true)}
-        className="inline-flex items-center px-6 py-3 bg-[#39FF14] text-black font-orbitron font-bold rounded-lg hover:bg-[#39FF14]/80 transition-all duration-300 hover:shadow-[0_0_15px_rgba(57,255,20,0.4)]"
+        className="inline-flex items-center px-6 py-3 bg-neon text-black font-orbitron font-bold rounded-lg hover:bg-neon/80 transition-all duration-300 hover:shadow-[0_0_15px_rgba(57,255,20,0.4)]"
       >
         Subscribe to Newsletter
         <svg className="w-5 h-5 ml-2" fill="none" stroke="currentColor" viewBox="0 0 24 24">
@@ -60,7 +60,7 @@ export function SubscriptionModal() {
       {/* Modal */}
       {isOpen && (
         <div className="fixed inset-0 bg-black/50 backdrop-blur-sm z-50 flex items-center justify-center p-4">
-          <div className="bg-[#060B16] border border-[#39FF14]/30 rounded-lg p-6 w-full max-w-md relative">
+          <div className="bg-night border border-neon/30 rounded-lg p-6 w-full max-w-md relative">
             {/* Close Button */}
             <button
               onClick={() => setIsOpen(false)}
@@ -70,7 +70,7 @@ export function SubscriptionModal() {
             </button>
 
             <h3 className="text-2xl font-orbitron font-bold text-white mb-4">
-              Stay Updated with <span className="text-[#39FF14]">Tech Trends</span>
+              Stay Updated with <span className="text-neon">Tech Trends</span>
             </h3>
 
             <p className="text-gray-400 mb-6">
@@ -85,13 +85,13 @@ export function SubscriptionModal() {
                 onChange={(e) => setEmail(e.target.value)}
                 placeholder="Enter your email"
                 required
-                className="w-full px-4 py-3 bg-gray-900/20 border border-white/10 rounded-lg text-white placeholder-gray-500 focus:border-[#39FF14] focus:outline-none transition-colors"
+                className="w-full px-4 py-3 bg-gray-900/20 border border-white/10 rounded-lg text-white placeholder-gray-500 focus:border-neon focus:outline-none transition-colors"
               />
 
               <button
                 type="submit"
                 disabled={isSubmitting}
-                className="w-full px-6 py-3 bg-[#39FF14] text-black font-orbitron font-bold rounded-lg hover:bg-[#39FF14]/80 transition-all duration-300 disabled:opacity-50 disabled:cursor-not-allowed hover:shadow-[0_0_15px_rgba(57,255,20,0.4)]"
+                className="w-full px-6 py-3 bg-neon text-black font-orbitron font-bold rounded-lg hover:bg-neon/80 transition-all duration-300 disabled:opacity-50 disabled:cursor-not-allowed hover:shadow-[0_0_15px_rgba(57,255,20,0.4)]"
               >
                 {isSubmitting ? 'Subscribing...' : 'Subscribe'}
               </button>
@@ -102,7 +102,7 @@ export function SubscriptionModal() {
                 className={`mt-4 p-3 rounded-lg border ${
                   isError
                     ? 'bg-red-500/10 border-red-500/30 text-red-400'
-                    : 'bg-[#39FF14]/10 border-[#39FF14]/30 text-[#39FF14]'
+                    : 'bg-neon/10 border-neon/30 text-neon'
                 }`}
               >
                 {message}

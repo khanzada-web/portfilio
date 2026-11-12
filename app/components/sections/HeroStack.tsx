@@ -1,19 +1,20 @@
 'use client';
 
 import { useEffect, useRef, useState, type KeyboardEvent } from 'react';
+import { useInView, useReducedMotion } from 'framer-motion';
+import { AUTOPLAY_MS } from '@/app/lib/motion';
 
 const LAYERS = [
-  { name: 'Interface', summary: 'Fast, accessible front ends that rank well and turn visitors into customers.', stack: ['Next.js', 'React', 'TypeScript', 'Tailwind CSS'] },
-  { name: 'API and logic', summary: 'Typed server code for authentication, payments and AI agents.', stack: ['Node.js', 'TypeScript', 'REST', 'LLM workflows'] },
-  { name: 'Data', summary: 'Database schemas and migrations designed to scale with your product.', stack: ['PostgreSQL', 'Supabase', 'Prisma'] },
-  { name: 'Smart contracts', summary: 'Solidity contracts, tested on public testnets and wired into your app.', stack: ['Solidity', 'EVM', 'Wallet integration'] },
-  { name: 'Infrastructure', summary: 'Deployment, SSL, DNS and monitoring on servers you control.', stack: ['VPS', 'nginx', 'CI/CD', 'DNS'] },
+  { name: 'Interface', stack: ['Next.js', 'React', 'TypeScript'] },
+  { name: 'API and logic', stack: ['Node.js', 'REST', 'LLM workflows'] },
+  { name: 'Data', stack: ['PostgreSQL', 'Supabase', 'Prisma'] },
+  { name: 'Smart contracts', stack: ['Solidity', 'EVM', 'Wallets'] },
+  { name: 'Infrastructure', stack: ['VPS', 'nginx', 'CI/CD'] },
 ] as const;
 
 const CX = 220, HW = 170, HH = 85, T = 22, GAP = 62, TOP = 96, SPLIT = 26, LIFT = 10;
 const VIEW_TOP = -(SPLIT + LIFT + 6);
 const VIEW_BOTTOM = 484;
-const STEP_MS = 2000;
 const GREEN = '#39FF14';
 
 function Slab({ index, active, offset, onSelect }: { index: number; active: boolean; offset: number; onSelect: (i: number) => void }) {
@@ -30,8 +31,8 @@ function Slab({ index, active, offset, onSelect }: { index: number; active: bool
       onClick={() => onSelect(index)}
       style={{
         transform: `translateY(${offset}px)`,
-        filter: active ? 'drop-shadow(0 0 18px rgba(57,255,20,0.45))' : 'drop-shadow(0 4px 6px rgba(0,0,0,0.3))',
-        transition: 'transform 0.55s cubic-bezier(0.22,1,0.36,1), filter 0.45s',
+        filter: active ? 'drop-shadow(0 0 22px rgba(57,255,20,0.55))' : 'drop-shadow(0 4px 6px rgba(0,0,0,0.3))',
+        transition: 'transform var(--duration-base) var(--ease-brand), filter var(--duration-fast) var(--ease-brand)',
         cursor: 'pointer',
       }}
     >
@@ -43,19 +44,24 @@ function Slab({ index, active, offset, onSelect }: { index: number; active: bool
   );
 }
 
-export function HeroStack() {
-  const reduce = typeof window !== 'undefined' && window.matchMedia('(prefers-reduced-motion: reduce)').matches;
+/**
+ * The hero's isometric "product stack": five layers that lift in turn (auto-advancing,
+ * paused on hover/focus/off-screen and for reduced motion), with a compact caption and
+ * keyboard-operable tabs. Fills the height its container gives it.
+ */
+export function HeroStack({ className = '' }: { className?: string }) {
+  const reduce = useReducedMotion();
+  const rootRef = useRef<HTMLDivElement>(null);
+  const inView = useInView(rootRef);
   const tabRefs = useRef<(HTMLButtonElement | null)[]>([]);
   const [active, setActive] = useState(0);
   const [paused, setPaused] = useState(false);
 
   useEffect(() => {
-    if (reduce || paused) return;
-    const id = setInterval(() => setActive((i) => (i + 1) % LAYERS.length), STEP_MS);
+    if (reduce || paused || !inView) return;
+    const id = setInterval(() => setActive((i) => (i + 1) % LAYERS.length), AUTOPLAY_MS.heroStack);
     return () => clearInterval(id);
-  }, [reduce, paused]);
-
-  const select = (i: number) => setActive(i);
+  }, [reduce, paused, inView]);
 
   const onTabKeyDown = (e: KeyboardEvent<HTMLDivElement>) => {
     const last = LAYERS.length - 1;
@@ -66,80 +72,68 @@ export function HeroStack() {
     if (e.key === 'End') next = last;
     if (next === null) return;
     e.preventDefault();
-    select(next);
+    setActive(next);
     tabRefs.current[next]?.focus();
   };
 
+  const layer = LAYERS[active];
+
   return (
     <div
+      ref={rootRef}
       role="group"
       aria-label="The layers of a product I build"
-      className="mx-auto w-full max-w-[480px]"
+      className={`flex flex-col ${className}`}
       onPointerEnter={(e) => e.pointerType === 'mouse' && setPaused(true)}
       onPointerLeave={(e) => e.pointerType === 'mouse' && setPaused(false)}
       onFocus={() => setPaused(true)}
       onBlur={() => setPaused(false)}
     >
-      <svg
-        viewBox={`0 ${VIEW_TOP} 440 ${VIEW_BOTTOM - VIEW_TOP}`}
-        className="mx-auto block w-auto max-w-full overflow-visible"
-        style={{ height: 'min(42svh, 400px)' }}
-        aria-hidden="true"
-      >
+      <svg viewBox={`0 ${VIEW_TOP} 440 ${VIEW_BOTTOM - VIEW_TOP}`} className="mx-auto block min-h-0 w-full flex-1 overflow-visible" aria-hidden="true">
         <defs>
           <radialGradient id="hero-ground" cx="50%" cy="50%" r="50%">
-            <stop offset="0%" stopColor={GREEN} stopOpacity="0.22" />
+            <stop offset="0%" stopColor={GREEN} stopOpacity="0.3" />
             <stop offset="100%" stopColor={GREEN} stopOpacity="0" />
           </radialGradient>
         </defs>
-        <ellipse cx={CX} cy={TOP + (LAYERS.length - 1) * GAP + HH + T + 10} rx="190" ry="24" fill="url(#hero-ground)" />
+        <ellipse cx={CX} cy={TOP + (LAYERS.length - 1) * GAP + HH + T + 10} rx="210" ry="28" fill="url(#hero-ground)" />
         <line x1={CX} y1={VIEW_TOP} x2={CX} y2={VIEW_BOTTOM} stroke="rgba(255,255,255,0.08)" strokeDasharray="3 6" />
         {LAYERS.map((_, n) => {
           const i = LAYERS.length - 1 - n;
           const offset = i < active ? -SPLIT : i === active ? -LIFT : 0;
-          return <Slab key={i} index={i} active={active === i} offset={offset} onSelect={select} />;
+          return <Slab key={i} index={i} active={active === i} offset={offset} onSelect={setActive} />;
         })}
       </svg>
 
-      <div
-        aria-live={paused ? 'polite' : 'off'}
-        className="relative mt-4 min-h-[11rem] overflow-hidden rounded-xl border border-white/10 border-l-[3px] border-l-[#39FF14] bg-gradient-to-r from-white/[0.04] to-white/[0.01] backdrop-blur-md p-5 shadow-2xl"
-      >
-        {LAYERS.map((l, i) => (
-          <div key={l.name} id={`layer-panel-${i}`} role="tabpanel" aria-labelledby={`layer-tab-${i}`} hidden={active !== i}>
-            <div className="flex items-center justify-between">
-              <p className="text-base font-bold text-[#39FF14] tracking-wide">{l.name}</p>
-              <span className="text-xs font-mono text-white/40">0{i + 1} / 0{LAYERS.length}</span>
-            </div>
-            <p className="mt-2 text-sm font-normal text-white/80 leading-relaxed">{l.summary}</p>
-            <ul className="mt-3.5 flex flex-wrap gap-1.5">
-              {l.stack.map((tech) => (
-                <li key={tech} className="rounded-md border border-white/10 bg-white/[0.02] px-2.5 py-1 text-xs font-medium text-white/75">
-                  {tech}
-                </li>
-              ))}
-            </ul>
-          </div>
-        ))}
+      <div id="hero-layer-panel" role="tabpanel" aria-labelledby={`hero-layer-tab-${active}`} className="mt-3 flex items-center justify-between gap-4">
+        <p className="shrink-0 whitespace-nowrap font-mono text-[11px] uppercase tracking-[0.2em] text-neon">
+          <span className="text-white/50">0{active + 1}</span> {layer.name}
+        </p>
+        <p className="min-w-0 truncate font-mono text-[11px] text-white/65">{layer.stack.join(' · ')}</p>
       </div>
 
-      <div role="tablist" aria-label="Product layers" onKeyDown={onTabKeyDown} className="mt-3.5 flex flex-wrap gap-x-4 gap-y-2">
+      <div role="tablist" aria-label="Product layers" onKeyDown={onTabKeyDown} className="mt-3 grid grid-cols-5 gap-1.5">
         {LAYERS.map((l, i) => (
           <button
             key={l.name}
-            ref={(el) => { tabRefs.current[i] = el; }}
-            id={`layer-tab-${i}`}
+            ref={(el) => {
+              tabRefs.current[i] = el;
+            }}
+            id={`hero-layer-tab-${i}`}
             type="button"
             role="tab"
             aria-selected={active === i}
-            aria-controls={`layer-panel-${i}`}
+            aria-controls="hero-layer-panel"
+            aria-label={l.name}
             tabIndex={active === i ? 0 : -1}
-            onClick={() => select(i)}
-            className={`relative pb-1.5 text-[13px] font-medium transition-colors focus-visible:outline focus-visible:outline-2 focus-visible:outline-offset-4 focus-visible:outline-[#39FF14] ${
-              active === i ? 'text-[#39FF14]' : 'text-white/50 hover:text-white/90'
-            }`}
+            onClick={() => setActive(i)}
+            className="group flex h-8 items-center focus-visible:outline focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-neon"
           >
-            {l.name}
+            <span
+              className={`block h-[3px] w-full origin-left rounded-full transition-[background-color,scale] duration-300 ${
+                active === i ? 'bg-neon' : 'scale-x-[0.6] bg-white/20 group-hover:bg-white/45'
+              }`}
+            />
           </button>
         ))}
       </div>

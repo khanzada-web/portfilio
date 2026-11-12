@@ -11,9 +11,9 @@ export const metadata: Metadata = {
 
 export default function TermsPage() {
   return (
-    <main className="min-h-screen bg-[#060B16] text-white/80">
+    <main className="min-h-screen bg-night text-white/80">
       <div className="max-w-3xl mx-auto px-4 sm:px-8 py-16 sm:py-24">
-        <p className="text-[#39FF14] text-xs font-orbitron uppercase tracking-widest mb-4">Legal</p>
+        <p className="text-neon text-xs font-orbitron uppercase tracking-widest mb-4">Legal</p>
         <h1 className="text-3xl sm:text-4xl font-bold text-white font-orbitron mb-4">Terms of Service</h1>
         <p className="text-white/50 text-sm mb-10">Last updated: 5 September 2026</p>
 
@@ -123,11 +123,11 @@ export default function TermsPage() {
             <h2 className="text-white text-lg font-semibold mb-3">12. Contact</h2>
             <p>
               Questions about these Terms:{' '}
-              <a href="mailto:zada38843@gmail.com" className="text-[#39FF14] hover:underline">zada38843@gmail.com</a>
+              <a href="mailto:zada38843@gmail.com" className="text-neon hover:underline">zada38843@gmail.com</a>
               {' '}· {' '}
-              <Link href="/contact" className="text-[#39FF14] hover:underline">Contact page</Link>
+              <Link href="/contact" className="text-neon hover:underline">Contact page</Link>
               {' '}· {' '}
-              <Link href="/privacy" className="text-[#39FF14] hover:underline">Privacy Policy</Link>
+              <Link href="/privacy" className="text-neon hover:underline">Privacy Policy</Link>
             </p>
           </section>
         </div>

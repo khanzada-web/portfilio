@@ -1,23 +1,20 @@
 import type { Metadata } from "next";
-import dynamic from "next/dynamic";
-
 import { Header } from "./components/layout/Header";
 import { Footer } from "./components/layout/Footer";
 
+import About from "./components/sections/About";
+import { Contact } from "./components/sections/Contact";
+import { FAQ } from "./components/sections/FAQ";
+import { GlobalImpact } from "./components/sections/GlobalImpact";
 import { Hero } from "./components/sections/Hero";
+import { PerformanceLab } from "./components/sections/PerformanceLab";
+import Portfolio from "./components/sections/Portfolio";
+import { Process } from "./components/sections/Process";
+import { SaasProjects } from "./components/sections/SaasProjects";
+import { Services } from "./components/sections/Services";
+import { TechArchitecture } from "./components/sections/TechArchitecture";
+import { Testimonials } from "./components/sections/Testimonials";
 import { FAQSchema } from "./components/seo/FAQSchema";
-
-const About = dynamic(() => import("./components/sections/About"), { ssr: true });
-const Services = dynamic(() => import("./components/sections/Services").then(m => ({ default: m.Services })), { ssr: true });
-const GlobalImpact = dynamic(() => import("./components/sections/GlobalImpact").then(m => ({ default: m.GlobalImpact })), { ssr: true });
-const TechArchitecture = dynamic(() => import("./components/sections/TechArchitecture").then(m => ({ default: m.TechArchitecture })), { ssr: true });
-const SaasProjects = dynamic(() => import("./components/sections/SaasProjects").then(m => ({ default: m.SaasProjects })), { ssr: true });
-const Process = dynamic(() => import("./components/sections/Process").then(m => ({ default: m.Process })), { ssr: true });
-const Portfolio = dynamic(() => import("./components/sections/Portfolio"), { ssr: true });
-const PerformanceLab = dynamic(() => import("./components/sections/PerformanceLab").then(m => ({ default: m.PerformanceLab })), { ssr: true });
-const Testimonials = dynamic(() => import("./components/sections/Testimonials").then(m => ({ default: m.Testimonials })), { ssr: true });
-const FAQ = dynamic(() => import("./components/sections/FAQ").then(m => ({ default: m.FAQ })), { ssr: true });
-const Contact = dynamic(() => import("./components/sections/Contact").then(m => ({ default: m.Contact })), { ssr: true });
 
 export const metadata: Metadata = {
   title: "Hire Best Next.js 16 Full-Stack Web3 Developer for SaaS & DApps 2026 | Mussawar Hayat",

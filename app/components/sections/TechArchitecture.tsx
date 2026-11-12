@@ -1,8 +1,8 @@
-'use client';
-
-import { motion } from 'framer-motion';
-import { FiCpu, FiLayers, FiShield, FiGlobe, FiServer, FiTerminal } from 'react-icons/fi';
 import type { ReactElement } from 'react';
+import { FiCpu, FiLayers, FiShield, FiGlobe, FiServer, FiTerminal } from 'react-icons/fi';
+import { Stagger, StaggerItem } from '../motion/Stagger';
+import { SectionGlow } from '../ui/SectionGlow';
+import { SectionHeading } from '../ui/SectionHeading';
 
 interface Layer {
   title: string;
@@ -49,106 +49,68 @@ const LAYERS: Layer[] = [
   },
 ];
 
-const VIEWPORT = { once: true, amount: 0.2 as const, margin: '0px 0px -40px 0px' };
-
 export function TechArchitecture() {
   return (
-    <section
-      id="architecture"
-      className="bg-[#030712] py-28 relative overflow-hidden font-orbitron text-white"
-    >
-      {/* Subtle Ambient Glow */}
-      <div className="absolute inset-0 opacity-20 pointer-events-none" aria-hidden="true">
-        <div className="absolute top-1/3 right-1/3 w-[600px] h-[500px] bg-[#39FF14]/10 blur-[160px] rounded-full" />
-      </div>
+    <section id="architecture" className="font-orbitron relative overflow-hidden bg-ink py-28 text-white">
+      <SectionGlow className="right-1/3 top-1/3 h-[500px] w-[600px]" />
 
-      <div className="container mx-auto px-6 max-w-6xl relative z-10">
-        
-        {/* Section Header */}
-        <div className="mb-20 text-center md:text-left space-y-4">
-          <div className="inline-flex items-center gap-2 border border-[#39FF14]/40 bg-[#39FF14]/5 px-3.5 py-1.5 rounded-md text-xs tracking-[0.25em] text-[#39FF14] uppercase">
-            <FiTerminal className="animate-pulse" aria-hidden="true" />
-            <span>System Architecture</span>
-          </div>
+      <div className="container relative z-10 mx-auto max-w-6xl px-6">
+        <SectionHeading
+          align="responsive"
+          eyebrow="System Architecture"
+          icon={<FiTerminal aria-hidden="true" />}
+          title={[{ text: 'Full-Stack Development Workflow' }]}
+          description="Integrated engineering layers—from frontend interfaces and server APIs through to blockchain protocols and production DevOps infrastructure."
+        />
 
-          <h2 className="text-3xl md:text-5xl font-extrabold tracking-tight text-white leading-tight">
-            Full-Stack Development Workflow
-          </h2>
-
-          <p className="text-white/70 text-sm md:text-base font-sans leading-relaxed max-w-2xl">
-            Integrated engineering layers—from frontend interfaces and server APIs through to blockchain protocols and production DevOps infrastructure.
-          </p>
-        </div>
-
-        {/* Layer Cards Grid */}
-        <div className="grid grid-cols-1 md:grid-cols-2 gap-6">
+        {/* Layers slide in from alternating sides, like a stack being assembled */}
+        <Stagger step={0.1} className="grid grid-cols-1 gap-6 md:grid-cols-2">
           {LAYERS.map((layer, index) => (
-            <motion.div
+            <StaggerItem
               key={layer.title}
-              initial={{ opacity: 0, y: 16 }}
-              whileInView={{ opacity: 1, y: 0 }}
-              transition={{
-                duration: 0.4,
-                delay: Math.min(index * 0.05, 0.2),
-                ease: 'easeOut',
-              }}
-              viewport={VIEWPORT}
-              className={`group relative p-8 bg-[#0B132B]/60 backdrop-blur-md border border-white/10 rounded-xl hover:border-[#39FF14]/40 transition-all duration-300 shadow-xl flex flex-col justify-between ${
-                index === 4 ? 'md:col-span-2' : ''
-              }`}
+              spotlight
+              variant={index % 2 === 0 ? 'slideFromLeft' : 'slideFromRight'}
+              className={`card spotlight group relative flex flex-col justify-between p-8 ${index === LAYERS.length - 1 ? 'md:col-span-2' : ''}`}
             >
               <div>
-                {/* Header: Icon & Layer Badge */}
-                <div className="flex items-center justify-between mb-6">
-                  <div className="w-12 h-12 rounded-lg bg-[#39FF14]/10 border border-[#39FF14]/20 flex items-center justify-center text-2xl text-[#39FF14] group-hover:scale-105 transition-transform" aria-hidden="true">
+                <div className="mb-6 flex items-center justify-between">
+                  <div
+                    className="flex h-12 w-12 items-center justify-center rounded-lg border border-neon/20 bg-neon/10 text-2xl text-neon transition-transform duration-300 group-hover:scale-110"
+                    aria-hidden="true"
+                  >
                     {layer.icon}
                   </div>
                   <div className="text-right" aria-hidden="true">
-                    <span className="block text-[9px] text-white/40 uppercase tracking-[0.2em] font-semibold">LAYER</span>
-                    <span className="text-sm font-bold font-mono text-[#39FF14]">{String(index + 1).padStart(2, '0')}</span>
+                    <span className="block text-[9px] font-semibold uppercase tracking-[0.2em] text-white/60">LAYER</span>
+                    <span className="font-mono text-sm font-bold text-neon">{String(index + 1).padStart(2, '0')}</span>
                   </div>
                 </div>
 
-                {/* Layer Title */}
-                <h3 className="text-xl font-bold text-white mb-3 tracking-wide">{layer.title}</h3>
-
-                {/* Layer Description */}
-                <p className="text-white/70 text-sm font-sans leading-relaxed mb-6">
-                  {layer.description}
-                </p>
+                <h3 className="mb-3 text-xl font-bold tracking-wide text-white">{layer.title}</h3>
+                <p className="mb-6 font-sans text-sm leading-relaxed text-white/75">{layer.description}</p>
               </div>
 
               <div>
-                {/* Tech Badges */}
                 <div className="mb-6">
-                  <p className="text-[10px] text-white/40 uppercase tracking-[0.2em] font-semibold mb-2 font-mono">
-                    Tech Stack
-                  </p>
+                  <p className="mb-2 font-mono text-[10px] font-semibold uppercase tracking-[0.2em] text-white/60">Tech Stack</p>
                   <ul className="flex flex-wrap gap-1.5" aria-label={`${layer.title} Technologies`}>
                     {layer.tech.map((item) => (
-                      <li
-                        key={item}
-                        className="text-[10px] text-white/80 bg-white/[0.03] border border-white/10 px-2.5 py-1 rounded-md font-sans"
-                      >
-                        {item}
-                      </li>
+                      <li key={item} className="tag font-sans">{item}</li>
                     ))}
                   </ul>
                 </div>
 
-                {/* Footer Status Indicator */}
-                <div className="pt-4 border-t border-white/10 flex items-center justify-between font-mono" aria-hidden="true">
+                <div className="flex items-center justify-between border-t border-white/10 pt-4 font-mono" aria-hidden="true">
                   <div className="flex items-center gap-2">
-                    <span className="w-1.5 h-1.5 rounded-full bg-[#39FF14] shadow-[0_0_8px_#39FF14]" />
-                    <span className="text-[10px] uppercase tracking-widest text-[#39FF14]/80 font-bold">Stable.Build</span>
+                    <span className="h-1.5 w-1.5 rounded-full bg-neon shadow-[0_0_8px_#39FF14]" />
+                    <span className="text-[10px] font-bold uppercase tracking-widest text-neon/80">Stable.Build</span>
                   </div>
-                  <span className="text-[10px] text-white/30 uppercase">Checksum_Verified</span>
+                  <span className="text-[10px] uppercase text-white/50">Checksum_Verified</span>
                 </div>
               </div>
-            </motion.div>
+            </StaggerItem>
           ))}
-        </div>
-
+        </Stagger>
       </div>
     </section>
   );

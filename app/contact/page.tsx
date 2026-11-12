@@ -1,5 +1,4 @@
 import { Metadata } from 'next'
-import Link from 'next/link'
 import { Header } from '@/app/components/layout/Header'
 import { Footer } from '@/app/components/layout/Footer'
 import { Contact } from '@/app/components/sections/Contact'
@@ -51,7 +50,7 @@ export default function ContactPage() {
         { name: 'Contact', url: '/contact' },
       ]} />
 
-      <div className="min-h-screen bg-gradient-to-br from-[#060B16] via-[#0a0f1f] to-[#060B16]">
+      <div className="min-h-screen bg-gradient-to-br from-night via-[#0a0f1f] to-night">
         <Header />
       
       <main role="main" id="main-content" className="relative z-10">
