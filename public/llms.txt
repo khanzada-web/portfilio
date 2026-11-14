@@ -9,8 +9,7 @@ Mussawar Hayat owns projects end-to-end: frontend, backend, database, DevOps, an
 - Name: Mussawar Hayat
 - Role: Full-Stack Developer & Web3 Specialist / Lead Software Engineer
 - Location: Mehria Town, Attock, Punjab, Pakistan
-- Email: zada38843@gmail.com
-- Phone: +923358328468
+- Email: reply@mussawarhayat.site
 - GitHub: https://github.com/khanzada-web
 - LinkedIn: https://www.linkedin.com/in/mussawar-hayat-187768233
 - X / Twitter: https://x.com/Mussawar_Hayat
@@ -37,6 +36,8 @@ Mussawar Hayat owns projects end-to-end: frontend, backend, database, DevOps, an
 
 ## Flagship portfolio (case studies)
 
+- [Octovate CRM](https://mussawarhayat.site/portfolio/octovate-crm): Multi-tenant CRM with a unified inbox for website emails and leads, lead tracking, real-time analytics, and per-tenant data isolation (live: https://crm.octovate.io)
+- [CCS Agency OS](https://mussawarhayat.site/portfolio/ccs-agency-os): Insurance-agency operations portal with smart calling, team management, live analytics, and audited employee sign-in (live: https://portal.clientcaresolutions.org)
 - [DaMeta1 Ecosystem](https://mussawarhayat.site/portfolio/dameta1-ecosystem): AI-driven metaverse bridging education and business across continents with 3D hubs and on-chain identity
 - [Ordwin Market](https://mussawarhayat.site/portfolio/ordwin-market): High-performance Bitcoin Ordinals NFT marketplace with native inscription indexing
 - [FAST Timetable](https://mussawarhayat.site/portfolio/fast-timetable): Mobile-first university scheduling platform

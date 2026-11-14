@@ -1,26 +1,32 @@
 import Link from 'next/link';
-import { FiArrowRight, FiTerminal } from 'react-icons/fi';
+import { FiArrowRight } from 'react-icons/fi';
 import { Magnetic } from '../motion/Magnetic';
 import { Reveal } from '../motion/Reveal';
 import { SectionGlow } from '../ui/SectionGlow';
-import { SectionHeading } from '../ui/SectionHeading';
+import { EditorialHeadline } from '../ui/EditorialHeadline';
 import { ProcessTimeline } from './ProcessTimeline';
 
 export function Process() {
   return (
-    <section id="process" className="font-orbitron relative overflow-hidden bg-ink py-28 text-white">
+    <section id="process" className="font-orbitron relative overflow-clip bg-ink px-[var(--page-pad)] py-28 text-white md:py-40">
       <SectionGlow className="bottom-1/4 left-1/3 h-[500px] w-[600px]" />
 
-      <div className="container relative z-10 mx-auto max-w-7xl px-6">
-        <SectionHeading
-          align="center"
-          eyebrow="Execution_Protocol.v2"
-          icon={<FiTerminal aria-hidden="true" />}
-          title={[{ text: 'Development' }, { text: 'Pipeline', accent: true }]}
-          description="A systematic engineering approach to transforming complex business logic into high-performance digital products."
-        />
+      <div className="relative z-10">
+        <EditorialHeadline
+          index="05"
+          eyebrow="Process"
+          aside="6 steps · idea to production"
+          solid="Development"
+          accent="Pipeline"
+        >
+          <p>
+            A systematic engineering approach to transforming complex business logic into high-performance digital products.
+          </p>
+        </EditorialHeadline>
 
-        <ProcessTimeline />
+        <div className="mt-16 md:mt-24">
+          <ProcessTimeline />
+        </div>
 
         <Reveal className="mt-20 text-center">
           <Magnetic>

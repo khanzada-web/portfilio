@@ -1,6 +1,6 @@
 import Image from 'next/image';
 import Link from 'next/link';
-import { FiMail, FiPhone, FiMapPin, FiGithub, FiTwitter, FiLinkedin } from 'react-icons/fi';
+import { FiMail, FiMapPin, FiGithub, FiTwitter, FiLinkedin } from 'react-icons/fi';
 import { BackToTop } from '../motion/BackToTop';
 import { Stagger, StaggerItem } from '../motion/Stagger';
 
@@ -27,8 +27,7 @@ const SOCIAL_LINKS = [
 ] as const;
 
 const CONTACT_INFO = [
-  { icon: FiMail, value: 'zada38843@gmail.com', href: 'mailto:zada38843@gmail.com' },
-  { icon: FiPhone, value: '+92 335 8328468', href: 'tel:+923358328468' },
+  { icon: FiMail, value: 'reply@mussawarhayat.site', href: 'mailto:reply@mussawarhayat.site' },
   { icon: FiMapPin, value: 'Mehria Town, Attock, PK', href: null },
 ] as const;
 

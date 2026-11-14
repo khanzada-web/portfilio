@@ -1,25 +1,15 @@
 import Link from 'next/link';
-import type { ReactElement } from 'react';
 import {
   FiMonitor, FiSmartphone, FiActivity, FiShield,
-  FiZap, FiLayers, FiServer, FiTerminal, FiShoppingCart, FiArrowRight,
+  FiZap, FiLayers, FiServer, FiTerminal, FiShoppingCart, FiArrowUpRight,
 } from 'react-icons/fi';
 import { Magnetic } from '../motion/Magnetic';
 import { Reveal } from '../motion/Reveal';
-import { Stagger, StaggerItem } from '../motion/Stagger';
+import { EditorialHeadline } from '../ui/EditorialHeadline';
 import { SectionGlow } from '../ui/SectionGlow';
-import { SectionHeading } from '../ui/SectionHeading';
+import { ServiceGrid, type ServiceItem } from './ServiceGrid';
 
-interface Service {
-  id: string;
-  icon: ReactElement;
-  title: string;
-  description: string;
-  tags: readonly string[];
-  category: string;
-}
-
-const SERVICES: Service[] = [
+const SERVICES: ServiceItem[] = [
   {
     id: '01',
     icon: <FiMonitor />,
@@ -101,79 +91,45 @@ const SERVICES: Service[] = [
     tags: ['Next.js', 'Stripe', 'Tailwind', 'SaaS'],
     category: 'Commerce',
   },
-] as const;
+];
 
+/**
+ * Services in the editorial system: shared headline with the intro, a hairline 3×3 grid
+ * (titles decode on hover, corner brackets lock on), then the closing CTA.
+ */
 export function Services() {
   return (
-    <section id="services" className="font-orbitron relative overflow-hidden bg-ink py-28 text-white">
-      <SectionGlow className="bottom-1/3 right-1/4 h-[400px] w-[600px]" />
+    <section id="services" className="font-orbitron relative overflow-clip bg-ink px-[var(--page-pad)] py-28 text-white md:py-40">
+      <SectionGlow className="right-0 top-1/3 h-[520px] w-[760px]" />
 
-      <div className="container relative z-10 mx-auto max-w-7xl px-6">
-        <SectionHeading
-          eyebrow="Capabilities & Expertise"
-          icon={<FiTerminal aria-hidden="true" />}
-          title={[{ text: 'Full-Stack Engineering Services' }]}
-          description="From initial product architecture to cloud deployments and smart contracts, I deliver scalable, production-grade applications engineered for performance, security, and growth."
-        />
+      <div className="relative z-10">
+        <EditorialHeadline
+          index="03"
+          eyebrow="Services"
+          aside="9 disciplines · one engineer"
+          solid="Full-Stack"
+          accent="Engineering Services"
+        >
+          <p>
+            From initial product architecture to cloud deployments and smart contracts, I deliver scalable, production-grade
+            applications engineered for performance, security, and growth.
+          </p>
+        </EditorialHeadline>
 
-        {/* Cards rise in sequence; hover lifts the card and follows the cursor with a glow */}
-        <Stagger className="mb-16 grid grid-cols-1 gap-6 md:grid-cols-2 lg:grid-cols-3">
-          {SERVICES.map((service) => (
-            <StaggerItem
-              as="article"
-              key={service.id}
-              spotlight
-              className="card spotlight group flex min-h-[400px] flex-col justify-between p-8 hover:-translate-y-1"
-            >
-              <div>
-                <div className="mb-6 flex items-center justify-between">
-                  <div className="flex items-center gap-2">
-                    <span className="h-1.5 w-1.5 rounded-full bg-neon shadow-[0_0_6px_#39FF14]" aria-hidden="true" />
-                    <span className="font-mono text-xs font-bold text-neon">{service.id}</span>
-                  </div>
-                  <span className="rounded-md border border-white/10 bg-white/[0.03] px-2.5 py-1 font-mono text-[10px] font-bold uppercase tracking-[0.2em] text-white/70">
-                    {service.category}
-                  </span>
-                </div>
+        <div className="mt-16 md:mt-24">
+          <ServiceGrid items={SERVICES} />
+        </div>
 
-                <div
-                  className="mb-6 flex h-12 w-12 items-center justify-center rounded-lg border border-neon/20 bg-neon/10 text-2xl text-neon shadow-md transition-transform duration-300 group-hover:-rotate-6 group-hover:scale-110"
-                  aria-hidden="true"
-                >
-                  {service.icon}
-                </div>
-
-                <h3 className="mb-3 text-xl font-bold uppercase tracking-wide text-white">{service.title}</h3>
-                <p className="mb-6 font-sans text-sm leading-relaxed text-white/75">{service.description}</p>
-              </div>
-
-              <div>
-                <ul className="mb-6 flex flex-wrap gap-1.5" aria-label="Technologies">
-                  {service.tags.map((tag) => (
-                    <li key={tag} className="tag font-mono">{tag}</li>
-                  ))}
-                </ul>
-
-                <div className="border-t border-white/10 pt-4">
-                  <Link
-                    href="#contact"
-                    aria-label={`Enquire about ${service.title}`}
-                    className="group/link inline-flex items-center gap-2 font-mono text-xs font-bold uppercase tracking-wider text-neon transition-colors hover:text-white"
-                  >
-                    <span className="link-underline">Inquire Project</span>
-                    <FiArrowRight className="transition-transform duration-300 group-hover/link:translate-x-1" aria-hidden="true" />
-                  </Link>
-                </div>
-              </div>
-            </StaggerItem>
-          ))}
-        </Stagger>
-
-        <Reveal className="text-center">
+        <Reveal className="mt-20 flex flex-col items-start justify-between gap-8 border-t border-white/10 pt-10 md:flex-row md:items-center">
+          <p className="max-w-md font-sans text-base leading-relaxed text-white/70">
+            Need something outside this list? Most projects mix several of these.
+          </p>
           <Magnetic>
-            <Link href="/services" className="btn-neon px-10 py-4 text-sm">
-              <span>Explore Custom Requirements</span>
-              <FiArrowRight className="h-4 w-4" aria-hidden="true" />
+            <Link href="/services" className="btn-neon group/cta h-14 gap-3 rounded-full pl-7 pr-2 text-sm normal-case tracking-wide">
+              Explore custom requirements
+              <span className="flex h-10 w-10 items-center justify-center rounded-full bg-black text-neon transition-transform duration-300 group-hover/cta:rotate-45">
+                <FiArrowUpRight className="h-5 w-5" aria-hidden="true" />
+              </span>
             </Link>
           </Magnetic>
         </Reveal>

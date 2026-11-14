@@ -1,8 +1,10 @@
 import type { Metadata } from 'next'
 import Link from 'next/link'
+import { EditorialHeadline } from '@/app/components/ui/EditorialHeadline'
+import { PageShell } from '@/app/components/ui/PageShell'
 
 export const metadata: Metadata = {
-  title: 'Terms of Service for Full-Stack Web3 Development | Mussawar Hayat',
+  title: 'Terms of Service',
   description:
     'Terms of Service for mussawarhayat.site — acceptable use of the website, blog content, and professional services offered by Mussawar Hayat.',
   robots: { index: true, follow: true },
@@ -11,13 +13,11 @@ export const metadata: Metadata = {
 
 export default function TermsPage() {
   return (
-    <main className="min-h-screen bg-night text-white/80">
-      <div className="max-w-3xl mx-auto px-4 sm:px-8 py-16 sm:py-24">
-        <p className="text-neon text-xs font-orbitron uppercase tracking-widest mb-4">Legal</p>
-        <h1 className="text-3xl sm:text-4xl font-bold text-white font-orbitron mb-4">Terms of Service</h1>
-        <p className="text-white/50 text-sm mb-10">Last updated: 5 September 2026</p>
+    <PageShell>
+      <EditorialHeadline as="h1" index="/terms" eyebrow="Legal" aside="Last updated: 5 September 2026" solid="Terms of" accent="Service" />
 
-        <div className="space-y-8 text-sm sm:text-base leading-relaxed font-sans">
+      <div className="mt-16 max-w-3xl text-white/80 md:mt-24">
+        <div className="space-y-12 font-sans text-sm leading-relaxed sm:text-base [&_h2]:mb-4 [&_h2]:border-t [&_h2]:border-white/10 [&_h2]:pt-8 [&_h2]:font-orbitron [&_h2]:text-base [&_h2]:font-black [&_h2]:uppercase [&_h2]:tracking-tight [&_h2]:text-white sm:[&_h2]:text-lg">
           <section>
             <h2 className="text-white text-lg font-semibold mb-3">1. Agreement</h2>
             <p>
@@ -123,15 +123,15 @@ export default function TermsPage() {
             <h2 className="text-white text-lg font-semibold mb-3">12. Contact</h2>
             <p>
               Questions about these Terms:{' '}
-              <a href="mailto:zada38843@gmail.com" className="text-neon hover:underline">zada38843@gmail.com</a>
+              <a href="mailto:reply@mussawarhayat.site" className="text-neon underline decoration-neon/50 underline-offset-4 hover:decoration-neon">reply@mussawarhayat.site</a>
               {' '}· {' '}
-              <Link href="/contact" className="text-neon hover:underline">Contact page</Link>
+              <Link href="/contact" className="text-neon underline decoration-neon/50 underline-offset-4 hover:decoration-neon">Contact page</Link>
               {' '}· {' '}
-              <Link href="/privacy" className="text-neon hover:underline">Privacy Policy</Link>
+              <Link href="/privacy" className="text-neon underline decoration-neon/50 underline-offset-4 hover:decoration-neon">Privacy Policy</Link>
             </p>
           </section>
         </div>
       </div>
-    </main>
+    </PageShell>
   )
 }

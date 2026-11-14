@@ -1,14 +1,13 @@
-import { FiMail, FiPhone, FiMapPin, FiShield, FiTerminal } from 'react-icons/fi';
+import { FiMail, FiMapPin, FiShield } from 'react-icons/fi';
 import { LoopWhenVisible } from '../motion/LoopWhenVisible';
 import { Reveal } from '../motion/Reveal';
 import { Stagger, StaggerItem } from '../motion/Stagger';
 import { SectionGlow } from '../ui/SectionGlow';
-import { SectionHeading } from '../ui/SectionHeading';
+import { EditorialHeadline } from '../ui/EditorialHeadline';
 import { ContactForm } from './ContactForm';
 
 const CONTACT_INFO = [
-  { icon: FiMail, label: 'Email', value: 'zada38843@gmail.com', href: 'mailto:zada38843@gmail.com' },
-  { icon: FiPhone, label: 'Phone / WhatsApp', value: '+92 335 8328468', href: 'tel:+923358328468' },
+  { icon: FiMail, label: 'Email', value: 'reply@mussawarhayat.site', href: 'mailto:reply@mussawarhayat.site' },
   { icon: FiMapPin, label: 'Location', value: 'Attock, Pakistan (Remote worldwide)', href: null },
 ] as const;
 
@@ -30,7 +29,7 @@ function Marquee() {
   );
 
   return (
-    <LoopWhenVisible className="relative mb-20 overflow-hidden border-y border-white/10 py-6 [mask-image:linear-gradient(to_right,transparent,black_10%,black_90%,transparent)]">
+    <LoopWhenVisible className="relative -mx-[var(--page-pad)] mb-20 overflow-hidden border-y border-white/10 py-6 [mask-image:linear-gradient(to_right,transparent,black_10%,black_90%,transparent)]">
       <div className="flex w-max animate-marquee">
         {row}
         {row}
@@ -41,22 +40,25 @@ function Marquee() {
 
 export function Contact() {
   return (
-    <section id="contact" className="font-orbitron relative overflow-hidden bg-ink py-28 text-white">
+    <section id="contact" className="font-orbitron relative overflow-clip bg-ink px-[var(--page-pad)] py-28 text-white md:py-40">
       <SectionGlow />
 
       <Marquee />
 
-      <div className="container relative z-10 mx-auto max-w-6xl px-4 sm:px-6">
-        <SectionHeading
-          align="center"
-          eyebrow="Contact_Protocol.sys"
-          icon={<FiTerminal aria-hidden="true" />}
-          title={[{ text: "Let's Talk About" }, { text: 'Your Project', accent: true }]}
-          titleClassName="uppercase md:text-6xl"
-          description="Tell me what you are building. I will confirm fit, timeline, and the best engagement model (fixed-price, hourly, or retainer). Remote work for North America & Europe clients. GDPR-compliant infrastructure available when needed."
-        />
+      <div className="relative z-10">
+        <EditorialHeadline
+          index="08"
+          eyebrow="Contact"
+          aside="Response within 24 hours"
+          solid="Let's talk about"
+          accent="Your Project"
+        >
+          <p>
+            Tell me what you are building. I will confirm fit, timeline, and the best engagement model (fixed-price, hourly, or retainer). Remote work for North America & Europe clients. GDPR-compliant infrastructure available when needed.
+          </p>
+        </EditorialHeadline>
 
-        <div className="mx-auto grid max-w-6xl grid-cols-1 items-stretch gap-8 lg:grid-cols-2">
+        <div className="mt-16 grid grid-cols-1 items-stretch gap-8 md:mt-24 lg:grid-cols-2">
           <Reveal variant="slideFromLeft" className="card flex flex-col justify-between space-y-8 p-8 hover:border-white/10 md:p-12">
             <div>
               <h3 className="mb-8 flex items-center gap-3 font-mono text-xl font-bold uppercase tracking-tight text-white">
@@ -89,7 +91,7 @@ export function Contact() {
               <p className="font-sans text-xs leading-relaxed text-white/70">
                 Prefer a quick chat? Mention your preferred time zone and I will schedule a short call.
               </p>
-              <div className="flex items-center gap-3 font-mono text-[9px] font-bold uppercase tracking-[0.2em] text-white/65">
+              <div className="flex items-center gap-3 font-mono text-[10px] font-bold uppercase tracking-[0.2em] text-white/65">
                 <div className="h-2 w-2 rounded-full bg-neon shadow-[0_0_8px_#39FF14]" aria-hidden="true" />
                 Response target: under 24 hours on business days
               </div>

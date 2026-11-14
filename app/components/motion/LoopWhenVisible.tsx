@@ -4,7 +4,7 @@ import { useInView } from 'framer-motion';
 import { useRef, type ReactNode } from 'react';
 
 /**
- * Wraps decoration that loops forever (CSS `animate-orbit`, `animate-drift`, `animate-marquee`)
+ * Wraps decoration that loops forever (e.g. the CSS `animate-marquee` band in Contact)
  * and pauses it while it is off-screen, via `[data-paused]` in globals.css.
  */
 export function LoopWhenVisible({ children, className }: { children: ReactNode; className?: string }) {

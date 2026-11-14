@@ -1,15 +1,18 @@
 import { Metadata } from 'next'
 import Link from 'next/link'
-import { Header } from '@/app/components/layout/Header'
-import { Footer } from '@/app/components/layout/Footer'
+import { FiArrowUpRight } from 'react-icons/fi'
+import { Reveal } from '@/app/components/motion/Reveal'
 import { BreadcrumbSchema } from '@/app/components/seo/BreadcrumbSchema'
 import { SubscriptionModal } from '@/app/components/SubscriptionModal'
+import { EditorialHeadline } from '@/app/components/ui/EditorialHeadline'
+import { PageShell } from '@/app/components/ui/PageShell'
+import { SectionLabel } from '@/app/components/ui/SectionLabel'
 import { getAllPosts } from './lib/posts'
 
 export const metadata: Metadata = {
-  title: 'Next.js 16 Web3 Full-Stack Engineering Blog 2026 | Production Guides',
+  title: 'Next.js, Web3 & AI Engineering Blog',
   description:
-    'Expert production guides on Next.js 16 Core Web Vitals, Web3 DApps, Solidity smart contracts, TypeScript full-stack, AI agents, and high-performance SaaS by best Next.js developer Mussawar Hayat. Hire for implementation.',
+    'Production guides on Next.js 16, React, TypeScript, Web3, Solidity, security, and AI agents from full-stack developer Mussawar Hayat.',
   keywords: [
     'Web3 developer blog',
     'Next.js 16 tutorial',
@@ -69,149 +72,111 @@ const breadcrumbs = [
   { name: 'Blog', url: '/blog' },
 ]
 
+const formatDate = (date: string) =>
+  new Date(date).toLocaleDateString('en-US', { year: 'numeric', month: 'short', day: 'numeric' })
+
 export default async function BlogPage() {
   const blogPosts = await getAllPosts()
+  const [latest, ...rest] = blogPosts
 
   return (
     <>
       <BreadcrumbSchema items={breadcrumbs} />
+      <PageShell>
+        <EditorialHeadline as="h1" index="/blog" eyebrow="Writing" aside={`${blogPosts.length} guides`} solid="Mussawar" accent="Tech Blog">
+          <p>
+            Production Next.js 16, React, TypeScript, Web3, Solidity, DeFi, Bitcoin Ordinals, Docker, and AI-agent engineering guides
+            from full-stack developer Mussawar Hayat.
+          </p>
+          <p className="mt-4">
+            <a href="/feed.xml" className="link-underline font-mono text-xs uppercase tracking-[0.2em] text-neon">
+              Subscribe via RSS
+            </a>
+          </p>
+        </EditorialHeadline>
 
-      <div className="min-h-screen bg-night font-orbitron">
-        <Header />
-        <main role="main" id="main-content" className="pt-20">
-          <div className="max-w-6xl mx-auto px-4 sm:px-6 py-16">
-            <div className="text-center mb-20">
-              <h1 className="text-4xl md:text-6xl font-bold text-white tracking-tighter uppercase leading-none mb-8">
-                <span className="text-neon">Mussawar</span> Tech Blog
-              </h1>
-              <p className="text-lg text-white/60 max-w-3xl mx-auto leading-relaxed font-sans">
-                Production Next.js 16, React, TypeScript, Web3, Solidity, DeFi,
-                Bitcoin Ordinals, Docker, and AI-agent engineering guides from
-                full-stack developer Mussawar Hayat.
-              </p>
-              <p className="mt-6 font-sans text-sm">
-                <a href="/feed.xml" className="text-neon hover:underline">
-                  Subscribe via RSS
-                </a>
-              </p>
-            </div>
-
-            <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6 mb-24">
-              {blogPosts.map((post) => (
-                <article
-                  key={post.slug}
-                  className="group bg-[#0A1221] border border-neon/20 p-8 hover:border-neon transition-all duration-500 flex flex-col"
-                >
-                  <div className="flex flex-col sm:flex-row sm:items-center justify-between mb-4 gap-2">
-                    <div className="flex items-center gap-2">
-                      <span className="text-xs sm:text-sm font-medium text-neon bg-neon/10 px-2 sm:px-3 py-1 rounded-md">
-                        {post.category}
-                      </span>
-                    </div>
-                    <span className="text-xs sm:text-sm text-white/50">
-                      {post.readTime}
-                    </span>
-                  </div>
-
-                  <h2
-                    className="text-lg sm:text-xl font-semibold text-white font-orbitron mb-3 overflow-hidden"
-                    style={{
-                      display: '-webkit-box',
-                      WebkitLineClamp: 2,
-                      WebkitBoxOrient: 'vertical',
-                    }}
-                  >
-                    <Link
-                      href={`/blog/${post.slug}`}
-                      className="hover:text-neon transition-colors"
-                    >
-                      {post.title}
+        {/* Latest post, featured */}
+        {latest && (
+          <section className="mt-16 md:mt-24">
+            <SectionLabel index="01">Latest</SectionLabel>
+            <Reveal>
+              <article className="group relative grid grid-cols-1 gap-6 border-y border-white/10 py-10 md:grid-cols-12 md:gap-10 md:py-14">
+                <div className="flex gap-4 font-mono text-[10px] uppercase tracking-[0.25em] text-white/55 md:col-span-3 md:flex-col md:gap-2">
+                  <time dateTime={latest.date}>{formatDate(latest.date)}</time>
+                  <span className="text-neon">{latest.category}</span>
+                  <span>{latest.readTime}</span>
+                </div>
+                <div className="md:col-span-9">
+                  <h2 className="text-[clamp(1.5rem,3vw,2.6rem)] font-black uppercase leading-[1.02] tracking-[-0.02em] text-white transition-colors group-hover:text-neon">
+                    <Link href={`/blog/${latest.slug}`} className="after:absolute after:inset-0 after:content-[''] focus-visible:outline-none">
+                      {latest.title}
                     </Link>
                   </h2>
+                  <p className="mt-5 max-w-3xl font-sans text-base leading-relaxed text-white/70">{latest.excerpt}</p>
+                  <span className="mt-6 inline-flex items-center gap-2 font-mono text-xs font-bold uppercase tracking-[0.2em] text-neon">
+                    Read the guide
+                    <FiArrowUpRight className="transition-transform duration-300 group-hover:rotate-45" aria-hidden="true" />
+                  </span>
+                </div>
+              </article>
+            </Reveal>
+          </section>
+        )}
 
-                  <p
-                    className="text-sm sm:text-base text-white/60 mb-4 flex-1 overflow-hidden"
-                    style={{
-                      display: '-webkit-box',
-                      WebkitLineClamp: 3,
-                      WebkitBoxOrient: 'vertical',
-                    }}
-                  >
-                    {post.excerpt}
-                  </p>
-
-                  <div className="flex flex-col sm:flex-row sm:items-center justify-between mt-auto pt-4 border-t border-white/5 gap-2">
-                    <time
-                      dateTime={post.date}
-                      className="text-xs sm:text-sm text-white/40"
-                    >
-                      {new Date(post.date).toLocaleDateString('en-US', {
-                        year: 'numeric',
-                        month: 'long',
-                        day: 'numeric',
-                      })}
-                    </time>
-
-                    <Link
-                      href={`/blog/${post.slug}`}
-                      className="text-white hover:text-neon transition-colors text-sm flex items-center gap-1 group"
-                    >
-                      Read more
-                      <svg
-                        className="w-4 h-4 group-hover:translate-x-1 transition-transform"
-                        fill="none"
-                        stroke="currentColor"
-                        viewBox="0 0 24 24"
-                      >
-                        <path
-                          strokeLinecap="round"
-                          strokeLinejoin="round"
-                          strokeWidth={2}
-                          d="M9 5l7 7-7 7"
-                        />
-                      </svg>
-                    </Link>
+        {/* All posts */}
+        <section className="mt-20 md:mt-28">
+          <SectionLabel index="02">{`All guides (${rest.length})`}</SectionLabel>
+          <ol className="border-b border-white/10">
+            {rest.map((post) => (
+              <li key={post.slug} className="group relative border-t border-white/10">
+                <article className="grid grid-cols-1 gap-2 py-7 md:grid-cols-12 md:gap-10 md:py-8">
+                  <time dateTime={post.date} className="font-mono text-[10px] uppercase tracking-[0.25em] text-white/50 md:col-span-2 md:pt-1">
+                    {formatDate(post.date)}
+                  </time>
+                  <div className="md:col-span-7">
+                    <h2 className="text-base font-bold leading-snug tracking-wide text-white transition-colors group-hover:text-neon md:text-lg">
+                      <Link href={`/blog/${post.slug}`} className="after:absolute after:inset-0 after:content-[''] focus-visible:outline-none">
+                        {post.title}
+                      </Link>
+                    </h2>
+                    <p className="mt-2 line-clamp-2 font-sans text-sm leading-relaxed text-white/55">{post.excerpt}</p>
+                  </div>
+                  <div className="flex gap-4 font-mono text-[10px] uppercase tracking-[0.25em] text-white/50 md:col-span-3 md:flex-col md:items-end md:gap-2 md:pt-1">
+                    <span className="text-neon/80">{post.category}</span>
+                    <span>{post.readTime}</span>
                   </div>
                 </article>
-              ))}
-            </div>
+              </li>
+            ))}
+          </ol>
+        </section>
 
-            <div className="text-center">
-              <div className="bg-[#0A1221] border border-neon/20 p-8 md:p-12">
-                <h2 className="text-xl md:text-2xl font-bold text-white font-orbitron mb-4">
-                  Stay Updated with{' '}
-                  <span className="text-neon">Web3 & Full-Stack</span>{' '}
-                  Insights
-                </h2>
-                <p className="text-sm md:text-base text-white/60 mb-6 px-2">
-                  Get practical architecture guides on Next.js, Web3, Solidity,
-                  DeFi, and production full-stack systems delivered to your
-                  inbox.
-                </p>
-                <SubscriptionModal />
-              </div>
+        {/* Newsletter + links */}
+        <section className="mt-24 border-t border-white/10 pt-16 md:mt-32 md:pt-20">
+          <Reveal className="grid grid-cols-1 gap-10 lg:grid-cols-12 lg:items-end lg:gap-16">
+            <div className="lg:col-span-7">
+              <h2 className="text-[clamp(1.6rem,3vw,2.5rem)] font-black uppercase leading-[1] tracking-[-0.02em] text-white">
+                Stay updated with <span className="text-neon">Web3 &amp; Full-Stack</span> insights
+              </h2>
+              <p className="mt-5 max-w-2xl font-sans text-base leading-relaxed text-white/70">
+                Get practical architecture guides on Next.js, Web3, Solidity, DeFi, and production full-stack systems delivered to your
+                inbox.
+              </p>
             </div>
-
-            <div className="text-center mt-12">
-              <div className="flex flex-col sm:flex-row gap-4 justify-center">
-                <Link
-                  href="/services"
-                  className="px-8 py-4 border border-white/10 hover:border-neon/30 text-white/70 hover:text-white font-orbitron text-sm uppercase tracking-[0.2em] rounded-xl transition-all duration-300"
-                >
-                  Explore Services
+            <div className="flex flex-col items-start gap-6 lg:col-span-5 lg:items-end">
+              <SubscriptionModal />
+              <div className="flex gap-6 font-mono text-[11px] uppercase tracking-[0.2em]">
+                <Link href="/services" className="link-underline text-white/75 hover:text-neon">
+                  Explore services
                 </Link>
-                <Link
-                  href="/contact"
-                  className="px-8 py-4 border border-white/10 hover:border-neon/30 text-white/70 hover:text-white font-orbitron text-sm uppercase tracking-[0.2em] rounded-xl transition-all duration-300"
-                >
-                  Hire Me
+                <Link href="/contact" className="link-underline text-white/75 hover:text-neon">
+                  Hire me
                 </Link>
               </div>
             </div>
-          </div>
-        </main>
-        <Footer />
-      </div>
+          </Reveal>
+        </section>
+      </PageShell>
     </>
   )
 }

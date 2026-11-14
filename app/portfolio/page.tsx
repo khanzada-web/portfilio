@@ -1,15 +1,17 @@
 import type { Metadata } from 'next';
 import Link from 'next/link';
-import { Header } from '@/app/components/layout/Header';
-import { Footer } from '@/app/components/layout/Footer';
+import { FiArrowUpRight, FiGithub, FiGlobe } from 'react-icons/fi';
+import { Stagger, StaggerItem } from '@/app/components/motion/Stagger';
 import { BreadcrumbSchema } from '@/app/components/seo/BreadcrumbSchema';
+import { EditorialHeadline } from '@/app/components/ui/EditorialHeadline';
+import { PageShell } from '@/app/components/ui/PageShell';
+import { SectionLabel } from '@/app/components/ui/SectionLabel';
 import { PROJECTS } from '@/app/lib/projects';
-import { FiArrowRight, FiGlobe, FiGithub } from 'react-icons/fi';
 
 export const metadata: Metadata = {
-  title: 'Next.js & Web3 Portfolio — Case Studies by Mussawar Hayat',
+  title: 'Next.js & Web3 Portfolio — Case Studies',
   description:
-    'Next.js, React, Solidity, and Bitcoin Ordinals case studies by Mussawar Hayat: DaMeta1, Ordwin Market, DeFi staking, DEX interfaces, and production SaaS.',
+    'Case studies by Mussawar Hayat: SaaS, DeFi staking, a Bitcoin Ordinals marketplace, and metaverse products, each with problem, architecture, and results.',
   keywords: [
     'Next.js portfolio',
     'Web3 developer portfolio',
@@ -40,6 +42,8 @@ const breadcrumbs = [
   { name: 'Portfolio', url: '/portfolio' },
 ];
 
+const EXTERNAL = { target: '_blank', rel: 'noopener noreferrer' } as const;
+
 export default function PortfolioPage() {
   const flagship = PROJECTS.filter((p) => p.flagship);
   const archive = PROJECTS.filter((p) => !p.flagship);
@@ -47,162 +51,96 @@ export default function PortfolioPage() {
   return (
     <>
       <BreadcrumbSchema items={breadcrumbs} />
-      <div className="min-h-screen bg-ink font-orbitron text-white relative overflow-hidden">
-        {/* Subtle Ambient Glow */}
-        <div className="absolute inset-0 opacity-20 pointer-events-none" aria-hidden="true">
-          <div className="absolute top-1/4 left-1/2 -translate-x-1/2 w-[700px] h-[500px] bg-neon/10 blur-[160px] rounded-full" />
-        </div>
+      <PageShell>
+        <EditorialHeadline
+          as="h1"
+          index="/portfolio"
+          eyebrow="Case studies"
+          aside={`${PROJECTS.length} builds`}
+          solid="Next.js & Web3"
+          accent="Portfolio"
+        >
+          <p>
+            Hire-ready case studies from Mussawar Hayat, a Next.js full-stack and Web3 developer. Flagship work covers SaaS, DeFi
+            staking, Bitcoin Ordinals marketplaces, and metaverse products — each with problem breakdown, architecture, and measured
+            outcomes.
+          </p>
+        </EditorialHeadline>
 
-        <Header />
-        <main id="main-content" role="main" className="pt-28 pb-28 relative z-10">
-          <div className="max-w-7xl mx-auto px-4 sm:px-6">
-            
-            {/* Page Header */}
-            <div className="max-w-5xl mb-20 mt-10">
-              
-              <h1 className="text-3xl md:text-5xl lg:text-6xl font-extrabold text-white tracking-tight mb-6 leading-tight">
-                Next.js & Web3 Portfolio
-              </h1>
-              <p className="text-sm md:text-base text-white/70 font-sans leading-relaxed">
-                Hire-ready case studies from Mussawar Hayat, a Next.js full-stack and Web3 developer.
-                Flagship work covers SaaS, DeFi staking, Bitcoin Ordinals marketplaces, and metaverse
-                products — each with problem breakdown, architecture, and measured outcomes.
-              </p>
-            </div>
-
-            {/* Flagship Projects Section */}
-            <div className="mb-24">
-              <div className="flex items-center gap-3 mb-8">
-                <span className="w-2 h-2 bg-neon rounded-full shadow-[0_0_8px_#39FF14]" />
-                <h2 className="text-xs font-mono uppercase tracking-[0.3em] text-neon">
-                  Flagship Next.js & Web3 Builds
-                </h2>
-              </div>
-
-              <div className="grid grid-cols-1 md:grid-cols-2 gap-8">
-                {flagship.map((p) => (
-                  <article
-                    key={p.slug}
-                    className="group bg-panel/60 backdrop-blur-md border border-white/10 rounded-xl p-8 md:p-10 hover:border-neon/40 transition-all duration-300 shadow-xl flex flex-col justify-between"
-                  >
-                    <div>
-                      <div className="flex items-center justify-between mb-4">
-                        <span className="text-[10px] font-mono font-bold text-neon uppercase tracking-wider">
-                          Flagship_Build
-                        </span>
-                        <FiArrowRight className="text-white/30 group-hover:text-neon group-hover:translate-x-1 transition-all" />
-                      </div>
-
-                      <h3 className="text-xl md:text-2xl font-bold text-white mb-3 uppercase tracking-tight group-hover:text-neon transition-colors">
-                        <Link href={`/portfolio/${p.slug}`} className="hover:underline">
-                          {p.title}
-                        </Link>
-                      </h3>
-
-                      <p className="text-xs md:text-sm text-white/70 font-sans leading-relaxed mb-6">
-                        {p.description}
-                      </p>
-
-                      <ul className="flex flex-wrap gap-1.5 mb-8">
-                        {p.tech.map((t) => (
-                          <li
-                            key={t}
-                            className="text-[10px] font-mono text-white/80 bg-white/[0.03] border border-white/10 px-2.5 py-1 rounded-md"
-                          >
-                            {t}
-                          </li>
-                        ))}
-                      </ul>
-                    </div>
-
-                    <div className="pt-6 border-t border-white/10 flex items-center justify-between gap-4">
-                      <Link
-                        href={`/portfolio/${p.slug}`}
-                        className="text-xs font-mono font-bold uppercase tracking-widest text-neon hover:text-white transition-colors inline-flex items-center gap-2"
-                      >
-                        <span>View Case Study</span>
-                        <FiArrowRight />
+        {/* Flagship: large editorial index, whole row clickable */}
+        <section className="mt-24 md:mt-32">
+          <SectionLabel index="01">Flagship Next.js &amp; Web3 builds</SectionLabel>
+          <Stagger as="ol" step={0.06} className="border-b border-white/10">
+            {flagship.map((p, i) => (
+              <StaggerItem as="li" key={p.slug} className="group relative border-t border-white/10">
+                <article className="grid grid-cols-1 gap-6 py-10 md:grid-cols-12 md:gap-10 md:py-12">
+                  <span className="font-mono text-xs text-white/55 transition-colors group-hover:text-neon md:col-span-1 md:pt-2">
+                    {String(i + 1).padStart(2, '0')}
+                  </span>
+                  <div className="md:col-span-6">
+                    <span className="font-mono text-[10px] uppercase tracking-[0.3em] text-white/50">{p.category}</span>
+                    <h3 className="mt-3 text-[clamp(1.6rem,3vw,2.6rem)] font-black uppercase leading-[0.98] tracking-[-0.02em] text-white transition-colors group-hover:text-neon">
+                      <Link href={`/portfolio/${p.slug}`} className="after:absolute after:inset-0 after:content-[''] focus-visible:outline-none">
+                        {p.title}
                       </Link>
-
-                      <div className="flex items-center gap-3">
-                        {p.link && (
-                          <a
-                            href={p.link}
-                            target="_blank"
-                            rel="noopener noreferrer"
-                            className="p-2.5 rounded-lg border border-white/10 bg-white/[0.02] text-white/70 hover:text-neon hover:border-neon/40 transition-all"
-                            aria-label={`Live demo for ${p.title}`}
-                          >
-                            <FiGlobe className="w-4 h-4" />
-                          </a>
-                        )}
-                        {p.github && (
-                          <a
-                            href={p.github}
-                            target="_blank"
-                            rel="noopener noreferrer"
-                            className="p-2.5 rounded-lg border border-white/10 bg-white/[0.02] text-white/70 hover:text-neon hover:border-neon/40 transition-all"
-                            aria-label={`Source code for ${p.title}`}
-                          >
-                            <FiGithub className="w-4 h-4" />
-                          </a>
-                        )}
-                      </div>
-                    </div>
-                  </article>
-                ))}
-              </div>
-            </div>
-
-            {/* Project Archive Section */}
-            <div>
-              <div className="flex items-center gap-3 mb-8">
-                <span className="w-2 h-2 bg-white/40 rounded-full" />
-                <h2 className="text-xs font-mono uppercase tracking-[0.3em] text-white/60">
-                  Project Archive ({archive.length})
-                </h2>
-              </div>
-
-              <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-6">
-                {archive.map((p) => (
-                  <article
-                    key={p.slug}
-                    className="group bg-panel/40 backdrop-blur-sm border border-white/10 rounded-xl p-6 hover:border-white/25 hover:bg-panel/60 transition-all duration-300 flex flex-col justify-between"
-                  >
-                    <div>
-                      <div className="text-[9px] font-mono font-bold text-white/40 uppercase tracking-wider mb-2">
-                        Archive_Module
-                      </div>
-                      <h3 className="text-base font-bold text-white mb-2 uppercase tracking-tight group-hover:text-neon transition-colors">
-                        <Link href={`/portfolio/${p.slug}`}>
-                          {p.title}
-                        </Link>
-                      </h3>
-                      <p className="text-xs text-white/60 font-sans line-clamp-3 leading-relaxed mb-4">
-                        {p.description}
-                      </p>
-                    </div>
-
-                    <div className="pt-4 border-t border-white/10 flex justify-between items-center">
-                      <span className="text-[9px] font-mono text-white/40 uppercase tracking-widest">
-                        {p.tech.slice(0, 3).join(' · ')}
+                    </h3>
+                  </div>
+                  <div className="md:col-span-5">
+                    <p className="font-sans text-sm leading-relaxed text-white/70 md:text-base">{p.description}</p>
+                    <ul className="mt-5 flex flex-wrap gap-x-4 gap-y-1 font-mono text-[10px] uppercase tracking-[0.2em] text-white/50" aria-label="Technologies">
+                      {p.tech.map((t) => (
+                        <li key={t}>{t}</li>
+                      ))}
+                    </ul>
+                    <div className="relative z-10 mt-6 flex flex-wrap items-center gap-x-6 gap-y-3">
+                      <span className="inline-flex items-center gap-2 font-mono text-xs font-bold uppercase tracking-[0.2em] text-neon">
+                        Case study
+                        <FiArrowUpRight className="transition-transform duration-300 group-hover:rotate-45" aria-hidden="true" />
                       </span>
-                      <Link
-                        href={`/portfolio/${p.slug}`}
-                        className="text-[10px] font-mono font-bold uppercase text-neon hover:underline"
-                      >
-                        Read →
-                      </Link>
+                      {p.link && (
+                        <a href={p.link} {...EXTERNAL} aria-label={`Live demo for ${p.title}`} className="inline-flex items-center gap-2 font-mono text-xs uppercase tracking-[0.2em] text-white/70 transition-colors hover:text-neon">
+                          <FiGlobe aria-hidden="true" />
+                          <span className="link-underline">Live</span>
+                        </a>
+                      )}
+                      {p.github && (
+                        <a href={p.github} {...EXTERNAL} aria-label={`Source code for ${p.title}`} className="inline-flex items-center gap-2 font-mono text-xs uppercase tracking-[0.2em] text-white/70 transition-colors hover:text-neon">
+                          <FiGithub aria-hidden="true" />
+                          <span className="link-underline">Source</span>
+                        </a>
+                      )}
                     </div>
-                  </article>
-                ))}
-              </div>
-            </div>
+                  </div>
+                </article>
+              </StaggerItem>
+            ))}
+          </Stagger>
+        </section>
 
-          </div>
-        </main>
-        <Footer />
-      </div>
+        {/* Archive: compact list */}
+        <section className="mt-24 md:mt-32">
+          <SectionLabel index="02">{`Project archive (${archive.length})`}</SectionLabel>
+          <Stagger as="ol" step={0.03} className="border-b border-white/10">
+            {archive.map((p, i) => (
+              <StaggerItem as="li" key={p.slug} className="group relative border-t border-white/10">
+                <article className="grid grid-cols-[2.5rem_1fr_auto] items-baseline gap-x-4 gap-y-1 py-5 md:grid-cols-[3.5rem_minmax(0,1.2fr)_minmax(0,1fr)_minmax(0,1fr)_auto] md:gap-x-6">
+                  <span className="font-mono text-[11px] text-white/55 group-hover:text-neon">{String(i + 1).padStart(2, '0')}</span>
+                  <h3 className="text-sm font-bold uppercase tracking-wide text-white transition-colors group-hover:text-neon md:text-base">
+                    <Link href={`/portfolio/${p.slug}`} className="after:absolute after:inset-0 after:content-[''] focus-visible:outline-none">
+                      {p.title}
+                    </Link>
+                  </h3>
+                  <span className="hidden font-mono text-[10px] uppercase tracking-[0.25em] text-white/50 md:block">{p.category}</span>
+                  <span className="hidden truncate font-mono text-[10px] uppercase tracking-[0.2em] text-white/55 md:block">
+                    {p.tech.slice(0, 3).join(' · ')}
+                  </span>
+                  <span className="font-mono text-[10px] font-bold uppercase tracking-[0.2em] text-neon">Read →</span>
+                </article>
+              </StaggerItem>
+            ))}
+          </Stagger>
+        </section>
+      </PageShell>
     </>
   );
 }

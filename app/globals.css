@@ -11,26 +11,21 @@
 
   --ease-brand: cubic-bezier(0.22, 1, 0.36, 1);
 
-  --animate-orbit: orbit 30s linear infinite;
-  --animate-orbit-reverse: orbit 20s linear infinite reverse;
-  --animate-drift: drift 18s ease-in-out infinite alternate;
   --animate-marquee: marquee 32s linear infinite;
   --animate-fade-up: fade-up 0.6s var(--ease-brand) both;
   /* Hero headline: a "focus pull". Visible (non-zero opacity, unclipped) from the first
      frame, so the largest text still counts as painted for LCP immediately. */
   --animate-focus-in: focus-in 1.1s var(--ease-brand) both;
-  --animate-float: float 6s ease-in-out infinite alternate;
-  --animate-grid-flow: grid-flow 4s linear infinite;
-  --animate-scroll-cue: scroll-cue 2s var(--ease-brand) infinite;
   --animate-ping-soft: ping-soft 2.4s var(--ease-brand) infinite;
+  /* Hero name: each letter assembles (stays visible from frame one, so LCP is unaffected). */
+  --animate-letter-in: letter-in 1s var(--ease-brand) both;
+  /* One neon scan across the outlined surname after the title lands. */
+  --animate-xray-scan: xray-scan 1.6s var(--ease-brand);
+  /* Hero developer pass: drops in on its lanyard with a slight overshoot, then sways. */
+  --animate-badge-drop: badge-drop 1.4s cubic-bezier(0.34, 1.45, 0.64, 1) both;
+  --animate-swing: swing 7s ease-in-out infinite alternate;
+  --animate-beam: beam 3.2s linear infinite;
 
-  @keyframes orbit {
-    to { transform: rotate(360deg); }
-  }
-  @keyframes drift {
-    from { transform: translate3d(0, 0, 0) scale(1); }
-    to { transform: translate3d(6%, -4%, 0) scale(1.08); }
-  }
   @keyframes marquee {
     to { transform: translate3d(-50%, 0, 0); }
   }
@@ -40,15 +35,22 @@
   @keyframes focus-in {
     from { opacity: 0.35; filter: blur(14px); transform: translate3d(0, 0.18em, 0) scale(0.98); }
   }
-  @keyframes float {
-    to { transform: translate3d(0, -10px, 0); }
+  @keyframes letter-in {
+    from { opacity: 0.35; filter: blur(10px); transform: translate3d(0, 0.32em, 0) rotate(8deg); }
   }
-  @keyframes grid-flow {
-    to { transform: translate3d(0, 64px, 0); }
+  @keyframes xray-scan {
+    from { --xray-x: -15%; --xray-r: 1.6em; }
+    to { --xray-x: 115%; --xray-r: 1.6em; }
   }
-  @keyframes scroll-cue {
-    from { transform: translate3d(0, -100%, 0); }
-    to { transform: translate3d(0, 250%, 0); }
+  @keyframes badge-drop {
+    from { opacity: 0; transform: translate3d(0, -40%, 0) rotate(-7deg); }
+  }
+  @keyframes swing {
+    from { transform: rotate(-1.4deg); }
+    to { transform: rotate(1.4deg); }
+  }
+  @keyframes beam {
+    to { transform: rotate(360deg); }
   }
   @keyframes ping-soft {
     from { transform: scale(1); opacity: 0.7; }
@@ -57,6 +59,8 @@
 }
 
 :root {
+  /* Horizontal page padding shared by full-bleed sections (hero, About) so edges line up. */
+  --page-pad: 1.5rem;
   --background: #ffffff;
   --foreground: #171717;
   --font-sans: var(--font-geist-sans), -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, "Helvetica Neue", sans-serif;
@@ -64,6 +68,10 @@
   --duration-fast: 300ms;
   --duration-base: 600ms;
   --duration-slow: 900ms;
+}
+
+@media (min-width: 1024px) {
+  :root { --page-pad: 3rem; }
 }
 
 /* ─── Base ─────────────────────────────────────────────────────────────────── */
@@ -160,12 +168,16 @@ section[id] {
 /* Animated underline: grows from the left on hover / when [aria-current]. */
 @utility link-underline {
   position: relative;
+  display: inline-block;
+  /* Padding makes standalone links at least 24px tall (WCAG 2.2 target size); the
+     underline sits just below the text, not at the padding edge. */
+  padding-block: 7px;
   &::after {
     content: "";
     position: absolute;
     left: 0;
     right: 0;
-    bottom: -2px;
+    bottom: 0.15em;
     height: 1px;
     background: currentColor;
     transform: scaleX(0);
@@ -177,34 +189,46 @@ section[id] {
   &[aria-current]::after { transform: scaleX(1); }
 }
 
-/* Cursor-following glow; position comes from SpotlightTracker (`--spot-x/y`). */
-@utility spotlight {
+/* Looping decoration pauses while off-screen (LoopWhenVisible sets data-paused). */
+[data-paused] :is(.animate-marquee, .animate-ping-soft, .animate-swing, .animate-beam) {
+  animation-play-state: paused;
+}
+
+/* ─── Pointer effects (driven by PointerFX) ─────────────────────────
+   Registered so they can be animated (intro scan) and transitioned (fade in/out). */
+@property --xray-x { syntax: "<length-percentage>"; inherits: true; initial-value: 50%; }
+@property --xray-y { syntax: "<length-percentage>"; inherits: true; initial-value: 50%; }
+@property --xray-r { syntax: "<length>"; inherits: true; initial-value: 0px; }
+@property --glow { syntax: "<number>"; inherits: false; initial-value: 0; }
+
+/* Outlined word with a solid neon copy (::after, from data-text, so crawlers never see
+   the word twice) that is visible only inside a soft circle: the cursor flashlight. */
+@utility xray {
   position: relative;
-  isolation: isolate;
-  @media (hover: hover) and (pointer: fine) {
-    &::before {
-      content: "";
-      position: absolute;
-      inset: 0;
-      z-index: -1;
-      border-radius: inherit;
-      background: radial-gradient(var(--spot-size, 320px) circle at var(--spot-x, 50%) var(--spot-y, 50%), rgb(57 255 20 / 0.09), transparent 65%);
-      opacity: 0;
-      transition: opacity var(--duration-fast) var(--ease-brand);
-      pointer-events: none;
-    }
-    &:hover::before { opacity: 1; }
+  transition: --xray-r 0.5s var(--ease-brand);
+  &::after {
+    /* The name's tight line-height lets glyphs and glow overflow the box, and a mask clips
+       to its own box, so the copy gets a padded "bleed" box and the mask is offset to match. */
+    --bleed: 0.3em;
+    content: attr(data-text);
+    position: absolute;
+    inset: calc(var(--bleed) * -1);
+    padding: var(--bleed);
+    white-space: nowrap;
+    color: var(--color-neon);
+    -webkit-text-stroke: 0;
+    text-shadow: 0 0 0.16em rgb(57 255 20 / 0.6);
+    pointer-events: none;
+    -webkit-mask-image: radial-gradient(circle var(--xray-r) at calc(var(--xray-x) + var(--bleed)) calc(var(--xray-y) + var(--bleed)), #000 30%, transparent 100%);
+    mask-image: radial-gradient(circle var(--xray-r) at calc(var(--xray-x) + var(--bleed)) calc(var(--xray-y) + var(--bleed)), #000 30%, transparent 100%);
   }
 }
 
-/* Static film grain, rendered once (no animation). */
-@utility grain {
-  background-image: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='160' height='160'%3E%3Cfilter id='n'%3E%3CfeTurbulence type='fractalNoise' baseFrequency='0.9' numOctaves='2' stitchTiles='stitch'/%3E%3C/filter%3E%3Crect width='100%25' height='100%25' filter='url(%23n)'/%3E%3C/svg%3E");
-}
-
-/* Looping decoration pauses while off-screen (LoopWhenVisible sets data-paused). */
-[data-paused] :is(.animate-orbit, .animate-orbit-reverse, .animate-drift, .animate-marquee, .animate-float, .animate-grid-flow, .animate-scroll-cue, .animate-ping-soft) {
-  animation-play-state: paused;
+/* A letter tints toward neon as --glow (0–1) rises; lift comes from an inline transform. */
+@utility field-letter {
+  display: inline-block;
+  color: color-mix(in oklab, #fff, var(--color-neon) calc(var(--glow) * 100%));
+  transition: transform var(--duration-base) var(--ease-brand), --glow var(--duration-fast) var(--ease-brand);
 }
 
 /* ─── Reduced motion ──────────────────────────────────────────────────────── */

@@ -23,7 +23,7 @@ export function Parallax({
   const y = useTransform(scrollYProgress, [0, 1], [0, reduce ? 0 : -distance]);
 
   return (
-    <m.div ref={ref} className={className} style={{ y }}>
+    <m.div ref={ref} className={`relative ${className ?? ''}`} style={{ y }}>
       {children}
     </m.div>
   );

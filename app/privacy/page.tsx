@@ -1,8 +1,10 @@
 import type { Metadata } from 'next'
 import Link from 'next/link'
+import { EditorialHeadline } from '@/app/components/ui/EditorialHeadline'
+import { PageShell } from '@/app/components/ui/PageShell'
 
 export const metadata: Metadata = {
-  title: 'Privacy Policy for Next.js Web3 Developer Services | Mussawar Hayat',
+  title: 'Privacy Policy',
   description:
     'Privacy Policy for mussawarhayat.site — how we collect, use, and protect personal data, cookies, analytics, and Google AdSense advertising.',
   robots: { index: true, follow: true },
@@ -11,21 +13,19 @@ export const metadata: Metadata = {
 
 export default function PrivacyPage() {
   return (
-    <main className="min-h-screen bg-night text-white/80">
-      <div className="max-w-3xl mx-auto px-4 sm:px-8 py-16 sm:py-24">
-        <p className="text-neon text-xs font-orbitron uppercase tracking-widest mb-4">Legal</p>
-        <h1 className="text-3xl sm:text-4xl font-bold text-white font-orbitron mb-4">Privacy Policy</h1>
-        <p className="text-white/50 text-sm mb-10">Last updated: 5 September 2026</p>
+    <PageShell>
+      <EditorialHeadline as="h1" index="/privacy" eyebrow="Legal" aside="Last updated: 5 September 2026" solid="Privacy" accent="Policy" />
 
-        <div className="space-y-8 text-sm sm:text-base leading-relaxed font-sans">
+      <div className="mt-16 max-w-3xl text-white/80 md:mt-24">
+        <div className="space-y-12 font-sans text-sm leading-relaxed sm:text-base [&_h2]:mb-4 [&_h2]:border-t [&_h2]:border-white/10 [&_h2]:pt-8 [&_h2]:font-orbitron [&_h2]:text-base [&_h2]:font-black [&_h2]:uppercase [&_h2]:tracking-tight [&_h2]:text-white sm:[&_h2]:text-lg">
           <section>
             <h2 className="text-white text-lg font-semibold mb-3">1. Who we are</h2>
             <p>
               This website is operated by Mussawar Hayat (&quot;we&quot;, &quot;us&quot;), a full-stack and Web3 developer based in
               Pakistan, serving clients worldwide. Site: {' '}
-              <Link href="/" className="text-neon hover:underline">https://mussawarhayat.site</Link>.
+              <Link href="/" className="text-neon underline decoration-neon/50 underline-offset-4 hover:decoration-neon">https://mussawarhayat.site</Link>.
               Contact: {' '}
-              <a href="mailto:zada38843@gmail.com" className="text-neon hover:underline">zada38843@gmail.com</a>.
+              <a href="mailto:reply@mussawarhayat.site" className="text-neon underline decoration-neon/50 underline-offset-4 hover:decoration-neon">reply@mussawarhayat.site</a>.
             </p>
           </section>
 
@@ -97,7 +97,7 @@ export default function PrivacyPage() {
                 href="https://adssettings.google.com"
                 target="_blank"
                 rel="noopener noreferrer"
-                className="text-neon hover:underline"
+                className="text-neon underline decoration-neon/50 underline-offset-4 hover:decoration-neon"
               >
                 Google Ads Settings
               </a>
@@ -106,7 +106,7 @@ export default function PrivacyPage() {
                 href="https://policies.google.com/technologies/ads"
                 target="_blank"
                 rel="noopener noreferrer"
-                className="text-neon hover:underline"
+                className="text-neon underline decoration-neon/50 underline-offset-4 hover:decoration-neon"
               >
                 How Google uses data when you use partner sites
               </a>
@@ -119,7 +119,7 @@ export default function PrivacyPage() {
                 href="https://www.aboutads.info/choices/"
                 target="_blank"
                 rel="noopener noreferrer"
-                className="text-neon hover:underline"
+                className="text-neon underline decoration-neon/50 underline-offset-4 hover:decoration-neon"
               >
                 aboutads.info/choices
               </a>
@@ -158,7 +158,7 @@ export default function PrivacyPage() {
             <p className="mb-3">
               Depending on your location, you may have rights to access, correct, delete, or restrict processing of
               your personal data, and to object or withdraw consent. To exercise these rights, email{' '}
-              <a href="mailto:zada38843@gmail.com" className="text-neon hover:underline">zada38843@gmail.com</a>.
+              <a href="mailto:reply@mussawarhayat.site" className="text-neon underline decoration-neon/50 underline-offset-4 hover:decoration-neon">reply@mussawarhayat.site</a>.
             </p>
             <p>
               If you are in the EEA/UK, you may also lodge a complaint with your local supervisory authority.
@@ -185,13 +185,13 @@ export default function PrivacyPage() {
             <h2 className="text-white text-lg font-semibold mb-3">13. Contact</h2>
             <p>
               Privacy questions: {' '}
-              <a href="mailto:zada38843@gmail.com" className="text-neon hover:underline">zada38843@gmail.com</a>
+              <a href="mailto:reply@mussawarhayat.site" className="text-neon underline decoration-neon/50 underline-offset-4 hover:decoration-neon">reply@mussawarhayat.site</a>
               {' '}· {' '}
-              <Link href="/contact" className="text-neon hover:underline">Contact page</Link>
+              <Link href="/contact" className="text-neon underline decoration-neon/50 underline-offset-4 hover:decoration-neon">Contact page</Link>
             </p>
           </section>
         </div>
       </div>
-    </main>
+    </PageShell>
   )
 }

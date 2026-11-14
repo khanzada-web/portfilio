@@ -63,6 +63,10 @@ export const HERO_SEQUENCE = {
   actions: 0.48,
   stats: 0.58,
   visual: 0.3,
+  /** Delay between the letters of the name. */
+  letterStep: 0.045,
+  /** When the neon scan crosses the outlined surname. */
+  xrayScan: 0.95,
 } as const;
 
 export const SPRING = {
@@ -73,7 +77,6 @@ export const SPRING = {
 
 /** Auto-advance intervals, milliseconds. */
 export const AUTOPLAY_MS = {
-  heroStack: 2000,
   testimonials: 6000,
 } as const;
 
@@ -88,6 +91,25 @@ export const MAGNETIC_STRENGTH = 0.3;
 
 /** Scroll distance (px) before the header can hide. */
 export const HEADER_HIDE_AFTER = 120;
+
+/** Pointer effects (PointerFX): letter field, x-ray, tilt. Pixel values unless noted. */
+export const HERO_FX = {
+  /** Letters within this distance of the cursor react. */
+  letterRadius: 240,
+  /** Max lift of the closest letter. */
+  letterLift: 16,
+  /** Radius of the x-ray flashlight over the outlined surname. */
+  xrayRadius: 170,
+  /** Max tilt of the product stack, degrees. */
+  tiltX: 8,
+  tiltY: 10,
+} as const;
+
+/** Scroll-spy: an item counts as "current" while it crosses this band mid-viewport (Process timeline). */
+export const ACTIVE_BAND = { margin: '-40% 0px -40% 0px' } as const;
+
+/** Length of the scramble-to-text decode effect, milliseconds. */
+export const DECODE_MS = 900;
 
 const base: Transition = { duration: DURATION.base, ease: EASE.out };
 const slow: Transition = { duration: DURATION.slow, ease: EASE.out };
@@ -118,7 +140,7 @@ export const slideFromRight: Variants = {
 };
 
 /** Word/line slides up from behind an overflow-hidden mask. */
-export const maskUp: Variants = {
+const maskUp: Variants = {
   hidden: { y: '110%' },
   visible: { y: '0%', transition: slow },
 };

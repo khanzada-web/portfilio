@@ -1,191 +1,140 @@
 import Image from 'next/image';
-import {
-  FiCode, FiGlobe, FiZap, FiStar, FiLayers,
-  FiSmartphone, FiDatabase, FiServer, FiClock, FiUsers,
-} from 'react-icons/fi';
+import Link from 'next/link';
+import { FiArrowRight, FiArrowUpRight } from 'react-icons/fi';
 import { CountUp } from '../motion/CountUp';
 import { Reveal } from '../motion/Reveal';
 import { Stagger, StaggerItem } from '../motion/Stagger';
+import { EditorialHeadline } from '../ui/EditorialHeadline';
 import { SectionGlow } from '../ui/SectionGlow';
-import { SectionHeading } from '../ui/SectionHeading';
 
-const SKILLS = [
-  { name: 'React / Next.js', level: 95, icon: <FiCode /> },
-  { name: 'App Dev (React Native / Flutter)', level: 90, icon: <FiSmartphone /> },
-  { name: 'TypeScript / Node.js', level: 95, icon: <FiLayers /> },
-  { name: 'UI/UX Architecture', level: 85, icon: <FiStar /> },
-  { name: 'Web3 & Blockchain', level: 85, icon: <FiGlobe /> },
-  { name: 'Product Engineering', level: 90, icon: <FiZap /> },
-  { name: 'REST APIs & Databases', level: 90, icon: <FiDatabase /> },
-  { name: 'DevOps / CI/CD / VPS', level: 85, icon: <FiServer /> },
+/** Profile facts (all from existing site copy). */
+const PROFILE = [
+  { label: 'Role', value: 'Full-Stack & Web3 Engineer' },
+  { label: 'Based in', value: 'Attock, Pakistan' },
+  { label: 'Clients', value: 'Startups in North America & Europe' },
+  { label: 'Time zones', value: 'EST / CET coverage' },
 ] as const;
 
-const ACHIEVEMENTS = [
-  { number: 3, suffix: '+', label: 'Years Experience' },
-  { number: 40, suffix: '+', label: 'Projects Delivered' },
-  { number: 15, suffix: '+', label: 'Global Clients' },
-  { number: null, suffix: '', label: 'Timezone Coverage', text: 'EST / CET' },
+const PROOF = [
+  { value: 3, suffix: '+', label: 'Years of experience' },
+  { value: 40, suffix: '+', label: 'Projects delivered' },
+  { value: 15, suffix: '+', label: 'Global clients' },
+  { value: 24, prefix: '<', suffix: 'h', label: 'Response target' },
 ] as const;
 
-const PROFILE_TAGS = [
-  'Full-Stack & Mobile Specialist',
-  'Scalable Systems Architect',
-  'Global Remote / Pakistan',
-] as const;
+const LABEL = 'font-mono text-[10px] uppercase tracking-[0.3em] text-white/55';
+const CORNER = 'absolute h-5 w-5 border-neon';
 
-const ABOUT_CARDS = [
-  {
-    icon: <FiCode />,
-    title: 'Full-Stack Engineering',
-    text: 'Building high-performance, responsive web and mobile applications using modern frameworks like React, Next.js, Node.js, and TypeScript with an emphasis on maintainable architecture.',
-  },
-  {
-    icon: <FiServer />,
-    title: 'End-to-End Infrastructure',
-    text: 'Managing the entire product lifecycle—from user interface down to backend databases, automated CI/CD pipelines, secure VPS deployment, and cloud infrastructure.',
-  },
-  {
-    icon: <FiGlobe />,
-    title: 'Web3 & Smart Contracts',
-    text: 'Developing decentralized solutions including DeFi platforms, NFT marketplaces, and protocol integrations leveraging Solidity, Ethers.js, and secure EVM standards.',
-  },
-  {
-    icon: <FiClock />,
-    title: 'Seamless Global Collaboration',
-    text: 'Operating smoothly across North American and European business hours with robust asynchronous communication, clear milestone tracking, and dependable delivery.',
-  },
-  {
-    icon: <FiUsers />,
-    title: 'Startup-Focused Partner',
-    text: 'Ideal for early-stage teams and growing startups seeking a dedicated owner who can drive a product from concept to production independently.',
-  },
-] as const;
-
+/**
+ * About as a portrait-led profile: "One engineer, end-to-end" headline with the intro beside
+ * it, a large portrait (grayscale → color on hover) next to a short bio and facts, then
+ * the proof numbers. All copy comes from the existing site.
+ */
 export default function About() {
   return (
-    <section id="about" className="font-orbitron relative overflow-hidden bg-ink py-28 text-white">
-      <SectionGlow className="left-1/2 top-1/4 h-[400px] w-[800px] -translate-x-1/2" />
+    <section id="about" className="font-orbitron relative overflow-clip bg-ink px-[var(--page-pad)] py-28 text-white md:py-40">
+      <SectionGlow className="left-0 top-0 h-[520px] w-[820px]" />
 
-      <div className="container relative z-10 mx-auto max-w-7xl px-6">
-        <SectionHeading
-          eyebrow="Professional Profile"
-          title={[{ text: 'Architecting Scalable Digital Products' }]}
-          description="Mussawar Hayat is a versatile Full-Stack and Web3 Software Engineer with a track record of delivering robust web, mobile, and decentralized applications for international startups."
-        />
+      <div className="relative z-10">
+        <EditorialHeadline index="02" eyebrow="About" aside="Attock, PK · Working worldwide" solid="One engineer," accent="End-to-end.">
+          <p>
+            Mussawar Hayat is a versatile Full-Stack and Web3 Software Engineer with a track record of delivering robust web, mobile,
+            and decentralized applications for international startups.
+          </p>
+        </EditorialHeadline>
 
-        {/* Narrative cards: staggered rise, cursor spotlight on hover */}
-        <Stagger className="mb-24 grid grid-cols-1 gap-6 md:grid-cols-2 lg:grid-cols-3">
-          {ABOUT_CARDS.map((card) => (
-            <StaggerItem key={card.title} spotlight className="card spotlight group p-7">
-              <div
-                className="mb-5 flex h-10 w-10 items-center justify-center rounded-lg border border-neon/20 bg-neon/10 text-lg text-neon transition-transform duration-300 group-hover:scale-110"
-                aria-hidden="true"
+        <div className="mt-16 grid grid-cols-1 gap-12 md:mt-24 lg:grid-cols-12 lg:gap-16">
+          {/* Portrait */}
+          <div className="lg:col-span-5">
+            <Reveal variant="clipUp">
+            <figure className="group relative aspect-[4/5] w-full overflow-hidden rounded-2xl border border-white/10">
+              <Image
+                src="/my-pic.jpeg"
+                alt="Mussawar Hayat, Full-Stack and Web3 Software Engineer"
+                fill
+                sizes="(min-width: 1024px) 40vw, 100vw"
+                className="object-cover object-[50%_30%] grayscale transition-[filter,scale] duration-700 ease-[var(--ease-brand)] group-hover:scale-[1.03] group-hover:grayscale-0"
+              />
+              <div className="absolute inset-0 bg-gradient-to-t from-ink via-ink/10 to-transparent" aria-hidden="true" />
+              <span className={`${CORNER} left-4 top-4 border-l-2 border-t-2`} aria-hidden="true" />
+              <span className={`${CORNER} right-4 top-4 border-r-2 border-t-2`} aria-hidden="true" />
+              <span className={`${CORNER} bottom-4 left-4 border-b-2 border-l-2`} aria-hidden="true" />
+              <span className={`${CORNER} bottom-4 right-4 border-b-2 border-r-2`} aria-hidden="true" />
+              <figcaption className="absolute inset-x-8 bottom-8 flex items-end justify-between gap-4">
+                <span>
+                  <span className="block text-lg font-black uppercase tracking-tight text-white">Mussawar Hayat</span>
+                  <span className="mt-1 block font-mono text-[10px] uppercase tracking-[0.25em] text-neon">Full-Stack & Web3 Engineer</span>
+                </span>
+                <span className="flex items-center gap-2 font-mono text-[10px] uppercase tracking-[0.25em] text-white/70">
+                  <span className="h-1.5 w-1.5 rounded-full bg-neon shadow-[0_0_8px_#39FF14]" aria-hidden="true" />
+                  Available
+                </span>
+              </figcaption>
+            </figure>
+            </Reveal>
+          </div>
+
+          {/* Bio, facts, links */}
+          <Stagger className="flex flex-col justify-center lg:col-span-7">
+            <StaggerItem>
+              <p className={LABEL}>
+                <span className="text-neon">Profile</span>
+              </p>
+              <p className="mt-5 max-w-2xl font-sans text-lg leading-relaxed text-white/85 md:text-xl">
+                Remote full-stack developer building scalable web and mobile apps—from React and Node.js to Solidity and VPS
+                deployment.
+              </p>
+              <p className="mt-4 max-w-2xl font-sans text-base leading-relaxed text-white/65">
+                Ideal for early-stage teams and growing startups seeking a dedicated owner who can drive a product from concept to
+                production independently.
+              </p>
+            </StaggerItem>
+
+            <StaggerItem className="mt-10">
+              <dl className="grid grid-cols-1 border-t border-white/10 sm:grid-cols-2">
+                {PROFILE.map((item, i) => (
+                  <div key={item.label} className={`border-b border-white/10 py-5 ${i % 2 === 1 ? 'sm:border-l sm:pl-6' : 'sm:pr-6'}`}>
+                    <dt className={LABEL}>{item.label}</dt>
+                    <dd className="mt-2 font-sans text-sm text-white/85">{item.value}</dd>
+                  </div>
+                ))}
+              </dl>
+            </StaggerItem>
+
+            <StaggerItem className="mt-10 flex flex-wrap items-center gap-x-8 gap-y-4">
+              <Link href="/about" className="group/more inline-flex items-center gap-2 font-mono text-xs font-bold uppercase tracking-[0.2em] text-neon">
+                <span className="link-underline">More about me</span>
+                <FiArrowUpRight className="transition-transform duration-300 group-hover/more:rotate-45" aria-hidden="true" />
+              </Link>
+              <Link
+                href="#contact"
+                className="group/start inline-flex items-center gap-2 font-mono text-xs uppercase tracking-[0.2em] text-white/75 transition-colors hover:text-neon"
               >
-                {card.icon}
-              </div>
-              <h3 className="mb-3 text-base font-bold tracking-wide text-white">{card.title}</h3>
-              <p className="font-sans text-sm leading-relaxed text-white/70">{card.text}</p>
+                <span className="link-underline">Start a project</span>
+                <FiArrowRight className="transition-transform duration-300 group-hover/start:translate-x-1" aria-hidden="true" />
+              </Link>
+            </StaggerItem>
+          </Stagger>
+        </div>
+
+        {/* Proof */}
+        <Stagger as="dl" className="mt-20 grid grid-cols-2 border-y border-white/10 md:mt-28 lg:grid-cols-4">
+          {PROOF.map((item, i) => (
+            <StaggerItem
+              key={item.label}
+              className={`flex flex-col-reverse py-8 md:py-10 ${i % 2 === 1 ? 'border-l border-white/10 pl-6 md:pl-8' : 'pr-6'} ${
+                i === 2 ? 'lg:border-l lg:border-white/10 lg:pl-8' : ''
+              } ${i < 2 ? 'border-b border-white/10 lg:border-b-0' : ''}`}
+            >
+              <dt className={`mt-3 ${LABEL}`}>{item.label}</dt>
+              <dd className="text-[clamp(2.25rem,3.6vw,3.25rem)] font-black leading-none tracking-tight text-white">
+                {'prefix' in item && <span className="text-neon">{item.prefix}</span>}
+                <CountUp to={item.value} />
+                <span className="text-neon">{item.suffix}</span>
+              </dd>
             </StaggerItem>
           ))}
         </Stagger>
-
-        <div className="grid grid-cols-1 items-start gap-8 lg:grid-cols-12">
-          {/* Photo and credentials: the portrait wipes in from the bottom */}
-          <div className="order-2 lg:order-1 lg:col-span-4">
-            <div className="card relative p-6">
-              <Reveal variant="clipUp" className="relative mb-6 aspect-square w-full overflow-hidden rounded-lg border border-white/10">
-                <Image
-                  src="/my-pic.jpeg"
-                  alt="Mussawar Hayat, Full-Stack and Web3 Software Engineer"
-                  fill
-                  sizes="(max-width: 1024px) 100vw, 30vw"
-                  className="object-cover object-center grayscale transition-[filter] duration-500 hover:grayscale-0"
-                />
-                <div className="absolute inset-0 bg-gradient-to-t from-panel via-transparent to-transparent opacity-80" />
-              </Reveal>
-
-              <h3 className="mb-1 text-xl font-bold text-white">Mussawar Hayat</h3>
-              <p className="mb-6 text-xs font-semibold uppercase tracking-wider text-neon">Full-Stack &amp; Web3 Engineer</p>
-
-              <ul className="space-y-3.5 border-t border-white/10 pt-5 font-sans text-xs text-white/80">
-                {PROFILE_TAGS.map((tag) => (
-                  <li key={tag} className="flex items-center gap-3">
-                    <span className="h-1.5 w-1.5 shrink-0 rounded-full bg-neon" aria-hidden="true" />
-                    <span>{tag}</span>
-                  </li>
-                ))}
-              </ul>
-            </div>
-          </div>
-
-          <div className="order-1 space-y-8 lg:order-2 lg:col-span-8">
-            {/* Metrics count up once */}
-            <Reveal className="card grid grid-cols-2 gap-4 p-5 md:grid-cols-4">
-              {ACHIEVEMENTS.map((item) => (
-                <div key={item.label} className="px-2 text-center">
-                  <div className="mb-1 text-2xl font-extrabold tracking-tight text-white md:text-3xl">
-                    {item.number === null ? (
-                      <span className="text-neon">{item.text}</span>
-                    ) : (
-                      <>
-                        <CountUp to={item.number} />
-                        <span className="text-neon">{item.suffix}</span>
-                      </>
-                    )}
-                  </div>
-                  <div className="text-[10px] uppercase tracking-[0.2em] text-white/65">{item.label}</div>
-                </div>
-              ))}
-            </Reveal>
-
-            {/* Competencies: rows stagger in, bars grow with scaleX (no width animation) */}
-            <div className="card p-6 md:p-8">
-              <h3 className="mb-6 flex items-center gap-3 text-xs font-semibold uppercase tracking-[0.3em] text-white/60 md:mb-8">
-                <span className="h-px w-8 bg-neon" aria-hidden="true" />
-                Technical Competencies
-              </h3>
-
-              <Stagger as="ul" className="grid grid-cols-1 gap-4 md:grid-cols-2 md:gap-5">
-                {SKILLS.map((skill) => (
-                  <StaggerItem
-                    as="li"
-                    key={skill.name}
-                    className="group rounded-lg border border-white/5 bg-black/30 p-3 transition-colors duration-300 hover:border-neon/30 md:p-4"
-                  >
-                    <div className="mb-2 flex items-center justify-between md:mb-3">
-                      <div className="flex items-center gap-2 md:gap-2.5">
-                        <span className="text-base text-neon transition-transform duration-300 group-hover:scale-110" aria-hidden="true">
-                          {skill.icon}
-                        </span>
-                        <h4 className="text-xs font-semibold tracking-wide text-white">{skill.name}</h4>
-                      </div>
-                      <span className="font-mono text-[11px] text-white/60">{skill.level}%</span>
-                    </div>
-
-                    <div
-                      className="h-1.5 w-full overflow-hidden rounded-full bg-white/5"
-                      role="progressbar"
-                      aria-valuenow={skill.level}
-                      aria-valuemin={0}
-                      aria-valuemax={100}
-                      aria-label={skill.name}
-                    >
-                      <div className="h-full" style={{ width: `${skill.level}%` }}>
-                        <Reveal
-                          variant="growX"
-                          trigger={false}
-                          className="h-full origin-left rounded-full bg-gradient-to-r from-neon/60 to-neon shadow-[0_0_10px_rgba(57,255,20,0.3)]"
-                        >
-                          {null}
-                        </Reveal>
-                      </div>
-                    </div>
-                  </StaggerItem>
-                ))}
-              </Stagger>
-            </div>
-          </div>
-        </div>
       </div>
     </section>
   );

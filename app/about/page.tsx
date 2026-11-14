@@ -1,15 +1,18 @@
 import type { Metadata } from 'next'
 import Image from 'next/image'
 import Link from 'next/link'
-import { Header } from '@/app/components/layout/Header'
-import { Footer } from '@/app/components/layout/Footer'
+import { FiArrowUpRight } from 'react-icons/fi'
+import { Reveal } from '@/app/components/motion/Reveal'
+import { Stagger, StaggerItem } from '@/app/components/motion/Stagger'
 import { BreadcrumbSchema } from '@/app/components/seo/BreadcrumbSchema'
-import { FiTerminal } from 'react-icons/fi'
+import { EditorialHeadline } from '@/app/components/ui/EditorialHeadline'
+import { PageShell } from '@/app/components/ui/PageShell'
+import { SectionLabel } from '@/app/components/ui/SectionLabel'
 
 export const metadata: Metadata = {
-  title: 'About Mussawar Hayat — Top Next.js 16 Full-Stack Web3 Developer for Hire 2026',
+  title: 'About — Full-Stack & Web3 Developer',
   description:
-    'About Mussawar Hayat: full-stack developer specializing in Next.js, React, TypeScript, Node.js, and Web3. Experience, stack, process, and how he works with remote clients in North America and Europe.',
+    'Mussawar Hayat is a full-stack and Web3 developer in Pakistan who owns products end-to-end, from Next.js UI to APIs, data, and DevOps, for startups worldwide.',
   keywords: [
     'Mussawar Hayat',
     'about Mussawar Hayat',
@@ -134,6 +137,15 @@ const STACK = [
   'GitHub Actions',
 ] as const
 
+const LABEL = 'font-mono text-[10px] uppercase tracking-[0.3em] text-white/55'
+
+const CHANNELS = [
+  { label: 'reply@mussawarhayat.site', href: 'mailto:reply@mussawarhayat.site', external: false },
+  { label: 'github.com/khanzada-web', href: 'https://github.com/khanzada-web', external: true },
+  { label: 'LinkedIn', href: 'https://www.linkedin.com/in/mussawar-hayat-187768233', external: true },
+  { label: '@Mussawar_Hayat', href: 'https://x.com/Mussawar_Hayat', external: true },
+] as const
+
 export default function AboutPage() {
   return (
     <>
@@ -143,257 +155,153 @@ export default function AboutPage() {
         suppressHydrationWarning
         dangerouslySetInnerHTML={{ __html: JSON.stringify(aboutPersonLd) }}
       />
-      <div className="min-h-screen bg-ink font-orbitron text-white relative overflow-hidden">
-        {/* Subtle Ambient Glow */}
-        <div className="absolute inset-0 opacity-20 pointer-events-none" aria-hidden="true">
-          <div className="absolute top-1/4 left-1/2 -translate-x-1/2 w-[700px] h-[500px] bg-neon/10 blur-[160px] rounded-full" />
-        </div>
+      <PageShell>
+        <EditorialHeadline as="h1" index="/about" eyebrow="Profile" aside="Attock, PK · Remote worldwide" solid="Mussawar" accent="Hayat">
+          <p>
+            Full-stack &amp; Web3 developer who owns the entire stack — from UI architecture through APIs, data, auth, and
+            production infrastructure.
+          </p>
+        </EditorialHeadline>
 
-        <Header />
-        <main id="main-content" role="main" className="pt-28 pb-28 relative z-10">
-          
-          {/* Hero */}
-          <section className="max-w-6xl mx-auto px-4 sm:px-6 mb-24">
-            <div className="inline-flex items-center gap-2 border border-neon/40 bg-neon/5 px-3.5 py-1.5 rounded-md text-xs tracking-[0.25em] text-neon uppercase mb-4">
-              <FiTerminal className="animate-pulse" aria-hidden="true" />
-              <span>About.sys</span>
-            </div>
+        {/* Portrait + bio */}
+        <section className="mt-16 grid grid-cols-1 gap-12 md:mt-24 lg:grid-cols-12 lg:gap-16" aria-label="Introduction">
+          <div className="lg:col-span-5">
+            <figure className="relative aspect-[4/5] w-full overflow-hidden rounded-2xl border border-white/10">
+              <Image
+                src="/my-pic.jpeg"
+                alt="Mussawar Hayat, full-stack and Web3 developer"
+                fill
+                className="object-cover object-[50%_30%]"
+                sizes="(min-width: 1024px) 40vw, 100vw"
+                priority
+              />
+              <div className="absolute inset-0 bg-gradient-to-t from-ink via-ink/10 to-transparent" aria-hidden="true" />
+              <figcaption className="absolute inset-x-8 bottom-8">
+                <span className="block text-lg font-black uppercase tracking-tight text-white">Mussawar Hayat</span>
+                <span className="mt-1 block font-mono text-[10px] uppercase tracking-[0.25em] text-neon">Lead Software Engineer</span>
+              </figcaption>
+            </figure>
+          </div>
 
-            <h1 className="text-3xl md:text-5xl lg:text-6xl font-extrabold text-white tracking-tight mb-6 leading-tight">
-              Mussawar Hayat
-            </h1>
-            <p className="max-w-2xl text-base md:text-xl text-white/70 font-sans leading-relaxed mb-12">
-              Full-stack & Web3 developer who owns the entire stack — from UI architecture
-              through APIs, data, auth, and production infrastructure.
-            </p>
+          <Stagger className="flex flex-col justify-center lg:col-span-7">
+            <StaggerItem className="max-w-2xl space-y-5 font-sans text-base leading-relaxed text-white/75 md:text-lg">
+              <p>
+                I work with startups and product teams in North America and Europe who want one engineer to own delivery
+                end-to-end instead of coordinating multiple specialists. Day-to-day work is shipping production applications
+                with React, Next.js, TypeScript, Node.js, PostgreSQL, and — when the product needs it — Solidity, Ethers.js, and
+                Bitcoin-native tooling.
+              </p>
+              <p>
+                Beyond the application layer I also handle the operational pieces most freelancers outsource: CI/CD, VPS setup,
+                SSL, email authentication, and production hardening. The goal is a single point of ownership from first commit to
+                a stable live system.
+              </p>
+            </StaggerItem>
 
-            <div className="grid grid-cols-1 lg:grid-cols-12 gap-10 lg:gap-12 items-start">
-              
-              {/* Photo + identity card */}
-              <div className="lg:col-span-4 bg-panel/60 backdrop-blur-md border border-white/10 rounded-xl p-6 shadow-xl">
-                <div className="relative aspect-square rounded-lg overflow-hidden border border-white/10 bg-ink mb-6">
-                  <Image
-                    src="/my-pic.jpeg"
-                    alt="Mussawar Hayat, full-stack and Web3 developer"
-                    fill
-                    className="object-cover"
-                    sizes="320px"
-                    priority
-                  />
-                  <div className="absolute inset-0 bg-gradient-to-t from-ink/80 via-transparent to-transparent" />
-                </div>
-                <div className="space-y-1.5">
-                  <p className="text-white font-bold text-lg">Mussawar Hayat</p>
-                  <p className="text-[10px] font-mono uppercase tracking-[0.2em] text-neon">
-                    Lead Software Engineer
-                  </p>
-                  <p className="text-xs text-white/50 font-sans pt-1">
-                    Attock, Pakistan · Remote worldwide
-                  </p>
-                </div>
-              </div>
-
-              {/* Intro + stats */}
-              <div className="lg:col-span-8 space-y-8">
-                <div className="bg-panel/60 backdrop-blur-md border border-white/10 rounded-xl p-8 shadow-xl font-sans text-white/75 leading-relaxed space-y-4 text-sm md:text-base">
-                  <p>
-                    I work with startups and product teams in North America and Europe who want
-                    one engineer to own delivery end-to-end instead of coordinating multiple
-                    specialists. Day-to-day work is shipping production applications with React,
-                    Next.js, TypeScript, Node.js, PostgreSQL, and — when the product needs it —
-                    Solidity, Ethers.js, and Bitcoin-native tooling.
-                  </p>
-                  <p>
-                    Beyond the application layer I also handle the operational pieces most freelancers
-                    outsource: CI/CD, VPS setup, SSL, email authentication, and production hardening.
-                    The goal is a single point of ownership from first commit to a stable live system.
-                  </p>
-                </div>
-
-                {/* Stats row */}
-                <div className="grid grid-cols-2 sm:grid-cols-4 gap-4">
-                  {STATS.map((stat) => (
-                    <div
-                      key={stat.label}
-                      className="bg-panel/60 backdrop-blur-md border border-white/10 rounded-xl p-5 text-center sm:text-left shadow-xl group hover:border-neon/40 transition-all"
-                    >
-                      <div className="text-2xl md:text-3xl font-extrabold text-white font-mono mb-1 group-hover:text-neon transition-colors">
-                        {stat.value}
-                      </div>
-                      <div className="text-[10px] font-mono uppercase tracking-widest text-white/40">
-                        {stat.label}
-                      </div>
-                    </div>
-                  ))}
-                </div>
-              </div>
-
-            </div>
-          </section>
-
-          {/* Focus areas */}
-          <section className="max-w-6xl mx-auto px-4 sm:px-6 mb-24">
-            <div className="flex items-center gap-3 mb-8">
-              <span className="w-2 h-2 bg-neon rounded-full shadow-[0_0_8px_#39FF14]" />
-              <h2 className="text-xs font-mono uppercase tracking-[0.3em] text-white/60">
-                Focus Areas
-              </h2>
-            </div>
-            <div className="grid grid-cols-1 md:grid-cols-2 gap-6">
-              {FOCUS_AREAS.map((area) => (
-                <div
-                  key={area.title}
-                  className="bg-panel/60 backdrop-blur-md border border-white/10 rounded-xl p-8 shadow-xl hover:border-neon/40 transition-all"
-                >
-                  <h3 className="text-white font-bold text-base uppercase tracking-wider mb-3">
-                    {area.title}
-                  </h3>
-                  <p className="text-sm text-white/70 font-sans leading-relaxed">
-                    {area.description}
-                  </p>
-                </div>
-              ))}
-            </div>
-          </section>
-
-          {/* How I work */}
-          <section className="max-w-6xl mx-auto px-4 sm:px-6 mb-24">
-            <div className="flex items-center gap-3 mb-8">
-              <span className="w-2 h-2 bg-neon rounded-full shadow-[0_0_8px_#39FF14]" />
-              <h2 className="text-xs font-mono uppercase tracking-[0.3em] text-white/60">
-                How I Work
-              </h2>
-            </div>
-            <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 gap-6">
-              {HOW_I_WORK.map((item) => (
-                <div
-                  key={item.step}
-                  className="bg-panel/60 backdrop-blur-md border border-white/10 rounded-xl p-8 shadow-xl relative flex flex-col justify-between"
-                >
-                  <div>
-                    <span className="text-xs font-mono font-bold text-neon tracking-widest block mb-4">
-                      {item.step}
-                    </span>
-                    <h3 className="text-white font-bold text-lg mb-3 uppercase tracking-tight">
-                      {item.title}
-                    </h3>
-                    <p className="text-sm text-white/70 font-sans leading-relaxed">
-                      {item.text}
-                    </p>
+            <StaggerItem className="mt-10">
+              <dl className="grid grid-cols-2 border-y border-white/10 sm:grid-cols-4">
+                {STATS.map((stat, i) => (
+                  <div key={stat.label} className={`flex flex-col-reverse py-6 ${i > 0 ? 'border-l border-white/10 pl-5' : 'pr-5'} ${i === 2 ? 'max-sm:border-l-0 max-sm:pl-0' : ''} ${i < 2 ? 'max-sm:border-b max-sm:border-white/10' : ''}`}>
+                    <dt className={`mt-2 ${LABEL}`}>{stat.label}</dt>
+                    <dd className="text-2xl font-black text-white md:text-3xl">{stat.value}</dd>
                   </div>
-                </div>
-              ))}
-            </div>
-          </section>
+                ))}
+              </dl>
+            </StaggerItem>
+          </Stagger>
+        </section>
 
-          {/* Stack */}
-          <section className="max-w-6xl mx-auto px-4 sm:px-6 mb-24">
-            <div className="flex items-center gap-3 mb-8">
-              <span className="w-2 h-2 bg-neon rounded-full shadow-[0_0_8px_#39FF14]" />
-              <h2 className="text-xs font-mono uppercase tracking-[0.3em] text-white/60">
-                Core Stack
-              </h2>
-            </div>
-            <div className="flex flex-wrap gap-2.5">
-              {STACK.map((tech) => (
-                <span
-                  key={tech}
-                  className="px-4 py-2 bg-panel/60 backdrop-blur-md border border-white/10 rounded-lg text-xs font-sans text-white/80 tracking-wide shadow-sm"
-                >
+        {/* Focus areas */}
+        <section className="mt-24 md:mt-32">
+          <SectionLabel index="01">Focus areas</SectionLabel>
+          <Stagger as="ul" className="grid grid-cols-1 gap-px overflow-hidden border border-white/10 bg-white/10 md:grid-cols-2">
+            {FOCUS_AREAS.map((area, i) => (
+              <StaggerItem as="li" key={area.title} className="group bg-ink p-7 md:p-9">
+                <span className="font-mono text-[10px] uppercase tracking-[0.3em] text-neon">{String(i + 1).padStart(2, '0')}</span>
+                <h3 className="mt-6 text-lg font-black uppercase tracking-tight text-white md:text-xl">{area.title}</h3>
+                <p className="mt-3 max-w-md font-sans text-sm leading-relaxed text-white/65">{area.description}</p>
+              </StaggerItem>
+            ))}
+          </Stagger>
+        </section>
+
+        {/* How I work */}
+        <section className="mt-24 md:mt-32">
+          <SectionLabel index="02">How I work</SectionLabel>
+          <Stagger as="ol" className="grid grid-cols-1 gap-10 sm:grid-cols-2 lg:grid-cols-4 lg:gap-8">
+            {HOW_I_WORK.map((item) => (
+              <StaggerItem as="li" key={item.step} className="border-t-2 border-neon/60 pt-6">
+                <span className="font-mono text-xs text-neon">{item.step}</span>
+                <h3 className="mt-3 text-lg font-black uppercase tracking-tight text-white">{item.title}</h3>
+                <p className="mt-3 font-sans text-sm leading-relaxed text-white/65">{item.text}</p>
+              </StaggerItem>
+            ))}
+          </Stagger>
+        </section>
+
+        {/* Core stack */}
+        <section className="mt-24 md:mt-32">
+          <SectionLabel index="03">Core stack</SectionLabel>
+          <Reveal>
+            <ul className="flex flex-wrap gap-x-6 gap-y-3 font-mono text-sm uppercase tracking-[0.15em] text-white/80 md:text-base">
+              {STACK.map((tech, i) => (
+                <li key={tech} className="flex items-center gap-6">
                   {tech}
-                </span>
+                  {i < STACK.length - 1 && <span className="text-neon" aria-hidden="true">/</span>}
+                </li>
               ))}
-            </div>
-          </section>
+            </ul>
+          </Reveal>
+        </section>
 
-          {/* Engagement + CTA */}
-          <section className="max-w-6xl mx-auto px-4 sm:px-6">
-            <div className="bg-panel/60 backdrop-blur-md border border-white/10 rounded-xl p-8 md:p-14 shadow-2xl relative overflow-hidden">
-              <div className="absolute top-0 left-1/2 -translate-x-1/2 w-full h-full bg-neon/5 blur-[100px] pointer-events-none" aria-hidden="true" />
-              
-              <div className="relative z-10">
-                <h2 className="text-2xl md:text-3xl font-extrabold text-white mb-4 tracking-tight uppercase">
-                  Ready to work together?
-                </h2>
-                <p className="text-white/70 font-sans text-sm md:text-base leading-relaxed max-w-2xl mb-8">
-                  Engagements are remote-first with overlap for EST, PST, and CET hours.
-                  Typical formats: fixed-scope builds, monthly retainers, or focused
-                  architecture and security reviews. GDPR-conscious infrastructure is
-                  available for EU-facing products.
-                </p>
-                <div className="flex flex-wrap gap-4">
-                  <Link
-                    href="/contact"
-                    className="px-8 py-4 bg-neon text-black rounded-lg text-xs font-bold uppercase tracking-widest hover:bg-white hover:shadow-[0_0_25px_rgba(57,255,20,0.4)] transition-all text-center"
-                  >
-                    Start a Conversation
-                  </Link>
-                  <Link
-                    href="/portfolio"
-                    className="px-8 py-4 border border-white/15 bg-white/[0.02] rounded-lg text-white text-xs font-bold uppercase tracking-widest hover:border-neon/50 hover:text-neon transition-all text-center"
-                  >
-                    View Portfolio
-                  </Link>
-                  <Link
-                    href="/services"
-                    className="px-6 py-4 text-white/50 text-xs font-mono uppercase tracking-widest hover:text-white transition-colors flex items-center"
-                  >
-                    Services
-                  </Link>
-                </div>
-
-                <div className="mt-12 pt-8 border-t border-white/10">
-                  <p className="text-[10px] font-mono uppercase tracking-[0.25em] text-white/40 mb-4">
-                    Direct channels
-                  </p>
-                  <ul className="flex flex-col sm:flex-row sm:flex-wrap gap-x-8 gap-y-2 font-sans text-sm text-white/70">
-                    <li>
-                      <a
-                        href="mailto:zada38843@gmail.com"
-                        className="hover:text-neon transition-colors"
-                      >
-                        zada38843@gmail.com
-                      </a>
-                    </li>
-                    <li>
-                      <a
-                        href="https://github.com/khanzada-web"
-                        target="_blank"
-                        rel="noopener noreferrer"
-                        className="hover:text-neon transition-colors"
-                      >
-                        github.com/khanzada-web
-                      </a>
-                    </li>
-                    <li>
-                      <a
-                        href="https://www.linkedin.com/in/mussawar-hayat-187768233"
-                        target="_blank"
-                        rel="noopener noreferrer"
-                        className="hover:text-neon transition-colors"
-                      >
-                        LinkedIn
-                      </a>
-                    </li>
-                    <li>
-                      <a
-                        href="https://x.com/Mussawar_Hayat"
-                        target="_blank"
-                        rel="noopener noreferrer"
-                        className="hover:text-neon transition-colors"
-                      >
-                        @Mussawar_Hayat
-                      </a>
-                    </li>
-                  </ul>
-                </div>
+        {/* Engagement + CTA */}
+        <section className="mt-24 border-t border-white/10 pt-16 md:mt-32 md:pt-20">
+          <div className="grid grid-cols-1 gap-10 lg:grid-cols-12 lg:gap-16">
+            <Reveal className="lg:col-span-7">
+              <h2 className="text-[clamp(1.75rem,3.2vw,2.75rem)] font-black uppercase leading-[1] tracking-[-0.02em] text-white">
+                Ready to work <span className="text-neon">together?</span>
+              </h2>
+              <p className="mt-6 max-w-2xl font-sans text-base leading-relaxed text-white/70">
+                Engagements are remote-first with overlap for EST, PST, and CET hours. Typical formats: fixed-scope builds, monthly
+                retainers, or focused architecture and security reviews. GDPR-conscious infrastructure is available for EU-facing
+                products.
+              </p>
+              <div className="mt-8 flex flex-wrap items-center gap-x-8 gap-y-4">
+                <Link href="/contact" className="btn-neon group/cta h-14 gap-3 rounded-full pl-7 pr-2 text-sm normal-case tracking-wide">
+                  Start a conversation
+                  <span className="flex h-10 w-10 items-center justify-center rounded-full bg-black text-neon transition-transform duration-300 group-hover/cta:rotate-45">
+                    <FiArrowUpRight className="h-5 w-5" aria-hidden="true" />
+                  </span>
+                </Link>
+                <Link href="/portfolio" className="link-underline font-mono text-xs uppercase tracking-[0.2em] text-white/80 transition-colors hover:text-neon">
+                  View portfolio
+                </Link>
+                <Link href="/services" className="link-underline font-mono text-xs uppercase tracking-[0.2em] text-white/80 transition-colors hover:text-neon">
+                  Services
+                </Link>
               </div>
-            </div>
-          </section>
+            </Reveal>
 
-        </main>
-        <Footer />
-      </div>
+            <Reveal className="lg:col-span-5">
+              <p className={LABEL}>Direct channels</p>
+              <ul className="mt-4 border-t border-white/10">
+                {CHANNELS.map((c) => (
+                  <li key={c.label} className="border-b border-white/10">
+                    <a
+                      href={c.href}
+                      {...(c.external ? { target: '_blank', rel: 'noopener noreferrer' } : {})}
+                      className="group/ch flex items-center justify-between gap-4 py-4 font-sans text-sm text-white/80 transition-colors hover:text-neon"
+                    >
+                      {c.label}
+                      <FiArrowUpRight className="transition-transform duration-300 group-hover/ch:rotate-45" aria-hidden="true" />
+                    </a>
+                  </li>
+                ))}
+              </ul>
+            </Reveal>
+          </div>
+        </section>
+      </PageShell>
     </>
   )
 }

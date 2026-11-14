@@ -3,7 +3,7 @@
 import { m, useInView, useReducedMotion, useScroll, useSpring } from 'framer-motion';
 import { useRef, type ReactElement } from 'react';
 import { FiTarget, FiMap, FiPenTool, FiCode, FiCheckCircle, FiActivity } from 'react-icons/fi';
-import { SPRING, VIEWPORT, slideFromLeft, slideFromRight } from '@/app/lib/motion';
+import { ACTIVE_BAND, SPRING, VIEWPORT, slideFromLeft, slideFromRight } from '@/app/lib/motion';
 
 interface Step {
   number: string;
@@ -45,9 +45,6 @@ const STEPS: Step[] = [
   },
 ];
 
-/** The band in the middle of the viewport where a step counts as "current". */
-const ACTIVE_BAND = { margin: '-40% 0px -40% 0px' } as const;
-
 function TimelineStep({ step, index }: { step: Step; index: number }) {
   const ref = useRef<HTMLLIElement>(null);
   const active = useInView(ref, ACTIVE_BAND);
@@ -73,7 +70,7 @@ function TimelineStep({ step, index }: { step: Step; index: number }) {
 
       <div
         className={`card p-6 transition-[border-color,opacity] duration-300 group-data-[active]:border-neon/50 md:p-8 md:opacity-60 md:group-data-[active]:opacity-100 ${
-          fromLeft ? 'md:col-start-1 md:text-right' : 'md:col-start-2'
+          fromLeft ? 'md:col-start-1' : 'md:col-start-2'
         }`}
       >
         <span className="font-mono text-xs font-bold tracking-wider text-neon">{step.number}</span>

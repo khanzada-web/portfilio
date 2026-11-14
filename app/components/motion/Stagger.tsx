@@ -5,7 +5,7 @@ import type { ReactNode } from 'react';
 import { REVEALS, STAGGER, VIEWPORT, staggerChildren, type RevealName } from '@/app/lib/motion';
 
 const CONTAINERS = { div: m.div, ul: m.ul, ol: m.ol, dl: m.dl, nav: m.nav } as const;
-const ITEMS = { div: m.div, li: m.li, article: m.article } as const;
+const ITEMS = { div: m.div, li: m.li, article: m.article, span: m.span } as const;
 
 interface StaggerProps {
   children: ReactNode;
@@ -38,14 +38,12 @@ interface StaggerItemProps {
   as?: keyof typeof ITEMS;
   variant?: RevealName;
   className?: string;
-  /** Opt the item into the cursor spotlight glow (`.spotlight` in globals.css). */
-  spotlight?: boolean;
 }
 
-export function StaggerItem({ children, as = 'div', variant = 'fadeUp', className, spotlight }: StaggerItemProps) {
+export function StaggerItem({ children, as = 'div', variant = 'fadeUp', className }: StaggerItemProps) {
   const Tag = ITEMS[as];
   return (
-    <Tag className={className} variants={REVEALS[variant]} data-spotlight={spotlight ? '' : undefined}>
+    <Tag className={className} variants={REVEALS[variant]}>
       {children}
     </Tag>
   );

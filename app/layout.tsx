@@ -102,7 +102,9 @@ export default function RootLayout({
   children,
 }: Readonly<{ children: React.ReactNode }>) {
   return (
-    <html lang="en" dir="ltr">
+    // suppressHydrationWarning: browser extensions (QuillBot, ColorZilla, …) inject attributes
+    // into <html>/<body> before React loads. This only covers these two tags' own attributes.
+    <html lang="en" dir="ltr" data-scroll-behavior="smooth" suppressHydrationWarning>
       <head>
         <Script id="gtm-on-interaction" strategy="lazyOnload">
           {`
@@ -130,6 +132,7 @@ export default function RootLayout({
         <link rel="manifest" href="/site.webmanifest" />
       </head>
       <body
+        suppressHydrationWarning
         className={`${geistSans.variable} ${geistMono.variable} ${orbitron.variable} antialiased`}
       >
         <noscript>

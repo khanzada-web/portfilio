@@ -3,7 +3,6 @@
 import { LazyMotion, MotionConfig } from 'framer-motion';
 import type { ReactNode } from 'react';
 import { DURATION, EASE } from '@/app/lib/motion';
-import { SpotlightTracker } from './SpotlightTracker';
 
 const loadFeatures = () => import('./features').then((mod) => mod.default);
 
@@ -16,7 +15,6 @@ export function MotionProvider({ children }: { children: ReactNode }) {
     <LazyMotion features={loadFeatures} strict>
       <MotionConfig reducedMotion="user" transition={{ duration: DURATION.base, ease: EASE.out }}>
         {children}
-        <SpotlightTracker />
       </MotionConfig>
     </LazyMotion>
   );

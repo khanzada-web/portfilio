@@ -1,4 +1,5 @@
 type ProjectCategory =
+  | 'saas'
   | 'metaverse'
   | 'defi'
   | 'nft'
@@ -24,6 +25,28 @@ export interface Project {
 }
 
 export const PROJECTS: Project[] = [
+  {
+    slug: 'octovate-crm',
+    title: 'Octovate CRM',
+    category: 'saas',
+    description:
+      'Multi-tenant CRM for managing customer conversations at scale: a unified inbox for website emails and leads, lead tracking, and a real-time analytics dashboard, with enterprise-grade access control and per-tenant data isolation.',
+    tech: ['Next.js', 'React', 'Multi-tenant', 'Analytics'],
+    link: 'https://crm.octovate.io',
+    github: null,
+    flagship: true,
+  },
+  {
+    slug: 'ccs-agency-os',
+    title: 'CCS Agency OS',
+    category: 'saas',
+    description:
+      "Operations portal that brings an insurance agency's people, process, and performance into one place: smart calling, team management, and live analytics, behind a secure employee sign-in where every action is logged and audited.",
+    tech: ['Next.js', 'React', 'Calling', 'Analytics'],
+    link: 'https://portal.clientcaresolutions.org',
+    github: null,
+    flagship: true,
+  },
   {
     slug: 'dameta1-ecosystem',
     title: 'DaMeta1 Ecosystem',
@@ -438,9 +461,6 @@ export function getFlagshipProjects() {
   return PROJECTS.filter((p) => p.flagship);
 }
 
-export function getArchiveProjects() {
-  return PROJECTS.filter((p) => !p.flagship);
-}
 
 export function getProjectBySlug(slug: string) {
   return PROJECTS.find((p) => p.slug === slug);

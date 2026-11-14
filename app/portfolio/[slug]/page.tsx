@@ -1,9 +1,12 @@
 import type { Metadata } from 'next';
 import Link from 'next/link';
 import { notFound } from 'next/navigation';
-import { Header } from '@/app/components/layout/Header';
-import { Footer } from '@/app/components/layout/Footer';
+import { FiArrowLeft, FiArrowUpRight, FiGithub } from 'react-icons/fi';
 import { BreadcrumbSchema } from '@/app/components/seo/BreadcrumbSchema';
+import { clampDescription } from '@/app/lib/seo';
+import { EditorialHeadline } from '@/app/components/ui/EditorialHeadline';
+import { PageShell } from '@/app/components/ui/PageShell';
+import { SectionLabel } from '@/app/components/ui/SectionLabel';
 import {
   getAllProjectSlugs,
   getProjectBySlug,
@@ -15,9 +18,9 @@ interface PageProps {
 
 function Paragraphs({ text }: { text: string }) {
   return (
-    <div className="space-y-4">
+    <div className="space-y-5">
       {text.split(/\n\n+/).map((block, i) => (
-        <p key={i} className="text-white/75 font-sans leading-relaxed">
+        <p key={i} className="max-w-2xl font-sans text-base leading-relaxed text-white/75 md:text-[17px]">
           {block.trim()}
         </p>
       ))}
@@ -34,13 +37,14 @@ export async function generateMetadata({ params }: PageProps): Promise<Metadata>
   const project = getProjectBySlug(slug);
   if (!project) return { title: 'Project Not Found' };
   const pageUrl = `https://mussawarhayat.site/portfolio/${slug}`;
+  const description = clampDescription(project.description);
   return {
     title: `${project.title} — Case Study`,
-    description: project.description,
+    description,
     alternates: { canonical: pageUrl },
     openGraph: {
       title: `${project.title} | Mussawar Hayat Portfolio`,
-      description: project.description,
+      description,
       url: pageUrl,
       type: 'article',
       images: [{ url: '/my-pic.jpeg', width: 1200, height: 630, alt: project.title }],
@@ -48,10 +52,20 @@ export async function generateMetadata({ params }: PageProps): Promise<Metadata>
     twitter: {
       card: 'summary_large_image',
       title: project.title,
-      description: project.description,
+      description,
       images: ['/my-pic.jpeg'],
     },
   };
+}
+
+const LABEL = 'font-mono text-[10px] uppercase tracking-[0.3em] text-white/55';
+const EXTERNAL = { target: '_blank', rel: 'noopener noreferrer' } as const;
+
+/** Two-tone title: everything but the last word in white, the last word in neon. */
+function splitTitle(title: string): { solid: string; accent?: string } {
+  const words = title.trim().split(/\s+/);
+  if (words.length < 2) return { solid: title };
+  return { solid: words.slice(0, -1).join(' '), accent: words[words.length - 1] };
 }
 
 export default async function PortfolioProjectPage({ params }: PageProps) {
@@ -76,6 +90,13 @@ export default async function PortfolioProjectPage({ params }: PageProps) {
     keywords: project.tech.join(', '),
   };
 
+  const title = splitTitle(project.title);
+  const sections = [
+    { heading: 'The Problem', text: project.problem },
+    { heading: 'Tech Stack & Architecture', text: project.architecture },
+    { heading: 'Key Results / Business Outcome', text: project.results },
+  ].filter((s): s is { heading: string; text: string } => Boolean(s.text));
+
   return (
     <>
       <BreadcrumbSchema items={breadcrumbs} />
@@ -84,123 +105,112 @@ export default async function PortfolioProjectPage({ params }: PageProps) {
         suppressHydrationWarning
         dangerouslySetInnerHTML={{ __html: JSON.stringify(creativeWorkLd) }}
       />
-      <div className="min-h-screen bg-night font-orbitron">
-        <Header />
-        <main id="main-content" role="main" className="pt-28 pb-20">
-          <article className="max-w-3xl mx-auto px-4 sm:px-6">
-            <p className="text-[10px] uppercase tracking-[0.3em] text-neon mb-4">
-              {project.flagship ? 'Flagship project' : 'Archive project'} · {project.category}
-            </p>
-            <h1 className="text-4xl md:text-5xl font-bold text-white tracking-tight mb-6">
-              {project.title}
-            </h1>
-            <p className="text-lg text-white/80 font-sans leading-relaxed mb-10">
-              {project.description}
-            </p>
+      <PageShell>
+        <EditorialHeadline
+          as="h1"
+          index={`/portfolio/${slug}`}
+          eyebrow={project.flagship ? 'Flagship project' : 'Archive project'}
+          aside={project.category}
+          solid={title.solid}
+          accent={title.accent}
+        >
+          <p>{project.description}</p>
+        </EditorialHeadline>
 
-            <ul className="flex flex-wrap gap-2 mb-12" aria-label="Tech stack">
-              {project.tech.map((t) => (
-                <li
-                  key={t}
-                  className="text-xs text-neon border border-neon/40 px-3 py-1 uppercase tracking-wider"
-                >
-                  {t}
-                </li>
-              ))}
-            </ul>
-
-            {project.problem && (
-              <section className="mb-10">
-                <h2 className="text-xl font-bold text-neon mb-3">The Problem</h2>
-                <Paragraphs text={project.problem} />
-              </section>
-            )}
-
-            {project.architecture && (
-              <section className="mb-10">
-                <h2 className="text-xl font-bold text-neon mb-3">Tech Stack & Architecture</h2>
-                <Paragraphs text={project.architecture} />
-              </section>
-            )}
-
-            {project.results && (
-              <section className="mb-10">
-                <h2 className="text-xl font-bold text-neon mb-3">Key Results / Business Outcome</h2>
-                <Paragraphs text={project.results} />
-              </section>
-            )}
-
-            {!project.problem && (
-              <p className="text-white/50 font-sans text-sm mb-10">
-                Extended case-study detail for this project is not published yet. Contact Mussawar
-                Hayat for a private walkthrough of architecture and outcomes.
+        <div className="mt-16 grid grid-cols-1 gap-14 md:mt-24 lg:grid-cols-12 lg:gap-16">
+          {/* Write-up */}
+          <article className="lg:col-span-8">
+            {sections.length > 0 ? (
+              sections.map((s, i) => (
+                <section key={s.heading} className={i > 0 ? 'mt-16' : ''}>
+                  <SectionLabel index={String(i + 1).padStart(2, '0')} className="mb-6">
+                    {s.heading}
+                  </SectionLabel>
+                  <Paragraphs text={s.text} />
+                </section>
+              ))
+            ) : (
+              <p className="max-w-2xl border-l-2 border-neon pl-6 font-sans text-base leading-relaxed text-white/70">
+                Extended case-study detail for this project is not published yet. Contact Mussawar Hayat for a private walkthrough of
+                architecture and outcomes.
               </p>
             )}
-
-            <div className="flex flex-wrap gap-4 pt-8 border-t border-white/10 mb-12">
-              {project.link && (
-                <a
-                  href={project.link}
-                  target="_blank"
-                  rel="noopener noreferrer"
-                  className="px-6 py-3 bg-neon text-black text-sm font-bold uppercase tracking-wider"
-                >
-                  Live Demo
-                </a>
-              )}
-              {project.github && (
-                <a
-                  href={project.github}
-                  target="_blank"
-                  rel="noopener noreferrer"
-                  className="px-6 py-3 border border-white/20 text-white text-sm font-bold uppercase tracking-wider"
-                >
-                  Source on GitHub
-                </a>
-              )}
-              <Link
-                href="/portfolio"
-                className="px-6 py-3 text-white/60 text-sm uppercase tracking-wider hover:text-white"
-              >
-                ← All projects
-              </Link>
-            </div>
-
-            <aside className="bg-[#0A1221] border border-neon/20 p-8 space-y-4">
-              <h2 className="text-lg font-bold text-white">Need similar work?</h2>
-              <p className="text-white/70 font-sans text-sm leading-relaxed">
-                Mussawar Hayat builds full-stack web, mobile, and Web3 products end-to-end.
-                Fixed-price, hourly, or retainer — remote for North America and Europe. Read more{' '}
-                <Link href="/about" className="text-neon hover:underline">
-                  about the engineer
-                </Link>
-                .
-              </p>
-              <div className="flex flex-wrap gap-3 pt-2">
-                <Link
-                  href="/contact"
-                  className="px-5 py-2.5 bg-neon text-black text-xs font-bold uppercase tracking-wider"
-                >
-                  Start a Project
-                </Link>
-                <Link
-                  href="/services"
-                  className="px-5 py-2.5 border border-neon/40 text-white text-xs font-bold uppercase tracking-wider hover:border-neon"
-                >
-                  View Services
-                </Link>
-                <Link
-                  href="/blog"
-                  className="px-5 py-2.5 text-white/50 text-xs uppercase tracking-wider hover:text-white"
-                >
-                  Read Blog
-                </Link>
-              </div>
-            </aside>
           </article>
-        </main>
-        <Footer />
-      </div>
+
+          {/* Fact sheet */}
+          <aside className="lg:col-span-4">
+            <div className="space-y-10 lg:sticky lg:top-32">
+              <dl className="border-t border-white/10">
+                <div className="border-b border-white/10 py-4">
+                  <dt className={LABEL}>Category</dt>
+                  <dd className="mt-2 font-sans text-sm capitalize text-white/85">{project.category}</dd>
+                </div>
+                <div className="border-b border-white/10 py-4">
+                  <dt className={LABEL}>Type</dt>
+                  <dd className="mt-2 font-sans text-sm text-white/85">{project.flagship ? 'Flagship project' : 'Archive project'}</dd>
+                </div>
+                <div className="border-b border-white/10 py-4">
+                  <dt className={LABEL}>Tech stack</dt>
+                  <dd className="mt-2">
+                    <ul className="flex flex-wrap gap-x-4 gap-y-1 font-mono text-[11px] uppercase tracking-[0.18em] text-white/80" aria-label="Tech stack">
+                      {project.tech.map((t) => (
+                        <li key={t}>{t}</li>
+                      ))}
+                    </ul>
+                  </dd>
+                </div>
+              </dl>
+
+              {(project.link || project.github) && (
+                <div className="flex flex-col gap-3">
+                  {project.link && (
+                    <a href={project.link} {...EXTERNAL} className="btn-neon group/live h-12 justify-between rounded-full px-6 text-xs">
+                      Live demo
+                      <FiArrowUpRight className="transition-transform duration-300 group-hover/live:rotate-45" aria-hidden="true" />
+                    </a>
+                  )}
+                  {project.github && (
+                    <a href={project.github} {...EXTERNAL} className="btn-ghost group/src h-12 justify-between rounded-full px-6 text-xs">
+                      Source on GitHub
+                      <FiGithub aria-hidden="true" />
+                    </a>
+                  )}
+                </div>
+              )}
+
+              <div className="border-l-2 border-neon pl-6">
+                <h2 className="text-base font-black uppercase tracking-tight text-white">Need similar work?</h2>
+                <p className="mt-3 font-sans text-sm leading-relaxed text-white/70">
+                  Mussawar Hayat builds full-stack web, mobile, and Web3 products end-to-end. Fixed-price, hourly, or retainer — remote
+                  for North America and Europe. Read more{' '}
+                  <Link href="/about" className="link-underline text-neon">
+                    about the engineer
+                  </Link>
+                  .
+                </p>
+                <div className="mt-5 flex flex-wrap gap-x-6 gap-y-3 font-mono text-[11px] uppercase tracking-[0.2em]">
+                  <Link href="/contact" className="link-underline text-neon">
+                    Start a project
+                  </Link>
+                  <Link href="/services" className="link-underline text-white/75 hover:text-neon">
+                    Services
+                  </Link>
+                  <Link href="/blog" className="link-underline text-white/75 hover:text-neon">
+                    Blog
+                  </Link>
+                </div>
+              </div>
+            </div>
+          </aside>
+        </div>
+
+        <div className="mt-20 border-t border-white/10 pt-8">
+          <Link href="/portfolio" className="group/back inline-flex items-center gap-2 font-mono text-xs uppercase tracking-[0.2em] text-white/75 transition-colors hover:text-neon">
+            <FiArrowLeft className="transition-transform duration-300 group-hover/back:-translate-x-1" aria-hidden="true" />
+            <span className="link-underline">All projects</span>
+          </Link>
+        </div>
+      </PageShell>
     </>
   );
 }

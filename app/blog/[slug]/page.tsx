@@ -1,8 +1,9 @@
 import { Metadata } from 'next'
 import Link from 'next/link'
-import { Header } from '@/app/components/layout/Header'
-import { Footer } from '@/app/components/layout/Footer'
+import { FiArrowLeft } from 'react-icons/fi'
 import { BreadcrumbSchema } from '@/app/components/seo/BreadcrumbSchema'
+import { PageShell } from '@/app/components/ui/PageShell'
+import { SectionLabel } from '@/app/components/ui/SectionLabel'
 import { FAQSchema } from '@/app/components/seo/FAQSchema'
 import { ArticleSchema } from '@/app/components/seo/ArticleSchema'
 import { notFound } from 'next/navigation'
@@ -11,6 +12,7 @@ import {
   getPostBySlug,
   getRelatedPosts,
 } from '../lib/posts'
+import { clampDescription, pageTitle } from '@/app/lib/seo'
 import './article.css'
 
 const postFaqs: Record<string, { question: string; answer: string }[]> = {
@@ -254,14 +256,16 @@ export async function generateMetadata({
   const post = await getPostBySlug(slug)
   if (!post) return { title: 'Post Not Found' }
 
+  const description = clampDescription(post.excerpt)
+
   return {
-    title: post.title,
-    description: post.excerpt,
+    title: pageTitle(post.title),
+    description,
     keywords: post.keywords,
     authors: [{ name: post.author }],
     openGraph: {
       title: post.title,
-      description: post.excerpt,
+      description,
       url: `https://mussawarhayat.site/blog/${slug}`,
       type: 'article',
       publishedTime: post.date,
@@ -278,7 +282,7 @@ export async function generateMetadata({
     twitter: {
       card: 'summary_large_image',
       title: post.title,
-      description: post.excerpt,
+      description,
       images: ['/my-pic.jpeg'],
     },
     alternates: {
@@ -303,6 +307,8 @@ export default async function BlogPostPage({
     { name: 'Blog', url: '/blog' },
     { name: post.title, url: `/blog/${slug}` },
   ]
+  const published = new Date(post.date).toLocaleDateString('en-US', { year: 'numeric', month: 'long', day: 'numeric' })
+  const LABEL = 'font-mono text-[10px] uppercase tracking-[0.3em] text-white/55'
 
   return (
     <>
@@ -320,106 +326,115 @@ export default async function BlogPostPage({
         featuredImage="https://mussawarhayat.site/my-pic.jpeg"
       />
 
-      <div className="min-h-screen bg-night font-sans">
-        <Header />
-
-        <main id="main-content" className="pt-32 sm:pt-36 md:pt-40 pb-24">
-          <article className="max-w-7xl mx-auto px-4 sm:px-6">
-            <header className="mb-6 sm:mb-8 bg-[#0A1221] border border-neon/20 rounded-2xl p-6 sm:p-8 shadow-[0_8px_32px_rgba(0,0,0,0.25)]">
-              <div className="flex flex-wrap items-center gap-3 text-sm text-white/50 mb-5">
-                <span className="px-3 py-1 bg-neon/10 text-neon text-xs font-semibold rounded-md border border-neon/25 tracking-wide uppercase">
-                  {post.category}
-                </span>
-                <time dateTime={post.date} className="text-white/45">
-                  {new Date(post.date).toLocaleDateString('en-US', {
-                    year: 'numeric',
-                    month: 'long',
-                    day: 'numeric',
-                  })}
-                </time>
-                <span className="text-white/35">·</span>
-                <span className="text-white/45">{post.readTime}</span>
-              </div>
-              <h1 className="text-2xl sm:text-3xl md:text-4xl font-bold text-white font-orbitron leading-tight mb-4 tracking-tight">
-                {post.title}
-              </h1>
-              <p className="text-base sm:text-lg text-white/65 leading-relaxed font-sans border-t border-white/5 pt-4">
-                {post.excerpt}
-              </p>
-              <p className="mt-4 text-sm text-white/40 font-sans">
-                By <span className="text-white/70">{post.author}</span>
-              </p>
-            </header>
-
-            <div
-              className="prose prose-invert prose-headings:font-orbitron prose-a:text-neon max-w-none blog-content blog-content-stack"
-              dangerouslySetInnerHTML={{ __html: post.content }}
-            />
-
-            {faqs.length > 0 && (
-              <section className="mt-2 mb-6 sm:mb-8">
-                <div className="bg-[#0A1221] border border-neon/20 rounded-2xl p-6 sm:p-8 shadow-[0_8px_32px_rgba(0,0,0,0.25)]">
-                  <h2 className="text-xl sm:text-2xl font-bold text-white font-orbitron mb-6">
-                    Frequently Asked Questions
-                  </h2>
-                  <div className="space-y-4">
-                    {faqs.map((faq) => (
-                      <div
-                        key={faq.question}
-                        className="bg-night border border-white/10 rounded-xl p-4 sm:p-5 hover:border-neon/30 transition-colors"
-                      >
-                        <h3 className="text-base sm:text-lg font-semibold text-neon mb-2 font-orbitron">
-                          {faq.question}
-                        </h3>
-                        <p className="text-sm sm:text-base text-white/70 leading-relaxed font-sans">
-                          {faq.answer}
-                        </p>
-                      </div>
-                    ))}
-                  </div>
-                </div>
-              </section>
-            )}
-
-            {related.length > 0 && (
-              <section className="mb-8">
-                <div className="bg-[#0A1221] border border-neon/20 rounded-2xl p-6 sm:p-8 shadow-[0_8px_32px_rgba(0,0,0,0.25)]">
-                  <h2 className="text-xl font-bold text-white font-orbitron mb-5">
-                    Related guides
-                  </h2>
-                  <div className="grid gap-3 sm:gap-4">
-                    {related.map((rpost) => (
-                      <Link
-                        key={rpost.slug}
-                        href={`/blog/${rpost.slug}`}
-                        className="block bg-night border border-white/10 rounded-xl p-4 sm:p-5 hover:border-neon/40 transition-all group"
-                      >
-                        <span className="text-white font-medium group-hover:text-neon transition-colors font-orbitron text-sm sm:text-base">
-                          {rpost.title}
-                        </span>
-                        <p className="text-sm text-white/50 mt-2 line-clamp-2 font-sans leading-relaxed">
-                          {rpost.excerpt}
-                        </p>
-                      </Link>
-                    ))}
-                  </div>
-                </div>
-              </section>
-            )}
-
-            <div className="text-center pt-2">
-              <Link
-                href="/blog"
-                className="inline-flex items-center gap-2 px-6 py-3 bg-[#0A1221] border border-neon/25 rounded-xl text-neon hover:border-neon hover:bg-neon/5 transition-all text-sm font-orbitron tracking-wide"
-              >
-                ← Back to all posts
+      <PageShell>
+        <article>
+          {/* Article header */}
+          <header className="max-w-5xl">
+            <div className="mb-8 flex flex-wrap items-center gap-x-4 gap-y-2 font-mono text-[11px] uppercase tracking-[0.3em] text-white/65 md:mb-10">
+              <Link href="/blog" className="text-neon underline decoration-neon/50 underline-offset-4 hover:decoration-neon">
+                [/blog]
               </Link>
+              <span className="text-neon/80">{post.category}</span>
+              <span className="h-px w-8 bg-white/20" aria-hidden="true" />
+              <time dateTime={post.date}>{published}</time>
+              <span aria-hidden="true">·</span>
+              <span>{post.readTime}</span>
             </div>
-          </article>
-        </main>
+            <h1 className="animate-focus-in text-[clamp(1.75rem,3.6vw,3.1rem)] font-black uppercase leading-[1.04] tracking-[-0.02em] text-white">
+              {post.title}
+            </h1>
+            <p className="mt-6 max-w-3xl font-sans text-lg leading-relaxed text-white/70">{post.excerpt}</p>
+            <p className="mt-5 font-mono text-[11px] uppercase tracking-[0.25em] text-white/55">
+              By <span className="text-white/85">{post.author}</span>
+            </p>
+          </header>
 
-        <Footer />
-      </div>
+          <div className="mt-14 grid grid-cols-1 gap-14 border-t border-white/10 pt-14 lg:grid-cols-12 lg:gap-16">
+            {/* Body */}
+            <div className="min-w-0 lg:col-span-8">
+              <div
+                className="prose prose-invert prose-headings:font-orbitron prose-a:text-neon max-w-[46rem] font-sans blog-content blog-content-stack"
+                dangerouslySetInnerHTML={{ __html: post.content }}
+              />
+
+              {faqs.length > 0 && (
+                <section className="mt-16">
+                  <SectionLabel index="FAQ" className="mb-6">
+                    Frequently Asked Questions
+                  </SectionLabel>
+                  <ol className="border-b border-white/10">
+                    {faqs.map((faq, i) => (
+                      <li key={faq.question} className="grid grid-cols-[2.5rem_1fr] gap-x-4 border-t border-white/10 py-6 md:grid-cols-[3rem_1fr]">
+                        <span className="pt-1 font-mono text-xs text-neon">{String(i + 1).padStart(2, '0')}</span>
+                        <div>
+                          <h3 className="text-base font-bold tracking-wide text-white md:text-lg">{faq.question}</h3>
+                          <p className="mt-2 font-sans text-sm leading-relaxed text-white/70 md:text-base">{faq.answer}</p>
+                        </div>
+                      </li>
+                    ))}
+                  </ol>
+                </section>
+              )}
+            </div>
+
+            {/* Sidebar */}
+            <aside className="lg:col-span-4">
+              <div className="space-y-12 lg:sticky lg:top-32">
+                <dl className="border-t border-white/10">
+                  {[
+                    ['Published', published],
+                    ['Reading time', post.readTime],
+                    ['Category', post.category],
+                    ['Author', post.author],
+                  ].map(([label, value]) => (
+                    <div key={label} className="flex items-baseline justify-between gap-4 border-b border-white/10 py-3.5">
+                      <dt className={LABEL}>{label}</dt>
+                      <dd className="text-right font-sans text-sm text-white/85">{value}</dd>
+                    </div>
+                  ))}
+                </dl>
+
+                {related.length > 0 && (
+                  <div>
+                    <p className={LABEL}>
+                      <span className="text-neon">Related</span> guides
+                    </p>
+                    <ul className="mt-4 border-t border-white/10">
+                      {related.map((rpost) => (
+                        <li key={rpost.slug} className="border-b border-white/10">
+                          <Link href={`/blog/${rpost.slug}`} className="group/rel block py-4">
+                            <span className="text-sm font-bold leading-snug tracking-wide text-white transition-colors group-hover/rel:text-neon">
+                              {rpost.title}
+                            </span>
+                            <span className="mt-1.5 line-clamp-2 block font-sans text-xs leading-relaxed text-white/50">{rpost.excerpt}</span>
+                          </Link>
+                        </li>
+                      ))}
+                    </ul>
+                  </div>
+                )}
+
+                <div className="border-l-2 border-neon pl-6">
+                  <p className="text-base font-black uppercase tracking-tight text-white">Need this built?</p>
+                  <p className="mt-3 font-sans text-sm leading-relaxed text-white/70">
+                    Mussawar Hayat builds full-stack web, mobile, and Web3 products end-to-end.
+                  </p>
+                  <Link href="/contact" className="link-underline mt-4 inline-block font-mono text-[11px] uppercase tracking-[0.2em] text-neon">
+                    Start a project
+                  </Link>
+                </div>
+              </div>
+            </aside>
+          </div>
+        </article>
+
+        <div className="mt-20 border-t border-white/10 pt-8">
+          <Link href="/blog" className="group/back inline-flex items-center gap-2 font-mono text-xs uppercase tracking-[0.2em] text-white/75 transition-colors hover:text-neon">
+            <FiArrowLeft className="transition-transform duration-300 group-hover/back:-translate-x-1" aria-hidden="true" />
+            <span className="link-underline">All posts</span>
+          </Link>
+        </div>
+      </PageShell>
     </>
   )
 }
