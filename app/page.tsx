@@ -63,7 +63,7 @@ export default function Home() {
   return (
     <>
       <FAQSchema faqs={FAQ_ITEMS} />
-      <div className="min-h-screen bg-white font-sans">
+      <div className="min-h-screen bg-ink font-sans">
         <Header />
         <main id="main-content" role="main">
           <Hero />
