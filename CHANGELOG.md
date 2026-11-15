@@ -169,3 +169,14 @@ See `AUDIT.md` for the findings, measurements and items that need manual review.
 ### Config
 - `next.config.ts`: `optimizePackageImports` trimmed to the packages that are actually used (`framer-motion`, `react-icons/fi`).
 - `app/layout.tsx`: wraps the app in `MotionProvider`; Geist Mono is no longer preloaded.
+
+## 2026-11-15: Dependency updates and new performance guide
+
+### Engineering
+- Updated Next.js and eslint-config-next to 16.4.6.
+- Updated sharp to 0.35.5 to address security advisories.
+- Ran npm audit fix; remaining issues are transitive or require breaking changes that were not applied.
+- Production build and TypeScript checks pass after the upgrades.
+
+### Content
+- Added blog post: Next.js 16.4 Performance Migration Guide 2026.
