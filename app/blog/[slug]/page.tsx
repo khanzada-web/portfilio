@@ -322,9 +322,9 @@ export default async function BlogPostPage({
       />
 
       <PageShell>
-        {/* One reading column plus a fixed-width sidebar, capped and centred so wide screens
-            don't open a gap between the text and the sidebar. */}
-        <article className="mx-auto max-w-[72rem]">
+        {/* Same page-wide edges as every other page: the cards fill the column next to a
+            fixed-width sidebar, so there is no empty gap on wide screens. */}
+        <article>
           {/* Article header */}
           <header className="max-w-5xl">
             <div className="mb-8 flex flex-wrap items-center gap-x-4 gap-y-2 font-mono text-xs uppercase tracking-[0.3em] text-white/65 md:mb-10">
@@ -427,7 +427,7 @@ export default async function BlogPostPage({
           </div>
         </article>
 
-        <div className="mx-auto mt-20 max-w-[72rem] border-t border-white/10 pt-8">
+        <div className="mt-20 border-t border-white/10 pt-8">
           <Link href="/blog" className="group/back inline-flex items-center gap-2 font-mono text-xs uppercase tracking-[0.2em] text-white/75 transition-colors hover:text-neon">
             <FiArrowLeft className="transition-transform duration-300 group-hover/back:-translate-x-1" aria-hidden="true" />
             <span className="link-underline">All posts</span>
