@@ -322,7 +322,9 @@ export default async function BlogPostPage({
       />
 
       <PageShell>
-        <article>
+        {/* One reading column plus a fixed-width sidebar, capped and centred so wide screens
+            don't open a gap between the text and the sidebar. */}
+        <article className="mx-auto max-w-[72rem]">
           {/* Article header */}
           <header className="max-w-5xl">
             <div className="mb-8 flex flex-wrap items-center gap-x-4 gap-y-2 font-mono text-xs uppercase tracking-[0.3em] text-white/65 md:mb-10">
@@ -344,11 +346,11 @@ export default async function BlogPostPage({
             </p>
           </header>
 
-          <div className="mt-14 grid grid-cols-1 gap-14 border-t border-white/10 pt-14 lg:grid-cols-12 lg:gap-16">
+          <div className="mt-14 grid grid-cols-1 gap-14 border-t border-white/10 pt-14 lg:grid-cols-[minmax(0,1fr)_17rem] lg:gap-12 xl:grid-cols-[minmax(0,1fr)_20rem] xl:gap-16">
             {/* Body */}
-            <div className="min-w-0 lg:col-span-8">
+            <div className="min-w-0">
               <div
-                className="prose prose-invert prose-headings:font-orbitron prose-a:text-neon max-w-[46rem] font-sans blog-content blog-content-stack"
+                className="prose prose-invert prose-headings:font-orbitron prose-a:text-neon max-w-none font-sans blog-content blog-content-stack"
                 dangerouslySetInnerHTML={{ __html: post.content }}
               />
 
@@ -375,7 +377,7 @@ export default async function BlogPostPage({
             </div>
 
             {/* Sidebar */}
-            <aside className="lg:col-span-4">
+            <aside>
               <div className="space-y-12 lg:sticky lg:top-32">
                 <dl className="border-t border-white/10">
                   {[
@@ -425,7 +427,7 @@ export default async function BlogPostPage({
           </div>
         </article>
 
-        <div className="mt-20 border-t border-white/10 pt-8">
+        <div className="mx-auto mt-20 max-w-[72rem] border-t border-white/10 pt-8">
           <Link href="/blog" className="group/back inline-flex items-center gap-2 font-mono text-xs uppercase tracking-[0.2em] text-white/75 transition-colors hover:text-neon">
             <FiArrowLeft className="transition-transform duration-300 group-hover/back:-translate-x-1" aria-hidden="true" />
             <span className="link-underline">All posts</span>
