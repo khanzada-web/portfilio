@@ -36,12 +36,12 @@ export function DevPass({ style }: { style?: CSSProperties }) {
           <div className={SHEEN_BG} style={SHEEN} />
 
           {/* Header */}
-          <div className="flex items-center justify-between font-mono text-[10px] uppercase tracking-[0.3em] text-white/65">
+          <div className="flex items-center justify-between font-mono text-xs uppercase tracking-[0.3em] text-white/65">
             <span className="flex items-center gap-2 font-orbitron text-sm font-black tracking-tight text-white">
-              <span className="flex h-6 w-6 items-center justify-center rounded-md bg-neon text-[10px] text-black">MH</span>
+              <span className="flex h-6 w-6 items-center justify-center rounded-md bg-neon text-xs text-black">MH</span>
               Dev Pass
             </span>
-            <span>Nº 039FF14</span>
+            <span>EST · CET</span>
           </div>
 
           {/* Photo with a light neon tint */}
@@ -60,12 +60,12 @@ export function DevPass({ style }: { style?: CSSProperties }) {
           <p className="mt-[5%] font-orbitron text-[clamp(1rem,1.5vw,1.35rem)] font-black uppercase leading-none tracking-tight text-white">
             Mussawar Hayat
           </p>
-          <p className="mt-1.5 font-mono text-[10px] uppercase tracking-[0.25em] text-neon">Full-Stack × Web3 Engineer</p>
+          <p className="mt-1.5 font-mono text-xs uppercase tracking-[0.25em] text-neon">Full-Stack × Web3 Engineer</p>
 
           {/* Barcode strip */}
           <div className="mt-[5%] flex items-end justify-between gap-3 border-t border-dashed border-white/15 pt-[4%]">
             <div className={`h-7 ${BARCODE}`} />
-            <span className="font-mono text-[10px] uppercase tracking-[0.2em] text-white/60">Remote · Global</span>
+            <span className="font-mono text-xs uppercase tracking-[0.2em] text-white/60">Remote · Global</span>
           </div>
         </div>
       </div>
@@ -89,22 +89,22 @@ export function DevPassCompact({ style }: { style?: CSSProperties }) {
         </div>
 
         <div className="relative flex min-w-0 flex-1 flex-col justify-between p-4 sm:p-5">
-          <div className="flex items-center justify-between gap-2 font-mono text-[10px] uppercase tracking-[0.25em] text-white/65">
-            <span className="flex items-center gap-1.5 font-orbitron text-[11px] font-black tracking-tight text-white">
-              <span className="flex h-5 w-5 items-center justify-center rounded bg-neon text-[10px] text-black">MH</span>
+          <div className="flex items-center justify-between gap-2 font-mono text-xs uppercase tracking-[0.25em] text-white/65">
+            <span className="flex items-center gap-1.5 font-orbitron text-xs font-black tracking-tight text-white">
+              <span className="flex h-5 w-5 items-center justify-center rounded bg-neon text-xs text-black">MH</span>
               Dev Pass
             </span>
-            <span>Nº 039FF14</span>
+            <span>EST · CET</span>
           </div>
 
           <div>
             <p className="font-orbitron text-base font-black uppercase leading-none tracking-tight text-white sm:text-lg">Mussawar Hayat</p>
-            <p className="mt-1.5 font-mono text-[10px] uppercase tracking-[0.22em] text-neon">Full-Stack × Web3 Engineer</p>
+            <p className="mt-1.5 font-mono text-xs uppercase tracking-[0.22em] text-neon">Full-Stack × Web3 Engineer</p>
           </div>
 
           <div className="flex items-end justify-between gap-3 border-t border-dashed border-white/15 pt-2.5">
             <div className={`h-5 ${BARCODE}`} />
-            <span className="font-mono text-[10px] uppercase tracking-[0.2em] text-white/60">Remote · Global</span>
+            <span className="font-mono text-xs uppercase tracking-[0.2em] text-white/60">Remote · Global</span>
           </div>
         </div>
       </div>

@@ -15,33 +15,33 @@ interface Step {
 const STEPS: Step[] = [
   {
     number: '01', icon: <FiTarget className="h-5 w-5" />,
-    title: 'Logic Discovery',
-    description: 'Analysing system requirements, user personas, and technical feasibility for your enterprise ecosystem.',
+    title: 'Discovery call',
+    description: 'A short call to pin down goals, users, must-have features, budget and deadline. You get a written scope and estimate before anything is agreed.',
   },
   {
     number: '02', icon: <FiMap className="h-5 w-5" />,
-    title: 'System Architecture',
-    description: 'Mapping out the data flow, API integrations, and cloud infrastructure for maximum scalability.',
+    title: 'Architecture & plan',
+    description: 'Data model, API and integration plan, hosting choice and a milestone schedule, agreed before any code is written.',
   },
   {
     number: '03', icon: <FiPenTool className="h-5 w-5" />,
-    title: 'Precision Design',
-    description: 'Crafting high-fidelity immersive interfaces focused on user psychological conversion and speed.',
+    title: 'Design',
+    description: 'Wireframes, then clickable UI screens for the key flows. You review and sign off on them before development starts.',
   },
   {
     number: '04', icon: <FiCode className="h-5 w-5" />,
-    title: 'Core Development',
-    description: 'Building the engine using Next.js, TypeScript, and high-performance backend modules.',
+    title: 'Build in sprints',
+    description: 'Next.js and TypeScript in short sprints, each ending with a live preview link and a progress update you can react to.',
   },
   {
     number: '05', icon: <FiActivity className="h-5 w-5" />,
-    title: 'QA & Optimisation',
-    description: 'Stress testing infrastructure and optimising load times to ensure 99th percentile performance.',
+    title: 'Test & optimise',
+    description: 'Automated and manual testing, accessibility checks, and Core Web Vitals tuning so pages load fast on real phones.',
   },
   {
     number: '06', icon: <FiCheckCircle className="h-5 w-5" />,
-    title: 'Deployment & Scale',
-    description: 'Mainnet/Production launch with proactive monitoring and automated scaling protocols.',
+    title: 'Launch & support',
+    description: 'Production deploy with error monitoring and backups, a handover walkthrough, and support while the product settles in.',
   },
 ];
 

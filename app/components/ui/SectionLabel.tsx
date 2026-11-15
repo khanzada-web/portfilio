@@ -18,7 +18,7 @@ export function SectionLabel({
 }) {
   return (
     <Reveal className={className}>
-      <Heading className="flex items-center gap-4 font-mono text-[11px] font-normal uppercase tracking-[0.3em] text-white/70">
+      <Heading className="flex items-center gap-4 font-mono text-xs font-normal uppercase tracking-[0.3em] text-white/70">
         {index && <span className="text-neon">[{index}]</span>}
         <span>{children}</span>
         <span className="h-px flex-1 bg-white/10" aria-hidden="true" />

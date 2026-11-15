@@ -1,5 +1,27 @@
 # Changelog
 
+## 2026-11-15: SEO, performance & audience audit fixes
+
+### Technical SEO
+- **robots.txt:** replaced ~20 per-bot groups with one `User-agent: *` group. Before, `Disallow: /api/` only applied to the last group.
+- **Sitemap:** `<lastmod>` uses real dates only (posts and legal pages, and `/blog` uses the newest post). Pages with no tracked edit date leave it out instead of claiming "today" on every build.
+- **Icons:** new `app/favicon.ico` (16/32/48) and `app/apple-icon.png` (180px PNG), plus `icon-192.png`/`icon-512.png` (maskable) in the web manifest. `/favicon.ico` no longer 404s and the touch icon is no longer WebP.
+- **RSS:** the `<link rel="alternate">` for `/feed.xml` is now in `<head>` on every page (before, pages that set their own canonical dropped it).
+- **Structured data:** a site-wide `@graph` with `Person`, `ProfessionalService` and `WebSite` (`sameAs` GitHub, LinkedIn, X, Twine; `knowsAbout`; `areaServed`). The existing `#person` references on About, case studies and posts now resolve. Blog posts name the Person as author and publisher.
+- **Share card:** generated 1200×630 `opengraph-image`/`twitter-image` (name, role, stack, EST/CET overlap) on every page, replacing the cropped portrait. "Best"/"Top-rated" wording was removed from `og:site_name` and the Twitter title.
+- **Content-Security-Policy:** a static policy in `next.config.ts` limits scripts to this site and Google Tag Manager. It doesn't use a nonce, because a nonce would force every page to render dynamically.
+
+### Content & trust
+- **Hero:** the H1 role now matches the title ("Next.js & Web3 Full-Stack Developer"). The second "Attock, PK" and the "Nº 039FF14" pass number were replaced with EST / CET overlap. The pitch line is plain English.
+- **Process:** buzzword step copy ("user psychological conversion", "99th percentile performance", "automated scaling protocols") was replaced with concrete steps. The CTA "Initiate Project_Build" became "Start your project".
+- **Testimonials:** removed the `VERIFIED_PARTNER` / `CORE_CONTRIBUTOR` / `EXTERNAL_AUDIT` badges, which made claims that couldn't be checked.
+- **Blog:** read time is calculated from the word count at 230 wpm (it was hand-entered and about 2× too high). Every post has an author box with photo, role, bio and profile links.
+
+### Conversion & readability
+- **Contact form:** optional Project type, Budget and Timeline fields. They're forwarded to the CRM as custom fields and included in the notification email.
+- **Security:** the notification email escapes all user input, which fixes HTML injection from the form.
+- **Readability:** every 10–11px label is now at least 12px (55 instances, plus the `.tag` utility).
+
 ## 2026-11-14 (later): Inner pages, projects, contact details
 
 ### Content

@@ -1,6 +1,21 @@
 import { NextRequest, NextResponse } from 'next/server';
 import nodemailer from 'nodemailer';
 
+/** Escapes user input before it is placed in the notification email's HTML. */
+function escapeHtml(value: string): string {
+  return value
+    .replace(/&/g, '&amp;')
+    .replace(/</g, '&lt;')
+    .replace(/>/g, '&gt;')
+    .replace(/"/g, '&quot;')
+    .replace(/'/g, '&#39;');
+}
+
+/** Optional qualifier from the form, trimmed and length-capped. */
+function qualifier(value: unknown): string {
+  return typeof value === 'string' ? value.trim().slice(0, 80) : '';
+}
+
 export async function POST(request: NextRequest) {
   try {
     const rawBody = await request.json().catch(() => null);
@@ -14,6 +29,15 @@ export async function POST(request: NextRequest) {
       return NextResponse.json({ error: "Missing required fields" }, { status: 400 });
     }
 
+    const details = [
+      ['Project type', qualifier(extraFields.projectType)],
+      ['Budget', qualifier(extraFields.budget)],
+      ['Timeline', qualifier(extraFields.timeline)],
+    ].filter(([, value]) => value);
+    const detailsHtml = details
+      .map(([label, value]) => `<p style="margin: 4px 0;"><strong>${label}:</strong> ${escapeHtml(value)}</p>`)
+      .join('');
+
     const transporter = nodemailer.createTransport({
       service: 'gmail',
       auth: {
@@ -26,13 +50,14 @@ export async function POST(request: NextRequest) {
     const adminMail = {
       from: `Portfolio System <${process.env.SMTP_USER}>`,
       to: process.env.SMTP_TO_EMAIL,
-      subject: `⚡ New Lead: ${name}`,
+      subject: `⚡ New Lead: ${safeName.replace(/[\r\n]+/g, ' ').slice(0, 120)}`,
       html: `
         <div style="background-color: #060b16; color: #ffffff; padding: 40px; font-family: 'Orbitron', sans-serif;">
           <h2 style="color: #39FF14; border-bottom: 1px solid #39FF14; padding-bottom: 10px;">New Project Inquiry</h2>
-          <p><strong>From:</strong> ${name} (${email})</p>
+          <p><strong>From:</strong> ${escapeHtml(safeName)} (${escapeHtml(safeEmail)})</p>
+          ${detailsHtml}
           <div style="background: rgba(255,255,255,0.05); padding: 20px; border-radius: 8px; border-left: 4px solid #39FF14;">
-            <p style="line-height: 1.6;">${message.replace(/\n/g, '<br>')}</p>
+            <p style="line-height: 1.6;">${escapeHtml(safeMessage).replace(/\n/g, '<br>')}</p>
           </div>
           <p style="font-size: 12px; color: #475569; margin-top: 20px;">Timestamp: ${new Date().toLocaleString()}</p>
         </div>

@@ -40,7 +40,7 @@ export function HeroTitle() {
     <div className="pointer-events-none relative z-10">
       <h1
         className="uppercase"
-        aria-label="Mussawar Hayat — React, React Native & Web3 Full-Stack Developer"
+        aria-label="Mussawar Hayat — Next.js & Web3 Full-Stack Developer"
       >
         <span className="block font-black leading-[0.86] tracking-[-0.02em]" style={TITLE_SIZE}>
           <span className="block whitespace-nowrap text-white">
@@ -66,7 +66,7 @@ export function HeroTitle() {
         >
           <span className="h-px w-10 shrink-0 bg-neon shadow-[0_0_10px_#39FF14] sm:w-16" aria-hidden="true" />
           <span>
-            React, React Native &amp; <span className="text-neon">Web3</span> Full-Stack Developer
+            Next.js &amp; <span className="text-neon">Web3</span> Full-Stack Developer
           </span>
         </span>
       </h1>
@@ -111,13 +111,13 @@ export function HeroFooter() {
         <span className="mr-2 font-mono font-bold text-neon" aria-hidden="true">
           &gt;_
         </span>
-        Hire a remote full-stack and Web3 engineer specializing in React, React Native, Next.js, Solidity, and production infrastructure for web and mobile applications
+        I build production SaaS platforms, dashboards and smart-contract apps with Next.js, TypeScript and Solidity, with working-hour overlap for EST and CET teams.
       </p>
 
       <dl className="flex shrink-0 animate-fade-up gap-8" style={at(HERO_SEQUENCE.stats)}>
         {STATS.map((stat) => (
           <div key={stat.label} className="flex flex-col-reverse">
-            <dt className="mt-1 font-mono text-[10px] uppercase tracking-[0.25em] text-white/60">{stat.label}</dt>
+            <dt className="mt-1 font-mono text-xs uppercase tracking-[0.25em] text-white/60">{stat.label}</dt>
             <dd className="text-2xl font-bold text-white md:text-3xl">
               <CountUp to={stat.value} />
               <span className="text-neon">{stat.suffix}</span>

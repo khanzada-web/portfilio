@@ -33,19 +33,11 @@ export function ArticleSchema({
     "dateModified": dateModified || datePublished,
     "author": {
       "@type": "Person",
+      "@id": "https://mussawarhayat.site/#person",
       "name": author,
       "url": authorUrl
     },
-    "publisher": {
-      "@type": "Organization",
-      "name": "Mussawar Hayat",
-      "logo": {
-        "@type": "ImageObject",
-        "url": "https://mussawarhayat.site/my-pic.jpeg",
-        "width": 192,
-        "height": 192
-      }
-    },
+    "publisher": { "@id": "https://mussawarhayat.site/#person" },
     "mainEntityOfPage": {
       "@type": "WebPage",
       "@id": url

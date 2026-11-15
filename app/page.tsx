@@ -36,14 +36,12 @@ export const metadata: Metadata = {
       "Mussawar Hayat is a full-stack developer specializing in Next.js, React, TypeScript, Node.js and Web3. Available for remote freelance projects worldwide.",
     url: "https://mussawarhayat.site",
     type: "website",
-    images: [{ url: "/my-pic.jpeg", width: 1200, height: 630, alt: "Mussawar Hayat — Full-Stack & Web3 Developer portrait" }],
   },
   twitter: {
     card: "summary_large_image",
     title: "Hire Mussawar Hayat | Full-Stack & Web3 Developer",
     description:
       "Full-stack developer building web, mobile & Web3 apps with React, Next.js, Node.js & Solidity. Available for freelance projects.",
-    images: ["/my-pic.jpeg"],
   },
 };
 

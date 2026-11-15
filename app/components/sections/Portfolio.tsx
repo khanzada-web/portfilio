@@ -6,7 +6,7 @@ import { EditorialHeadline } from '../ui/EditorialHeadline';
 import { SectionGlow } from '../ui/SectionGlow';
 
 const EXTERNAL = { target: '_blank', rel: 'noopener noreferrer' } as const;
-const LABEL = 'font-mono text-[10px] uppercase tracking-[0.3em] text-white/55';
+const LABEL = 'font-mono text-xs uppercase tracking-[0.3em] text-white/55';
 
 /** Single-line preview (case studies may use \n\n paragraphs). */
 const preview = (text: string) => text.replace(/\s+/g, ' ').trim();
@@ -42,7 +42,7 @@ function StackCard({ project, index, total }: { project: Project; index: number;
               {project.title}
             </h3>
             <p className="mt-6 max-w-xl font-sans text-sm leading-relaxed text-white/70 md:text-base">{project.description}</p>
-            <ul className="mt-6 flex flex-wrap gap-x-4 gap-y-1 font-mono text-[10px] uppercase tracking-[0.2em] text-white/50" aria-label="Technologies used">
+            <ul className="mt-6 flex flex-wrap gap-x-4 gap-y-1 font-mono text-xs uppercase tracking-[0.2em] text-white/50" aria-label="Technologies used">
               {project.tech.map((t) => (
                 <li key={t}>{t}</li>
               ))}

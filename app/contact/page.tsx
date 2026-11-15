@@ -7,6 +7,7 @@ import { BreadcrumbSchema } from '@/app/components/seo/BreadcrumbSchema'
 import { EditorialHeadline } from '@/app/components/ui/EditorialHeadline'
 import { PageShell } from '@/app/components/ui/PageShell'
 import { SectionLabel } from '@/app/components/ui/SectionLabel'
+import { SHARE_IMAGE } from '@/app/lib/site'
 
 export const metadata: Metadata = {
   title: 'Contact — Hire a Next.js & Web3 Developer',
@@ -22,31 +23,24 @@ export const metadata: Metadata = {
     'project consultation',
   ],
   openGraph: {
+    images: SHARE_IMAGE,
     title: 'Contact \u2014 Hire Full-Stack Developer',
     description: 'Get in touch to hire Mussawar Hayat for full-stack development, web & mobile apps, and Web3/blockchain projects.',
     url: 'https://mussawarhayat.site/contact',
     type: 'website',
-    images: [
-      {
-        url: '/my-pic.jpeg',
-        width: 1200,
-        height: 630,
-        alt: 'Contact Mussawar Hayat',
-      },
-    ],
   },
   twitter: {
+    images: SHARE_IMAGE,
     card: 'summary_large_image',
     title: 'Contact \u2014 Hire Full-Stack Developer',
     description: 'Get in touch to hire for full-stack development, web & mobile apps, and Web3/blockchain projects.',
-    images: ['/my-pic.jpeg'],
   },
   alternates: {
     canonical: '/contact',
   },
 }
 
-const LABEL = 'font-mono text-[10px] uppercase tracking-[0.3em] text-white/55'
+const LABEL = 'font-mono text-xs uppercase tracking-[0.3em] text-white/55'
 
 const CHANNELS = [
   { label: 'Email', value: 'reply@mussawarhayat.site', href: 'mailto:reply@mussawarhayat.site', external: false },
@@ -129,7 +123,7 @@ export default function ContactPage() {
                 <h2 className="text-xl font-black uppercase tracking-tight text-white md:text-2xl">
                   Send a <span className="text-neon">message</span>
                 </h2>
-                <span className="flex items-center gap-2 font-mono text-[10px] uppercase tracking-[0.25em] text-white/60">
+                <span className="flex items-center gap-2 font-mono text-xs uppercase tracking-[0.25em] text-white/60">
                   <span className="h-1.5 w-1.5 rounded-full bg-neon shadow-[0_0_8px_#39FF14]" aria-hidden="true" />
                   Replies within 24h
                 </span>

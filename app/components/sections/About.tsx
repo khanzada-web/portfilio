@@ -22,7 +22,7 @@ const PROOF = [
   { value: 24, prefix: '<', suffix: 'h', label: 'Response target' },
 ] as const;
 
-const LABEL = 'font-mono text-[10px] uppercase tracking-[0.3em] text-white/55';
+const LABEL = 'font-mono text-xs uppercase tracking-[0.3em] text-white/55';
 const CORNER = 'absolute h-5 w-5 border-neon';
 
 /**
@@ -63,9 +63,9 @@ export default function About() {
               <figcaption className="absolute inset-x-8 bottom-8 flex items-end justify-between gap-4">
                 <span>
                   <span className="block text-lg font-black uppercase tracking-tight text-white">Mussawar Hayat</span>
-                  <span className="mt-1 block font-mono text-[10px] uppercase tracking-[0.25em] text-neon">Full-Stack & Web3 Engineer</span>
+                  <span className="mt-1 block font-mono text-xs uppercase tracking-[0.25em] text-neon">Full-Stack & Web3 Engineer</span>
                 </span>
-                <span className="flex items-center gap-2 font-mono text-[10px] uppercase tracking-[0.25em] text-white/70">
+                <span className="flex items-center gap-2 font-mono text-xs uppercase tracking-[0.25em] text-white/70">
                   <span className="h-1.5 w-1.5 rounded-full bg-neon shadow-[0_0_8px_#39FF14]" aria-hidden="true" />
                   Available
                 </span>

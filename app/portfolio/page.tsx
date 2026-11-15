@@ -7,6 +7,7 @@ import { EditorialHeadline } from '@/app/components/ui/EditorialHeadline';
 import { PageShell } from '@/app/components/ui/PageShell';
 import { SectionLabel } from '@/app/components/ui/SectionLabel';
 import { PROJECTS } from '@/app/lib/projects';
+import { SHARE_IMAGE } from '@/app/lib/site';
 
 export const metadata: Metadata = {
   title: 'Next.js & Web3 Portfolio — Case Studies',
@@ -22,18 +23,18 @@ export const metadata: Metadata = {
   ],
   alternates: { canonical: '/portfolio' },
   openGraph: {
+    images: SHARE_IMAGE,
     title: 'Portfolio | Mussawar Hayat — Full-Stack & Web3 Developer',
     description:
       'Featured projects and case studies by Mussawar Hayat: Next.js, React, Solidity, Bitcoin Ordinals, and DevOps.',
     url: 'https://mussawarhayat.site/portfolio',
     type: 'website',
-    images: [{ url: '/my-pic.jpeg', width: 1200, height: 630, alt: 'Mussawar Hayat portfolio' }],
   },
   twitter: {
+    images: SHARE_IMAGE,
     card: 'summary_large_image',
     title: 'Portfolio | Mussawar Hayat',
     description: 'Full-stack and Web3 project case studies by Mussawar Hayat.',
-    images: ['/my-pic.jpeg'],
   },
 };
 
@@ -78,7 +79,7 @@ export default function PortfolioPage() {
                     {String(i + 1).padStart(2, '0')}
                   </span>
                   <div className="md:col-span-6">
-                    <span className="font-mono text-[10px] uppercase tracking-[0.3em] text-white/50">{p.category}</span>
+                    <span className="font-mono text-xs uppercase tracking-[0.3em] text-white/50">{p.category}</span>
                     <h3 className="mt-3 text-[clamp(1.6rem,3vw,2.6rem)] font-black uppercase leading-[0.98] tracking-[-0.02em] text-white transition-colors group-hover:text-neon">
                       <Link href={`/portfolio/${p.slug}`} className="after:absolute after:inset-0 after:content-[''] focus-visible:outline-none">
                         {p.title}
@@ -87,7 +88,7 @@ export default function PortfolioPage() {
                   </div>
                   <div className="md:col-span-5">
                     <p className="font-sans text-sm leading-relaxed text-white/70 md:text-base">{p.description}</p>
-                    <ul className="mt-5 flex flex-wrap gap-x-4 gap-y-1 font-mono text-[10px] uppercase tracking-[0.2em] text-white/50" aria-label="Technologies">
+                    <ul className="mt-5 flex flex-wrap gap-x-4 gap-y-1 font-mono text-xs uppercase tracking-[0.2em] text-white/50" aria-label="Technologies">
                       {p.tech.map((t) => (
                         <li key={t}>{t}</li>
                       ))}
@@ -124,17 +125,17 @@ export default function PortfolioPage() {
             {archive.map((p, i) => (
               <StaggerItem as="li" key={p.slug} className="group relative border-t border-white/10">
                 <article className="grid grid-cols-[2.5rem_1fr_auto] items-baseline gap-x-4 gap-y-1 py-5 md:grid-cols-[3.5rem_minmax(0,1.2fr)_minmax(0,1fr)_minmax(0,1fr)_auto] md:gap-x-6">
-                  <span className="font-mono text-[11px] text-white/55 group-hover:text-neon">{String(i + 1).padStart(2, '0')}</span>
+                  <span className="font-mono text-xs text-white/55 group-hover:text-neon">{String(i + 1).padStart(2, '0')}</span>
                   <h3 className="text-sm font-bold uppercase tracking-wide text-white transition-colors group-hover:text-neon md:text-base">
                     <Link href={`/portfolio/${p.slug}`} className="after:absolute after:inset-0 after:content-[''] focus-visible:outline-none">
                       {p.title}
                     </Link>
                   </h3>
-                  <span className="hidden font-mono text-[10px] uppercase tracking-[0.25em] text-white/50 md:block">{p.category}</span>
-                  <span className="hidden truncate font-mono text-[10px] uppercase tracking-[0.2em] text-white/55 md:block">
+                  <span className="hidden font-mono text-xs uppercase tracking-[0.25em] text-white/50 md:block">{p.category}</span>
+                  <span className="hidden truncate font-mono text-xs uppercase tracking-[0.2em] text-white/55 md:block">
                     {p.tech.slice(0, 3).join(' · ')}
                   </span>
-                  <span className="font-mono text-[10px] font-bold uppercase tracking-[0.2em] text-neon">Read →</span>
+                  <span className="font-mono text-xs font-bold uppercase tracking-[0.2em] text-neon">Read →</span>
                 </article>
               </StaggerItem>
             ))}

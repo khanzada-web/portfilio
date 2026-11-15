@@ -10,7 +10,6 @@ interface Testimonial {
   author: string;
   role: string;
   rating: number;
-  status: string;
 }
 
 const TESTIMONIALS: Testimonial[] = [
@@ -19,21 +18,18 @@ const TESTIMONIALS: Testimonial[] = [
     author: 'Alex Thompson',
     role: 'CEO, Adderals',
     rating: 5,
-    status: 'VERIFIED_PARTNER',
   },
   {
     quote: 'His React and Web3.js skills are outstanding. He delivered our NFT marketplace with seamless blockchain integration.',
     author: 'Michael Chen',
     role: 'Product Lead, Soft Stake',
     rating: 5,
-    status: 'CORE_CONTRIBUTOR',
   },
   {
     quote: 'Working with Mussawar on our Web3 project was incredible. His full-stack capabilities and design sense are top-notch.',
     author: 'James Rodriguez',
     role: 'CTO, RPG Market',
     rating: 5,
-    status: 'EXTERNAL_AUDIT',
   },
 ];
 
@@ -111,9 +107,6 @@ export function TestimonialCarousel() {
                   aria-roledescription="slide"
                   aria-label={`${index + 1} of ${TOTAL}`}
                 >
-                  <div className="inline-block rounded-md border border-neon/30 bg-neon/10 px-3 py-1 font-mono text-[10px] font-bold uppercase tracking-[0.2em] text-neon">
-                    {current.status}
-                  </div>
 
                   <blockquote className="select-none text-xl font-bold leading-relaxed tracking-tight text-white md:text-3xl">
                     &quot;{current.quote}&quot;
@@ -127,7 +120,7 @@ export function TestimonialCarousel() {
 
                   <figcaption className="mt-6 border-t border-white/10 pt-4">
                     <p className="font-mono text-lg font-bold uppercase tracking-wider text-white">{current.author}</p>
-                    <p className="mt-1 font-mono text-[10px] uppercase tracking-[0.25em] text-white/65">{current.role}</p>
+                    <p className="mt-1 font-mono text-xs uppercase tracking-[0.25em] text-white/65">{current.role}</p>
                   </figcaption>
                 </m.figure>
               </AnimatePresence>

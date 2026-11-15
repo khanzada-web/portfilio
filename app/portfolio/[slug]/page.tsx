@@ -7,6 +7,7 @@ import { clampDescription } from '@/app/lib/seo';
 import { EditorialHeadline } from '@/app/components/ui/EditorialHeadline';
 import { PageShell } from '@/app/components/ui/PageShell';
 import { SectionLabel } from '@/app/components/ui/SectionLabel';
+import { SHARE_IMAGE } from '@/app/lib/site';
 import {
   getAllProjectSlugs,
   getProjectBySlug,
@@ -43,22 +44,22 @@ export async function generateMetadata({ params }: PageProps): Promise<Metadata>
     description,
     alternates: { canonical: pageUrl },
     openGraph: {
+      images: SHARE_IMAGE,
       title: `${project.title} | Mussawar Hayat Portfolio`,
       description,
       url: pageUrl,
       type: 'article',
-      images: [{ url: '/my-pic.jpeg', width: 1200, height: 630, alt: project.title }],
     },
     twitter: {
+      images: SHARE_IMAGE,
       card: 'summary_large_image',
       title: project.title,
       description,
-      images: ['/my-pic.jpeg'],
     },
   };
 }
 
-const LABEL = 'font-mono text-[10px] uppercase tracking-[0.3em] text-white/55';
+const LABEL = 'font-mono text-xs uppercase tracking-[0.3em] text-white/55';
 const EXTERNAL = { target: '_blank', rel: 'noopener noreferrer' } as const;
 
 /** Two-tone title: everything but the last word in white, the last word in neon. */
@@ -152,7 +153,7 @@ export default async function PortfolioProjectPage({ params }: PageProps) {
                 <div className="border-b border-white/10 py-4">
                   <dt className={LABEL}>Tech stack</dt>
                   <dd className="mt-2">
-                    <ul className="flex flex-wrap gap-x-4 gap-y-1 font-mono text-[11px] uppercase tracking-[0.18em] text-white/80" aria-label="Tech stack">
+                    <ul className="flex flex-wrap gap-x-4 gap-y-1 font-mono text-xs uppercase tracking-[0.18em] text-white/80" aria-label="Tech stack">
                       {project.tech.map((t) => (
                         <li key={t}>{t}</li>
                       ))}
@@ -188,7 +189,7 @@ export default async function PortfolioProjectPage({ params }: PageProps) {
                   </Link>
                   .
                 </p>
-                <div className="mt-5 flex flex-wrap gap-x-6 gap-y-3 font-mono text-[11px] uppercase tracking-[0.2em]">
+                <div className="mt-5 flex flex-wrap gap-x-6 gap-y-3 font-mono text-xs uppercase tracking-[0.2em]">
                   <Link href="/contact" className="link-underline text-neon">
                     Start a project
                   </Link>

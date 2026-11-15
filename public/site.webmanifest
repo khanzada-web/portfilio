@@ -4,30 +4,36 @@
   "description": "Hire a full-stack developer in React, Next.js, TypeScript, Node.js & Web3. Production SaaS, DApps, and mobile apps.",
   "start_url": "/",
   "display": "standalone",
-  "background_color": "#060B16",
+  "background_color": "#030712",
   "theme_color": "#39FF14",
   "orientation": "portrait-primary",
   "icons": [
     {
-      "src": "/logo.webp",
-      "sizes": "any",
-      "type": "image/webp",
-      "purpose": "any maskable"
-    },
-    {
-      "src": "/logo.avif",
-      "sizes": "any",
-      "type": "image/avif",
+      "src": "/icon-192.png",
+      "sizes": "192x192",
+      "type": "image/png",
       "purpose": "any"
     },
     {
-      "src": "/logo-optimized.png",
-      "sizes": "192x192",
+      "src": "/icon-512.png",
+      "sizes": "512x512",
       "type": "image/png",
-      "purpose": "any maskable"
+      "purpose": "any"
+    },
+    {
+      "src": "/icon-512.png",
+      "sizes": "512x512",
+      "type": "image/png",
+      "purpose": "maskable"
     }
   ],
-  "categories": ["portfolio", "developer", "web3", "blockchain", "business"],
+  "categories": [
+    "portfolio",
+    "developer",
+    "web3",
+    "blockchain",
+    "business"
+  ],
   "lang": "en",
   "dir": "ltr"
 }

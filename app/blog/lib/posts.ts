@@ -15,6 +15,22 @@ export interface BlogPost {
 
 const CONTENT_DIR = path.join(process.cwd(), 'app/blog/content')
 
+/** Average adult reading speed for technical prose, words per minute. */
+const WORDS_PER_MINUTE = 230
+
+/**
+ * Reading time from the article's own word count (HTML tags and inline JSON-LD stripped),
+ * so the label always matches what is actually on the page.
+ */
+export function readingTime(html: string): string {
+  const text = html
+    .replace(/<script[\s\S]*?<\/script>/gi, ' ')
+    .replace(/<[^>]+>/g, ' ')
+    .replace(/&[a-z#0-9]+;/gi, ' ')
+  const words = text.split(/\s+/).filter(Boolean).length
+  return `${Math.max(1, Math.round(words / WORDS_PER_MINUTE))} min read`
+}
+
 /**
  * Returns every .ts file slug in app/blog/content/ (filename without extension).
  * Runs at build time / server only.
@@ -40,7 +56,7 @@ export async function getPostBySlug(slug: string): Promise<BlogPost | null> {
       excerpt: mod.excerpt ?? '',
       content: mod.content,
       date: mod.date ?? '1970-01-01',
-      readTime: mod.readTime ?? '5 min read',
+      readTime: readingTime(mod.content),
       category: mod.category ?? 'Full-Stack',
       author: mod.author ?? 'Mussawar Hayat',
       keywords: Array.isArray(mod.keywords) ? mod.keywords : [],

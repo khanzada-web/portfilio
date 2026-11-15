@@ -8,6 +8,7 @@ import { BreadcrumbSchema } from '@/app/components/seo/BreadcrumbSchema'
 import { EditorialHeadline } from '@/app/components/ui/EditorialHeadline'
 import { PageShell } from '@/app/components/ui/PageShell'
 import { SectionLabel } from '@/app/components/ui/SectionLabel'
+import { SHARE_IMAGE } from '@/app/lib/site'
 
 export const metadata: Metadata = {
   title: 'About — Full-Stack & Web3 Developer',
@@ -25,26 +26,19 @@ export const metadata: Metadata = {
     canonical: '/about',
   },
   openGraph: {
+    images: SHARE_IMAGE,
     title: 'About Mussawar Hayat — Top Next.js 16 Full-Stack Web3 Developer for Hire 2026',
     description:
       'Full-stack and Web3 developer: experience, skills, and how he delivers production systems for startups.',
     url: 'https://mussawarhayat.site/about',
     type: 'profile',
-    images: [
-      {
-        url: '/my-pic.jpeg',
-        width: 1200,
-        height: 630,
-        alt: 'Mussawar Hayat — Full-Stack & Web3 Developer',
-      },
-    ],
   },
   twitter: {
+    images: SHARE_IMAGE,
     card: 'summary_large_image',
     title: 'About Mussawar Hayat',
     description:
       'Full-stack and Web3 developer specializing in Next.js, React, TypeScript, and Solidity.',
-    images: ['/my-pic.jpeg'],
   },
   robots: {
     index: true,
@@ -137,7 +131,7 @@ const STACK = [
   'GitHub Actions',
 ] as const
 
-const LABEL = 'font-mono text-[10px] uppercase tracking-[0.3em] text-white/55'
+const LABEL = 'font-mono text-xs uppercase tracking-[0.3em] text-white/55'
 
 const CHANNELS = [
   { label: 'reply@mussawarhayat.site', href: 'mailto:reply@mussawarhayat.site', external: false },
@@ -178,7 +172,7 @@ export default function AboutPage() {
               <div className="absolute inset-0 bg-gradient-to-t from-ink via-ink/10 to-transparent" aria-hidden="true" />
               <figcaption className="absolute inset-x-8 bottom-8">
                 <span className="block text-lg font-black uppercase tracking-tight text-white">Mussawar Hayat</span>
-                <span className="mt-1 block font-mono text-[10px] uppercase tracking-[0.25em] text-neon">Lead Software Engineer</span>
+                <span className="mt-1 block font-mono text-xs uppercase tracking-[0.25em] text-neon">Lead Software Engineer</span>
               </figcaption>
             </figure>
           </div>
@@ -217,7 +211,7 @@ export default function AboutPage() {
           <Stagger as="ul" className="grid grid-cols-1 gap-px overflow-hidden border border-white/10 bg-white/10 md:grid-cols-2">
             {FOCUS_AREAS.map((area, i) => (
               <StaggerItem as="li" key={area.title} className="group bg-ink p-7 md:p-9">
-                <span className="font-mono text-[10px] uppercase tracking-[0.3em] text-neon">{String(i + 1).padStart(2, '0')}</span>
+                <span className="font-mono text-xs uppercase tracking-[0.3em] text-neon">{String(i + 1).padStart(2, '0')}</span>
                 <h3 className="mt-6 text-lg font-black uppercase tracking-tight text-white md:text-xl">{area.title}</h3>
                 <p className="mt-3 max-w-md font-sans text-sm leading-relaxed text-white/65">{area.description}</p>
               </StaggerItem>

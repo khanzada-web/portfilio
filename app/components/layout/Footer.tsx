@@ -31,7 +31,7 @@ const CONTACT_INFO = [
   { icon: FiMapPin, value: 'Mehria Town, Attock, PK', href: null },
 ] as const;
 
-const LEGAL_LINK = 'link-underline font-orbitron text-[10px] uppercase tracking-widest text-white/60 transition-colors hover:text-neon';
+const LEGAL_LINK = 'link-underline font-orbitron text-xs uppercase tracking-widest text-white/60 transition-colors hover:text-neon';
 
 export function Footer() {
   const currentYear = new Date().getFullYear();
@@ -125,7 +125,7 @@ export function Footer() {
 
         <div className="mt-16 border-t border-white/5 pt-8">
           <div className="flex flex-col items-center justify-between gap-6 lg:flex-row">
-            <p className="font-orbitron text-[10px] uppercase tracking-widest text-white/60">
+            <p className="font-orbitron text-xs uppercase tracking-widest text-white/60">
               © {currentYear} <span className="text-white/80">Mussawar Hayat</span>. All rights reserved.
             </p>
 

@@ -53,7 +53,7 @@ function Tile({ item }: { item: ServiceItem }) {
       <span className={`${CORNER} bottom-2 left-2 border-b-2 border-l-2`} aria-hidden="true" />
       <span className={`${CORNER} bottom-2 right-2 border-b-2 border-r-2`} aria-hidden="true" />
 
-      <div className="flex items-center justify-between font-mono text-[10px] uppercase tracking-[0.3em]">
+      <div className="flex items-center justify-between font-mono text-xs uppercase tracking-[0.3em]">
         <span className="text-neon">{item.id}</span>
         <span className="text-white/50">{item.category}</span>
       </div>
@@ -70,7 +70,7 @@ function Tile({ item }: { item: ServiceItem }) {
       </h3>
       <p className="mt-3 font-sans text-sm leading-relaxed text-white/60">{item.description}</p>
 
-      <ul className="mt-6 flex flex-wrap gap-x-3 gap-y-1 font-mono text-[10px] uppercase tracking-[0.2em] text-white/55" aria-label="Technologies">
+      <ul className="mt-6 flex flex-wrap gap-x-3 gap-y-1 font-mono text-xs uppercase tracking-[0.2em] text-white/55" aria-label="Technologies">
         {item.tags.map((tag) => (
           <li key={tag}>{tag}</li>
         ))}

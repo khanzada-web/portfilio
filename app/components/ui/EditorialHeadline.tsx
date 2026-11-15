@@ -43,7 +43,7 @@ export function EditorialHeadline({ index, eyebrow, aside, solid, accent, childr
 
   return (
     <Stagger step={0.1}>
-      <StaggerItem className="mb-8 flex items-center gap-4 font-mono text-[11px] uppercase tracking-[0.3em] text-white/65 md:mb-10">
+      <StaggerItem className="mb-8 flex items-center gap-4 font-mono text-xs uppercase tracking-[0.3em] text-white/65 md:mb-10">
         <span className="text-neon">[{index}]</span>
         <span>{eyebrow}</span>
         <span className="h-px flex-1 bg-white/10" aria-hidden="true" />

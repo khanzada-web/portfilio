@@ -13,7 +13,9 @@ import {
   getRelatedPosts,
 } from '../lib/posts'
 import { clampDescription, pageTitle } from '@/app/lib/seo'
+import { AuthorBox } from '../components/AuthorBox'
 import './article.css'
+import { SHARE_IMAGE } from '@/app/lib/site'
 
 const postFaqs: Record<string, { question: string; answer: string }[]> = {
   'claude-code-mods-typescript-production-guardrails-2026': [
@@ -264,26 +266,19 @@ export async function generateMetadata({
     keywords: post.keywords,
     authors: [{ name: post.author }],
     openGraph: {
+      images: SHARE_IMAGE,
       title: post.title,
       description,
       url: `https://mussawarhayat.site/blog/${slug}`,
       type: 'article',
       publishedTime: post.date,
       authors: [post.author],
-      images: [
-        {
-          url: '/my-pic.jpeg',
-          width: 1200,
-          height: 630,
-          alt: post.title,
-        },
-      ],
     },
     twitter: {
+      images: SHARE_IMAGE,
       card: 'summary_large_image',
       title: post.title,
       description,
-      images: ['/my-pic.jpeg'],
     },
     alternates: {
       canonical: `/blog/${slug}`,
@@ -308,7 +303,7 @@ export default async function BlogPostPage({
     { name: post.title, url: `/blog/${slug}` },
   ]
   const published = new Date(post.date).toLocaleDateString('en-US', { year: 'numeric', month: 'long', day: 'numeric' })
-  const LABEL = 'font-mono text-[10px] uppercase tracking-[0.3em] text-white/55'
+  const LABEL = 'font-mono text-xs uppercase tracking-[0.3em] text-white/55'
 
   return (
     <>
@@ -330,7 +325,7 @@ export default async function BlogPostPage({
         <article>
           {/* Article header */}
           <header className="max-w-5xl">
-            <div className="mb-8 flex flex-wrap items-center gap-x-4 gap-y-2 font-mono text-[11px] uppercase tracking-[0.3em] text-white/65 md:mb-10">
+            <div className="mb-8 flex flex-wrap items-center gap-x-4 gap-y-2 font-mono text-xs uppercase tracking-[0.3em] text-white/65 md:mb-10">
               <Link href="/blog" className="text-neon underline decoration-neon/50 underline-offset-4 hover:decoration-neon">
                 [/blog]
               </Link>
@@ -344,7 +339,7 @@ export default async function BlogPostPage({
               {post.title}
             </h1>
             <p className="mt-6 max-w-3xl font-sans text-lg leading-relaxed text-white/70">{post.excerpt}</p>
-            <p className="mt-5 font-mono text-[11px] uppercase tracking-[0.25em] text-white/55">
+            <p className="mt-5 font-mono text-xs uppercase tracking-[0.25em] text-white/55">
               By <span className="text-white/85">{post.author}</span>
             </p>
           </header>
@@ -356,6 +351,8 @@ export default async function BlogPostPage({
                 className="prose prose-invert prose-headings:font-orbitron prose-a:text-neon max-w-[46rem] font-sans blog-content blog-content-stack"
                 dangerouslySetInnerHTML={{ __html: post.content }}
               />
+
+              <AuthorBox />
 
               {faqs.length > 0 && (
                 <section className="mt-16">
@@ -417,9 +414,9 @@ export default async function BlogPostPage({
                 <div className="border-l-2 border-neon pl-6">
                   <p className="text-base font-black uppercase tracking-tight text-white">Need this built?</p>
                   <p className="mt-3 font-sans text-sm leading-relaxed text-white/70">
-                    Mussawar Hayat builds full-stack web, mobile, and Web3 products end-to-end.
+                    I take on Next.js, SaaS and Web3 builds for remote teams. Tell me what you need and I&apos;ll reply within 24 hours.
                   </p>
-                  <Link href="/contact" className="link-underline mt-4 inline-block font-mono text-[11px] uppercase tracking-[0.2em] text-neon">
+                  <Link href="/contact" className="link-underline mt-4 inline-block font-mono text-xs uppercase tracking-[0.2em] text-neon">
                     Start a project
                   </Link>
                 </div>

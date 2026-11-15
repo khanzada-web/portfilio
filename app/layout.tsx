@@ -3,6 +3,7 @@ import { Geist, Geist_Mono, Orbitron } from "next/font/google";
 import "./globals.css";
 import Script from "next/script";
 import { MotionProvider } from "./components/motion/MotionProvider";
+import { SiteSchema } from "./components/seo/SiteSchema";
 
 const geistSans = Geist({
   variable: "--font-geist-sans",
@@ -38,9 +39,6 @@ export const metadata: Metadata = {
   metadataBase: new URL("https://mussawarhayat.site"),
   alternates: {
     canonical: "/",
-    types: {
-      "application/rss+xml": "https://mussawarhayat.site/feed.xml",
-    },
   },
   robots: {
     index: true,
@@ -64,23 +62,14 @@ export const metadata: Metadata = {
     url: "https://mussawarhayat.site",
     title: "Hire Next.js 16 Full-Stack & Web3 Developer | Mussawar Hayat",
     description:
-      "Top-rated Next.js 16 full-stack Web3 developer for high-performance SaaS, React, TypeScript, Solidity DApps, and Core Web Vitals. Remote freelance for North America and Europe startups.",
-    siteName: "Mussawar Hayat — Best Next.js 16 Full-Stack & Web3 Developer",
-    images: [
-      {
-        url: "/my-pic.jpeg",
-        width: 1200,
-        height: 630,
-        alt: "Mussawar Hayat — Full-Stack & Web3 Developer portrait",
-      },
-    ],
+      "Next.js 16 full-stack & Web3 developer for high-performance SaaS, React, TypeScript, Solidity DApps, and Core Web Vitals. Remote freelance for North America and Europe startups.",
+    siteName: "Mussawar Hayat",
   },
   twitter: {
     card: "summary_large_image",
-    title: "Hire Top Next.js 16 Full-Stack Web3 Developer 2026 | Mussawar Hayat",
+    title: "Hire Next.js 16 Full-Stack & Web3 Developer | Mussawar Hayat",
     description:
       "Expert Next.js 16 full-stack and Web3 developer building high-performance SaaS, web, mobile, and blockchain apps. Available for remote freelance projects worldwide.",
-    images: ["/my-pic.jpeg"],
     creator: "@Mussawar_Hayat",
   },
   verification: {
@@ -125,11 +114,11 @@ export default function RootLayout({
             })();
           `}
         </Script>
-        <link rel="icon" type="image/webp" href="/logo.webp" />
-        <link rel="icon" type="image/png" href="/logo-optimized.png" />
-        <link rel="shortcut icon" href="/logo.webp" />
-        <link rel="apple-touch-icon" href="/logo.webp" />
+        {/* favicon.ico and apple-icon.png live in app/ and are linked by Next.js automatically. */}
         <link rel="manifest" href="/site.webmanifest" />
+        {/* Plain link (not metadata.alternates): pages that set their own canonical replace
+            `alternates` wholesale, which used to drop the feed link from every page. */}
+        <link rel="alternate" type="application/rss+xml" title="Mussawar Hayat — Blog" href="https://mussawarhayat.site/feed.xml" />
       </head>
       <body
         suppressHydrationWarning
@@ -150,6 +139,7 @@ export default function RootLayout({
         >
           Skip to main content
         </a>
+        <SiteSchema />
         <MotionProvider>{children}</MotionProvider>
       </body>
     </html>

@@ -23,7 +23,7 @@ export function Hero() {
 
       {/* Meta bar */}
       <div
-        className="relative z-10 flex animate-fade-up items-center justify-between gap-4 font-mono text-[10px] uppercase tracking-[0.25em] text-white/70 sm:text-[11px]"
+        className="relative z-10 flex animate-fade-up items-center justify-between gap-4 font-mono text-xs uppercase tracking-[0.25em] text-white/70"
         style={at(HERO_SEQUENCE.kicker)}
       >
         <p className="inline-flex items-center gap-3 rounded-full border border-white/10 bg-white/[0.03] py-1.5 pl-2.5 pr-4">
@@ -35,7 +35,7 @@ export function Hero() {
         </p>
         <p className="hidden items-center gap-3 sm:flex">
           <span>
-            <DecodeText text="Attock, PK" delay={0.15} />
+            <DecodeText text="EST / CET overlap" delay={0.15} />
           </span>
           <span className="h-px w-6 bg-white/25" aria-hidden="true" />
           <span className="text-neon">

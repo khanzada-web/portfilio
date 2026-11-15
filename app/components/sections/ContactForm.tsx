@@ -6,22 +6,74 @@ import { FiAlertCircle, FiCheckCircle, FiSend } from 'react-icons/fi';
 import { fadeUp, scaleIn } from '@/app/lib/motion';
 import { Magnetic } from '../motion/Magnetic';
 
-type FormData = { name: string; email: string; message: string };
+type FormData = {
+  name: string;
+  email: string;
+  projectType: string;
+  budget: string;
+  timeline: string;
+  message: string;
+};
 type SubmitStatus = 'idle' | 'submitting' | 'success' | 'error';
 
-const INITIAL_FORM: FormData = { name: '', email: '', message: '' };
+const INITIAL_FORM: FormData = { name: '', email: '', projectType: '', budget: '', timeline: '', message: '' };
+
+/** Optional qualifiers: they help scope a reply, so none of them is required. */
+const PROJECT_TYPES = [
+  'New web app / SaaS',
+  'Website or landing page',
+  'Web3 / smart contracts',
+  'Mobile app',
+  'Performance or SEO fix',
+  'Something else',
+] as const;
+const BUDGETS = ['Under $2k', '$2k – $5k', '$5k – $15k', '$15k+', 'Not sure yet'] as const;
+const TIMELINES = ['As soon as possible', 'Within a month', '1–3 months', 'Flexible'] as const;
 const SUCCESS_RESET_MS = 6000;
 
 const FIELD =
   'w-full rounded-lg border border-white/10 bg-white/[0.03] p-3.5 font-sans text-sm text-white outline-none transition-colors placeholder:text-white/40 focus:border-neon/60 focus:bg-white/[0.05] focus-visible:ring-2 focus-visible:ring-neon/40';
-const LABEL = 'mb-2 block font-mono text-[10px] font-bold uppercase tracking-widest text-white/70';
+const LABEL = 'mb-2 block font-mono text-xs font-bold uppercase tracking-widest text-white/70';
+const SELECT = `${FIELD} appearance-none bg-[length:12px] bg-[right_1rem_center] bg-no-repeat pr-10 [background-image:url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 12 8'%3E%3Cpath d='M1 1l5 5 5-5' fill='none' stroke='%23ffffff' stroke-opacity='.6' stroke-width='1.5'/%3E%3C/svg%3E")] [&>option]:bg-night`;
+
+function SelectField({
+  id,
+  name,
+  label,
+  value,
+  options,
+  onChange,
+}: {
+  id: string;
+  name: keyof FormData;
+  label: string;
+  value: string;
+  options: readonly string[];
+  onChange: (e: ChangeEvent<HTMLSelectElement>) => void;
+}) {
+  return (
+    <div>
+      <label htmlFor={id} className={LABEL}>
+        {label} <span className="font-normal normal-case tracking-normal text-white/45">(optional)</span>
+      </label>
+      <select id={id} name={name} value={value} onChange={onChange} className={SELECT}>
+        <option value="">Select…</option>
+        {options.map((option) => (
+          <option key={option} value={option}>
+            {option}
+          </option>
+        ))}
+      </select>
+    </div>
+  );
+}
 
 /** Contact form posting to /api/contact, with animated success and error states. */
 export function ContactForm() {
   const [formData, setFormData] = useState<FormData>(INITIAL_FORM);
   const [status, setStatus] = useState<SubmitStatus>('idle');
 
-  const handleChange = (e: ChangeEvent<HTMLInputElement | HTMLTextAreaElement>) => {
+  const handleChange = (e: ChangeEvent<HTMLInputElement | HTMLTextAreaElement | HTMLSelectElement>) => {
     const { name, value } = e.target;
     setFormData((prev) => ({ ...prev, [name]: value }));
   };
@@ -131,6 +183,34 @@ export function ContactForm() {
               />
             </div>
 
+            <SelectField
+              id="contact-type"
+              name="projectType"
+              label="Project type"
+              value={formData.projectType}
+              options={PROJECT_TYPES}
+              onChange={handleChange}
+            />
+
+            <div className="grid gap-5 sm:grid-cols-2">
+              <SelectField
+                id="contact-budget"
+                name="budget"
+                label="Budget"
+                value={formData.budget}
+                options={BUDGETS}
+                onChange={handleChange}
+              />
+              <SelectField
+                id="contact-timeline"
+                name="timeline"
+                label="Timeline"
+                value={formData.timeline}
+                options={TIMELINES}
+                onChange={handleChange}
+              />
+            </div>
+
             <div>
               <label htmlFor="contact-message" className={LABEL}>
                 Project Details
@@ -141,7 +221,7 @@ export function ContactForm() {
                 required
                 minLength={10}
                 rows={4}
-                placeholder="Briefly describe the project, timeline, and any tech preferences..."
+                placeholder="What are you building, who is it for, and what does done look like?"
                 value={formData.message}
                 onChange={handleChange}
                 className={`${FIELD} resize-none`}

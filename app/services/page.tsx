@@ -8,6 +8,7 @@ import { FAQSchema } from '@/app/components/seo/FAQSchema'
 import { EditorialHeadline } from '@/app/components/ui/EditorialHeadline'
 import { PageShell } from '@/app/components/ui/PageShell'
 import { SectionLabel } from '@/app/components/ui/SectionLabel'
+import { SHARE_IMAGE } from '@/app/lib/site'
 
 export const metadata: Metadata = {
   title: 'Next.js & Web3 Development Services',
@@ -24,26 +25,19 @@ export const metadata: Metadata = {
     'best Next.js developer for hire',
   ],
   openGraph: {
+    images: SHARE_IMAGE,
     title: 'Hire Next.js Full-Stack & Web3 Developer | Services',
     description:
       'Next.js, React, TypeScript, SaaS, Solidity, DApps, React Native, and DevOps. Hire Mussawar Hayat remotely.',
     url: 'https://mussawarhayat.site/services',
     type: 'website',
-    images: [
-      {
-        url: '/my-pic.jpeg',
-        width: 1200,
-        height: 630,
-        alt: 'Mussawar Hayat — Full-Stack Developer Services',
-      },
-    ],
   },
   twitter: {
+    images: SHARE_IMAGE,
     card: 'summary_large_image',
     title: 'Hire Next.js Full-Stack & Web3 Developer | Mussawar Hayat',
     description:
       'Full-stack and Web3 development services — SaaS, DApps, APIs, and DevOps.',
-    images: ['/my-pic.jpeg'],
   },
   alternates: {
     canonical: '/services',
@@ -212,7 +206,7 @@ export default function ServicesPage() {
 
         {/* Summary answer (AEO) */}
         <Reveal className="mt-16 border-l-2 border-neon pl-6 md:mt-20 lg:max-w-4xl">
-          <h2 className="font-mono text-[11px] uppercase tracking-[0.3em] text-neon">What services are available?</h2>
+          <h2 className="font-mono text-xs uppercase tracking-[0.3em] text-neon">What services are available?</h2>
           <p className="mt-3 font-sans text-sm leading-relaxed text-white/75 md:text-base">
             Mussawar Hayat provides end-to-end full-stack and Web3 development: Next.js and React applications, Node.js APIs, mobile
             apps (React Native / Flutter), Solidity smart contracts and DApps, Core Web Vitals optimization, and production DevOps
@@ -228,12 +222,12 @@ export default function ServicesPage() {
             {services.map((service, index) => (
               <StaggerItem as="li" key={service.id} className="bg-ink">
                 <article id={service.id} className="group flex h-full scroll-mt-28 flex-col p-7 md:p-9">
-                  <span className="font-mono text-[10px] uppercase tracking-[0.3em] text-neon">{String(index + 1).padStart(2, '0')}</span>
+                  <span className="font-mono text-xs uppercase tracking-[0.3em] text-neon">{String(index + 1).padStart(2, '0')}</span>
                   <h2 className="mt-6 text-lg font-black uppercase leading-tight tracking-tight text-white transition-colors group-hover:text-neon md:text-xl">
                     {service.title}
                   </h2>
                   <p className="mt-3 flex-1 font-sans text-sm leading-relaxed text-white/65">{service.description}</p>
-                  <ul className="mt-6 space-y-2 border-t border-white/10 pt-5 font-mono text-[10px] uppercase tracking-[0.18em] text-white/70">
+                  <ul className="mt-6 space-y-2 border-t border-white/10 pt-5 font-mono text-xs uppercase tracking-[0.18em] text-white/70">
                     {service.features.map((feature) => (
                       <li key={feature} className="flex items-center gap-3">
                         <span className="h-1 w-1 shrink-0 rounded-full bg-neon" aria-hidden="true" />
@@ -281,7 +275,7 @@ export default function ServicesPage() {
           <Stagger className="mt-10 grid grid-cols-1 gap-12 md:grid-cols-2">
             {WHY.map((group) => (
               <StaggerItem key={group.title}>
-                <h3 className="font-mono text-[11px] uppercase tracking-[0.3em] text-neon">{group.title}</h3>
+                <h3 className="font-mono text-xs uppercase tracking-[0.3em] text-neon">{group.title}</h3>
                 <ul className="mt-4 border-t border-white/10">
                   {group.points.map((point) => (
                     <li key={point} className="border-b border-white/10 py-4 font-sans text-sm text-white/80 md:text-base">

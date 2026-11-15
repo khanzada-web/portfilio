@@ -8,21 +8,28 @@ function url(path: string) {
   return `${BASE_URL}${path}`;
 }
 
+/**
+ * Only real dates go in <lastmod>. Search engines learn to ignore a sitemap whose lastmod
+ * changes on every build, so pages without a tracked edit date simply omit it.
+ */
 export default async function sitemap(): Promise<MetadataRoute.Sitemap> {
-  const now = new Date();
+  const posts = await getAllPosts();
+  const newestPost = posts
+    .map((post) => new Date(post.date))
+    .filter((date) => !Number.isNaN(date.getTime()))
+    .sort((a, b) => b.getTime() - a.getTime())[0];
 
   const staticPages: MetadataRoute.Sitemap = [
-    { url: url("/"), lastModified: now, changeFrequency: "weekly", priority: 1.0 },
-    { url: url("/about"), lastModified: now, changeFrequency: "monthly", priority: 0.9 },
-    { url: url("/services"), lastModified: now, changeFrequency: "weekly", priority: 0.9 },
-    { url: url("/portfolio"), lastModified: now, changeFrequency: "weekly", priority: 0.9 },
-    { url: url("/blog"), lastModified: now, changeFrequency: "daily", priority: 0.8 },
-    { url: url("/contact"), lastModified: now, changeFrequency: "monthly", priority: 0.7 },
+    { url: url("/"), changeFrequency: "weekly", priority: 1.0 },
+    { url: url("/about"), changeFrequency: "monthly", priority: 0.9 },
+    { url: url("/services"), changeFrequency: "monthly", priority: 0.9 },
+    { url: url("/portfolio"), changeFrequency: "monthly", priority: 0.9 },
+    { url: url("/blog"), lastModified: newestPost, changeFrequency: "weekly", priority: 0.8 },
+    { url: url("/contact"), changeFrequency: "yearly", priority: 0.7 },
     { url: url("/terms"), lastModified: new Date("2026-09-05"), changeFrequency: "yearly", priority: 0.3 },
     { url: url("/privacy"), lastModified: new Date("2026-09-05"), changeFrequency: "yearly", priority: 0.3 },
   ];
 
-  const posts = await getAllPosts();
   const blogPages: MetadataRoute.Sitemap = posts.map((post) => ({
     url: url(`/blog/${post.slug}`),
     lastModified: new Date(post.date),
@@ -32,8 +39,7 @@ export default async function sitemap(): Promise<MetadataRoute.Sitemap> {
 
   const portfolioPages: MetadataRoute.Sitemap = getAllProjectSlugs().map((slug) => ({
     url: url(`/portfolio/${slug}`),
-    lastModified: now,
-    changeFrequency: "monthly" as const,
+    changeFrequency: "yearly" as const,
     priority: 0.65,
   }));
 

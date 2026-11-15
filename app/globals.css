@@ -166,7 +166,7 @@ section[id] {
   border: 1px solid rgb(255 255 255 / 0.1);
   background-color: rgb(255 255 255 / 0.03);
   padding: 0.25rem 0.625rem;
-  font-size: 10px;
+  font-size: 0.75rem;
   color: rgb(255 255 255 / 0.8);
 }
 

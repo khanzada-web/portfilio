@@ -20,7 +20,7 @@ export function Process() {
           accent="Pipeline"
         >
           <p>
-            A systematic engineering approach to transforming complex business logic into high-performance digital products.
+            Six steps from first call to launch. You always know what is being built, what it costs, and when it ships.
           </p>
         </EditorialHeadline>
 
@@ -31,7 +31,7 @@ export function Process() {
         <Reveal className="mt-20 text-center">
           <Magnetic>
             <Link href="#contact" className="btn-neon px-10 py-4 text-sm">
-              <span>Initiate Project_Build</span>
+              <span>Start your project</span>
               <FiArrowRight className="h-4 w-4" aria-hidden="true" />
             </Link>
           </Magnetic>

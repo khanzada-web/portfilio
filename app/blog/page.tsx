@@ -8,6 +8,7 @@ import { EditorialHeadline } from '@/app/components/ui/EditorialHeadline'
 import { PageShell } from '@/app/components/ui/PageShell'
 import { SectionLabel } from '@/app/components/ui/SectionLabel'
 import { getAllPosts } from './lib/posts'
+import { SHARE_IMAGE } from '@/app/lib/site'
 
 export const metadata: Metadata = {
   title: 'Next.js, Web3 & AI Engineering Blog',
@@ -38,26 +39,19 @@ export const metadata: Metadata = {
     'Next.js 16.3 Instant Navigations',
   ],
   openGraph: {
+    images: SHARE_IMAGE,
     title: 'Mussawar Hayat Blog | Web3 & Full-Stack Developer Insights',
     description:
       'Practical architecture guides and production patterns for Next.js, Web3, Solidity, and full-stack engineering.',
     url: 'https://mussawarhayat.site/blog',
     type: 'website',
-    images: [
-      {
-        url: '/my-pic.jpeg',
-        width: 1200,
-        height: 630,
-        alt: 'Mussawar Hayat — Full-Stack & Web3 Developer Blog',
-      },
-    ],
   },
   twitter: {
+    images: SHARE_IMAGE,
     card: 'summary_large_image',
     title: 'Mussawar Hayat Blog | Web3 & Full-Stack Insights',
     description:
       'Production-grade guides on Next.js, Web3, Solidity, DeFi, and full-stack systems.',
-    images: ['/my-pic.jpeg'],
   },
   alternates: {
     canonical: '/blog',
@@ -101,7 +95,7 @@ export default async function BlogPage() {
             <SectionLabel index="01">Latest</SectionLabel>
             <Reveal>
               <article className="group relative grid grid-cols-1 gap-6 border-y border-white/10 py-10 md:grid-cols-12 md:gap-10 md:py-14">
-                <div className="flex gap-4 font-mono text-[10px] uppercase tracking-[0.25em] text-white/55 md:col-span-3 md:flex-col md:gap-2">
+                <div className="flex gap-4 font-mono text-xs uppercase tracking-[0.25em] text-white/55 md:col-span-3 md:flex-col md:gap-2">
                   <time dateTime={latest.date}>{formatDate(latest.date)}</time>
                   <span className="text-neon">{latest.category}</span>
                   <span>{latest.readTime}</span>
@@ -130,7 +124,7 @@ export default async function BlogPage() {
             {rest.map((post) => (
               <li key={post.slug} className="group relative border-t border-white/10">
                 <article className="grid grid-cols-1 gap-2 py-7 md:grid-cols-12 md:gap-10 md:py-8">
-                  <time dateTime={post.date} className="font-mono text-[10px] uppercase tracking-[0.25em] text-white/50 md:col-span-2 md:pt-1">
+                  <time dateTime={post.date} className="font-mono text-xs uppercase tracking-[0.25em] text-white/50 md:col-span-2 md:pt-1">
                     {formatDate(post.date)}
                   </time>
                   <div className="md:col-span-7">
@@ -141,7 +135,7 @@ export default async function BlogPage() {
                     </h2>
                     <p className="mt-2 line-clamp-2 font-sans text-sm leading-relaxed text-white/55">{post.excerpt}</p>
                   </div>
-                  <div className="flex gap-4 font-mono text-[10px] uppercase tracking-[0.25em] text-white/50 md:col-span-3 md:flex-col md:items-end md:gap-2 md:pt-1">
+                  <div className="flex gap-4 font-mono text-xs uppercase tracking-[0.25em] text-white/50 md:col-span-3 md:flex-col md:items-end md:gap-2 md:pt-1">
                     <span className="text-neon/80">{post.category}</span>
                     <span>{post.readTime}</span>
                   </div>
@@ -165,7 +159,7 @@ export default async function BlogPage() {
             </div>
             <div className="flex flex-col items-start gap-6 lg:col-span-5 lg:items-end">
               <SubscriptionModal />
-              <div className="flex gap-6 font-mono text-[11px] uppercase tracking-[0.2em]">
+              <div className="flex gap-6 font-mono text-xs uppercase tracking-[0.2em]">
                 <Link href="/services" className="link-underline text-white/75 hover:text-neon">
                   Explore services
                 </Link>

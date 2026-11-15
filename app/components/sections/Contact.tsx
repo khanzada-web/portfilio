@@ -73,7 +73,7 @@ export function Contact() {
                       <Icon size={18} aria-hidden="true" />
                     </div>
                     <div>
-                      <p className="font-mono text-[10px] font-bold uppercase tracking-widest text-white/65">{label}</p>
+                      <p className="font-mono text-xs font-bold uppercase tracking-widest text-white/65">{label}</p>
                       {href ? (
                         <a href={href} className="link-underline mt-1 inline-block font-sans text-base font-bold text-white transition-colors group-hover:text-neon">
                           {value}
@@ -91,7 +91,7 @@ export function Contact() {
               <p className="font-sans text-xs leading-relaxed text-white/70">
                 Prefer a quick chat? Mention your preferred time zone and I will schedule a short call.
               </p>
-              <div className="flex items-center gap-3 font-mono text-[10px] font-bold uppercase tracking-[0.2em] text-white/65">
+              <div className="flex items-center gap-3 font-mono text-xs font-bold uppercase tracking-[0.2em] text-white/65">
                 <div className="h-2 w-2 rounded-full bg-neon shadow-[0_0_8px_#39FF14]" aria-hidden="true" />
                 Response target: under 24 hours on business days
               </div>

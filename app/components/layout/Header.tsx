@@ -124,7 +124,7 @@ export function Header() {
                     key={label}
                     href={href}
                     aria-current={active ? 'page' : undefined}
-                    className={`group relative py-2 font-orbitron text-[11px] uppercase tracking-widest transition-colors duration-300 ${
+                    className={`group relative py-2 font-orbitron text-xs uppercase tracking-widest transition-colors duration-300 ${
                       active ? 'text-neon' : 'text-white/70 hover:text-neon'
                     }`}
                   >
@@ -141,7 +141,7 @@ export function Header() {
 
               <Link
                 href={CONTACT_HREF}
-                className="ml-4 border border-neon px-6 py-3 font-orbitron text-[11px] font-bold uppercase tracking-widest text-neon transition-[background-color,color,box-shadow] duration-300 hover:bg-neon hover:text-black hover:shadow-[0_0_15px_rgba(57,255,20,0.4)]"
+                className="ml-4 border border-neon px-6 py-3 font-orbitron text-xs font-bold uppercase tracking-widest text-neon transition-[background-color,color,box-shadow] duration-300 hover:bg-neon hover:text-black hover:shadow-[0_0_15px_rgba(57,255,20,0.4)]"
               >
                 Contact
               </Link>
