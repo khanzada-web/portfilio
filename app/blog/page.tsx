@@ -11,47 +11,35 @@ import { getAllPosts } from './lib/posts'
 import { SHARE_IMAGE } from '@/app/lib/site'
 
 export const metadata: Metadata = {
-  title: 'Next.js, Web3 & AI Engineering Blog',
+  title: 'Next.js 16, Web3 & AI Engineering Blog 2026 | Production Guides by Mussawar Hayat',
   description:
-    'Production guides on Next.js 16, React, TypeScript, Web3, Solidity, security, and AI agents from full-stack developer Mussawar Hayat.',
+    'Production Next.js 16, React, TypeScript, Web3, Solidity, Core Web Vitals, security, and AI agent engineering guides from full-stack developer Mussawar Hayat. Hire a Next.js expert.',
   keywords: [
+    'Next.js 16 tutorial 2026',
     'Web3 developer blog',
-    'Next.js 16 tutorial',
-    'full-stack developer blog',
-    'blockchain development guide',
-    'Solidity tutorial',
-    'Account Abstraction guide',
-    'RWA tokenization',
-    'Bitcoin Ordinals marketplace',
-    'Next.js VPS deployment',
-    'DevOps for developers',
     'hire Next.js developer',
-    'Mussawar Hayat',
-    'Prisma connection pooling',
-    'Server Actions security',
-    'Docker multi-stage Next.js',
+    'full-stack developer blog',
+    'Solidity tutorial 2026',
+    'Account Abstraction guide',
+    'Core Web Vitals Next.js',
+    'Bitcoin Ordinals marketplace',
     'Server Components Next.js 16',
-    'AgentRouter',
-    'free Claude Code',
-    'Meta Muse Code',
-    'AI coding agent',
-    'how to get 500k views on X',
-    'Next.js 16.3 Instant Navigations',
+    'AI coding agent production',
   ],
   openGraph: {
     images: SHARE_IMAGE,
-    title: 'Mussawar Hayat Blog | Web3 & Full-Stack Developer Insights',
+    title: 'Next.js 16, Web3 & AI Engineering Blog 2026 | Mussawar Hayat',
     description:
-      'Practical architecture guides and production patterns for Next.js, Web3, Solidity, and full-stack engineering.',
+      'Practical architecture guides and production patterns for Next.js 16, Web3, Solidity, and full-stack engineering.',
     url: 'https://mussawarhayat.site/blog',
     type: 'website',
   },
   twitter: {
     images: SHARE_IMAGE,
     card: 'summary_large_image',
-    title: 'Mussawar Hayat Blog | Web3 & Full-Stack Insights',
+    title: 'Next.js 16, Web3 & AI Blog | Mussawar Hayat',
     description:
-      'Production-grade guides on Next.js, Web3, Solidity, DeFi, and full-stack systems.',
+      'Production-grade guides on Next.js 16, Web3, Solidity, DeFi, and full-stack systems.',
   },
   alternates: {
     canonical: '/blog',
@@ -89,7 +77,6 @@ export default async function BlogPage() {
           </p>
         </EditorialHeadline>
 
-        {/* Latest post, featured */}
         {latest && (
           <section className="mt-16 md:mt-24">
             <SectionLabel index="01">Latest</SectionLabel>
@@ -117,7 +104,6 @@ export default async function BlogPage() {
           </section>
         )}
 
-        {/* All posts */}
         <section className="mt-20 md:mt-28">
           <SectionLabel index="02">{`All guides (${rest.length})`}</SectionLabel>
           <ol className="border-b border-white/10">
@@ -145,7 +131,6 @@ export default async function BlogPage() {
           </ol>
         </section>
 
-        {/* Newsletter + links */}
         <section className="mt-24 border-t border-white/10 pt-16 md:mt-32 md:pt-20">
           <Reveal className="grid grid-cols-1 gap-10 lg:grid-cols-12 lg:items-end lg:gap-16">
             <div className="lg:col-span-7">
@@ -153,7 +138,7 @@ export default async function BlogPage() {
                 Stay updated with <span className="text-neon">Web3 &amp; Full-Stack</span> insights
               </h2>
               <p className="mt-5 max-w-2xl font-sans text-base leading-relaxed text-white/70">
-                Get practical architecture guides on Next.js, Web3, Solidity, DeFi, and production full-stack systems delivered to your
+                Get practical architecture guides on Next.js 16, Web3, Solidity, DeFi, and production full-stack systems delivered to your
                 inbox.
               </p>
             </div>
