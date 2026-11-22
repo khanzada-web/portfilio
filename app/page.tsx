@@ -13,12 +13,12 @@ import { Testimonials } from "./components/sections/Testimonials";
 import { FAQSchema } from "./components/seo/FAQSchema";
 
 export const metadata: Metadata = {
-  title: "Hire the Best Next.js 16 Full-Stack & Web3 Developer 2026 | Mussawar Hayat",
+  title: "Hire Next.js 16 Full-Stack & Web3 Developer 2026 | Mussawar Hayat",
   description:
-    "Hire Mussawar Hayat, the leading Next.js 16 full-stack and Web3 developer for production SaaS, React TypeScript apps, Solidity DApps, Core Web Vitals optimization, and enterprise-grade websites. Available for remote projects worldwide.",
+    "Hire Mussawar Hayat, Next.js 16 full-stack and Web3 developer for production SaaS, React TypeScript apps, Solidity DApps, Core Web Vitals optimization, and enterprise-grade websites. Available for remote projects worldwide.",
   keywords: [
     "hire Next.js 16 developer 2026",
-    "best Next.js developer for hire",
+    "Next.js developer for hire",
     "hire full-stack Web3 developer",
     "Next.js 16 App Router expert",
     "Solidity smart contract developer hire",
@@ -31,17 +31,17 @@ export const metadata: Metadata = {
   ],
   alternates: { canonical: "/" },
   openGraph: {
-    title: "Hire the Best Next.js 16 Full-Stack & Web3 Developer 2026 | Mussawar Hayat",
+    title: "Hire Next.js 16 Full-Stack & Web3 Developer 2026 | Mussawar Hayat",
     description:
-      "Mussawar Hayat is the top full-stack developer specializing in Next.js 16, React Server Components, TypeScript, Node.js, and Web3. Available for high-performance remote freelance projects worldwide.",
+      "Mussawar Hayat is a full-stack developer specializing in Next.js 16, React Server Components, TypeScript, Node.js, and Web3. Available for high-performance remote freelance projects worldwide.",
     url: "https://mussawarhayat.site",
     type: "website",
   },
   twitter: {
     card: "summary_large_image",
-    title: "Hire the Best Next.js 16 Full-Stack & Web3 Developer 2026 | Mussawar Hayat",
+    title: "Hire Next.js 16 Full-Stack & Web3 Developer 2026 | Mussawar Hayat",
     description:
-      "Leading Next.js 16 full-stack & Web3 developer building production SaaS, DeFi, and high-performance apps. Hire Mussawar Hayat today.",
+      "Next.js 16 full-stack & Web3 developer building production SaaS, DeFi, and high-performance apps. Hire Mussawar Hayat today.",
   },
 };
 
