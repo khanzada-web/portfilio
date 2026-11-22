@@ -10,30 +10,31 @@ import { PROJECTS } from '@/app/lib/projects';
 import { SHARE_IMAGE } from '@/app/lib/site';
 
 export const metadata: Metadata = {
-  title: 'Next.js & Web3 Portfolio — Case Studies',
+  title: 'Next.js 16 & Web3 Portfolio Case Studies 2026 | Hire Mussawar Hayat',
   description:
-    'Case studies by Mussawar Hayat: SaaS, DeFi staking, a Bitcoin Ordinals marketplace, and metaverse products, each with problem, architecture, and results.',
+    'Production Next.js 16 and Web3 portfolio case studies by Mussawar Hayat: SaaS, DeFi staking, Bitcoin Ordinals marketplace, and metaverse products — problem, architecture, and measured results. Hire a full-stack Web3 developer.',
   keywords: [
-    'Next.js portfolio',
-    'Web3 developer portfolio',
-    'Bitcoin Ordinals marketplace',
+    'Next.js 16 portfolio',
+    'Web3 developer portfolio 2026',
+    'hire Next.js full-stack developer portfolio',
+    'Bitcoin Ordinals marketplace case study',
     'DeFi developer case study',
     'full-stack project portfolio',
-    'Mussawar Hayat',
+    'Mussawar Hayat portfolio',
   ],
   alternates: { canonical: '/portfolio' },
   openGraph: {
     images: SHARE_IMAGE,
-    title: 'Portfolio | Mussawar Hayat — Full-Stack & Web3 Developer',
+    title: 'Next.js 16 & Web3 Portfolio Case Studies 2026 | Mussawar Hayat',
     description:
-      'Featured projects and case studies by Mussawar Hayat: Next.js, React, Solidity, Bitcoin Ordinals, and DevOps.',
+      'Featured projects and case studies: Next.js 16, React, Solidity, Bitcoin Ordinals, and DevOps by Mussawar Hayat.',
     url: 'https://mussawarhayat.site/portfolio',
     type: 'website',
   },
   twitter: {
     images: SHARE_IMAGE,
     card: 'summary_large_image',
-    title: 'Portfolio | Mussawar Hayat',
+    title: 'Next.js 16 & Web3 Portfolio | Mussawar Hayat',
     description: 'Full-stack and Web3 project case studies by Mussawar Hayat.',
   },
 };
@@ -58,17 +59,16 @@ export default function PortfolioPage() {
           index="/portfolio"
           eyebrow="Case studies"
           aside={`${PROJECTS.length} builds`}
-          solid="Next.js & Web3"
+          solid="Next.js 16 & Web3"
           accent="Portfolio"
         >
           <p>
-            Hire-ready case studies from Mussawar Hayat, a Next.js full-stack and Web3 developer. Flagship work covers SaaS, DeFi
+            Hire-ready case studies from Mussawar Hayat, a Next.js 16 full-stack and Web3 developer. Flagship work covers SaaS, DeFi
             staking, Bitcoin Ordinals marketplaces, and metaverse products — each with problem breakdown, architecture, and measured
             outcomes.
           </p>
         </EditorialHeadline>
 
-        {/* Flagship: large editorial index, whole row clickable */}
         <section className="mt-24 md:mt-32">
           <SectionLabel index="01">Flagship Next.js &amp; Web3 builds</SectionLabel>
           <Stagger as="ol" step={0.06} className="border-b border-white/10">
@@ -118,7 +118,6 @@ export default function PortfolioPage() {
           </Stagger>
         </section>
 
-        {/* Archive: compact list */}
         <section className="mt-24 md:mt-32">
           <SectionLabel index="02">{`Project archive (${archive.length})`}</SectionLabel>
           <Stagger as="ol" step={0.03} className="border-b border-white/10">
