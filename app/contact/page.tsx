@@ -10,21 +10,21 @@ import { SectionLabel } from '@/app/components/ui/SectionLabel'
 import { SHARE_IMAGE } from '@/app/lib/site'
 
 export const metadata: Metadata = {
-  title: 'Contact — Hire a Next.js & Web3 Developer',
+  title: 'Contact — Hire the Best Next.js 16 & Web3 Full-Stack Developer 2026',
   description:
-    'Contact Mussawar Hayat about your SaaS, React app, or Web3 project. Replies within 24 hours on business days. Remote for North America and Europe.',
+    'Contact Mussawar Hayat to hire a top Next.js 16 full-stack and Web3 developer for SaaS, React, Solidity, and production apps. Replies within 24 hours. Remote for North America and Europe.',
   keywords: [
+    'hire Next.js 16 developer contact',
     'contact Mussawar Hayat',
-    'hire full-stack developer',
-    'hire Next.js developer',
-    'Web3 developer contact',
-    'freelance React developer',
+    'hire full-stack developer 2026',
+    'hire Web3 developer',
+    'freelance Next.js developer contact',
     'Solidity developer hire',
-    'project consultation',
+    'project consultation Next.js',
   ],
   openGraph: {
     images: SHARE_IMAGE,
-    title: 'Contact \u2014 Hire Full-Stack Developer',
+    title: 'Contact — Hire the Best Next.js 16 & Web3 Full-Stack Developer 2026',
     description: 'Get in touch to hire Mussawar Hayat for full-stack development, web & mobile apps, and Web3/blockchain projects.',
     url: 'https://mussawarhayat.site/contact',
     type: 'website',
@@ -32,7 +32,7 @@ export const metadata: Metadata = {
   twitter: {
     images: SHARE_IMAGE,
     card: 'summary_large_image',
-    title: 'Contact \u2014 Hire Full-Stack Developer',
+    title: 'Contact — Hire Next.js 16 Full-Stack Developer',
     description: 'Get in touch to hire for full-stack development, web & mobile apps, and Web3/blockchain projects.',
   },
   alternates: {
@@ -79,7 +79,6 @@ export default function ContactPage() {
         </EditorialHeadline>
 
         <div className="mt-16 grid grid-cols-1 gap-14 md:mt-24 lg:grid-cols-12 lg:gap-16">
-          {/* Channels + facts */}
           <div className="lg:col-span-5">
             <p className={LABEL}>
               <span className="text-neon">Direct</span> channels
@@ -116,7 +115,6 @@ export default function ContactPage() {
             </Reveal>
           </div>
 
-          {/* Form */}
           <Reveal className="lg:col-span-7">
             <div className="rounded-2xl border border-white/10 bg-panel/40 p-7 md:p-10">
               <div className="mb-8 flex items-center justify-between gap-4">
@@ -133,7 +131,6 @@ export default function ContactPage() {
           </Reveal>
         </div>
 
-        {/* What happens next */}
         <section className="mt-24 md:mt-32">
           <SectionLabel index="Next">What happens next</SectionLabel>
           <Stagger as="ol" className="grid grid-cols-1 gap-10 md:grid-cols-3 md:gap-8">

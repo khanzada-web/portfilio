@@ -11,33 +11,33 @@ import { SectionLabel } from '@/app/components/ui/SectionLabel'
 import { SHARE_IMAGE } from '@/app/lib/site'
 
 export const metadata: Metadata = {
-  title: 'Next.js & Web3 Development Services',
+  title: 'Hire Next.js 16 Full-Stack & Web3 Development Services 2026 | Mussawar Hayat',
   description:
-    'Next.js and React apps, Node.js APIs, React Native mobile, Solidity smart contracts, Core Web Vitals work, and DevOps. Fixed-price, hourly, or retainer.',
+    'Premium Next.js 16 full-stack development services, React Server Components, Node.js APIs, Solidity smart contracts, Core Web Vitals optimization, and DevOps. Fixed-price, hourly, or retainer. Hire the best Next.js expert.',
   keywords: [
-    'hire Next.js 16 developer',
-    'Next.js full-stack developer for hire',
-    'Web3 developer for hire 2026',
-    'Solidity smart contract developer',
-    'Next.js SaaS developer',
-    'freelance Next.js developer',
+    'hire Next.js 16 developer 2026',
+    'best Next.js full-stack developer for hire',
+    'Web3 development services 2026',
+    'Solidity smart contract developer hire',
+    'Next.js SaaS development services',
+    'freelance Next.js developer expert',
     'hire Web3 developer',
-    'best Next.js developer for hire',
+    'Next.js Core Web Vitals services',
   ],
   openGraph: {
     images: SHARE_IMAGE,
-    title: 'Hire Next.js Full-Stack & Web3 Developer | Services',
+    title: 'Hire Next.js 16 Full-Stack & Web3 Development Services 2026 | Mussawar Hayat',
     description:
-      'Next.js, React, TypeScript, SaaS, Solidity, DApps, React Native, and DevOps. Hire Mussawar Hayat remotely.',
+      'Next.js 16, React Server Components, TypeScript, SaaS, Solidity DApps, and production DevOps. Hire Mussawar Hayat remotely.',
     url: 'https://mussawarhayat.site/services',
     type: 'website',
   },
   twitter: {
     images: SHARE_IMAGE,
     card: 'summary_large_image',
-    title: 'Hire Next.js Full-Stack & Web3 Developer | Mussawar Hayat',
+    title: 'Hire Next.js 16 Full-Stack & Web3 Development Services 2026',
     description:
-      'Full-stack and Web3 development services — SaaS, DApps, APIs, and DevOps.',
+      'Premium Next.js 16 and Web3 development services — SaaS, DApps, APIs, Core Web Vitals, and DevOps.',
   },
   alternates: {
     canonical: '/services',
@@ -53,7 +53,7 @@ const faqs = [
   {
     question: 'What technologies does Mussawar Hayat work with?',
     answer:
-      'Mussawar Hayat specializes in React, Next.js, Node.js, and TypeScript. For mobile he uses React Native and Flutter. For Web3 he works with Solidity, Ethers.js, Hardhat, and Bitcoin Ordinals. He also delivers DevOps with Nginx, PM2, and GitHub Actions.',
+      'Mussawar Hayat specializes in React, Next.js 16, Node.js, and TypeScript. For mobile he uses React Native and Flutter. For Web3 he works with Solidity, Ethers.js, Hardhat, and Bitcoin Ordinals. He also delivers DevOps with Nginx, PM2, and GitHub Actions.',
   },
   {
     question: 'Does Mussawar Hayat work with international clients?',
@@ -80,15 +80,20 @@ const faqs = [
     answer:
       'Typical options are fixed-price for scoped projects, hourly for ongoing or evolving work, and monthly retainers for continuous product development. Exact ranges depend on scope — share your project and you will get a clear proposal.',
   },
+  {
+    question: 'Can you optimize Core Web Vitals on an existing Next.js site?',
+    answer:
+      'Yes. Specialist work covers LCP, INP, CLS, Server Component boundaries, image strategy, and real-user monitoring so the site passes Google ranking signals.',
+  },
 ]
 
 const services = [
   {
     id: 'web-architecture',
-    title: 'Next.js Web Architecture',
+    title: 'Next.js 16 Web Architecture',
     description:
-      'High-performance Next.js and React applications optimized for speed, SEO, and global scalability. SSR, ISR, and edge-network ready.',
-    features: ['Next.js SSR/ISR', 'React + TypeScript', 'Tailwind CSS', 'SEO Optimized'],
+      'High-performance Next.js 16 and React applications optimized for speed, SEO, and global scalability. App Router, Server Components, SSR, ISR, and edge-network ready.',
+    features: ['Next.js 16 App Router', 'React + TypeScript', 'Server Components', 'SEO Optimized'],
   },
   {
     id: 'mobile-solutions',
@@ -122,7 +127,7 @@ const services = [
     id: 'performance-ops',
     title: 'Core Web Vitals Performance',
     description:
-      'Deep optimisation of existing products — Core Web Vitals, bundle splitting, caching strategies, and Lighthouse audits.',
+      'Deep optimisation of existing products — Core Web Vitals, bundle splitting, caching strategies, and Lighthouse audits for top rankings.',
     features: ['Core Web Vitals', 'Lighthouse Audits', 'Bundle Splitting', 'CDN & Caching'],
   },
   {
@@ -194,28 +199,26 @@ export default function ServicesPage() {
           index="/services"
           eyebrow="Services"
           aside="Remote · North America & Europe"
-          solid="Hire Next.js Full-Stack"
+          solid="Hire Next.js 16 Full-Stack"
           accent="& Web3 Services"
         >
           <p>
-            Hire Mussawar Hayat as a Next.js full-stack developer and Web3 specialist for React, TypeScript, SaaS products, Solidity
-            smart contracts, and production DevOps. Remote freelance delivery for North America and Europe — one engineer from UI to
+            Hire Mussawar Hayat as a Next.js 16 full-stack developer and Web3 specialist for React, TypeScript, SaaS products, Solidity
+            smart contracts, Core Web Vitals optimization, and production DevOps. Remote freelance delivery for North America and Europe — one engineer from UI to
             VPS.
           </p>
         </EditorialHeadline>
 
-        {/* Summary answer (AEO) */}
         <Reveal className="mt-16 border-l-2 border-neon pl-6 md:mt-20 lg:max-w-4xl">
           <h2 className="font-mono text-xs uppercase tracking-[0.3em] text-neon">What services are available?</h2>
           <p className="mt-3 font-sans text-sm leading-relaxed text-white/75 md:text-base">
-            Mussawar Hayat provides end-to-end full-stack and Web3 development: Next.js and React applications, Node.js APIs, mobile
+            Mussawar Hayat provides end-to-end full-stack and Web3 development: Next.js 16 and React applications, Node.js APIs, mobile
             apps (React Native / Flutter), Solidity smart contracts and DApps, Core Web Vitals optimization, and production DevOps
             (Nginx, PM2, GitHub Actions, VPS). Engagements are available as fixed-price projects, hourly, or monthly retainers for
             startups and product teams in North America and Europe.
           </p>
         </Reveal>
 
-        {/* Services */}
         <section className="mt-24 md:mt-32">
           <SectionLabel index="01">Services</SectionLabel>
           <Stagger as="ul" className="grid grid-cols-1 gap-px overflow-hidden border border-white/10 bg-white/10 md:grid-cols-2 lg:grid-cols-3">
@@ -241,7 +244,6 @@ export default function ServicesPage() {
           </Stagger>
         </section>
 
-        {/* Engagement models */}
         <section className="mt-24 md:mt-32">
           <SectionLabel index="02">Engagement models</SectionLabel>
           <Reveal>
@@ -264,12 +266,11 @@ export default function ServicesPage() {
           </Stagger>
         </section>
 
-        {/* Why hire */}
         <section className="mt-24 md:mt-32">
           <SectionLabel index="03">Why hire</SectionLabel>
           <Reveal>
             <h2 className="max-w-3xl text-[clamp(1.6rem,3vw,2.5rem)] font-black uppercase leading-[1] tracking-[-0.02em] text-white">
-              Why Hire Mussawar Hayat as <span className="text-neon">Your Next.js Developer</span>
+              Why Hire Mussawar Hayat as <span className="text-neon">Your Next.js 16 Developer</span>
             </h2>
           </Reveal>
           <Stagger className="mt-10 grid grid-cols-1 gap-12 md:grid-cols-2">
@@ -288,7 +289,6 @@ export default function ServicesPage() {
           </Stagger>
         </section>
 
-        {/* FAQ: visible copy of the FAQSchema data (required for FAQ rich results) */}
         <section className="mt-24 md:mt-32">
           <SectionLabel index="04">Frequently asked</SectionLabel>
           <Stagger as="ol" step={0.06} className="border-b border-white/10 lg:ml-auto lg:max-w-4xl">
@@ -316,7 +316,6 @@ export default function ServicesPage() {
           </Stagger>
         </section>
 
-        {/* CTA */}
         <section className="mt-24 border-t border-white/10 pt-16 md:mt-32 md:pt-20">
           <Reveal className="flex flex-col items-start justify-between gap-8 lg:flex-row lg:items-end">
             <div>

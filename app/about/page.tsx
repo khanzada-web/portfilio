@@ -11,16 +11,17 @@ import { SectionLabel } from '@/app/components/ui/SectionLabel'
 import { SHARE_IMAGE } from '@/app/lib/site'
 
 export const metadata: Metadata = {
-  title: 'About — Full-Stack & Web3 Developer',
+  title: 'About Mussawar Hayat — Top Next.js 16 Full-Stack & Web3 Developer for Hire 2026',
   description:
-    'Mussawar Hayat is a full-stack and Web3 developer in Pakistan who owns products end-to-end, from Next.js UI to APIs, data, and DevOps, for startups worldwide.',
+    'Mussawar Hayat is a top Next.js 16 full-stack and Web3 developer who owns products end-to-end — from App Router and Server Components to APIs, data, Solidity, and production DevOps — for startups worldwide.',
   keywords: [
     'Mussawar Hayat',
+    'hire Next.js 16 developer',
     'about Mussawar Hayat',
-    'full-stack developer Pakistan',
-    'Next.js developer',
-    'Web3 developer',
-    'freelance React developer',
+    'best full-stack developer for hire 2026',
+    'Next.js 16 full-stack developer',
+    'Web3 developer for hire',
+    'freelance React TypeScript developer',
   ],
   alternates: {
     canonical: '/about',
@@ -36,9 +37,9 @@ export const metadata: Metadata = {
   twitter: {
     images: SHARE_IMAGE,
     card: 'summary_large_image',
-    title: 'About Mussawar Hayat',
+    title: 'About Mussawar Hayat — Next.js 16 Full-Stack & Web3 Developer',
     description:
-      'Full-stack and Web3 developer specializing in Next.js, React, TypeScript, and Solidity.',
+      'Full-stack and Web3 developer specializing in Next.js 16, React, TypeScript, and Solidity.',
   },
   robots: {
     index: true,
@@ -74,7 +75,7 @@ const FOCUS_AREAS = [
   {
     title: 'Full-Stack Product Engineering',
     description:
-      'Next.js App Router, Server Components, Server Actions, TypeScript, Prisma, PostgreSQL, and clean API design.',
+      'Next.js 16 App Router, Server Components, Server Actions, TypeScript, Prisma, PostgreSQL, and clean API design.',
   },
   {
     title: 'Web3 & Blockchain',
@@ -157,13 +158,12 @@ export default function AboutPage() {
           </p>
         </EditorialHeadline>
 
-        {/* Portrait + bio */}
         <section className="mt-16 grid grid-cols-1 gap-12 md:mt-24 lg:grid-cols-12 lg:gap-16" aria-label="Introduction">
           <div className="lg:col-span-5">
             <figure className="relative aspect-[4/5] w-full overflow-hidden rounded-2xl border border-white/10">
               <Image
                 src="/my-pic.jpeg"
-                alt="Mussawar Hayat, full-stack and Web3 developer"
+                alt="Mussawar Hayat, Next.js 16 full-stack and Web3 developer"
                 fill
                 className="object-cover object-[50%_30%]"
                 sizes="(min-width: 1024px) 40vw, 100vw"
@@ -182,7 +182,7 @@ export default function AboutPage() {
               <p>
                 I work with startups and product teams in North America and Europe who want one engineer to own delivery
                 end-to-end instead of coordinating multiple specialists. Day-to-day work is shipping production applications
-                with React, Next.js, TypeScript, Node.js, PostgreSQL, and — when the product needs it — Solidity, Ethers.js, and
+                with React, Next.js 16, TypeScript, Node.js, PostgreSQL, and — when the product needs it — Solidity, Ethers.js, and
                 Bitcoin-native tooling.
               </p>
               <p>
@@ -205,7 +205,6 @@ export default function AboutPage() {
           </Stagger>
         </section>
 
-        {/* Focus areas */}
         <section className="mt-24 md:mt-32">
           <SectionLabel index="01">Focus areas</SectionLabel>
           <Stagger as="ul" className="grid grid-cols-1 gap-px overflow-hidden border border-white/10 bg-white/10 md:grid-cols-2">
@@ -219,7 +218,6 @@ export default function AboutPage() {
           </Stagger>
         </section>
 
-        {/* How I work */}
         <section className="mt-24 md:mt-32">
           <SectionLabel index="02">How I work</SectionLabel>
           <Stagger as="ol" className="grid grid-cols-1 gap-10 sm:grid-cols-2 lg:grid-cols-4 lg:gap-8">
@@ -233,7 +231,6 @@ export default function AboutPage() {
           </Stagger>
         </section>
 
-        {/* Core stack */}
         <section className="mt-24 md:mt-32">
           <SectionLabel index="03">Core stack</SectionLabel>
           <Reveal>
@@ -248,7 +245,6 @@ export default function AboutPage() {
           </Reveal>
         </section>
 
-        {/* Engagement + CTA */}
         <section className="mt-24 border-t border-white/10 pt-16 md:mt-32 md:pt-20">
           <div className="grid grid-cols-1 gap-10 lg:grid-cols-12 lg:gap-16">
             <Reveal className="lg:col-span-7">
